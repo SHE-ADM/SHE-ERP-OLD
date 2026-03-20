@@ -1,0 +1,2357 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 994
+  Top = 229
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'SHEILD |  API NFEDLL v7.1.2'
+  ClientHeight = 396
+  ClientWidth = 799
+  Color = 15066597
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  Icon.Data = {
+    000001000300101000000100080068050000360000002020000001000800A808
+    00009E0500003030000001000800A80E0000460E000028000000100000002000
+    0000010008000000000000010000610F0000610F00000001000000010000FFFF
+    FF00FCFCFC00FAFAFA00B4B4B4006969690047474700C2C3C3002F3030000000
+    00000101010098928F000000010002020200020101000303030098929000BBB6
+    B40010425A00266E91000200000003090C000A1B240002050600000101000302
+    020029779D0010415900FEFFFF00322B29001959760052E7FF00276F91000714
+    1A003CACE200205C7800010102002A7A9D0052E5FF0017506C00322B2800FDFF
+    FF00B0ACAA00081E290019445800215F7C004EE0FF00287193003393C0003BA8
+    DA002B7B9E004DDEFF001E536D002669890011394D00AFA8A5006B6868002B93
+    BB0047C7F800102C3C00246785004BD9FF003290BB0040B9F10044C3FB0039A3
+    D20049D3FF00236280001B4B640043BBEF002F9FC7006C6A6B00516167002E99
+    C800328BB50047CCFD0014384900215D7A004CDAFF0042BFF80042BEF8004AD5
+    FF0022607D001A48600048D1FF003695C0002886B200516168004E565A002275
+    9D0048CBFF003391BD003DAEE300205B770022607E0049D1FF0048D0FF001E55
+    70002466810045C5F7002D80AA0049CDFF002783AE004C5255006B6969002D98
+    C200389BCA00379CC90047CEFF0018455C0029759900266C8E000C232F003FB5
+    E4003FB6E500338DB9002C94BD006D6D6D00AFAAA70015435B003FB1E40046CB
+    FC00143A4D000102030003080B00091922003EB3E10047C8FD00133F5600FBF7
+    F50039474E0035AEE10019425500236483002E83AB0001020200318DB9002B7C
+    A2000E2029002D97C8003B4D5600FBF6F400BDBCBB0000080D0024607D0046C8
+    FF002A789C002C7FA40048CFFF0046CAFF002D7A9F0003040500BCBBBB009993
+    900002141E0036B3E8004BD4FF0048C9FE004AD0FF0049CFFF004AD2FF0038B7
+    F000041E2C009A959200C0BEBC0037444A001B5E7E002A91C20033A8DE0033A8
+    DF001C5F7F0037434900BFBCBA00F8F5F300AFA5A000696868004E5A60000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0100ACADAEAFAFAEADAC00010000000100A3A4A5A6A7A8A6A9AAAB0001000100
+    98999A9B9C9D9E9C9FA0A1A20001008D8E088F905F9192939495960B97008081
+    82830884850886878808898A8B8C757677787908167A177B177C7D7E7F756768
+    696A6B6C086D6E086F70717273745758595A5B5C5D5E5F606162636465664748
+    494A4B4C4D4E4F505152535455563738393A3B3C3D3E3F40414243444546292A
+    2B2C2D2E082F30083132333435361B1C1D1E1F08202122082324252627280010
+    11121308141516171718191A100001000A080B0C0C080D0E0C0B080F00010001
+    0006070809080809080706000100000001000203040505040302000100000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000002800
+    00002000000040000000010008000000000000040000610F0000610F00000001
+    000000010000FEFEFE00EFF1F200C9C9C900A9A9A90098989800F2F3F300A4A3
+    A3004E4D4D001B1B1B00010101001B131000A9A6A50092929200D5D5D6003634
+    3300B7B8B8000D0C0C000F101000B8B9B900010609000C0806000C222D002973
+    9600030C11002E83AB0008151D003DAADB0049D1FF003183A5000B2633000409
+    0C003596C3004BD9FF0003172100908F8F00296B8A0040B7F100225D7A0043C1
+    F50046CBFF003599C50048CFFF002B799E003EB1E5002464830041BBF4001439
+    4C001C516B0024607C00256C8E005051520018445A002C7DA2003FB4E90044C3
+    FC003DAFE00016100E00174E680042BEF900338EB800150D0A0039A2CD00318C
+    B5001F58740025688700379CCB003392BC0042BAEF0096918E00236E91001F56
+    720003121A0001182300205975000A1B2400237090004A433F0008314400062C
+    3F004C4541002156700019110E003BA4D200322E2C00061F2C00102833003837
+    3700399FCE001748600007253500FFFFFF000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    00000000000000000000000000000000000005020B2222060205000000000000
+    00000000000000000000000000000005064C3C0913174713093C4C0601000000
+    00000000000000000000000000000C3C0959455724363624574559093C0C0000
+    0000000000000000000000000D5309581A292927363636362729291A5809530D
+    00000000000000000000000F141D521B363A3A3A3A3A2D363A3A36361B571514
+    12000000000000000000120909501B2D3A363A363A2736363636363A2D201C09
+    1312000000000000000D110913092F29263A363A291F57273A3A363A29180909
+    09100D0000000000005354550913092F27362D29281E471A273A2D2918090909
+    1E17560000000000220952354A0913092F272928170909195227271809091309
+    4552092200000005512F1B271A4A0913094628170909130919373E090913092C
+    29292F0A050000060950263636374A09130913090909090909191E091309401B
+    241B1C090600004C4D3D2F263627374A091309090913090909090913092C292D
+    2918234E4F00013831201F2F2636271A4A090909093431091309090940292D1B
+    183F1B4B3C0502093D27271F2F2D3627371D09092A2927400909092C1B241B18
+    2527273D09020309253626291F2F2D361B4909341B3A351B40092F20241B1825
+    273A2742090344483B3F3636291F2F2730092A292D363A361B2C132820182527
+    3A274249474444171B423F3626273D1D092A1B3A363636363A1B251E45313626
+    2742463647440B13351B3E3F261B3F092A1B2D3A3A3A3A3635361B2C09421B27
+    422F2743130B02093D36273E313F09341B2D27273636363A27272D1B40091F41
+    2F26274109020538391B361B2E09341B241B342E35363A27163B1B241B2C0933
+    27261B313C0500320930273309341B351B181309162736371E131F27241B2C09
+    18201A1307000006091E15092A272D1B180913092E27272F09091E1F29241B30
+    09311509060000010809092A1B241B1809091309251B2B1E0909091E1F1B2429
+    2C0909080500000022092320241B1809090909252627281E090909091E1F2924
+    2025090C00000000000E191A1B1C090909090909151D090909090909091E1F20
+    1A210E0000000000000D14151613090909090909090909090909090909091718
+    15140D000000000000000F090913090909090909090909090909090909090909
+    090F0000000000000000000F1009090909090909090909090909090909090911
+    1200000000000000000000000D0E090909090909090909090909090909090E0D
+    00050000000000000000000000000C08090909090909090909090909080C0000
+    000000000000000000000000000000050607080909090909090A070B05000000
+    0000000000000000000000000000000000000102030404030201000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    000000000000280000003000000060000000010008000000000000090000610F
+    0000610F00000001000000010000FFFFFF00F6F6F600E3E4E400D3D4D400E9E9
+    EA00999A9A00505050003939390020201F00121313000E0C0C00100C0A006263
+    6400979797008B8B8C0032333300000101000206090074747500090301004D4D
+    4D0023232300C9C9C900080D110024658400061116000D222D002B7599000409
+    0C00318AB3004CDAFF003393BE000A1A23003AA6D80049D2FF0048CFFF0041BC
+    F6000B1E28001B4C64000C24310009161D003CABDC0046CBFF001C1C1C002057
+    6F0041BBEE0042BEF9003495C10043C2FC003FB4E9001D516A001A455A002F84
+    AC00163E5200328FB9001A485E00266989003DAEE200215D7A0006161D00379E
+    D0002E7EA50043C0F600163B4F001F5974000A181F001A435600256886002B74
+    960012324300389BC90039A1CC00369BC90040B5ED003AA5D400205A76001D4F
+    68003EB1E3000F2837002B7A9E0022607E000F2F3D00122D3B00286F9100050E
+    12003698C20014313F000F101000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000102020204010000000000010000000000000000000000000000000000
+    00000000000000000000000000000003050C072B0A13130A2B070C0503000000
+    00000000000000000000000000000000000000000000000000000000040E0F10
+    101010102027272011101010100F0E0400000000000000000000000000000000
+    00000000000000000100041209101017421B48312E2A2A31313C1B4217101057
+    1204000000000000000000000000000000000000000000000005091010523D49
+    2A232A2A302E2E30302A232A313D451010090500000000000000000000000000
+    000000000000000414101052362A23302E2E2E2E2E303030302E2E2E2A2A2A36
+    52101014040000000000000000000000000000000000031510171B2A2A2E2E30
+    30303030303030302E3030302E2E2E2A2A1B1710150300000000000000000000
+    00000000001609101C4A222E2E3030302E30302E302E2E3030303030302E2E24
+    3023391A100916000000000000000000000000000309101110262A302E303030
+    303030302E2A30303030303030303030242A4854101009030000000000000000
+    00000004151010101010262A302E302E2E302E2E2A39312A2E3030302E303024
+    232F1C101010101504000000000000000000001410101010101010262A302E30
+    3030242A4D3B5230302E303030302E232F1C1010101013101400000000000000
+    00000D102844171010101010262A3030302E2A39251010453E3030303031232F
+    1110101010102528100D00000000000000022B10441E1D111010101010262A30
+    242A4D2510101010453E2A3031222F1C101010101025241B102B020000000000
+    001210522A242336111010101010262A2A3925101010101010452E30232F1C10
+    10101010254D2A305610120000000000020910552A2424233611101010101026
+    392510101010101010104530551C1010101010254D2A242A3610090200000000
+    0E10113423243024233611101010101054101010101010101010104E3B101010
+    1010254D2A2E2E302A1A100E000000000F1044454F2224302E23361110101010
+    101010101010101010101010101010101025392A2E302E232C27100F00000003
+    10172D3E4E3D222E302423361110101010101010101110101010101010101010
+    254D2A2E302E234C262454100300000510422A30314E4F2231302E2336111010
+    10101010101D53101010101010101025392A2E302E224C37232A42100500000C
+    104423312A244E3D222E3024233611101010101034222338101010101010254D
+    2A2E302E234C3723242344100C00000710472A2E2E2A314E4F22312A30223617
+    10101034232E2E233810101010254D2A2E2E2E224C3723302E2A461007000115
+    10332A302E2E23314E3D223130312237101134232E30302E231810101A312A24
+    2E30234C3723302E2E2A4A101501040B254B3523302E2E2331514F222E221810
+    1034232E3030302E2E22381027312A242E234C37232E2E2E2A4D521009020210
+    1A1E40352A30303123244E4F1E50101034232E30302E30302E2E2238101A392A
+    2A4C372330302E2A4D1A3651130202132730224B352A302E242A313535101034
+    232E30302E30303030302E23381025492C3323302E2E2A4D1A1D221A1002040A
+    41302E224B352A302E2E224C101C34222E3030303030302E302E302E2338101C
+    372224302E2A4D1A1D2224200A04012B1049302E223A352A302A26101134232E
+    302E2E30303030302E30302E2E233810254A2A242A49271D223031102B010007
+    10462A2E2E22403F2A261010342224302E2A302E302E303030303030302E2338
+    10194722291A1D22242A48100700000C104422243024221828101034232E302E
+    2A21392A2E3030302E302E2A2E2E2E2238102836453422242E2344100C000005
+    1041212A24303042101134232E302E232F113B392A2E302E231B20292A24302E
+    23181010431E3130242242100500000310102821223E3F10103423243024231F
+    1C101040232E303024201025292A2E302E2338101C1F23242334101003000000
+    0F10103B3C35101134232E302E231F1110101027302E2E231810101020292A24
+    2E2E2238101C361E3D10100F000000000E1011101110101D23242E2E231F1C10
+    1010101C39303039171010101020292A2E302E233810193A1C10100E00000000
+    020B101010103423242E24231F1C101010101020313023181010101010102029
+    2A2E2E2E223810101010090200000000001210101134232E302E231F11101010
+    102835362A3122371010101010101020292A2E302E2318101110120000000000
+    00022B102C1E2D2E2E231F1C1010101010252F30233031321010101010101010
+    20292A2E2E241E33102B020000000000000005101C1D2324231F111010101010
+    101010252627101010101010101010101028292A24221D1C100D000000000000
+    0000000610111D1E1F1110101010101010101010101010101010101010101010
+    10102021221D1110140000000000000000000004151017181910101010101010
+    101010101010101010101010101010101010101A1B1C10150400000000000000
+    0000000003091010101010101010101010101010101010101010101010101010
+    1010101010100903000000000000000000000000001609101110101010101010
+    1010101010101010101010101010101010101011100916000000000000000000
+    0000000000000315101310101010101010101010101010101010101010101010
+    1010101015030000000000000000000000000000000000041410101110101010
+    1010101010101010101010101010101011101014040000000000000000000000
+    0000000000000000000509101010101010101010101010101010101010101010
+    100905000000000000000000000000000000000000000000000002120B101010
+    1113101010101010101113101010100A12040000000000000000000000000000
+    000000000000000000000000020E0F10111010101010101010101010100F0E02
+    0000000000000000000000000000000000000000000000000000000000000003
+    05060708090A0B0908070C0D0300000000000000000000000000000000000000
+    0000000000000000000000000000000000000001020203040100000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000}
+  OldCreateOrder = False
+  Position = poScreenCenter
+  ShowHint = True
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 799
+    Height = 68
+    Align = alTop
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    Caption = '     Funcionalidades Diversas'
+    Color = clWhite
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 0
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 355
+    Width = 799
+    Height = 41
+    Align = alBottom
+    Alignment = taLeftJustify
+    Caption = ' Status'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+    DesignSize = (
+      799
+      41)
+    object Button11: TButton
+      Left = 684
+      Top = 4
+      Width = 110
+      Height = 33
+      Anchors = [akRight, akBottom]
+      BiDiMode = bdLeftToRight
+      Caption = 'Sair'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentBiDiMode = False
+      ParentFont = False
+      TabOrder = 0
+      OnClick = Button11Click
+    end
+    object EditStatus: TEdit
+      Left = 4
+      Top = 12
+      Width = 479
+      Height = 17
+      BevelOuter = bvNone
+      BorderStyle = bsNone
+      Color = clBtnFace
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 1
+      Text = 'Status'
+    end
+  end
+  object PageControl1: TPageControl
+    Left = 0
+    Top = 68
+    Width = 799
+    Height = 287
+    ActivePage = tbsImprimirDanfe
+    Align = alClient
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -9
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    MultiLine = True
+    ParentFont = False
+    TabOrder = 1
+    OnChange = PageControl1Change
+    object tbsGerarNfe: TTabSheet
+      Caption = '1 - Gerar NF-e'
+      DesignSize = (
+        791
+        229)
+      object Label3: TLabel
+        Left = 4
+        Top = 60
+        Width = 73
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Cod. Municipio:'
+      end
+      object Label4: TLabel
+        Left = 29
+        Top = 81
+        Width = 48
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Municipio:'
+      end
+      object Label5: TLabel
+        Left = 4
+        Top = 3
+        Width = 89
+        Height = 11
+        Caption = 'Dados do Emitente:'
+        Enabled = False
+      end
+      object Label2: TLabel
+        Left = 239
+        Top = 33
+        Width = 77
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Quantidade Itens'
+      end
+      object Label6: TLabel
+        Left = 243
+        Top = 3
+        Width = 16
+        Height = 11
+        Caption = 'NF:'
+        Enabled = False
+      end
+      object Label7: TLabel
+        Left = 57
+        Top = 110
+        Width = 145
+        Height = 22
+        Alignment = taRightJustify
+        Caption = '[...] Os demais dados devem ser'#13#10'preenchidos via codigo'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clGray
+        Font.Height = -9
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label25: TLabel
+        Left = 62
+        Top = 38
+        Width = 15
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'I.E:'
+      end
+      object Label1: TLabel
+        Left = 235
+        Top = 53
+        Width = 83
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'CST/CSOSN ICMS:'
+      end
+      object Label26: TLabel
+        Left = 280
+        Top = 73
+        Width = 36
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'CST IPI:'
+      end
+      object Label27: TLabel
+        Left = 256
+        Top = 113
+        Width = 60
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'CST COFINS:'
+      end
+      object Label28: TLabel
+        Left = 277
+        Top = 93
+        Width = 39
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'CST PIS:'
+      end
+      object lblIdentOpera: TLabel
+        Left = 0
+        Top = 144
+        Width = 121
+        Height = 11
+        Caption = 'Identificador de Opera'#231#227'o:'
+      end
+      object lbltpEmis: TLabel
+        Left = 456
+        Top = 32
+        Width = 64
+        Height = 11
+        Caption = 'Tipo Emiss'#227'o:'
+      end
+      object EditCodMunicipio: TEdit
+        Left = 83
+        Top = 56
+        Width = 121
+        Height = 19
+        TabOrder = 4
+      end
+      object EditQtdItens: TEdit
+        Left = 322
+        Top = 29
+        Width = 121
+        Height = 19
+        TabOrder = 0
+        Text = '1'
+      end
+      object btnGeraNfe: TButton
+        Left = 670
+        Top = 168
+        Width = 114
+        Height = 48
+        Anchors = [akRight, akBottom]
+        Caption = 'Processar'
+        TabOrder = 11
+        OnClick = btnGeraNfe_Click
+      end
+      object ckbAssinar: TCheckBox
+        Left = 323
+        Top = 136
+        Width = 80
+        Height = 17
+        Caption = 'Assinar NF-e'
+        TabOrder = 9
+      end
+      object EditIE: TEdit
+        Left = 83
+        Top = 34
+        Width = 121
+        Height = 19
+        TabOrder = 1
+      end
+      object EditICMSCST: TEdit
+        Left = 322
+        Top = 49
+        Width = 121
+        Height = 19
+        TabOrder = 3
+        Text = '00'
+      end
+      object EditIPI: TEdit
+        Left = 322
+        Top = 69
+        Width = 121
+        Height = 19
+        TabOrder = 5
+        Text = '00'
+      end
+      object EditCofins: TEdit
+        Left = 322
+        Top = 109
+        Width = 121
+        Height = 19
+        TabOrder = 8
+        Text = '01'
+      end
+      object EditPis: TEdit
+        Left = 322
+        Top = 89
+        Width = 121
+        Height = 19
+        TabOrder = 7
+        Text = '01'
+      end
+      object rdbSaida: TRadioButton
+        Left = 322
+        Top = 161
+        Width = 52
+        Height = 17
+        Caption = 'Sa'#237'da'
+        Checked = True
+        TabOrder = 12
+        TabStop = True
+      end
+      object rdbEntrada: TRadioButton
+        Left = 377
+        Top = 162
+        Width = 65
+        Height = 17
+        Caption = 'Entrada'
+        TabOrder = 13
+      end
+      object cbboxIdOpera: TComboBox
+        Left = 125
+        Top = 141
+        Width = 145
+        Height = 17
+        Style = csOwnerDrawFixed
+        ItemHeight = 11
+        TabOrder = 10
+        Items.Strings = (
+          '1 - Opera'#231#227'o Interna'
+          '2 - Opera'#231#227'o Interestadual'
+          '3 - Opera'#231#227'o com Exterior')
+      end
+      object cbbTpEmis: TComboBox
+        Left = 456
+        Top = 48
+        Width = 241
+        Height = 19
+        ItemHeight = 11
+        TabOrder = 2
+        Text = '1-Emiss'#227'o normal'
+        OnChange = cbbTpEmisChange
+        Items.Strings = (
+          '1-Emiss'#227'o normal'
+          '2-Conting'#234'ncia FS-IA, com impress'#227'o do DANFE'
+          '3-Conting'#234'ncia SCAN'
+          '4-Conting'#234'ncia DPEC'
+          '5-Conting'#234'ncia FS-DA'
+          '6-Conting'#234'ncia SVC-AN'
+          '7-Conting'#234'ncia SVC-RS'
+          '9-Conting'#234'ncia off-line da NFC-e'
+          '10-Conting'#234'ncia EPEC')
+      end
+      object EditMunicipio: TEdit
+        Left = 83
+        Top = 78
+        Width = 121
+        Height = 19
+        TabOrder = 6
+      end
+    end
+    object tbsAssinarArquivo: TTabSheet
+      Caption = '2 - Assinar Arquivo'
+      ImageIndex = 1
+      DesignSize = (
+        791
+        229)
+      object Label8: TLabel
+        Left = 4
+        Top = 3
+        Width = 86
+        Height = 11
+        Caption = 'Escolha o Arquivo:'
+        Enabled = False
+      end
+      object Label9: TLabel
+        Left = 54
+        Top = 38
+        Width = 23
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Path:'
+      end
+      object SpeedButton1: TSpeedButton
+        Left = 587
+        Top = 32
+        Width = 73
+        Height = 21
+        Caption = 'Procurar'
+        Flat = True
+        OnClick = SpeedButton1Click
+      end
+      object btnAssinar: TButton
+        Left = 668
+        Top = 169
+        Width = 114
+        Height = 48
+        Anchors = [akRight, akBottom]
+        Caption = 'Processar'
+        TabOrder = 0
+        OnClick = btnAssinarClick
+      end
+      object EditPathArqAssinar: TEdit
+        Left = 83
+        Top = 34
+        Width = 499
+        Height = 19
+        TabOrder = 1
+      end
+      object GroupBox1: TGroupBox
+        Left = 80
+        Top = 72
+        Width = 169
+        Height = 65
+        Caption = 'Tipo de Arquivo: '
+        TabOrder = 2
+        object arqnfe: TRadioButton
+          Left = 7
+          Top = 19
+          Width = 113
+          Height = 17
+          Caption = 'Arquivo NF-e'
+          Checked = True
+          TabOrder = 0
+          TabStop = True
+        end
+        object arqdpec: TRadioButton
+          Left = 7
+          Top = 39
+          Width = 113
+          Height = 17
+          Caption = 'Arquivo DPEC'
+          TabOrder = 1
+        end
+      end
+    end
+    object tbsValidarArquivo: TTabSheet
+      Caption = '3 - Validar Arquivo'
+      ImageIndex = 2
+      DesignSize = (
+        791
+        229)
+      object Label10: TLabel
+        Left = 4
+        Top = 3
+        Width = 86
+        Height = 11
+        Caption = 'Escolha o Arquivo:'
+        Enabled = False
+      end
+      object Label11: TLabel
+        Left = 54
+        Top = 38
+        Width = 23
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Path:'
+      end
+      object btnProcurarValidarArquivo: TSpeedButton
+        Left = 587
+        Top = 32
+        Width = 73
+        Height = 21
+        Caption = 'Procurar'
+        Flat = True
+        OnClick = btnProcurarValidarArquivoClick
+      end
+      object Label12: TLabel
+        Left = 39
+        Top = 60
+        Width = 38
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Schema:'
+      end
+      object btnValidarArquivo: TButton
+        Left = 668
+        Top = 169
+        Width = 114
+        Height = 48
+        Anchors = [akRight, akBottom]
+        Caption = 'Processar'
+        TabOrder = 2
+        OnClick = btnValidarArquivoClick
+      end
+      object EditPathValidarArquivo: TEdit
+        Left = 83
+        Top = 34
+        Width = 499
+        Height = 19
+        TabOrder = 0
+      end
+      object cbbSchema: TComboBox
+        Left = 83
+        Top = 56
+        Width = 206
+        Height = 17
+        AutoComplete = False
+        Style = csOwnerDrawFixed
+        ItemHeight = 11
+        ItemIndex = 7
+        TabOrder = 1
+        Text = 'nfe_v4.00.xsd'
+        Items.Strings = (
+          'nfe_v2.00.xsd'
+          'enviNFe_v2.00.xsd'
+          'procNFe_v2.00.xsd'
+          'cancNFe_v2.00.xsd'
+          'inutNFe_v2.00.xsd'
+          'envDPEC_v1.01.xsd'
+          'nfe_v3.10.xsd'
+          'nfe_v4.00.xsd')
+      end
+    end
+    object tbsGerarLote: TTabSheet
+      Caption = '4 - Gerar Lote'
+      ImageIndex = 3
+      DesignSize = (
+        791
+        229)
+      object Label13: TLabel
+        Left = 13
+        Top = 53
+        Width = 39
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'I.D Lote:'
+        Enabled = False
+      end
+      object Label31: TLabel
+        Left = 28
+        Top = 31
+        Width = 23
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Path:'
+      end
+      object SpeedButton2: TSpeedButton
+        Left = 564
+        Top = 25
+        Width = 72
+        Height = 21
+        Caption = 'Procurar...'
+        Transparent = False
+        OnClick = SpeedButton2Click
+      end
+      object btnGerarLote: TButton
+        Left = 667
+        Top = 167
+        Width = 114
+        Height = 48
+        Anchors = [akRight, akBottom]
+        Caption = 'Processar'
+        TabOrder = 0
+        OnClick = btnGerarLoteClick
+      end
+      object rdgOpcoesLote: TRadioGroup
+        Left = 12
+        Top = 75
+        Width = 244
+        Height = 56
+        Caption = ' Op'#231#245'es '
+        ItemIndex = 0
+        Items.Strings = (
+          'Selecionar NF-e'
+          'Gerar lote de todas NF-e assinadas')
+        TabOrder = 1
+      end
+      object EditIDLote: TEdit
+        Left = 58
+        Top = 49
+        Width = 121
+        Height = 19
+        Enabled = False
+        TabOrder = 2
+        Text = '0000020'
+      end
+      object CheckBox1: TCheckBox
+        Left = 187
+        Top = 49
+        Width = 128
+        Height = 17
+        Caption = 'Gerar Numero Aleat'#243'rio'
+        Checked = True
+        State = cbChecked
+        TabOrder = 3
+        OnClick = CheckBox1Click
+      end
+      object EditPathNFeLote: TEdit
+        Left = 57
+        Top = 27
+        Width = 495
+        Height = 19
+        TabOrder = 4
+      end
+    end
+    object tsWSautorizacao: TTabSheet
+      Caption = '5 - Autoriza'#231#227'o'
+      ImageIndex = 23
+      object btnAutorizacao: TButton
+        Left = 32
+        Top = 32
+        Width = 113
+        Height = 57
+        Caption = 'Autoriza'#231#227'o'
+        TabOrder = 1
+        OnClick = btnAutorizacaoClick
+      end
+      object mmoAutorizacao: TMemo
+        Left = 328
+        Top = 16
+        Width = 361
+        Height = 225
+        TabOrder = 0
+      end
+    end
+    object tbsConsultaProc: TTabSheet
+      Caption = '6 - Consultar Processamento'
+      ImageIndex = 7
+      object Label16: TLabel
+        Left = 7
+        Top = 5
+        Width = 48
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Protocolo:'
+        Enabled = False
+      end
+      object mmoConsultaProcessamento: TMemo
+        Left = 296
+        Top = 0
+        Width = 495
+        Height = 229
+        Align = alRight
+        ReadOnly = True
+        ScrollBars = ssVertical
+        TabOrder = 0
+      end
+      object Button8: TButton
+        Left = 8
+        Top = 48
+        Width = 138
+        Height = 38
+        Caption = 'Consultar'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 1
+        OnClick = Button8Click
+      end
+      object EditConsultaProc: TEdit
+        Left = 9
+        Top = 24
+        Width = 152
+        Height = 19
+        TabOrder = 2
+        Text = '350000003126455'
+      end
+    end
+    object tbsConsultarSituacao: TTabSheet
+      Caption = '7 - Consultar Situa'#231#227'o NF-e'
+      ImageIndex = 8
+      object Label17: TLabel
+        Left = 10
+        Top = 18
+        Width = 24
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'NF-e:'
+      end
+      object btnSituacaoNFe: TButton
+        Left = 40
+        Top = 41
+        Width = 138
+        Height = 38
+        Caption = 'Consultar'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 2
+        OnClick = btnSituacaoNFeClick
+      end
+      object mmoConsultaSituacao: TMemo
+        Left = 421
+        Top = 0
+        Width = 370
+        Height = 229
+        Align = alRight
+        ReadOnly = True
+        ScrollBars = ssVertical
+        TabOrder = 0
+      end
+      object edtNFeSituacao: TEdit
+        Left = 40
+        Top = 14
+        Width = 244
+        Height = 19
+        TabOrder = 1
+      end
+    end
+    object tbsImprimirDanfe: TTabSheet
+      Caption = '8 - Imprimir DANFE'
+      ImageIndex = 4
+      DesignSize = (
+        791
+        229)
+      object Label14: TLabel
+        Left = 4
+        Top = 3
+        Width = 86
+        Height = 11
+        Caption = 'Escolha o Arquivo:'
+        Enabled = False
+      end
+      object Label15: TLabel
+        Left = 5
+        Top = 38
+        Width = 78
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Path Origem XML'
+      end
+      object btnPesqDanfe: TSpeedButton
+        Left = 595
+        Top = 32
+        Width = 73
+        Height = 21
+        Caption = 'Procurar'
+        Flat = True
+        OnClick = btnPesqDanfeClick
+      end
+      object Label29: TLabel
+        Left = 5
+        Top = 58
+        Width = 80
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Path Destino PDF'
+      end
+      object Label36: TLabel
+        Left = 334
+        Top = 186
+        Width = 190
+        Height = 36
+        Caption = 
+          'Neste caso, voc'#234' dever'#225' escolher o arquivo '#13#10'de NF-e assinado: .' +
+          '.\nfe\arquivos\assinado'#13#10'para imprimir.'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -9
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        Visible = False
+      end
+      object Label37: TLabel
+        Left = 84
+        Top = 96
+        Width = 221
+        Height = 12
+        Caption = '(1): Arquivo de Distribui'#231#227'o: ..\nfe\arquivos\procNFe'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -9
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label51: TLabel
+        Left = 335
+        Top = 167
+        Width = 132
+        Height = 11
+        Caption = 'N'#250'mero do protocolo EPEC: '
+        Visible = False
+      end
+      object EditPathDanfe: TEdit
+        Left = 91
+        Top = 34
+        Width = 499
+        Height = 19
+        TabOrder = 0
+        Text = 'C:\Sheild\NotaFiscal\NFe\Arquivos\ProcNFe'
+      end
+      object btnImprimeDanfe: TButton
+        Left = 667
+        Top = 176
+        Width = 114
+        Height = 48
+        Anchors = [akRight, akBottom]
+        Caption = 'Imprimir'
+        TabOrder = 5
+        OnClick = btnImprimeDanfeClick
+      end
+      object rdgOpcoesDanfe: TRadioGroup
+        Left = 82
+        Top = 117
+        Width = 244
+        Height = 70
+        Caption = ' Op'#231#245'es '
+        ItemIndex = 2
+        Items.Strings = (
+          'Imprimir para impressora default'
+          'Gerar PDF'
+          'Visualizar em Tela')
+        TabOrder = 2
+      end
+      object EditPathPDF: TEdit
+        Left = 91
+        Top = 54
+        Width = 499
+        Height = 19
+        TabOrder = 1
+        Text = 'C:\Sheild\NotaFiscal\CCe'
+      end
+      object chkFormSeguranca: TCheckBox
+        Left = 332
+        Top = 124
+        Width = 188
+        Height = 17
+        Caption = 'DANFE em Formulario de Seguran'#231'a'
+        TabOrder = 3
+        OnClick = chkFormSegurancaClick
+      end
+      object chkFormDPEC: TCheckBox
+        Left = 332
+        Top = 144
+        Width = 241
+        Height = 17
+        Caption = 'DANFE  de NF-e emitida em conting'#234'ncia EPEC'
+        TabOrder = 4
+        OnClick = chkFormDPECClick
+      end
+      object edtProtDpec: TEdit
+        Left = 469
+        Top = 163
+        Width = 174
+        Height = 19
+        TabOrder = 6
+        Visible = False
+      end
+      object ckbDanfeSimplificado: TCheckBox
+        Left = 332
+        Top = 103
+        Width = 188
+        Height = 17
+        Caption = 'DANFE simplificado [NOVO]'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clRed
+        Font.Height = -9
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 7
+        OnClick = chkFormSegurancaClick
+      end
+    end
+    object tbsWSStatus: TTabSheet
+      Caption = 'Status do Servi'#231'o'
+      ImageIndex = 5
+      object Button6: TButton
+        Left = 14
+        Top = 3
+        Width = 138
+        Height = 38
+        Caption = 'Status do Servi'#231'o'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 0
+        OnClick = Button6Click
+      end
+      object mmoStatusServico: TMemo
+        Left = 296
+        Top = 0
+        Width = 495
+        Height = 229
+        Align = alRight
+        ReadOnly = True
+        ScrollBars = ssVertical
+        TabOrder = 1
+      end
+    end
+    object tbsCancelamento: TTabSheet
+      Caption = 'Cancelar NFe'
+      ImageIndex = 9
+      object Label18: TLabel
+        Left = 57
+        Top = 18
+        Width = 24
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'NF-e:'
+      end
+      object Label19: TLabel
+        Left = 19
+        Top = 38
+        Width = 62
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Protocolo (1):'
+      end
+      object Label20: TLabel
+        Left = 24
+        Top = 60
+        Width = 57
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Justificativa:'
+      end
+      object Label35: TLabel
+        Left = 15
+        Top = 181
+        Width = 208
+        Height = 22
+        Caption = 
+          '(1): Este numero '#233'obtido na fun'#231#227'o '#13#10'de '#39'Consulta de Situa'#231#227'o da' +
+          ' NF-e'#39' tag <nProt>'
+      end
+      object mmoCancelamento: TMemo
+        Left = 466
+        Top = 0
+        Width = 325
+        Height = 229
+        Align = alRight
+        ReadOnly = True
+        ScrollBars = ssVertical
+        TabOrder = 0
+      end
+      object EditNFe: TEdit
+        Left = 87
+        Top = 14
+        Width = 244
+        Height = 19
+        TabOrder = 1
+      end
+      object EditProtocoloCancelamento: TEdit
+        Left = 87
+        Top = 34
+        Width = 244
+        Height = 19
+        TabOrder = 2
+        Text = '135090007119381'
+      end
+      object EditJustificativa: TEdit
+        Left = 87
+        Top = 56
+        Width = 244
+        Height = 19
+        TabOrder = 3
+        Text = 'Teste Cancelamento de NF-e'
+      end
+      object Button10: TButton
+        Left = 224
+        Top = 122
+        Width = 106
+        Height = 38
+        Caption = 'Cancelamento'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 4
+        OnClick = Button10Click
+      end
+      object ckboxEvento: TCheckBox
+        Left = 8
+        Top = 96
+        Width = 329
+        Height = 17
+        Caption = 'Utilizar Cancelamento de NF-e por Evento '
+        Checked = True
+        State = cbChecked
+        TabOrder = 5
+      end
+    end
+    object tbsInutilizacao: TTabSheet
+      Caption = 'Inutiliza'#231#227'o'
+      ImageIndex = 10
+      object Label21: TLabel
+        Left = 61
+        Top = 18
+        Width = 20
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Ano:'
+      end
+      object Label22: TLabel
+        Left = 11
+        Top = 38
+        Width = 70
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Numero Inicial:'
+      end
+      object Label23: TLabel
+        Left = 15
+        Top = 58
+        Width = 65
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Numero Final:'
+      end
+      object Label24: TLabel
+        Left = 23
+        Top = 98
+        Width = 57
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Justificativa:'
+      end
+      object Label68: TLabel
+        Left = 54
+        Top = 77
+        Width = 26
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Serie:'
+      end
+      object Label69: TLabel
+        Left = 139
+        Top = 77
+        Width = 253
+        Height = 11
+        Caption = 'Caso esteja vazio, a DLL utilizar'#225' o parametro nfe\Serie'
+        Enabled = False
+      end
+      object mmoInutilizacao: TMemo
+        Left = 466
+        Top = 0
+        Width = 325
+        Height = 229
+        Align = alRight
+        ReadOnly = True
+        ScrollBars = ssVertical
+        TabOrder = 0
+      end
+      object EditAno: TEdit
+        Left = 87
+        Top = 14
+        Width = 52
+        Height = 19
+        TabOrder = 1
+        Text = '23'
+      end
+      object EditIni: TEdit
+        Left = 87
+        Top = 34
+        Width = 52
+        Height = 19
+        TabOrder = 2
+        Text = '01'
+      end
+      object EditFim: TEdit
+        Left = 86
+        Top = 54
+        Width = 52
+        Height = 19
+        TabOrder = 3
+        Text = '01'
+      end
+      object EditJustInutilizacao: TEdit
+        Left = 86
+        Top = 94
+        Width = 253
+        Height = 19
+        TabOrder = 4
+        Text = 'Inutiliza'#231#227'o de numera'#231#227'o da nota fiscal'
+      end
+      object Button9: TButton
+        Left = 87
+        Top = 118
+        Width = 138
+        Height = 38
+        Caption = 'Inutiliza'#231#227'o'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 5
+        OnClick = Button9Click
+      end
+      object EdtSerieInutilizacao: TEdit
+        Left = 86
+        Top = 73
+        Width = 52
+        Height = 19
+        TabOrder = 6
+      end
+    end
+    object TabSheet1: TTabSheet
+      Caption = 'Distribui'#231#227'o NF-e'
+      ImageIndex = 11
+      object Label32: TLabel
+        Left = 57
+        Top = 18
+        Width = 24
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'NF-e:'
+      end
+      object mmoDistribuicao: TMemo
+        Left = 466
+        Top = 0
+        Width = 325
+        Height = 229
+        Align = alRight
+        ReadOnly = True
+        ScrollBars = ssVertical
+        TabOrder = 0
+      end
+      object EditDistNFe: TEdit
+        Left = 87
+        Top = 14
+        Width = 244
+        Height = 19
+        TabOrder = 1
+      end
+      object btnDistribuicao: TButton
+        Left = 84
+        Top = 59
+        Width = 138
+        Height = 38
+        Caption = 'Distribui'#231#227'o'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 2
+        OnClick = btnDistribuicaoClick
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'Enviar e-Mail'
+      ImageIndex = 12
+      object Label39: TLabel
+        Left = 26
+        Top = 134
+        Width = 385
+        Height = 16
+        Caption = 'Aten'#231#227'o! Configure os dados da conta emitente na chave nfe\eMail'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label40: TLabel
+        Left = 26
+        Top = 151
+        Width = 61
+        Height = 16
+        Caption = 'do regedit.'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label38: TLabel
+        Left = 51
+        Top = 38
+        Width = 26
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'eMail:'
+      end
+      object Label41: TLabel
+        Left = 38
+        Top = 59
+        Width = 39
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Assunto:'
+      end
+      object Label42: TLabel
+        Left = 32
+        Top = 80
+        Width = 45
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Path XML:'
+      end
+      object btnEnviaEmail: TButton
+        Left = 462
+        Top = 74
+        Width = 131
+        Height = 63
+        Caption = 'Enviar'
+        TabOrder = 0
+        OnClick = btnEnviaEmailClick
+      end
+      object EdtEmail: TEdit
+        Left = 83
+        Top = 34
+        Width = 272
+        Height = 19
+        TabOrder = 1
+      end
+      object EdtAssunto: TEdit
+        Left = 83
+        Top = 55
+        Width = 272
+        Height = 19
+        TabOrder = 2
+      end
+      object EdtPathXML: TEdit
+        Left = 83
+        Top = 76
+        Width = 272
+        Height = 19
+        TabOrder = 3
+      end
+    end
+    object TabSheet3: TTabSheet
+      Caption = 'Consulta Cadastro'
+      ImageIndex = 13
+      object lb1: TLabel
+        Left = 18
+        Top = 18
+        Width = 16
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'UF:'
+      end
+      object Label43: TLabel
+        Left = 6
+        Top = 39
+        Width = 28
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'CNPJ:'
+      end
+      object edtUF: TEdit
+        Left = 40
+        Top = 14
+        Width = 41
+        Height = 19
+        CharCase = ecUpperCase
+        TabOrder = 0
+      end
+      object btnConsultaCad: TButton
+        Left = 40
+        Top = 68
+        Width = 138
+        Height = 38
+        Caption = 'Consultar'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 1
+        OnClick = btnConsultaCadClick
+      end
+      object mmoCsCadastro: TMemo
+        Left = 421
+        Top = 0
+        Width = 370
+        Height = 229
+        Align = alRight
+        ReadOnly = True
+        ScrollBars = ssVertical
+        TabOrder = 2
+      end
+      object edtCnpj: TEdit
+        Left = 40
+        Top = 35
+        Width = 244
+        Height = 19
+        TabOrder = 3
+      end
+    end
+    object tabCCe: TTabSheet
+      Caption = 'CC-e'
+      ImageIndex = 14
+      object Label33: TLabel
+        Left = 25
+        Top = 18
+        Width = 24
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'NF-e:'
+      end
+      object Label44: TLabel
+        Left = 4
+        Top = 36
+        Width = 45
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Corre'#231#227'o:'
+      end
+      object chnfeCce: TEdit
+        Left = 55
+        Top = 14
+        Width = 283
+        Height = 19
+        TabOrder = 1
+        Text = '42111107558500000164550010000006951000000990'
+      end
+      object mmoCCe: TMemo
+        Left = 476
+        Top = 0
+        Width = 315
+        Height = 229
+        Align = alRight
+        ReadOnly = True
+        ScrollBars = ssVertical
+        TabOrder = 0
+      end
+      object mmoCorrecao: TMemo
+        Left = 55
+        Top = 34
+        Width = 283
+        Height = 87
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -9
+        Font.Name = 'Arial'
+        Font.Style = []
+        Lines.Strings = (
+          'CORRECAO A SER CONSIDERADA, TEXTO LIVRE. A '
+          'CORRECAO MAIS RECENTE SUBSTITUI AS '
+          'ANTERIORES; ')
+        ParentFont = False
+        ScrollBars = ssVertical
+        TabOrder = 2
+      end
+      object btnCCeExecutar: TButton
+        Left = 240
+        Top = 166
+        Width = 96
+        Height = 38
+        Caption = 'Executar'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 3
+        OnClick = btnCCeExecutarClick
+      end
+    end
+    object tsImprimeCCe: TTabSheet
+      Caption = 'Imprimir CCe'
+      ImageIndex = 15
+      object Label45: TLabel
+        Left = 56
+        Top = 32
+        Width = 48
+        Height = 11
+        Caption = 'Path CCe: '
+      end
+      object Label46: TLabel
+        Left = 56
+        Top = 58
+        Width = 48
+        Height = 11
+        Caption = 'Path PDF: '
+      end
+      object Label47: TLabel
+        Left = 105
+        Top = 75
+        Width = 204
+        Height = 12
+        Caption = 'Arquivo de Distribui'#231#227'o: ..\nfe\arquivos\procNFe'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -9
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+      end
+      object edtPathCCe: TEdit
+        Left = 104
+        Top = 27
+        Width = 393
+        Height = 19
+        TabOrder = 0
+      end
+      object editPDF: TEdit
+        Left = 104
+        Top = 51
+        Width = 393
+        Height = 19
+        TabOrder = 1
+      end
+      object impCCe: TButton
+        Left = 504
+        Top = 128
+        Width = 137
+        Height = 49
+        Caption = 'Imprimir'
+        TabOrder = 2
+        OnClick = impCCeClick
+      end
+      object Button1: TButton
+        Left = 506
+        Top = 24
+        Width = 65
+        Height = 22
+        Caption = 'Procurar'
+        TabOrder = 3
+        OnClick = Button1Click
+      end
+      object rdgOpcoesCCe: TRadioGroup
+        Left = 104
+        Top = 101
+        Width = 244
+        Height = 70
+        Caption = ' Op'#231#245'es '
+        ItemIndex = 2
+        Items.Strings = (
+          'Imprimir para impressora default'
+          'Gerar PDF'
+          'Visualizar em Tela')
+        TabOrder = 4
+      end
+    end
+    object tbsGerarDPEC: TTabSheet
+      Caption = 'Gerar EPEC'
+      ImageIndex = 16
+      object Label48: TLabel
+        Left = 24
+        Top = 36
+        Width = 26
+        Height = 11
+        Caption = 'Path: '
+      end
+      object Label49: TLabel
+        Left = 51
+        Top = 55
+        Width = 466
+        Height = 22
+        Caption = 
+          'Obs.: Informar o caminho do Lote gerado com as NF-e'#180's emitidas  ' +
+          'em conting'#234'ncia EPEC (tpEmis = 4) '#13#10'que estar'#227'o contidas nessa E' +
+          'PEC.'
+      end
+      object btnGerarDPEC: TButton
+        Left = 496
+        Top = 160
+        Width = 129
+        Height = 57
+        Caption = 'Processar'
+        TabOrder = 2
+        OnClick = btnGerarDPECClick
+      end
+      object editNFeDPEC: TEdit
+        Left = 50
+        Top = 32
+        Width = 499
+        Height = 19
+        TabOrder = 1
+      end
+      object Button3: TButton
+        Left = 555
+        Top = 31
+        Width = 73
+        Height = 21
+        Caption = 'Procurar...'
+        TabOrder = 0
+        OnClick = Button3Click
+      end
+    end
+    object tbsRecepcaoDPEC: TTabSheet
+      Caption = 'Recep'#231#227'o EPEC'
+      ImageIndex = 17
+      object Label50: TLabel
+        Left = 2
+        Top = 86
+        Width = 238
+        Height = 140
+        Caption = 
+          'Aten'#231#227'o:'#13#10'Neste m'#233'todo, transmita o arquivo'#13#10'"...-env-Epec-assin' +
+          'ado.xml" da pasta'#13#10' assinado.'#13#10#13#10'As Notas informadas nesse arqui' +
+          'vo devem'#13#10' ser transmitidas para a SEFAZ de origem'#13#10' imediatamen' +
+          'te  ap'#243's a cessa'#231#227'o dos'#13#10' problemas t'#233'cnicos que  impediam a'#13#10' t' +
+          'ransmiss'#227'o.'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Button4: TButton
+        Left = 40
+        Top = 24
+        Width = 113
+        Height = 49
+        Caption = 'EPEC Recep'#231#227'o'
+        TabOrder = 0
+        OnClick = Button4Click
+      end
+      object mmoRecepcaoDPEC: TMemo
+        Left = 244
+        Top = 8
+        Width = 423
+        Height = 232
+        TabOrder = 1
+      end
+    end
+    object tbsConsDPEC: TTabSheet
+      Caption = 'Consulta EPEC'
+      ImageIndex = 18
+      object lbl1: TLabel
+        Left = 22
+        Top = 18
+        Width = 58
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'NF-e / EPEC:'
+      end
+      object Label66: TLabel
+        Left = 22
+        Top = 50
+        Width = 58
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'NF-e / EPEC:'
+      end
+      object edtChaveRegDPEC: TEdit
+        Left = 83
+        Top = 14
+        Width = 245
+        Height = 19
+        TabOrder = 1
+      end
+      object btnConsultaDPEC: TButton
+        Left = 56
+        Top = 80
+        Width = 161
+        Height = 33
+        Caption = 'Consultar'
+        TabOrder = 3
+        OnClick = btnConsultaDPECClick
+      end
+      object mmoconsultaDPEC: TMemo
+        Left = 352
+        Top = 8
+        Width = 329
+        Height = 233
+        TabOrder = 0
+      end
+      object edtChaveRegEPEC: TEdit
+        Left = 83
+        Top = 46
+        Width = 245
+        Height = 19
+        TabOrder = 2
+      end
+    end
+    object TabSheet4: TTabSheet
+      Caption = 'Manifesta'#231#227'o do Destinat'#225'rio'
+      ImageIndex = 19
+      object Label52: TLabel
+        Left = 35
+        Top = 34
+        Width = 34
+        Height = 11
+        Caption = 'Evento:'
+      end
+      object Label53: TLabel
+        Left = 12
+        Top = 77
+        Width = 55
+        Height = 11
+        Caption = 'Chave NF-e:'
+      end
+      object Label54: TLabel
+        Left = 9
+        Top = 119
+        Width = 60
+        Height = 11
+        Caption = 'Justificativa: '
+      end
+      object Label55: TLabel
+        Left = 72
+        Top = 173
+        Width = 386
+        Height = 11
+        Caption = 
+          'Obs: Este campo deve ser informado somente no evento de Opera'#231#227'o' +
+          ' n'#227'o Realizada.'
+      end
+      object Label60: TLabel
+        Left = 490
+        Top = 24
+        Width = 43
+        Height = 11
+        Caption = 'Retorno: '
+      end
+      object cbEvento: TComboBox
+        Left = 73
+        Top = 33
+        Width = 194
+        Height = 19
+        ItemHeight = 11
+        ItemIndex = 0
+        TabOrder = 0
+        Text = 'Confirma'#231#227'o da Opera'#231#227'o'
+        Items.Strings = (
+          'Confirma'#231#227'o da Opera'#231#227'o'
+          'Ci'#234'ncia da Opera'#231#227'o'
+          'Desconhecimento da Opera'#231#227'o'
+          'Opera'#231#227'o n'#227'o Realizada')
+      end
+      object edtChave: TEdit
+        Left = 72
+        Top = 73
+        Width = 281
+        Height = 19
+        TabOrder = 3
+      end
+      object mmoJust: TMemo
+        Left = 72
+        Top = 118
+        Width = 401
+        Height = 51
+        Enabled = False
+        Lines.Strings = (
+          '')
+        TabOrder = 4
+      end
+      object btnGeraManifestacao: TButton
+        Left = 72
+        Top = 216
+        Width = 129
+        Height = 41
+        Caption = 'Executar'
+        TabOrder = 5
+        OnClick = btnGeraManifestacaoClick
+      end
+      object mmoRet: TMemo
+        Left = 488
+        Top = 35
+        Width = 225
+        Height = 225
+        Lines.Strings = (
+          '')
+        TabOrder = 2
+      end
+      object btn1: TButton
+        Left = 392
+        Top = 33
+        Width = 25
+        Height = 25
+        Hint = 'Sobre o Servi'#231'o de Manifesta'#231#227'o do Destinat'#225'rio'
+        Caption = '?'
+        TabOrder = 1
+      end
+    end
+    object TabSheet6: TTabSheet
+      Caption = 'Download NF-e'
+      ImageIndex = 21
+      object Label61: TLabel
+        Left = 40
+        Top = 48
+        Width = 58
+        Height = 11
+        Caption = 'Chave NF-e: '
+      end
+      object Label62: TLabel
+        Left = 489
+        Top = 27
+        Width = 43
+        Height = 11
+        Caption = 'Retorno: '
+      end
+      object edtChNFe: TEdit
+        Left = 98
+        Top = 43
+        Width = 311
+        Height = 19
+        TabOrder = 0
+      end
+      object btnDownload: TButton
+        Left = 96
+        Top = 112
+        Width = 129
+        Height = 41
+        Caption = 'Baixar'
+        TabOrder = 1
+        OnClick = btnDownloadClick
+      end
+      object mmoResultado: TMemo
+        Left = 488
+        Top = 41
+        Width = 225
+        Height = 225
+        TabOrder = 2
+      end
+      object btn3: TButton
+        Left = 384
+        Top = 104
+        Width = 25
+        Height = 25
+        Hint = 'Informa'#231#245'es sobre o servi'#231'o de DownloadNFe'#13#10
+        Caption = '?'
+        TabOrder = 3
+      end
+    end
+    object ts1: TTabSheet
+      Caption = 'Gerar FCI'
+      ImageIndex = 22
+      DesignSize = (
+        791
+        229)
+      object lbl2: TLabel
+        Left = 52
+        Top = 29
+        Width = 48
+        Height = 11
+        Caption = 'Path XML: '
+      end
+      object btnBusca: TSpeedButton
+        Left = 573
+        Top = 29
+        Width = 70
+        Height = 20
+        Caption = 'Procurar...'
+        Transparent = False
+        OnClick = btnPesqDanfeClick
+      end
+      object lbl3: TLabel
+        Left = 17
+        Top = 64
+        Width = 83
+        Height = 11
+        Caption = 'Path Arquivo FCI: '
+      end
+      object btnGeraFCI: TButton
+        Left = 117
+        Top = 156
+        Width = 114
+        Height = 48
+        Anchors = [akRight, akBottom]
+        Caption = 'Criar FCI'
+        TabOrder = 2
+        OnClick = btnGeraFCIClick
+      end
+      object txtXml: TEdit
+        Left = 108
+        Top = 32
+        Width = 456
+        Height = 19
+        TabOrder = 0
+      end
+      object txtFci: TEdit
+        Left = 108
+        Top = 56
+        Width = 456
+        Height = 19
+        TabOrder = 1
+      end
+    end
+    object tsWSObsoletos: TTabSheet
+      Caption = 'WebServices NFe 2.00'
+      ImageIndex = 24
+      object pgcWSObsoletos: TPageControl
+        Left = 1
+        Top = 1
+        Width = 785
+        Height = 209
+        ActivePage = edtNSU
+        TabOrder = 0
+        object wsRecepcao: TTabSheet
+          Caption = 'WS - Recep'#231#227'o'
+          object Label63: TLabel
+            Left = 7
+            Top = 59
+            Width = 157
+            Height = 66
+            Caption = 
+              'Aten'#231#227'o.'#13#10'Neste m'#233'todo, transmita o arquivo'#13#10'que encontra-se na ' +
+              'pasta'#13#10'..\nfe\lotes'#13#10'no qual '#233' gerado a partir do '#13#10'met'#243'do '#39'Gera' +
+              'rLote'#39
+          end
+          object btnRecepcao: TButton
+            Left = 8
+            Top = 8
+            Width = 129
+            Height = 41
+            Caption = 'NFe Recep'#231#227'o'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Arial'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 1
+            OnClick = btnRecepcaoClick
+          end
+          object mmoRecepcao: TMemo
+            Left = 312
+            Top = 0
+            Width = 465
+            Height = 177
+            Lines.Strings = (
+              'mmoRecepcao')
+            TabOrder = 0
+          end
+        end
+        object edtNSU: TTabSheet
+          Caption = 'Consulta Destinadas'
+          ImageIndex = 20
+          object Label56: TLabel
+            Left = 24
+            Top = 48
+            Width = 74
+            Height = 11
+            Caption = 'Indicador NF-e: '
+          end
+          object Label57: TLabel
+            Left = 0
+            Top = 78
+            Width = 100
+            Height = 11
+            Caption = 'Indicador Emissores: '
+          end
+          object Label58: TLabel
+            Left = 25
+            Top = 108
+            Width = 72
+            Height = 11
+            Caption = 'NSU Recebido: '
+          end
+          object Label59: TLabel
+            Left = 506
+            Top = 20
+            Width = 43
+            Height = 11
+            Caption = 'Retorno: '
+          end
+          object cbIndNFe: TComboBox
+            Left = 100
+            Top = 43
+            Width = 385
+            Height = 19
+            ItemHeight = 11
+            ItemIndex = 0
+            TabOrder = 1
+            Text = 'Todas as NF-e'#180's'
+            Items.Strings = (
+              'Todas as NF-e'#180's'
+              
+                'NF-e'#180's que ainda n'#227'o tiveram manifesta'#231#227'o exceto Ci'#234'ncia da Oper' +
+                'a'#231#227'o'
+              
+                'NF-e'#180's que ainda n'#227'o tiveram manifesta'#231#227'o inclusive Ci'#234'ncia da O' +
+                'pera'#231#227'o')
+          end
+          object cbIndEmi: TComboBox
+            Left = 102
+            Top = 74
+            Width = 395
+            Height = 19
+            ItemHeight = 11
+            ItemIndex = 0
+            TabOrder = 2
+            Text = 'Todos os Emitentes/Remetentes'
+            Items.Strings = (
+              'Todos os Emitentes/Remetentes'
+              
+                'NF-e com emissores/rem. que n'#227'o tenham a mesma raiz do CNPJ do d' +
+                'estinat'#225'rio')
+          end
+          object txtNSU: TEdit
+            Left = 100
+            Top = 103
+            Width = 97
+            Height = 19
+            TabOrder = 3
+            Text = '0'
+          end
+          object btnConsDest: TButton
+            Left = 56
+            Top = 192
+            Width = 137
+            Height = 41
+            Caption = 'Consultar'
+            TabOrder = 5
+            OnClick = btnConsDestClick
+          end
+          object mmoRetorno: TMemo
+            Left = 504
+            Top = 33
+            Width = 209
+            Height = 228
+            Lines.Strings = (
+              '')
+            TabOrder = 0
+          end
+          object btn2: TButton
+            Left = 416
+            Top = 103
+            Width = 33
+            Height = 25
+            Hint = 'Informa'#231#245'es sobre o servi'#231'o de Consulta de Notas Destinadas'
+            Caption = '?'
+            TabOrder = 4
+          end
+        end
+      end
+    end
+    object tsDistribuicaoDFe: TTabSheet
+      Caption = 'Distribui'#231#227'o DFe'
+      ImageIndex = 24
+      object Label34: TLabel
+        Left = 24
+        Top = 54
+        Width = 61
+        Height = 11
+        Caption = 'N'#250'mero NSU:'
+      end
+      object Label67: TLabel
+        Left = 24
+        Top = 16
+        Width = 52
+        Height = 11
+        Caption = 'Chave NFe:'
+      end
+      object edtNumNSU: TEdit
+        Left = 24
+        Top = 70
+        Width = 249
+        Height = 19
+        TabOrder = 1
+      end
+      object chkUltNSU: TCheckBox
+        Left = 24
+        Top = 98
+        Width = 81
+        Height = 17
+        Caption = #218'ltimo NSU'
+        TabOrder = 2
+      end
+      object mmoRetDist: TMemo
+        Left = 304
+        Top = 8
+        Width = 481
+        Height = 201
+        TabOrder = 4
+      end
+      object btnDistDFe: TButton
+        Left = 153
+        Top = 121
+        Width = 121
+        Height = 49
+        Caption = 'Distribui'#231#227'o DFe'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -9
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 3
+        OnClick = btnDistDFeClick
+      end
+      object edtchNFeDistInt: TEdit
+        Left = 24
+        Top = 31
+        Width = 249
+        Height = 19
+        TabOrder = 0
+      end
+    end
+    object TabSheet5: TTabSheet
+      Caption = 'Entrega'
+      ImageIndex = 24
+      object Label70: TLabel
+        Left = 57
+        Top = 18
+        Width = 24
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'NF-e:'
+      end
+      object Label71: TLabel
+        Left = 33
+        Top = 38
+        Width = 48
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Data/Hora:'
+      end
+      object Label72: TLabel
+        Left = 52
+        Top = 59
+        Width = 29
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Nome:'
+      end
+      object Label73: TLabel
+        Left = 29
+        Top = 80
+        Width = 52
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'Documento'
+      end
+      object mnoEntrega: TMemo
+        Left = 466
+        Top = 0
+        Width = 325
+        Height = 229
+        Align = alRight
+        ReadOnly = True
+        ScrollBars = ssVertical
+        TabOrder = 0
+      end
+      object edtEntregaChNfe: TEdit
+        Left = 87
+        Top = 14
+        Width = 244
+        Height = 19
+        TabOrder = 1
+        Text = '33210434333329000180550010000070551000000992'
+      end
+      object edtEntregaDh: TEdit
+        Left = 87
+        Top = 34
+        Width = 244
+        Height = 19
+        TabOrder = 2
+        Text = '2021-05-03T10:08:00-03:00'
+      end
+      object edtEntregaNome: TEdit
+        Left = 87
+        Top = 55
+        Width = 244
+        Height = 19
+        TabOrder = 3
+        Text = 'JOSE DA SILVA'
+      end
+      object edtEntregaDoc: TEdit
+        Left = 87
+        Top = 76
+        Width = 244
+        Height = 19
+        TabOrder = 4
+        Text = '1.234.567 SSP/SP'
+      end
+      object btnEntrega: TButton
+        Left = 170
+        Top = 122
+        Width = 160
+        Height = 61
+        Caption = 'Transmitir Entrega '
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 5
+        OnClick = btnEntregaClick
+      end
+    end
+    object TabSheet7: TTabSheet
+      Caption = 'GTIN'
+      ImageIndex = 25
+      object Label30: TLabel
+        Left = 59
+        Top = 18
+        Width = 22
+        Height = 11
+        Alignment = taRightJustify
+        Caption = 'GTIN'
+      end
+      object edtGtin: TEdit
+        Left = 87
+        Top = 14
+        Width = 244
+        Height = 19
+        TabOrder = 0
+      end
+      object btnGtin: TButton
+        Left = 170
+        Top = 122
+        Width = 160
+        Height = 61
+        Caption = 'Consultar'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 1
+        OnClick = btnGtinClick
+      end
+      object mmoGtin: TMemo
+        Left = 466
+        Top = 0
+        Width = 325
+        Height = 229
+        Align = alRight
+        ReadOnly = True
+        ScrollBars = ssVertical
+        TabOrder = 2
+      end
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Filter = 'Arquivos XML|*.xml'
+    Options = [ofReadOnly, ofOverwritePrompt, ofHideReadOnly, ofEnableSizing, ofForceShowHidden]
+    Left = 473
+    Top = 16
+  end
+end

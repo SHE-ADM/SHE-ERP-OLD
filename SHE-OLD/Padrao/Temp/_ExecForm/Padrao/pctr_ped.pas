@@ -1,0 +1,2006 @@
+unit pctr_ped;
+
+interface
+
+uses
+  oPrincipal,
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ppadr1, ImgList, DB, IBStoredProc, IBEvents, StrUtils,
+  IBDatabase, IBCustomDataSet, IBQuery, dxCntner, dxTL, dxDBCtrl, dxDBGrid,
+  ComCtrls, ExtCtrls, DBCtrls, dxPageControl, dxEditor, dxEdLib,
+  StdCtrls, dxDBTLCl, dxGrClms, DateUtils, dxExEdtr, jpeg, Menus, Shellapi,
+  Math, dxDBELib, rxSpeedbar, IBSQL,
+  ActnList, ActnMan, pPadr2, dxBar, dxDockControl, dxDockPanel, cxGraphics,
+  cxControls, dxStatusBar;
+
+type
+  Tfrmctr_ped = class(TFrmPadr2)
+    SIAltera: TSpeedItem;
+    SICancela: TSpeedItem;
+    DTSFKCadastro: TDataSource;
+    SIFinaliza: TSpeedItem;
+    SIRomaneio: TSpeedItem;
+    fin_rec_bai: TIBDataSet;
+    TSheild: TIBTransaction;
+    SICAD_CLI_CRD: TSpeedItem;
+    FKCadastro: TIBQuery;
+    fin_rec_baiID: TIntegerField;
+    fin_rec_baiFIN_CCAB: TIntegerField;
+    fin_rec_baiFIN_CDBX: TIntegerField;
+    fin_rec_baiFIN_CDCX: TIntegerField;
+    fin_rec_baiFIN_CDRD: TIntegerField;
+    fin_rec_baiFIN_CCLI: TIntegerField;
+    fin_rec_baiFIN_DFIN: TIBStringField;
+    fin_rec_baiFIN_DCLI: TIBStringField;
+    fin_rec_baiFIN_RCLI: TIBStringField;
+    fin_rec_baiFIN_CVEN: TIntegerField;
+    fin_rec_baiFIN_VEND: TIBStringField;
+    fin_rec_baiFIN_CREP: TIntegerField;
+    fin_rec_baiFIN_DREP: TIBStringField;
+    fin_rec_baiFIN_RREP: TIBStringField;
+    fin_rec_baiFIN_PRAZ: TSmallintField;
+    fin_rec_baiFIN_ATRA: TSmallintField;
+    fin_rec_baiFIN_CONC: TSmallintField;
+    fin_rec_baiFIN_DCAD: TDateField;
+    fin_rec_baiFIN_DVEN: TDateField;
+    fin_rec_baiFIN_DPAG: TDateField;
+    fin_rec_baiFIN_DMED: TDateField;
+    fin_rec_baiFIN_DATR: TDateField;
+    fin_rec_baiFIN_DBAI: TDateField;
+    fin_rec_baiFIN_CPPL: TIntegerField;
+    fin_rec_baiFIN_CCUS: TIntegerField;
+    fin_rec_baiFIN_CDCO: TIntegerField;
+    fin_rec_baiFIN_CDBA: TIBStringField;
+    fin_rec_baiFIN_DEBA: TIBStringField;
+    fin_rec_baiFIN_STDO: TIBStringField;
+    fin_rec_baiFIN_DOCT: TIBStringField;
+    fin_rec_baiFIN_BANC: TIBStringField;
+    fin_rec_baiFIN_DBAN: TIBStringField;
+    fin_rec_baiFIN_AGEN: TIBStringField;
+    fin_rec_baiFIN_CONT: TIBStringField;
+    fin_rec_baiFIN_NCHQ: TIBStringField;
+    fin_rec_baiFIN_MCHQ: TSmallintField;
+    fin_rec_baiFIN_VALO: TIBBCDField;
+    fin_rec_baiFIN_VPAG: TIBBCDField;
+    fin_rec_baiFIN_VPEN: TIBBCDField;
+    fin_rec_baiFIN_VENC: TIBBCDField;
+    fin_rec_baiFIN_CTNR: TIBStringField;
+    fin_rec_baiFIN_VMUL: TIBBCDField;
+    fin_rec_baiFIN_PMUL: TIBBCDField;
+    fin_rec_baiFIN_VJUR: TIBBCDField;
+    fin_rec_baiFIN_PJUR: TIBBCDField;
+    fin_rec_baiFIN_VDES: TIBBCDField;
+    fin_rec_baiFIN_PDES: TIBBCDField;
+    fin_rec_baiFIN_VCHQ: TIBBCDField;
+    fin_rec_baiFIN_CPF: TIBStringField;
+    fin_rec_baiFIN_STA: TIBStringField;
+    fin_rec_baiFIN_COBR: TIBStringField;
+    fin_rec_baiFIN_DERD: TIBStringField;
+    fin_rec_baiFIN_DTST: TDateTimeField;
+    fin_rec_baiFIN_OBSE: TMemoField;
+    fin_rec_baiFIN_TIPO: TIBStringField;
+    fin_rec_baiFIN_STCO: TIBStringField;
+    fin_rec_baiFIN_STFI: TIBStringField;
+    fin_rec_baiFIN_TITU: TIBStringField;
+    GBFKPedidos: TGroupBox;
+    SICAD_CLI_EDI: TSpeedItem;
+    Separados: TIBQuery;
+    DTSFKSeparados: TDataSource;
+    SINovo: TSpeedItem;
+    SIDevolucao: TSpeedItem;
+    SIAbatimento: TSpeedItem;
+    PCFKPedidos: TdxPageControl;
+    TSFKPedidos: TdxTabSheet;
+    TSFKExpedicao: TdxTabSheet;
+    DBGITPED: TdxDBGrid;
+    DBGITSEP: TdxDBGrid;
+    DBGITSEPSKU: TdxDBGridMaskColumn;
+    DBGITSEPQTDE: TdxDBGridMaskColumn;
+    DBGITSEPCDET: TdxDBGridMaskColumn;
+    DBGITSEPQTRL: TdxDBGridMaskColumn;
+    DBGITSEPDESP: TdxDBGridMaskColumn;
+    PNLTAB_PRC: TPanel;
+    DBGITSEPVPRC_COM: TdxDBGridMaskColumn;
+    DBGITSEPTCDE: TdxDBGridMaskColumn;
+    TSFKRomaneios: TdxTabSheet;
+    DBGITROM: TdxDBGrid;
+    Romaneios: TIBQuery;
+    DTSFKRomaneios: TDataSource;
+    RomaneiosID: TIntegerField;
+    RomaneiosIDEP: TSmallintField;
+    RomaneiosPRO_CPRO: TIBStringField;
+    RomaneiosROM_CDET: TIBStringField;
+    RomaneiosROM_QTDE: TIBBCDField;
+    RomaneiosROM_QTRL: TIntegerField;
+    RomaneiosROM_UNIT: TFloatField;
+    RomaneiosROM_TOTA: TIBBCDField;
+    RomaneiosSEPARADOR: TIBStringField;
+    DBGITROMPRO_CPRO: TdxDBGridMaskColumn;
+    DBGITROMROM_CDET: TdxDBGridMaskColumn;
+    DBGITROMROM_QTDE: TdxDBGridMaskColumn;
+    DBGITROMROM_QTRL: TdxDBGridMaskColumn;
+    DBGITROMROM_UNIT: TdxDBGridMaskColumn;
+    DBGITROMROM_TOTA: TdxDBGridMaskColumn;
+    DBGITROMSEPARADOR: TdxDBGridMaskColumn;
+    PNLTAB_PRC_ABAIXO: TPanel;
+    LALTAB_PRC_ABAIXO: TLabel;
+    LALTAB_PRC_ACIMA_MIN: TLabel;
+    PNLTAB_PRC_ACIMA_MIN: TPanel;
+    LALTAB_PRC_ACIMA_MAX: TLabel;
+    PNLTAB_PRC_ACIMA_MAX: TPanel;
+    DSResumos: TdxDockSite;
+    dxLayoutDockSite1: TdxLayoutDockSite;
+    dxTabContainerDockSite1: TdxTabContainerDockSite;
+    DPResumoDiario: TdxDockPanel;
+    DBGResumoDiario: TdxDBGrid;
+    DBGResumoDiarioEMPRESA: TdxDBGridMaskColumn;
+    DBGResumoDiarioPERIODO: TdxDBGridMaskColumn;
+    DBGResumoDiarioVTVEN: TdxDBGridMaskColumn;
+    DBGResumoDiarioVTFAT: TdxDBGridMaskColumn;
+    DBGResumoDiarioNVCLI: TdxDBGridColumn;
+    DBGResumoDiarioPVCLI: TdxDBGridColumn;
+    DPResumoMensal: TdxDockPanel;
+    DBGResumoMensal: TdxDBGrid;
+    DBGResumoMensalEMPRESA: TdxDBGridMaskColumn;
+    DBGResumoMensalPERIODO_EXT: TdxDBGridMaskColumn;
+    DBGResumoMensalNVCLI: TdxDBGridColumn;
+    DBGResumoMensalPVCLI: TdxDBGridColumn;
+    RomaneiosDGCP: TIBStringField;
+    RomaneiosUCOM: TIBStringField;
+    RomaneiosUCON: TIBStringField;
+    DBGITROMDGCP: TdxDBGridMaskColumn;
+    DBGITSEPDGCP: TdxDBGridMaskColumn;
+    SQLFKEdicao: TIBSQL;
+    DBGITPEDC_ID: TdxDBGridColumn;
+    DBGConsultaDEPK: TdxDBGridColumn;
+    DBGConsultaDTPK: TdxDBGridColumn;
+    DBGConsultaCTNR: TdxDBGridColumn;
+    DBGConsultaDECD: TdxDBGridMaskColumn;
+    DBGConsultaUFCD: TdxDBGridMaskColumn;
+    DBGConsultaDECV: TdxDBGridMaskColumn;
+    DBGConsultaDECR: TdxDBGridMaskColumn;
+    DBGConsultaSTPD: TdxDBGridColumn;
+    DBGConsultaCDNF: TdxDBGridColumn;
+    DBGConsultaVIPI: TdxDBGridColumn;
+    DBGConsultaVST: TdxDBGridColumn;
+    DBGConsultaPDSC: TdxDBGridColumn;
+    DBGConsultaVDSC: TdxDBGridColumn;
+    DBGConsultaD_DTSA: TdxDBGridColumn;
+    DBGConsultaRECO: TdxDBGridColumn;
+    DBGConsultaD_STCO: TdxDBGridColumn;
+    DBGConsultaD_TCDE: TdxDBGridColumn;
+    DBGConsultaVTFA: TdxDBGridColumn;
+    DBGConsultaDECT: TdxDBGridMaskColumn;
+    DBGConsultaVFRT: TdxDBGridColumn;
+    DBGConsultaPSBR: TdxDBGridColumn;
+    DBGConsultaPSLQ: TdxDBGridColumn;
+    DBGConsultaD_DEST: TdxDBGridColumn;
+    DBGConsultaVTSP: TdxDBGridMaskColumn;
+    DBGConsultaTPCO: TdxDBGridColumn;
+    PNLINFADLOG: TPanel;
+    FKCadastroID: TIntegerField;
+    FKCadastroIDEP: TSmallintField;
+    FKCadastroIDPK: TLargeintField;
+    FKCadastroITEM: TIntegerField;
+    FKCadastroIDCP: TIntegerField;
+    FKCadastroCP_IDEP: TSmallintField;
+    FKCadastroCP_DEEP: TIBStringField;
+    FKCadastroARTIGO: TIBStringField;
+    FKCadastroSKU: TIBStringField;
+    FKCadastroDECP: TIBStringField;
+    FKCadastroDGCP: TIBStringField;
+    FKCadastroUCOM: TIBStringField;
+    FKCadastroUCON: TIBStringField;
+    FKCadastroQTDE: TIBBCDField;
+    FKCadastroQTRL: TIntegerField;
+    FKCadastroVPRC_PAD_INI: TFloatField;
+    FKCadastroVPRC_PAD_FIM: TFloatField;
+    FKCadastroVPRC_PAD: TFloatField;
+    FKCadastroPDSC: TIBBCDField;
+    FKCadastroVDSC: TFloatField;
+    FKCadastroVPRC_COM: TFloatField;
+    FKCadastroNCM: TIBStringField;
+    FKCadastroPIPI: TIBBCDField;
+    FKCadastroVIPI: TFloatField;
+    FKCadastroPCOM: TIBBCDField;
+    FKCadastroVCOM: TFloatField;
+    FKCadastroTSDE: TIBBCDField;
+    FKCadastroTCDE: TIBBCDField;
+    FKCadastroVTSP: TIBBCDField;
+    FKCadastroPSBR: TIBBCDField;
+    FKCadastroPSLQ: TIBBCDField;
+    FKCadastroIDSP: TSmallintField;
+    FKCadastroCDSP: TLargeintField;
+    FKCadastroDESP: TIBStringField;
+    FKCadastroQTSP: TIBBCDField;
+    FKCadastroRLSP: TIntegerField;
+    FKCadastroDTSP: TDateTimeField;
+    FKCadastroC_ID: TLargeintField;
+    DBGITPEDITEM: TdxDBGridMaskColumn;
+    DBGITPEDCP_DEEP: TdxDBGridMaskColumn;
+    DBGITPEDARTIGO: TdxDBGridMaskColumn;
+    DBGITPEDSKU: TdxDBGridMaskColumn;
+    DBGITPEDDECP: TdxDBGridMaskColumn;
+    DBGITPEDDGCP: TdxDBGridColumn;
+    DBGITPEDUCOM: TdxDBGridMaskColumn;
+    DBGITPEDQTDE: TdxDBGridMaskColumn;
+    DBGITPEDQTRL: TdxDBGridMaskColumn;
+    DBGITPEDVPRC_PAD_INI: TdxDBGridMaskColumn;
+    DBGITPEDVPRC_PAD_FIM: TdxDBGridMaskColumn;
+    DBGITPEDPDSC: TdxDBGridMaskColumn;
+    DBGITPEDVPRC_COM: TdxDBGridMaskColumn;
+    DBGITPEDNCM: TdxDBGridMaskColumn;
+    DBGITPEDPIPI: TdxDBGridMaskColumn;
+    DBGITPEDPCOM: TdxDBGridMaskColumn;
+    DBGITPEDVDSC: TdxDBGridMaskColumn;
+    DBGITPEDTCDE: TdxDBGridMaskColumn;
+    DBGITPEDVTSP: TdxDBGridMaskColumn;
+    DBGITPEDVIPI: TdxDBGridMaskColumn;
+    DBGITPEDVCOM: TdxDBGridMaskColumn;
+    DBGITPEDPSBR: TdxDBGridMaskColumn;
+    DBGITPEDPSLQ: TdxDBGridMaskColumn;
+    DBGITPEDDESP: TdxDBGridColumn;
+    DBGITPEDQTSP: TdxDBGridMaskColumn;
+    DBGITPEDRLSP: TdxDBGridMaskColumn;
+    DBGITPEDDTSP: TdxDBGridDateColumn;
+    DBGConsultaVNF: TdxDBGridColumn;
+    FKCadastroUN_QTDE: TIBStringField;
+    FKCadastroCEAN: TIBStringField;
+    DBGConsultaD_MFRT: TdxDBGridMaskColumn;
+    LATAB_PRC_ACIMA_MIN: TLabel;
+    LATAB_PRC_ACIMA_MAX: TLabel;
+    FKCadastroUN_QTSP: TIBStringField;
+    PNLINFADCAD: TPanel;
+    FKCadastroIMG_PAD: TBlobField;
+    FKCadastroIMG_ID: TLargeintField;
+    PNLAmostra: TPanel;
+    PCAmostra: TdxPageControl;
+    TSIMG_PAD: TdxTabSheet;
+    PNLIMG_PAD: TPanel;
+    IMG_PAD: TImage;
+    TSILA: TdxTabSheet;
+    PNLILA_BMP: TPanel;
+    BILA_BMP1: TBevel;
+    BILA_BMP2: TBevel;
+    BILA_BMP3: TBevel;
+    BILA_BMP4: TBevel;
+    BILA_BMP5: TBevel;
+    BILA_BMP6: TBevel;
+    BILA_BMP7: TBevel;
+    BILA_BMP8: TBevel;
+    DBILA_BMP1: TDBImage;
+    DBILA_BMP2: TDBImage;
+    DBILA_BMP3: TDBImage;
+    DBILA_BMP4: TDBImage;
+    DBILA_BMP5: TDBImage;
+    DBILA_BMP6: TDBImage;
+    DBILA_BMP7: TDBImage;
+    DBILA_BMP8: TDBImage;
+    DBGITSEPITEM: TdxDBGridMaskColumn;
+    DBGITSEPVPRC_PAD_INI: TdxDBGridMaskColumn;
+    DBGITSEPVPRC_PAD_FIM: TdxDBGridMaskColumn;
+    SIEstorno: TSpeedItem;
+    DBINFADCAD: TdxDBMemo;
+    SeparadosID: TIntegerField;
+    SeparadosIDEP: TSmallintField;
+    SeparadosIDCA: TSmallintField;
+    SeparadosDTCA: TDateField;
+    SeparadosCDSP: TLargeintField;
+    SeparadosDESP: TIBStringField;
+    SeparadosCDRO: TLargeintField;
+    SeparadosCDET: TLargeintField;
+    SeparadosITEM: TIntegerField;
+    SeparadosSKU: TIBStringField;
+    SeparadosDGCP: TIBStringField;
+    SeparadosUCOM: TIBStringField;
+    SeparadosUCON: TIBStringField;
+    SeparadosQTDE: TIBBCDField;
+    SeparadosQTRL: TIntegerField;
+    SeparadosVPRC_PAD_INI: TFloatField;
+    SeparadosVPRC_PAD_FIM: TFloatField;
+    SeparadosVPRC_COM: TFloatField;
+    SeparadosTCDE: TIBBCDField;
+    DBGITSEPDTCA: TdxDBGridDateColumn;
+    SeparadosIDPK: TLargeintField;
+    DBGConsultaLOG_PRN_QTEV: TdxDBGridMaskColumn;
+    DBGConsultaLOG_PRN_CDEV: TdxDBGridMaskColumn;
+    DBGResumoMensalVTVEN: TdxDBGridMaskColumn;
+    DBGResumoMensalVTFAT: TdxDBGridMaskColumn;
+    DBGResumoMensalPERIODO: TdxDBGridMaskColumn;
+    DBGConsultaTCDE: TdxDBGridColumn;
+    DBGConsultaQTRL: TdxDBGridColumn;
+    DBGConsultaRLSP: TdxDBGridColumn;
+    DBGConsultaPPSP: TdxDBGridMaskColumn;
+    DBGConsultaHTPK: TdxDBGridTimeColumn;
+    DBGConsultaDTNF: TdxDBGridDateColumn;
+    DBGConsultaUFCR: TdxDBGridMaskColumn;
+    CadastroID: TIntegerField;
+    CadastroIDEP: TSmallintField;
+    CadastroDEEP: TIBStringField;
+    CadastroIDCA: TSmallintField;
+    CadastroDTCA: TDateTimeField;
+    CadastroHTPK: TTimeField;
+    CadastroIDST: TSmallintField;
+    CadastroDTST: TDateField;
+    CadastroCDST: TSmallintField;
+    CadastroREST: TIBStringField;
+    CadastroDEST: TIBStringField;
+    CadastroINFADST: TIBStringField;
+    CadastroIDPK: TLargeintField;
+    CadastroDEPK: TIBStringField;
+    CadastroDTPK: TDateField;
+    CadastroCDCX: TLargeintField;
+    CadastroCDPP: TLargeintField;
+    CadastroAPI_B2B: TSmallintField;
+    CadastroCTNR: TIBStringField;
+    CadastroIDSP: TSmallintField;
+    CadastroDESP: TIBStringField;
+    CadastroDTSP: TDateField;
+    CadastroD_DTSP: TDateTimeField;
+    CadastroDTSP_INI: TDateTimeField;
+    CadastroDTSP_FIM: TDateTimeField;
+    CadastroCDRO: TLargeintField;
+    CadastroDTRO: TDateField;
+    CadastroD_DTRO: TDateTimeField;
+    CadastroCDNF: TLargeintField;
+    CadastroCFOP: TIBStringField;
+    CadastroDTNF: TDateField;
+    CadastroD_DTNF: TDateTimeField;
+    CadastroIDSA: TSmallintField;
+    CadastroDTSA: TDateField;
+    CadastroD_DTSA: TDateTimeField;
+    CadastroIDCD: TIntegerField;
+    CadastroDECD: TIBStringField;
+    CadastroRZCD: TIBStringField;
+    CadastroPJCD: TIBStringField;
+    CadastroGPCD: TIBStringField;
+    CadastroCNCD: TSmallintField;
+    CadastroCSCD: TSmallintField;
+    CadastroUFCD: TIBStringField;
+    CadastroRSCD: TIBStringField;
+    CadastroIDCV: TSmallintField;
+    CadastroDECV: TIBStringField;
+    CadastroRSCV: TIBStringField;
+    CadastroIDCR: TSmallintField;
+    CadastroDECR: TIBStringField;
+    CadastroUFCR: TIBStringField;
+    CadastroRSCR: TIBStringField;
+    CadastroIDCT: TSmallintField;
+    CadastroDECT: TIBStringField;
+    CadastroUFCT: TIBStringField;
+    CadastroRSCT: TIBStringField;
+    CadastroITEM: TIntegerField;
+    CadastroQTDE: TIBBCDField;
+    CadastroQTRL: TIntegerField;
+    CadastroITSP: TIntegerField;
+    CadastroQTSP: TIBBCDField;
+    CadastroRLSP: TIntegerField;
+    CadastroPDSC: TIBBCDField;
+    CadastroVDSC: TIBBCDField;
+    CadastroTSDE: TIBBCDField;
+    CadastroD_TSDE: TIBBCDField;
+    CadastroTCDE: TIBBCDField;
+    CadastroD_TCDE: TIBBCDField;
+    CadastroVTSP: TIBBCDField;
+    CadastroPPSP: TIBBCDField;
+    CadastroVNF: TIBBCDField;
+    CadastroVIPI: TIBBCDField;
+    CadastroVST: TIBBCDField;
+    CadastroVTFA: TIBBCDField;
+    CadastroVTAP: TIBBCDField;
+    CadastroPCOM: TIBBCDField;
+    CadastroVCOM: TIBBCDField;
+    CadastroMFRT: TSmallintField;
+    CadastroD_MFRT: TIBStringField;
+    CadastroVFRT: TIBBCDField;
+    CadastroPSBR: TIBBCDField;
+    CadastroPSLQ: TIBBCDField;
+    CadastroCDPD: TSmallintField;
+    CadastroSTPD: TIBStringField;
+    CadastroABPD: TSmallintField;
+    CadastroDVPD: TSmallintField;
+    CadastroSVPD: TSmallintField;
+    CadastroFAPD: TSmallintField;
+    CadastroBQPD: TSmallintField;
+    CadastroBEPD: TSmallintField;
+    CadastroQEPD: TSmallintField;
+    CadastroSEPD: TSmallintField;
+    CadastroDEPD: TSmallintField;
+    CadastroCDCO: TSmallintField;
+    CadastroSTCO: TIBStringField;
+    CadastroD_STCO: TIBStringField;
+    CadastroTPCO: TSmallintField;
+    CadastroRECO: TIBStringField;
+    CadastroCDPG: TSmallintField;
+    CadastroDEPG: TIBStringField;
+    CadastroAPST: TSmallintField;
+    CadastroFBST: TSmallintField;
+    CadastroBXST: TSmallintField;
+    CadastroLQST: TSmallintField;
+    CadastroBQST: TSmallintField;
+    CadastroCDBX: TLargeintField;
+    CadastroDTBX: TDateField;
+    CadastroD_DTBX: TDateTimeField;
+    CadastroINFADCAD: TIBStringField;
+    CadastroIP: TIBStringField;
+    CadastroHOST: TIBStringField;
+    CadastroLOG_PRN_CDEV: TSmallintField;
+    CadastroLOG_PRN_QTEV: TSmallintField;
+    CadastroLOC_NO_CT: TIBStringField;
+    DBGConsultaLOC_NO_CT: TdxDBGridMaskColumn;
+    DBGConsultaUFCT: TdxDBGridMaskColumn;
+    CadastroCDDV: TLargeintField;
+    CadastroDTDV: TDateField;
+    CadastroDEDV: TIBStringField;
+    CadastroFIN_VCRD: TIBBCDField;
+    CadastroIDSC: TSmallintField;
+    CadastroTDSC: TIBStringField;
+    CadastroD_DEST: TIBStringField;
+    DBGConsultaVTAP: TdxDBGridMaskColumn;
+    CadastroC_IDPK: TLargeintField;
+    DBGConsultaC_IDPK: TdxDBGridColumn;
+    DBGConsultaBQST: TdxDBGridMaskColumn;
+    DBGConsultaD_HTSA: TdxDBGridColumn;
+    CadastroD_HTSA: TIBStringField;
+    DBGConsultaD_HNSA: TdxDBGridColumn;
+    CadastroD_HNSA: TIBBCDField;
+    CadastroINFADOS: TIBStringField;
+    CadastroINFSTOS: TIBStringField;
+    PNLLOGPRN: TPanel;
+    PNLINFADPRN: TPanel;
+    DBINFADPRN: TdxDBMemo;
+    PNLLOGOS: TPanel;
+    PNLINFADOS: TPanel;
+    DBINFADOS: TdxDBMemo;
+    PNLINFSTOS: TPanel;
+    DBINFSTOS: TdxDBMemo;
+    CadastroINFADPRN: TIBStringField;
+    CadastroIDOS: TSmallintField;
+    CadastroCDOS: TLargeintField;
+    CadastroDTOS: TDateField;
+    CadastroD_DTOS: TDateTimeField;
+    CadastroD_HTOS: TIBStringField;
+    CadastroD_HNOS: TIBBCDField;
+    CadastroD_HTSP: TIBStringField;
+    CadastroD_HNSP: TIBBCDField;
+    DBGConsultaGPCD: TdxDBGridMaskColumn;
+    DBGConsultaCNCD: TdxDBGridMaskColumn;
+    DBGConsultaABPD: TdxDBGridMaskColumn;
+    DBGConsultaDVPD: TdxDBGridMaskColumn;
+    DBGConsultaSVPD: TdxDBGridMaskColumn;
+    DBGConsultaFAPD: TdxDBGridMaskColumn;
+    DBGConsultaBQPD: TdxDBGridMaskColumn;
+    DBGConsultaAPST: TdxDBGridMaskColumn;
+    DBGConsultaFBST: TdxDBGridMaskColumn;
+    DBGConsultaBXST: TdxDBGridMaskColumn;
+    DBGConsultaLQST: TdxDBGridMaskColumn;
+    DBGConsultaCSCD: TdxDBGridMaskColumn;
+    CadastroHTNF: TTimeField;
+    DBGConsultaHTNF: TdxDBGridTimeColumn;
+    CadastroD_VTSP: TIBBCDField;
+    CadastroD_PPSP: TIBBCDField;
+    CadastroD_QTDE: TIBBCDField;
+    CadastroD_QTRL: TIntegerField;
+    CadastroD_QTSP: TIBBCDField;
+    CadastroD_RLSP: TIntegerField;
+    DBGConsultaD_QTRL: TdxDBGridColumn;
+    DBGConsultaD_QTSP: TdxDBGridColumn;
+    DBGConsultaD_DTOS: TdxDBGridDateColumn;
+    DBGConsultaDTSP: TdxDBGridColumn;
+    DBGConsultaD_HTSP: TdxDBGridColumn;
+    procedure FormCreate(Sender: TObject);
+    procedure dbgConsultaCustomDrawCell(Sender: TObject; ACanvas: TCanvas;
+      ARect: TRect; ANode: TdxTreeListNode; AColumn: TdxTreeListColumn;
+      ASelected, AFocused, ANewItemRow: Boolean; var AText: String;
+      var AColor: TColor; AFont: TFont; var AAlignment: TAlignment;
+      var ADone: Boolean);
+    procedure SIAlteraClick(Sender: TObject);
+    procedure siRELClick(Sender: TObject);
+    procedure cadastroAfterOpen(DataSet: TDataSet);
+    procedure siPSQClick(Sender: TObject);
+    procedure SIRomaneioClick(Sender: TObject);
+    procedure DTSFKCadastroDataChange(Sender: TObject; Field: TField);
+    procedure SIFinalizaClick(Sender: TObject);
+    procedure dtscadastroDataChange(Sender: TObject; Field: TField);
+    procedure SICAD_CLI_CRDClick(Sender: TObject);
+    procedure DBGITPEDCustomDrawCell(Sender: TObject; ACanvas: TCanvas;
+      ARect: TRect; ANode: TdxTreeListNode; AColumn: TdxTreeListColumn;
+      ASelected, AFocused, ANewItemRow: Boolean; var AText: String;
+      var AColor: TColor; AFont: TFont; var AAlignment: TAlignment;
+      var ADone: Boolean);
+    procedure IMG_PADClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure SINovoClick(Sender: TObject);
+    procedure SIDevolucaoClick(Sender: TObject);
+    procedure SIAbatimentoClick(Sender: TObject);
+    procedure SICAD_CLI_EDIClick(Sender: TObject);
+    procedure FKCadastroAfterScroll(DataSet: TDataSet);
+    procedure SeparadosAfterScroll(DataSet: TDataSet);
+    procedure DTSFKSeparadosDataChange(Sender: TObject; Field: TField);
+    procedure RomaneiosAfterScroll(DataSet: TDataSet);
+    procedure DTSFKRomaneiosDataChange(Sender: TObject; Field: TField);
+    procedure FKCadastroCalcFields(DataSet: TDataSet);
+    procedure CadastroAfterScroll(DataSet: TDataSet);
+    procedure CadastroBeforeScroll(DataSet: TDataSet);
+    procedure SICancelaClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure CadastroBeforeOpen(DataSet: TDataSet);
+    procedure SIEstornoClick(Sender: TObject);
+    procedure DBGResumoDiarioCustomDrawCell(Sender: TObject;
+      ACanvas: TCanvas; ARect: TRect; ANode: TdxTreeListNode;
+      AColumn: TdxTreeListColumn; ASelected, AFocused,
+      ANewItemRow: Boolean; var AText: String; var AColor: TColor;
+      AFont: TFont; var AAlignment: TAlignment; var ADone: Boolean);
+    procedure DBGResumoMensalCustomDrawCell(Sender: TObject;
+      ACanvas: TCanvas; ARect: TRect; ANode: TdxTreeListNode;
+      AColumn: TdxTreeListColumn; ASelected, AFocused,
+      ANewItemRow: Boolean; var AText: String; var AColor: TColor;
+      AFont: TFont; var AAlignment: TAlignment; var ADone: Boolean);
+    procedure CadastroCalcFields(DataSet: TDataSet);
+    procedure siREFClick(Sender: TObject);
+    procedure CadastroAfterClose(DataSet: TDataSet);
+  private
+    { Private declarations }
+     procedure _Cadastro;
+  public
+    { Public declarations }
+    RECPedidos: TRECPedidos;
+    procedure _WM_AFTER_CREATE  (var Msg: TMessage); message WM_AFTER_CREATE;
+  end;
+
+var
+  frmctr_ped: Tfrmctr_ped;
+
+implementation
+
+uses uPrincipal, bPrincipal,
+     ppesquisa_geral, pctr_ped_bai, pven_ped,
+     pProduto_Devolucao_Cancelamento, pcad_cli_edi, prelatorio_geral,
+  pven_nfe, pven_rom;
+
+{$R *.dfm}
+
+procedure Tfrmctr_ped._WM_AFTER_CREATE(var Msg: TMessage);
+begin
+  inherited;
+  with FKCadastro do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Add('SELECT   PK.ID    ,PK.IDEP,');
+    SQL.Add('         PK.IDPK  ,PK.ITEM,');
+    SQL.Add('         PK.IDCP  ,PK.CP_IDEP,PK.CP_DEEP,');
+    SQL.Add('         PK.ARTIGO,PK.SKU ,PK.CEAN,');
+    SQL.Add('         PK.DECP  ,PK.DGCP,');
+    SQL.Add('         PK.UCOM,PK.UCON,PK.QTDE,PK.QTRL,PK.UN_QTDE,');
+    SQL.Add('         PK.VPRC_PAD_INI,PK.VPRC_PAD_FIM,');
+    SQL.Add('         PK.VPRC_PAD    ,PK.PDSC,PK.VDSC,PK.VPRC_COM,');
+    SQL.Add('         PK.NCM   ,PK.PIPI,PK.VIPI,');
+    SQL.Add('         PK.PCOM  ,PK.VCOM,');
+    SQL.Add('         PK.TSDE  ,PK.TCDE,PK.VTSP,');
+    SQL.Add('         PK.PSBR  ,PK.PSLQ,');
+    SQL.Add('         PK.IDSP  ,PK.CDSP,PK.DESP,PK.QTSP,PK.UN_QTSP,PK.RLSP,PK.DTSP,');
+    SQL.Add('         PK.IMG_ID,PK.IMG_PAD');
+
+    SQL.Add('FROM   '+oREPZero('VW_PED_VEN_ITE','_',RECParametros.EP_ID,3)+' AS PK');
+
+    SQL.Add('WHERE    PK.IDEP = :IDEP');
+    SQL.Add('AND      PK.IDPK = :IDPK');
+    SQL.Add('ORDER BY PK.ITEM');
+    Prepare;
+  end;
+
+  with Romaneios do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Add('SELECT   FK.ID,PK.ROM_CDEP AS IDEP,CP.PRO_CPRO,');
+    SQL.Add('         FK.DGCP,FK.UCOM,FK.UCON,');
+    SQL.Add('         FK.ROM_CDET,FK.ROM_QTDE,FK.ROM_QTRL,FK.ROM_UNIT*PK.ROM_CONC AS ROM_UNIT,CAST(FK.ROM_QTDE*(FK.ROM_UNIT*PK.ROM_CONC) AS NUMERIC(15,2)) AS ROM_TOTA,');
+    SQL.Add('         FK.ROM_DSEP||''  ''||CAST(LPAD(EXTRACT(DAY  FROM FK.ROM_DTSP),2,0)||''/''||LPAD(EXTRACT(MONTH  FROM FK.ROM_DTSP),2,0)||''/''|| RIGHT(LPAD(EXTRACT(YEAR FROM FK.ROM_DTSP),4,0),2)||'' ''||');
+    SQL.Add('                                   LPAD(EXTRACT(HOUR FROM FK.ROM_DTSP),2,0)||'':''||LPAD(EXTRACT(MINUTE FROM FK.ROM_DTSP),2,0) AS VARCHAR(14)) AS SEPARADOR');
+
+    SQL.Add('FROM '  +SLPrincipal.Values['rom_cab']+' AS PK ');
+    SQL.Add('JOIN '  +SLPrincipal.Values['rom_ite']+' AS FK ON (FK.CDRO = PK.CDRO)');
+    SQL.Add('JOIN     CAD_PRO AS CP ON (CP.ID = FK.IDCP)');
+
+    SQL.Add('WHERE    PK.IDEP = :IDEP');
+    SQL.Add('AND      PK.CDRO = :CDRO');
+    SQL.Add('ORDER BY FK.ITEM');
+    Prepare;
+  end;
+
+  Separados.ParamByName('IDEP').Value := RECParametros.EP_ID;
+  Separados.Prepare;
+
+  _Cadastro;
+end;
+
+procedure Tfrmctr_ped.FormCreate(Sender: TObject);
+begin
+  { ADMIN MANAGER }
+  //DBGConsultaIDPK.Visible := (RECUsuarios.ID = 0); { Código Pedido }
+
+  { FORM SCREEN }
+  REC_SHE_DEF.FPosition := Self.Position; { Posição }
+
+  REC_SHE_DEF.FMainArea := False; { Aplicativo }
+  REC_SHE_DEF.FWorkArea := False; { Windows    }
+
+  { ACCESS MANAGER }
+  REC_SHE_DEF.FB_Event := 'PED_PDV_ADM'; { Eventos }
+
+  { GRANT USER }
+  REC_SHE_DEF.GDescricao  := 'Clientes';
+  REC_SHE_DEF.GReferencia := 'Cadastro';
+  REC_SHE_DEF.GRegra      := 'Permissões Gerais';
+  inherited;
+end;
+
+procedure Tfrmctr_ped.FormDestroy(Sender: TObject);
+begin
+  inherited;
+
+  Finalize(RECPedidos);
+  FillChar(RECPedidos,SizeOf(RECPedidos),0);
+
+  frmctr_ped := Nil;
+end;
+
+procedure Tfrmctr_ped.siREFClick(Sender: TObject);
+begin
+  oRefresh(Cadastro);
+end;
+
+procedure Tfrmctr_ped.siPSQClick(Sender: TObject);
+begin
+  inherited;
+  FrmPesquisa_Geral := TFrmPesquisa_Geral.Create(Self);
+  try
+    FrmPesquisa_Geral.Tag := 98;
+    FrmPesquisa_Geral.ShowModal;
+  finally
+    try
+      if FrmPesquisa_Geral.Editado then
+      with Cadastro do
+      begin
+        oCTransact(TConsulta);
+        oOTransact(TConsulta);
+
+        Close;
+        SQL.Clear;
+        SQL.Add('SELECT PK.ID  ,PK.IDEP,PK.DEEP,');
+        SQL.Add('       PK.IDCA,PK.DTCA,PK.HTPK,');
+        SQL.Add('       PK.IDST,PK.DTST,PK.CDST,PK.REST,PK.DEST  ,PK.D_DEST  ,PK.INFADST,');
+        SQL.Add('       PK.IDPK,PK.DEPK,PK.DTPK,PK.CDCX,PK.CDPP  ,PK.API_B2B ,PK.CTNR   ,');
+
+        SQL.Add('       PK.IDOS,PK.CDOS,PK.DTOS,PK.D_DTOS,PK.D_HTOS,PK.D_HNOS,');
+        SQL.Add('       PK.INFADOS,PK.INFSTOS  ,');
+        SQL.Add('       PK.IDSP,PK.DESP,PK.DTSP,PK.D_DTSP,PK.DTSP_INI,PK.DTSP_FIM,PK.D_HTSP,PK.D_HNSP,');
+
+        SQL.Add('       PK.CDRO,PK.DTRO,D_DTRO ,');
+        SQL.Add('       PK.CDNF,PK.DTNF,PK.HTNF,PK.D_DTNF,PK.CFOP,');
+        SQL.Add('       PK.CDDV,PK.DTDV,PK.DEDV,');
+        SQL.Add('       PK.IDSA,PK.DTSA,PK.D_DTSA,PK.D_HTSA,PK.D_HNSA,');
+
+        SQL.Add('       PK.IDCD,PK.DECD,PK.RZCD,PK.PJCD,PK.GPCD,PK.CNCD,PK.CSCD,PK.FIN_VCRD,PK.UFCD,PK.RSCD,');
+        SQL.Add('       PK.IDCV,PK.DECV,PK.RSCV,');
+        SQL.Add('       PK.IDCR,PK.DECR,PK.UFCR,PK.RSCR,');
+        SQL.Add('       PK.IDCT,PK.DECT,PK.LOC_NO_CT   ,PK.UFCT,PK.RSCT,');
+        SQL.Add('       PK.ITEM,PK.QTDE,PK.D_QTDE,PK.QTRL,PK.D_QTRL,');
+        SQL.Add('       PK.ITSP,PK.QTSP,PK.D_QTSP,PK.RLSP,PK.D_RLSP,');
+        SQL.Add('       PK.IDSC,PK.TDSC,PK.PDSC  ,PK.VDSC  ,');
+        SQL.Add('       PK.TSDE,PK.D_TSDE,PK.TCDE,PK.D_TCDE,');
+        SQL.Add('       PK.VTSP,PK.D_VTSP,PK.PPSP,PK.D_PPSP,');
+        SQL.Add('       PK.VNF ,PK.VIPI,PK.VST,');
+        SQL.Add('       PK.VTFA,PK.VTAP,');
+        SQL.Add('       PK.PCOM,PK.VCOM,');
+        SQL.Add('       PK.MFRT,PK.D_MFRT,PK.VFRT  ,PK.PSBR,PK.PSLQ,');
+        SQL.Add('       PK.CDPD,PK.STPD  ,PK.SVPD  ,PK.ABPD,PK.DVPD,PK.FAPD,PK.BQPD,');
+        SQL.Add('       PK.BEPD,PK.QEPD  ,PK.SEPD  ,PK.DEPD,');
+        SQL.Add('       PK.CDCO,PK.STCO  ,PK.D_STCO,PK.TPCO,PK.RECO,');
+        SQL.Add('       PK.CDPG,PK.DEPG,');
+        SQL.Add('       PK.APST,PK.FBST,PK.BXST  ,PK.LQST,PK.BQST,');
+        SQL.Add('       PK.CDBX,PK.DTBX,PK.D_DTBX,');
+        SQL.Add('       PK.INFADCAD,PK.IP,PK.HOST,');
+        SQL.Add('       PK.LOG_PRN_CDEV,PK.LOG_PRN_QTEV,PK.INFADPRN');
+
+        SQL.Add('FROM ' + oREPZero('VW_PED_VEN_CAB','_',RECParametros.EP_ID,3) + ' AS PK');
+        SQL.Add('WHERE PK.IDEP = ''' + RECParametros.EP_ID + '''');
+
+        if FrmPesquisa_Geral.EDTXT.Text <> EmptyStr then
+        SQL.Add('AND ' + FrmPesquisa_Geral.cField + ' ' + FrmPesquisa_Geral.cWhere + ' ''' + FrmPesquisa_Geral.EDTXT.Text + IFThen(FrmPesquisa_Geral.cWhere = 'LIKE','%''',''''));
+
+        if (FrmPesquisa_Geral.cData <> EmptyStr) and (FrmPesquisa_Geral.dxDT1.Date > 0) and (FrmPesquisa_Geral.dxDT2.Date > 0) then
+        SQL.Add('AND ' + FrmPesquisa_Geral.cData + ' BETWEEN ''' + FormatDateTime('mm/dd/yy',FrmPesquisa_Geral.dxDT1.Date) +  ''' AND ''' + FormatDateTime('mm/dd/yy',FrmPesquisa_Geral.dxDT2.Date) + '''');
+
+        SQL.Add('ORDER BY PK.DTCA DESC');
+        Open;
+
+        APSQ_PED_VEN := FrmPesquisa_Geral.cbCAMPO.Text;
+
+//        showmessage(FrmPesquisa_Geral.cField + #13 + FrmPesquisa_Geral.cWhere + #13 + FrmPesquisa_Geral.EDTXT.Text + #13  + IFThen(FrmPesquisa_Geral.cWhere = 'LIKE','%''','''') + #13 + FrmPesquisa_Geral.cData);
+      end;
+    finally
+      FreeAndNil(FrmPesquisa_Geral);
+    end;
+  end;
+
+  DBGConsultaDEPK.Field.FocusControl;
+  DBGConsulta.SetFocus;
+end;
+
+procedure Tfrmctr_ped.SINovoClick(Sender: TObject);
+begin
+  if RECParametros.STCX <> 'Caixa Aberto' then
+     oException(Nil,'Acesso Negado !'+#13+
+                    'Abertura de caixa não registrada.');
+
+  SIAltera.Tag := 0;
+
+  if Assigned(frmven_ped) then
+  begin
+    frmven_ped.BringToFront;
+    frmven_ped.SetFocus;
+  end else
+  uFrmCreate(Nil,Tfrmven_ped,frmven_ped);
+end;
+
+procedure Tfrmctr_ped.SIAlteraClick(Sender: TObject);
+begin
+  bPSQUSER('USU_AUTO','Vendas','Pedidos',IFThen(CadastroCDCX.AsInteger <> RECParametros.CDCX,'Alterar Após o Fechamento','Alterar Antes do Fechamento'),true);
+
+  if CadastroId.AsInteger = 0 then
+     oException(DBGConsulta,'Pedido não Selecionado !');
+
+  if CadastroCDBX.AsInteger > 0 then
+     oException(DBGConsulta,'Alteração não Permitida !'+#13+
+                            'Pedido já Finalizado !');
+
+
+  if SIAltera.ImageIndex = 1 then
+  begin
+    SIAltera.Caption := CadastroSTPD.AsString;
+    SIAltera.Tag     := 1;
+
+    uFrmCreate(Self,Tfrmven_ped,frmven_ped);
+  end else
+  begin
+    oOTransact(TEdicao);
+    with SQLEdicao do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Add('UPDATE ' + oREPZero('PED_VEN_CAB','_',RECParametros.EP_ID,3));
+      SQL.Add('SET ROM_STFI = ''SEPARANDO''');
+      SQL.Add('WHERE IDPK   = ''' + CadastroIDPK.AsString + '''');
+      ExecQuery;
+    end;
+    oCTransact(TEdicao);
+    oRefresh(Cadastro);
+  end;
+end;
+
+procedure Tfrmctr_ped.SICancelaClick(Sender: TObject);
+begin
+  if oYesNo(handle,'Cancelar Pedido '+CadastroDEPK.AsString+' ?') = mrNo then
+     Abort;
+
+  if CadastroId.AsInteger = 0 then
+     oException(DBGConsulta,'Pedido não Selecionado !');
+
+  if Pos(LeftStr(CadastroDEST.AsString,3),'CAN') > 0 then
+     oException(DBGConsulta,'Cancelamento não Permitido !'+#13+
+                            'Pedido já Cancelado !');
+
+  if CadastroCDBX.AsInteger > 0 then
+     oException(DBGConsulta,'Cancelamento não Permitido !'+#13+
+                            'Pedido Finalizado !');
+
+  if CadastroCDNF.AsInteger > 0 then
+     oException(DBGConsulta,'Cancelamento não Permitido !'+#13+
+                            'Pedido possui nota fiscal emitida.');
+
+  if CadastroCDRO.AsInteger > 0 then
+     oException(DBGConsulta,'Cancelamento não Permitido !'+#13+
+                            'Pedido Romaneado.');
+
+  with SQLConsulta do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Add('SELECT COUNT(*) FROM CAD_PRO_SEP AS PK');
+    SQL.Add('WHERE  PK.IDEP = ''' + RECParametros.EP_ID      + '''');
+    SQL.Add('AND    PK.IDPK = ''' + CadastroIDPK.AsString + '''');
+    ExecQuery;
+
+    if Current.Vars[0].AsInteger > 0 then
+       oException(DBGConsulta,'Finalização não Permitida !'+#13+
+                              'Pedido em processo de separação.');
+
+
+    Close;
+    SQL.Clear;
+    SQL.Add('SELECT COUNT(*) FROM CAD_PRO_EST AS PK');
+    SQL.Add('WHERE  PK.IDEP = ''' + RECParametros.EP_ID      + '''');
+    SQL.Add('AND    PK.IDPK = ''' + CadastroIDPK.AsString + '''');
+    ExecQuery;
+
+    if Current.Vars[0].AsInteger > 0 then
+       oException(DBGConsulta,'Finalização não Permitida !'+#13+
+                              'Pedido possui etiquetas separadas.');
+  end;
+
+  bPSQUSER('USU_AUTO','Vendas','Pedidos','Cancelar',true);
+
+  try
+    Cadastro.DisableControls;
+
+    FKCadastro.DisableControls;
+    FKCadastro.First;
+
+    Separados.DisableControls;
+    Romaneios.DisableControls;
+    try
+      TFrmProduto_Devolucao_Cancelamento._ExecForm(Self,FrmProduto_Devolucao_Cancelamento,false,fsNormal)
+    finally
+      if not FrmProduto_Devolucao_Cancelamento.Editado then
+             Abort;
+
+      if oEmpty(FrmProduto_Devolucao_Cancelamento.IEMotivo.Text) then
+         oException(DBGConsulta,'Motivo de cancelamento Incorreto ou não Informado !');
+
+      try
+        oOTransact(TEdicao);
+        while not FKCadastro.Eof do
+        begin
+          SPEdicao.Close;
+          SPEdicao.StoredProcName := 'SP_PED_VEN_CAN';
+          SPEdicao.Prepare;
+
+          SPEdicao.ParamByName('AIDEP').Value       := RECParametros.EP_ID;
+          SPEdicao.ParamByName('AIDCA').Value       := RECUsuarios.Id;
+          SPEdicao.ParamByName('AIDED').Value       := RECUsuarios.Id;
+          SPEdicao.ParamByName('AIDPK').Value       := CadastroId.AsInteger;
+          SPEdicao.ParamByName('ACDPK').Value       := CadastroDEPK.AsString;
+          SPEdicao.ParamByName('ADTPK').Value       := RECParametros.SHE_DATA;
+          SPEdicao.ParamByName('ADTFK').Value       := CadastroDTPK.AsDateTime;
+          SPEdicao.ParamByName('AIDCL').Value       := CadastroIDCD.AsInteger;
+          SPEdicao.ParamByName('AIDCV').Value       := CadastroIDCV.AsInteger;
+          SPEdicao.ParamByName('AIDCR').Value       := CadastroIDCR.AsInteger;
+          SPEdicao.ParamByName('AIDCP').Value       := FKCadastroIDCP.AsInteger;
+          SPEdicao.ParamByName('AARTIGO').Value     := FKCadastroARTIGO.AsString;
+          SPEdicao.ParamByName('APRODUTO').Value    := FKCadastroSKU.AsString;
+          SPEdicao.ParamByName('ADESCRICAO').Value  := FKCadastroDECP.AsString;
+          SPEdicao.ParamByName('ACOR').Value        := LeftStr(FKCadastroDGCP.AsString,30);
+          SPEdicao.ParamByName('AUCOM').Value       := FKCadastroUCOM.AsString;
+          SPEdicao.ParamByName('AQUANTIDADE').Value := FKCadastroQTDE.AsFloat;
+          SPEdicao.ParamByName('AROLO').Value       := FKCadastroQTRL.AsInteger;
+          SPEdicao.ParamByName('AVUPV').Value       := FKCadastroVPRC_COM.AsFloat;
+          SPEdicao.ParamByName('AMOTIVO').Value     := FrmProduto_Devolucao_Cancelamento.IEMotivo.Text;
+          SPEdicao.ParamByName('AINFADCAD').Value   := FrmProduto_Devolucao_Cancelamento.EMINFADCAD.Text;
+          SPEdicao.ExecProc;
+
+          FKCadastro.Next;
+        end;
+
+        with SQLEdicao do
+        begin
+         { Cancelamento do estoque feito via trigger }
+         Close;
+         SQL.Clear;
+         SQL.Add('UPDATE '+SLPrincipal.Values['ped_ven_cab']);
+         SQL.Add('SET   ROM_STFI = ''CANCELADO'',');
+         SQL.Add('      ROM_OBSE = '''+FrmProduto_Devolucao_Cancelamento.IEMotivo.Text   + #13+#13+
+                                       FrmProduto_Devolucao_Cancelamento.EMINFADCAD.Text + '''');
+         SQL.Add('WHERE IDPK = ''' + CadastroIDPK.AsString + '''');
+         ExecQuery;
+        end;
+
+        oCTransact(TEdicao);
+        oAviso(Self.Handle,'Pedido Cancelado com Sucesso !');
+      except
+        on E: Exception do
+        begin
+          oCTransact(TEdicao,ltRollback);
+          oException(Nil,'Falha ao tentar cancelar pedido !'+#13+
+                         'Favor entrar em contato com o administrador do sistema.'+#13+#13+
+                         'Erro: '+E.Message);
+        end;
+      end;
+    end;
+  finally
+    Cadastro.EnableControls;
+    FKCadastro.EnableControls;
+
+    Separados.EnableControls;
+    Romaneios.EnableControls;
+
+    oRefresh(Cadastro);
+  end;
+end;
+
+procedure Tfrmctr_ped.SIDevolucaoClick(Sender: TObject);
+begin
+  if RECParametros.STCX <> 'Caixa Aberto' then
+     oException(Nil,'Acesso Negado !'+#13+
+                    'Abertura de caixa não registrada.');
+
+  SIAltera.Caption := 'DEVOLUÇÃO';
+  SIAltera.Tag     := 2;
+
+  uFrmCreate(Self,Tfrmven_ped,frmven_ped);
+end;
+
+procedure Tfrmctr_ped.SIAbatimentoClick(Sender: TObject);
+begin
+  if RECParametros.STCX <> 'Caixa Aberto' then
+     oException(Nil,'Acesso Negado !'+#13+
+                    'Abertura de caixa não registrada.');
+
+  SIAltera.Caption := 'ABATIMENTO';
+  SIAltera.Tag     := 3;
+
+  uFrmCreate(Self,Tfrmven_ped,frmven_ped);
+end;
+
+procedure Tfrmctr_ped.SICAD_CLI_EDIClick(Sender: TObject);
+begin
+  if CadastroId.AsInteger = 0 then
+     oException(DBGConsulta,'Cliente não Selecionado !');
+
+  frmcad_cli_edi     := TFrmcad_cli_edi.Create(Self);
+  frmcad_cli_edi.Tag := 1;
+  frmcad_cli_edi.IDCliente := IntToStr(CadastroIDCD.AsInteger);
+  try frmcad_cli_edi.ShowModal;
+  finally
+    if frmcad_cli_edi.REC_SHE_DEF.Edited then
+       oRefresh(Cadastro);
+    FreeAndNil(frmcad_cli_edi);
+  end;
+end;
+
+procedure Tfrmctr_ped.SICAD_CLI_CRDClick(Sender: TObject);
+begin
+  if CadastroId.AsInteger = 0 then
+     oException(DBGConsulta,'Cliente não Selecionado !');
+
+  uPSQSCORE(self,CadastroIDCD.AsString,EmptyStr);
+end;
+
+procedure Tfrmctr_ped.SIRomaneioClick(Sender: TObject);
+begin
+  if oYesNo(handle,'Romanear Pedido '+CadastroDEPK.AsString+' ?') = mrNo then
+     Abort;
+
+  if CadastroId.AsInteger = 0 then
+     oException(DBGConsulta,'Pedido não Selecionado !');
+
+  if RECUsuarios.ID > 0 then
+  begin
+    if RECParametros.STCX <>  'Caixa Aberto' then
+       oException(DBGConsulta,'Geração de Romaneio não Permitida !'+#13+
+                              'Abertura de caixa não registrada.');
+
+    if Pos(LeftStr(CadastroDEST.AsString,3),'CAN') > 0 then
+       oException(DBGConsulta,'Geração de Romaneio não Permitida !'+#13+
+                              'Pedido já Cancelado !');
+
+    if CadastroBQST.AsInteger > 0 then
+       oException(DBGConsulta,'Geração de Romaneio não Permitida !'+#13+
+                              'Pedido possui bloqueio financeiro.');
+
+    if CadastroCDBX.AsInteger > 0 then
+       oException(DBGConsulta,'Geração de Romaneio não Permitida !'+#13+
+                              'Pedido já Finalizado !');
+
+    if CadastroCDNF.AsInteger > 0 then
+       oException(DBGConsulta,'Geração de Romaneio não Permitida !'+#13+
+                              'Nota Fiscal já Emitida !');
+
+    if CadastroCDRO.AsInteger > 0 then
+       oException(DBGConsulta,'Geração de Romaneio não Permitida !'+#13+
+                              'Pedido já Romaneado !');
+
+    with SQLConsulta do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Add('SELECT ID FROM ' + oREPZero('ROM_CAB','_',RECParametros.EP_ID,3)+' AS PK');
+      SQL.Add('WHERE  PK.DERO = ''' + CadastroDEPK.AsString + '''');
+      SQL.Add('AND    PK.IDCD = ''' + CadastroIDCD.AsString + '''');
+      ExecQuery;
+
+      if Current.Vars[0].AsInteger > 0 then
+         oException(DBGConsulta,'Geração de Romaneio não Permitida !'+#13+
+                                'Pedido já Romaneado !' +#13+#13+
+                                'Favor cancelar romaneio para continuar.');
+
+      if CadastroSEPD.AsInteger > 0 then
+      begin
+        Close;
+        SQL.Clear;
+        SQL.Add('SELECT COUNT(*) FROM CAD_PRO_SEP AS PK');
+        SQL.Add('WHERE  PK.IDEP = ''' + RECParametros.EP_ID      + '''');
+        SQL.Add('AND    PK.IDPK = ''' + CadastroIDPK.AsString + '''');
+        ExecQuery;
+
+        if Current.Vars[0].AsInteger = 0 then
+           oException(DBGConsulta,'Geração de Romaneio não Permitida !'+#13+
+                                  'Pedido sem itens separados.');
+      end;
+    end;
+  end;
+
+  if Assigned(frmven_rom) then
+  begin
+    frmven_rom.BringToFront;
+    frmven_rom.SetFocus;
+  end else
+  begin
+    frmven_rom := tfrmven_rom.Create(Self,CadastroId.AsInteger);
+    frmven_rom.Show;
+  end;
+
+  if Assigned(frmven_rom) then
+  try
+    Application.ProcessMessages;
+    oLockWindowUpdate;
+     with frmven_rom do
+     begin
+       frmven_rom.Pedidos.Prepare;
+       frmven_rom.Pedidos.Open;
+
+       frmven_rom.FKPedidos.Prepare;
+       frmven_rom.FKPedidos.Open;
+
+       if frmven_rom.PedidosSEPD.AsInteger = 1 then
+          frmven_rom._Etiquetas else
+          frmven_rom._Produtos;
+
+       oRTransact(frmven_rom.TSEdicao);
+     end;
+   finally
+     oUnLockWindowUpdate;
+     Application.ProcessMessages;
+   end
+end;
+
+procedure Tfrmctr_ped.SIFinalizaClick(Sender: TObject);
+var
+  CDBX: Variant;
+begin
+  if oYesNo(handle,'Finalizar Pedido '+CadastroDEPK.AsString+' ?') = mrNo then
+     Abort;
+
+  if CadastroId.AsInteger = 0 then
+     oException(DBGConsulta,'Pedido não Selecionado !');
+
+  if RECParametros.STCX <>  'Caixa Aberto' then
+     oException(DBGConsulta,'Finalização não Permitida !'+#13+
+                            'Abertura de caixa não registrada.');
+
+  if Pos(LeftStr(CadastroDEST.AsString,3),'CAN') > 0 then
+     oException(DBGConsulta,'Finalização não Permitida !'+#13+
+                            'Pedido já Cancelado !');
+
+  if CadastroBQST.AsInteger > 0 then
+     oException(DBGConsulta,'Finalização não Permitida !'+#13+
+                            'Pedido possui bloqueio financeiro.');
+
+  if CadastroCDBX.AsInteger > 0 then
+     oException(DBGConsulta,'Finalização não Permitida !'+#13+
+                            'Pedido já Finalizado !');
+
+  if (CadastroCDRO.AsInteger > 0) and (CadastroCDNF.AsInteger = 0) and (CadastroTPCO.AsInteger > 0) then
+  begin
+    oException(DBGConsulta,'Finalização não Permitida !'+#13+#13+
+                           'Emissão de nota fiscal fiscal pendente.'+#13+
+                           'Romaneio Nº '+CadastroCDRO.AsString+'.');
+  end;
+
+  if (CadastroCDNF.AsInteger = 0) and (Pos(LeftStr(CadastroSTCO.AsString,3),'BANBOLDUP') > 0) and (Pos(LeftStr(CadastroSTPD.AsString,3),'DEVABA') = 0) and (CadastroTPCO.AsInteger > 0) then
+  begin
+    oException(DBGConsulta,'Finalização não Permitida !'+#13+#13+
+                           'Emissão de nota fiscal fiscal obrigatória para'+#13+
+                           'pedidos com cobrança bancária.');
+  end;
+
+  if (CadastroSEPD.AsInteger > 0) and (CadastroTPCO.AsInteger > 0) and (CadastroRECO.AsString <> '***') and (CadastroCDNF.AsFloat = 0) then
+      with SQLConsulta do
+      begin
+        Close;
+        SQL.Clear;
+        SQL.Add('SELECT COUNT(*) FROM CAD_PRO_SEP AS PK');
+        SQL.Add('WHERE  PK.IDEP = ''' + RECParametros.EP_ID      + '''');
+        SQL.Add('AND    PK.IDPK = ''' + CadastroIDPK.AsString + '''');
+        ExecQuery;
+
+        if Current.Vars[0].AsInteger > 0 then
+           oException(DBGConsulta,'Finalização não Permitida !'+#13+
+                                  'Pedido em processo de separação.');
+      end;
+
+  try
+    if (CadastroFAPD.AsInteger = 0) and (CadastroCSCD.AsInteger = 0) then
+    begin
+      try
+        oOTransact(TEdicao);
+        with SQLEdicao do
+        begin
+          Close;
+          SQL.Clear;
+          SQL.Add('SELECT GEN_ID(ID_NO_BAI_REC,1) FROM RDB$DATABASE');
+          ExecQuery;
+          CDBX := Current.Vars[0].AsString;
+
+          Close;
+          SQL.Clear;
+          SQL.Add('UPDATE '+SLPrincipal.Values['ped_ven_cab']);
+          SQL.Add('SET   ROM_CDBX = ''' + CDBX+''',');
+          SQL.Add('      ROM_DBAI = ''' + FormatDateTime('mm/dd/yy'      ,IFThen(CadastroDTNF.AsDateTime > 0,CadastroDTNF.AsDateTime,CadastroDTPK.AsDateTime))      + ''',');
+          SQL.Add('      DTBX     = ''' + FormatDateTime('mm/dd/yy hh:mm',IFThen(CadastroDTNF.AsDateTime > 0,CadastroDTNF.AsDateTime,CadastroDTPK.AsDateTime)+TIME) + '''');
+          SQL.Add('WHERE IDPK     = ''' + CadastroIDPK.AsString + '''');
+          ExecQuery;
+        end;
+        oCTransact(TEdicao);
+      except
+        on E: Exception do
+        begin
+          oCTransact(TEdicao,ltRollback);
+          oException(DBGConsulta,'Falha ao tentar finalizar pedido !'                     +#13+
+                                 'Favor entrar em contato com o administrador do sistema.'+#13+#13+
+                                 'Error Code: '+E.Message+'.'+#13+
+                                  Caption+'.');
+        end;
+      end;
+    end else
+    if (LeftStr(CadastroRECO.AsString,1) = 'B') and (CadastroCDNF.AsInteger > 0) and (CadastroRECO.AsString <> 'C 0') then
+        bBAI_FINANCEIRO(CadastroCDNF.AsInteger,0) else
+    if ((Pos(LeftStr(CadastroSTPD.AsString,3),'DEVABA') > 0) or (CadastroCSCD.AsInteger = 1)) and (CadastroRECO.AsString <> 'C 0') then
+        bBAI_FINANCEIRO(0,CadastroId.AsInteger)
+    else
+    try
+      frmctr_ped_bai := Tfrmctr_ped_bai.Create(Self,CadastroId.AsInteger);
+      frmctr_ped_bai.ShowModal;
+    finally
+      FreeAndNil(frmctr_ped_bai);
+    end;
+  finally
+    oRefresh(Cadastro);
+  end;
+end;
+
+procedure Tfrmctr_ped.SIEstornoClick(Sender: TObject);
+begin
+  if oYesNo(handle,'Cancelar Recebimento Financeiro ?' + #13+
+                   'Pedido '+CadastroDEPK.AsString) = mrNo then
+     Abort;
+
+  if CadastroId.AsInteger = 0 then
+     oException(DBGConsulta,'Pedido não Selecionado !');
+
+  if Pos(LeftStr(CadastroDEST.AsString,3),'CAN') > 0 then
+     oException(DBGConsulta,'Cancelamento não Permitido !'+#13+
+                            'Pedido já Cancelado !');
+
+  if CadastroCDBX.AsInteger = 0 then
+     oException(DBGConsulta,'Cancelamento não Permitido !'+#13+
+                                      'Pedido não Finalizado !');
+
+  bPSQUSER('USU_AUTO','Vendas','Pedidos','Cancelar Baixa',true);
+  try
+    Cadastro.DisableControls;
+
+    FKCadastro.DisableControls;
+    FKCadastro.First;
+
+    Separados.DisableControls;
+    Romaneios.DisableControls;
+
+    with SQLConsulta do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Add('SELECT FIRST 1 TITULO,RECO,DTVC,VTPG,DTPG,DEST,API_ST,IIF(API_DTED > API_DTCA,API_DTED,API_DTCA) AS API_DT,API_CA,DTBC,CANCELA_NF');
+      SQL.Add('FROM (');
+      SQL.Add('SELECT   B.TITULO,B.RECO,B.FIN_DVEN AS DTVC,B.FIN_VPAG AS VTPG,B.FIN_DPAG AS DTPG,B.DEST,B.API_ST,B.API_DTCA,B.API_DTED,B.API_CA,B.FIN_DTBC AS DTBC,B.CANCELA_NF FROM ' + SLPrincipal.Values['fin_rec_ban_bai'] + ' AS B');
+      SQL.Add('WHERE    B.IDEP      = '''+CadastroIDEP.AsString    +'''');
+      SQL.Add('AND      B.DOCUMENTO = '''+IFThen(CadastroCDNF.AsInteger > 0,CadastroCDNF.AsString,CadastroDEPK.AsString)+'''');
+      SQL.Add('AND      B.IDCD      = '''+CadastroIDCD.AsString+'''');
+      SQL.Add('AND     (B.FIN_VPAG > 0 OR B.DEST <> ''PENDENTE'' AND B.DEST <> ''PRORROGADO'' OR POSITION(LEFT(B.API_ST,3) IN ''LIQREGSALEMI'') > 0)');
+      SQL.Add('UNION');
+      SQL.Add('SELECT   C.TITULO,C.RECO,C.FIN_DVEN AS DTVC,C.FIN_VPAG AS VTPG,C.FIN_DPAG AS DTPG,C.DEST,C.API_ST,C.API_DTCA,C.API_DTED,C.API_CA,C.FIN_DTBC AS DTBC,C.CANCELA_NF FROM ' + SLPrincipal.Values['fin_rec_car_bai'] + ' AS C');
+      SQL.Add('WHERE    C.IDEP      = '''+CadastroIDEP.AsString    +'''');
+      SQL.Add('AND      C.DOCUMENTO = '''+IFThen(CadastroCDNF.AsInteger > 0,CadastroCDNF.AsString,CadastroDEPK.AsString)+'''');
+      SQL.Add('AND      C.IDCD      = '''+CadastroIDCD.AsString+'''');
+      SQL.Add('AND     (C.FIN_VPAG > 0 OR C.DEST <> ''PENDENTE'' AND C.DEST <> ''PRORROGADO'' OR POSITION(LEFT(C.API_ST,3) IN ''LIQREGSALEMI'') > 0)');
+      SQL.Add('ORDER BY 1 DESC');
+      SQL.Add(')');
+      ExecQuery;
+
+      if Current.ByName('TITULO').AsString <> EmptyStr then
+         if Pos(LeftStr(Current.ByName('DEST').AsString,3),'BAICAN') = 0 then
+               oException(DBGConsulta,'CANCELAMENTO NEGADO !'+#13+
+                                      'Cliente com título(s) ' + IFThen(Current.ByName('VTPG').AsFloat > 0,'pagos','abertos') + ' em contas a receber !'+#13+#13+
+                                      'Título Nº '      + Current.ByName('TITULO').AsString + ' [ '+Current.ByName('RECO').AsString+' ] de '  + FormatDateTime('dd/mm/yy',Current.ByName('DTVC').AsDateTime) + #13  +
+                                      'Recebimento(s)  '+ Current.ByName('DEST').AsString   + IFThen(Current.ByName('VTPG').AsFloat > 0,FormatFloat(' R$ ,##,0.00',Current.ByName('VTPG').AsFloat)+ ' em ' +FormatDateTime('dd/mm/yy',Current.ByName('DTPG').AsDateTime),'') + #13+#13+
+                                      'Boleto '         + IFThen(Current.ByName('API_ST').AsString <> EmptyStr,Current.ByName('API_ST').AsString + '! ' + FormatDateTime('dd/mm/yy hh:mm',Current.ByName('API_DT').AsDateTime) + '.','NÃO REGISTRADO!') +#13+
+                                      'Carteira Nº '    + IFThen(Length(Current.ByName('API_CA').AsString) > 1,Current.ByName('API_CA').AsString + '. ' + IFThen(Current.ByName('DTBC').AsDateTime > 0,FormatDateTime('dd/mm/yy hh:mm',Current.ByName('DTBC').AsDateTime) + '.',''),'NÃO ENVIADO!')+#13+#13+
+                                      'Favor entrar em contato com o departamento financeiro.' );
+    end;
+
+    try
+      oOTransact(TEdicao);
+      with SQLEdicao do
+      begin
+        Close;
+        SQL.Clear;
+        SQL.Add('UPDATE ' + SLPrincipal.Values['fin_rec_ban_bai'] );
+        SQL.Add('SET    FIN_STFI = ''CANCELADO''');
+        SQL.Add('WHERE  CDBX = '''+IntToStr(CadastroCDBX.AsInteger)+'''');
+        SQL.Add('AND    STPD = '''+CadastroSTPD.AsString+'''');
+        ExecQuery;
+
+        Close;
+        SQL.Clear;
+        SQL.Add('UPDATE ' + SLPrincipal.Values['fin_rec_car_bai'] );
+        SQL.Add('SET    FIN_STFI = ''CANCELADO''');
+        SQL.Add('WHERE  CDBX = '''+IntToStr(CadastroCDBX.AsInteger)+'''');
+        SQL.Add('AND    STPD = '''+CadastroSTPD.AsString+'''');
+        ExecQuery;
+
+        Close;
+        SQL.Clear;
+        SQL.Add('DELETE FROM '+SLPrincipal.Values['fin_rec_ban_bai'] );
+        SQL.Add('WHERE  CDBX = '''+IntToStr(CadastroCDBX.AsInteger)+'''');
+        SQL.Add('AND    DEST <> ''BAIXADO''');
+        SQL.Add('AND    DEST <> ''CANCELADO''');
+        ExecQuery;
+
+        Close;
+        SQL.Clear;
+        SQL.Add('DELETE FROM '+SLPrincipal.Values['fin_rec_car_bai'] );
+        SQL.Add('WHERE  CDBX = '''+IntToStr(CadastroCDBX.AsInteger)+'''');
+        SQL.Add('AND    DEST <> ''BAIXADO''');
+        SQL.Add('AND    DEST <> ''CANCELADO''');
+        ExecQuery;
+
+        Close;
+        SQL.Clear;
+        SQL.Add('UPDATE '+SLPrincipal.Values['ped_ven_cab']);
+        SQL.Add('SET    ROM_CDBX = NULL');
+        SQL.Add('WHERE  CDBX     = '''+IntToStr(CadastroCDBX.AsInteger)+'''');
+        ExecQuery;
+      end;
+
+      oCTransact(TEdicao);
+      oAviso(Self.Handle,'Cancelamento Concluído com Sucesso !');
+    except
+      on E: Exception do
+      begin
+        oCTransact(TEdicao,ltRollback);
+        oException(Nil,'Falha ao tentar cancelar baixa financeira !'+#13+
+                       'Favor entrar em contato com o administrador do sistema.'+#13+#13+
+                       'Erro: '+E.Message);
+      end;
+    end;
+  finally
+    Cadastro.EnableControls;
+    FKCadastro.EnableControls;
+
+    Separados.EnableControls;
+    Romaneios.EnableControls;
+
+    oRefresh(Cadastro);
+  end;
+end;
+
+
+procedure Tfrmctr_ped.siRELClick(Sender: TObject);
+begin
+{  if CadastroId.AsInteger = 0 then
+     oException(DBGConsulta,'Pedido não Selecionado !');
+
+  FrmRelatorios := TFrmRelatorios.Create(Self,IFThen(CadastroSTPD.AsString = 'DEVOLUÇÃO' ,'Pedido de Devolução'  ,
+                                              IFThen(CadastroSTPD.AsString = 'ABATIMENTO','Pedido de Abatimento' ,
+                                              IFThen(CadastroSTPD.AsString = 'SERVIÇO'   ,'Ordem de Serviço'     ,
+                                              IFThen((CadastroCDNF.AsInteger > 0) or (CadastroCDBX.AsInteger > 0),'Pedido de Cobrança',
+                                              IFThen(CadastroSEPD.AsInteger  > 0,'Ordem de Separação','Pedido de Venda'))))),20,CadastroID.AsInteger);
+  FrmRelatorios.PEC1Consulta.Text := CadastroDEPK.AsString;
+
+  Try FrmRelatorios.ShowModal;
+  Finally FreeAndNil(FrmRelatorios);
+  End;
+  oRefresh(Cadastro); }
+
+  {  if Application.MainForm <> Nil then
+     with Application.MainForm do
+     begin
+       if TAction(FindComponent('ACTPedido')) <> Nil then
+       begin
+         TAction(FindComponent('ACTPedido')).HelpContext := CadastroId.AsInteger;
+         TAction(FindComponent('ACTPedido')).Execute;
+       end;
+     end;}
+  frmrelatorio_geral := TFrmrelatorio_geral.Create(Self);
+  try
+    frmrelatorio_geral.CDPD                 := cadastroID.AsString;
+    frmrelatorio_geral.CDRO                 := cadastroCDRO.AsString;
+    frmrelatorio_geral.CDBX                 := cadastroCDBX.AsString;
+    frmrelatorio_geral.CDNF                 := cadastroCDNF.AsString;
+    frmrelatorio_geral.tsVEN_PED.TabVisible := true;
+    frmrelatorio_geral.pcMAIN.ActivePage    := frmrelatorio_geral.tsVEN_PED;
+    frmrelatorio_geral.cbVEN_PED_TREL.Text  := 'PEDIDO DE VENDA';
+    frmrelatorio_geral.ShowModal;
+  finally
+    RECParametros.REL_PAD := frmrelatorio_geral.cbVEN_PED_TREL.Text;
+    freeAndNil(frmrelatorio_geral);
+  end;
+
+  oRefresh(Cadastro);
+end;
+
+procedure Tfrmctr_ped.dbgConsultaCustomDrawCell(Sender: TObject;
+  ACanvas: TCanvas; ARect: TRect; ANode: TdxTreeListNode;
+  AColumn: TdxTreeListColumn; ASelected, AFocused, ANewItemRow: Boolean;
+  var AText: String; var AColor: TColor; AFont: TFont;
+  var AAlignment: TAlignment; var ADone: Boolean);
+begin
+  if not ASelected then
+  begin
+    if ANode.Values[DBGConsultaD_DEST.Index] = 'CANCELADO' then
+    begin
+      AColor      := $000031F4;
+      AFont.Color := clHighlightText;
+    end else
+    begin
+      if ANode.Values[DBGConsultaC_IDPK.Index] <> Null then
+      if ANode.Values[DBGConsultaC_IDPK.Index] mod 2 <> 0 then
+         AColor := $00EAEBEC else
+         AColor := clHighLightText;
+
+      { Pedido }
+      if (AColumn = DBGConsultaDEPK  ) or (AColumn = DBGConsultaDTPK  ) or (AColumn = DBGConsultaHTPK) or
+         (AColumn = DBGConsultaCDNF  ) or (AColumn = DBGConsultaDTNF  ) or (AColumn = DBGConsultaHTNF) or
+         (AColumn = DBGConsultaD_DTSA) or (AColumn = DBGConsultaD_HTSA) or
+         (AColumn = DBGConsultaSTPD  ) or (AColumn = DBGConsultaRECO  ) or (AColumn = DBGConsultaD_DEST) then
+      begin
+        AColor      := clGray;
+        AFont.Color := clHighLightText;
+
+        if Pos('BLQ',ANode.Values[DBGConsultaD_DEST.Index]) > 0 then
+        begin
+          AFont.Color := $0080FFFF; //$00002FEC $000031F4 $00C4FFC4 $00D9FFFF;
+          AFont.Style := [fsBold];
+        end else
+
+        if Pos('SEP',ANode.Values[DBGConsultaD_DEST.Index]) > 0 then
+        begin
+          AFont.Color := clHighLightText;
+          AFont.Style := [fsBold];
+        end else
+
+        if Pos('FAT',ANode.Values[DBGConsultaD_DEST.Index]) > 0 then
+        begin
+          AFont.Color := $00C4FFC4;
+          AFont.Style := [fsBold];
+        end else
+
+        if Pos('PAG',ANode.Values[DBGConsultaD_DEST.Index]) > 0 then
+        begin
+          AFont.Color := $00C4FFC4;
+          AFont.Style := [fsBold];
+        end;
+      end;
+
+      { Nota Fiscal }
+      if AColumn = DBGConsultaCDNF then
+      begin
+        AColor      := clGrayText;
+        AFont.Color := clHighLightText;
+
+        if ANode.Values[DBGConsultaCDNF.Index] > 0 then
+           AFont.Style := [fsBold];
+      end;
+
+      if (AColumn = DBGConsultaDTNF) or (AColumn = DBGConsultaHTNF) then
+      begin
+        AColor      := clGrayText;
+        AFont.Color := clHighLightText;
+        AFont.Style := [];
+      end;
+
+      { Saída }
+      if (AColumn = DBGConsultaD_DTSA) or (AColumn = DBGConsultaD_HTSA) then
+          if (ANode.Values[DBGConsultaD_DTSA.Index] > 0) then
+          begin
+            AColor      := clPurple;
+            AFont.Color := clHighLightText;
+            AFont.Style := [];
+          end;
+
+      { Cliente }
+      if (AColumn = DBGConsultaDECD) and (ANode.Values[DBGConsultaCNCD.Index] = 1) then
+          AFont.Style := [fsBold,fsUnderline];
+
+      { Entradas }
+      if (AColumn = DBGConsultaQTRL) or (AColumn = DBGConsultaTCDE) then
+      begin
+        AColor      := clHighLightText;
+        AFont.Color := clWindowText;
+      end;
+
+      { Expedição }
+      if (AColumn = DBGConsultaD_DTOS) or (AColumn = DBGConsultaDTSP) or (AColumn = DBGConsultaD_HTSP) or (AColumn = DBGConsultaRLSP) or (AColumn = DBGConsultaVTSP) then
+      IF (ANode.Values[DBGConsultaRLSP.Index] > 0) then
+      begin
+        AColor      := clWindowText;
+        AFont.Color := clHighLightText;
+      end;
+
+      if (AColumn = DBGConsultaPPSP) then
+      IF (ANode.Values[DBGConsultaPPSP.Index] > 0) then
+      begin
+        AColor      := clWindowText;
+        AFont.Color := clHighLightText;
+
+        if ANode.Values[DBGConsultaPPSP.Index] < 90 then
+        begin
+          AColor      := $0080FFFF; //$00002FEC $000031F4 $00C4FFC4 $00D9FFFF;
+          AFont.Color := clWindowText;
+        end;
+      end;
+
+      if (AColumn = DBGConsultaPDSC) and (ANode.Values[DBGConsultaPDSC.Index] > 0) then
+      begin
+        AColor      := $0080FFFF; //$00002FEC $000031F4 $00C4FFC4 $00D9FFFF;
+        AFont.Style := [fsBold];
+      end;
+
+      if (AColumn = DBGConsultaVDSC) and (ANode.Values[DBGConsultaVDSC.Index] > 0) then
+      begin
+        AColor      := $0080FFFF; //$00002FEC $000031F4 $00C4FFC4 $00D9FFFF;
+        AFont.Style := [fsBold];
+      end;
+
+      if AColumn = DBGConsultaVNF then
+      begin
+        AColor      := $00C4FFC4;
+        AFont.Color := clBlack;
+      end;
+
+      if AColumn = DBGConsultaVTFA then
+      begin
+        AColor      := $009FFF9F;
+        AFont.Color := clBlack;
+
+        if ANode.Values[DBGConsultaVTFA.Index] <> 0 then
+           AFont.Style := [fsBold];
+      end;
+
+      if AColumn = DBGConsultaVTAP then
+      begin
+        AColor      := $00FCF4ED;
+        AFont.Color := $00725416;
+
+        if ANode.Values[DBGConsultaVTAP.Index] > 0 then
+           AFont.Style := [fsBold];
+      end;
+
+     { if (AColumn = DBGConsultaVIPI) or (AColumn = DBGConsultaVST) then
+      begin
+        AColor      := $00AEFFFF; //$00002FEC $000031F4 $00C4FFC4 $00D9FFFF $00AEFFFF;
+        AFont.Color := clWindowText;
+      end; }
+
+      if (AColumn = DBGConsultaVIPI) and (ANode.Values[DBGConsultaVIPI.Index] > 0) then
+      begin
+        AColor      := $0080FFFF; //$00002FEC $000031F4 $00C4FFC4 $00D9FFFF;
+        AFont.Style := [fsBold];
+      end;
+
+      if (AColumn = DBGConsultaVST) and (ANode.Values[DBGConsultaVST.Index] > 0) then
+      begin
+        AColor      := $0080FFFF; //$00002FEC $000031F4 $00C4FFC4 $00D9FFFF;
+        AFont.Style := [fsBold];
+      end;
+    end;
+
+    if AColumn = DBGConsultaRECO then
+    begin
+      AColor      := clGrayText;
+      AFont.Color := clWhite;
+      AFont.Style := [];
+
+      if ANode.Values[DBGConsultaTPCO.Index] > 1 then
+         AFont.Style := [fsBold];
+    end;
+
+    if (AColumn = DBGConsultaDEPK) and (ANode.Values[DBGConsultaLOG_PRN_QTEV.Index] > 0) then
+        AFont.Style := [fsBold,fsUnderline];
+  end;
+end;
+
+procedure Tfrmctr_ped.CadastroBeforeOpen(DataSet: TDataSet);
+begin
+  inherited;
+  DBGConsultaCTNR.Visible   := False;
+  DBGConsultaDTNF.Visible   := False;
+  DBGConsultaHTNF.Visible   := False;
+  DBGConsultaD_DTSA.Visible := False;
+  DBGConsultaD_HTSA.Visible := False;
+
+  { Clientes }
+  DBGConsultaGPCD.Visible := False; { Grupo Comercial }
+
+  { Vendedores }
+  DBGConsultaDECV.Visible      := False;
+  DBGConsultaDECR.Visible      := False;
+  DBGConsulta.Bands[2].Visible := False;
+
+  { Descontos }
+  DBGConsulta.Bands[04].Visible := False;
+  DBGConsultaPDSC.Visible := False;
+
+  DBGConsulta.Bands[05].Visible := False; { Expedição }
+  DBGConsulta.Bands[08].Visible := False; { Impostos  }
+end;
+
+procedure Tfrmctr_ped.cadastroAfterOpen(DataSet: TDataSet);
+begin
+  inherited;
+  if FKCadastro.State = dsInactive then FKCadastro.Open;
+  if Separados.State  = dsInactive then Separados.Open;
+  if Romaneios.State  = dsInactive then Romaneios.Open;
+end;
+
+procedure Tfrmctr_ped.CadastroAfterClose(DataSet: TDataSet);
+begin
+  DBGConsulta.Filter.Clear;
+  DBGITPED.Filter.Clear;
+  DBGITSEP.Filter.Clear;
+  DBGITROM.Filter.Clear;
+end;
+
+procedure Tfrmctr_ped.CadastroAfterScroll(DataSet: TDataSet);
+begin
+  { Descontos }
+  if (CadastroPDSC.AsFloat > 0) or (CadastroVDSC.AsFloat > 0) then
+      DBGConsulta.Bands[04].Visible := True;
+
+  { Expedição }
+  if CadastroVTSP.AsFloat > 0 then
+  begin
+    DBGConsulta.Bands[05].Visible := True;
+    DBGITPED.FocusedAbsoluteIndex := DBGITPEDQTSP.Index;
+  end else
+  DBGITPED.FocusedAbsoluteIndex := DBGITPEDQTDE.Index;
+
+  { Impostos }
+  if (CadastroVIPI.AsFloat > 0) or (CadastroVST.AsFloat > 0) then
+      DBGConsulta.Bands[08].Visible := True;
+end;
+
+procedure Tfrmctr_ped.CadastroBeforeScroll(DataSet: TDataSet);
+begin
+  TSFKRomaneios.TabVisible  := False;
+  TSFKExpedicao.TabVisible  := False;
+
+  PCFKPedidos.ActivePage := TSFKPedidos;
+
+  DBGITPED.Bands[1].Visible := False;
+  DBGITPED.Bands[2].Visible := False;
+  DBGITPED.Bands[4].Visible := False;
+
+  DBGITPEDVIPI.Visible := False;
+end;
+
+procedure Tfrmctr_ped.dtscadastroDataChange(Sender: TObject;
+  Field: TField);
+var
+  PosCount: Word;
+begin
+{  if CadastroREST.AsString = 'C' then
+  begin
+    SIAltera.ImageIndex := 19;
+    SIAltera.BtnCaption := 'Recuperar';
+    SIAltera.Hint       := 'Recuperar Cancelados';
+  end else
+  begin
+    SIAltera.ImageIndex := 1;
+    SIAltera.BtnCaption := 'Cancelar';
+    SIAltera.Hint       := 'Cancelar Pedidos';
+  end;}
+
+  SIAltera.Enabled     := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0);
+  SICancela.Enabled    := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0) and (CadastroCDNF.AsInteger = 0);
+
+  SIDevolucao.Enabled  := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C');
+  SIAbatimento.Enabled := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C');
+
+  SIRomaneio.Enabled   := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0) and (CadastroCDNF.AsInteger   = 0) and (CadastroCDRO.AsInteger = 0) and (Pos(LeftStr(CadastroD_DEST.AsString,3),'BLQ') = 0);
+
+  SIFinaliza.Enabled   := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0) and (((CadastroCDNF.AsInteger > 0) and (LeftStr(CadastroRECO.AsString,1) = 'B')) or (LeftStr(CadastroRECO.AsString,1) <> 'B'));
+  SIEstorno.Enabled    := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger > 0);
+
+  { Admin }
+  if RECUsuarios.ID = 0 then
+  SIRomaneio.Enabled := True;
+
+  { Container }
+  DBGConsultaCTNR.Visible := (CadastroCTNR.AsString > EmptyStr);
+
+  { Fiscal }
+  if CadastroCDNF.AsInteger > 0 then
+  begin
+    DBGConsultaDTNF.Visible := True;
+    DBGConsultaHTNF.Visible := True;
+  end;
+
+  { Saídas }
+  if CadastroD_DTSA.AsDateTime > 0 then
+  begin
+    DBGConsultaD_DTSA.Visible := True;
+    DBGConsultaD_HTSA.Visible := True;
+  end;
+
+  { Clientes }
+  if CadastroGPCD.AsString <> EmptyStr then
+  DBGConsultaGPCD.Visible := True; { Grupo Comercial }
+
+  { Vendedor }
+  if CadastroDECV.AsString <> CadastroDECR.AsString then
+  DBGConsultaDECV.Visible := True;
+
+  if RECUsuarios.ID = CadastroIDCV.AsInteger then
+  DBGConsultaDECV.Visible := False;
+
+  { Representante }
+  if (RECParametros.EP_NO <> CadastroDECR.AsString) and (CadastroDECR.AsString <> CadastroDECV.AsString) then
+  DBGConsultaDECR.Visible := True;
+  DBGConsultaUFCR.Visible := DBGConsultaDECR.Visible;
+
+  { Vendedores }
+  if (DBGConsultaDECV.Visible) or (DBGConsultaDECR.Visible) then
+  DBGConsulta.Bands[2].Visible := True;
+
+  { Descontos }
+  if CadastroPDSC.AsFloat > 0 then
+  DBGConsultaPDSC.Visible := True;
+
+  DBGConsulta.ApplyBestFit(DBGConsultaQTRL); DBGConsultaQTRL.Width := DBGConsultaQTRL.Width + 05;
+  DBGConsulta.ApplyBestFit(DBGConsultaRLSP); DBGConsultaRLSP.Width := DBGConsultaQTRL.Width;
+
+  DBGConsulta.ApplyBestFit(DBGConsultaVDSC); DBGConsultaVDSC.Width := DBGConsultaVDSC.Width + 05;
+
+  DBGConsulta.ApplyBestFit(DBGConsultaTCDE); DBGConsultaTCDE.Width := DBGConsultaTCDE.Width + 17;
+  DBGConsulta.ApplyBestFit(DBGConsultaVTSP); DBGConsultaVTSP.Width := DBGConsultaTCDE.Width;
+  DBGConsulta.ApplyBestFit(DBGConsultaVTFA); DBGConsultaVTFA.Width := DBGConsultaTCDE.Width;
+  DBGConsulta.ApplyBestFit(DBGConsultaVNF ); DBGConsultaVNF.Width  := DBGConsultaTCDE.Width;
+  DBGConsulta.ApplyBestFit(DBGConsultaVTAP); DBGConsultaVTAP.Width := DBGConsultaTCDE.Width;
+
+  DBGConsulta.ApplyBestFit(DBGConsultaVIPI); DBGConsultaVIPI.Width := DBGConsultaVIPI.Width + 08;
+  DBGConsulta.ApplyBestFit(DBGConsultaVST ); DBGConsultaVST.Width  := DBGConsultaVIPI.Width;
+
+  if (PCFKPedidos.ActivePage <> TSFKPedidos) and (Separados.RecNo = 0) and (Romaneios.RecNo = 0) then
+      PCFKPedidos.ActivePage := TSFKPedidos;
+
+  { Informações Adicionais }
+            PosCount := oPosCount(''#$D'',CadastroINFADCAD.AsString);
+  PNLINFADCAD.Height := IFThen((PosCount = 00) and (CadastroINFADCAD.AsString =  EmptyStr) ,00,
+                        IFThen((PosCount = 00) and (CadastroINFADCAD.AsString <> EmptyStr) ,30,
+                        IFThen((PosCount = 01),040,
+                        IFThen((PosCount = 02),055,
+                        IFThen((PosCount = 03),070,
+                        IFThen((PosCount = 04),080,
+                        IFThen((PosCount = 05),090,
+                        IFThen((PosCount = 06),100,
+                        IFThen((PosCount = 07),110,
+                        IFThen((PosCount = 08),120,
+                        IFThen((PosCount = 09),130,
+                        IFThen((PosCount = 10),140,
+                        IFThen((PosCount = 11),150,
+                        IFThen((PosCount = 12),160,
+                        IFThen((PosCount = 13),170,
+                        IFThen((PosCount = 14),180,
+                        IFThen((PosCount = 15),190,200)))))))))))))))));
+
+  PNLLOGOS.Visible  := (CadastroINFADOS.AsString  <> EmptyStr);
+  PNLLOGPRN.Visible := (CadastroINFADPRN.AsString <> EmptyStr);
+
+  if LeftStr(CadastroINFSTOS.AsString,3) = 'AGU' then
+  begin
+    DBINFSTOS.Color      := clGrayText;
+    DBINFSTOS.Font.Color := $0080FFFF;
+  end else
+
+  if LeftStr(CadastroINFSTOS.AsString,3) = 'PRO' then
+  begin
+    DBINFSTOS.Color      := clGrayText;
+    DBINFSTOS.Font.Color := $0080FFFF;
+  end else
+
+  if LeftStr(CadastroINFSTOS.AsString,3) = 'FIN' then
+  begin
+    DBINFSTOS.Color      := clGrayText;
+    DBINFSTOS.Font.Color := $00C4FFC4;
+  end;
+
+  PNLINFADLOG.Height := IFThen(PNLLOGOS.Visible or PNLLOGPRN.Visible,25,0);
+end;
+
+procedure Tfrmctr_ped.FKCadastroAfterScroll(DataSet: TDataSet);
+begin
+  if FKCadastroQTSP.AsFloat > 0 then
+     DBGITPED.Bands[2].Visible := True;
+
+  if FKCadastroVIPI.AsFloat > 0 then
+     DBGITPEDVIPI.Visible := True;
+
+  { Expedição não precisa ver descontos, nem comissões }   
+  if RECUsuarios.Grupo <> 'PCP' then
+  begin
+    if FKCadastroPDSC.AsFloat > 0 then
+       DBGITPED.Bands[1].Visible := True;
+
+    if FKCadastroPCOM.AsFloat > 0 then
+       DBGITPED.Bands[4].Visible := True;
+  end;
+end;
+
+procedure Tfrmctr_ped.DTSFKCadastroDataChange(Sender: TObject; Field: TField);
+begin
+  DBGITPED.Bands[2].Caption := IFThen((CadastroCDRO.AsInteger = 0) and (CadastroCDNF.AsInteger = 0) and (CadastroCDBX.AsInteger = 0),'Separando','Separado');
+
+  { Tabela de Preços }
+  LATAB_PRC_ACIMA_MIN.Caption := FormatFloat('R$ #,0.00',FKCadastroVPRC_PAD_INI.AsCurrency);
+  LATAB_PRC_ACIMA_MAX.Caption := FormatFloat('R$ #,0.00',FKCadastroVPRC_PAD_FIM.AsCurrency);
+  if (FKCadastroVPRC_COM.AsFloat <> FKCadastroVPRC_PAD_INI.AsCurrency) or (FKCadastroVPRC_COM.AsFloat <> FKCadastroVPRC_PAD_FIM.AsCurrency) or (FKCadastroVPRC_PAD_INI.AsCurrency <> FKCadastroVPRC_PAD_FIM.AsCurrency) then
+      PNLTAB_PRC.Height := 22 else
+      PNLTAB_PRC.Height := 0;
+
+  { Conteúdo }
+  if Pos('COM',FKCadastroUCON.AsString) > 0 then
+  begin
+    PNLTAB_PRC.Caption := 'Contém '+FKCadastroUCON.AsString+'  ';
+    PNLTAB_PRC.Height  := 22;
+  end else
+    PNLTAB_PRC.Caption := EmptyStr;
+
+  { Imagem }
+  if IMG_PAD.Tag <> FKCadastroIMG_ID.AsInteger then
+  begin
+    IMG_PAD.Tag := FKCadastroIMG_ID.AsInteger;
+    oLoadJPG(FKCadastroIMG_PAD,IMG_PAD.Picture);
+  end;
+
+  { Fit Colunas }
+  DBGITPED.ApplyBestFit(DBGITPEDSKU    );
+  DBGITPED.ApplyBestFit(DBGITPEDUCOM   );
+  DBGITPED.ApplyBestFit(DBGITPEDDESP   );
+  DBGITPED.ApplyBestFit(DBGITPEDCP_DEEP);
+end;
+
+procedure Tfrmctr_ped.SeparadosAfterScroll(DataSet: TDataSet);
+begin
+  if not Separados.Eof then TSFKExpedicao.TabVisible := True;
+end;
+
+procedure Tfrmctr_ped.DTSFKSeparadosDataChange(Sender: TObject;
+  Field: TField);
+begin
+  DBGITSEPQTRL.Visible := (RECParametros.EST_QTRL);
+
+  DBGITSEP.ApplyBestFit(DBGITSEPSKU );
+  DBGITSEP.ApplyBestFit(DBGITSEPDGCP);
+end;
+
+procedure Tfrmctr_ped.RomaneiosAfterScroll(DataSet: TDataSet);
+begin
+  if not Romaneios.Eof then TSFKRomaneios.TabVisible := True;
+end;
+
+procedure Tfrmctr_ped.DTSFKRomaneiosDataChange(Sender: TObject;
+  Field: TField);
+begin
+  DBGITROM.ApplyBestFit(DBGITROMPRO_CPRO );
+  DBGITROM.ApplyBestFit(DBGITROMDGCP     );
+  DBGITROM.ApplyBestFit(DBGITROMSEPARADOR);
+
+  DBGITROMROM_QTRL.Visible  := (RECParametros.EST_QTRL);
+end;
+
+procedure Tfrmctr_ped.DBGITPEDCustomDrawCell(Sender: TObject;
+  ACanvas: TCanvas; ARect: TRect; ANode: TdxTreeListNode;
+  AColumn: TdxTreeListColumn; ASelected, AFocused, ANewItemRow: Boolean;
+  var AText: String; var AColor: TColor; AFont: TFont;
+  var AAlignment: TAlignment; var ADone: Boolean);
+begin
+  if not ASelected then
+  begin
+    if (ANode.Values[DBGITPEDQTSP.Index] > 0) and ((AColumn = DBGITPEDQTSP) or (AColumn = DBGITPEDRLSP) or (AColumn = DBGITPEDVTSP) or (AColumn = DBGITPEDDESP) or (AColumn = DBGITPEDDTSP)) then
+        if ANode.Values[DBGITPEDQTSP.Index] <> ANode.Values[DBGITPEDQTDE.Index] then
+        begin
+          AColor      := clInfobk;   //$0080FFFF;
+          AFont.Color := clBlack;
+        end else
+        begin
+          AColor      := clBlack;   //$0080FFFF;
+          AFont.Color := clWhite;
+        end;
+
+    if AColumn = DBGITPEDITEM then
+    begin
+      AColor      := clGray;
+      AFont.Color := clWhite;
+    end;
+
+    if ((AColumn = DBGITPEDPIPI) or (AColumn = DBGITPEDVIPI)) and (ANode.Values[DBGITPEDPIPI.Index] > 0) then
+         AFont.Style := [fsBold];
+
+    if ((AColumn = DBGITPEDPCOM) or (AColumn = DBGITPEDVCOM)) and (ANode.Values[DBGITPEDPCOM.Index] > 0) then
+         AFont.Style := [fsBold];
+  end;
+
+  if (AColumn = DBGITPEDQTDE) or (AColumn = DBGITPEDQTRL) or (AColumn = DBGITPEDVPRC_COM) or (AColumn = DBGITPEDTCDE) then
+     if ANode.Values[DBGITPEDVPRC_COM.Index] < ANode.Values[DBGITPEDVPRC_PAD_INI.Index] then
+     begin
+       AFont.Style := [fsBold];
+       AFont.Color := clWhite;
+       AColor      := $000024B3;
+     end else
+     if ANode.Values[DBGITPEDVPRC_COM.Index] >= ANode.Values[DBGITPEDVPRC_PAD_FIM.Index] then
+     begin
+       AFont.Style := [fsBold];
+       AFont.Color := clWhite;
+       AColor      := $00E1AD40
+     end else
+     if ANode.Values[DBGITPEDVPRC_COM.Index] > ANode.Values[DBGITPEDVPRC_PAD_INI.Index] then
+     begin
+       AFont.Style := [fsBold];
+       AFont.Color := clBlack;
+       AColor      := $00C4FFC4;
+     end;
+end;
+
+procedure Tfrmctr_ped.IMG_PADClick(Sender: TObject);
+begin
+  uLoadZoom(IMG_PAD.Picture,[FKCadastroARTIGO.AsString,
+                             FKCadastroSKU.AsString,
+                             FKCadastroDGCP.AsString,
+                             FKCadastroDECP.AsString,
+                             EmptyStr,   {QEstoqueCST.AsString}
+                             EmptyStr]); {QEstoqueSTCadastro.AsString}
+end;
+
+procedure Tfrmctr_ped.FKCadastroCalcFields(DataSet: TDataSet);
+begin
+  FKCadastroC_ID.Value := Cadastro.RecNo;
+end;
+
+procedure Tfrmctr_ped.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  try uRepaintMainForm(TForm(Self));
+  finally inherited;
+  end;
+end;
+
+procedure Tfrmctr_ped.DBGResumoDiarioCustomDrawCell(Sender: TObject;
+  ACanvas: TCanvas; ARect: TRect; ANode: TdxTreeListNode;
+  AColumn: TdxTreeListColumn; ASelected, AFocused, ANewItemRow: Boolean;
+  var AText: String; var AColor: TColor; AFont: TFont;
+  var AAlignment: TAlignment; var ADone: Boolean);
+begin
+  if not ASelected then
+  begin
+    if Pos(LeftStr(ANode.Values[DBGResumoDiarioPERIODO.Index],2),'01030507091113151719212325272931') > 0 then
+    begin
+      AColor      := $00CCCACA;
+      AFont.Color := clBlack;
+    end else
+    if Pos(LeftStr(ANode.Values[DBGResumoDiarioPERIODO.Index],2),'020406081012141618202224262830') > 0 then
+    begin
+      AColor      := clWhite;
+      AFont.Color := clBlack;
+    end;
+
+    if (AColumn = DBGResumoDiarioNVCLI) and (ANode.Values[DBGResumoDiarioNVCLI.Index] > 0) then
+        AFont.Style := [fsBold];
+
+    if (AColumn = DBGResumoDiarioPVCLI) and (ANode.Values[DBGResumoDiarioPVCLI.Index] > 0) then
+        AFont.Style := [fsBold];
+  end;
+end;
+
+procedure Tfrmctr_ped.DBGResumoMensalCustomDrawCell(Sender: TObject;
+  ACanvas: TCanvas; ARect: TRect; ANode: TdxTreeListNode;
+  AColumn: TdxTreeListColumn; ASelected, AFocused, ANewItemRow: Boolean;
+  var AText: String; var AColor: TColor; AFont: TFont;
+  var AAlignment: TAlignment; var ADone: Boolean);
+begin
+  if not ASelected then
+  begin
+    if Pos(LeftStr(ANode.Values[DBGResumoMENSALPERIODO.Index],2),'010305070911') > 0 then
+    begin
+      AColor      := $00CCCACA;
+      AFont.Color := clBlack;
+    end else
+    if Pos(LeftStr(ANode.Values[DBGResumoMENSALPERIODO.Index],2),'020406081012') > 0 then
+    begin
+      AColor      := clWhite;
+      AFont.Color := clBlack;
+    end;
+
+    if (AColumn = DBGResumoMENSALNVCLI) and (ANode.Values[DBGResumoMENSALNVCLI.Index] > 0) then
+        AFont.Style := [fsBold];
+
+    if (AColumn = DBGResumoMENSALPVCLI) and (ANode.Values[DBGResumoMENSALPVCLI.Index] > 0) then
+        AFont.Style := [fsBold];
+  end;
+end;
+
+procedure Tfrmctr_ped.CadastroCalcFields(DataSet: TDataSet);
+begin
+  CadastroC_IDPK.Value := Cadastro.RecNo;
+end;
+
+procedure Tfrmctr_ped._Cadastro;
+begin
+  with Cadastro do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Add('SELECT PK.ID  ,PK.IDEP,PK.DEEP,');
+    SQL.Add('       PK.IDCA,PK.DTCA,PK.HTPK,');
+    SQL.Add('       PK.IDST,PK.DTST,PK.CDST,PK.REST,PK.DEST  ,PK.D_DEST  ,PK.INFADST,');
+    SQL.Add('       PK.IDPK,PK.DEPK,PK.DTPK,PK.CDCX,PK.CDPP  ,PK.API_B2B ,PK.CTNR   ,');
+
+    SQL.Add('       PK.IDOS,PK.CDOS,PK.DTOS,PK.D_DTOS,PK.D_HTOS,PK.D_HNOS,');
+    SQL.Add('       PK.INFADOS,PK.INFSTOS,');
+    SQL.Add('       PK.IDSP,PK.DESP,PK.DTSP,PK.D_DTSP,PK.DTSP_INI,PK.DTSP_FIM,PK.D_HTSP,PK.D_HNSP,');
+
+    SQL.Add('       PK.CDRO,PK.DTRO,D_DTRO ,');
+    SQL.Add('       PK.CDNF,PK.DTNF,PK.HTNF,PK.D_DTNF,PK.CFOP,');
+    SQL.Add('       PK.CDDV,PK.DTDV,PK.DEDV,');
+    SQL.Add('       PK.IDSA,PK.DTSA,PK.D_DTSA,PK.D_HTSA,PK.D_HNSA,');
+    SQL.Add('       PK.IDCD,PK.DECD,PK.RZCD,PK.PJCD,PK.GPCD,PK.CNCD,PK.CSCD,PK.FIN_VCRD,PK.UFCD,PK.RSCD,');
+    SQL.Add('       PK.IDCV,PK.DECV,PK.RSCV,');
+    SQL.Add('       PK.IDCR,PK.DECR,PK.UFCR,PK.RSCR,');
+    SQL.Add('       PK.IDCT,PK.DECT,PK.LOC_NO_CT   ,PK.UFCT,PK.RSCT,');
+    SQL.Add('       PK.ITEM,PK.QTDE,PK.D_QTDE,PK.QTRL,PK.D_QTRL,');
+    SQL.Add('       PK.ITSP,PK.QTSP,PK.D_QTSP,PK.RLSP,PK.D_RLSP,');
+    SQL.Add('       PK.IDSC,PK.TDSC,PK.PDSC  ,PK.VDSC  ,');
+    SQL.Add('       PK.TSDE,PK.D_TSDE,PK.TCDE,PK.D_TCDE,');
+    SQL.Add('       PK.VTSP,PK.D_VTSP,PK.PPSP,PK.D_PPSP,');
+    SQL.Add('       PK.VNF ,PK.VIPI,PK.VST,');
+    SQL.Add('       PK.VTFA,PK.VTAP,');
+    SQL.Add('       PK.PCOM,PK.VCOM,');
+    SQL.Add('       PK.MFRT,PK.D_MFRT,PK.VFRT  ,PK.PSBR,PK.PSLQ,');
+    SQL.Add('       PK.CDPD,PK.STPD  ,PK.SVPD  ,PK.ABPD,PK.DVPD,PK.FAPD,PK.BQPD,');
+    SQL.Add('       PK.BEPD,PK.QEPD  ,PK.SEPD  ,PK.DEPD,');
+    SQL.Add('       PK.CDCO,PK.STCO  ,PK.D_STCO,PK.TPCO,PK.RECO,');
+    SQL.Add('       PK.CDPG,PK.DEPG,');
+    SQL.Add('       PK.APST,PK.FBST,PK.BXST  ,PK.LQST,PK.BQST,');
+    SQL.Add('       PK.CDBX,PK.DTBX,PK.D_DTBX,');
+    SQL.Add('       PK.INFADCAD,PK.IP,PK.HOST,');
+    SQL.Add('       PK.LOG_PRN_CDEV,PK.LOG_PRN_QTEV,PK.INFADPRN');
+
+    SQL.Add('FROM ' + oREPZero('VW_PED_VEN_CAB','_',RECParametros.EP_ID,3) + ' AS PK');
+
+    SQL.Add('WHERE (PK.APST = 1');
+    SQL.Add('OR     PK.DTPK BETWEEN (DATEADD(1 - EXTRACT(DAY FROM CURRENT_DATE) DAY TO CURRENT_DATE )) AND (DATEADD(-EXTRACT(DAY FROM DATEADD(1 MONTH TO CURRENT_DATE )) DAY TO DATEADD(1 MONTH TO CURRENT_DATE)))');
+    SQL.Add('OR     PK.DTNF BETWEEN (DATEADD(1 - EXTRACT(DAY FROM CURRENT_DATE) DAY TO CURRENT_DATE )) AND (DATEADD(-EXTRACT(DAY FROM DATEADD(1 MONTH TO CURRENT_DATE )) DAY TO DATEADD(1 MONTH TO CURRENT_DATE)))');
+    SQL.Add('OR     PK.DTBX BETWEEN (DATEADD(1 - EXTRACT(DAY FROM CURRENT_DATE) DAY TO CURRENT_DATE )) AND (DATEADD(-EXTRACT(DAY FROM DATEADD(1 MONTH TO CURRENT_DATE )) DAY TO DATEADD(1 MONTH TO CURRENT_DATE)))');
+    SQL.Add(')');
+
+    if RECUsuarios.Grupo = 'VEN' then
+    SQL.Add('AND PK.IDCV = ''' + RECUsuarios.Id + '''');
+
+    SQL.Add('ORDER BY PK.DTCA DESC');
+    Prepare;
+    Open;
+  end;
+end;
+
+end.

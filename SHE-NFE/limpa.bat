@@ -1,0 +1,9 @@
+del *.dcp
+del *.bpl
+del *.dcu
+del *.~*
+del *.esn
+del *.chm
+del *.exe
+del *.identcache
+del help\*.dcu

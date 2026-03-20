@@ -1,0 +1,6 @@
+
+*.dcu
+help/*.dcu
+*.~ddp
+*.~dfm
+*.~pas

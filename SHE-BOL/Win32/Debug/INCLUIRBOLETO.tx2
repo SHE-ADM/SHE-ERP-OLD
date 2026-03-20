@@ -1,0 +1,35 @@
+INCLUIRBOLETO
+CedenteContaNumero=09570
+CedenteContaNumeroDV=4
+CedenteConvenioNumero=8317095704
+CedenteContaCodigoBanco=341
+TituloDocEspecie=06
+
+SacadoEmail=ricardo@sheild.com.br
+SacadoNome=Ricardo Santos
+SacadoCPFCNPJ=25149872881
+SacadoEnderecoCEP=06414025
+SacadoCelular=11940774905
+SacadoEnderecoNumero=179 - 82A
+SacadoEnderecoBairro=Alphaville
+SacadoEnderecoCidade=Sao Paulo
+SacadoEnderecoLogradouro=Rua Werner Goldberg
+SacadoEnderecoPais=BRASIL
+SacadoEnderecoUF=SP
+SacadoTelefone=1122911699
+
+TituloNossoNumero=1
+TituloNumeroDocumento=100843
+TituloDataVencimento=18/05/2019
+TituloDataEmissao=14/04/2019
+TituloValor=1,01
+TituloEmissaoBoleto=B
+
+TituloMensagem01=Mensagem linha 1
+TituloMensagem02=Mensagem linha 2
+TituloMensagem03=Mensagem linha 3
+
+TituloInformacoesAdicionais=Teste inf.Adicionais: Numero NF: 100843
+TituloInstrucoes=Teste Instrucoes: Desconto de 5% ate 18/05/19
+
+SALVARBOLETO
