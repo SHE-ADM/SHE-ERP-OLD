@@ -198,7 +198,7 @@ type
     procedure CANCELA_SEPARACAO;
     procedure LIMPA_ETIQUETA;
     procedure PESQUISA_ETIQUETA;
-    procedure ATUALIZA_ESTOQUE;
+    procedure _CAD_PRO_EST_LAN_UPD;
     function  RETORNA_STFI: string;
   public
     { Public declarations }
@@ -1137,7 +1137,7 @@ begin
   oException(EDCDET,'Número da etiqueta não informado !');
 
   CANCELA_ETIQUETA;
-  ATUALIZA_ESTOQUE;
+  _CAD_PRO_EST_LAN_UPD;
 end;
 
 procedure Tfrmeti_pro.siCSEClick(Sender: TObject);
@@ -1146,7 +1146,7 @@ begin
   oException(EDCDET,'Número da etiqueta não informado !');
 
   CANCELA_SEPARACAO;
-  ATUALIZA_ESTOQUE;
+  _CAD_PRO_EST_LAN_UPD;
 end;
 
 procedure Tfrmeti_pro.siALTClick(Sender: TObject);
@@ -1155,10 +1155,10 @@ begin
   oException(EDCDET,'Número da etiqueta não informado !');
 
   ALTERA_ETIQUETA;
-  ATUALIZA_ESTOQUE;
+  _CAD_PRO_EST_LAN_UPD;
 end;
 
-procedure TFrmeti_pro.ATUALIZA_ESTOQUE;
+procedure Tfrmeti_pro._CAD_PRO_EST_LAN_UPD;
 begin
   with SQLEdicao do
   begin

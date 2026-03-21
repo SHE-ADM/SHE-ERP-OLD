@@ -443,7 +443,6 @@ procedure bExecEvent(AEvent: String;AWarning: TWarning = lwNone); STDCall;
 procedure bPesquisaEnderecos(var RECEndereco: TRECEnderecos); STDCall;
 function  bPesquisaNotasFiscais(ANFe: Variant;ACLFO: Word=0): Variant; STDCall;
 
-procedure bBAI_ESTOQUE(AaIDCP: array of String); STDCall;
 procedure bBAI_CAIXA(ACDBX: Variant); STDCall;
 procedure bBAI_FINANCEIRO(VCDNF,VIDPK: Integer); STDCall;
 
@@ -1200,37 +1199,6 @@ begin
   ASenderSP.ParamByName('AQTUCOM').Value  := AQTUCOM;
   ASenderSP.ParamByName('ACMUCOM').Value  := ACMUCOM;
   ASenderSP.ExecProc;                    
-end;
-
-procedure bBAI_ESTOQUE(AaIDCP: array of String); STDCall;
-var
-  i: Word;
-begin
-  if High(AaIDCP) > 0 then
-     if AaIDCP[0] <> EmptyStr then
-     with FBird do
-     try
-       oCTransact(TFBEdicao);
-       oOTransact(TFBEdicao);
-       for i := 0 To (High(AaIDCP)) do
-       begin
-         if AaIDCP[i] = EmptyStr then
-            Break;
-
-         with SQLFBEdicao do
-         begin
-           Close;
-           SQL.Clear;
-           SQL.Add('EXECUTE PROCEDURE SP_CAD_PRO_EST_LAN(');
-           SQL.Add(''''+RECParametros.EP_ID            +''',');
-           SQL.Add(''''+AaIDCP[i]                   +''')');
-           ExecQuery;
-         end;
-       end;
-       oCTransact(TFBEdicao);
-     except
-       oCTransact(TFBEdicao,ltRollback);
-     end;
 end;
 
 procedure TFBird.DataModuleCreate(Sender: TObject);

@@ -7,7 +7,7 @@ uses oPrincipal, ACBrBarCode,
   Windows, SysUtils, Messages, Graphics,
   StdCtrls, ACBrBase, ACBrETQ, Math, StrUtils,
   QRDBTextRotate, DB, IBCustomDataSet, IBQuery, QrAngLbl, QRPDFFilt,
-  QRExport, IBTable, IBSQL, AJBarcode;
+  QRExport, IBTable, IBSQL, AJBarcode,  ComCtrls;
 
 type
   TqrpEST_ETQ_PAD = class(TQuickRep)
@@ -246,7 +246,7 @@ procedure TqrpEST_ETQ_PAD.WinControlFormCreate(Sender: TObject);
             end;
           end;
 begin
-  with qrpEST_ETQ_PAD do
+ with qrpEST_ETQ_PAD do
     try
       _Report;
       _Select;
@@ -387,4 +387,3 @@ begin
 end;
 
 end.
-

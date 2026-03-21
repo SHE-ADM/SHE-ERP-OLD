@@ -21592,7 +21592,8 @@ inherited FrmProduto_SubCategoria: TFrmProduto_SubCategoria
       'JOIN     TAB_STA     AS TSTA ON (TSTA.ID = PK.CDST)'
       'LEFT JOIN TAB_NCM     AS TNCM ON (TNCM.NCM = PK.NCM )'
       'WHERE    PK.IDEP = :IDEP'
-      'AND          PK.ID > 0'
+      'AND          PK.ID <> 0'
+      'AND       PK.ID   IS NOT NULL'
       'ORDER BY PK.ID DESC')
     ModifySQL.Strings = (
       'update TAB_SCT'

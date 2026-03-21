@@ -96,13 +96,33 @@ begin
   { ACCESS MANAGER }
   REC_SHE_DEF.FB_Event := 'CAD_PRO_EST'; { Eventos }
 
-  { GRANT USER }
-  REC_SHE_DEF.GDescricao  := '';
-  REC_SHE_DEF.GReferencia := '';
-  REC_SHE_DEF.GRegra      := '';
-  REC_SHE_DEF.GAdmin      := True;
-
+  { Grant }
+  REC_SHE_DEF.GDescricao  := 'Estoque';
+  REC_SHE_DEF.GReferencia := 'Produtos';
+  REC_SHE_DEF.GRegra      := 'Permissões Gerais';
   inherited;
+
+  IEEP_ID.Enabled    := (REC_SHE_DEF.GAdmin);
+  IECDTP.Enabled     := (REC_SHE_DEF.GAdmin);
+  CECDRO.Enabled     := (REC_SHE_DEF.GAdmin);
+  CECDET_INI.Enabled := (REC_SHE_DEF.GAdmin);
+  CECDET_FIM.Enabled := (REC_SHE_DEF.GAdmin);
+  EDARTIGO.Enabled   := (REC_SHE_DEF.GAdmin);
+  EDSKU.Enabled      := (REC_SHE_DEF.GAdmin);
+  EDNCM.Enabled      := (REC_SHE_DEF.GAdmin);
+  IECOL_ID.Enabled   := (REC_SHE_DEF.GAdmin);
+  IESEG_ID.Enabled   := (REC_SHE_DEF.GAdmin);
+  IEGRP_ID.Enabled   := (REC_SHE_DEF.GAdmin);
+  IESGP_ID.Enabled   := (REC_SHE_DEF.GAdmin);
+  IECAT_ID.Enabled   := (REC_SHE_DEF.GAdmin);
+  IESCT_ID.Enabled   := (REC_SHE_DEF.GAdmin);
+
+  if REC_SHE_DEF.GCancel then
+  begin
+    CECDRO.Enabled     := True;
+    CECDET_INI.Enabled := True;
+    CECDET_FIM.Enabled := True;
+  end;
 end;
 
 procedure TFrmCAD_PRO_EST_DEL.IEEP_IDChange(Sender: TObject);
