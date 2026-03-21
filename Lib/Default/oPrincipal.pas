@@ -3296,9 +3296,6 @@ function ConsultaGtin(chave : shortstring) : shortstring; stdcall; External dllN
 
   procedure oSP_CAD_PRO_EST_RES(var ARECEstoque: TRECPedidos); STDCall;
 
-  procedure oSP_CAD_PRO_EST_LAN(ATIBSQL: TIBSQL;AIDEP,AIDCP: String); STDCall;
-  procedure oExecEstoque(ATEdicao: TIBTransaction;ASQLEdicao: TIBSQL;AIDCP: Array Of String); STDCall;
-
   { Separação de Pedidos com código repetido}
   procedure oPED_SEP_DUP(ATConsulta: TIBTransaction); STDCall;
 
@@ -8936,43 +8933,6 @@ begin
   end;
 end;
 
-procedure oExecEstoque(ATEdicao: TIBTransaction;ASQLEdicao: TIBSQL;AIDCP: Array Of String); STDCall;
-var
-  i: Word;
-begin
-  if (ATEdicao = Nil) or (not ATEdicao.InTransaction) or (ASQLEdicao = Nil) then
-      Exit;
-
-  if High(AIDCP) > 0 then
-     if AIDCP[0] <> EmptyStr then
-        for i := 0 To (High(AIDCP)) do
-        begin
-          if AIDCP[i] = EmptyStr then
-             Break;
-
-          try
-            with ASQLEdicao do
-            begin
-              Close;
-              SQL.Clear;
-              SQL.Add('EXECUTE PROCEDURE SP_CAD_PRO_EST_LAN(');
-              SQL.Add(''''+RECParametros.EP_ID    +''',');
-              SQL.Add(''''+AIDCP[i]            +''')');
-              ExecQuery;
-            end;
-          except
-            on E: Exception do
-            begin
-              oCTransact(ATEdicao, ltRollback);
-              oException(Nil     ,'Falha ao tentar registrar estoque !'+#13+
-                                  'Favor entrar em contato com o administrador do sistema.'+#13+#13+
-                                  'Error Code: '+E.Message+'.'+#13+
-                                  'SP_CAD_PRO_EST_LAN.');
-            end;
-          end;
-        end;
-end;
-
 procedure oPED_SEP_DUP(ATConsulta: TIBTransaction); STDCall;
 var
   AComponent: TComponent;
@@ -9248,31 +9208,6 @@ begin
     if (not PSQ_OK) and (FB_Alert) then
     oException(Nil,'Acesso Negado !' + #13 +
                    'Favor entrar em contato com o administrador do sistema.');
-  end;
-end;
-
-procedure oSP_CAD_PRO_EST_LAN(ATIBSQL: TIBSQL;AIDEP,AIDCP: String); STDCall;
-begin
-  if (AIDEP <> '0') and (AIDCP <> '0') and (AIDEP <> EmptyStr) and (AIDCP <> EmptyStr) then
-  if (ATIBSQL <> Nil) then
-
-  try
-    oOTransact(ATIBSQL.Transaction);
-    with ATIBSQL do
-    begin
-      Close;
-      SQL.Clear;
-
-      SQL.Add('EXECUTE PROCEDURE SP_CAD_PRO_EST_LAN(');
-      SQL.Add(''''+ AIDEP +''',');
-      SQL.Add(''''+ AIDCP +''')');
-
-      Prepare;
-      ExecQuery;
-    end;
-    oCTransact(ATIBSQL.Transaction);
-  except
-    oCTransact(ATIBSQL.Transaction,ltRollback);
   end;
 end;
 

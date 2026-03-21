@@ -1,6 +1,6 @@
 inherited FrmCAD_PRO_EST_DEL: TFrmCAD_PRO_EST_DEL
-  Left = 736
-  Top = 191
+  Left = 268
+  Top = 67
   ActiveControl = CECDRO
   Caption = 'Cancelamento de Estoque'
   ClientHeight = 485

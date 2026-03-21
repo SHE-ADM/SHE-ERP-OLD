@@ -291,7 +291,7 @@ type
     { Private declarations }
     RECEstoque: TRECPedidos;
 
-    procedure _SP_CAD_PRO_EST_LAN_UPD;
+    procedure _CAD_PRO_EST_LAN_UPD;
   public
     { Public declarations }
     procedure ABRE_TABELA;
@@ -1005,7 +1005,7 @@ begin
     FKPedidos.EnableControls;
   end;
 
-  _SP_CAD_PRO_EST_LAN_UPD; { Estoque }
+  _CAD_PRO_EST_LAN_UPD; { Estoque }
   Close;
 end;
 
@@ -1150,21 +1150,21 @@ begin
   end;
 
   SICAN.Enabled := False;
-  _SP_CAD_PRO_EST_LAN_UPD; { Estoque }
+  _CAD_PRO_EST_LAN_UPD; { Estoque }
   Close;
 end;
 
-procedure TFrmEXP_SEP_MAN._SP_CAD_PRO_EST_LAN_UPD;
+procedure TFrmEXP_SEP_MAN._CAD_PRO_EST_LAN_UPD;
 begin
   if PedidosIDPK.AsInteger > 0 then
 
-  uSP_CAD_PRO_EST_LAN_UPD(oREPZero('PED_VEN_ITE','_',RECParametros.EP_ID,3),
-                          RECParametros.EP_ID ,
-                          PedidosIDPK.AsString,
+  uCAD_PRO_EST_LAN_UPD(oREPZero('PED_VEN_ITE','_',RECParametros.EP_ID,3),
+                       RECParametros.EP_ID ,
+                       PedidosIDPK.AsString,
 
-                          'EP_ID',
-                          'IDPK' ,
-                          'CP_ID');
+                       'EP_ID',
+                       'IDPK' ,
+                       'CP_ID');
 end;
                           
 end.

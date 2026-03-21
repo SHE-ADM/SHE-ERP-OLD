@@ -361,6 +361,7 @@ begin
     SelectSQL.Add('LEFT JOIN TAB_NCM     AS TNCM ON (TNCM.NCM = PK.NCM )');
     SelectSQL.Add('WHERE     PK.IDEP = '''+RECParametros.EP_ID+'''');
     SelectSQL.Add('AND       PK.ID   > 0');
+    SelectSQL.Add('AND       PK.ID   IS NOT NULL');
     SelectSQL.Add('ORDER BY  PK.ID');
     Prepare;
     Open;

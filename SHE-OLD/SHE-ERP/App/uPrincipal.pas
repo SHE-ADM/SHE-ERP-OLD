@@ -434,13 +434,13 @@ type
   end;
 
 { MAIN PROCEDURES }
-procedure uSP_CAD_PRO_EST_LAN_UPD (ATHR_TB_PK: String;
-                                   ATHR_EP_ID,
-                                   ATHR_PK_ID: Variant;
+procedure uCAD_PRO_EST_LAN_UPD (ATHR_TB_PK: String;
+                                ATHR_EP_ID,
+                                ATHR_PK_ID: Variant;
 
-                                   FTHR_EP_ID,
-                                   FTHR_PK_ID,
-                                   FTHR_CP_ID: String); STDCALL;
+                                FTHR_EP_ID,
+                                FTHR_PK_ID,
+                                FTHR_CP_ID: String); STDCALL;
 
 { OLD PROCEDURE }
 procedure uConstrucao(ACaption: String = ''); STDCall;
@@ -608,13 +608,13 @@ begin
   end;
 end;
 
-procedure uSP_CAD_PRO_EST_LAN_UPD (ATHR_TB_PK: String;
-                                   ATHR_EP_ID,
-                                   ATHR_PK_ID: Variant;
+procedure uCAD_PRO_EST_LAN_UPD (ATHR_TB_PK: String;
+                                ATHR_EP_ID,
+                                ATHR_PK_ID: Variant;
 
-                                   FTHR_EP_ID,
-                                   FTHR_PK_ID,
-                                   FTHR_CP_ID: String); STDCALL;
+                                FTHR_EP_ID,
+                                FTHR_PK_ID,
+                                FTHR_CP_ID: String); STDCALL;
 var
   Thread: TRunProcessThread;
 begin
@@ -3117,11 +3117,11 @@ begin
     { Controle }
     AREC_SHE_DEF.GDescricao    := 'Estoque'; AREC_SHE_DEF.GReferencia := 'Produtos'; AREC_SHE_DEF.GRegra := 'Permissões Gerais'; oUSER(AREC_SHE_DEF);
     ACTCAD_PRO_EST_ADM.Enabled := AREC_SHE_DEF.GView; { Controle }
-    ACTCAD_PRO_EST_LCT.Enabled := AREC_SHE_DEF.GView; { Entradas }
+    ACTCAD_PRO_EST_LCT.Enabled := AREC_SHE_DEF.GAppend; { Entradas }
 
     { Etiquetas }
     AREC_SHE_DEF.GDescricao    := 'Estoque'; AREC_SHE_DEF.GReferencia := 'Etiquetas'; AREC_SHE_DEF.GRegra := 'Permissões Gerais'; oUSER(AREC_SHE_DEF);
-    ACTCAD_PRO_EST_ETQ.Enabled := AREC_SHE_DEF.GView;
+    ACTCAD_PRO_EST_ETQ.Enabled := AREC_SHE_DEF.GAppend;
 
     { Qualidade }
     AREC_SHE_DEF.GDescricao    := 'Estoque'; AREC_SHE_DEF.GReferencia := 'Qualidade'; AREC_SHE_DEF.GRegra := 'Permissões Gerais'; oUSER(AREC_SHE_DEF);

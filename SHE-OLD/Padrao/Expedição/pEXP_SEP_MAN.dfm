@@ -813,9 +813,6 @@ inherited FrmEXP_SEP_MAN: TFrmEXP_SEP_MAN
     Width = 634
     inherited SpeedBar2: TSpeedBar
       Width = 634
-      inherited siSAIR: TSpeedItem
-        Spacing = 0
-      end
       object siVIS: TSpeedItem
         BtnCaption = 'Visualizar'
         Hint = 'Visualizar relatorio de separa'#231#227'o'

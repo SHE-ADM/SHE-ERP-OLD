@@ -4163,6 +4163,7 @@ inherited FrmCAD_PRO_EDI: TFrmCAD_PRO_EDI
             Style.ButtonStyle = btsFlat
             Style.Shadow = True
             TabOrder = 1
+            Text = '0'
             AutoSize = False
             Descriptions.Strings = (
               '')
@@ -4189,6 +4190,7 @@ inherited FrmCAD_PRO_EDI: TFrmCAD_PRO_EDI
             Style.ButtonStyle = btsFlat
             Style.Shadow = True
             TabOrder = 0
+            Text = '0'
             AutoSize = False
             Descriptions.Strings = (
               '')
@@ -4216,6 +4218,7 @@ inherited FrmCAD_PRO_EDI: TFrmCAD_PRO_EDI
             Style.ButtonStyle = btsFlat
             Style.Shadow = True
             TabOrder = 2
+            Text = '0'
             AutoSize = False
             Descriptions.Strings = (
               '')
@@ -4731,6 +4734,7 @@ inherited FrmCAD_PRO_EDI: TFrmCAD_PRO_EDI
           Style.ButtonStyle = btsSimple
           Style.Shadow = True
           TabOrder = 8
+          Text = '0'
           OnChange = EDArtigoChange
           DropDownRows = 20
           Descriptions.Strings = (
@@ -4865,6 +4869,7 @@ inherited FrmCAD_PRO_EDI: TFrmCAD_PRO_EDI
           Style.ButtonStyle = btsSimple
           Style.Shadow = True
           TabOrder = 10
+          Text = '0'
           OnChange = EDArtigoChange
           DropDownRows = 20
           Descriptions.Strings = (
@@ -5012,6 +5017,7 @@ inherited FrmCAD_PRO_EDI: TFrmCAD_PRO_EDI
             Style.ButtonStyle = btsSimple
             Style.Shadow = True
             TabOrder = 0
+            Text = '0'
             OnChange = IEIDFINChange
             DropDownRows = 10
             Descriptions.Strings = (
@@ -5070,6 +5076,7 @@ inherited FrmCAD_PRO_EDI: TFrmCAD_PRO_EDI
           Style.ButtonStyle = btsSimple
           Style.Shadow = True
           TabOrder = 9
+          Text = '0'
           OnChange = EDArtigoChange
           DropDownRows = 20
           Descriptions.Strings = (
@@ -5097,6 +5104,7 @@ inherited FrmCAD_PRO_EDI: TFrmCAD_PRO_EDI
           Style.ButtonStyle = btsSimple
           Style.Shadow = True
           TabOrder = 11
+          Text = '0'
           OnExit = IEIDSCTExit
           OnChange = EDArtigoChange
           DropDownRows = 20

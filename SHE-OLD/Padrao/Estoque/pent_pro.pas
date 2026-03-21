@@ -935,13 +935,13 @@ begin
   ACTEveExecute.Execute; { Executa }
 
   { ATUALIZA ESTOQUE }
-  uSP_CAD_PRO_EST_LAN_UPD(REC_SHE_DEF.FB_TB_PK,
-                          RECParametros.EP_ID ,
-                          CECDRO.Text,
+  uCAD_PRO_EST_LAN_UPD(REC_SHE_DEF.FB_TB_PK,
+                       RECParametros.EP_ID ,
+                       CECDRO.Text,
 
-                          'EP_ID',
-                          'CDRO' ,
-                          'CP_ID');
+                       'EP_ID',
+                       'CDRO' ,
+                       'CP_ID');
 end;
 
 procedure Tfrment_pro.SIMNovoClick(Sender: TObject);

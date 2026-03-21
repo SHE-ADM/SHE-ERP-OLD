@@ -65,26 +65,18 @@ type
     DBGConsultaDTPD: TdxDBGridDateColumn;
     DBGConsultaC_ID: TdxDBGridColumn;
     BLBEST_INS: TdxBarLargeButton;
-    ACTEST_DEL_ART: TAction;
-    ACTEST_DEL_SKU: TAction;
-    ACTEST_DEL_ETQ: TAction;
     ACTEST_GER: TAction;
     ACTEST_REV: TAction;
     ACTEST_ENV: TAction;
     ACTREL_ROM: TAction;
     ACTETQ_REL_PAD: TAction;
     ACTETQ_REL_RED: TAction;
-    BLBEST_DEL_ROM: TdxBarButton;
-    BLBEST_DEL_ETQ: TdxBarLargeButton;
-    BLBEST_DEL_ART: TdxBarLargeButton;
-    BLBEST_DEL_SKU: TdxBarLargeButton;
     BLBEST_GER: TdxBarLargeButton;
     BLBEST_REV: TdxBarLargeButton;
     BLBEST_ENV: TdxBarLargeButton;
     BLBREL_ROM: TdxBarLargeButton;
     BLBETQ_REL_PAD: TdxBarLargeButton;
     BLBETQ_REL_RED: TdxBarLargeButton;
-    PMCancela: TdxBarPopupMenu;
     PMRelatorios: TdxBarPopupMenu;
     ACTEtiquetas: TAction;
     BLBEST_ETQ: TdxBarLargeButton;
@@ -349,9 +341,6 @@ type
       AColumn: TdxTreeListColumn; ASelected, AFocused,
       ANewItemRow: Boolean; var AText: String; var AColor: TColor;
       AFont: TFont; var AAlignment: TAlignment; var ADone: Boolean);
-    procedure ACTEST_DEL_ETQExecute(Sender: TObject);
-    procedure ACTEST_DEL_ARTExecute(Sender: TObject);
-    procedure ACTEST_DEL_SKUExecute(Sender: TObject);
     procedure ACTEST_GERExecute(Sender: TObject);
     procedure ACTEST_REVExecute(Sender: TObject);
     procedure ACTEST_ENVExecute(Sender: TObject);
@@ -360,20 +349,20 @@ type
     procedure ACTETQ_REL_PADExecute(Sender: TObject);
     procedure ACTETQ_REL_REDExecute(Sender: TObject);
     procedure ACTNovoExecute(Sender: TObject);
-    procedure ACTCancelaExecute(Sender: TObject);
     procedure ACTEtiquetasExecute(Sender: TObject);
     procedure FKConsultaCalcFields(DataSet: TDataSet);
     procedure FormResize(Sender: TObject);
     procedure DTSCAD_PRO_IMGDataChange(Sender: TObject; Field: TField);
     procedure FKConsultaAfterOpen(DataSet: TDataSet);
     procedure FKConsultaBeforeClose(DataSet: TDataSet);
+    procedure ACTCancelaExecute(Sender: TObject);
   private
     { Private declarations }
     RECRelatorios: TRECRelatorios;
     NewString: String;
     ClickedOK: Boolean;
 
-    procedure _SP_CAD_PRO_EST_LAN_UPD;
+    procedure _CAD_PRO_EST_LAN_UPD;
   public
     { Public declarations }
   end;
@@ -408,6 +397,39 @@ begin
   REC_SHE_DEF.GReferencia := 'Produtos';
   REC_SHE_DEF.GRegra      := 'Permissões Gerais';
   inherited;
+
+  if not REC_SHE_DEF.GAppend then
+  begin
+    BLBEST_INS.Visible := ivNever;
+    ACTNovo.Enabled    := False;
+  end;
+
+  if not REC_SHE_DEF.GCancel then
+  begin
+    BLBCancela.Visible := ivNever;
+    ACTCancela.Enabled := False;
+  end;
+    
+  if not REC_SHE_DEF.GAdmin then
+  begin
+    BLBEST_GER.Visible := ivNever;
+    ACTEST_GER.Enabled := False;
+
+    BLBEST_REV.Visible := ivNever;
+    ACTEST_REV.Enabled := False;
+
+    BLBEST_ENV.Visible := ivNever;
+    ACTEST_ENV.Enabled := False;
+  end;
+
+  if not REC_SHE_DEF.GPrint then
+  begin
+    BLBRelatorios.Visible := ivNever;
+    ACTRelatorios.Enabled := False;
+
+    BLBEST_ETQ.Visible    := ivNever;
+    ACTEtiquetas.Enabled  := False;
+  end;  
 
   oIRECRelatorios(RECRelatorios);
   RECRelatorios.Handle   := Self.Handle;
@@ -525,176 +547,6 @@ begin
   ActiveControl := Nil;
 
   uFrmCreate(Self,Tfrment_pro,Frment_pro);
-end;
-
-procedure TFrmEstoque.ACTCancelaExecute(Sender: TObject);
-begin
-  TFrmCAD_PRO_EST_DEL._ExecForm(Self,FrmCAD_PRO_EST_DEL);
-end;
-
-procedure TFrmEstoque.ACTEST_DEL_ETQExecute(Sender: TObject);
-var
-  ACDET_INI,ACDET_FIM: Variant;
-begin
-  //RICARDObPSQUSER('EXCLUI','Estoque','Etiquetas','Permissões Gerais',True);
-  ActiveControl := Nil;
-
-  if ConsultaCDRO.AsInteger = 0 then
-     oException(Nil,'Romaneio não Informado !');
-
-  if ConsultaREST.AsString = 'C' then
-     oException(Nil,'Romaneio já Cancelado !');
-
-  NewString := EmptyStr;
-  ClickedOK := InputQuery('CANCELAMENTO DE ETIQUETAS', 'Entre com a sequência inicial + final das etiquetas', NewString);
-
-  NewString := Trim(NewString);
-  if not ClickedOK then
-     Abort;
-
-  if NewString = EmptyStr then
-     oException(Nil,'Etiqueta(s) não Informada(s) !');
-
-  ACDET_INI := Trim(IFThen(Pos('+',NewString) = 0,NewString,LeftStr (NewString,Pos('+',NewString) - 1)));
-  ACDET_FIM := Trim(IFThen(Pos('+',NewString) = 0,NewString,RightStr(NewString,Length(NewString)  - Pos('+',NewString))));
-
-  if not oBSoNumero(ACDET_INI) then
-     oException(Nil,'Número da sequência inicial da etiqueta inválida !'+#13+
-                     ACDET_INI);
-
-  if not oBSoNumero(ACDET_FIM) then
-     oException(Nil,'Número da sequência final da etiqueta inválida !'+#13+
-                     ACDET_FIM);
-
-  if oYesNo(Handle,'Confirma Cancelamento ?'+#13+#13+
-                   'Etiqueta Nº ' + ACDET_INI + IFThen(ACDET_INI <> ACDET_FIM,' até Nº ' + ACDET_FIM,'') + #13 +
-                   'Romaneio Nº ' + ConsultaCDRO.AsString + ' de ' + FormatDateTime('dd.mm.yy hh:mm',ConsultaDTCA.AsDateTime)) = mrNo then
-     Abort;
-
-  with SQLConsulta do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('SELECT PK.ID FROM CAD_PRO_ENI AS PK');
-    SQL.Add('WHERE  PK.CDRO = '''+ConsultaCDRO.AsString+'''' );
-    SQL.Add('AND    PK.CDET BETWEEN '''+ACDET_INI+''' AND '''+ACDET_FIM+'''');
-    ExecQuery;
-
-    if Eof then
-       oException(Nil,'Etiqueta(s) informada(s) não fazem parte' + #13 +
-                      'do mesmo romaneio !');
-  end;
-
-  try
-    oOTransact(TEdicao);
-    with SQLEdicao do
-    begin
-      Close;
-      SQL.Clear;
-      SQL.Add('UPDATE CAD_PRO_ENI');
-      SQL.Add('SET    IDCA = '''+RECUsuarios.Id+''',');
-      SQL.Add('       CDST = 43           ,');
-      SQL.Add('       REST = ''C''        ,');
-      SQL.Add('       DEST = ''CANCELADO'',');
-      SQL.Add('       IP   = '''+RECParametros.IP     +''',');
-      SQL.Add('       HOST = '''+RECParametros.HOST   +'''' );
-      SQL.Add('WHERE  CDRO = '''+ConsultaCDRO.AsString+'''' );
-      SQL.Add('AND    CDET BETWEEN '''+ACDET_INI+''' AND '''+ACDET_FIM+'''');
-      ExecQuery;
-    end;
-
-    oCTransact(TEdicao);
-    oAviso(handle,'Estoque Cancelado com Sucesso !');
-  except
-    on E: Exception do
-    begin
-      oCTransact(TEdicao);
-      oException(Nil,'Falha ao tentar cancelar estoque !'+#13+
-                     'Favor entrar em contato com o administrador do sistema.'+#13+#13+
-                     'Erro: '+E.Message);
-    end;
-  end;
-
-  oRefresh(Consulta);
-  _SP_CAD_PRO_EST_LAN_UPD { Estoque }
-end;
-
-procedure TFrmEstoque.ACTEST_DEL_ARTExecute(Sender: TObject);
-begin
-  //RICARDObPSQUSER('EXCLUI','Estoque','Produtos','Permissões Gerais',True);
-  ActiveControl := Nil;
-
-  if ConsultaCDRO.AsInteger = 0 then
-     oException(Nil,'Romaneio não Informado !');
-
-  if ConsultaREST.AsString = 'C' then
-     oException(Nil,'Romaneio já Cancelado !');
-
-  NewString := EmptyStr;
-  ClickedOK := InputQuery('CANCELAMENTO DE ARTIGOS', 'Entre com o código do artigo', NewString);
-
-  NewString := Trim(NewString);
-  if not ClickedOK then
-     Abort;
-
-  if NewString = EmptyStr then
-     oException(Nil,'Artigo não Informado !');
-
-  if oYesNo(Handle,'Confirma Cancelamento ?'+#13+#13+
-                   'Artigo '  +UPPERCASE(NewString)+#13+
-                   'Romaneio '+ConsultaCDRO.AsString) = mrNo then
-     Abort;
-
-  with SQLConsulta do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('SELECT PK.ID FROM CAD_PRO_ENI AS PK');
-    SQL.Add('WHERE  CDRO = '''+ConsultaCDRO.AsString+'''' );
-    SQL.Add('AND    EXISTS (SELECT CP.ID FROM CAD_PRO AS CP WHERE CP.ID = PK.IDCP AND CP.PRO_CPRO CONTAINING '''+UPPERCASE(NewString)+''')');
-    ExecQuery;
-
-    if Eof then
-       oException(Nil,'Artigo informado não faz parte do romaneio !');
-  end;
-
-  try
-    oOTransact(TEdicao);
-    with SQLEdicao do
-    begin
-      Close;
-      SQL.Clear;
-      SQL.Add('UPDATE CAD_PRO_ENI AS PK');
-      SQL.Add('SET    IDCA = '''+RECUsuarios.Id+''',');
-      SQL.Add('       CDST = 43           ,');
-      SQL.Add('       REST = ''C''        ,');
-      SQL.Add('       DEST = ''CANCELADO'',');
-      SQL.Add('       IP   = '''+RECParametros.IP     +''',');
-      SQL.Add('       HOST = '''+RECParametros.HOST   +'''' );
-      SQL.Add('WHERE  CDRO = '''+ConsultaCDRO.AsString+'''' );
-      SQL.Add('AND    EXISTS (SELECT CP.ID FROM CAD_PRO AS CP WHERE CP.ID = PK.IDCP AND CP.PRO_CPRO CONTAINING '''+UPPERCASE(NewString)+''')');
-      ExecQuery;
-    end;
-
-    oCTransact(TEdicao);
-    oAviso(handle,'Estoque Cancelado com Sucesso !');
-  except
-    on E: Exception do
-    begin
-      oCTransact(TEdicao);
-      oException(Nil,'Falha ao tentar cancelar estoque !'+#13+
-                     'Favor entrar em contato com o administrador do sistema.'+#13+#13+
-                     'Erro: '+E.Message);
-    end;
-  end;
-
-  oRefresh(Consulta);
-  _SP_CAD_PRO_EST_LAN_UPD; { Estoque }
-end;
-
-procedure TFrmEstoque.ACTEST_DEL_SKUExecute(Sender: TObject);
-begin
-{}
 end;
 
 procedure TFrmEstoque.ACTEST_GERExecute(Sender: TObject);
@@ -836,7 +688,7 @@ begin
     oAviso(Self.Handle,AWarning);
     oRefresh(Consulta);
 
-    _SP_CAD_PRO_EST_LAN_UPD; { Estoque }
+    _CAD_PRO_EST_LAN_UPD; { Estoque }
   except
     on E: Exception do
     begin
@@ -910,7 +762,7 @@ begin
   end;
 
   oRefresh(Consulta);
-  _SP_CAD_PRO_EST_LAN_UPD; { Estoque }
+  _CAD_PRO_EST_LAN_UPD; { Estoque }
 end;
 
 procedure TFrmEstoque.ACTEST_ENVExecute(Sender: TObject);
@@ -1460,17 +1312,22 @@ begin
   CAD_PRO_IMG.Close; { Catálogos }
 end;
 
-procedure TFrmEstoque._SP_CAD_PRO_EST_LAN_UPD;
+procedure TFrmEstoque._CAD_PRO_EST_LAN_UPD;
 begin
   if ConsultaCDRO.AsInteger > 0 then
 
-  uSP_CAD_PRO_EST_LAN_UPD('CAD_PRO_ENI',
-                          INTTOSTR(ConsultaIDEP.AsInteger),
-                          INTTOSTR(ConsultaCDRO.AsInteger),
+  uCAD_PRO_EST_LAN_UPD('CAD_PRO_ENI',
+                       INTTOSTR(ConsultaIDEP.AsInteger),
+                       INTTOSTR(ConsultaCDRO.AsInteger),
 
-                          'IDEP',
-                          'CDRO',
-                          'IDCP');
+                       'IDEP',
+                       'CDRO',
+                       'IDCP');
+end;
+
+procedure TFrmEstoque.ACTCancelaExecute(Sender: TObject);
+begin
+  TFrmCAD_PRO_EST_DEL._ExecForm(Self,FrmCAD_PRO_EST_DEL);
 end;
 
 end.
