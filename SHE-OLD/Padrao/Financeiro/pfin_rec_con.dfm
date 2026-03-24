@@ -534,6 +534,7 @@ inherited frmfin_rec_con: Tfrmfin_rec_con
             end
             inherited GBMenuEdicao: TGroupBox
               Height = 906
+              Visible = False
               inherited SBMenuEdicao: TSpeedBar
                 Height = 885
               end

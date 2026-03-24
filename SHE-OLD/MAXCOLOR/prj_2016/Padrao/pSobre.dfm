@@ -2161,9 +2161,9 @@ object frmSobre: TfrmSobre
     object Label1: TLabel
       Left = 9
       Top = 9
-      Width = 190
+      Width = 155
       Height = 14
-      Caption = 'Vers'#227'o: IBS / CBS - primeira vers'#227'o'
+      Caption = 'Vers'#227'o: IBS / CBS + CBENEF'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -12
@@ -2176,7 +2176,7 @@ object frmSobre: TfrmSobre
       Top = 25
       Width = 95
       Height = 14
-      Caption = 'Data:17/03/2026'
+      Caption = 'Data:24/03/2026'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -12

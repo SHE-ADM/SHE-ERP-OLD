@@ -604,7 +604,7 @@ end;
 
 procedure TFrmDefaultEdicaoGrid.CadastroAfterDelete(DataSet: TDataSet);
 begin
-//  _ExecEvent;
+  oRefresh(Cadastro);
 end;
 
 procedure TFrmDefaultEdicaoGrid.CadastroAfterOpen(DataSet: TDataSet);
@@ -626,7 +626,8 @@ end;
 
 procedure TFrmDefaultEdicaoGrid.CadastroAfterPost(DataSet: TDataSet);
 begin
-//  _ExecEvent;
+  if not ALockWindowUpdate then
+  oRefresh(Cadastro);
 end;
 
 procedure TFrmDefaultEdicaoGrid.CadastroBeforeOpen(DataSet: TDataSet);

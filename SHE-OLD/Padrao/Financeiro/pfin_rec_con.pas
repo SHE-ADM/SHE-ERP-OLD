@@ -526,6 +526,8 @@ begin
               0, { Código Evento }
               0, { Tipo Evento }
               FIN_BAIXA); { Tabela }
+
+  FrmFRecebimento_Edicao.ShowModal;
 end;
 
 procedure Tfrmfin_rec_con.ACTFIN_REC_EDIExecute(Sender: TObject);
@@ -540,6 +542,8 @@ begin
               0, { Código Evento }
               0, { Tipo Evento }
               FIN_BAIXA); { Tabela }
+
+  FrmFRecebimento_Edicao.ShowModal;
 end;
 
 procedure Tfrmfin_rec_con.ACTFIN_REC_DELExecute(Sender: TObject);

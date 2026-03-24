@@ -2485,7 +2485,7 @@ object FrmSobre: TFrmSobre
       Top = 20
       Width = 101
       Height = 17
-      Caption = '22/03/2026 06:45'
+      Caption = '24/03/2026 06:56'
       Color = clInfoBk
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -2584,7 +2584,11 @@ object FrmSobre: TFrmSobre
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold, fsItalic]
       Lines.Strings = (
-        'Inclus'#227'o de Artigos')
+        'Produtos: inclus'#227'o da situa'#231#227'o FORA DE LINHA em:'
+        '1) Planejamento de compras'
+        '2) Visualiza'#231#227'o e edi'#231#227'o de produtos'
+        'Estoque: devolu'#231#227'o integral de produtos'
+        'Boletos: atualiza'#231#227'o para emiss'#227'o de baixados')
       ParentFont = False
       TabOrder = 0
     end

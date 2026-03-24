@@ -4842,7 +4842,7 @@ begin
       tProd[x,146] := oREPAcentos(nfe_001NFE_CEST.AsString);  //<CEST>
       tProd[x,156] := '';                                     //<indEscala> Indicador de Escala Relevante - S - Produzido em Escala Relevante; N – Produzido em Escala NÃO Relevante. -> Campo Novo Obrigatorio NFE 4.0
       tProd[x,157] := '';                                     //<CNPJFab> CNPJ do Fabricante da Mercadoria, obrigatório para produto em escala NÃO relevante -> Campo Novo NFE 4.0
-      tProd[x,158] := '';                                     //<cBenef> Código de Benefício Fiscal utilizado pela UF, aplicado ao item. -> Campo Novo NFE 4.0
+      tProd[x,158] := 'SEM CBENEF';                           //<cBenef> Código de Benefício Fiscal utilizado pela UF, aplicado ao item. -> Campo Novo NFE 4.0
       tProd[x,004] := nfe_001NFE_EXTIPI.AsString;                                                                      //<EXTIPI>
       tProd[x,005] := nfe_001NFE_CFOP.AsString;                                                                        //<CFOP> Código Fiscal de Operações e Prestações
       tProd[x,006] := nfe_001NFE_UCOM.AsString;                                                                        //<uCom> Uniade Comercial

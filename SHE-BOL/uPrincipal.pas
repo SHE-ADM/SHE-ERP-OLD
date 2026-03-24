@@ -515,6 +515,7 @@ begin
           SQL.Clear;
           SQL.Add('SELECT   PK.TITULO,API_ST FROM FIN_REC_LOG_API AS PK');
           SQL.Add('WHERE    PK.TITULO = ''' + SQLConsulta.Current.ByName('TITULO').AsString + '''');
+          SQL.Add('AND      PK.DEST   <> ''BAIXADO''');
           SQL.Add('ORDER BY PK.ID');
           ExecQuery;
 

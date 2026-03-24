@@ -410,11 +410,11 @@ type
     procedure DTSCAD_PRO_IMG_CDNDataChange(Sender: TObject; Field: TField);
     procedure EdicaoAfterScroll(DataSet: TDataSet);
     procedure IECDIChange(Sender: TObject);
-    procedure PETextoKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
     procedure ACTEveRegisterExecute(Sender: TObject);
     procedure ACTEveExecuteExecute(Sender: TObject);
     procedure ACTEveExpressExecute(Sender: TObject);
+    procedure PETextoValidate(Sender: TObject; var ErrorText: String;
+      var Accept: Boolean);
   private
     REC_SHE_DEF  : TREC_SHE_DEF;
     REC_SHE_EDI  : TREC_SHE_EDI;
@@ -1267,8 +1267,11 @@ end;
 
 procedure Tfrment_pro.EdicaoAfterPost(DataSet: TDataSet);
 begin
-  oRefresh(Edicao);
-  _Edited;
+  if not ALockWindowUpdate then
+  begin
+    oRefresh(Edicao);
+    _Edited;
+  end;  
 end;
 
 procedure Tfrment_pro.EdicaoAfterScroll(DataSet: TDataSet);
@@ -1300,25 +1303,28 @@ end;
 procedure Tfrment_pro.DTSCAD_PRO_IMG_CDNDataChange(Sender: TObject;
   Field: TField);
 begin
-  EDIMG_PAD.Text  := _oLoadJPG(CAD_PRO_IMG_CDNIMG_ID,CAD_PRO_IMG_CDNIMG_PAD,IMG_PAD);
+  if not ALockWindowUpdate then
+  begin
+    EDIMG_PAD.Text  := _oLoadJPG(CAD_PRO_IMG_CDNIMG_ID,CAD_PRO_IMG_CDNIMG_PAD,IMG_PAD);
 
-  DBILA_BMP1.Hint := CAD_PRO_IMG_CDND_ILA_INS1.AsString;
-  DBILA_BMP2.Hint := CAD_PRO_IMG_CDND_ILA_INS2.AsString;
-  DBILA_BMP3.Hint := CAD_PRO_IMG_CDND_ILA_INS3.AsString;
-  DBILA_BMP4.Hint := CAD_PRO_IMG_CDND_ILA_INS4.AsString;
-  DBILA_BMP5.Hint := CAD_PRO_IMG_CDND_ILA_INS5.AsString;
-  DBILA_BMP6.Hint := CAD_PRO_IMG_CDND_ILA_INS6.AsString;
-  DBILA_BMP7.Hint := CAD_PRO_IMG_CDND_ILA_INS7.AsString;
-  DBILA_BMP8.Hint := CAD_PRO_IMG_CDND_ILA_INS8.AsString;
+    DBILA_BMP1.Hint := CAD_PRO_IMG_CDND_ILA_INS1.AsString;
+    DBILA_BMP2.Hint := CAD_PRO_IMG_CDND_ILA_INS2.AsString;
+    DBILA_BMP3.Hint := CAD_PRO_IMG_CDND_ILA_INS3.AsString;
+    DBILA_BMP4.Hint := CAD_PRO_IMG_CDND_ILA_INS4.AsString;
+    DBILA_BMP5.Hint := CAD_PRO_IMG_CDND_ILA_INS5.AsString;
+    DBILA_BMP6.Hint := CAD_PRO_IMG_CDND_ILA_INS6.AsString;
+    DBILA_BMP7.Hint := CAD_PRO_IMG_CDND_ILA_INS7.AsString;
+    DBILA_BMP8.Hint := CAD_PRO_IMG_CDND_ILA_INS8.AsString;
 
-  BILA_BMP1.Hint  := DBILA_BMP1.Hint;
-  BILA_BMP2.Hint  := DBILA_BMP2.Hint;
-  BILA_BMP3.Hint  := DBILA_BMP3.Hint;
-  BILA_BMP4.Hint  := DBILA_BMP4.Hint;
-  BILA_BMP5.Hint  := DBILA_BMP5.Hint;
-  BILA_BMP6.Hint  := DBILA_BMP6.Hint;
-  BILA_BMP7.Hint  := DBILA_BMP7.Hint;
-  BILA_BMP8.Hint  := DBILA_BMP8.Hint;
+    BILA_BMP1.Hint  := DBILA_BMP1.Hint;
+    BILA_BMP2.Hint  := DBILA_BMP2.Hint;
+    BILA_BMP3.Hint  := DBILA_BMP3.Hint;
+    BILA_BMP4.Hint  := DBILA_BMP4.Hint;
+    BILA_BMP5.Hint  := DBILA_BMP5.Hint;
+    BILA_BMP6.Hint  := DBILA_BMP6.Hint;
+    BILA_BMP7.Hint  := DBILA_BMP7.Hint;
+    BILA_BMP8.Hint  := DBILA_BMP8.Hint;
+  end;  
 end;
 
 procedure Tfrment_pro.DTSEdicaoStateChange(Sender: TObject);
@@ -2190,32 +2196,32 @@ end;
 procedure Tfrment_pro._ENT_DEV_INT;
 begin
   if (CECDNF.Value > 0) and (IECDOP.Descriptions[IECDOP.Values.IndexOf(IECDOP.Text)] = 'ENTRADA DEVOLUÇÃO INTEGRAL') then
-      try
-        oOTransact(TENT_DEV,ltRead_Only);
-        with SQLFKConsulta do
-        begin
-          Close;
-          SQL.Clear;
-          SQL.Add('SELECT FK.CDET');
-          SQL.Add('FROM ' + oREPZero('ROM_CAB','_',RECParametros.EP_ID,3) + ' AS PK');
-          SQL.Add('JOIN ' + oREPZero('ROM_ITE','_',RECParametros.EP_ID,3) + ' AS FK ON (FK.IDPK = PK.ID)');
-          SQL.Add('WHERE  PK.CDNF = ''' + CECDNF.Text + '''');
-          ExecQuery;
-          while not Eof do
-          begin
-            PETexto.Text     := Current.Vars[0].AsString;
-            PETexto.Modified := True;
-            PETexto.ValidateEdit;
+  try
+    oOTransact(TENT_DEV,ltRead_Only);
+    with SQLFKConsulta do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Add('SELECT FK.CDET');
+      SQL.Add('FROM ' + oREPZero('ROM_CAB','_',RECParametros.EP_ID,3) + ' AS PK');
+      SQL.Add('JOIN ' + oREPZero('ROM_ITE','_',RECParametros.EP_ID,3) + ' AS FK ON (FK.IDPK = PK.ID)');
+      SQL.Add('WHERE  PK.CDNF = ''' + CECDNF.Text + '''');
+      ExecQuery;
+      while not Eof do
+      begin
+        PETexto.Text := Current.Vars[0].AsString;
 
-            _CAD_PRO_PSQ(CEQTDE);
-            Next;
-          end;
-        end;
+        PETexto.Modified := True;
+        PETexto.ValidateEdit;
 
-        Application.ProcessMessages;
-      finally
-        oCTransact(TENT_DEV,ltRead_Only_Release_Commit);
+        Next;
       end;
+    end;
+
+    Application.ProcessMessages;
+  finally
+    oCTransact(TENT_DEV,ltRead_Only_Release_Commit);
+  end;
 end;
 
 procedure Tfrment_pro.IECDIChange(Sender: TObject);
@@ -2439,262 +2445,6 @@ begin
   _Edited;   
 end;
 
-procedure Tfrment_pro.PETextoKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-var
-  AREC_CAD_PRO_PSQ: TREC_SHE_PSQ;
-begin
-  if key = vk_return then
-  begin
-  if (IECTNR.Tag = 0) and (IECampo.Text = 'Container') then
-      oException(IECTNR,'Container não Informado !' +#13 +
-                        'Favor selecionar um número de container válido.');
-
-  if (IECTNR.Tag > 0) and ((RECEdicao.DEPK = EmptyStr) or (PEDEPK.Text = EmptyStr)) then
-      oException(PEDEPK,'Pedido de Compra não Informado !');
-
-  PETexto.Text := oRetCodigo(PETexto.Text);
-  PETexto.Tag  := 0;
-
-  LADGCP.Caption := EmptyStr;
-  LADGCP.Refresh;
-
-  if not oEmpty(PETexto.Text) then
-     try
-       RECEdicao.BException := False;
-       oRTransact(TConsulta);
-
-       if IECampo.Text = 'Etiquetas' then
-       begin
-         try
-           if not oBSONumero(PETexto.Text) then
-           oException(PETexto,'Número da etiqueta não informada ou incorreta !');
-
-           { VER etiqueta pertence a nota fiscal }
-           with SQLConsulta do
-           begin
-             Close;
-             SQL.Clear;
-             SQL.Add('SELECT ET.IDEP,ET.CDRO,');
-             SQL.Add('       ET.IDCA,ET.DTCA,ET.IDED,ET.DTED,ET.IDST,ET.DTST,ET.CDST,ET.REST,ET.DEST,');
-             SQL.Add('       EF.CDET,EF.CTNR,EF.LOTE,EF.IDPK,EF.DEPK,EF.DTPK,EF.CDTP,IIF(EF.REST = ''A'',''A'',''E'') AS RETP,TB_TP.DESCRICAO AS DETP,');
-             SQL.Add('       EF.CDDF,TB_DF.DEDF,');
-             SQL.Add('       ET.IDCP,CP.SKU    ,CP.DGCP,EF.QTDE,EF.QTRL,');
-             SQL.Add('       FK.IDCP AS FK_IDCP,PK.CDNF,PK.DTNF,CD.FANTASIA AS DECD,CV.LOGIN AS DECV');
-
-             SQL.Add('FROM      CAD_PRO_ENI AS ET');
-             SQL.Add('LEFT JOIN CAD_PRO     AS CP    ON (CP.ID    = ET.IDCP)');
-             SQL.Add('LEFT JOIN CAD_PRO_EST AS EF    ON (EF.CDET  = ET.CDET)');
-             SQL.Add('LEFT JOIN TAB_TPO     AS TB_TP ON (TB_TP.ID = EF.CDTP)');
-             SQL.Add('LEFT JOIN TAB_DEF     AS TB_DF ON (TB_DF.ID = EF.CDDF)');
-
-             SQL.Add('LEFT JOIN ' + oREPZero('ROM_ITE','_',RECParametros.EP_ID,3) + ' AS FK ON (FK.CDET = EF.CDET)');
-             SQL.Add('LEFT JOIN ' + oREPZero('ROM_CAB','_',RECParametros.EP_ID,3) + ' AS PK ON (PK.IDPK = FK.IDPK)');
-
-             SQL.Add('LEFT JOIN CAD_CLI  AS CD ON (CD.ID = PK.IDCD)');
-             SQL.Add('LEFT JOIN TAB_USER AS CV ON (CV.ID = PK.IDCV)');
-
-             SQL.Add('WHERE  ET.CDET = ''' + PETexto.Text + '''');
-             ExecQuery;
-
-             if Eof then
-             oException(PETexto,'Número da etiqueta não encontrada !');
-
-             if Current.ByName('CDET').AsInteger = 0 then
-             oException(PETexto,'Etiqueta Nº ' + PETexto.Text + ' Inválida !' + #13 +
-                                'Produto '     + IFThen(Current.ByName('SKU').AsString <> EmptyStr,Current.ByName('SKU').AsString + ' ' + Current.ByName('DGCP').AsString,'não Encontrado') + #13 + #13 + #13 +
-                                'Etiqueta Cancelada. ' + FormatDateTime('dd/mm/yy hh:mm',Current.ByName('DTED').AsDateTime));
-
-             if Current.ByName('IDPK').AsInteger = 0 then
-             oException(PETexto,'Etiqueta Nº ' + PETexto.Text + ' Inválida !' + #13 +
-                                'Produto '     + IFThen(Current.ByName('SKU').AsString <> EmptyStr,Current.ByName('SKU').AsString + ' ' + Current.ByName('DGCP').AsString,'não Encontrado') + #13 + #13 + #13 +
-                                'Etiqueta sem registro de saída.');
-
-             if CECDNF.Value > 0 then
-             begin
-               if Current.ByName('CDNF').AsInteger <> INT(CECDNF.Value) then
-               begin
-                 RECEdicao.BException := True;
-                 oErro(Self.Handle,
-                       'Etiqueta Nº ' + PETexto.Text + ' Inválida !' + #13 +
-                       'Produto '     + IFThen(Current.ByName('SKU').AsString <> EmptyStr,Current.ByName('SKU').AsString + ' ' + Current.ByName('DGCP').AsString,'não Encontrado') + #13 + #13 +
-
-                       'Número da Nota fiscal informada é diferentente do' + #13 +
-                       'Número da nota fiscal dessa etiqueta.' + #13 + #13 +
-
-                       'NF º ' +  Current.ByName('CDNF').AsString + ' de ' + FormatDateTime('dd.mm.yy hh:mm',Current.ByName('DTNF').AsDateTime) + #13 + #13 +
-
-                       Current.ByName('DECD').AsString + #13 +
-                       Current.ByName('DECV').AsString + #13);
-               end else
-               begin
-                 CEQTDE.Value := Current.ByName('QTDE').AsCurrency;
-                 CEQTRL.Value := Current.ByName('QTRL').AsInteger;
-               end;
-             end;
-           end;
-
-           if  SQLConsulta.Current.ByName('IDCP').AsInteger = 0 then
-           if (SQLConsulta.Current.ByName('CDNF').AsInteger >  0) and (CECDNF.Value > 0) and (Pos('Nossa',LATPNF.Caption) > 0) and
-              (SQLConsulta.Current.ByName('CDNF').AsInteger <>     INT(CECDNF.Value)) then
-               oException(PETexto,'Etiqueta Nº ' + PETexto.Text + ' não romaneada !' + #13 +
-                                  'NF ' + CECDNF.Text);
-
-           PETexto.Text := SQLConsulta.Current.ByName('SKU' ).AsString;
-           PETexto.Tag  := SQLConsulta.Current.ByName('CDET').AsInteger;
-         except
-           PETexto.Text := EmptyStr;
-           PETexto.Tag  := 0;
-
-           CEQTDE.Value := 0;
-           CEQTRL.Value := 0;
-         end
-       end;
-
-       oIREC_SHE_PSQ(AREC_CAD_PRO_PSQ);
-       AREC_CAD_PRO_PSQ.FWinControl := Nil;
-       AREC_CAD_PRO_PSQ.FB_SQL      := SQLPKConsulta;
-       AREC_CAD_PRO_PSQ.PSQ_TFD_PK  := IFThen(Pos(IECampo.Text,'Etiquetas') > 0,'PK.SKU',
-                                       IFThen(Pos(IECampo.Text,'Artigos'  ) > 0,'PK.ARTIGO','PK.SKU'));
-       AREC_CAD_PRO_PSQ.PSQ_TVD_PK  := PETexto.Text;
-       AREC_CAD_PRO_PSQ.PSQ_TFD_TP  := 'EPE';
-
-       try uPSQ_CAD_PRO(AREC_CAD_PRO_PSQ);
-       finally
-         if   not AREC_CAD_PRO_PSQ.PSQ_OK then
-         begin
-           PostMessage(TWinControl(PETexto).Handle, WM_SETFOCUS, 0, 0);
-           TWinControl(PETexto).SetFocus;
-
-           PETexto.Reset;
-           Abort;
-         end else
-         begin
-           with AREC_CAD_PRO_PSQ.FB_SQL do
-           begin
-             if IECampo.Text   = 'Zerar' then
-             begin
-               if IECDTP.Text = '1' then
-               begin
-                 CEQTDE.Value := Current.ByName('EPE_QTDE').AsCurrency;
-                 CEQTRL.Value := Current.ByName('EPE_QTRL').AsInteger;
-               end else
-               if IECDTP.Text = '2' then
-               begin
-                 CEQTDE.Value := Current.ByName('EPE_QTDE').AsCurrency;
-                 CEQTRL.Value := Current.ByName('EPE_QTRL').AsInteger;
-               end else
-               if IECDTP.Text = '3' then
-               begin
-                 CEQTDE.Value := Current.ByName('EPE_QTDE').AsCurrency;
-                 CEQTRL.Value := Current.ByName('EPE_QTRL').AsInteger;
-               end else
-               if IECDTP.Text = '4' then
-               begin
-                 CEQTDE.Value := Current.ByName('EPE_QTDE').AsCurrency;
-                 CEQTRL.Value := Current.ByName('EPE_QTRL').AsInteger;
-               end else
-               begin
-                 CEQTDE.Value := Current.ByName('EPE_QTDE').AsCurrency;
-                 CEQTRL.Value := Current.ByName('EPE_QTRL').AsInteger;
-               end;
-             end else
-
-             if IECampo.Text = 'Etiquetas' then
-             begin
-             //  CEQTDE.Value := Current.ByName('QTDE').AsCurrency;
-             //  CEQTRL.Value := Current.ByName('QTRL').AsInteger;
-             end else
-             begin
-               PETexto.Text := Current.ByName('SKU').AsString;
-               PETexto.Tag  := 0;
-
-               CEQTDE.Value := Current.ByName('UQTDE').AsCurrency;  { RICARDO }
-               CEQTRL.Value := 1;
-
-               { Container }
-               if CTNR.Locate('CDPK;SKU',VarArrayOf([RECEdicao.CDPK,PETexto.Text]),[]) then
-               begin
-                 CEQTDE.Value := CTNRUQTDE.AsCurrency;
-                // CEQTRL.Value := 1;
-               end else
-               { Pedidos }
-               if RECEdicao.CDPK > 0 then
-                  with SQLConsulta do
-                  begin
-                    Close;
-                    SQL.Clear;
-                    SQL.Add('SELECT   IIF(FK.QTSP > 0,FK.QTSP,FK.QTDE) AS QTDE,IIF(FK.RLSP > 0,FK.RLSP,FK.QTRL) AS QTRL');
-                    SQL.Add('FROM ' + oREPZero(RECEdicao.TBFK,'_',RECParametros.EP_ID,3) +' AS FK');
-                    SQL.Add('JOIN     CAD_PRO AS CP ON (CP.ID = FK.IDCP)  ');
-                    SQL.Add('WHERE    FK.IDPK = ''' + RECEdicao.CDPK + '''');
-                    SQL.Add('AND      CP.SKU  = ''' + PETexto.Text   + '''');
-                    ExecQuery;
-
-                    if not Eof then
-                    begin
-                      //CEQTDE.Value := Current.Vars[0].AsCurrency;
-                      CEQTRL.Value := Current.Vars[1].AsInteger;
-                    end;
-                  end;
-             end;
-
-             { Grade }
-             LADGCP.Caption := Current.ByName('GRD_NO').AsString;
-             LADGCP.Refresh;
-
-             { Coleção }
-             if IECOL_ID.Text <> '0' then
-                IECOL_ID.Font.Style := [fsBold] else
-                IECOL_ID.Font.Style := [];
-
-             { Preço Fornecedor }
-             IECF_VPRC_PAD_ORI.Text := SQLPKConsulta.Current.ByName('CF_VPRC_ORIG').AsString;
-             CECF_VPRC_PAD.Value    := SQLPKConsulta.Current.ByName('CF_VPRC_PAD' ).AsCurrency;
-
-             if CECF_VPRC_PAD.Value > 0 then
-                IECF_VPRC_PAD_ORI.Font.Style := [fsBold] else
-                IECF_VPRC_PAD_ORI.Font.Style := [];
-
-             { Preço Comercial }
-             CEVPRC_PAD.Value := SQLPKConsulta.Current.ByName('VPRC_PAD').AsCurrency;
-
-             if CEVPRC_PAD.Value > 0 then
-                IEVPRC_PAD_ORI.Font.Style := [fsBold] else
-                IEVPRC_PAD_ORI.Font.Style := [];
-
-
-             { Saldo Estoque }
-             CEEPV_QTDE.Value := SQLPKConsulta.Current.ByName('EPV_QTDE').AsCurrency;
-             CEESP_QTDE.Value := SQLPKConsulta.Current.ByName('ESP_QTDE').AsCurrency;
-             CEEPE_QTDE.Value := SQLPKConsulta.Current.ByName('EPE_QTDE').AsCurrency;
-
-             { Imagem }
-             with QConsulta do
-             begin
-               Close;
-               SQL.Clear;
-               SQL.Add('SELECT CDN.IMG_ID,CDN.IMG_PAD FROM VW_CAD_PRO_IMG AS CDN');
-               SQL.Add('WHERE  CDN.IMG_ID = ''' + SQLPKConsulta.Current.ByName('IMG_ID').AsString + '''');
-               Open;
-             end;
-             EDIMG_PAD.Text := _oLoadJPG(QConsulta.FieldByName('IMG_ID'),QConsulta.FieldByName('IMG_PAD'),IMG_PAD);
-           end;
-         end;
-       end;
-     finally
-       oCTransact(TConsulta);
-     end;
-
-  if (IECampo.Text = 'Etiquetas') and (CEQTDE.Value > 0) then
-      try
-        _CAD_PRO_PSQ(CEQTDE);
-      finally
-        PETexto.SetFocus;
-      end;
-    end;
-end;
-
 procedure Tfrment_pro.ACTEveRegisterExecute(Sender: TObject);
 begin
   { UNREGISTER EVENTS }
@@ -2789,6 +2539,259 @@ procedure Tfrment_pro.ACTEveExpressExecute(Sender: TObject);
 begin
   ACTEveRegister.Execute;
   ACTEveExecute.Execute;
+end;
+
+procedure Tfrment_pro.PETextoValidate(Sender: TObject;
+  var ErrorText: String; var Accept: Boolean);
+var
+  AREC_CAD_PRO_PSQ: TREC_SHE_PSQ;
+begin
+  if (IECTNR.Tag = 0) and (IECampo.Text = 'Container') then
+  oException(IECTNR,'Container não Informado !' +#13 +
+                    'Favor selecionar um número de container válido.');
+
+  if (IECTNR.Tag > 0) and ((RECEdicao.DEPK = EmptyStr) or (PEDEPK.Text = EmptyStr)) then
+  oException(PEDEPK,'Pedido de Compra não Informado !');
+
+  PETexto.Text := oRetCodigo(PETexto.Text);
+  PETexto.Tag  := 0;
+
+  LADGCP.Caption := EmptyStr;
+  LADGCP.Refresh;
+
+  if not oEmpty(PETexto.Text) then
+  try
+    RECEdicao.BException := False;
+    oRTransact(TConsulta);
+
+    if IECampo.Text = 'Etiquetas' then
+    begin
+      try
+        if not oBSONumero(PETexto.Text) then
+        oException(PETexto,'Número da etiqueta não informada ou incorreta !');
+
+        { VER etiqueta pertence a nota fiscal }
+        with SQLConsulta do
+        begin
+          Close;
+          SQL.Clear;
+          SQL.Add('SELECT ET.IDEP,ET.CDRO,');
+          SQL.Add('       ET.IDCA,ET.DTCA,ET.IDED,ET.DTED,ET.IDST,ET.DTST,ET.CDST,ET.REST,ET.DEST,');
+          SQL.Add('       EF.CDET,EF.CTNR,EF.LOTE,EF.IDPK,EF.DEPK,EF.DTPK,EF.CDTP,IIF(EF.REST = ''A'',''A'',''E'') AS RETP,TB_TP.DESCRICAO AS DETP,');
+          SQL.Add('       EF.CDDF,TB_DF.DEDF,');
+          SQL.Add('       ET.IDCP,CP.SKU    ,CP.DGCP,EF.QTDE,EF.QTRL,');
+          SQL.Add('       FK.IDCP AS FK_IDCP,PK.CDNF,PK.DTNF,CD.FANTASIA AS DECD,CV.LOGIN AS DECV');
+
+          SQL.Add('FROM      CAD_PRO_ENI AS ET');
+          SQL.Add('LEFT JOIN CAD_PRO     AS CP    ON (CP.ID    = ET.IDCP)');
+          SQL.Add('LEFT JOIN CAD_PRO_EST AS EF    ON (EF.CDET  = ET.CDET)');
+          SQL.Add('LEFT JOIN TAB_TPO     AS TB_TP ON (TB_TP.ID = EF.CDTP)');
+          SQL.Add('LEFT JOIN TAB_DEF     AS TB_DF ON (TB_DF.ID = EF.CDDF)');
+
+          SQL.Add('LEFT JOIN ' + oREPZero('ROM_ITE','_',RECParametros.EP_ID,3) + ' AS FK ON (FK.CDET = EF.CDET)');
+          SQL.Add('LEFT JOIN ' + oREPZero('ROM_CAB','_',RECParametros.EP_ID,3) + ' AS PK ON (PK.IDPK = FK.IDPK)');
+
+          SQL.Add('LEFT JOIN CAD_CLI  AS CD ON (CD.ID = PK.IDCD)');
+          SQL.Add('LEFT JOIN TAB_USER AS CV ON (CV.ID = PK.IDCV)');
+
+          SQL.Add('WHERE  ET.CDET = ''' + PETexto.Text + '''');
+          ExecQuery;
+
+          if Eof then
+          oException(PETexto,'Número da etiqueta não encontrada !');
+
+          if Current.ByName('CDET').AsInteger = 0 then
+          oException(PETexto,'Etiqueta Nº ' + PETexto.Text + ' Inválida !' + #13 +
+                             'Produto '     + IFThen(Current.ByName('SKU').AsString <> EmptyStr,Current.ByName('SKU').AsString + ' ' + Current.ByName('DGCP').AsString,'não Encontrado') + #13 + #13 + #13 +
+                             'Etiqueta Cancelada. ' + FormatDateTime('dd/mm/yy hh:mm',Current.ByName('DTED').AsDateTime));
+
+          if Current.ByName('IDPK').AsInteger = 0 then
+          oException(PETexto,'Etiqueta Nº ' + PETexto.Text + ' Inválida !' + #13 +
+                             'Produto '     + IFThen(Current.ByName('SKU').AsString <> EmptyStr,Current.ByName('SKU').AsString + ' ' + Current.ByName('DGCP').AsString,'não Encontrado') + #13 + #13 + #13 +
+                             'Etiqueta sem registro de saída.');
+
+          if CECDNF.Value > 0 then
+          begin
+            if Current.ByName('CDNF').AsInteger <> INT(CECDNF.Value) then
+            begin
+              RECEdicao.BException := True;
+              oErro(Self.Handle,
+                    'Etiqueta Nº ' + PETexto.Text + ' Inválida !' + #13 +
+                    'Produto '     + IFThen(Current.ByName('SKU').AsString <> EmptyStr,Current.ByName('SKU').AsString + ' ' + Current.ByName('DGCP').AsString,'não Encontrado') + #13 + #13 +
+
+                    'Número da Nota fiscal informada é diferentente do' + #13 +
+                    'Número da nota fiscal dessa etiqueta.' + #13 + #13 +
+
+                    'NF º ' +  Current.ByName('CDNF').AsString + ' de ' + FormatDateTime('dd.mm.yy hh:mm',Current.ByName('DTNF').AsDateTime) + #13 + #13 +
+
+                    Current.ByName('DECD').AsString + #13 +
+                    Current.ByName('DECV').AsString + #13);
+            end else
+            begin
+              CEQTDE.Value := Current.ByName('QTDE').AsCurrency;
+              CEQTRL.Value := Current.ByName('QTRL').AsInteger;
+            end;
+          end;
+        end;
+
+        if  SQLConsulta.Current.ByName('IDCP').AsInteger = 0 then
+        if (SQLConsulta.Current.ByName('CDNF').AsInteger >  0) and (CECDNF.Value > 0) and (Pos('Nossa',LATPNF.Caption) > 0) and
+           (SQLConsulta.Current.ByName('CDNF').AsInteger <>     INT(CECDNF.Value)) then
+            oException(PETexto,'Etiqueta Nº ' + PETexto.Text + ' não romaneada !' + #13 +
+                               'NF ' + CECDNF.Text);
+
+        PETexto.Text := SQLConsulta.Current.ByName('SKU' ).AsString;
+        PETexto.Tag  := SQLConsulta.Current.ByName('CDET').AsInteger;
+      except
+        PETexto.Text := EmptyStr;
+        PETexto.Tag  := 0;
+
+        CEQTDE.Value := 0;
+        CEQTRL.Value := 0;
+      end
+    end;
+
+    oIREC_SHE_PSQ(AREC_CAD_PRO_PSQ);
+    AREC_CAD_PRO_PSQ.FWinControl := Nil;
+    AREC_CAD_PRO_PSQ.FB_SQL      := SQLPKConsulta;
+    AREC_CAD_PRO_PSQ.PSQ_TFD_PK  := IFThen(Pos(IECampo.Text,'Etiquetas') > 0,'PK.SKU',
+                                    IFThen(Pos(IECampo.Text,'Artigos'  ) > 0,'PK.ARTIGO','PK.SKU'));
+    AREC_CAD_PRO_PSQ.PSQ_TVD_PK  := PETexto.Text;
+    AREC_CAD_PRO_PSQ.PSQ_TFD_TP  := 'EPE';
+
+    try uPSQ_CAD_PRO(AREC_CAD_PRO_PSQ);
+    finally
+      if   not AREC_CAD_PRO_PSQ.PSQ_OK then
+      begin
+        PostMessage(TWinControl(PETexto).Handle, WM_SETFOCUS, 0, 0);
+        TWinControl(PETexto).SetFocus;
+
+        PETexto.Reset;
+        Abort;
+      end else
+      begin
+        with AREC_CAD_PRO_PSQ.FB_SQL do
+        begin
+          if IECampo.Text   = 'Zerar' then
+          begin
+            if IECDTP.Text = '1' then
+            begin
+              CEQTDE.Value := Current.ByName('EPE_QTDE').AsCurrency;
+              CEQTRL.Value := Current.ByName('EPE_QTRL').AsInteger;
+            end else
+            if IECDTP.Text = '2' then
+            begin
+              CEQTDE.Value := Current.ByName('EPE_QTDE').AsCurrency;
+              CEQTRL.Value := Current.ByName('EPE_QTRL').AsInteger;
+            end else
+            if IECDTP.Text = '3' then
+            begin
+              CEQTDE.Value := Current.ByName('EPE_QTDE').AsCurrency;
+              CEQTRL.Value := Current.ByName('EPE_QTRL').AsInteger;
+            end else
+            if IECDTP.Text = '4' then
+            begin
+              CEQTDE.Value := Current.ByName('EPE_QTDE').AsCurrency;
+              CEQTRL.Value := Current.ByName('EPE_QTRL').AsInteger;
+            end else
+            begin
+              CEQTDE.Value := Current.ByName('EPE_QTDE').AsCurrency;
+              CEQTRL.Value := Current.ByName('EPE_QTRL').AsInteger;
+            end;
+          end else
+
+          if IECampo.Text = 'Etiquetas' then
+          begin
+          //  CEQTDE.Value := Current.ByName('QTDE').AsCurrency;
+          //  CEQTRL.Value := Current.ByName('QTRL').AsInteger;
+          end else
+          begin
+            PETexto.Text := Current.ByName('SKU').AsString;
+            PETexto.Tag  := 0;
+
+            CEQTDE.Value := Current.ByName('UQTDE').AsCurrency;  { RICARDO }
+            CEQTRL.Value := 1;
+
+            { Container }
+            if CTNR.Locate('CDPK;SKU',VarArrayOf([RECEdicao.CDPK,PETexto.Text]),[]) then
+            begin
+              CEQTDE.Value := CTNRUQTDE.AsCurrency;
+             // CEQTRL.Value := 1;
+            end else
+            { Pedidos }
+            if RECEdicao.CDPK > 0 then
+               with SQLConsulta do
+               begin
+                 Close;
+                 SQL.Clear;
+                 SQL.Add('SELECT   IIF(FK.QTSP > 0,FK.QTSP,FK.QTDE) AS QTDE,IIF(FK.RLSP > 0,FK.RLSP,FK.QTRL) AS QTRL');
+                 SQL.Add('FROM ' + oREPZero(RECEdicao.TBFK,'_',RECParametros.EP_ID,3) +' AS FK');
+                 SQL.Add('JOIN     CAD_PRO AS CP ON (CP.ID = FK.IDCP)  ');
+                 SQL.Add('WHERE    FK.IDPK = ''' + RECEdicao.CDPK + '''');
+                 SQL.Add('AND      CP.SKU  = ''' + PETexto.Text   + '''');
+                 ExecQuery;
+
+                 if not Eof then
+                 begin
+                   //CEQTDE.Value := Current.Vars[0].AsCurrency;
+                   CEQTRL.Value := Current.Vars[1].AsInteger;
+                 end;
+               end;
+          end;
+
+          { Grade }
+          LADGCP.Caption := Current.ByName('GRD_NO').AsString;
+          LADGCP.Refresh;
+
+          { Coleção }
+          if IECOL_ID.Text <> '0' then
+             IECOL_ID.Font.Style := [fsBold] else
+             IECOL_ID.Font.Style := [];
+
+          { Preço Fornecedor }
+          IECF_VPRC_PAD_ORI.Text := SQLPKConsulta.Current.ByName('CF_VPRC_ORIG').AsString;
+          CECF_VPRC_PAD.Value    := SQLPKConsulta.Current.ByName('CF_VPRC_PAD' ).AsCurrency;
+
+          if CECF_VPRC_PAD.Value > 0 then
+             IECF_VPRC_PAD_ORI.Font.Style := [fsBold] else
+             IECF_VPRC_PAD_ORI.Font.Style := [];
+
+          { Preço Comercial }
+          CEVPRC_PAD.Value := SQLPKConsulta.Current.ByName('VPRC_PAD').AsCurrency;
+
+          if CEVPRC_PAD.Value > 0 then
+             IEVPRC_PAD_ORI.Font.Style := [fsBold] else
+             IEVPRC_PAD_ORI.Font.Style := [];
+
+
+          { Saldo Estoque }
+          CEEPV_QTDE.Value := SQLPKConsulta.Current.ByName('EPV_QTDE').AsCurrency;
+          CEESP_QTDE.Value := SQLPKConsulta.Current.ByName('ESP_QTDE').AsCurrency;
+          CEEPE_QTDE.Value := SQLPKConsulta.Current.ByName('EPE_QTDE').AsCurrency;
+
+          { Imagem }
+          with QConsulta do
+          begin
+            Close;
+            SQL.Clear;
+            SQL.Add('SELECT CDN.IMG_ID,CDN.IMG_PAD FROM VW_CAD_PRO_IMG AS CDN');
+            SQL.Add('WHERE  CDN.IMG_ID = ''' + SQLPKConsulta.Current.ByName('IMG_ID').AsString + '''');
+            Open;
+          end;
+          EDIMG_PAD.Text := _oLoadJPG(QConsulta.FieldByName('IMG_ID'),QConsulta.FieldByName('IMG_PAD'),IMG_PAD);
+        end;
+      end;
+    end;
+  finally
+    oCTransact(TConsulta);
+  end;
+
+  if (IECampo.Text = 'Etiquetas') and (CEQTDE.Value > 0) then
+  try
+    _CAD_PRO_PSQ(CEQTDE);
+  finally
+    PETexto.SetFocus;
+  end;
 end;
 
 end.

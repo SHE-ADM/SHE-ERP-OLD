@@ -411,6 +411,7 @@ type
     DTSFBResumo_Diario: TDataSource;
     DTSFBResumo_Mensal: TDataSource;
     SQLFBFKEdicao: TIBSQL;
+    CDSFBTAB_USER_ADMID: TLargeintField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
     procedure DBEventEventAlert(Sender: TObject; EventName: String;

@@ -1051,6 +1051,11 @@ begin
       AColor      := $000024B3;
       AFont.Color := clWhite;
     end else
+    if LeftStr(ANode.Values[DBGProdutosREST.Index],1) = 'F' then
+    begin
+      AColor      := $0080FFFF; //$00002FEC $000031F4 $00C4FFC4 $00D9FFFF;
+      AFont.Color := clWindowText;
+    end else
     begin
       if (AColumn = DBGProdutosEPE_QTDE) or (AColumn = DBGProdutosEPE_QTRL) then
       begin

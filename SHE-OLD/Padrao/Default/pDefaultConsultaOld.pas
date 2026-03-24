@@ -186,7 +186,7 @@ end;
 procedure TFrmDefaultConsultaOld._WM_AFTER_CREATE(var Msg: TMessage);
 begin
   { FORM SCREEN }
-  SetCursorPos(500,Self.Top);
+  //SetCursorPos(500,Self.Top);
 
   { FORM CAPTION }
   if FCurrentEvent  = EmptyStr then

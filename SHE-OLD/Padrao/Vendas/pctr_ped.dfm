@@ -2534,7 +2534,7 @@ inherited frmctr_ped: Tfrmctr_ped
           Left = 0
           Top = 0
           Width = 850
-          Height = 520
+          Height = 140
           Cursor = crHandPoint
           Color = clBtnFace
           Font.Charset = ANSI_CHARSET
@@ -2557,7 +2557,7 @@ inherited frmctr_ped: Tfrmctr_ped
           object DBGResumoDiario: TdxDBGrid
             Left = 0
             Top = 0
-            Width = 846
+            Width = 21
             Height = 494
             Cursor = crHandPoint
             Bands = <
@@ -2812,7 +2812,7 @@ inherited frmctr_ped: Tfrmctr_ped
           Left = 0
           Top = 0
           Width = 850
-          Height = 520
+          Height = 140
           Cursor = crHandPoint
           Font.Charset = ANSI_CHARSET
           Font.Color = clBlack
@@ -2833,7 +2833,7 @@ inherited frmctr_ped: Tfrmctr_ped
           object DBGResumoMensal: TdxDBGrid
             Left = 0
             Top = 0
-            Width = 846
+            Width = 0
             Height = 494
             Cursor = crHandPoint
             Bands = <

@@ -606,20 +606,6 @@ begin
   { ACCESS MANAGER }
   REC_SHE_DEF.FB_Event := 'PED_PDV_ADM'; { Eventos }
 
-  { SET GRANT DEVOLUÇÕES }
-  REC_SHE_DEF.GDescricao  := 'Pedidos';
-  REC_SHE_DEF.GReferencia := 'Devoluções';
-  REC_SHE_DEF.GRegra      := 'Permissões Gerais';
-  oUSER(REC_SHE_DEF);
-  ACTMPDevolucao.Enabled := REC_SHE_DEF.GAppend;
-
-  { SET GRANT ABATIMENTOS }
-  REC_SHE_DEF.GDescricao  := 'Pedidos';
-  REC_SHE_DEF.GReferencia := 'Abatimentos';
-  REC_SHE_DEF.GRegra      := 'Permissões Gerais';
-  oUSER(REC_SHE_DEF);
-  ACTMPAbatimento.Enabled := REC_SHE_DEF.GAppend;
-
   { SET GRANT ROMANEIOS }
   REC_SHE_DEF.GDescricao  := 'Pedidos';
   REC_SHE_DEF.GReferencia := 'Romaneios';
@@ -634,6 +620,20 @@ begin
   oUSER(REC_SHE_DEF);
   ACTMPFinanceiroAppend.Enabled := (REC_SHE_DEF.GAppend) or (REC_SHE_DEF.GEdit) or (RECUsuarios.Grupo = 'FIN');
   ACTMPFinanceiroDelete.Enabled := (REC_SHE_DEF.GAppend) or (REC_SHE_DEF.GEdit) or (RECUsuarios.Grupo = 'FIN');
+
+  { SET GRANT DEVOLUÇÕES }
+  REC_SHE_DEF.GDescricao  := 'Pedidos';
+  REC_SHE_DEF.GReferencia := 'Vendas';
+  REC_SHE_DEF.GRegra      := 'Devoluções';
+  oUSER(REC_SHE_DEF);
+  ACTMPDevolucao.Enabled  := REC_SHE_DEF.GAppend;
+
+  { SET GRANT ABATIMENTOS }
+  REC_SHE_DEF.GDescricao  := 'Pedidos';
+  REC_SHE_DEF.GReferencia := 'Vendas';
+  REC_SHE_DEF.GRegra      := 'Abatimentos';
+  oUSER(REC_SHE_DEF);
+  ACTMPAbatimento.Enabled := REC_SHE_DEF.GAppend;
 
   { GRANT USER }
   REC_SHE_DEF.GDescricao  := 'Pedidos';
@@ -913,29 +913,19 @@ procedure Tfrmctr_ped.dtscadastroDataChange(Sender: TObject;
 var
   PosCount: Word;
 begin
-{  if CadastroREST.AsString = 'C' then
+  if REC_SHE_DEF.GEdit then
+  ACTMPEdit.Enabled := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0);
+
+  if REC_SHE_DEF.GCancel then
+  SICancela.Enabled := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0) and (CadastroCDNF.AsInteger = 0);
+
+  if REC_SHE_DEF.GControl then
   begin
-    SIAltera.ImageIndex := 19;
-    SIAltera.BtnCaption := 'Recuperar';
-    SIAltera.Hint       := 'Recuperar Cancelados';
-  end else
-  begin
-    SIAltera.ImageIndex := 1;
-    SIAltera.BtnCaption := 'Cancelar';
-    SIAltera.Hint       := 'Cancelar Pedidos';
-  end;}
-
-  SIAltera.Enabled     := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0);
-  SICancela.Enabled    := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0) and (CadastroCDNF.AsInteger = 0);
-
-  SIDevolucao.Enabled  := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C');
-  SIAbatimento.Enabled := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C');
-
-  SIRomaneio.Enabled   := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0) and (CadastroCDNF.AsInteger   = 0) and (CadastroCDRO.AsInteger = 0) and (Pos(LeftStr(CadastroD_DEST.AsString,3),'BLQ') = 0);
-
-  SIFinaliza.Enabled   := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0) and (((CadastroCDNF.AsInteger > 0) and (LeftStr(CadastroRECO.AsString,1) = 'B')) or (LeftStr(CadastroRECO.AsString,1) <> 'B'));
-  SIEstorno.Enabled    := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger > 0);
-
+    SIRomaneio.Enabled := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0) and (CadastroCDNF.AsInteger   = 0) and (CadastroCDRO.AsInteger = 0) and (Pos(LeftStr(CadastroD_DEST.AsString,3),'BLQ') = 0);
+    SIFinaliza.Enabled := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0) and (((CadastroCDNF.AsInteger > 0) and (LeftStr(CadastroRECO.AsString,1) = 'B')) or (LeftStr(CadastroRECO.AsString,1) <> 'B'));
+    SIEstorno.Enabled  := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger > 0);
+  end;
+  
   { Admin }
   if RECUsuarios.ID = 0 then
   SIRomaneio.Enabled := True;

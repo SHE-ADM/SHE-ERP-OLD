@@ -3019,25 +3019,23 @@ begin
   MPSheild.Visible := (RECUsuarios.Grupo = 'DEV');
 
   { Menu Lateral }
-  if RECUsuarios.Grupo = 'ADM' then
-  begin
-    PNLADM.Visible := True;
-    PNLFIN.Visible := False;
-    PNLPCP.Visible := False;
-  end;
-
   if RECUsuarios.Grupo = 'FIN' then
   begin
     PNLFIN.Visible := True;
     PNLADM.Visible := False;
     PNLPCP.Visible := False;
-  end;
+  end else
 
   if RECUsuarios.Grupo = 'PCP' then
   begin
     PNLPCP.Visible := True;
     PNLADM.Visible := False;
     PNLFIN.Visible := False;
+  end else
+  begin
+    PNLADM.Visible := True;
+    PNLFIN.Visible := False;
+    PNLPCP.Visible := False;
   end;
 
   Application.ProcessMessages;

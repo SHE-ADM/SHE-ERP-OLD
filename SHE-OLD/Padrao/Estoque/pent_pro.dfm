@@ -1,14 +1,14 @@
 object frment_pro: Tfrment_pro
-  Left = 538
-  Top = 58
+  Left = 255
+  Top = 32
   HelpContext = 1
   ActiveControl = PETexto
   AlphaBlendValue = 0
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Lan'#231'amentos de Estoque'
-  ClientHeight = 860
-  ClientWidth = 1184
+  ClientHeight = 950
+  ClientWidth = 1185
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -265,7 +265,7 @@ object frment_pro: Tfrment_pro
   object SBMenu: TSpeedBar
     Left = 0
     Top = 0
-    Width = 1184
+    Width = 1185
     Height = 72
     Cursor = crHandPoint
     Font.Charset = DEFAULT_CHARSET
@@ -389,7 +389,7 @@ object frment_pro: Tfrment_pro
   object PNLPrincipal: TPanel
     Left = 0
     Top = 72
-    Width = 1184
+    Width = 1185
     Height = 361
     Align = alTop
     BevelOuter = bvNone
@@ -397,7 +397,7 @@ object frment_pro: Tfrment_pro
     object PNLME: TPanel
       Left = 0
       Top = 0
-      Width = 849
+      Width = 850
       Height = 361
       Align = alClient
       BevelOuter = bvNone
@@ -412,7 +412,7 @@ object frment_pro: Tfrment_pro
       object PNLSumario: TPanel
         Left = 0
         Top = 185
-        Width = 849
+        Width = 850
         Height = 176
         Align = alClient
         BevelOuter = bvNone
@@ -420,7 +420,7 @@ object frment_pro: Tfrment_pro
         object PNLProdutos: TPanel
           Left = 0
           Top = 86
-          Width = 849
+          Width = 850
           Height = 90
           Align = alBottom
           BevelOuter = bvNone
@@ -583,10 +583,10 @@ object frment_pro: Tfrment_pro
                 Style.BorderStyle = xbsSingle
                 Style.ButtonStyle = btsFlat
                 TabOrder = 0
-                OnKeyDown = PETextoKeyDown
                 Alignment = taLeftJustify
                 AutoSize = False
                 CharCase = ecUpperCase
+                OnValidate = PETextoValidate
                 DropDownRows = 15
                 Height = 22
                 StoredValues = 1
@@ -887,7 +887,7 @@ object frment_pro: Tfrment_pro
           object GroupBox1: TGroupBox
             Left = 649
             Top = 0
-            Width = 200
+            Width = 201
             Height = 90
             Align = alClient
             Caption = '  Estoque  '
@@ -1046,7 +1046,7 @@ object frment_pro: Tfrment_pro
         object PNLINFADCAD: TPanel
           Left = 0
           Top = 0
-          Width = 849
+          Width = 850
           Height = 86
           Align = alClient
           BevelOuter = bvNone
@@ -1054,7 +1054,7 @@ object frment_pro: Tfrment_pro
           object GBINFADCAD: TGroupBox
             Left = 0
             Top = 0
-            Width = 849
+            Width = 850
             Height = 86
             Align = alClient
             Caption = '  Informa'#231#245'es Adicionais do Romaneio  '
@@ -1070,7 +1070,7 @@ object frment_pro: Tfrment_pro
             object EMINFADCAD: TdxMemo
               Left = 2
               Top = 19
-              Width = 845
+              Width = 846
               Align = alClient
               Color = clInfoBk
               Font.Charset = ANSI_CHARSET
@@ -1094,7 +1094,7 @@ object frment_pro: Tfrment_pro
       object PNLTOP: TPanel
         Left = 0
         Top = 0
-        Width = 849
+        Width = 850
         Height = 185
         Align = alTop
         BevelOuter = bvNone
@@ -1102,7 +1102,7 @@ object frment_pro: Tfrment_pro
         object PNLTOPMD: TPanel
           Left = 370
           Top = 0
-          Width = 479
+          Width = 480
           Height = 185
           Align = alClient
           BevelOuter = bvNone
@@ -1110,7 +1110,7 @@ object frment_pro: Tfrment_pro
           object GBNF: TGroupBox
             Left = 0
             Top = 0
-            Width = 479
+            Width = 480
             Height = 92
             Align = alTop
             Caption = '  Nota Fiscal  '
@@ -1307,7 +1307,7 @@ object frment_pro: Tfrment_pro
           object GBPK: TGroupBox
             Left = 0
             Top = 92
-            Width = 479
+            Width = 480
             Height = 93
             Align = alClient
             Caption = '  Pedido  '
@@ -1998,7 +1998,7 @@ object frment_pro: Tfrment_pro
       end
     end
     object PNLAmostra: TPanel
-      Left = 849
+      Left = 850
       Top = 0
       Width = 335
       Height = 361
@@ -2340,8 +2340,8 @@ object frment_pro: Tfrment_pro
   object PNLRodape: TPanel
     Left = 0
     Top = 433
-    Width = 1184
-    Height = 406
+    Width = 1185
+    Height = 496
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 2
@@ -2349,7 +2349,7 @@ object frment_pro: Tfrment_pro
       Left = 0
       Top = 0
       Width = 60
-      Height = 406
+      Height = 496
       Align = alLeft
       BevelOuter = bvNone
       TabOrder = 0
@@ -2357,7 +2357,7 @@ object frment_pro: Tfrment_pro
         Left = 0
         Top = 0
         Width = 60
-        Height = 406
+        Height = 496
         Align = alClient
         Caption = ' Edi'#231#227'o '
         Font.Charset = ANSI_CHARSET
@@ -2371,7 +2371,7 @@ object frment_pro: Tfrment_pro
           Left = 2
           Top = 19
           Width = 56
-          Height = 385
+          Height = 475
           Cursor = crHandPoint
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -2430,16 +2430,16 @@ object frment_pro: Tfrment_pro
     object PNLConsulta: TPanel
       Left = 60
       Top = 0
-      Width = 1124
-      Height = 406
+      Width = 1125
+      Height = 496
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 1
       object GBConsulta: TGroupBox
         Left = 0
         Top = 0
-        Width = 1124
-        Height = 366
+        Width = 1125
+        Height = 456
         Align = alClient
         Caption = '  Consulta  '
         Font.Charset = ANSI_CHARSET
@@ -2452,8 +2452,8 @@ object frment_pro: Tfrment_pro
         object DBGConsulta: TdxDBGrid
           Left = 2
           Top = 19
-          Width = 1120
-          Height = 345
+          Width = 1121
+          Height = 435
           Bands = <
             item
               Caption = 'Produtos'
@@ -2809,8 +2809,8 @@ object frment_pro: Tfrment_pro
       end
       object PNLD_CAD_PRO: TPanel
         Left = 0
-        Top = 366
-        Width = 1124
+        Top = 456
+        Width = 1125
         Height = 40
         Align = alBottom
         BevelOuter = bvNone
@@ -2827,7 +2827,7 @@ object frment_pro: Tfrment_pro
         object PNLD_DECP: TPanel
           Left = 0
           Top = 0
-          Width = 1124
+          Width = 1125
           Height = 22
           Align = alClient
           BevelOuter = bvNone
@@ -2844,7 +2844,7 @@ object frment_pro: Tfrment_pro
         object PNLD_INFADCAD: TPanel
           Left = 0
           Top = 22
-          Width = 1124
+          Width = 1125
           Height = 18
           Align = alBottom
           BevelOuter = bvNone
@@ -2864,8 +2864,8 @@ object frment_pro: Tfrment_pro
   object SBRodape: TdxStatusBar
     Tag = 1
     Left = 0
-    Top = 839
-    Width = 1184
+    Top = 929
+    Width = 1185
     Height = 21
     Cursor = crHandPoint
     Panels = <

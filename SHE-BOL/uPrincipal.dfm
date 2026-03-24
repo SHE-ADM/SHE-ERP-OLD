@@ -4,7 +4,7 @@ object FrmSHE_BOL: TFrmSHE_BOL
   ActiveControl = EDCDNF
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  ClientHeight = 805
+  ClientHeight = 793
   ClientWidth = 1024
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -448,8 +448,8 @@ object FrmSHE_BOL: TFrmSHE_BOL
     Visible = False
   end
   object FBoletoX: TspdBoletoX
-    Left = 478
-    Top = 269
+    Left = 406
+    Top = 349
     Width = 26
     Height = 26
     ControlData = {
@@ -507,9 +507,9 @@ object FrmSHE_BOL: TFrmSHE_BOL
   end
   object mmoMensagens: TMemo
     Left = 0
-    Top = 711
+    Top = 692
     Width = 1024
-    Height = 75
+    Height = 82
     Align = alBottom
     Color = clInfoBk
     ScrollBars = ssVertical
@@ -548,7 +548,7 @@ object FrmSHE_BOL: TFrmSHE_BOL
   end
   object SBRodape: TStatusBar
     Left = 0
-    Top = 786
+    Top = 774
     Width = 1024
     Height = 19
     Panels = <
@@ -642,7 +642,7 @@ object FrmSHE_BOL: TFrmSHE_BOL
     Left = 496
     Top = 239
     Width = 524
-    Height = 470
+    Height = 450
     Cursor = crHandPoint
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -701,7 +701,7 @@ object FrmSHE_BOL: TFrmSHE_BOL
     Left = 5
     Top = 239
     Width = 484
-    Height = 470
+    Height = 450
     Cursor = crHandPoint
     Color = clBtnFace
     Font.Charset = DEFAULT_CHARSET
@@ -732,9 +732,9 @@ object FrmSHE_BOL: TFrmSHE_BOL
     TabOrder = 14
   end
   object GBRemessas: TGroupBox
-    Left = 665
+    Left = 660
     Top = 1
-    Width = 355
+    Width = 360
     Height = 198
     Caption = '  Remessas Banc'#225'rias  '
     Font.Charset = DEFAULT_CHARSET
@@ -753,7 +753,7 @@ object FrmSHE_BOL: TFrmSHE_BOL
     object PCRemessas: TdxPageControl
       Left = 2
       Top = 16
-      Width = 351
+      Width = 356
       Height = 180
       ActivePage = TSRemessaRetorno
       Align = alClient

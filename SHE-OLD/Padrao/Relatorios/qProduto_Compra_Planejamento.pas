@@ -144,10 +144,13 @@ type
     QRDBText1: TQRDBText;
     QRLabel12: TQRLabel;
     QRLabel13: TQRLabel;
+    RelatorioDEST: TIBStringField;
+    RelatorioC_CM_PRINCIPAL: TStringField;
     procedure WinControlFormCreate(Sender: TObject);
     procedure WinControlFormDestroy(Sender: TObject);
     procedure QRBDetalhesBeforePrint(Sender: TQRCustomBand;
       var PrintBand: Boolean);
+    procedure RelatorioCalcFields(DataSet: TDataSet);
   private
     RECRelatorio: TRECRelatorios;
     SQLIDEP,
@@ -345,7 +348,7 @@ procedure TqrpProduto_Compra_Planejamento.WinControlFormCreate(Sender: TObject);
             with Relatorio do
             begin
               SQL.Clear;
-              SQL.Add('SELECT '+CM_PRINCIPAL + ' AS CM_PRINCIPAL,CM_UCOM,CM_CST,');
+              SQL.Add('SELECT '+CM_PRINCIPAL + ' AS CM_PRINCIPAL,CM_UCOM,CM_CST,DEST,');
               SQL.Add('         SUM(CM_ESMI) AS CM_ESMI,');
               SQL.Add('         SUM(CM_QTDE) AS CM_QTDE,SUM(CM_QTPC) AS CM_QTPC,');
               SQL.Add('         SUM(CM_MEDI) AS CM_MEDI,SUM(CM_SEGU) AS CM_SEGU,');
@@ -372,7 +375,7 @@ procedure TqrpProduto_Compra_Planejamento.WinControlFormCreate(Sender: TObject);
               if (RECRelatorio.PEC2ConsultaText <> 'TODOS') and (RECRelatorio.IEC2ConsultaCaption = 'Categorias') then
                   SQL.Add('WHERE EXISTS (SELECT PSQ.ID FROM CAD_PRO_PSQ AS PSQ WHERE PSQ.PRO_CART = CM_ARTIGO AND '+RECRelatorio.IEC2ConsultaField+' '+RECRelatorio.IEC2ConsultaWhere+' '''+RECRelatorio.IEC2ConsultaLike1+Trim(RECRelatorio.PEC2ConsultaText)+RECRelatorio.IEC2ConsultaLike2+''')');
 
-              SQL.Add('GROUP BY 1,2,3');
+              SQL.Add('GROUP BY 1,2,3,4');
               SQL.Add('ORDER BY 1');
 
               Prepare;
@@ -532,6 +535,12 @@ begin
       QRD_SEGU.Color      := clPurple;
     end;
   end;
+end;
+
+procedure TqrpProduto_Compra_Planejamento.RelatorioCalcFields(
+  DataSet: TDataSet);
+begin
+  RelatorioC_CM_PRINCIPAL.Value := RelatorioCM_PRINCIPAL.AsString + IFThen(LeftStr(RelatorioDEST.AsString,1) = 'F','*','');
 end;
 
 end.

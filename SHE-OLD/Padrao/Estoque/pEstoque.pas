@@ -410,7 +410,7 @@ begin
     ACTCancela.Enabled := False;
   end;
     
-  if not REC_SHE_DEF.GAdmin then
+  if not REC_SHE_DEF.GControl then
   begin
     BLBEST_GER.Visible := ivNever;
     ACTEST_GER.Enabled := False;
