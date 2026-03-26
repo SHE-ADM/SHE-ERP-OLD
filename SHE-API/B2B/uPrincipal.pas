@@ -305,7 +305,7 @@ begin
       Application.ProcessMessages;
 
       { Teste de Pedidos }
-      TAG := 1;
+      TAG := 0;
 
       { RECEBIMENTOS }
       { Transportadoras }
@@ -559,77 +559,85 @@ begin
   for i := 0 to High(aPesquisa) do
   SetLength(aPesquisa[i],7);
 
-  with FBird do
   try
-    { AUTENTICAÇÃO ERP }
+    TTempo.Enabled := False;
+
+    with FBird do
     try
-      oODatabase(DBErp);
-      oODatabase(DBB2B,lwNone,'198.50.189.229:C:\dbFirebird\'+Adatabasename+'.fdb');
-    except
-      exit;
-    end;
-
-    if (not FBird.DBERP.TestConnected) or (not FBird.DBB2B.TestConnected) then
-    Exit;
-
-    { LOGIN }
-    try
-      _Login('0',AIDEP);
-
-      { RECEBIMENTOS }
-      { Transportadoras }
-      if AJOB = 'CAD-TRA-REC' then
-      _CAD_TRA_REC else
-
-      { Clientes }
-      if AJOB = 'CAD-CLI-REC' then
-      _CAD_CLI_REC else
-
-      { Pedidos }
-      if AJOB = 'PED-VEN-REC' then
-      _PED_REC  else
-
-
-      { ENVIOS }
-      { Clientes }
-      if AJOB = 'CAD-CLI-ENV' then
-      _CAD_CLI_ENV else
-
-      { Representanes }
-      if AJOB = 'CAD-REP-ENV' then
-      _CAD_REP_ENV else
-
-      { Pedidos }
-      if AJOB = 'PED-VEN-ENV' then
-      _PED_ENV else
-
-      { PRODUTOS }
-      { Preços }
-      if AJOB = 'CAD-PRO-PRC' then
-      _PRO_PRC_B2B else
-
-      { Estoque }
-      if AJOB = 'CAD-PRO-EST' then
-      begin
-        _PRO_EST_B2B;
-        //_PRO_EST_ERP;
+      { AUTENTICAÇÃO ERP }
+      try
+        oODatabase(DBErp);
+        oODatabase(DBB2B,lwNone,'198.50.189.229:C:\dbFirebird\'+Adatabasename+'.fdb');
+      except
+        exit;
       end;
 
-    except
-      ;
-    end;  
-  finally
-    _API_LOG;
+      if (not FBird.DBERP.TestConnected) or (not FBird.DBB2B.TestConnected) then
+      Exit;
 
-    if not oEmpty(RECParametros.DataBaseError) then
-    begin
-      EMErros_B2B.Lines.Add(RECParametros.DataBaseError);
-      EMErros_B2B.Height  := 95;
-      EMErros_B2B.Visible := True;
+      { LOGIN }
+      try
+        _Login('0',AIDEP);
+
+        { RECEBIMENTOS }
+        { Transportadoras }
+        if AJOB = 'CAD-TRA-REC' then
+        _CAD_TRA_REC else
+
+        { Clientes }
+        if AJOB = 'CAD-CLI-REC' then
+        _CAD_CLI_REC else
+
+        { Pedidos }
+        if AJOB = 'PED-VEN-REC' then
+        _PED_REC  else
+
+
+        { ENVIOS }
+        { Clientes }
+        if AJOB = 'CAD-CLI-ENV' then
+        _CAD_CLI_ENV else
+
+        { Representanes }
+        if AJOB = 'CAD-REP-ENV' then
+        _CAD_REP_ENV else
+
+        { Pedidos }
+        if AJOB = 'PED-VEN-ENV' then
+        _PED_ENV else
+
+        { PRODUTOS }
+        { Preços }
+        if AJOB = 'CAD-PRO-PRC' then
+        _PRO_PRC_B2B else
+
+        { Estoque }
+        if AJOB = 'CAD-PRO-EST' then
+        begin
+          _PRO_EST_B2B;
+          //_PRO_EST_ERP;
+        end;
+
+      except
+        ;
+      end;
+
+    finally
+      _API_LOG;
+
+      if not oEmpty(RECParametros.DataBaseError) then
+      begin
+        EMErros_B2B.Lines.Add(RECParametros.DataBaseError);
+        EMErros_B2B.Height  := 95;
+        EMErros_B2B.Visible := True;
+      end;
+
+      oCDatabase(DBErp);
+      oCDataBase(DBB2B);
     end;
 
-    oCDatabase(DBErp);
-    oCDataBase(DBB2B);
+  finally
+    TTempo.Enabled := True;
   end;
 end;
 
@@ -718,9 +726,6 @@ procedure TFrmSHE_B2B_OTM._CAD_TRA_REC;
 begin
   if TAG > 0 then
   Exit;
-
-  if (not FBird.DBERP.TestConnected) or (not FBird.DBB2B.TestConnected) then
-  Exit;
 end;
 
 { 2º Recebimento }
@@ -728,18 +733,12 @@ procedure TFrmSHE_B2B_OTM._CAD_CLI_REC;
 begin
   if TAG > 0 then
   Exit;
-
-  if (not FBird.DBERP.TestConnected) or (not FBird.DBB2B.TestConnected) then
-  Exit;
 end;
 
 { 1º Envio }
 procedure TFrmSHE_B2B_OTM._CAD_REP_ENV;
 begin
   if TAG > 0 then
-  Exit;
-
-  if (not FBird.DBERP.TestConnected) or (not FBird.DBB2B.TestConnected) then
   Exit;
 
   { Clear Matriz }
@@ -861,9 +860,6 @@ end;
 procedure TFrmSHE_B2B_OTM._CAD_CLI_ENV;
 begin
   if TAG > 0 then
-  Exit;
-
-  if (not FBird.DBERP.TestConnected) or (not FBird.DBB2B.TestConnected) then
   Exit;
 
   { Clear Matriz }
@@ -1023,9 +1019,6 @@ begin
   if TAG > 0 then
   Exit;
 
-  if (not FBird.DBERP.TestConnected) or (not FBird.DBB2B.TestConnected) then
-  Exit;
-
   { Clear Matriz }
   aPesquisa[03,00] := ''; {Empresa}
   aPesquisa[03,01] := ''; {Cadastro}
@@ -1142,9 +1135,6 @@ end;
 procedure TFrmSHE_B2B_OTM._PED_REC;
 begin
   if TAG > 0 then
-  Exit;
-
-  if (not FBird.DBERP.TestConnected) or (not FBird.DBB2B.TestConnected) then
   Exit;
 
   { Clear Matriz }
@@ -1614,9 +1604,6 @@ begin
   if TAG > 0 then
   Exit;
 
-  if (not FBird.DBERP.TestConnected) or (not FBird.DBB2B.TestConnected) then
-  Exit;
-
   with FBird do
   begin
     with B2BTransportadoras do
@@ -1700,9 +1687,6 @@ end;
 procedure TFrmSHE_B2B_OTM._PED_REC_VEN;
 begin
   if TAG > 0 then
-  Exit;
-
-  if (not FBird.DBERP.TestConnected) or (not FBird.DBB2B.TestConnected) then
   Exit;
 
   with FBird do
@@ -1830,9 +1814,6 @@ end;
 Procedure TFrmSHE_B2B_OTM._PED_ENV;
 begin
   if TAG > 0 then
-  Exit;
-
-  if (not FBird.DBERP.TestConnected) or (not FBird.DBB2B.TestConnected) then
   Exit;
 
   { Clear Matriz }
@@ -1995,9 +1976,6 @@ begin
   if TAG > 0 then
   Exit;
 
-  if (not FBird.DBERP.TestConnected) or (not FBird.DBB2B.TestConnected) then
-  Exit;
-
   { Clear Matriz }
   aPesquisa[06,00] := ''; {Empresa}
   aPesquisa[06,01] := ''; {Cadastro}
@@ -2118,9 +2096,6 @@ end;
 procedure TFrmSHE_B2B_OTM._PRO_PRC_B2B_SYNC;
 begin
   if TAG > 0 then
-  Exit;
-
-  if (not FBird.DBERP.TestConnected) or (not FBird.DBB2B.TestConnected) then
   Exit;
 
   with FBird do
@@ -2321,9 +2296,6 @@ end;
 procedure TFrmSHE_B2B_OTM._PRO_EST_B2B_SYNC;
 begin
   if TAG > 0 then
-  Exit;
-
-  if (not FBird.DBERP.TestConnected) or (not FBird.DBB2B.TestConnected) then
   Exit;
 
   with FBird do
@@ -2563,9 +2535,6 @@ begin
   Exit;
 
   if Pos(RECParametros.EP_ID,'14') = 0 then
-  Exit;
-
-  if (not FBird.DBERP.TestConnected) or (not FBird.DBB2B.TestConnected) then
   Exit;
 
   { Clear Matriz - B2B }

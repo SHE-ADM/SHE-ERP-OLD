@@ -2,8 +2,8 @@ object FBird: TFBird
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Left = 849
-  Top = 299
+  Left = 365
+  Top = 191
   Height = 578
   Width = 1117
   object DBERP: TIBDatabase
@@ -14,6 +14,7 @@ object FBird: TFBird
       'lc_ctype=WIN1252')
     LoginPrompt = False
     AfterConnect = DBERPAfterConnect
+    AfterDisconnect = DBERPAfterDisconnect
     BeforeDisconnect = DBERPBeforeDisconnect
     Left = 40
     Top = 8
@@ -38,7 +39,7 @@ object FBird: TFBird
       'nowait')
     AutoStopAction = saRollback
     Left = 352
-    Top = 56
+    Top = 80
   end
   object DBEvent: TIBEvents
     AutoRegister = False
@@ -87,7 +88,7 @@ object FBird: TFBird
     Database = DBEDI
     Transaction = TFBEEdicao
     Left = 352
-    Top = 104
+    Top = 128
   end
   object DTSFBBAI_FINANCEIRO: TDataSource
     AutoEdit = False
@@ -1338,6 +1339,7 @@ object FBird: TFBird
       'password=ri1903'
       'lc_ctype=WIN1252')
     LoginPrompt = False
+    AfterDisconnect = DBB2BAfterDisconnect
     Left = 488
     Top = 8
   end
@@ -1903,7 +1905,7 @@ object FBird: TFBird
       'WHERE    PK.LG_ID = :LG_ID'
       'ORDER BY PK.LG_ID,FK.DESCRICAO,FK.REFERENCIA,FK.REGRA')
     Left = 168
-    Top = 224
+    Top = 280
     ParamData = <
       item
         DataType = ftUnknown
@@ -1915,7 +1917,7 @@ object FBird: TFBird
     AutoEdit = False
     DataSet = CDSFBTAB_USER_ADM
     Left = 168
-    Top = 272
+    Top = 328
   end
   object CDSFBTAB_USER_ADM: TClientDataSet
     Aggregates = <>
@@ -1924,7 +1926,7 @@ object FBird: TFBird
     ProviderName = 'DSPFBTAB_USER_ADM'
     ReadOnly = True
     Left = 168
-    Top = 320
+    Top = 376
     object CDSFBTAB_USER_ADMID: TLargeintField
       FieldName = 'ID'
       Origin = '"TAB_USER_ADM"."ID"'
@@ -2031,7 +2033,7 @@ object FBird: TFBird
     Options = [poReadOnly]
     UpdateMode = upWhereKeyOnly
     Left = 168
-    Top = 368
+    Top = 424
   end
   object DB_EDI: TIBDatabase
     DatabaseName = 'C:\Sheild\FBird\SHE-EDI.FDB'
@@ -2058,7 +2060,7 @@ object FBird: TFBird
     Database = DBERP
     Transaction = TFBEdicao
     Left = 168
-    Top = 168
+    Top = 224
   end
   object TFBEvent: TIBTransaction
     AllowAutoStart = False
@@ -2304,9 +2306,15 @@ object FBird: TFBird
     Top = 376
   end
   object SQLFBFKEdicao: TIBSQL
+    Database = DBERP
+    Transaction = TFBEdicao
+    Left = 168
+    Top = 168
+  end
+  object SQLFBFKEEdicao: TIBSQL
     Database = DBEDI
     Transaction = TFBEEdicao
     Left = 352
-    Top = 160
+    Top = 184
   end
 end

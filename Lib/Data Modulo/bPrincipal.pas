@@ -412,6 +412,7 @@ type
     DTSFBResumo_Mensal: TDataSource;
     SQLFBFKEdicao: TIBSQL;
     CDSFBTAB_USER_ADMID: TLargeintField;
+    SQLFBFKEEdicao: TIBSQL;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
     procedure DBEventEventAlert(Sender: TObject; EventName: String;
@@ -420,6 +421,8 @@ type
     procedure DBERPBeforeDisconnect(Sender: TObject);
     procedure THintHidePauseTimer(Sender: TObject);
     procedure FBCAD_PROCalcFields(DataSet: TDataSet);
+    procedure DBERPAfterDisconnect(Sender: TObject);
+    procedure DBB2BAfterDisconnect(Sender: TObject);
   private
     { Private declarations }
     AIDPK,
@@ -2034,6 +2037,16 @@ begin
 
     FBBAI_CAIXA.Next;
   end;
+end;
+
+procedure TFBird.DBERPAfterDisconnect(Sender: TObject);
+begin
+  TAG := 0;
+end;
+
+procedure TFBird.DBB2BAfterDisconnect(Sender: TObject);
+begin
+  tag := 1;
 end;
 
 end.
