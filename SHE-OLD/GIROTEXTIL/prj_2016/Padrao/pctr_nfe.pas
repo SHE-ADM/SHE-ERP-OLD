@@ -303,7 +303,6 @@ type
     procedure cadastroBeforeInsert(DataSet: TDataSet);
     procedure cadastroAfterPost(DataSet: TDataSet);
     procedure cadastroAfterOpen(DataSet: TDataSet);
-    procedure siEVEClick(Sender: TObject);
     procedure siENVClick(Sender: TObject);
     procedure siVISClick(Sender: TObject);
     procedure siCCEClick(Sender: TObject);
@@ -339,7 +338,7 @@ var
 implementation
 
 uses uPrincipal, pcad_cli, pcad_for, pven_npr, pemail, qnfe_ger,
-  plog_eve, pven_nfe, pnfe_cce, ppesquisa, prelatorio_geral;
+  pven_nfe, pnfe_cce, ppesquisa, prelatorio_geral;
 
 {$R *.dfm}
 {$I+}
@@ -678,23 +677,6 @@ begin
     SQL.Add('ORDER BY NFE_ITE.NFE_ITEMPED');
     Open;
   end;
-end;
-
-procedure Tfrmctr_nfe.siEVEClick(Sender: TObject);
-begin
-  frmlog_eve := tfrmlog_eve.create(self);
-  with frmlog_eve.cadastro do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT LOG_EVE.*,PAR_SIS.PAR_FANT,CAD_FUN.FUN_FOTO');
-    SQL.Add('FROM   LOG_EVE,PAR_SIS');
-    SQL.Add('LEFT   OUTER JOIN CAD_FUN ON LOG_EVE.EVE_CLOG = CAD_FUN.ID');
-    SQL.Add('WHERE  LOG_EVE.EVE_CDEP = PAR_SIS.ID');
-    SQL.Add('AND    LOG_EVE.EVE_FUNC = ''Nota Fiscal''');
-    SQL.Add('ORDER BY ID DESC');
-    Open;
-  end;
-  frmlog_eve.show;
 end;
 
 procedure Tfrmctr_nfe.siENVClick(Sender: TObject);
@@ -1064,12 +1046,12 @@ begin
     while not nfe_ite.Eof do
     begin
       frmven_nfe.nfe_001.Append;
-      frmven_nfe.nfe_001NFE_CPROD.Value  := nfe_iteNFE_CPROD.AsString;
+      frmven_nfe.PESQUISA_PRODUTO('Produto',nfe_iteNFE_CPROD.AsString);
       frmven_nfe.nfe_001NFE_CEAN.Value   := nfe_iteNFE_CEAN.AsString;
+      frmven_nfe.nfe_001NFE_CPROD.Value  := nfe_iteNFE_CPROD.AsString;
       frmven_nfe.nfe_001NFE_XPROD.Value  := nfe_iteNFE_XPROD.AsString;
       frmven_nfe.nfe_001NFE_NCM.Value    := nfe_iteNFE_NCM.AsString;
       frmven_nfe.nfe_001NFE_EXTIPI.Value := nfe_iteNFE_EXTIPI.AsString;
-      frmven_nfe.nfe_001NFE_PIPI.Value   := nfe_iteNFE_PIPI.AsCurrency;
       frmven_nfe.nfe_001NFE_ORIG.Value   := nfe_iteNFE_ORIG.AsString;
       frmven_nfe.nfe_001NFE_CST.Value    := nfe_iteNFE_CST.AsString;
       frmven_nfe.nfe_001NFE_UCOM.Value   := nfe_iteNFE_UCOM.AsString;
@@ -1077,8 +1059,6 @@ begin
       frmven_nfe.nfe_001NFE_VUNCOM.Value := nfe_iteNFE_VUNCOM.AsFloat;
       frmven_nfe.nfe_001NFE_QCOM.Value   := nfe_iteNFE_QCOM.AsFloat;
       frmven_nfe.nfe_001NFE_RCOM.Value   := nfe_iteNFE_RCOM.AsInteger;
-      frmven_nfe.nfe_001NFE_REPR.Value   := 'R';
-      frmven_nfe.nfe_001NFE_STAV.Value   := 'A';
       frmven_nfe.nfe_001.Post;
       nfe_ite.Next;
     end;

@@ -1,13 +1,12 @@
 object frmpag_com: Tfrmpag_com
   Tag = 1
-  Left = 232
-  Top = 32
-  Align = alCustom
+  Left = 449
+  Top = 134
   AutoSize = True
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Emiss'#227'o de Comiss'#245'es de Vendas'
-  ClientHeight = 583
+  ClientHeight = 751
   ClientWidth = 1008
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
@@ -251,7 +250,6 @@ object frmpag_com: Tfrmpag_com
     0000000000000000000000000000}
   KeyPreview = True
   OldCreateOrder = False
-  Position = poDefault
   Visible = True
   OnClose = FormClose
   OnCreate = FormCreate
@@ -262,14 +260,14 @@ object frmpag_com: Tfrmpag_com
     Left = 0
     Top = 337
     Width = 1008
-    Height = 246
+    Height = 414
     Align = alClient
     TabOrder = 0
     object pcmain: TdxPageControl
       Left = 1
       Top = 1
       Width = 1006
-      Height = 244
+      Height = 412
       ActivePage = tsrel
       Align = alClient
       HideButtons = False
@@ -288,7 +286,7 @@ object frmpag_com: Tfrmpag_com
           Left = 49
           Top = 0
           Width = 957
-          Height = 220
+          Height = 388
           Bands = <
             item
               Alignment = taRightJustify
@@ -432,7 +430,7 @@ object frmpag_com: Tfrmpag_com
           Left = 0
           Top = 0
           Width = 49
-          Height = 220
+          Height = 388
           Cursor = crHandPoint
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -528,7 +526,7 @@ object frmpag_com: Tfrmpag_com
           Left = 0
           Top = 0
           Width = 1006
-          Height = 220
+          Height = 388
           ActivePage = tsVEN
           Align = alClient
           HideButtons = False
@@ -548,7 +546,7 @@ object frmpag_com: Tfrmpag_com
               Left = 0
               Top = 0
               Width = 1006
-              Height = 194
+              Height = 362
               Bands = <
                 item
                   Alignment = taRightJustify

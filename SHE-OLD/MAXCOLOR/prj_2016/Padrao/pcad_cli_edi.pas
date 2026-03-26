@@ -21,7 +21,6 @@ type
     cep_logBAI_NO: TIBStringField;
     cep_logLOC_NO: TIBStringField;
     cep_logLOG_UF: TIBStringField;
-    siCON: TSpeedItem;
     cad_cli_ram: TIBDataSet;
     cad_cli_ramID: TIntegerField;
     cad_cli_ramCLI_RAMO: TIBStringField;
@@ -604,7 +603,6 @@ type
     procedure edtel1DblClick(Sender: TObject);
     procedure edfaxDblClick(Sender: TObject);
     procedure edcelDblClick(Sender: TObject);
-    procedure siCONClick(Sender: TObject);
     procedure edcmucValidate(Sender: TObject; var ErrorText: String;
       var Accept: Boolean);
     procedure edcmuvValidate(Sender: TObject; var ErrorText: String;
@@ -755,7 +753,7 @@ var
 
 implementation
 
-uses bDados, pcad_cli, uPrincipal, unLocaliza_Cep, ptab_mun, psintegra, pcad_pro_con,
+uses bDados, pcad_cli, uPrincipal, unLocaliza_Cep, ptab_mun, pcad_pro_con,
      pven_nfe;
 
 {$R *.dfm}
@@ -1361,18 +1359,14 @@ begin
       IBTra.Commit;
       IBTra.StartTransaction;
 
-      if (frmcad_cli_edi.Tag = 0) then
-         NOVO_CLIENTE
-      else
+      if assigned(frmven_nfe) then
       begin
-        if assigned(frmven_nfe) then
-        begin
-          frmven_nfe.cad_cli.Close;
-          frmven_nfe.cad_cli.Params[0].Value := edccli.Text;
-          frmven_nfe.cad_cli.Open;
-        end;
-        Close;
-      end;  
+        frmven_nfe.cad_cli.Close;
+        frmven_nfe.cad_cli.Params[0].Value := edccli.Text;
+        frmven_nfe.cad_cli.Open;
+      end;
+
+      Close;
     except
       editado := false;
       IBTRA.Rollback;
@@ -1862,8 +1856,7 @@ procedure Tfrmcad_cli_edi.edccliValidate(Sender: TObject;
   var ErrorText: String; var Accept: Boolean);
 begin
   if edccli.Text = '' then
-     edccli.Text := '00000';
-
+  edccli.Text := '00000';
   edccli.Text := oStrZero(strtoint(edccli.Text),5);
   
   with consulta do
@@ -1949,94 +1942,6 @@ end;
 procedure Tfrmcad_cli_edi.edcelDblClick(Sender: TObject);
 begin
   edcel.Text := '';
-end;
-
-procedure Tfrmcad_cli_edi.siCONClick(Sender: TObject);
-function RETORNA_LOGR(endereco: string) : string;
-var
-  i: word;
-begin
-  for i := 1 to length(endereco) do
-  begin
-    if copy(endereco,i,1) = ' ' then
-    break;
-  end;
-
-  if copy(endereco,1,1) = 'R' then
-  edtlog.Text := 'RUA' else
-  if copy(endereco,1,1) = 'A' then
-  edtlog.Text := 'AVENIDA' else
-  if copy(endereco,1,2) = 'AL' then
-  edtlog.Text := 'ALAMEDA' else
-  if copy(endereco,1,1) = 'P' then
-  edtlog.Text := 'PRAÇA' else
-  if copy(endereco,1,2) = 'PQ' then
-  edtlog.Text := 'PARQUE' else
-  if copy(endereco,1,2) = 'PÇ' then
-  edtlog.Text := 'PRAÇA' else
-  if copy(endereco,1,2) = 'RO' then
-  edtlog.Text := 'RODOVIA' else
-  if copy(endereco,1,1) = 'T' then
-  edtlog.Text := 'TRAVESSA';
-
-  if edtlog.Text = '' then
-  edtlog.Text := TRIM(copy(endereco,1,i));
-
-  result := TRIM(copy(endereco,i+1,Length(endereco)));
-end;
-
-begin
-  frmsintegra := tfrmsintegra.create(self);
-  frmsintegra.EditCNPJ.Text := trim(edcnpj.Text);
-  try
-    frmsintegra.ShowModal;
-  finally
-    if (frmsintegra.EditUF.Text <> '') and (copy(frmsintegra.EditUF.Text,1,1) <> '*') then
-    begin
-      if PESQUISA_CLIENTE('CLI_CNPJ',frmsintegra.EditCNPJ.Text) then
-      begin
-        edcnpj.Text := frmsintegra.EditCNPJ.Text;
-        EdRaza.Text := frmsintegra.EditRazaoSocial.Text;
-        edlogr.Text := RETORNA_LOGR(frmsintegra.EditEndereco.Text);
-        EdComp.Text := frmsintegra.EditComplemento.Text;
-        edbai.Text  := frmsintegra.EditBairro.Text;
-        edcid.Text  := frmsintegra.EditCidade.Text;
-        eduf.Text   := frmsintegra.EditUF.Text;
-        ednume.Text := frmsintegra.EditNumero.Text;
-        edcep.Text  := copy(frmsintegra.EditCEP.Text,1,5)+copy(frmsintegra.EditCEP.Text,7,3);
-        cbramo.Text := frmsintegra.EditCNAE1.Text;
-        edobse.Text := frmsintegra.ListCNAE2.Items.Text;
-
-        eddfun.Clear;
-        if frmsintegra.EditAbertura.Text <> '' then
-        eddfun.Date := strtodate(frmsintegra.EditAbertura.Text);
-        edddd.Text  := frmsintegra.EditDDD.Text;
-        edtel1.Text := oRETNumero(frmsintegra.EditFone.Text);
-        eddd2.Text  := frmsintegra.EditDDD2.Text;
-        edtel2.Text := oRETNumero(frmsintegra.EditFone2.Text);
-        edInsc.Text := frmsintegra.EDIE.Text;
-
-        if copy(frmsintegra.EditEmail.Text,1,1) <> '*' then
-        edmail.Text := LOWERCASE(frmsintegra.EditEmail.Text);
-
-        if copy(frmsintegra.EditFantasia.Text,1,1) <> '*' then
-        edfant.Text := frmsintegra.EditFantasia.Text;
-
-        with consulta do
-        begin
-          SQL.Clear;
-          SQL.Add('SELECT MUN_CMUN FROM TAB_MUN');
-          SQL.Add('WHERE  MUN_DMUN = '''+edcid.Text+'''');
-          Open;
-          edcmun.Text := fields[0].AsString;
-        end;
-
-        PROCESSA_REGIAO(frmsintegra.EditUF.Text);
-      end;  
-    end;
-    freeAndNil(frmsintegra);
-    frmsintegra.Free;
-  end;
 end;
 
 procedure Tfrmcad_cli_edi.edcmucValidate(Sender: TObject;

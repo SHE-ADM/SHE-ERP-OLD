@@ -39313,7 +39313,6 @@ object FrmPrincipal: TFrmPrincipal
       end
       object mtab_ncm: TMenuItem
         Caption = 'Classifica'#231#227'o Fiscal'
-        OnClick = mtab_ncmClick
       end
       object mtab_lan: TMenuItem
         Action = acttab_lan
@@ -40131,7 +40130,6 @@ object FrmPrincipal: TFrmPrincipal
     end
     object actcad_fun: TAction
       Caption = 'Cadastro'
-      OnExecute = actcad_funExecute
     end
     object actcad_usu: TAction
     end
@@ -40165,7 +40163,6 @@ object FrmPrincipal: TFrmPrincipal
     end
     object actpar_sis: TAction
       Hint = 'Parametros do Sistema'
-      OnExecute = actpar_sisExecute
     end
     object actlog_wor: TAction
       Hint = 'Configura Esta'#231#245'es de Trabalho'

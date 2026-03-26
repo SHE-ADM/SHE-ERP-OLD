@@ -491,6 +491,7 @@ begin
         ibSP.ParamByName('dmap').Value := '';
         ibSP.ParamByName('ctnr').Value := '';
         ibSP.ParamByName('lote').Value := '';
+        ibSP.ParamByName('UNIT').Value := 0;
         ibSP.ExecProc;
         IBTra.CommitRetaining;
       end;

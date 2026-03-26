@@ -53,19 +53,17 @@ type
     CadastroFOR_DTRA: TIBStringField;
     CadastroFOR_OBSO: TIBStringField;
     procedure FormCreate(Sender: TObject);
-    procedure siINCClick(Sender: TObject);
-    procedure siALTClick(Sender: TObject);
     procedure dbgConsultaCustomDrawCell(Sender: TObject; ACanvas: TCanvas;
       ARect: TRect; ANode: TdxTreeListNode; AColumn: TdxTreeListColumn;
       ASelected, AFocused, ANewItemRow: Boolean; var AText: String;
       var AColor: TColor; AFont: TFont; var AAlignment: TAlignment;
       var ADone: Boolean);
-    procedure siDELClick(Sender: TObject);
-    procedure siLIXOClick(Sender: TObject);
-    procedure siEVEClick(Sender: TObject);
     procedure dbgConsultaDblClick(Sender: TObject);
     procedure siPSQClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure SIMEAppendClick(Sender: TObject);
+    procedure SIMEEditClick(Sender: TObject);
+    procedure SIMEDeleteClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -78,7 +76,7 @@ var
 implementation
 
 uses uPrincipal, pcad_for_edi, prelatorio_geral,
-  plog_eve, pven_nfe, ppesquisa;
+  pven_nfe, ppesquisa;
 
 {$R *.dfm}
 
@@ -103,193 +101,6 @@ procedure Tfrmcad_for.FormDestroy(Sender: TObject);
 begin
   inherited;
   frmcad_for := Nil;
-end;
-
-procedure Tfrmcad_for.siINCClick(Sender: TObject);
-begin
-  PCampo[0] := 'USU_NOVO';
-  PCampo[1] := 'Fornecedores';
-  PCampo[2] := 'Cadastro';
-  PCampo[3] := 'Permissões Gerais';
-  inherited;
-
-  frmcad_for_edi := Tfrmcad_for_edi.Create(self);
-  try
-    frmcad_for_edi.Tag := frmcad_for.Tag;
-    frmcad_for_edi.ShowModal;
-  finally
-    ExecuteEvent;
-    freeAndNil(frmcad_for_edi);
-    frmcad_for_edi.Free;
-  end;
-end;
-
-procedure Tfrmcad_for.siALTClick(Sender: TObject);
-begin
-  PCampo[0] := 'USU_EDIT';
-  PCampo[1] := 'Fornecedores';
-  PCampo[2] := 'Cadastro';
-  PCampo[3] := 'Permissões Gerais';
-  inherited;
-
-  FRMCAD_FOR_EDI := TFRMCAD_FOR_EDI.Create(Self);
-  try
-    frmcad_for_edi.Tag := frmcad_for.Tag;
-    frmcad_for_edi.ShowModal;
-  finally
-    if frmcad_for_edi.editado then
-       ExecuteEvent;
-    freeAndNil(frmcad_for_edi);
-    frmcad_for_edi.Free;
-  end;
-end;
-
-procedure Tfrmcad_for.dbgConsultaCustomDrawCell(Sender: TObject;
-  ACanvas: TCanvas; ARect: TRect; ANode: TdxTreeListNode;
-  AColumn: TdxTreeListColumn; ASelected, AFocused, ANewItemRow: Boolean;
-  var AText: String; var AColor: TColor; AFont: TFont;
-  var AAlignment: TAlignment; var ADone: Boolean);
-  var Value: Variant;
-begin
-  if not ASelected then
-  begin
-    Value := ANode.Values[9];
-
-    AFont.Color := clBlack;
-    if dbgconsulta.Tag = 0 then
-       AColor := clWhite
-    else
-       AColor := clBtnface;
-
-    if not VarIsNull(Value) then
-    begin
-      if Value = 'I' then
-      begin
-         AFont.Color := clwhite;
-         AColor      := clRed;
-      end;
-    end;
-
-    Value := ANode.Values[4];
-    if (Value = '') or (VarIsNull(Value)) then
-    begin
-      AColor      := clWhite;
-      AFont.Color := clBlack;
-    end
-    else
-    begin
-      AColor      := $00BEEFF8;
-      AFont.Color := clBlack;
-    end;
-  end;
-end;
-
-procedure Tfrmcad_for.siDELClick(Sender: TObject);
-begin
-  PCampo[0] := 'USU_DELE';
-  PCampo[1] := 'Fornecedores';
-  PCampo[2] := 'Cadastro';
-  PCampo[3] := 'Permissões Gerais';
-  inherited;
-
-  with frmprincipal.sp_sql do
-  begin
-    ibSP.StoredProcName := 'SP_SQL';
-
-    if cadastroFOR_STA.Value = '1' then
-    begin
-      if oYesNo(handle,'Confirma a exclusão do cliente '+cadastroFOR_FANT.AsString+' ?') = mrno then
-         abort;
-
-      SQL.Clear;
-      SQL.Add('DELETE FROM CAD_FOR');
-      SQL.Add('WHERE  ID = '''+cadastroID.AsString+'''');
-
-      ibSP.Prepare;
-      ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
-      ibSP.ExecProc;
-
-      frmprincipal.Log_Eve('Fornecedores','Cadastro de Fornecedores','Exclusão' ,cadastroID.AsString,cadastroID.AsString,LOWERCASE(cadastroFOR_FANT.AsString),'','');
-    end
-    else
-    begin
-      if oYesNo(handle,'Enviar para a lixeira o cliente '+cadastroFOR_FANT.AsString+' ?') = mrno then
-         abort;
-
-      SQL.Clear;
-      SQL.Add('UPDATE CAD_FOR');
-      SQL.Add('SET    FOR_STA = ''1''');
-      SQL.Add('WHERE  ID = '''+cadastroID.AsString+'''');
-
-      ibSP.Prepare;
-      ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
-      ibSP.ExecProc;
-
-      frmprincipal.Log_Eve('Fornecedores','Cadastro de Fornecedores','Lixeira' ,cadastroID.AsString,cadastroID.AsString,LOWERCASE(cadastroFOR_FANT.AsString),'','');
-    end;
-  end;
-  IBTra.CommitRetaining;
-  wRecord := nil;
-  ExecuteEvent;
-
-  if dbgconsulta.Tag = 1 then
-  siLIXO.Click;
-end;
-
-procedure Tfrmcad_for.siLIXOClick(Sender: TObject);
-begin
-  with cadastro do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT CAD_FOR.ID,FOR_FANT,FOR_RAZA,FOR_CNPJ,FOR_CPF,FOR_CRED,FOR_CID,FOR_BAI,FOR_TLOG,FOR_LOGR,FOR_NUME,FOR_CEP,FOR_COMP,FOR_ESTA,FOR_STA,FOR_STAV,FOR_DPAG,');
-    SQL.Add('       FOR_VDSC,FOR_DCAD,FOR_DFUN,FOR_DALT,FOR_DULT,FOR_VULT,FOR_DDD,FOR_TEL1,FOR_DTRA,FOR_CDEP,');
-    SQL.Add('       TRIM(CAST(SUBSTRING(FOR_OBSO FROM 1 FOR 8192) AS VARCHAR(8192))) FOR_OBSO');
-    if dbgconsulta.Tag = 0 then
-    begin
-      dbgconsulta.Tag   := 1;
-      dbgconsulta.Color := clBtnface;
-      SQL.Add('WHERE FOR_STA = ''1''');
-    end
-    else
-    begin
-      dbgconsulta.Tag   := 0;
-      dbgconsulta.Color := clWhite;
-      SQL.Add('WHERE FOR_STA = ''0''');
-    end;
-
-    SQL.Add('ORDER BY ID');
-    Open;
-  end;
-end;
-
-procedure Tfrmcad_for.siEVEClick(Sender: TObject);
-begin
-  frmlog_eve := tfrmlog_eve.create(self);
-  with frmlog_eve.cadastro do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT LOG_EVE.*,PAR_SIS.PAR_FANT,CAD_FUN.FUN_FOTO');
-    SQL.Add('FROM   LOG_EVE,PAR_SIS');
-    SQL.Add('LEFT   OUTER JOIN CAD_FUN ON LOG_EVE.EVE_CLOG = CAD_FUN.ID');
-    SQL.Add('WHERE  LOG_EVE.EVE_CDEP = PAR_SIS.ID');
-    SQL.Add('AND    LOG_EVE.EVE_FUNC = ''Fornecedores''');
-    SQL.Add('ORDER BY ID DESC');
-    Open;
-  end;
-  frmlog_eve.show;
-
-end;
-
-procedure Tfrmcad_for.dbgConsultaDblClick(Sender: TObject);
-begin
-  if Assigned(frmven_nfe) then
-  begin
-    frmven_nfe.cad_for.Close;
-    frmven_nfe.cad_for.Params[0].Value := cadastroID.AsString;
-    frmven_nfe.cad_for.Open;
-    close;
-  end else
-  inherited;
 end;
 
 procedure Tfrmcad_for.siPSQClick(Sender: TObject);
@@ -336,6 +147,145 @@ begin
     freeAndNil(frmpesquisa);
     frmpesquisa.Free;
   end;
+end;
+
+procedure Tfrmcad_for.SIMEAppendClick(Sender: TObject);
+begin
+  PCampo[0] := 'USU_NOVO';
+  PCampo[1] := 'Fornecedores';
+  PCampo[2] := 'Cadastro';
+  PCampo[3] := 'Permissões Gerais';
+  inherited;
+
+  frmcad_for_edi := Tfrmcad_for_edi.Create(self);
+  try
+    frmcad_for_edi.Tag := frmcad_for.Tag;
+    frmcad_for_edi.ShowModal;
+  finally
+    ExecuteEvent;
+    freeAndNil(frmcad_for_edi);
+    frmcad_for_edi.Free;
+  end;
+end;
+
+procedure Tfrmcad_for.SIMEEditClick(Sender: TObject);
+begin
+  PCampo[0] := 'USU_EDIT';
+  PCampo[1] := 'Fornecedores';
+  PCampo[2] := 'Cadastro';
+  PCampo[3] := 'Permissões Gerais';
+  inherited;
+
+  FRMCAD_FOR_EDI := TFRMCAD_FOR_EDI.Create(Self);
+  try
+    frmcad_for_edi.Tag := frmcad_for.Tag;
+    frmcad_for_edi.ShowModal;
+  finally
+    if frmcad_for_edi.editado then
+       ExecuteEvent;
+    freeAndNil(frmcad_for_edi);
+    frmcad_for_edi.Free;
+  end;
+end;
+
+procedure Tfrmcad_for.SIMEDeleteClick(Sender: TObject);
+begin
+  PCampo[0] := 'USU_DELE';
+  PCampo[1] := 'Fornecedores';
+  PCampo[2] := 'Cadastro';
+  PCampo[3] := 'Permissões Gerais';
+  inherited;
+
+  with frmprincipal.sp_sql do
+  begin
+    ibSP.StoredProcName := 'SP_SQL';
+
+    if cadastroFOR_STA.Value = '1' then
+    begin
+      if oYesNo(handle,'Confirma a exclusão do cliente '+cadastroFOR_FANT.AsString+' ?') = mrno then
+         abort;
+
+      SQL.Clear;
+      SQL.Add('DELETE FROM CAD_FOR');
+      SQL.Add('WHERE  ID = '''+cadastroID.AsString+'''');
+
+      ibSP.Prepare;
+      ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
+      ibSP.ExecProc;
+
+      frmprincipal.Log_Eve('Fornecedores','Cadastro de Fornecedores','Exclusão' ,cadastroID.AsString,cadastroID.AsString,LOWERCASE(cadastroFOR_FANT.AsString),'','');
+    end
+    else
+    begin
+      if oYesNo(handle,'Enviar para a lixeira o cliente '+cadastroFOR_FANT.AsString+' ?') = mrno then
+         abort;
+
+      SQL.Clear;
+      SQL.Add('UPDATE CAD_FOR');
+      SQL.Add('SET    FOR_STA = ''1''');
+      SQL.Add('WHERE  ID = '''+cadastroID.AsString+'''');
+
+      ibSP.Prepare;
+      ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
+      ibSP.ExecProc;
+
+      frmprincipal.Log_Eve('Fornecedores','Cadastro de Fornecedores','Lixeira' ,cadastroID.AsString,cadastroID.AsString,LOWERCASE(cadastroFOR_FANT.AsString),'','');
+    end;
+  end;
+  IBTra.CommitRetaining;
+  ExecuteEvent;
+end;
+
+procedure Tfrmcad_for.dbgConsultaCustomDrawCell(Sender: TObject;
+  ACanvas: TCanvas; ARect: TRect; ANode: TdxTreeListNode;
+  AColumn: TdxTreeListColumn; ASelected, AFocused, ANewItemRow: Boolean;
+  var AText: String; var AColor: TColor; AFont: TFont;
+  var AAlignment: TAlignment; var ADone: Boolean);
+  var Value: Variant;
+begin
+  if not ASelected then
+  begin
+    Value := ANode.Values[9];
+
+    AFont.Color := clBlack;
+    if dbgconsulta.Tag = 0 then
+       AColor := clWhite
+    else
+       AColor := clBtnface;
+
+    if not VarIsNull(Value) then
+    begin
+      if Value = 'I' then
+      begin
+         AFont.Color := clwhite;
+         AColor      := clRed;
+      end;
+    end;
+
+    Value := ANode.Values[4];
+    if (Value = '') or (VarIsNull(Value)) then
+    begin
+      AColor      := clWhite;
+      AFont.Color := clBlack;
+    end
+    else
+    begin
+      AColor      := $00BEEFF8;
+      AFont.Color := clBlack;
+    end;
+  end;
+end;
+
+procedure Tfrmcad_for.dbgConsultaDblClick(Sender: TObject);
+begin
+  if Assigned(frmven_nfe) then
+  begin
+    frmven_nfe.cad_for.Close;
+    frmven_nfe.cad_for.Params[0].Value := cadastroID.AsString;
+    frmven_nfe.cad_for.Open;
+    close;
+  end else
+  inherited;
 end;
 
 end.

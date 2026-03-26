@@ -84,7 +84,6 @@ type
     CadastroC_QSLD: TFloatField;
     CadastroC_RSLD: TIntegerField;
     DBGConsultaC_QDIS: TdxDBGridColumn;
-    DBGConsultaC_RDIS: TdxDBGridColumn;
     Consulta: TIBQuery;
     DBGConsultaPRO_DPRO: TdxDBGridMaskColumn;
     DBGConsultaPRO_DUNI: TdxDBGridMaskColumn;
@@ -401,10 +400,12 @@ end;
 
 procedure Tfrmcad_pro_con.DBGConsultaDblClick(Sender: TObject);
 begin
+  Editado := True;
+  
   if Assigned(frmven_nfe) then
   begin
     if frmven_nfe.nfe_001.State = dsBrowse then
-       frmven_nfe.nfe_001.Append;
+    frmven_nfe.nfe_001.Append;
 
     frmven_nfe.nfe_001NFE_IPRO.value      := cadastroID.AsInteger;
     frmven_nfe.nfe_001NFE_CPROD.value     := cadastroPRO_CPRO.AsString;
@@ -447,7 +448,8 @@ begin
 
     frmven_nfe.dbgnfe.FocusedColumn := 4;
     close;
-  end;
+  end else
+  Close;
 end;
 
 procedure Tfrmcad_pro_con.DTSCadastroDataChange(Sender: TObject;
@@ -456,7 +458,6 @@ begin
   inherited;
   DBGConsultaPRO_VPRC.Visible := (not oEmpty(CadastroPRO_VPRC.AsFloat));
   DBGConsultaPRO_RPRC.Visible := (not oEmpty(CadastroPRO_RPRC.AsFloat));
-  DBGConsultaC_RDIS.Visible   := (not oEmpty(CadastroC_RDIS.AsInteger));
   DBGConsultaPRO_DCOR.Visible := (not oEmpty(CadastroPRO_DCOR.AsString));
   DBGConsultaPRO_DPRO.Width   := DBGConsultaPRO_DPRO.Tag + IFThen(DBGConsultaPRO_DCOR.Visible,0,DBGConsultaPRO_DCOR.Width);
   if Screen.Height > 768 then

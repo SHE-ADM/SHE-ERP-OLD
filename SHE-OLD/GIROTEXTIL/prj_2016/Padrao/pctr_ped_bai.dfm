@@ -2,6 +2,7 @@ object frmctr_ped_bai: Tfrmctr_ped_bai
   Left = 217
   Top = 70
   ActiveControl = dbgConsulta
+  AutoSize = True
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Baixa de Pedidos'

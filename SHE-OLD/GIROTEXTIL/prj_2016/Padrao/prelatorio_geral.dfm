@@ -377,7 +377,7 @@ object frmrelatorio_geral: Tfrmrelatorio_geral
         CalColors.TitleBackColor = clTeal
         CalColors.TitleTextColor = clBlack
         CalColors.TrailingTextColor = clSilver
-        Date = 0.689040543984447100
+        Date = 0.458780254630255500
         FirstDayOfWeek = dowSunday
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -415,7 +415,7 @@ object frmrelatorio_geral: Tfrmrelatorio_geral
         CalColors.TitleBackColor = clTeal
         CalColors.TitleTextColor = clBlack
         CalColors.TrailingTextColor = clSilver
-        Date = 0.689040543984447100
+        Date = 0.458780254630255500
         FirstDayOfWeek = dowSunday
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -434,7 +434,7 @@ object frmrelatorio_geral: Tfrmrelatorio_geral
     Top = 300
     Width = 479
     Height = 368
-    ActivePage = tsVEN_PED
+    ActivePage = tsCAD_FUN
     Align = alClient
     HideButtons = False
     HotTrack = False
@@ -4354,8 +4354,8 @@ object frmrelatorio_geral: Tfrmrelatorio_geral
       object Bevel10: TBevel
         Left = 0
         Top = 0
-        Width = 477
-        Height = 330
+        Width = 479
+        Height = 342
         Align = alClient
       end
       object Shape67: TShape
@@ -4644,37 +4644,6 @@ object frmrelatorio_geral: Tfrmrelatorio_geral
         CharCase = ecUpperCase
         Text = 'TODOS'
       end
-      object cbCAD_FUN_MES: TdxPickEdit
-        Left = 131
-        Top = 106
-        Width = 339
-        Color = clWhite
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        Style.BorderColor = clWhite
-        Style.BorderStyle = xbsFlat
-        Style.ButtonStyle = btsSimple
-        Style.Shadow = False
-        TabOrder = 4
-        CharCase = ecUpperCase
-        Text = 'TODOS'
-        Items.Strings = (
-          'JANEIRO'
-          'FEVEREIRO'
-          'MAR'#199'O'
-          'ABRIL'
-          'MAIO'
-          'JUNHO'
-          'JULHO'
-          'AGOSTO'
-          'SETEMBRO'
-          'NOVEMBRO'
-          'DEZEMBRO')
-      end
       object cbCAD_FUN_ANO: TdxPickEdit
         Left = 131
         Top = 131
@@ -4690,9 +4659,67 @@ object frmrelatorio_geral: Tfrmrelatorio_geral
         Style.BorderStyle = xbsFlat
         Style.ButtonStyle = btsSimple
         Style.Shadow = False
-        TabOrder = 5
+        TabOrder = 4
         CharCase = ecUpperCase
-        Text = '2013'
+      end
+      object cbCAD_FUN_MES: TdxImageEdit
+        Tag = 1
+        Left = 131
+        Top = 103
+        Width = 339
+        Hint = 'Cor'
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        Style.BorderColor = clGray
+        Style.BorderStyle = xbsFlat
+        Style.ButtonStyle = btsSimple
+        TabOrder = 5
+        AutoSize = False
+        Descriptions.Strings = (
+          'Janeiro'
+          'Fevereiro'
+          'Mar'#231'o'
+          'Abril'
+          'Maio'
+          'Junho'
+          'Julho'
+          'Agosto'
+          'Setembro'
+          'Outubro'
+          'Novembro'
+          'Dezembro')
+        ImageIndexes.Strings = (
+          '0'
+          '1'
+          '2'
+          '3'
+          '4'
+          '5'
+          '6'
+          '7'
+          '8'
+          '9'
+          '10'
+          '11')
+        Values.Strings = (
+          '1'
+          '2'
+          '3'
+          '4'
+          '5'
+          '6'
+          '7'
+          '8'
+          '9'
+          '10'
+          '11'
+          '12')
+        Height = 22
       end
     end
     object tsVEN_PRC: TdxTabSheet

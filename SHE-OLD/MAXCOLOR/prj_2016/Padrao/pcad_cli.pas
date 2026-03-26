@@ -28,14 +28,11 @@ type
     dbgConsultaCLI_FANT: TdxDBGridMaskColumn;
     dbgConsultaCLI_CNPJ: TdxDBGridMaskColumn;
     dbgConsultaCLI_CID: TdxDBGridMaskColumn;
-    siROM: TSpeedItem;
-    dbgConsultaCLI_CRED: TdxDBGridMaskColumn;
     dbgConsultaCLI_STAV: TdxDBGridMaskColumn;
     Label8: TLabel;
     dbgConsultaCLI_LOGR: TdxDBGridMaskColumn;
     dbgConsultaCLI_BAI: TdxDBGridMaskColumn;
     dbgConsultaCLI_ESTA: TdxDBGridMaskColumn;
-    dbgConsultaCLI_CPF: TdxDBGridMaskColumn;
     cadastroCLI_CRED: TIBBCDField;
     cadastroCLI_DPAG: TIBStringField;
     cadastroCLI_STAV: TIBStringField;
@@ -45,20 +42,15 @@ type
     cadastroCLI_DALT: TDateField;
     cadastroCLI_DULT: TDateField;
     dbgConsultaCLI_DCAD: TdxDBGridDateColumn;
-    dbgConsultaCLI_DFUN: TdxDBGridDateColumn;
-    dbgConsultaCLI_DALT: TdxDBGridDateColumn;
-    dbgConsultaCLI_DULT: TdxDBGridDateColumn;
     cadastroCLI_DDD: TIBStringField;
     cadastroCLI_TEL1: TIBStringField;
     dbgConsultaCLI_DDD: TdxDBGridMaskColumn;
     dbgConsultaCLI_TEL1: TdxDBGridMaskColumn;
-    siCOM: TSpeedItem;
     cadastroREP_FANT: TIBStringField;
     cadastroUSU_DUSU: TIBStringField;
     dbgConsultaREP_FANT: TdxDBGridMaskColumn;
     dbgConsultaUSU_DUSU: TdxDBGridMaskColumn;
     cadastroCLI_DUSU: TIBStringField;
-    dbgConsultaCLI_DUSU: TdxDBGridMaskColumn;
     cadastroCLI_VULT: TIBBCDField;
     CadastroCLI_TLOG: TIBStringField;
     CadastroCLI_NUME: TIBStringField;
@@ -67,23 +59,18 @@ type
     CadastroCLI_STPD: TSmallintField;
     CadastroCLI_DTRA: TIBStringField;
     CadastroCLI_OBSO: TIBStringField;
+    CadastroCLI_MAIL: TIBStringField;
+    DBGConsultaCLI_MAIL: TdxDBGridMaskColumn;
     procedure FormCreate(Sender: TObject);
-    procedure siINCClick(Sender: TObject);
-    procedure siALTClick(Sender: TObject);
-    procedure dbgConsultaCustomDrawCell(Sender: TObject; ACanvas: TCanvas;
-      ARect: TRect; ANode: TdxTreeListNode; AColumn: TdxTreeListColumn;
-      ASelected, AFocused, ANewItemRow: Boolean; var AText: String;
-      var AColor: TColor; AFont: TFont; var AAlignment: TAlignment;
-      var ADone: Boolean);
-    procedure siDELClick(Sender: TObject);
-    procedure siLIXOClick(Sender: TObject);
     procedure siPRNClick(Sender: TObject);
-    procedure siEVEClick(Sender: TObject);
     procedure siPSQClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure DBGConsultaKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormResize(Sender: TObject);
+    procedure SIMEAppendClick(Sender: TObject);
+    procedure SIMEEditClick(Sender: TObject);
+    procedure SIMEDeleteClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -95,7 +82,7 @@ var
 
 implementation
 
-uses uPrincipal, pcad_cli_edi, pcad_pro_con, prelatorio_geral, plog_eve, pven_ped,
+uses uPrincipal, pcad_cli_edi, pcad_pro_con, prelatorio_geral, pven_ped,
      ppesquisa, pven_nfe;
 
 {$R *.dfm}
@@ -109,17 +96,17 @@ begin
   begin
     SQL.Clear;
     SQL.Add('SELECT CAD_CLI.ID,CLI_FANT,CLI_RAZA,CLI_CNPJ,CLI_CPF,CLI_CRED,CLI_CID,CLI_BAI,CLI_TLOG,CLI_LOGR,CLI_NUME,CLI_CEP,CLI_COMP,CLI_ESTA,CLI_STA,CLI_STAV,CLI_DPAG,');
-    SQL.Add('       CLI_VDSC,CLI_DCAD,CLI_DFUN,CLI_DALT,CLI_DULT,CLI_VULT,CLI_DDD,CLI_TEL1,REP_FANT,USU_DUSU,CLI_STPD,CLI_DTRA,CLI_DUSU,');
+    SQL.Add('       CLI_VDSC,CLI_DCAD,CLI_DFUN,CLI_DALT,CLI_DULT,CLI_VULT,CLI_DDD,CLI_TEL1,CLI_MAIL,REP_FANT,USU_DUSU,CLI_STPD,CLI_DTRA,CLI_DUSU,');
     SQL.Add('       TRIM(CAST(SUBSTRING(CLI_OBSO FROM 1 FOR 8192) AS VARCHAR(8192))) CLI_OBSO');
     SQL.Add('FROM   CAD_CLI');
     SQL.Add('LEFT   OUTER JOIN CAD_USU ON CAD_CLI.CLI_CVEN = CAD_USU.USU_CUSU');
     SQL.Add('LEFT   OUTER JOIN CAD_REP ON CAD_CLI.CLI_CREP = CAD_REP.ID');
-    SQL.Add('WHERE  CAD_CLI.CLI_STA  = ''0''');
-    if frmprincipal.parametrosPAR_TCLI.AsString = '0' then
-    SQL.Add('AND CAD_CLI.ID = 0');
 
-    if frmprincipal.cad_usuUSU_MENU.AsString = 'VEN' then
-    SQL.Add('AND USU_DUSU = '''+frmprincipal.cad_usuUSU_DUSU.AsString+'''');
+    SQL.Add('WHERE CAD_CLI.CLI_DCAD BETWEEN ''' + FormatDateTime('mm/dd/yy',Aweek_start_date) + ''' AND ''' +
+                                                  FormatDateTime('mm/dd/yy',Aweek_end_date  ) + '''');
+
+    //if frmprincipal.cad_usuUSU_MENU.AsString = 'VEN' then
+    //SQL.Add('AND USU_DUSU = '''+frmprincipal.cad_usuUSU_DUSU.AsString+'''');
 
     SQL.Add('ORDER BY CLI_FANT');
     Prepare;
@@ -132,175 +119,95 @@ begin
   frmcad_cli := Nil;
 end;
 
-procedure Tfrmcad_cli.siINCClick(Sender: TObject);
+procedure Tfrmcad_cli.siPSQClick(Sender: TObject);
 begin
-  PCampo[0] := 'USU_NOVO';
-  PCampo[1] := 'Clientes';
-  PCampo[2] := 'Cadastro';
-  PCampo[3] := 'Permissões Gerais';
-  inherited;
-
-  frmcad_cli_edi := TFrmcad_cli_edi.Create(self);
+  frmpesquisa := Tfrmpesquisa.Create(self);
   try
-    frmcad_cli_edi.Tag := frmcad_cli.Tag;
-    frmcad_cli_edi.ShowModal;
+    frmpesquisa.Tag          := 3;
+    if campo_pesquisa = '' then
+    frmpesquisa.cbCAMPO.Text := 'Fantasia' else
+    frmpesquisa.cbCAMPO.Text := campo_pesquisa;
+    frmpesquisa.cbDATA.Text  := 'Última Compra';
+    frmpesquisa.ShowModal;
   finally
-    if frmcad_cli_edi.editado then
-    ExecuteEvent;
-
-    freeAndNil(frmcad_cli_edi);
-  end;
-end;
-
-procedure Tfrmcad_cli.siALTClick(Sender: TObject);
-begin
-  sbMSG.Panels[0].Text := 'Alteração';
-  sbMSG.Update;
-
-  wRecord := cadastro.GetBookmark;
-
-  if cadastro.Fields[0].IsNull then abort;
-
-  if not SpeedBar1.Visible then exit;
-
-  FRMCAD_CLI_EDI := TFRMCAD_CLI_EDI.Create(Self);
-  try
-    frmcad_cli_edi.Tag := 1;
-    frmcad_cli_edi.ShowModal;
-  finally
-    if frmcad_cli_edi.editado then
-    ExecuteEvent;
-
-    freeAndNil(frmcad_cli_edi);
-  end;
-end;
-
-procedure Tfrmcad_cli.dbgConsultaCustomDrawCell(Sender: TObject;
-  ACanvas: TCanvas; ARect: TRect; ANode: TdxTreeListNode;
-  AColumn: TdxTreeListColumn; ASelected, AFocused, ANewItemRow: Boolean;
-  var AText: String; var AColor: TColor; AFont: TFont;
-  var AAlignment: TAlignment; var ADone: Boolean);
-  var Value: Variant;
-begin
-  if (not ASelected) and (dbgconsulta.Tag = 0) then
-  begin
-    AFont.Color := clBlack;
-    AColor      := clWhite;
-
-    Value := ANode.Values[14];
-    if (Value = '') or (VarIsNull(Value)) then
+    if frmpesquisa.editado then
+    with frmpesquisa do
     begin
-      AColor      := clWhite;
-      AFont.Color := clBlack;
-    end
-    else
-    begin
-      AColor      := $00BEEFF8;
-      AFont.Color := clBlack;
-    end;
-
-    Value := ANode.Values[19];
-
-    if dbgconsulta.Tag = 0 then
-    AColor := clWhite
-    else
-    AColor := clBtnface;
-
-    if not VarIsNull(Value) then
-    begin
-      if Value = 'I' then
+      if (edTXT.Text = '') and (dxdt1.Date < 0) and (cField <> 'Todos') then
+         {nothing}
+      else
       begin
-         AFont.Color := clwhite;
-         AColor      := clRed;
-      end
-      else if Value = 'S' then
-      begin
-         AFont.Color := clwhite;
-         AColor      := $000024B3;
-      end
+        if cbCAMPO.Text = 'Nota Fiscal' then
+        with consulta do
+        begin
+          SQL.Clear;
+          SQL.Add('SELECT   NFE_CAB.NFE_CFAV FROM NFE_CAB "NFE_CAB"');
+          SQL.Add('WHERE    NFE_CAB.NFE_CDNF = '''+edTXT.Text+'''');
+          SQL.Add('UNION');
+          SQL.Add('SELECT   NFE_CAB.NFE_CFAV FROM NFE_CAB_002 "NFE_CAB"');
+          SQL.Add('WHERE    NFE_CAB.NFE_CDNF = '''+edTXT.Text+'''');
+          SQL.Add('UNION');
+          SQL.Add('SELECT   NFE_CAB.NFE_CFAV FROM NFE_CAB_003 "NFE_CAB"');
+          SQL.Add('WHERE    NFE_CAB.NFE_CDNF = '''+edTXT.Text+'''');
+          SQL.Add('UNION');
+          SQL.Add('SELECT   NFE_CAB.NFE_CFAV FROM NFE_CAB_004 "NFE_CAB"');
+          SQL.Add('WHERE    NFE_CAB.NFE_CDNF = '''+edTXT.Text+'''');
+          SQL.Add('UNION');
+          SQL.Add('SELECT   NFE_CAB.NFE_CFAV FROM NFE_CAB_005 "NFE_CAB"');
+          SQL.Add('WHERE    NFE_CAB.NFE_CDNF = '''+edTXT.Text+'''');
+          SQL.Add('UNION');
+          SQL.Add('SELECT   NFE_CAB.NFE_CFAV FROM NFE_CAB_006 "NFE_CAB"');
+          SQL.Add('WHERE    NFE_CAB.NFE_CDNF = '''+edTXT.Text+'''');
+          Open;
+
+          if fields[0].IsNull then
+             raise exception.Create('Número da nota fiscal não encontrada !');
+
+          edTXT.Text   := fields[0].AsString;
+          cbCAMPO.Text := 'Código';
+          cField       := 'ID';
+        end;
+
+        with cadastro do
+        begin
+          SQL.Clear;
+          SQL.Add('SELECT CAD_CLI.ID,CLI_FANT,CLI_RAZA,CLI_CNPJ,CLI_CPF,CLI_CRED,CLI_CID,CLI_BAI,CLI_TLOG,CLI_LOGR,CLI_NUME,CLI_CEP,CLI_COMP,CLI_ESTA,CLI_STA,CLI_STAV,CLI_DPAG,');
+          SQL.Add('       CLI_VDSC,CLI_DCAD,CLI_DFUN,CLI_DALT,CLI_DULT,CLI_VULT,CLI_DDD,CLI_TEL1,CLI_MAIL,REP_FANT,USU_DUSU,CLI_STPD,CLI_DTRA,CLI_DUSU,');
+          SQL.Add('       TRIM(CAST(SUBSTRING(CLI_OBSO FROM 1 FOR 8192) AS VARCHAR(8192))) CLI_OBSO');
+          SQL.Add('FROM   CAD_CLI');
+          SQL.Add('LEFT   OUTER JOIN CAD_USU ON CAD_CLI.CLI_CVEN = CAD_USU.USU_CUSU');
+          SQL.Add('LEFT   OUTER JOIN CAD_REP ON CAD_CLI.CLI_CREP = CAD_REP.ID');
+          SQL.Add('WHERE  CAD_CLI.CLI_STA  = '''+inttostr(dbgconsulta.Tag)+'''');
+
+          if cField <> 'Todos' then
+          begin
+            if frmprincipal.cad_usuUSU_MENU.AsString = 'REP' then
+            SQL.Add('AND REP_FANT = '''+frmprincipal.cad_usuUSU_DUSU.AsString+'''');
+
+            if edtxt.Text <> '' then
+            begin
+              if cField = 'ID' then
+              SQL.Add('AND CAD_CLI.ID = '''+edtxt.Text+'''')
+              else
+              SQL.Add('AND '+cField+' LIKE ''%'+edtxt.Text+'%''');
+            end;
+
+            if (dxDT1.Date > 0) and (dxDT2.Date > 0) then
+            SQL.Add('AND '+cData+' BETWEEN '''+formatDateTime('mm/dd/yy',dxDT1.Date)+''' AND '''+formatDateTime('mm/dd/yy',dxDT2.Date)+'''');
+          end;
+
+          if cField = 'Todos' then
+             cField := 'CLI_FANT';
+
+          SQL.Add('ORDER BY '+cfield);
+          Open;
+        end;
+      end;
+      dbgconsulta.SetFocus;
+      campo_pesquisa := frmpesquisa.cbCAMPO.Text;
     end;
-  end;
-end;
-
-procedure Tfrmcad_cli.siDELClick(Sender: TObject);
-begin
-  PCampo[0] := 'USU_DELE';
-  PCampo[1] := 'Clientes';
-  PCampo[2] := 'Cadastro';
-  PCampo[3] := 'Permissões Gerais';
-  inherited;
-
-  with consulta do
-  begin
-    if cadastroCLI_STA.Value = '1' then
-    begin
-      if oYesNo(handle,'Confirma a exclusão do cliente '+cadastroCLI_FANT.AsString+' ?') = mrno then
-         abort;
-
-      SQL.Clear;
-      SQL.Add('DELETE FROM CAD_CLI');
-      SQL.Add('WHERE  ID = '''+cadastroID.AsString+'''');
-      ExecSQL;
-      frmprincipal.Log_Eve('Clientes','Cadastro de Clientes','Exclusão' ,cadastroID.AsString,cadastroID.AsString,LOWERCASE(cadastroCLI_FANT.AsString),'','');
-    end
-    else
-    begin
-      if oYesNo(handle,'Enviar para a lixeira o cliente '+cadastroCLI_FANT.AsString+' ?') = mrno then
-         abort;
-
-      SQL.Clear;
-      SQL.Add('UPDATE CAD_CLI');
-      SQL.Add('SET    CLI_STA = ''1''');
-      SQL.Add('WHERE  ID = '''+cadastroID.AsString+'''');
-      ExecSQL;
-      frmprincipal.Log_Eve('Clientes','Cadastro de Clientes','Lixeira' ,cadastroID.AsString,cadastroID.AsString,LOWERCASE(cadastroCLI_FANT.AsString),'','');
-    end;
-  end;
-
-  IBTra.CommitRetaining;
-  wRecord := nil;
-  ExecuteEvent;
-
-  if dbgconsulta.Tag = 1 then
-  siLIXO.Click;
-end;
-
-procedure Tfrmcad_cli.siLIXOClick(Sender: TObject);
-begin
-  with cadastro do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT CAD_CLI.ID,CLI_FANT,CLI_RAZA,CLI_CNPJ,CLI_CPF,CLI_CRED,CLI_CID,CLI_BAI,CLI_TLOG,CLI_LOGR,CLI_NUME,CLI_CEP,CLI_COMP,CLI_ESTA,CLI_STA,CLI_STAV,CLI_DPAG,');
-    SQL.Add('       CLI_VDSC,CLI_DCAD,CLI_DFUN,CLI_DALT,CLI_DULT,CLI_VULT,CLI_DDD,CLI_TEL1,REP_FANT,USU_DUSU,CLI_STPD,CLI_DTRA,CLI_DUSU,');
-    SQL.Add('       TRIM(CAST(SUBSTRING(CLI_OBSO FROM 1 FOR 8192) AS VARCHAR(8192))) CLI_OBSO');
-    SQL.Add('FROM   CAD_CLI');
-    SQL.Add('LEFT   OUTER JOIN CAD_USU ON CAD_CLI.CLI_CVEN = CAD_USU.USU_CUSU');
-    SQL.Add('LEFT   OUTER JOIN CAD_REP ON CAD_CLI.CLI_CREP = CAD_REP.ID');
-
-    if dbgconsulta.Tag = 0 then
-    begin
-    dbgconsulta.Tag   := 1;
-    dbgconsulta.Color := clBtnface;
-    end
-    else
-    begin
-    dbgconsulta.Tag   := 0;
-    dbgconsulta.Color := clWhite;
-    end;
-
-    SQL.Add('WHERE  CAD_CLI.CLI_STA  = '''+inttostr(dbgconsulta.Tag)+'''');
-
-    if dbgconsulta.Tag = 0 then
-    begin
-      if frmprincipal.parametrosPAR_TCLI.AsString <> '1' then
-      SQL.Add('AND CAD_CLI.CLI_DULT BETWEEN '''+formatDateTime('mm/dd/yy',StartOfTheMonth(strtodate(SLPrincipal.Values['data_sistema'])))+''' AND '''+formatDateTime('mm/dd/yy',endOfTheMonth(strtodate(SLPrincipal.Values['data_sistema'])))+'''');
-
-      if frmprincipal.cad_usuUSU_MENU.AsString = 'VEN' then
-      SQL.Add('AND USU_DUSU = '''+frmprincipal.cad_usuUSU_DUSU.AsString+'''');
-    end;
-
-    SQL.Add('ORDER BY CLI_FANT');
-    Open;
+    freeAndNil(frmpesquisa);
+    frmpesquisa.Free;
   end;
 end;
 
@@ -378,115 +285,82 @@ begin
   end;
 end;
 
-procedure Tfrmcad_cli.siEVEClick(Sender: TObject);
+procedure Tfrmcad_cli.SIMEAppendClick(Sender: TObject);
 begin
-  frmlog_eve := tfrmlog_eve.create(self);
-  with frmlog_eve.cadastro do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT LOG_EVE.*,PAR_SIS.PAR_FANT,CAD_FUN.FUN_FOTO');
-    SQL.Add('FROM   LOG_EVE,PAR_SIS');
-    SQL.Add('LEFT   OUTER JOIN CAD_FUN ON LOG_EVE.EVE_CLOG = CAD_FUN.ID');
-    SQL.Add('WHERE  LOG_EVE.EVE_CDEP = PAR_SIS.ID');
-    SQL.Add('AND    LOG_EVE.EVE_FUNC = ''Clientes''');
-    if frmprincipal.cad_usuUSU_MENU.AsString = 'VEN' then
-    SQL.Add('AND    LOG_EVE.EVE_CLOG = '''+frmprincipal.cad_usuUSU_CUSU.AsString+'''');
-    SQL.Add('ORDER BY ID DESC');
-    Open;
+  PCampo[0] := 'USU_NOVO';
+  PCampo[1] := 'Clientes';
+  PCampo[2] := 'Cadastro';
+  PCampo[3] := 'Permissões Gerais';
+  inherited;
+
+  frmcad_cli_edi := TFrmcad_cli_edi.Create(self);
+  try
+    frmcad_cli_edi.Tag := frmcad_cli.Tag;
+    frmcad_cli_edi.ShowModal;
+  finally
+    if frmcad_cli_edi.editado then
+    ExecuteEvent;
+
+    freeAndNil(frmcad_cli_edi);
   end;
-  frmlog_eve.show;
 end;
 
-procedure Tfrmcad_cli.siPSQClick(Sender: TObject);
+procedure Tfrmcad_cli.SIMEEditClick(Sender: TObject);
 begin
-  frmpesquisa := Tfrmpesquisa.Create(self);
+  sbMSG.Panels[0].Text := 'Alteração';
+  sbMSG.Update;
+
+  if cadastro.Fields[0].IsNull then abort;
+
+  FRMCAD_CLI_EDI := TFRMCAD_CLI_EDI.Create(Self);
   try
-    frmpesquisa.Tag          := 3;
-    if campo_pesquisa = '' then
-    frmpesquisa.cbCAMPO.Text := 'Fantasia' else
-    frmpesquisa.cbCAMPO.Text := campo_pesquisa;
-    frmpesquisa.cbDATA.Text  := 'Última Compra';
-    frmpesquisa.ShowModal;
+    frmcad_cli_edi.Tag := 1;
+    frmcad_cli_edi.ShowModal;
   finally
-    if frmpesquisa.editado then
-    with frmpesquisa do
-    begin
-      if (edTXT.Text = '') and (dxdt1.Date < 0) and (cField <> 'Todos') then
-         {nothing}
-      else
-      begin
-        if cbCAMPO.Text = 'Nota Fiscal' then
-        with consulta do
-        begin
-          SQL.Clear;
-          SQL.Add('SELECT   NFE_CAB.NFE_CFAV FROM NFE_CAB "NFE_CAB"');
-          SQL.Add('WHERE    NFE_CAB.NFE_CDNF = '''+edTXT.Text+'''');
-          SQL.Add('UNION');
-          SQL.Add('SELECT   NFE_CAB.NFE_CFAV FROM NFE_CAB_002 "NFE_CAB"');
-          SQL.Add('WHERE    NFE_CAB.NFE_CDNF = '''+edTXT.Text+'''');
-          SQL.Add('UNION');
-          SQL.Add('SELECT   NFE_CAB.NFE_CFAV FROM NFE_CAB_003 "NFE_CAB"');
-          SQL.Add('WHERE    NFE_CAB.NFE_CDNF = '''+edTXT.Text+'''');
-          SQL.Add('UNION');
-          SQL.Add('SELECT   NFE_CAB.NFE_CFAV FROM NFE_CAB_004 "NFE_CAB"');
-          SQL.Add('WHERE    NFE_CAB.NFE_CDNF = '''+edTXT.Text+'''');
-          SQL.Add('UNION');
-          SQL.Add('SELECT   NFE_CAB.NFE_CFAV FROM NFE_CAB_005 "NFE_CAB"');
-          SQL.Add('WHERE    NFE_CAB.NFE_CDNF = '''+edTXT.Text+'''');
-          SQL.Add('UNION');
-          SQL.Add('SELECT   NFE_CAB.NFE_CFAV FROM NFE_CAB_006 "NFE_CAB"');
-          SQL.Add('WHERE    NFE_CAB.NFE_CDNF = '''+edTXT.Text+'''');
-          Open;
+    if frmcad_cli_edi.editado then
+    ExecuteEvent;
 
-          if fields[0].IsNull then
-             raise exception.Create('Número da nota fiscal não encontrada !');
-
-          edTXT.Text   := fields[0].AsString;
-          cbCAMPO.Text := 'Código';
-          cField       := 'ID';
-        end;
-
-        with cadastro do
-        begin
-          SQL.Clear;
-          SQL.Add('SELECT CAD_CLI.ID,CLI_FANT,CLI_RAZA,CLI_CNPJ,CLI_CPF,CLI_CRED,CLI_CID,CLI_BAI,CLI_TLOG,CLI_LOGR,CLI_NUME,CLI_CEP,CLI_COMP,CLI_ESTA,CLI_STA,CLI_STAV,CLI_DPAG,');
-          SQL.Add('       CLI_VDSC,CLI_DCAD,CLI_DFUN,CLI_DALT,CLI_DULT,CLI_VULT,CLI_DDD,CLI_TEL1,REP_FANT,USU_DUSU,CLI_STPD,CLI_DTRA,CLI_DUSU,');
-          SQL.Add('       TRIM(CAST(SUBSTRING(CLI_OBSO FROM 1 FOR 8192) AS VARCHAR(8192))) CLI_OBSO');
-          SQL.Add('FROM   CAD_CLI');
-          SQL.Add('LEFT   OUTER JOIN CAD_USU ON CAD_CLI.CLI_CVEN = CAD_USU.USU_CUSU');
-          SQL.Add('LEFT   OUTER JOIN CAD_REP ON CAD_CLI.CLI_CREP = CAD_REP.ID');
-          SQL.Add('WHERE  CAD_CLI.CLI_STA  = '''+inttostr(dbgconsulta.Tag)+'''');
-
-          if cField <> 'Todos' then
-          begin
-            if frmprincipal.cad_usuUSU_MENU.AsString = 'REP' then
-            SQL.Add('AND REP_FANT = '''+frmprincipal.cad_usuUSU_DUSU.AsString+'''');
-
-            if edtxt.Text <> '' then
-            begin
-              if cField = 'ID' then
-              SQL.Add('AND CAD_CLI.ID = '''+edtxt.Text+'''')
-              else
-              SQL.Add('AND '+cField+' LIKE ''%'+edtxt.Text+'%''');
-            end;
-
-            if (dxDT1.Date > 0) and (dxDT2.Date > 0) then
-            SQL.Add('AND '+cData+' BETWEEN '''+formatDateTime('mm/dd/yy',dxDT1.Date)+''' AND '''+formatDateTime('mm/dd/yy',dxDT2.Date)+'''');
-          end;
-
-          if cField = 'Todos' then
-             cField := 'CLI_FANT';
-
-          SQL.Add('ORDER BY '+cfield);
-          Open;
-        end;
-      end;
-      dbgconsulta.SetFocus;
-      campo_pesquisa := frmpesquisa.cbCAMPO.Text;
-    end;
-    freeAndNil(frmpesquisa);
-    frmpesquisa.Free;
+    freeAndNil(frmcad_cli_edi);
   end;
+end;
+
+procedure Tfrmcad_cli.SIMEDeleteClick(Sender: TObject);
+begin
+  PCampo[0] := 'USU_DELE';
+  PCampo[1] := 'Clientes';
+  PCampo[2] := 'Cadastro';
+  PCampo[3] := 'Permissões Gerais';
+  inherited;
+
+  with consulta do
+  begin
+    if cadastroCLI_STA.Value = '1' then
+    begin
+      if oYesNo(handle,'Confirma a exclusão do cliente '+cadastroCLI_FANT.AsString+' ?') = mrno then
+         abort;
+
+      SQL.Clear;
+      SQL.Add('DELETE FROM CAD_CLI');
+      SQL.Add('WHERE  ID = '''+cadastroID.AsString+'''');
+      ExecSQL;
+      frmprincipal.Log_Eve('Clientes','Cadastro de Clientes','Exclusão' ,cadastroID.AsString,cadastroID.AsString,LOWERCASE(cadastroCLI_FANT.AsString),'','');
+    end
+    else
+    begin
+      if oYesNo(handle,'Enviar para a lixeira o cliente '+cadastroCLI_FANT.AsString+' ?') = mrno then
+         abort;
+
+      SQL.Clear;
+      SQL.Add('UPDATE CAD_CLI');
+      SQL.Add('SET    CLI_STA = ''1''');
+      SQL.Add('WHERE  ID = '''+cadastroID.AsString+'''');
+      ExecSQL;
+      frmprincipal.Log_Eve('Clientes','Cadastro de Clientes','Lixeira' ,cadastroID.AsString,cadastroID.AsString,LOWERCASE(cadastroCLI_FANT.AsString),'','');
+    end;
+  end;
+
+  IBTra.CommitRetaining;
+  ExecuteEvent;
 end;
 
 procedure Tfrmcad_cli.DBGConsultaKeyDown(Sender: TObject; var Key: Word;
@@ -512,4 +386,3 @@ begin
 end;
 
 end.
-

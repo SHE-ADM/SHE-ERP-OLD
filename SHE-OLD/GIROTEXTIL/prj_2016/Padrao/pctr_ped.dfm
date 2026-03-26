@@ -1,6 +1,6 @@
 inherited frmctr_ped: Tfrmctr_ped
-  Left = -6
-  Top = 1
+  Left = 274
+  Top = 46
   Caption = 'Controle de Pedidos'
   ClientHeight = 694
   ClientWidth = 1356
@@ -34,7 +34,7 @@ inherited frmctr_ped: Tfrmctr_ped
     Width = 1356
     inherited siEVE: TSpeedItem [4]
       ImageIndex = 10
-      OnClick = siEVEClick
+      Visible = False
     end
     inherited siPSQ: TSpeedItem [5]
       Hint = 'Pesquisa Avan'#231'ada'
@@ -113,6 +113,18 @@ inherited frmctr_ped: Tfrmctr_ped
       Top = 2
       Visible = True
       OnClick = siINFClick
+      SectionName = 'Movimento'
+    end
+    object SINovo: TSpeedItem
+      BtnCaption = '[ins] Incluir'
+      Cursor = crHandPoint
+      Hint = 'Incluir Pedido'
+      ImageIndex = 0
+      Spacing = 1
+      Left = 112
+      Top = 2
+      Visible = True
+      OnClick = SINovoClick
       SectionName = 'Movimento'
     end
   end
@@ -498,18 +510,21 @@ inherited frmctr_ped: Tfrmctr_ped
           FieldName = 'ROM_STPD'
         end
         object dbgConsultaROM_CDBX: TdxDBGridMaskColumn
+          Visible = False
           Width = 63
           BandIndex = 0
           RowIndex = 0
           FieldName = 'ROM_CDBX'
         end
         object dbgConsultaROM_CDCX: TdxDBGridMaskColumn
+          Visible = False
           Width = 73
           BandIndex = 0
           RowIndex = 0
           FieldName = 'ROM_CDCX'
         end
         object dbgConsultaROM_CTNR: TdxDBGridMaskColumn
+          Visible = False
           Width = 120
           BandIndex = 0
           RowIndex = 0
@@ -522,12 +537,14 @@ inherited frmctr_ped: Tfrmctr_ped
           FieldName = 'ROM_DTRA'
         end
         object dbgConsultaROM_DSEP: TdxDBGridMaskColumn
+          Visible = False
           Width = 110
           BandIndex = 0
           RowIndex = 0
           FieldName = 'ROM_DSEP'
         end
         object dbgConsultaID: TdxDBGridMaskColumn
+          Visible = False
           Width = 65
           BandIndex = 0
           RowIndex = 0
@@ -1033,6 +1050,10 @@ inherited frmctr_ped: Tfrmctr_ped
     object cadastroROM_DERD: TIBStringField
       FieldName = 'ROM_DERD'
       Origin = '"PED_VEN_CAB"."ROM_DERD"'
+    end
+    object CadastroROM_CTRA: TIntegerField
+      FieldName = 'ROM_CTRA'
+      Origin = '"PED_VEN_CAB"."ROM_CTRA"'
     end
   end
   inherited DTSCadastro: TDataSource

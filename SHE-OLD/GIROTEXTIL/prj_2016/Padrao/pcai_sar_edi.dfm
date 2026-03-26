@@ -1,7 +1,7 @@
 inherited frmcai_sar_edi: Tfrmcai_sar_edi
   Left = 326
   Top = 76
-  ClientHeight = 365
+  ClientHeight = 302
   ClientWidth = 414
   OldCreateOrder = True
   Position = poDesktopCenter
@@ -9,14 +9,14 @@ inherited frmcai_sar_edi: Tfrmcai_sar_edi
   TextHeight = 14
   inherited pnlcadastro: TPanel
     Width = 414
-    Height = 232
+    Height = 283
     inherited PaintBox: TPaintBox
       Width = 414
-      Height = 232
+      Height = 218
     end
-    object Label3: TLabel
+    object Label3: TLabel [1]
       Left = 4
-      Top = 12
+      Top = 76
       Width = 24
       Height = 14
       Caption = 'Tipo'
@@ -30,9 +30,9 @@ inherited frmcai_sar_edi: Tfrmcai_sar_edi
       ParentFont = False
       Transparent = True
     end
-    object Label2: TLabel
+    object Label2: TLabel [2]
       Left = 4
-      Top = 36
+      Top = 100
       Width = 32
       Height = 14
       Caption = 'Conta'
@@ -46,9 +46,13 @@ inherited frmcai_sar_edi: Tfrmcai_sar_edi
       ParentFont = False
       Transparent = True
     end
+    inherited SBMenuPrincipal: TSpeedBar
+      Width = 414
+      TabOrder = 7
+    end
     object edtipo: TdxEdit
       Left = 40
-      Top = 8
+      Top = 72
       Width = 369
       Hint = 'C'#243'digo'
       Enabled = False
@@ -69,7 +73,7 @@ inherited frmcai_sar_edi: Tfrmcai_sar_edi
     end
     object edid: TdxEdit
       Left = 40
-      Top = 7
+      Top = 71
       Width = 60
       Hint = 'C'#243'digo'
       Font.Charset = DEFAULT_CHARSET
@@ -89,7 +93,7 @@ inherited frmcai_sar_edi: Tfrmcai_sar_edi
     end
     object edctsr: TdxButtonEdit
       Left = 40
-      Top = 8
+      Top = 72
       Width = 73
       Color = clWhite
       Enabled = False
@@ -144,7 +148,7 @@ inherited frmcai_sar_edi: Tfrmcai_sar_edi
     end
     object GroupBox1: TGroupBox
       Left = 4
-      Top = 80
+      Top = 128
       Width = 405
       Height = 145
       Caption = 'Identifica'#231#227'o'
@@ -386,7 +390,7 @@ inherited frmcai_sar_edi: Tfrmcai_sar_edi
     end
     object eddesc: TdxPickEdit
       Left = 112
-      Top = 8
+      Top = 72
       Width = 297
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -405,7 +409,7 @@ inherited frmcai_sar_edi: Tfrmcai_sar_edi
     end
     object edbcon: TdxButtonEdit
       Left = 40
-      Top = 32
+      Top = 96
       Width = 73
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -458,7 +462,7 @@ inherited frmcai_sar_edi: Tfrmcai_sar_edi
     end
     object eddcon: TdxPickEdit
       Left = 112
-      Top = 32
+      Top = 96
       Width = 297
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -479,29 +483,8 @@ inherited frmcai_sar_edi: Tfrmcai_sar_edi
     end
   end
   inherited sbMSG: TStatusBar
-    Top = 346
+    Top = 283
     Width = 414
-  end
-  inherited SpeedBar2: TSpeedBar
-    Width = 414
-    inherited siSAV: TSpeedItem [4]
-    end
-    inherited siVAL: TSpeedItem [5]
-    end
-    inherited siSAIR: TSpeedItem [6]
-      Left = 112
-    end
-    inherited siCAN: TSpeedItem [7]
-      Visible = False
-    end
-  end
-  inherited imageOPC: TImageList
-    Left = 420
-    Top = 230
-  end
-  inherited imageITEM: TImageList
-    Left = 324
-    Top = 174
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer

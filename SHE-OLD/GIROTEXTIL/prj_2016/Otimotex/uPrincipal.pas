@@ -156,7 +156,6 @@ type
     acttab_ped: TAction;
     pnCustomize: TPanel;
     Bevel8: TBevel;
-    pnlcalendario: TPanel;
     pnlpro: TPanel;
     bctr_pro: TRxSpeedButton;
     bent_pro: TRxSpeedButton;
@@ -258,7 +257,6 @@ type
     Label1: TLabel;
     dtsparametros: TDataSource;
     sbvpro: TSpeedButton;
-    calendario: TMonthCalendar;
     mven_ped_oca: TMenuItem;
     mven_ctr_oca: TMenuItem;
     N33: TMenuItem;
@@ -625,11 +623,16 @@ type
     cad_pro_comCOM_COMP: TIBStringField;
     cad_pro_comCOM_QTDE: TIBBCDField;
     Composicao: TMenuItem;
+    psq_proPRO_REST: TLargeintField;
+    psq_proPRO_RRES: TLargeintField;
+    psq_proPRO_RPRG: TLargeintField;
+    psq_proPRO_RCOM: TLargeintField;
+    psq_proPRO_RDEF: TLargeintField;
+    psq_proPRO_RSEP: TLargeintField;
     parametrosID: TIntegerField;
     parametrosPAR_CDNF: TIBStringField;
     parametrosPAR_SERI: TIBStringField;
     parametrosPAR_CCRT: TIBStringField;
-    parametrosPAR_OCRT: TMemoField;
     parametrosPAR_CNA1: TIBStringField;
     parametrosPAR_CNA2: TIBStringField;
     parametrosPAR_STPD: TIBStringField;
@@ -667,9 +670,6 @@ type
     parametrosPAR_CPAG: TIntegerField;
     parametrosPAR_CTRA: TIntegerField;
     parametrosPAR_TVOL: TIBStringField;
-    parametrosPAR_FOTO: TBlobField;
-    parametrosPAR_FOT2: TBlobField;
-    parametrosPAR_FOT3: TBlobField;
     parametrosPAR_CNSD: TIBStringField;
     parametrosPAR_CSTD: TIBStringField;
     parametrosPAR_CNSF: TIBStringField;
@@ -688,10 +688,8 @@ type
     parametrosPAR_PECA: TIBStringField;
     parametrosPAR_LIMC: TSmallintField;
     parametrosPAR_LIMB: TSmallintField;
-    parametrosPAR_ONFE: TMemoField;
     parametrosPAR_LIME: TIBStringField;
     parametrosPAR_ESEG: TIBStringField;
-    parametrosPAR_OPED: TMemoField;
     parametrosPAR_DIOR: TIBStringField;
     parametrosPAR_PSEP: TIBStringField;
     parametrosPAR_RFOR: TIBStringField;
@@ -709,38 +707,28 @@ type
     parametrosPAR_DCRD: TIBStringField;
     parametrosPAR_DMAP: TIBStringField;
     parametrosPAR_STAV: TIBStringField;
-    parametrosPAR_CVEN: TSmallintField;
+    parametrosPAR_OCRT: TMemoField;
+    parametrosPAR_FOTO: TBlobField;
+    parametrosPAR_FOT2: TBlobField;
+    parametrosPAR_FOT3: TBlobField;
+    parametrosPAR_ONFE: TMemoField;
+    parametrosPAR_OPED: TMemoField;
+    parametrosPAR_CBAR: TBlobField;
+    parametrosPAR_IM: TIBStringField;
+    parametrosPAR_IE: TIBStringField;
     parametrosPAR_UNIDADEFEDERADA: TIBStringField;
     parametrosPAR_UNIDADEFEDERADACODIGO: TSmallintField;
     parametrosPAR_NOSERIECERTIFICADO: TIBStringField;
     parametrosPAR_EMAILCONTABIL: TIBStringField;
     parametrosPAR_EMAILXMLCOFRE: TIBStringField;
     parametrosPAR_LKFACEBOOK: TIBStringField;
-    parametrosPAR_LKINSTAGRAM: TIBStringField;
-    parametrosPAR_LKTWITTER: TIBStringField;
-    parametrosPAR_SWHASSINATURA: TIBStringField;
-    parametrosCNPJSOFTWAREHOUSE: TIBStringField;
-    parametrosTOKENSOFTWAREHOUSE: TIBStringField;
-    parametrosPAR_QTDE: TSmallintField;
-    parametrosPAR_EST_COMP: TIBStringField;
-    parametrosPAR_EST_CDI: TIBStringField;
-    parametrosPAR_ETIQ: TSmallintField;
-    parametrosPAR_GCOR: TSmallintField;
-    parametrosPAR_GPCO: TSmallintField;
-    parametrosPAR_GRCO: TSmallintField;
-    parametrosPAR_GTAM: TSmallintField;
-    parametrosPAR_GVAR: TSmallintField;
-    parametrosPAR_GPRC: TSmallintField;
-    parametrosPAR_GFOR: TSmallintField;
-    parametrosPAR_FBAR: TSmallintField;
-    parametrosPAR_IDTP: TSmallintField;
-    parametrosPAR_BAIXA_PAGO: TSmallintField;
-    parametrosDIAS_SAIDA: TSmallintField;
-    parametrosPAR_CBAR: TBlobField;
-    parametrosPAR_FTSITE: TBlobField;
     parametrosPAR_FTFACEBOOK: TBlobField;
+    parametrosPAR_LKINSTAGRAM: TIBStringField;
     parametrosPAR_FTINSTAGRAM: TBlobField;
+    parametrosPAR_LKTWITTER: TIBStringField;
     parametrosPAR_FTTWITTER: TBlobField;
+    parametrosPAR_SWHASSINATURA: TIBStringField;
+    parametrosPAR_CVEN: TSmallintField;
     parametrosRAMODEATIVIDADE: TIBStringField;
     parametrosCLI_FANT: TIBStringField;
     parametrosCLI_RAZA: TIBStringField;
@@ -752,13 +740,23 @@ type
     parametrosREP_FANT: TIBStringField;
     parametrosTRA_FANT: TIBStringField;
     parametrosPAG_DPAG: TIBStringField;
-    parametrosPAR_IE: TIBStringField;
-    psq_proPRO_REST: TLargeintField;
-    psq_proPRO_RRES: TLargeintField;
-    psq_proPRO_RPRG: TLargeintField;
-    psq_proPRO_RCOM: TLargeintField;
-    psq_proPRO_RDEF: TLargeintField;
-    psq_proPRO_RSEP: TLargeintField;
+    parametrosCNPJSOFTWAREHOUSE: TIBStringField;
+    parametrosTOKENSOFTWAREHOUSE: TIBStringField;
+    PNLPrincipal: TPanel;
+    Bevel1: TBevel;
+    SBCAD_CLI: TRxSpeedButton;
+    SBCAD_PRO: TRxSpeedButton;
+    SBCAD_PRO_EST_LAN: TRxSpeedButton;
+    SBCAD_PRO_EST_EXP_MAN: TRxSpeedButton;
+    SBROM_VEN_LAN: TRxSpeedButton;
+    SBPED_VEN_LAN: TRxSpeedButton;
+    SBNFE_LAN: TRxSpeedButton;
+    SBNFE_ADM: TRxSpeedButton;
+    SBCAD_TRA: TRxSpeedButton;
+    SBCAD_PRO_GRD: TRxSpeedButton;
+    SBCAD_PRO_EST_ADM: TRxSpeedButton;
+    RxSpeedButton8: TRxSpeedButton;
+    RxSpeedButton10: TRxSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure rsbSAIClick(Sender: TObject);
     procedure actcad_cliExecute(Sender: TObject);
@@ -770,31 +768,23 @@ type
     procedure rsbSOBClick(Sender: TObject);
     procedure actcad_proExecute(Sender: TObject);
     procedure actcad_repExecute(Sender: TObject);
-    procedure actcad_traExecute(Sender: TObject);
     procedure actcad_forExecute(Sender: TObject);
     procedure acttab_alqExecute(Sender: TObject);
     procedure acttab_natExecute(Sender: TObject);
     procedure acttab_pagExecute(Sender: TObject);
-    procedure acttab_colExecute(Sender: TObject);
     procedure actven_nfsExecute(Sender: TObject);
     procedure acttab_munExecute(Sender: TObject);
-    procedure actent_proExecute(Sender: TObject);
-    procedure actctr_proExecute(Sender: TObject);
     procedure BProClick(Sender: TObject);
     procedure sbvproClick(Sender: TObject);
     procedure cad_usuAfterOpen(DataSet: TDataSet);
-    procedure actcad_ageExecute(Sender: TObject);
     procedure parametrosAfterOpen(DataSet: TDataSet);
     procedure actlog_usuExecute(Sender: TObject);
     procedure actsen_usuExecute(Sender: TObject);
     procedure actpar_priExecute(Sender: TObject);
-    procedure actpar_sisExecute(Sender: TObject);
     procedure actcad_pro_conExecute(Sender: TObject);
     procedure actsobreExecute(Sender: TObject);
     procedure acttab_clfExecute(Sender: TObject);
     procedure FormResize(Sender: TObject);
-    procedure acttab_pedExecute(Sender: TObject);
-    procedure acttab_cobExecute(Sender: TObject);
     procedure acttab_corExecute(Sender: TObject);
     procedure BCliClick(Sender: TObject);
     procedure bcad_pro_conClick(Sender: TObject);
@@ -810,7 +800,6 @@ type
     procedure actctr_pedExecute(Sender: TObject);
     procedure sbvpedClick(Sender: TObject);
     procedure actcad_pro_prcExecute(Sender: TObject);
-    procedure actctr_ped_sepExecute(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure actctr_romExecute(Sender: TObject);
     procedure actctr_nfeExecute(Sender: TObject);
@@ -819,21 +808,7 @@ type
     procedure actcai_fecExecute(Sender: TObject);
     procedure actfin_dupExecute(Sender: TObject);
     procedure actven_desExecute(Sender: TObject);
-    procedure actfin_pag_pag_comExecute(Sender: TObject);
-    procedure actrec_carExecute(Sender: TObject);
-    procedure sbvrecClick(Sender: TObject);
-    procedure brec_conClick(Sender: TObject);
-    procedure actrec_banExecute(Sender: TObject);
-    procedure actrec_pag_banExecute(Sender: TObject);
-    procedure sbvrec_pagClick(Sender: TObject);
-    procedure brec_recClick(Sender: TObject);
-    procedure actrec_pag_carExecute(Sender: TObject);
     procedure actcai_reaExecute(Sender: TObject);
-    procedure actrec_can_banExecute(Sender: TObject);
-    procedure actven_ocaExecute(Sender: TObject);
-    procedure actctr_ocaExecute(Sender: TObject);
-    procedure actcad_pro_etiExecute(Sender: TObject);
-    procedure actrec_can_carExecute(Sender: TObject);
     procedure mREL_PED_PRO_CATClick(Sender: TObject);
     procedure mREL_PED_PRO_GERClick(Sender: TObject);
     procedure mREL_PED_KAR_CATClick(Sender: TObject);
@@ -864,13 +839,13 @@ type
     procedure mtab_ncmClick(Sender: TObject);
     procedure mREL_PRG_COM_PROClick(Sender: TObject);
     procedure ComprasporContainer1Click(Sender: TObject);
-    procedure actcad_chqExecute(Sender: TObject);
-    procedure actlan_chqExecute(Sender: TObject);
     procedure CFOP1Click(Sender: TObject);
     procedure ransportadora1Click(Sender: TObject);
     procedure CEAN1Click(Sender: TObject);
     procedure ACTCFeSatExecute(Sender: TObject);
     procedure ComposicaoClick(Sender: TObject);
+    procedure actcad_traExecute(Sender: TObject);
+    procedure actfin_pag_pag_comExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -891,8 +866,9 @@ type
     function  CALCULA_LIMITE_BANCARIO(limite: boolean;stco,fatu,ccli: string): string;
   end;
 
+procedure uFrmCreate(AOwner: TComponent;AFClass: TFormClass; var AInstance); STDCall;
 procedure uJPEGStream(Campo: TField; Imagem: TPicture); STDCall;
-function uPSQNotaFiscal(Texto: String;Mostrar: Boolean = True): Boolean; STDCall;
+function  uPSQNotaFiscal(Texto: String;Mostrar: Boolean = True): Boolean; STDCall;
 
 var
   FrmPrincipal  : TFrmPrincipal;
@@ -912,24 +888,41 @@ implementation
 
 uses uFrmLogin, pcad_cli, ppar_pri, pSobre,
   pcad_pro, pcad_rep, pcad_tra, pcad_for, ptab_alq, ptab_cor, 
-  ptab_nat, ptab_pag, ptab_col, ptab_mun,
-  pent_pro, pctr_pro, 
-  pcad_age, psenha,
+  ptab_nat, ptab_pag, ptab_mun,
+  psenha,
   pcad_pro_con,
   ptab_clf, bDados,
-  ppar_sis, 
-  ppag_com, ptab_cob, ptab_ped,
   pcai_abr, pcai_mov, pcai_tsr,
   pven_ped, pctr_ped,
-  pven_nfe, pctr_ped_sep, pctr_rom, pctr_nfe,
-  pcai_sar, pcai_fec, pfin_dup, pven_des, prec_car, prec_ban,
-  prec_pag_ban, prec_pag_car, prec_can_ban,
-  pven_oca, pctr_oca, pctr_ped_se2,
-  peti_pro, prec_can_car, prelatorio_geral,
-  pcai_sar_edi, pcad_chq, pCFeSat;
+  pven_nfe, pctr_rom, pctr_nfe,
+  pcai_sar, pcai_fec, pfin_dup, pven_des,
+  prelatorio_geral,
+  pcai_sar_edi, pCFeSat, ppag_com;
 
 
 {$R *.dfm}
+
+procedure uFrmCreate(AOwner: TComponent;AFClass: TFormClass; var AInstance); STDCall;
+begin
+  with FrmPrincipal do
+       if Assigned(TForm(AInstance)) then
+       begin
+         TForm(AInstance).WindowState := wsNormal;
+         TForm(AInstance).BringToFront;
+         TForm(AInstance).SetFocus;
+       end else
+       begin
+         TForm(AInstance) := AFClass.Create(AOwner);
+         if TForm(AInstance).FormStyle = fsNormal then
+            try
+              TForm(AInstance).BorderIcons := [];
+              TForm(AInstance).Visible     := False;
+              TForm(AInstance).ShowModal;
+            finally
+              FreeAndNil(TForm(AInstance));
+            end;
+       end;
+end;
 
 function uPSQNotaFiscal(Texto: String;Mostrar: Boolean = True): Boolean; STDCall;
 var
@@ -1325,6 +1318,7 @@ begin
 
   with psq_pro do
   begin
+    Close;
     SQL.Clear;
     SQL.Add('SELECT CAD_PRO.ID          ,CAD_PRO.PRO_CBAR    ,CAD_PRO.PRO_CFOR    ,CAD_PRO.PRO_CART,CAD_PRO.PRO_CPRO,');
     SQL.Add('       CAD_PRO.PRO_CCOR    ,CAD_PRO.PRO_PCOR    ,CAD_PRO.PRO_DCOR    ,CAD_PRO.PRO_DUNI    ,CAD_PRO.PRO_GRAD,CAD_PRO.PRO_COMP,');
@@ -1362,7 +1356,7 @@ begin
     SQL.Add('WHERE    CAD_PRO.PRO_CART = CAD_PRO_IMG.PRO_CART');
     SQL.Add('AND      CAD_PRO.PRO_STAV <> ''I''');
 
-    if (CField = 'CAD_PRO.ID')       or (CField = 'CAD_PRO.PRO_CBAR') or (CField = 'CAD_PRO.PRO_CART') then
+    if (CField = 'CAD_PRO.ID')       or (CField = 'CAD_PRO.PRO_CBAR') then
     SQL.Add('AND '+CField+' = '''    +CPro+'''' ) else
     if (CField = 'CAD_PRO.PRO_CART') or (CField = 'CAD_PRO.PRO_CPRO') then
     SQL.Add('AND '+CField+' LIKE ''' +CPro+'%''') else
@@ -1613,23 +1607,6 @@ begin
   close;
 end;
 
-procedure TFrmPrincipal.actcad_cliExecute(Sender: TObject);
-begin
-  if frmcad_cli = nil then
-  begin
-    Application.CreateForm (Tfrmcad_cli, frmcad_cli);
-
-    if Screen.Width <= 1024 then
-    begin
-      frmcad_cli.FormStyle := fsNormal;
-      frmcad_cli.Visible   := false;
-      frmcad_cli.ShowModal;
-    end
-    else
-      frmcad_cli.Show;
-  end;
-end;
-
 procedure TFrmPrincipal.rsbBLCClick(Sender: TObject);
 begin
   winExec('c:\windows\system32\notepad.exe',sw_shownormal);
@@ -1642,189 +1619,37 @@ end;
 
 procedure TFrmPrincipal.rsbSOBClick(Sender: TObject);
 begin
-  if frmsobre = nil then
-  begin
-    Application.CreateForm (TfrmSobre, frmSobre);
-    try
-      frmSobre.ShowModal;
-    finally
-      freeAndNil(frmSobre);
-      frmSobre.Free;
-    end;
-  end;  
-end;
-
-procedure TFrmPrincipal.actcad_proExecute(Sender: TObject);
-begin
-  if frmcad_pro = nil then
-  begin
-    Application.CreateForm (Tfrmcad_pro, frmcad_pro);
-    if Screen.Width <= 1024 then
-    begin
-      frmcad_pro.FormStyle := fsNormal;
-      frmcad_pro.Visible   := false;
-      frmcad_pro.ShowModal;
-    end
-    else
-      frmcad_pro.Show;
-  end;
+  uFrmCreate(Application,TfrmSobre, frmSobre);
 end;
 
 procedure TFrmPrincipal.actcad_repExecute(Sender: TObject);
 begin
-  if frmcad_rep = nil then
-  begin
-    Application.CreateForm (Tfrmcad_rep, frmcad_rep);
-    if Screen.Width <= 1024 then
-    begin
-      frmcad_rep.FormStyle := fsNormal;
-      frmcad_rep.Visible   := false;
-      frmcad_rep.ShowModal;
-    end
-    else
-      frmcad_rep.Show;
-  end;    
-end;
-
-procedure TFrmPrincipal.actcad_traExecute(Sender: TObject);
-begin
-  if frmcad_tra = nil then
-  begin
-    Application.CreateForm (Tfrmcad_tra, frmcad_tra);
-    if Screen.Width <= 1024 then
-    begin
-      frmcad_tra.FormStyle := fsNormal;
-      frmcad_tra.Visible   := false;
-      frmcad_tra.ShowModal;
-    end
-    else
-      frmcad_tra.Show;
-  end;    
+  uFrmCreate(Application,Tfrmcad_rep, frmcad_rep);
 end;
 
 procedure TFrmPrincipal.actcad_forExecute(Sender: TObject);
 begin
-  if frmcad_for = nil then
-  begin
-    Application.CreateForm (Tfrmcad_for, frmcad_for);
-    if Screen.Width <= 1024 then
-    begin
-      frmcad_for.FormStyle := fsNormal;
-      frmcad_for.Visible   := false;
-      frmcad_for.ShowModal;
-    end
-    else
-      frmcad_for.Show;
-  end;    
+  uFrmCreate(Application,Tfrmcad_for, frmcad_for);
 end;
 
 procedure TFrmPrincipal.acttab_alqExecute(Sender: TObject);
 begin
-  if frmtab_alq = nil then
-  begin
-    Application.CreateForm (Tfrmtab_alq, frmtab_alq);
-    frmtab_alq.Show;
-  end;  
+  uFrmCreate(Application,Tfrmtab_alq, frmtab_alq);
 end;
 
 procedure TFrmPrincipal.acttab_natExecute(Sender: TObject);
 begin
-  if frmtab_nat = nil then
-  begin
-    Application.CreateForm (Tfrmtab_nat, frmtab_nat);
-    frmtab_nat.Show;
-  end;
+  uFrmCreate(Application,Tfrmtab_nat, frmtab_nat);
 end;
 
 procedure TFrmPrincipal.acttab_pagExecute(Sender: TObject);
 begin
-  if frmtab_pag = nil then
-  begin
-    Application.CreateForm (Tfrmtab_pag, frmtab_pag);
-    frmtab_pag.Show;
-  end;
-end;
-
-procedure TFrmPrincipal.acttab_colExecute(Sender: TObject);
-begin
-  if frmtab_col = nil then
-  begin
-    Application.CreateForm (Tfrmtab_col, frmtab_col);
-    frmtab_col.Show;
-  end;  
-end;
-
-procedure TFrmPrincipal.actven_nfsExecute(Sender: TObject);
-begin
-  if frmven_nfe = nil then
-  begin
-    Application.CreateForm (Tfrmven_nfe, frmven_nfe);
-    if Screen.Width = 1280 then
-    begin
-      frmven_nfe.FormStyle := fsNormal;
-      frmven_nfe.Visible   := false;
-      frmven_nfe.Width     := Screen.Width;
-      frmven_nfe.ShowModal;
-    end else
-    frmven_nfe.Show;
-  end;
-end;
-
-procedure TFrmPrincipal.actctr_nfeExecute(Sender: TObject);
-begin
-  if frmctr_nfe = nil then
-  begin
-    Application.CreateForm (Tfrmctr_nfe, frmctr_nfe);
-    if Screen.Width <= 1024 then
-    begin
-      frmctr_nfe.FormStyle := fsNormal;
-      frmctr_nfe.Visible   := false;
-      frmctr_nfe.ShowModal;
-    end
-    else
-      frmctr_nfe.Show;
-  end;
+  uFrmCreate(Application,Tfrmtab_pag, frmtab_pag);
 end;
 
 procedure TFrmPrincipal.acttab_munExecute(Sender: TObject);
 begin
-  if frmtab_mun = nil then
-  begin
-    Application.CreateForm (Tfrmtab_mun, frmtab_mun);
-    frmtab_mun.Show;
-  end;
-end;
-
-procedure TFrmPrincipal.actent_proExecute(Sender: TObject);
-begin
-  if frment_pro = nil then
-  begin
-    Application.CreateForm (Tfrment_pro, frment_pro);
-    if Screen.Width <= 1024 then
-    begin
-      frment_pro.FormStyle := fsNormal;
-      frment_pro.Visible   := false;
-      frment_pro.ShowModal;
-    end
-    else
-      frment_pro.Show;
-  end;
-end;
-
-procedure TFrmPrincipal.actctr_proExecute(Sender: TObject);
-begin
-  if frmctr_pro = nil then
-  begin
-    Application.CreateForm (Tfrmctr_pro, frmctr_pro);
-    if Screen.Width <= 1024 then
-    begin
-      frmctr_pro.FormStyle := fsNormal;
-      frmctr_pro.Visible   := false;
-      frmctr_pro.ShowModal;
-    end
-    else
-      frmctr_pro.Show;
-  end;    
+  uFrmCreate(Application,Tfrmtab_mun, frmtab_mun);
 end;
 
 procedure TFrmPrincipal.BCliClick(Sender: TObject);
@@ -2258,15 +2083,6 @@ begin
   end;
 end;
 
-procedure TFrmPrincipal.actcad_ageExecute(Sender: TObject);
-begin
-  if frmcad_age = nil then
-  begin
-    Application.CreateForm (Tfrmcad_age, frmcad_age);
-    frmcad_age.Show;
-  end;
-end;
-
 procedure TFrmPrincipal.parametrosAfterOpen(DataSet: TDataSet);
           function _RETAliqICMS: Double;
           begin
@@ -2325,24 +2141,12 @@ begin
   RECParametros.CFOPForaUF            := ParametrosPAR_CNA2.AsString;
   RECParametros.Volume                := ParametrosPAR_TVOL.AsString;
   RECParametros.Grade                 := (ParametrosPAR_GRAD.AsString = '1');
-  RECParametros.EstoqueTipo           := ParametrosPAR_IDTP.AsInteger;
   RECParametros.EstoquePecas          := ParametrosPAR_PECA.AsString;
-  RECParametros.EstoqueCompartilhado  := ParametrosPAR_EST_COMP.AsString;
-  RECParametros.EstoqueCDI            := ParametrosPAR_EST_CDI.AsString;
   RECParametros.CTRLLimite            := (ParametrosPAR_LIME.AsString = '1');
   RECParametros.SQLAllClientes        := (ParametrosPAR_TCLI.AsString = '1');
   RECParametros.SQLAllProdutos        := (ParametrosPAR_TPRO.AsString = '1');
-  RECParametros.BxPagAuto             := (ParametrosPAR_BAIXA_PAGO.AsInteger = 1);
   RECParametros.PCreditoICMS          := ParametrosPAR_CICM.AsFloat;
   RECParametros.PICMS                 := _RETAliqICMS;
-  RECParametros.LKSite                := ParametrosPAR_SITE.AsString;
-  RECParametros.FTSite                := ParametrosPAR_FTSite;
-  RECParametros.LKFacebook            := ParametrosPAR_LKFacebook.AsString;
-  RECParametros.FTFacebook            := ParametrosPAR_FTFacebook;
-  RECParametros.LKInstagram           := ParametrosPAR_LKInstagram.AsString;
-  RECParametros.FTInstagram           := ParametrosPAR_FTInstagram;
-  RECParametros.LKTWitter             := ParametrosPAR_LKTWitter.AsString;
-  RECParametros.FTTWitter             := ParametrosPAR_FTTWitter;
   RECParametros.SwHAssinatura         := IFThen(RECParametros.Fantasia <> 'EXPRESSO','','Yb0gv9r9MRN8M6uLN33yWJDMAI8gdJXBrMTbv5yUOgajE7cg6Ul8cwdKwuXHcWobsl3eHuEuL1o+xeAtCNjxKYTgg3Ln1sJwU+6YNo17whdIofhrLLiqfNYf09WFuK'+
                                                                                         'cv6YcLFLrIng3AIDw9otUD0i3AtDTKVXT4PbaRtPdl9FbdSE5JcNPvuLj78+z2PGPjLjJM6f/bUfJE4J5uQlRlkOJRLFi6uHtgcvW49/NkioB0cWOfOLiamRX4UFPKlEqEaERw6Yb1k2zVpGDL2qb528txLVeCQLjxpp8ucyKhMlOurrjmaXNf0k2iXbwIUzP2SKBnQBMThVoHqLWMwY7AJQ==');
 
@@ -2388,7 +2192,6 @@ begin
     Open;
   end;
 
-  calendario.Date := date;
   SBRodape.Panels[0].Text := ParametrosPAR_FANT.AsString;
   carregaFoto(parametrosPAR_FOTO.BlobSize,parametrosPAR_FOTO,parametros)
 end;
@@ -2464,26 +2267,6 @@ begin
   end;  
 end;
 
-procedure TFrmPrincipal.actpar_sisExecute(Sender: TObject);
-begin
-  if frmpar_sis = nil then
-  begin
-    if cad_usuUSU_ADM.AsString <> '1' then
-       raise exception.Create('ACESSO NEGADO !'+#13+'Contate o admnistrador do sistema.');
-
-    Application.CreateForm (TfrmPar_Sis, frmPar_Sis);
-    try
-      frmPar_Sis.ShowModal;
-    finally
-      parametros.Close;
-      parametros.Open;
-
-      freeAndNil(frmpar_sis);
-      frmpar_sis.Free;
-    end;
-  end;
-end;
-
 procedure TFrmPrincipal.actcad_pro_conExecute(Sender: TObject);
 begin
   if frmcad_pro_con = nil then
@@ -2504,29 +2287,7 @@ end;
 
 procedure TFrmPrincipal.acttab_clfExecute(Sender: TObject);
 begin
-  if frmtab_clf = nil then
-  begin
-    Application.CreateForm (Tfrmtab_clf, frmtab_clf);
-    frmtab_clf.Show;
-  end;
-end;
-
-procedure TFrmPrincipal.acttab_pedExecute(Sender: TObject);
-begin
-  if frmtab_ped = nil then
-  begin
-    Application.CreateForm (Tfrmtab_ped, frmtab_ped);
-    frmtab_ped.Show;
-  end;
-end;
-
-procedure TFrmPrincipal.acttab_cobExecute(Sender: TObject);
-begin
-  if frmtab_cob = nil then
-  begin
-    Application.CreateForm (Tfrmtab_cob, frmtab_cob);
-    frmtab_cob.Show;
-  end;
+  uFrmCreate(Application,Tfrmtab_clf, frmtab_clf);
 end;
 
 procedure TFrmPrincipal.carregaFoto(tam: Integer; valor: TBlobField; tab: TIbDataSet);
@@ -2553,15 +2314,6 @@ begin
   end;
   IFotoFundo.Update;
   IFotoFundo.Refresh;  
-end;
-
-procedure TFrmPrincipal.acttab_corExecute(Sender: TObject);
-begin
-  if frmtab_cor = nil then
-  begin
-    Application.CreateForm (Tfrmtab_cor, frmtab_cor);
-    frmtab_cor.Show;
-  end;
 end;
 
 procedure TFrmPrincipal.bcad_pro_conClick(Sender: TObject);
@@ -2730,23 +2482,6 @@ begin
   label1.Caption  := 'Menu de Programações';
 end;
 
-procedure TFrmPrincipal.actven_ocaExecute(Sender: TObject);
-begin
-  if frmven_oca = nil then
-  begin
-    Application.CreateForm (Tfrmven_oca, frmven_oca);
-
-    if Screen.Width <= 1024 then
-    begin
-      frmven_oca.FormStyle := fsNormal;
-      frmven_oca.Visible   := false;
-      frmven_oca.ShowModal;
-    end
-    else
-      frmven_oca.Show;
-  end;
-end;
-
 procedure TFrmPrincipal.actven_pedExecute(Sender: TObject);
 begin
   if frmven_ped = nil then
@@ -2817,40 +2552,6 @@ begin
   label1.Caption  := 'Menu de Pedidos';
 end;
 
-procedure TFrmPrincipal.actctr_ocaExecute(Sender: TObject);
-begin
-  if frmctr_oca = nil then
-  begin
-    Application.CreateForm (Tfrmctr_oca, frmctr_oca);
-
-    if Screen.Width <= 1024 then
-    begin
-      frmctr_oca.FormStyle := fsNormal;
-      frmctr_oca.Visible   := false;
-      frmctr_oca.ShowModal;
-    end
-    else
-      frmctr_oca.Show;
-  end;
-end;
-
-procedure TFrmPrincipal.actctr_pedExecute(Sender: TObject);
-begin
-  if frmctr_ped = nil then
-  begin
-    Application.CreateForm (Tfrmctr_ped, frmctr_ped);
-
-    if Screen.Width <= 1024 then
-    begin
-      frmctr_ped.FormStyle := fsNormal;
-      frmctr_ped.Visible   := false;
-      frmctr_ped.ShowModal;
-    end
-    else
-      frmctr_ped.Show;
-  end;    
-end;
-
 procedure TFrmPrincipal.sbvpedClick(Sender: TObject);
 begin
   pnlped.Visible  := false;
@@ -2872,69 +2573,6 @@ begin
   Application.CreateForm (Tfrmcad_pro_con, frmcad_pro_con);
   frmcad_pro_con.Tag := 1;
   frmcad_pro_con.Show;
-end;
-
-procedure TFrmPrincipal.actctr_ped_sepExecute(Sender: TObject);
-begin
-  if frmprincipal.parametrosPAR_TIPO.AsString = '0' then
-  begin
-    if frmctr_ped_se2 = nil then
-    begin
-      frmctr_ped_se2 := tfrmctr_ped_se2.create(self);
-      try
-        frmctr_ped_se2.ShowModal;
-      finally
-        freeAndNil(frmctr_ped_se2);
-        frmctr_ped_se2.Free;
-      end;
-    end;
-  end
-  else
-  begin
-    if frmctr_ped_sep = nil then
-    begin
-      frmctr_ped_sep := tfrmctr_ped_sep.create(self);
-      try
-        frmctr_ped_sep.ShowModal;
-      finally
-        freeAndNil(frmctr_ped_sep);
-        frmctr_ped_sep.Free;
-      end;
-    end;
-  end;
-end;
-
-procedure TFrmPrincipal.actctr_romExecute(Sender: TObject);
-begin
-  if frmctr_rom = nil then
-  begin
-    Application.CreateForm (Tfrmctr_rom, frmctr_rom);
-
-    if Screen.Width <= 1024 then
-    begin
-      frmctr_rom.FormStyle := fsNormal;
-      frmctr_rom.Visible   := false;
-      frmctr_rom.ShowModal;
-    end
-    else
-      frmctr_rom.Show;
-  end;    
-end;
-
-procedure TFrmPrincipal.sbvrecClick(Sender: TObject);
-begin
-  pnlrec.Visible  := false;
-  if SLPrincipal.Values['departamento']      = 'ADM' then
-     pnlven.Visible := true
-  else if SLPrincipal.Values['departamento'] = 'VEN' then
-     pnlven.Visible := true
-  else if SLPrincipal.Values['departamento'] = 'CRI' then
-     pnlven.Visible := true
-  else if SLPrincipal.Values['departamento'] = 'FIN' then
-     pnlfin.Visible := true
-  else if SLPrincipal.Values['departamento'] = 'PCP' then
-     pnlpcp.Visible := true;
-  label1.Caption  := 'Principais Categorias';
 end;
 
 procedure TFrmPrincipal.actcai_sarExecute(Sender: TObject);
@@ -2993,184 +2631,6 @@ begin
   end;  
 end;
 
-procedure TFrmPrincipal.actfin_pag_pag_comExecute(Sender: TObject);
-begin
-  if frmpag_com = nil then
-  begin
-    Application.CreateForm (Tfrmpag_com, frmpag_com);
-
-    if Screen.Width <= 1024 then
-    begin
-      frmpag_com.FormStyle := fsNormal;
-      frmpag_com.Visible   := false;
-      frmpag_com.ShowModal;
-    end
-    else
-      frmpag_com.Show;
-  end;    
-end;
-
-procedure TFrmPrincipal.brec_conClick(Sender: TObject);
-var
-    hint: string;
-begin
-  pnloca.Visible := false;
-  pnlprg.Visible := false;
-  pnlped.Visible := false;
-  pnlpro.Visible := false;
-  pnlrec.Visible := true;
-
-  if SLPrincipal.Values['departamento']      = 'ADM' then
-  begin
-    pnlven.Visible := false;
-    hint := pnlven.Hint;
-  end
-  else if SLPrincipal.Values['departamento'] = 'VEN' then
-  begin
-    pnlven.Visible := false;
-    hint := pnlven.Hint;
-  end
-  else if SLPrincipal.Values['departamento'] = 'CRI' then
-  begin
-    pnlven.Visible := false;
-    hint := pnlven.Hint;
-  end
-  else if SLPrincipal.Values['departamento'] = 'FIN' then
-  begin
-    pnlfin.Visible := false;
-    hint := pnlfin.Hint;
-  end
-  else if SLPrincipal.Values['departamento'] = 'PCP' then
-  begin
-    pnlpcp.Visible := false;
-    hint := pnlpcp.Hint;
-  end;
-  label1.Caption  := 'Menu Financeiro';
-end;
-
-procedure TFrmPrincipal.actrec_carExecute(Sender: TObject);
-begin
-  if frmrec_car = nil then
-  begin
-    Application.CreateForm (Tfrmrec_car, frmrec_car);
-
-    if Screen.Width <= 1024 then
-    begin
-      frmrec_car.FormStyle := fsNormal;
-      frmrec_car.Visible   := false;
-      frmrec_car.ShowModal;
-    end
-    else
-      frmrec_car.Show;
-  end;    
-end;
-
-procedure TFrmPrincipal.actrec_banExecute(Sender: TObject);
-begin
-  if frmrec_ban = nil then
-  begin
-    Application.CreateForm (Tfrmrec_ban, frmrec_ban);
-
-    if Screen.Width <= 1024 then
-    begin
-      frmrec_ban.FormStyle := fsNormal;
-      frmrec_ban.Visible   := false;
-      frmrec_ban.ShowModal;
-    end
-    else
-      frmrec_ban.Show;
-  end;
-end;
-
-procedure TFrmPrincipal.actrec_pag_banExecute(Sender: TObject);
-begin
-  if frmrec_pag_ban = nil then
-  begin
-    Application.CreateForm (Tfrmrec_pag_ban, frmrec_pag_ban);
-
-    if Screen.Width <= 1024 then
-    begin
-      frmrec_pag_ban.FormStyle := fsNormal;
-      frmrec_pag_ban.Visible   := false;
-      frmrec_pag_ban.ShowModal;
-    end
-    else
-      frmrec_pag_ban.Show;
-  end;    
-end;
-
-procedure TFrmPrincipal.sbvrec_pagClick(Sender: TObject);
-begin
-  pnlrec_pag.Visible  := false;
-  if SLPrincipal.Values['departamento']      = 'ADM' then
-     pnlven.Visible := true
-  else if SLPrincipal.Values['departamento'] = 'VEN' then
-     pnlven.Visible := true
-  else if SLPrincipal.Values['departamento'] = 'CRI' then
-     pnlven.Visible := true
-  else if SLPrincipal.Values['departamento'] = 'FIN' then
-     pnlfin.Visible := true
-  else if SLPrincipal.Values['departamento'] = 'PCP' then
-     pnlpcp.Visible := true;
-  label1.Caption  := 'Principais Categorias';
-end;
-
-procedure TFrmPrincipal.brec_recClick(Sender: TObject);
-var
-  hint: string;
-begin
-  pnloca.Visible     := false;
-  pnlprg.Visible     := false;
-  pnlped.Visible     := false;
-  pnlpro.Visible     := false;
-  pnlrec.Visible     := false;
-  pnlrec_pag.Visible := true;
-
-  if SLPrincipal.Values['departamento']      = 'ADM' then
-  begin
-    pnlven.Visible := false;
-    hint := pnlven.Hint;
-  end
-  else if SLPrincipal.Values['departamento'] = 'VEN' then
-  begin
-    pnlven.Visible := false;
-    hint := pnlven.Hint;
-  end
-  else if SLPrincipal.Values['departamento'] = 'CRI' then
-  begin
-    pnlven.Visible := false;
-    hint := pnlven.Hint;
-  end
-  else if SLPrincipal.Values['departamento'] = 'FIN' then
-  begin
-    pnlfin.Visible := false;
-    hint := pnlfin.Hint;
-  end
-  else if SLPrincipal.Values['departamento'] = 'PCP' then
-  begin
-    pnlpcp.Visible := false;
-    hint := pnlpcp.Hint;
-  end;
-  label1.Caption  := 'Menu Financeiro';
-end;
-
-procedure TFrmPrincipal.actrec_pag_carExecute(Sender: TObject);
-begin
-  if frmrec_pag_car = nil then
-  begin
-    Application.CreateForm (Tfrmrec_pag_car, frmrec_pag_car);
-
-    if Screen.Width <= 1024 then
-    begin
-      frmrec_pag_car.FormStyle := fsNormal;
-      frmrec_pag_car.Visible   := false;
-      frmrec_pag_car.ShowModal;
-    end
-    else
-      frmrec_pag_car.Show;
-  end;
-end;
-
 procedure TFrmPrincipal.actcai_reaExecute(Sender: TObject);
 begin
   with consulta do
@@ -3212,49 +2672,6 @@ begin
   end;
 
   messageBox(handle,'Caixa Re-Aberto com Sucesso !','Sistema de Vendas',MB_ICONINFORMATION+MB_OK);
-end;
-
-procedure TFrmPrincipal.actrec_can_banExecute(Sender: TObject);
-begin
-  if frmrec_can_ban = nil then
-  begin
-    Application.CreateForm (Tfrmrec_can_ban, frmrec_can_ban);
-
-    if Screen.Width <= 1024 then
-    begin
-      frmrec_can_ban.FormStyle := fsNormal;
-      frmrec_can_ban.Visible   := false;
-      frmrec_can_ban.ShowModal;
-    end
-    else
-      frmrec_can_ban.Show;
-  end;
-end;
-
-procedure TFrmPrincipal.actrec_can_carExecute(Sender: TObject);
-begin
-  if frmrec_can_car = nil then
-  begin
-    Application.CreateForm (Tfrmrec_can_car, frmrec_can_car);
-
-    if Screen.Width <= 1024 then
-    begin
-      frmrec_can_car.FormStyle := fsNormal;
-      frmrec_can_car.Visible   := false;
-      frmrec_can_car.ShowModal;
-    end
-    else
-      frmrec_can_car.Show;
-  end;
-end;
-
-procedure TFrmPrincipal.actcad_pro_etiExecute(Sender: TObject);
-begin
-  if frmeti_pro = nil then
-  begin
-    frmeti_pro := Tfrmeti_pro.Create(self);
-    frmeti_pro.Show;
-  end;
 end;
 
 procedure TFrmPrincipal.ABRE_RELATORIO(nome: string);
@@ -3452,41 +2869,6 @@ begin
     end
     else
     frmtab_clf.Show;
-  end;
-end;
-
-procedure TFrmPrincipal.actcad_chqExecute(Sender: TObject);
-begin
-  if frmcad_chq = nil then
-  begin
-    Application.CreateForm (Tfrmcad_chq, frmcad_chq);
-
-    if Screen.Width <= 1024 then
-    begin
-      frmcad_chq.FormStyle := fsNormal;
-      frmcad_chq.Visible   := false;
-      frmcad_chq.ShowModal;
-    end
-    else
-      frmcad_chq.Show;
-  end;
-end;
-
-procedure TFrmPrincipal.actlan_chqExecute(Sender: TObject);
-begin
-  with consulta do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT   ID,CAI_DECX,CAI_DABR,CAI_DFEC FROM CAI_LAF');
-    SQL.Add('WHERE    CAI_CDEP = '''+frmprincipal.parametrosID.AsString+'''');
-    SQL.Add('ORDER BY CAI_DABR DESC');
-    Open;
-
-    if strtodate(SLPrincipal.Values['data_caixa']) > fields[2].AsDateTime  then
-    raise exception.Create('Caixa não aberto !');
-
-    if not fields[3].IsNull then
-    raise exception.Create('Caixa já fechado !');
   end;
 end;
 
@@ -3870,7 +3252,63 @@ begin
   oAviso(Handle,'Composições Atualizadas com Sucesso !');
 end;
 
+procedure TFrmPrincipal.actcad_cliExecute(Sender: TObject);
+begin
+  uFrmCreate(Application,TFrmCAD_CLI,FrmCAD_CLI);
+end;
+
+procedure TFrmPrincipal.actcad_traExecute(Sender: TObject);
+begin
+  uFrmCreate(Application,TFrmCAD_TRA,FrmCAD_TRA);
+end;
+
+procedure TFrmPrincipal.actcad_proExecute(Sender: TObject);
+begin
+  uFrmCreate(Application,TFrmCAD_PRO,FrmCAD_PRO);
+end;
+
+procedure TFrmPrincipal.acttab_corExecute(Sender: TObject);
+begin
+  uFrmCreate(Application,TFrmTAB_COR,FrmTAB_COR);
+end;
+
+procedure TFrmPrincipal.actctr_pedExecute(Sender: TObject);
+begin
+  uFrmCreate(Application,TFrmCTR_PED,FrmCTR_PED);
+end;
+
+procedure TFrmPrincipal.actctr_romExecute(Sender: TObject);
+begin
+  uFrmCreate(Application,TFrmCTR_ROM,FrmCTR_ROM);
+end;
+
+procedure TFrmPrincipal.actven_nfsExecute(Sender: TObject);
+begin
+  uFrmCreate(Application,TFrmVEN_NFE,FrmVEN_NFE);
+end;
+
+procedure TFrmPrincipal.actctr_nfeExecute(Sender: TObject);
+begin
+  uFrmCreate(Application,TFrmCTR_NFE,FrmCTR_NFE);
+end;
+
+procedure TFrmPrincipal.actfin_pag_pag_comExecute(Sender: TObject);
+begin
+  if frmpag_com = nil then
+  begin
+    Application.CreateForm (Tfrmpag_com, frmpag_com);
+
+    if Screen.Width <= 1024 then
+    begin
+      frmpag_com.FormStyle := fsNormal;
+      frmpag_com.Visible   := false;
+      frmpag_com.ShowModal;
+    end
+    else
+      frmpag_com.Show;
+  end;
+
+end;
+
 end.
-
-
 

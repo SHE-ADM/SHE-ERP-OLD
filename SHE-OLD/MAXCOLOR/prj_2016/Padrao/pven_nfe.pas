@@ -21,7 +21,7 @@ type
   Tfrmven_nfe = class(TForm)
     imageOPC: TImageList;
     imageITEM: TImageList;
-    SpeedBar1: TSpeedBar;
+    SBMenuPrincipal: TSpeedBar;
     SpeedbarSection1: TSpeedbarSection;
     SpeedbarSection2: TSpeedbarSection;
     SpeedbarSection3: TSpeedbarSection;
@@ -160,7 +160,6 @@ type
     cli_001NFE_CDNF: TIntegerField;
     cli_001NFE_DCAD: TDateField;
     cli_001NFE_VNF: TIBBCDField;
-    siEST: TSpeedItem;
     nfe_001NFE_FRET: TIBStringField;
     nfe_001NFE_TIPO: TIBStringField;
     nfe_001NFE_REPR: TIBStringField;
@@ -343,10 +342,8 @@ type
     LAVCOFINS: TLabel;
     LAVNF: TLabel;
     LAQTDE: TLabel;
-    LAVST: TLabel;
     LAVCREDICMSSN: TLabel;
     LAVPROD: TLabel;
-    LAVICMSDeson: TLabel;
     LAVTotTrib: TLabel;
     EDVII: TdxMaskEdit;
     EDTRCom: TdxMaskEdit;
@@ -1063,7 +1060,6 @@ type
     procedure siSCLClick(Sender: TObject);
     procedure siCCLClick(Sender: TObject);
     procedure siACLClick(Sender: TObject);
-    procedure siESTClick(Sender: TObject);
     procedure siIDUClick(Sender: TObject);
     procedure siDDUClick(Sender: TObject);
     procedure siSDUClick(Sender: TObject);
@@ -1166,9 +1162,7 @@ type
     procedure ATUALIZA_MENSAGENS;
 
     procedure SALVA_NF;
-    procedure BAIXA_ESTOQUE;
 
-    function  RETORNA_ID_PRODUTO: integer;
     function  GERA_LOTE: boolean;
     function  GERA_NFE: Boolean;
   public
@@ -2094,27 +2088,6 @@ begin
   end;
 end;
 
-procedure Tfrmven_nfe.siESTClick(Sender: TObject);
-begin
-  if siEST.Tag = 0 then
-  begin
-    if oYesNo(handle,'Deseja que a Nota Fiscal Efetue Baixa no Estoque ?') = mrno then
-    abort;
-
-    siEST.Tag        := 1;
-    siEST.Hint       := 'Essa Nota Fiscal Efetuará Baixa no Estoque';
-    siEST.ImageIndex := 11;
-  end else
-  begin
-    if oYesNo(handle,'Deseja que a Nota Fiscal não Efetue Baixa no Estoque ?') = mrno then
-    abort;
-
-    siEST.Tag        := 0;
-    siEST.Hint       := 'Essa Nota Fiscal não Efetuará Baixa no Estoque';
-    siEST.ImageIndex := 12;
-  end;
-end;
-
 procedure Tfrmven_nfe.BSairClick(Sender: TObject);
 begin
   Close;
@@ -2194,7 +2167,7 @@ end;
 
 procedure Tfrmven_nfe.VALIDAR;
 begin
-  BVal.ImageIndex := 10;
+  BVal.ImageIndex := 1;
   BVal.BtnCaption := 'Editar';
 
   PNLPrincipal.Enabled := false;
@@ -2588,7 +2561,7 @@ begin
     ibSP.ParamByName('OBSE').Value         := EDInfAdNF.Text;
     ibSP.ParamByName('STA').Value          := IFThen(protocolo <> 'D',0,1);
     ibSP.ParamByName('CLFO').Value         := IFThen(lacfav.Caption = 'Cliente','0',IFThen(lacfav.Caption = 'Fornecedor','1','2'));
-    ibSP.ParamByName('ESTO').Value         := IFThen((siEST.Tag = 1) and (siEST.Enabled),'1','0');
+    ibSP.ParamByName('ESTO').Value         := '0';
     ibSP.ExecProc;
 
     ibSP.StoredProcName := 'SP_NFE_TRA';
@@ -2779,19 +2752,6 @@ begin
         ibSP.ParamByName('VICMSUFREMET').Value   := nfe_001NFE_VICMSUFREMET.AsFloat;
         ibSP.ParamByName('NFCI').Value           := nfe_001NFE_NFCI.AsString;
         ibSP.ExecProc;
-
-        if (siEST.Tag = 1) and (siEST.Enabled) then
-        begin
-          BAIXA_ESTOQUE;
-          with Consulta do
-          begin
-            SQL.Clear;
-            SQL.Add('UPDATE CAD_PRO');
-            SQL.Add('SET    PRO_DEST = CURRENT_TIMESTAMP');
-            SQL.Add('WHERE  PRO_CPRO = '''+nfe_001NFE_CPROD.AsString+'''');
-            ExecSQL;
-          end;
-        end;
 
         nfe_001.Next;
       end;
@@ -3816,207 +3776,6 @@ end;
 procedure Tfrmven_nfe.dup_001NewRecord(DataSet: TDataSet);
 begin
   dup_001ID.Value := 0;
-end;
-
-procedure Tfrmven_nfe.BAIXA_ESTOQUE;
-var
-  ID: integer;
-begin
-  ID := RETORNA_ID_PRODUTO;
-  if ID > 0 then
-  begin
-    ibSP.StoredProcName := 'SP_CAD_PRO_EST';
-    ibSP.Prepare;
-
-    ibSP.ParamByName('id').Value   := 0;
-    ibSP.ParamByName('cdep').Value := RECParametros.Id;
-    ibSP.ParamByName('cdro').Value := edcdnf.Text;
-    ibSP.ParamByName('cpro').Value := ID;
-    ibSP.ParamByName('cusu').Value := RECUsuarios.Id;
-    ibSP.ParamByName('dusu').Value := RECUsuarios.Login;
-    ibSP.ParamByName('cfav').Value := edcfav.Text;
-    ibSP.ParamByName('dfav').Value := eddfav.Text;
-    ibSP.ParamByName('crep').Value := 0;
-    ibSP.ParamByName('drep').Value := EmptyStr;
-    ibSP.ParamByName('dtpv').Value := 0;
-    ibSP.ParamByName('dcad').Value := DEdhEmi.Date;
-    ibSP.ParamByName('docu').Value := edcdnf.Text;
-    ibSP.ParamByName('cdet').Value := '';
-    ibSP.ParamByName('idsp').Value := 0;
-    ibSP.ParamByName('desp').Value := '';
-    ibSP.ParamByName('dmap').Value := '';
-    ibSP.ParamByName('ctnr').Value := '';
-    ibSP.ParamByName('lote').Value := '';
-    ibSP.ParamByName('debi').Value := 0;
-    ibSP.ParamByName('pdeb').Value := 0;
-    ibSP.ParamByName('cred').Value := 0;
-    ibSP.ParamByName('pcre').Value := 0;
-
-    if edtpnf.Text = 'ENTRADA' then
-    begin
-      ibSP.ParamByName('flag').Value := 'E';
-      ibSP.ParamByName('cred').Value := nfe_001NFE_QCOM.AsFloat;
-      ibSP.ParamByName('pcre').Value := nfe_001NFE_RCOM.AsInteger;
-    end else
-    begin
-      ibSP.ParamByName('flag').Value := 'S';
-      ibSP.ParamByName('debi').Value := nfe_001NFE_QCOM.AsFloat;
-      ibSP.ParamByName('pdeb').Value := nfe_001NFE_RCOM.AsInteger;
-    end;
-
-    ibSP.ParamByName('unit').Value := nfe_001NFE_VUNCOM.AsFloat;
-    ibSP.ParamByName('idtp').Value := 0;
-    ibSP.ParamByName('nfci').Value := nfe_001NFE_NFCI.AsString;
-    ibSP.ParamByName('tdef').Value := '';
-    ibSP.ParamByName('obse').Value := '';
-    ibSP.ExecProc;
-  end;
-end;
-
-function Tfrmven_nfe.RETORNA_ID_PRODUTO: integer;
-var
-  ID_PRODUTO: integer;
-begin
-  with Consulta do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT ID FROM CAD_PRO');
-    SQL.Add('WHERE  PRO_CPRO = '''+nfe_001NFE_CPROD.AsString+'''');
-    Prepare;
-    Open;
-
-    ID_PRODUTO := Fields[0].AsInteger;
-    if ID_PRODUTO = 0 then
-    begin
-      SQL.Clear;
-      SQL.Add('SELECT GEN_ID(ID_NO_CAD_PRO,0) FROM RDB$DATABASE');
-      Prepare;
-      Open;
-      ID_PRODUTO := Fields[0].AsInteger + 1;
-
-      ibSP.StoredProcName := 'SP_CAD_PRO';
-      ibSP.Prepare;
-
-      ibSP.ParamByName('ID').Value    := 0;
-      ibSP.ParamByName('CDEP').Value  := RECParametros.Id;
-      ibSP.ParamByName('CDFO').Value  := RECParametros.Id;
-      ibSP.ParamByName('CART').Value  := nfe_001NFE_CPROD.AsString;
-      ibSP.ParamByName('CPRO').Value  := nfe_001NFE_CPROD.AsString;
-      ibSP.ParamByName('CFOR').Value  := NULL;
-      ibSP.ParamByName('CBAR').Value  := oRETBarCode(IntToStr(ID_PRODUTO),nfe_001NFE_CPROD.AsString);
-      ibSP.ParamByName('FBAR').Value  := '';
-      ibSP.ParamByName('CCLF').Value  := nfe_001NFE_NCM.AsString;
-      ibSP.ParamByName('CGRD').Value  := NULL;
-      ibSP.ParamByName('DGRD').Value  := NULL;
-      ibSP.ParamByName('CCOR').Value  := NULL;
-      ibSP.ParamByName('RCOR').Value  := NULL;
-      ibSP.ParamByName('PCOR').Value  := NULL;
-      ibSP.ParamByName('DCOR').Value  := NULL;
-      ibSP.ParamByName('DPRO').Value  := nfe_001NFE_XPROD.AsString;
-      ibSP.ParamByName('DTEC').Value  := NULL;
-      ibSP.ParamByName('COMP').Value  := NULL;
-      ibSP.ParamByName('DUNI').Value  := copy(nfe_001NFE_UCOM.AsString,1,3);
-
-      ibSP.ParamByName('CCOL').Value  := NULL;
-      ibSP.ParamByName('DCOL').Value  := NULL;
-      ibSP.ParamByName('CSEG').Value  := NULL;
-      ibSP.ParamByName('CGRP').Value  := NULL;
-      ibSP.ParamByName('CSGP').Value  := NULL;
-      ibSP.ParamByName('CCAT').Value  := NULL;
-      ibSP.ParamByName('CSCT').Value  := NULL;
-      ibSP.ParamByName('CCST').Value  := nfe_001NFE_ORIG.AsString;
-      ibSP.ParamByName('METR').Value  := NULL;
-      ibSP.ParamByName('PESO').Value  := NULL;
-      ibSP.ParamByName('UTIL').Value  := NULL;
-      ibSP.ParamByName('LARG').Value  := NULL;
-      ibSP.ParamByName('GRAM').Value  := NULL;
-      ibSP.ParamByName('REND').Value  := NULL;
-      ibSP.ParamByName('PSCN').Value  := NULL;
-      ibSP.ParamByName('ELAS').Value  := NULL;
-      ibSP.ParamByName('ELAC').Value  := NULL;
-      ibSP.ParamByName('ENCL').Value  := NULL;
-      ibSP.ParamByName('ENCC').Value  := NULL;
-      ibSP.ParamByName('STAV').Value  := NULL;
-      ibSP.ParamByName('PCOM').Value  := NULL;
-      ibSP.ParamByName('DPCOM').Value := NULL;
-      ibSP.ParamByName('CUST').Value  := NULL;
-      ibSP.ParamByName('DCUST').Value := NULL;
-      ibSP.ParamByName('CLIB').Value  := NULL;
-      ibSP.ParamByName('DCLIB').Value := NULL;
-      ibSP.ParamByName('PDSC').Value  := NULL;
-      ibSP.ParamByName('PREC').Value  := nfe_001NFE_VUNCOM.AsFloat;
-      ibSP.ParamByName('PPRO').Value  := NULL;
-      ibSP.ParamByName('VDSC').Value  := NULL;
-      ibSP.ParamByName('VPRC').Value  := NULL;
-      ibSP.ParamByName('VPRO').Value  := NULL;
-      ibSP.ParamByName('RDSC').Value  := NULL;
-      ibSP.ParamByName('RPRC').Value  := NULL;
-      ibSP.ParamByName('RPRO').Value  := NULL;
-      ibSP.ParamByName('PIPI').Value  := nfe_001NFE_PIPI.AsFloat;
-      ibSP.ParamByName('REPR').Value  := 'R';
-      ibSP.ParamByName('DENS').Value  := NULL;
-      ibSP.ParamByName('TITF').Value  := NULL;
-      ibSP.ParamByName('PPRZ').Value  := NULL;
-      ibSP.ParamByName('PPER').Value  := NULL;
-      ibSP.ParamByName('VPRZ').Value  := NULL;
-      ibSP.ParamByName('VPER').Value  := NULL;
-      ibSP.ParamByName('RPRZ').Value  := NULL;
-      ibSP.ParamByName('RPER').Value  := NULL;
-
-      ibSP.ParamByName('SDSC').Value  := NULL;
-      ibSP.ParamByName('SPRC').Value  := NULL;
-      ibSP.ParamByName('SPRO').Value  := NULL;
-      ibSP.ParamByName('SPRZ').Value  := NULL;
-      ibSP.ParamByName('SPER').Value  := NULL;
-      ibSP.ParamByName('SMKP').Value  := NULL;
-      ibSP.ParamByName('SQCO').Value  := NULL;
-      ibSP.ParamByName('SUCO').Value  := NULL;
-
-      ibSP.ParamByName('QVOL').Value  := NULL;
-      ibSP.ParamByName('ESP').Value   := NULL;
-      ibSP.ParamByName('IDDIM').Value := NULL;
-      ibSP.ParamByName('IDMKP').Value := 0;
-      ibSP.ParamByName('SQTMI').Value := NULL;
-      ibSP.ParamByName('OBSE').Value  := NULL;
-      ibSP.ParamByName('APRO').Value  := NULL;
-      ibSP.ParamByName('QTMI').Value  := NULL;
-      ibSP.ParamByName('PCMI').Value  := NULL;
-      ibSP.ParamByName('QTMA').Value  := NULL;
-      ibSP.ParamByName('PCMA').Value  := NULL;
-      ibSP.ExecProc;
-
-      ibSP.StoredProcName  := 'SP_CAD_PRO_IMG';
-      ibSP.Prepare;
-      ibSP.ParamByName('ID').Value   := 0;
-      ibSP.ParamByName('CART').Value := nfe_001NFE_CPROD.AsString;
-      ibSP.ParamByName('ONS1').Value := null;
-      ibSP.ParamByName('ONS2').Value := null;
-      ibSP.ParamByName('ONS3').Value := null;
-      ibSP.ParamByName('ONS4').Value := null;
-      ibSP.ParamByName('ONS5').Value := null;
-      ibSP.ParamByName('ONS6').Value := null;
-      ibSP.ParamByName('ONS7').Value := null;
-      ibSP.ParamByName('ONS8').Value := null;
-      ibSP.ParamByName('FOTO').Value := null;
-      ibSP.ParamByName('FOT2').Value := null;
-      ibSP.ParamByName('FOT3').Value := null;
-      ibSP.ParamByName('FOT4').Value := null;
-      ibSP.ParamByName('FOT5').Value := null;
-      ibSP.ParamByName('FOT6').Value := null;
-      ibSP.ParamByName('FOT7').Value := null;
-      ibSP.ParamByName('FOT8').Value := null;
-      ibSP.ParamByName('INS1').Value := null;
-      ibSP.ParamByName('INS2').Value := null;
-      ibSP.ParamByName('INS3').Value := null;
-      ibSP.ParamByName('INS4').Value := null;
-      ibSP.ParamByName('INS5').Value := null;
-      ibSP.ParamByName('INS6').Value := null;
-      ibSP.ParamByName('INS7').Value := null;
-      ibSP.ParamByName('INS8').Value := null;
-      ibSP.ExecProc;
-    end;
-  end;
-  result := ID_PRODUTO;
 end;
 
 procedure Tfrmven_nfe.dbgnfeKeyDown(Sender: TObject; var Key: Word;
@@ -6588,13 +6347,6 @@ begin
         if (oTextToValor(edvnf.Text) <> fields[0].AsFloat) and (cbdupl.Text = 'SIM') then
         DUPLICATAS;
       end;
-    end;
-
-    if ((LeftStr(cbcnat.Text,1) = '3') and (FrmPrincipal.ParametrosPAR_IEST.AsString = '1')) then
-    begin
-      siEST.Tag        := 1;
-      siEST.Hint       := 'Essa Nota Fiscal Efetuará Baixa no Estoque';
-      siEST.ImageIndex := 11;
     end;
 
     ATUALIZA_MENSAGENS;

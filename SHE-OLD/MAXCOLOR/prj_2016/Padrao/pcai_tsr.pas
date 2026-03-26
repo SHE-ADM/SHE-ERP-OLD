@@ -28,7 +28,6 @@ type
       Shift: TShiftState);
     procedure cadastroNewRecord(DataSet: TDataSet);
     procedure cadastroAfterInsert(DataSet: TDataSet);
-    procedure siEVEClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
@@ -42,14 +41,13 @@ var
 
 implementation
 
-uses uPrincipal, plog_eve;
+uses uPrincipal;
 
 {$R *.dfm}
 
 procedure Tfrmcai_tsr.FormCreate(Sender: TObject);
 begin
   siPSQ.Enabled  := false;
-  siLIXO.Enabled := false;
   siREL.Enabled  := frmprincipal.ACESSO(frmprincipal.cad_usuUSU_CUSU.AsString,'USU_PRIN','Financeiro','Caixa','Tipos de Sangria \ Reforço',false);
 
   cEvent := 'CAI_SAR';
@@ -117,7 +115,7 @@ begin
                    begin
                      cadastro.Next;
                      if cadastro.Eof then
-                        siINC.Click;
+                     SIMEAppend.Click;
 
                      dbgconsulta.FocusedColumn := 1
                    end
@@ -130,9 +128,9 @@ begin
                       cadastro.Edit;
                  end;            
                end;
-    VK_DELETE: if cadastro.State = dsBrowse then siDEL.Click;
-    VK_ESCAPE: if cadastro.State = dsBrowse then close else siCAN.Click;
-    VK_INSERT: if not siSAV.Enabled then siINC.Click;
+    VK_DELETE: if cadastro.State = dsBrowse then SIMEDelete.Click;
+    VK_ESCAPE: if cadastro.State = dsBrowse then close else SIMECancel.Click;
+    VK_INSERT: if not SIMEPost.Enabled then SIMEAppend.Click;
   end;
 end;
 
@@ -145,24 +143,6 @@ procedure Tfrmcai_tsr.cadastroAfterInsert(DataSet: TDataSet);
 begin
   inherited;
   dbgconsulta.FocusedColumn := 1;
-end;
-
-procedure Tfrmcai_tsr.siEVEClick(Sender: TObject);
-begin
-  frmlog_eve := tfrmlog_eve.create(self);
-  with frmlog_eve.cadastro do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT LOG_EVE.*,PAR_SIS.PAR_FANT,CAD_FUN.FUN_FOTO');
-    SQL.Add('FROM   LOG_EVE,PAR_SIS');
-    SQL.Add('LEFT   OUTER JOIN CAD_FUN ON LOG_EVE.EVE_CLOG = CAD_FUN.ID');
-    SQL.Add('WHERE  LOG_EVE.EVE_CDEP = PAR_SIS.ID');
-    SQL.Add('AND    LOG_EVE.EVE_FUNC = ''Caixa''');
-    SQL.Add('AND    LOG_EVE.EVE_ROTI = ''Tipos de Sangria \ Suprimento''');
-    SQL.Add('ORDER BY ID DESC');
-    Open;
-  end;
-  frmlog_eve.show;
 end;
 
 procedure Tfrmcai_tsr.FormClose(Sender: TObject; var Action: TCloseAction);

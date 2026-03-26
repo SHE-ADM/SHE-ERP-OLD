@@ -109,7 +109,6 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
-    procedure AjustaForm;
   public
     { Public declarations }
   end;
@@ -122,34 +121,6 @@ implementation
 uses uPrincipal, pcad_age_edi, plog_eve;
 
 {$R *.dfm}
-
-procedure Tfrmcad_age.AjustaForm;
-begin
-  screen.Cursor:=crHourGlass;
-  screen.Cursor:=crDefault;
-
-  Self.top    := 0;
-  Self.left   := 0;
-  Self.Height := frmprincipal.pnCustomize.Height-4;
-
-  if (Screen.Width > 1280)  and (Screen.Width <= 1360) then
-  linha2.Width := 467
-  else if (Screen.Width > 1360) and (Screen.Width <= 1440) then
-  linha2.Width := 473
-  else if (Screen.Width > 1440)  and (Screen.Width <= 1600) then
-  linha2.Width := 707
-  else if (Screen.Width > 1600)  and (Screen.Width < 1920) then
-  linha2.Width := 1027;
-
-  if (Screen.Width <= 1024) or (Screen.Width < 1280) then
-  begin
-   self.Height := screen.Height;
-   self.Width  :=  screen.Width;
-
-   if frmprincipal.pnbot.Visible then
-      self.Height := self.Height - frmprincipal.pnbot.Height;
-  end;
-end;
 
 procedure Tfrmcad_age.FormCreate(Sender: TObject);
 begin
@@ -164,7 +135,6 @@ begin
   end;
 
   inherited;
-  ajustaform;
 end;
 
 procedure Tfrmcad_age.siINCClick(Sender: TObject);

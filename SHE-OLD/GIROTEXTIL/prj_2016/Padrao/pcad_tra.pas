@@ -40,15 +40,15 @@ type
     dbgConsultaTRA_ESTA: TdxDBGridMaskColumn;
     dbgConsultaTRA_STAV: TdxDBGridMaskColumn;
     procedure FormCreate(Sender: TObject);
-    procedure siINCClick(Sender: TObject);
-    procedure siALTClick(Sender: TObject);
     procedure dbgConsultaCustomDrawCell(Sender: TObject; ACanvas: TCanvas;
       ARect: TRect; ANode: TdxTreeListNode; AColumn: TdxTreeListColumn;
       ASelected, AFocused, ANewItemRow: Boolean; var AText: String;
       var AColor: TColor; AFont: TFont; var AAlignment: TAlignment;
       var ADone: Boolean);
-    procedure siDELClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure SIMEAppendClick(Sender: TObject);
+    procedure SIMEEditClick(Sender: TObject);
+    procedure SIMEDeleteClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -85,7 +85,7 @@ begin
   frmcad_tra := Nil;
 end;
 
-procedure Tfrmcad_tra.siINCClick(Sender: TObject);
+procedure Tfrmcad_tra.SIMEAppendClick(Sender: TObject);
 begin
   PCampo[0] := 'USU_NOVO';
   PCampo[1] := 'Transportadoras';
@@ -104,7 +104,7 @@ begin
   end;
 end;
 
-procedure Tfrmcad_tra.siALTClick(Sender: TObject);
+procedure Tfrmcad_tra.SIMEEditClick(Sender: TObject);
 begin
   PCampo[0] := 'USU_EDIT';
   PCampo[1] := 'Transportadoras';
@@ -112,7 +112,7 @@ begin
   PCampo[3] := 'Permissões Gerais';
   inherited;
 
-  Application.CreateForm (Tfrmcad_TRA_edi, frmcad_TRA_edi);
+  FRMCAD_TRA_EDI := TFRMCAD_TRA_EDI.Create(Self);
   try
     frmcad_TRA_edi.Tag := frmcad_tra.Tag;
     frmcad_TRA_edi.ShowModal;
@@ -122,6 +122,43 @@ begin
     freeAndNil(frmcad_TRA_edi);
     frmcad_TRA_edi.Free;
   end;
+end;
+
+procedure Tfrmcad_tra.SIMEDeleteClick(Sender: TObject);
+begin
+  PCampo[0] := 'USU_DELE';
+  PCampo[1] := 'Transportadoras';
+  PCampo[2] := 'Cadastro';
+  PCampo[3] := 'Permissões Gerais';
+  inherited;
+
+  with consulta do
+  begin
+    if cadastroTRA_STA.Value = '1' then
+    begin
+      if oYesNo(handle,'Confirma a exclusão do transportador '+cadastroTRA_FANT.AsString+' ?') = mrno then
+         abort;
+
+      SQL.Clear;
+      SQL.Add('DELETE FROM CAD_TRA');
+      SQL.Add('WHERE  ID = '''+cadastroID.AsString+'''');
+      ExecSQL;
+      frmprincipal.Log_Eve('Transportadoras','Cadastro de Transportadoras','Exclusão' ,cadastroID.AsString,cadastroID.AsString,LOWERCASE(cadastroTRA_FANT.AsString),'','');
+    end
+    else
+    begin
+      if oYesNo(handle,'Enviar para a lixeira o transportador '+cadastroTRA_FANT.AsString+' ?') = mrno then
+         abort;
+
+      SQL.Clear;
+      SQL.Add('UPDATE CAD_TRA');
+      SQL.Add('SET    TRA_STA = ''1''');
+      SQL.Add('WHERE  ID = '''+cadastroID.AsString+'''');
+      ExecSQL;
+      frmprincipal.Log_Eve('Transportadoras','Cadastro de Transportadoras','Lixeira' ,cadastroID.AsString,cadastroID.AsString,LOWERCASE(cadastroTRA_FANT.AsString),'','');
+    end;
+  end;
+  ExecuteEvent;
 end;
 
 procedure Tfrmcad_tra.dbgConsultaCustomDrawCell(Sender: TObject;
@@ -162,45 +199,6 @@ begin
       AFont.Color := clBlack;
     end;
   end;
-end;
-
-procedure Tfrmcad_tra.siDELClick(Sender: TObject);
-begin
-  PCampo[0] := 'USU_DELE';
-  PCampo[1] := 'Transportadoras';
-  PCampo[2] := 'Cadastro';
-  PCampo[3] := 'Permissões Gerais';
-  inherited;
-
-  with consulta do
-  begin
-    if cadastroTRA_STA.Value = '1' then
-    begin
-      if oYesNo(handle,'Confirma a exclusão do transportador '+cadastroTRA_FANT.AsString+' ?') = mrno then
-         abort;
-
-      SQL.Clear;
-      SQL.Add('DELETE FROM CAD_TRA');
-      SQL.Add('WHERE  ID = '''+cadastroID.AsString+'''');
-      ExecSQL;
-      frmprincipal.Log_Eve('Transportadoras','Cadastro de Transportadoras','Exclusão' ,cadastroID.AsString,cadastroID.AsString,LOWERCASE(cadastroTRA_FANT.AsString),'','');
-    end
-    else
-    begin
-      if oYesNo(handle,'Enviar para a lixeira o transportador '+cadastroTRA_FANT.AsString+' ?') = mrno then
-         abort;
-
-      SQL.Clear;
-      SQL.Add('UPDATE CAD_TRA');
-      SQL.Add('SET    TRA_STA = ''1''');
-      SQL.Add('WHERE  ID = '''+cadastroID.AsString+'''');
-      ExecSQL;
-      frmprincipal.Log_Eve('Transportadoras','Cadastro de Transportadoras','Lixeira' ,cadastroID.AsString,cadastroID.AsString,LOWERCASE(cadastroTRA_FANT.AsString),'','');
-    end;
-  end;
-  ExecuteEvent;
-  if dbgconsulta.Tag = 1 then
-     siLIXO.Click;
 end;
 
 end.

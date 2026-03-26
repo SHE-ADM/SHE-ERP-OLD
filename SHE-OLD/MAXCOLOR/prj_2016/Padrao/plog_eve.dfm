@@ -8,44 +8,25 @@ inherited frmlog_eve: Tfrmlog_eve
   Position = poDesigned
   PixelsPerInch = 96
   TextHeight = 14
-  inherited sbMSG: TStatusBar
-    Top = 563
+  inherited SBMenuPrincipal: TSpeedBar
     Width = 946
-  end
-  inherited SpeedBar9: TSpeedBar
-    Width = 946
-    inherited siEVE: TSpeedItem [6]
-    end
-    inherited siSAIR: TSpeedItem [7]
-      Left = 442
-    end
-    inherited siLIXO: TSpeedItem [8]
-      Visible = False
-    end
-    inherited siPRN: TSpeedItem [9]
-      Left = 332
-    end
   end
   inherited pnldir: TPanel
     Left = 946
-    Height = 449
+    Height = 498
   end
   inherited pnlpri: TPanel
     Width = 946
-    Height = 449
+    Height = 498
     inherited pnldbg: TPanel
-      Width = 944
-      Height = 213
+      Width = 946
+      Height = 264
       inherited gbDET: TGroupBox
-        Width = 942
-        Height = 211
-        inherited SpeedBar1: TSpeedBar
-          Height = 193
-          Visible = False
-        end
-        inherited dbgConsulta: TdxDBGrid
-          Width = 889
-          Height = 193
+        Width = 892
+        Height = 264
+        inherited DBGConsulta: TdxDBGrid
+          Width = 888
+          Height = 243
           KeyField = 'ID'
           ShowGroupPanel = True
           ShowSummaryFooter = True
@@ -125,17 +106,23 @@ inherited frmlog_eve: Tfrmlog_eve
           end
         end
       end
+      inherited GBMenuEdicao: TGroupBox
+        Height = 264
+        inherited SBMenuEdicao: TSpeedBar
+          Height = 243
+        end
+      end
     end
     inherited pnlbot: TPanel
-      Top = 214
-      Width = 944
+      Top = 264
+      Width = 946
       Height = 234
       Visible = True
       object Bevel1: TBevel
-        Left = 1
-        Top = 1
-        Width = 671
-        Height = 232
+        Left = 0
+        Top = 0
+        Width = 675
+        Height = 234
         Align = alClient
       end
       object Label1: TLabel
@@ -152,7 +139,7 @@ inherited frmlog_eve: Tfrmlog_eve
         Height = 14
         AutoSize = True
         DataField = 'ID'
-        DataSource = dtscadastro
+        DataSource = DTSCadastro
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -174,7 +161,7 @@ inherited frmlog_eve: Tfrmlog_eve
         Height = 14
         AutoSize = True
         DataField = 'PAR_FANT'
-        DataSource = dtscadastro
+        DataSource = DTSCadastro
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -196,7 +183,7 @@ inherited frmlog_eve: Tfrmlog_eve
         Height = 14
         AutoSize = True
         DataField = 'EVE_DEVE'
-        DataSource = dtscadastro
+        DataSource = DTSCadastro
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -218,7 +205,7 @@ inherited frmlog_eve: Tfrmlog_eve
         Height = 14
         AutoSize = True
         DataField = 'EVE_DLOG'
-        DataSource = dtscadastro
+        DataSource = DTSCadastro
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -246,7 +233,7 @@ inherited frmlog_eve: Tfrmlog_eve
         Height = 14
         AutoSize = True
         DataField = 'EVE_TAUT'
-        DataSource = dtscadastro
+        DataSource = DTSCadastro
         Font.Charset = ANSI_CHARSET
         Font.Color = clRed
         Font.Height = -12
@@ -268,7 +255,7 @@ inherited frmlog_eve: Tfrmlog_eve
         Height = 14
         AutoSize = True
         DataField = 'EVE_IP'
-        DataSource = dtscadastro
+        DataSource = DTSCadastro
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -290,7 +277,7 @@ inherited frmlog_eve: Tfrmlog_eve
         Height = 14
         AutoSize = True
         DataField = 'EVE_FUNC'
-        DataSource = dtscadastro
+        DataSource = DTSCadastro
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -312,7 +299,7 @@ inherited frmlog_eve: Tfrmlog_eve
         Height = 14
         AutoSize = True
         DataField = 'EVE_ROTI'
-        DataSource = dtscadastro
+        DataSource = DTSCadastro
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -334,7 +321,7 @@ inherited frmlog_eve: Tfrmlog_eve
         Height = 14
         AutoSize = True
         DataField = 'EVE_EVEN'
-        DataSource = dtscadastro
+        DataSource = DTSCadastro
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -356,7 +343,7 @@ inherited frmlog_eve: Tfrmlog_eve
         Height = 14
         AutoSize = True
         DataField = 'EVE_CODI'
-        DataSource = dtscadastro
+        DataSource = DTSCadastro
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -378,7 +365,7 @@ inherited frmlog_eve: Tfrmlog_eve
         Height = 14
         AutoSize = True
         DataField = 'EVE_DESC'
-        DataSource = dtscadastro
+        DataSource = DTSCadastro
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -12
@@ -393,7 +380,7 @@ inherited frmlog_eve: Tfrmlog_eve
         Height = 14
         AutoSize = True
         DataField = 'EVE_AUTO'
-        DataSource = dtscadastro
+        DataSource = DTSCadastro
         Font.Charset = ANSI_CHARSET
         Font.Color = clRed
         Font.Height = -12
@@ -415,10 +402,10 @@ inherited frmlog_eve: Tfrmlog_eve
         ParentFont = False
       end
       object GroupBox1: TGroupBox
-        Left = 672
-        Top = 1
+        Left = 675
+        Top = 0
         Width = 271
-        Height = 232
+        Height = 234
         Align = alRight
         Caption = 'Imagem do Usu'#225'rio'
         TabOrder = 0
@@ -426,17 +413,21 @@ inherited frmlog_eve: Tfrmlog_eve
           Left = 2
           Top = 16
           Width = 267
-          Height = 214
+          Height = 216
           Align = alClient
           Stretch = True
         end
       end
     end
   end
-  inherited dtscadastro: TDataSource
+  inherited sbMSG: TStatusBar
+    Top = 563
+    Width = 946
+  end
+  inherited DTSCadastro: TDataSource
     OnDataChange = dtscadastroDataChange
   end
-  inherited cadastro: TIBQuery
+  inherited Cadastro: TIBQuery
     SQL.Strings = (
       'SELECT LOG_EVE.*,PAR_SIS.PAR_FANT,CAD_FUN.FUN_FOTO'
       'FROM   LOG_EVE,PAR_SIS,CAD_FUN'

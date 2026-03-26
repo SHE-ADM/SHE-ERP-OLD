@@ -26,7 +26,6 @@ inherited frmcai_tsr: Tfrmcai_tsr
     end
     inherited siEVE: TSpeedItem
       Visible = False
-      OnClick = siEVEClick
     end
   end
   inherited pnldir: TPanel

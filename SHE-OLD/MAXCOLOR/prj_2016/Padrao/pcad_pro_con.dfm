@@ -6,7 +6,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
   BorderStyle = bsSingle
   Caption = 'Consulta Produtos'
   ClientHeight = 591
-  ClientWidth = 900
+  ClientWidth = 980
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -261,7 +261,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
   object PNLRodape: TPanel
     Left = 0
     Top = 336
-    Width = 900
+    Width = 980
     Height = 255
     Align = alBottom
     BevelOuter = bvNone
@@ -903,7 +903,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
     object PNLFotos: TPanel
       Left = 560
       Top = 0
-      Width = 340
+      Width = 420
       Height = 255
       Align = alClient
       BevelOuter = bvNone
@@ -917,7 +917,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
       object GBFotos: TGroupBox
         Left = 0
         Top = 0
-        Width = 340
+        Width = 420
         Height = 255
         Align = alClient
         Caption = '  Imagem do Produto  '
@@ -931,7 +931,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
         object IFoto: TImage
           Left = 2
           Top = 19
-          Width = 336
+          Width = 416
           Height = 234
           Cursor = crHandPoint
           Hint = 'Clique para visualizar tela inteira'
@@ -946,7 +946,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
   object PNLPrincipal: TPanel
     Left = 0
     Top = 0
-    Width = 900
+    Width = 980
     Height = 336
     Align = alClient
     BevelOuter = bvNone
@@ -954,7 +954,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
     object SBMenu: TSpeedBar
       Left = 0
       Top = 0
-      Width = 900
+      Width = 980
       Height = 115
       Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
@@ -1015,7 +1015,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
     object GBConsulta: TGroupBox
       Left = 0
       Top = 115
-      Width = 900
+      Width = 980
       Height = 221
       Align = alClient
       Caption = '  Consulta  '
@@ -1029,13 +1029,12 @@ object frmcad_pro_con: Tfrmcad_pro_con
       object DBGConsulta: TdxDBGrid
         Left = 2
         Top = 19
-        Width = 896
+        Width = 976
         Height = 200
         Bands = <
           item
           end>
         DefaultLayout = True
-        HeaderMinRowCount = 2
         HeaderPanelRowCount = 1
         KeyField = 'ID'
         ShowSummaryFooter = True
@@ -1136,22 +1135,6 @@ object frmcad_pro_con: Tfrmcad_pro_con
           SummaryFooterType = cstSum
           SummaryFooterField = 'C_QDIS'
           SummaryFooterFormat = '#,0.00'
-          DisableFilter = True
-        end
-        object DBGConsultaC_RDIS: TdxDBGridColumn
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          HeaderAlignment = taRightJustify
-          Width = 40
-          BandIndex = 0
-          RowIndex = 0
-          FieldName = 'C_RDIS'
-          SummaryFooterType = cstSum
-          SummaryFooterField = 'C_RDIS'
-          SummaryFooterFormat = '0'
           DisableFilter = True
         end
         object DBGConsultaPRO_PREC: TdxDBGridMaskColumn
@@ -1335,7 +1318,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
       Calculated = True
     end
     object CadastroC_QDIS: TFloatField
-      DisplayLabel = 'Estoque Dispon'#237'vel'
+      DisplayLabel = 'Dispon'#237'vel'
       FieldKind = fkCalculated
       FieldName = 'C_QDIS'
       DisplayFormat = '#,0.00'
@@ -1404,10 +1387,12 @@ object frmcad_pro_con: Tfrmcad_pro_con
       Origin = '"CAD_PRO"."PRO_CFOR"'
     end
     object CadastroPRO_CART: TIBStringField
+      DisplayLabel = 'Artigo'
       FieldName = 'PRO_CART'
       Origin = '"CAD_PRO"."PRO_CART"'
     end
     object CadastroPRO_CPRO: TIBStringField
+      DisplayLabel = 'Produto'
       FieldName = 'PRO_CPRO'
       Origin = '"CAD_PRO"."PRO_CPRO"'
     end
@@ -1421,11 +1406,13 @@ object frmcad_pro_con: Tfrmcad_pro_con
       Size = 30
     end
     object CadastroPRO_DCOR: TIBStringField
+      DisplayLabel = 'Grade'
       FieldName = 'PRO_DCOR'
       Origin = '"CAD_PRO"."PRO_DCOR"'
       Size = 30
     end
     object CadastroPRO_DUNI: TIBStringField
+      DisplayLabel = 'UN'
       FieldName = 'PRO_DUNI'
       Origin = '"CAD_PRO"."PRO_DUNI"'
       Size = 3
@@ -1441,6 +1428,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
       Size = 120
     end
     object CadastroPRO_DPRO: TIBStringField
+      DisplayLabel = 'Descri'#231#227'o'
       FieldName = 'PRO_DPRO'
       Origin = '"CAD_PRO"."PRO_DPRO"'
       Size = 120
@@ -1511,10 +1499,12 @@ object frmcad_pro_con: Tfrmcad_pro_con
       Size = 30
     end
     object CadastroPRO_PREC: TFloatField
+      DisplayLabel = 'Atacado'
       FieldName = 'PRO_PREC'
       Origin = '"CAD_PRO"."PRO_PREC"'
     end
     object CadastroPRO_PPRO: TFloatField
+      DisplayLabel = 'Promo'#231#227'o'
       FieldName = 'PRO_PPRO'
       Origin = '"CAD_PRO"."PRO_PPRO"'
     end
@@ -1525,6 +1515,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
       Size = 2
     end
     object CadastroPRO_VPRC: TFloatField
+      DisplayLabel = 'Varejo'
       FieldName = 'PRO_VPRC'
       Origin = '"CAD_PRO"."PRO_VPRC"'
     end
@@ -1539,6 +1530,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
       Size = 2
     end
     object CadastroPRO_RPRC: TFloatField
+      DisplayLabel = 'Representante'
       FieldName = 'PRO_RPRC'
       Origin = '"CAD_PRO"."PRO_RPRC"'
     end
@@ -1581,6 +1573,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
       Origin = '"CAD_PRO"."PRO_PIPI"'
     end
     object CadastroPRO_CCLF: TIBStringField
+      DisplayLabel = 'NCM'
       FieldName = 'PRO_CCLF'
       Origin = '"CAD_PRO"."PRO_CCLF"'
       Size = 10
@@ -1794,6 +1787,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
       Size = 8
     end
     object CadastroPRO_QEST: TIBBCDField
+      DisplayLabel = 'Estoque'
       FieldName = 'PRO_QEST'
       ProviderFlags = []
       Precision = 18

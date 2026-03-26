@@ -3,21 +3,21 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
   Top = 119
   ActiveControl = edfant
   Caption = 'Cadastro'
-  ClientHeight = 418
+  ClientHeight = 367
   ClientWidth = 550
   Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 14
   inherited pnlcadastro: TPanel
     Width = 550
-    Height = 285
+    Height = 348
     inherited PaintBox: TPaintBox
       Width = 550
-      Height = 285
+      Height = 283
     end
-    object Label5: TLabel
+    object Label5: TLabel [1]
       Left = 12
-      Top = 13
+      Top = 77
       Width = 79
       Height = 14
       Caption = 'Nome Fantasia'
@@ -31,9 +31,9 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
       ParentFont = False
       Transparent = True
     end
-    object Label4: TLabel
+    object Label4: TLabel [2]
       Left = 12
-      Top = 37
+      Top = 101
       Width = 65
       Height = 14
       Caption = 'Raz'#227'o Social'
@@ -47,9 +47,9 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
       ParentFont = False
       Transparent = True
     end
-    object Label13: TLabel
+    object Label13: TLabel [3]
       Left = 12
-      Top = 61
+      Top = 125
       Width = 43
       Height = 14
       Caption = 'C.N.P.J.'
@@ -63,9 +63,9 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
       ParentFont = False
       Transparent = True
     end
-    object Label14: TLabel
+    object Label14: TLabel [4]
       Left = 275
-      Top = 61
+      Top = 125
       Width = 96
       Height = 14
       Caption = 'Inscri'#231#227'o Estadual'
@@ -79,9 +79,9 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
       ParentFont = False
       Transparent = True
     end
-    object Label7: TLabel
+    object Label7: TLabel [5]
       Left = 12
-      Top = 85
+      Top = 149
       Width = 62
       Height = 14
       Caption = 'Fone (NFe)'
@@ -95,9 +95,9 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
       ParentFont = False
       Transparent = True
     end
-    object Label22: TLabel
+    object Label22: TLabel [6]
       Left = 12
-      Top = 107
+      Top = 171
       Width = 24
       Height = 14
       Caption = 'Tipo'
@@ -111,9 +111,9 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
       ParentFont = False
       Transparent = True
     end
-    object Label23: TLabel
+    object Label23: TLabel [7]
       Left = 12
-      Top = 131
+      Top = 195
       Width = 62
       Height = 14
       Caption = 'Logradouro'
@@ -127,9 +127,9 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
       ParentFont = False
       Transparent = True
     end
-    object Label24: TLabel
+    object Label24: TLabel [8]
       Left = 12
-      Top = 179
+      Top = 243
       Width = 21
       Height = 14
       Caption = 'Cep'
@@ -143,9 +143,9 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
       ParentFont = False
       Transparent = True
     end
-    object Label53: TLabel
+    object Label53: TLabel [9]
       Left = 12
-      Top = 155
+      Top = 219
       Width = 43
       Height = 14
       Caption = 'N'#250'mero'
@@ -159,9 +159,9 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
       ParentFont = False
       Transparent = True
     end
-    object Label66: TLabel
+    object Label66: TLabel [10]
       Left = 266
-      Top = 155
+      Top = 219
       Width = 76
       Height = 14
       Caption = 'Complemento'
@@ -175,9 +175,9 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
       ParentFont = False
       Transparent = True
     end
-    object Label102: TLabel
+    object Label102: TLabel [11]
       Left = 266
-      Top = 179
+      Top = 243
       Width = 89
       Height = 14
       Caption = 'C'#243'digo Municipal'
@@ -191,9 +191,9 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
       ParentFont = False
       Transparent = True
     end
-    object Label103: TLabel
+    object Label103: TLabel [12]
       Left = 12
-      Top = 204
+      Top = 268
       Width = 30
       Height = 14
       Caption = 'Bairro'
@@ -207,9 +207,9 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
       ParentFont = False
       Transparent = True
     end
-    object Label104: TLabel
+    object Label104: TLabel [13]
       Left = 12
-      Top = 252
+      Top = 316
       Width = 14
       Height = 14
       Caption = 'UF'
@@ -223,9 +223,9 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
       ParentFont = False
       Transparent = True
     end
-    object Label105: TLabel
+    object Label105: TLabel [14]
       Left = 12
-      Top = 228
+      Top = 292
       Width = 36
       Height = 14
       Caption = 'Cidade'
@@ -239,9 +239,9 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
       ParentFont = False
       Transparent = True
     end
-    object Label57: TLabel
+    object Label57: TLabel [15]
       Left = 136
-      Top = 252
+      Top = 316
       Width = 36
       Height = 14
       Caption = 'Regi'#227'o'
@@ -255,10 +255,14 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
       ParentFont = False
       Transparent = True
     end
+    inherited SBMenuPrincipal: TSpeedBar
+      Width = 550
+      TabOrder = 16
+    end
     object edfant: TdxEdit
       Tag = 1
       Left = 96
-      Top = 8
+      Top = 72
       Width = 449
       Hint = 'Nome Fantasia'
       Font.Charset = DEFAULT_CHARSET
@@ -280,7 +284,7 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
     object edraza: TdxEdit
       Tag = 1
       Left = 96
-      Top = 32
+      Top = 96
       Width = 449
       Hint = 'Raz'#227'o Social'
       Font.Charset = DEFAULT_CHARSET
@@ -301,7 +305,7 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
     end
     object edcnpj: TdxMaskEdit
       Left = 96
-      Top = 56
+      Top = 120
       Width = 165
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -322,7 +326,7 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
     end
     object edinsc: TdxEdit
       Left = 380
-      Top = 56
+      Top = 120
       Width = 165
       Hint = 'C'#243'digo'
       Color = clWhite
@@ -344,7 +348,7 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
     end
     object edddd: TdxMaskEdit
       Left = 96
-      Top = 80
+      Top = 144
       Width = 34
       Hint = 'DDD'
       Color = clWhite
@@ -367,7 +371,7 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
     end
     object edtel1: TdxMaskEdit
       Left = 129
-      Top = 80
+      Top = 144
       Width = 75
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -388,7 +392,7 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
     end
     object edtlog: TdxEdit
       Left = 96
-      Top = 103
+      Top = 167
       Width = 108
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -406,7 +410,7 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
     end
     object edlogr: TdxEdit
       Left = 96
-      Top = 127
+      Top = 191
       Width = 449
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -424,7 +428,7 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
     end
     object edcep: TdxButtonEdit
       Left = 96
-      Top = 175
+      Top = 239
       Width = 90
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -477,7 +481,7 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
     end
     object ednume: TdxEdit
       Left = 96
-      Top = 151
+      Top = 215
       Width = 90
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -495,7 +499,7 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
     end
     object edcomp: TdxEdit
       Left = 362
-      Top = 151
+      Top = 215
       Width = 182
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -513,7 +517,7 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
     end
     object edcmun: TdxButtonEdit
       Left = 362
-      Top = 175
+      Top = 239
       Width = 90
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -565,7 +569,7 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
     end
     object edbai: TdxEdit
       Left = 96
-      Top = 200
+      Top = 264
       Width = 449
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -583,7 +587,7 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
     end
     object eduf: TdxEdit
       Left = 96
-      Top = 248
+      Top = 312
       Width = 29
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -602,7 +606,7 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
     end
     object edcid: TdxEdit
       Left = 96
-      Top = 224
+      Top = 288
       Width = 449
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -620,7 +624,7 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
     end
     object cbregi: TdxPickEdit
       Left = 176
-      Top = 247
+      Top = 311
       Width = 369
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -648,16 +652,7 @@ inherited frmimporta_geral_favorecido: Tfrmimporta_geral_favorecido
     end
   end
   inherited sbMSG: TStatusBar
-    Top = 399
+    Top = 348
     Width = 550
-  end
-  inherited SpeedBar2: TSpeedBar
-    Width = 550
-  end
-  inherited imageOPC: TImageList
-    Left = 356
-  end
-  inherited imageITEM: TImageList
-    Top = 46
   end
 end

@@ -6,7 +6,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
   BorderStyle = bsSingle
   Caption = 'Consulta Produtos'
   ClientHeight = 591
-  ClientWidth = 900
+  ClientWidth = 980
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -261,7 +261,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
   object PNLRodape: TPanel
     Left = 0
     Top = 336
-    Width = 900
+    Width = 980
     Height = 255
     Align = alBottom
     BevelOuter = bvNone
@@ -903,7 +903,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
     object PNLFotos: TPanel
       Left = 560
       Top = 0
-      Width = 340
+      Width = 420
       Height = 255
       Align = alClient
       BevelOuter = bvNone
@@ -917,7 +917,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
       object GBFotos: TGroupBox
         Left = 0
         Top = 0
-        Width = 340
+        Width = 420
         Height = 255
         Align = alClient
         Caption = '  Imagem do Produto  '
@@ -931,7 +931,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
         object IFoto: TImage
           Left = 2
           Top = 19
-          Width = 336
+          Width = 416
           Height = 234
           Cursor = crHandPoint
           Hint = 'Clique para visualizar tela inteira'
@@ -946,7 +946,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
   object PNLPrincipal: TPanel
     Left = 0
     Top = 0
-    Width = 900
+    Width = 980
     Height = 336
     Align = alClient
     BevelOuter = bvNone
@@ -954,7 +954,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
     object SBMenu: TSpeedBar
       Left = 0
       Top = 0
-      Width = 900
+      Width = 980
       Height = 115
       Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
@@ -1015,7 +1015,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
     object GBConsulta: TGroupBox
       Left = 0
       Top = 115
-      Width = 900
+      Width = 980
       Height = 221
       Align = alClient
       Caption = '  Consulta  '
@@ -1029,13 +1029,12 @@ object frmcad_pro_con: Tfrmcad_pro_con
       object DBGConsulta: TdxDBGrid
         Left = 2
         Top = 19
-        Width = 896
+        Width = 976
         Height = 200
         Bands = <
           item
           end>
         DefaultLayout = True
-        HeaderMinRowCount = 2
         HeaderPanelRowCount = 1
         KeyField = 'ID'
         ShowSummaryFooter = True
@@ -1138,22 +1137,6 @@ object frmcad_pro_con: Tfrmcad_pro_con
           SummaryFooterFormat = '#,0.00'
           DisableFilter = True
         end
-        object DBGConsultaC_RDIS: TdxDBGridColumn
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          HeaderAlignment = taRightJustify
-          Width = 40
-          BandIndex = 0
-          RowIndex = 0
-          FieldName = 'C_RDIS'
-          SummaryFooterType = cstSum
-          SummaryFooterField = 'C_RDIS'
-          SummaryFooterFormat = '0'
-          DisableFilter = True
-        end
         object DBGConsultaPRO_PREC: TdxDBGridMaskColumn
           HeaderAlignment = taRightJustify
           Width = 55
@@ -1241,107 +1224,11 @@ object frmcad_pro_con: Tfrmcad_pro_con
         '         (SELECT COUNT(*)               FROM CAD_PRO_EST     WHE' +
         'RE EST_CPRO = CAD_PRO.ID) AS PRO_REST,'
       
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST_002 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QEST2,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_EST_002 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_REST2,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST_003 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QEST3,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_EST_003 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_REST3,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QEST4,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_EST_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_REST4,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST_005 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QEST5,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_EST_005 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_REST5,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST_006 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QEST6,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_EST_006 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_REST6,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST_007 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QEST7,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_EST_007 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_REST7,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST_008 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QEST8,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_EST_008 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_REST8,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST_009 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QEST9,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_EST_009 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_REST9,'
-      
         '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES     WHE' +
         'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES,'
       
         '         (SELECT COUNT(*)               FROM CAD_PRO_RES     WHE' +
         'RE EST_CPRO = CAD_PRO.ID) AS PRO_RRES,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES_002 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES2,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_RES_002 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RRES2,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES_003 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES3,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_RES_003 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RRES3,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES4,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_RES_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RRES4,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES_005 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES5,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_RES_005 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RRES5,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES_006 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES6,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_RES_006 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RRES6,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES_007 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES7,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_RES_007 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RRES7,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES_008 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES8,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_RES_008 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RRES8,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES_009 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES9,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_RES_009 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RRES9,'
       
         '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP     WHE' +
         'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP,'
@@ -1349,73 +1236,25 @@ object frmcad_pro_con: Tfrmcad_pro_con
         '         (SELECT COUNT(*)               FROM CAD_PRO_SEP     WHE' +
         'RE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP,'
       
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP_002 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP2,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_SEP_002 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP2,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP_003 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP3,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_SEP_003 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP3,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP4,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_SEP_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP4,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP_005 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP5,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_SEP_005 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP5,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP_006 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP6,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_SEP_006 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP6,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP_007 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP7,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_SEP_007 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP7,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP_008 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP8,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_SEP_008 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP8,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP_009 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP9,'
-      
-        '         (SELECT COUNT(*)               FROM CAD_PRO_SEP_009 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP9,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM cad_pro_prg_004 WHE' +
+        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM cad_pro_PRG     WHE' +
         'RE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_QPRG,'
       
-        '         (SELECT COUNT(*)               FROM cad_pro_prg_004 WHE' +
+        '         (SELECT COUNT(*)               FROM cad_pro_PRG     WHE' +
         'RE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_RPRG,'
       
-        '         (SELECT SUM(EST_CRED)          FROM cad_pro_prc_004 WHE' +
+        '         (SELECT SUM(EST_CRED)          FROM cad_pro_PRC     WHE' +
         'RE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_QCOM,'
       
-        '         (SELECT SUM(EST_DEBI)          FROM cad_pro_prc_004 WHE' +
+        '         (SELECT SUM(EST_DEBI)          FROM cad_pro_PRC     WHE' +
         'RE EST_CPRO = CAD_PRO.ID) AS PRO_QPRD,'
       
-        '         (SELECT COUNT(*)               FROM cad_pro_prc_004 WHE' +
+        '         (SELECT COUNT(*)               FROM cad_pro_PRC     WHE' +
         'RE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_RCOM,'
       
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM cad_pro_def_004 WHE' +
+        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM cad_pro_DEF     WHE' +
         'RE EST_CPRO = CAD_PRO.ID) AS PRO_QDEF,'
       
-        '         (SELECT COUNT(*)               FROM cad_pro_def_004 WHE' +
+        '         (SELECT COUNT(*)               FROM cad_pro_DEF     WHE' +
         'RE EST_CPRO = CAD_PRO.ID) AS PRO_RDEF'
       '         FROM     CAD_PRO,CAD_PRO_IMG'
       '         WHERE    CAD_PRO.PRO_CART = CAD_PRO_IMG.PRO_CART'
@@ -1423,6 +1262,116 @@ object frmcad_pro_con: Tfrmcad_pro_con
       'ORDER BY CAD_PRO.PRO_CART,CAD_PRO.PRO_DCOR')
     Left = 352
     Top = 72
+    object CadastroC_RSLD: TIntegerField
+      FieldKind = fkCalculated
+      FieldName = 'C_RSLD'
+      DisplayFormat = '0'
+      Calculated = True
+    end
+    object CadastroC_QSLD: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'C_QSLD'
+      DisplayFormat = '#,0.00'
+      Calculated = True
+    end
+    object CadastroC_RPRG: TIntegerField
+      FieldKind = fkCalculated
+      FieldName = 'C_RPRG'
+      DisplayFormat = '0'
+      Calculated = True
+    end
+    object CadastroC_QPRG: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'C_QPRG'
+      DisplayFormat = '#,0.00'
+      Calculated = True
+    end
+    object CadastroC_RCOM: TIntegerField
+      FieldKind = fkCalculated
+      FieldName = 'C_RCOM'
+      DisplayFormat = '0'
+      Calculated = True
+    end
+    object CadastroC_QCOM: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'C_QCOM'
+      DisplayFormat = '#,0.00'
+      Calculated = True
+    end
+    object CadastroC_RDEF: TIntegerField
+      FieldKind = fkCalculated
+      FieldName = 'C_RDEF'
+      DisplayFormat = '0'
+      Calculated = True
+    end
+    object CadastroC_QDEF: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'C_QDEF'
+      DisplayFormat = '#,0.00'
+      Calculated = True
+    end
+    object CadastroC_RDIS: TIntegerField
+      DisplayLabel = 'Pe'#231'a'
+      FieldKind = fkCalculated
+      FieldName = 'C_RDIS'
+      DisplayFormat = '0'
+      Calculated = True
+    end
+    object CadastroC_QDIS: TFloatField
+      DisplayLabel = 'Dispon'#237'vel'
+      FieldKind = fkCalculated
+      FieldName = 'C_QDIS'
+      DisplayFormat = '#,0.00'
+      Calculated = True
+    end
+    object CadastroC_RSEP: TIntegerField
+      FieldKind = fkCalculated
+      FieldName = 'C_RSEP'
+      DisplayFormat = '0'
+      Calculated = True
+    end
+    object CadastroC_QSEP: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'C_QSEP'
+      DisplayFormat = '#,0.00'
+      Calculated = True
+    end
+    object CadastroC_RRES: TIntegerField
+      FieldKind = fkCalculated
+      FieldName = 'C_RRES'
+      DisplayFormat = '0'
+      Calculated = True
+    end
+    object CadastroC_QRES: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'C_QRES'
+      DisplayFormat = '#,0.00'
+      Calculated = True
+    end
+    object CadastroC_REST: TIntegerField
+      FieldKind = fkCalculated
+      FieldName = 'C_REST'
+      DisplayFormat = '0'
+      Calculated = True
+    end
+    object CadastroC_QEST: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'C_QEST'
+      DisplayFormat = '#,0.00'
+      Calculated = True
+    end
+    object CadastroC_STAV: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'C_STAV'
+      Size = 30
+      Calculated = True
+    end
+    object CadastroC_DCST: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'C_DCST'
+      Size = 200
+      Calculated = True
+    end
     object CadastroID: TIntegerField
       FieldName = 'ID'
       Origin = '"CAD_PRO"."ID"'
@@ -1457,7 +1406,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
       Size = 30
     end
     object CadastroPRO_DCOR: TIBStringField
-      DisplayLabel = 'Cor'
+      DisplayLabel = 'Grade'
       FieldName = 'PRO_DCOR'
       Origin = '"CAD_PRO"."PRO_DCOR"'
       Size = 30
@@ -1550,12 +1499,12 @@ object frmcad_pro_con: Tfrmcad_pro_con
       Size = 30
     end
     object CadastroPRO_PREC: TFloatField
-      DisplayLabel = 'Pre'#231'o Atacado'
+      DisplayLabel = 'Atacado'
       FieldName = 'PRO_PREC'
       Origin = '"CAD_PRO"."PRO_PREC"'
-      DisplayFormat = '#,0.00'
     end
     object CadastroPRO_PPRO: TFloatField
+      DisplayLabel = 'Promo'#231#227'o'
       FieldName = 'PRO_PPRO'
       Origin = '"CAD_PRO"."PRO_PPRO"'
     end
@@ -1566,10 +1515,9 @@ object frmcad_pro_con: Tfrmcad_pro_con
       Size = 2
     end
     object CadastroPRO_VPRC: TFloatField
-      DisplayLabel = 'Pre'#231'o Varejo'
+      DisplayLabel = 'Varejo'
       FieldName = 'PRO_VPRC'
       Origin = '"CAD_PRO"."PRO_VPRC"'
-      DisplayFormat = '#,0.00'
     end
     object CadastroPRO_VPRO: TFloatField
       FieldName = 'PRO_VPRO'
@@ -1582,10 +1530,9 @@ object frmcad_pro_con: Tfrmcad_pro_con
       Size = 2
     end
     object CadastroPRO_RPRC: TFloatField
-      DisplayLabel = 'Pre'#231'o Representante'
+      DisplayLabel = 'Representante'
       FieldName = 'PRO_RPRC'
       Origin = '"CAD_PRO"."PRO_RPRC"'
-      DisplayFormat = '#,0.00'
     end
     object CadastroPRO_RPRO: TFloatField
       FieldName = 'PRO_RPRO'
@@ -1840,12 +1787,13 @@ object frmcad_pro_con: Tfrmcad_pro_con
       Size = 8
     end
     object CadastroPRO_QEST: TIBBCDField
+      DisplayLabel = 'Estoque'
       FieldName = 'PRO_QEST'
       ProviderFlags = []
       Precision = 18
       Size = 4
     end
-    object CadastroPRO_REST: TIntegerField
+    object CadastroPRO_REST: TLargeintField
       FieldName = 'PRO_REST'
       ProviderFlags = []
     end
@@ -1855,7 +1803,7 @@ object frmcad_pro_con: Tfrmcad_pro_con
       Precision = 18
       Size = 4
     end
-    object CadastroPRO_RRES: TIntegerField
+    object CadastroPRO_RRES: TLargeintField
       FieldName = 'PRO_RRES'
       ProviderFlags = []
     end
@@ -1865,18 +1813,8 @@ object frmcad_pro_con: Tfrmcad_pro_con
       Precision = 18
       Size = 4
     end
-    object CadastroPRO_RSEP: TIntegerField
+    object CadastroPRO_RSEP: TLargeintField
       FieldName = 'PRO_RSEP'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QCOM: TIBBCDField
-      FieldName = 'PRO_QCOM'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_RCOM: TIntegerField
-      FieldName = 'PRO_RCOM'
       ProviderFlags = []
     end
     object CadastroPRO_QPRG: TIBBCDField
@@ -1885,8 +1823,24 @@ object frmcad_pro_con: Tfrmcad_pro_con
       Precision = 18
       Size = 4
     end
-    object CadastroPRO_RPRG: TIntegerField
+    object CadastroPRO_RPRG: TLargeintField
       FieldName = 'PRO_RPRG'
+      ProviderFlags = []
+    end
+    object CadastroPRO_QCOM: TIBBCDField
+      FieldName = 'PRO_QCOM'
+      ProviderFlags = []
+      Precision = 18
+      Size = 4
+    end
+    object CadastroPRO_QPRD: TIBBCDField
+      FieldName = 'PRO_QPRD'
+      ProviderFlags = []
+      Precision = 18
+      Size = 4
+    end
+    object CadastroPRO_RCOM: TLargeintField
+      FieldName = 'PRO_RCOM'
       ProviderFlags = []
     end
     object CadastroPRO_QDEF: TIBBCDField
@@ -1895,365 +1849,9 @@ object frmcad_pro_con: Tfrmcad_pro_con
       Precision = 18
       Size = 4
     end
-    object CadastroPRO_RDEF: TIntegerField
+    object CadastroPRO_RDEF: TLargeintField
       FieldName = 'PRO_RDEF'
       ProviderFlags = []
-    end
-    object CadastroPRO_QEST2: TIBBCDField
-      FieldName = 'PRO_QEST2'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_REST2: TIntegerField
-      FieldName = 'PRO_REST2'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QEST3: TIBBCDField
-      FieldName = 'PRO_QEST3'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_REST3: TIntegerField
-      FieldName = 'PRO_REST3'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QEST4: TIBBCDField
-      FieldName = 'PRO_QEST4'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_REST4: TIntegerField
-      FieldName = 'PRO_REST4'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QEST5: TIBBCDField
-      FieldName = 'PRO_QEST5'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_REST5: TIntegerField
-      FieldName = 'PRO_REST5'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QEST6: TIBBCDField
-      FieldName = 'PRO_QEST6'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_REST6: TIntegerField
-      FieldName = 'PRO_REST6'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QEST7: TIBBCDField
-      FieldName = 'PRO_QEST7'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_REST7: TIntegerField
-      FieldName = 'PRO_REST7'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QEST8: TIBBCDField
-      FieldName = 'PRO_QEST8'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_REST8: TIntegerField
-      FieldName = 'PRO_REST8'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QEST9: TIBBCDField
-      FieldName = 'PRO_QEST9'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_REST9: TIntegerField
-      FieldName = 'PRO_REST9'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QRES2: TIBBCDField
-      FieldName = 'PRO_QRES2'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_RRES2: TIntegerField
-      FieldName = 'PRO_RRES2'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QRES3: TIBBCDField
-      FieldName = 'PRO_QRES3'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_RRES3: TIntegerField
-      FieldName = 'PRO_RRES3'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QRES4: TIBBCDField
-      FieldName = 'PRO_QRES4'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_RRES4: TIntegerField
-      FieldName = 'PRO_RRES4'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QRES5: TIBBCDField
-      FieldName = 'PRO_QRES5'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_RRES5: TIntegerField
-      FieldName = 'PRO_RRES5'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QRES6: TIBBCDField
-      FieldName = 'PRO_QRES6'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_RRES6: TIntegerField
-      FieldName = 'PRO_RRES6'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QRES7: TIBBCDField
-      FieldName = 'PRO_QRES7'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_RRES7: TIntegerField
-      FieldName = 'PRO_RRES7'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QRES8: TIBBCDField
-      FieldName = 'PRO_QRES8'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_RRES8: TIntegerField
-      FieldName = 'PRO_RRES8'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QRES9: TIBBCDField
-      FieldName = 'PRO_QRES9'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_RRES9: TIntegerField
-      FieldName = 'PRO_RRES9'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QSEP2: TIBBCDField
-      FieldName = 'PRO_QSEP2'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_RSEP2: TIntegerField
-      FieldName = 'PRO_RSEP2'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QSEP3: TIBBCDField
-      FieldName = 'PRO_QSEP3'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_RSEP3: TIntegerField
-      FieldName = 'PRO_RSEP3'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QSEP4: TIBBCDField
-      FieldName = 'PRO_QSEP4'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_RSEP4: TIntegerField
-      FieldName = 'PRO_RSEP4'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QSEP5: TIBBCDField
-      FieldName = 'PRO_QSEP5'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_RSEP5: TIntegerField
-      FieldName = 'PRO_RSEP5'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QSEP6: TIBBCDField
-      FieldName = 'PRO_QSEP6'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_RSEP6: TIntegerField
-      FieldName = 'PRO_RSEP6'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QSEP7: TIBBCDField
-      FieldName = 'PRO_QSEP7'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_RSEP7: TIntegerField
-      FieldName = 'PRO_RSEP7'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QSEP8: TIBBCDField
-      FieldName = 'PRO_QSEP8'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_RSEP8: TIntegerField
-      FieldName = 'PRO_RSEP8'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QSEP9: TIBBCDField
-      FieldName = 'PRO_QSEP9'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroPRO_RSEP9: TIntegerField
-      FieldName = 'PRO_RSEP9'
-      ProviderFlags = []
-    end
-    object CadastroPRO_QPRD: TIBBCDField
-      FieldName = 'PRO_QPRD'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object CadastroC_RSLD: TIntegerField
-      FieldKind = fkCalculated
-      FieldName = 'C_RSLD'
-      DisplayFormat = '0'
-      Calculated = True
-    end
-    object CadastroC_QSLD: TFloatField
-      FieldKind = fkCalculated
-      FieldName = 'C_QSLD'
-      DisplayFormat = '#,0.00'
-      Calculated = True
-    end
-    object CadastroC_RPRG: TIntegerField
-      FieldKind = fkCalculated
-      FieldName = 'C_RPRG'
-      DisplayFormat = '0'
-      Calculated = True
-    end
-    object CadastroC_QPRG: TFloatField
-      FieldKind = fkCalculated
-      FieldName = 'C_QPRG'
-      DisplayFormat = '#,0.00'
-      Calculated = True
-    end
-    object CadastroC_RCOM: TIntegerField
-      FieldKind = fkCalculated
-      FieldName = 'C_RCOM'
-      DisplayFormat = '0'
-      Calculated = True
-    end
-    object CadastroC_QCOM: TFloatField
-      FieldKind = fkCalculated
-      FieldName = 'C_QCOM'
-      DisplayFormat = '#,0.00'
-      Calculated = True
-    end
-    object CadastroC_RDEF: TIntegerField
-      FieldKind = fkCalculated
-      FieldName = 'C_RDEF'
-      DisplayFormat = '0'
-      Calculated = True
-    end
-    object CadastroC_QDEF: TFloatField
-      FieldKind = fkCalculated
-      FieldName = 'C_QDEF'
-      DisplayFormat = '#,0.00'
-      Calculated = True
-    end
-    object CadastroC_RDIS: TIntegerField
-      DisplayLabel = 'Pe'#231'a'
-      FieldKind = fkCalculated
-      FieldName = 'C_RDIS'
-      DisplayFormat = '0'
-      Calculated = True
-    end
-    object CadastroC_QDIS: TFloatField
-      DisplayLabel = 'Estoque Dispon'#237'vel'
-      FieldKind = fkCalculated
-      FieldName = 'C_QDIS'
-      DisplayFormat = '#,0.00'
-      Calculated = True
-    end
-    object CadastroC_RSEP: TIntegerField
-      FieldKind = fkCalculated
-      FieldName = 'C_RSEP'
-      DisplayFormat = '0'
-      Calculated = True
-    end
-    object CadastroC_QSEP: TFloatField
-      FieldKind = fkCalculated
-      FieldName = 'C_QSEP'
-      DisplayFormat = '#,0.00'
-      Calculated = True
-    end
-    object CadastroC_RRES: TIntegerField
-      FieldKind = fkCalculated
-      FieldName = 'C_RRES'
-      DisplayFormat = '0'
-      Calculated = True
-    end
-    object CadastroC_QRES: TFloatField
-      FieldKind = fkCalculated
-      FieldName = 'C_QRES'
-      DisplayFormat = '#,0.00'
-      Calculated = True
-    end
-    object CadastroC_REST: TIntegerField
-      FieldKind = fkCalculated
-      FieldName = 'C_REST'
-      DisplayFormat = '0'
-      Calculated = True
-    end
-    object CadastroC_QEST: TFloatField
-      FieldKind = fkCalculated
-      FieldName = 'C_QEST'
-      DisplayFormat = '#,0.00'
-      Calculated = True
-    end
-    object CadastroC_STAV: TStringField
-      FieldKind = fkCalculated
-      FieldName = 'C_STAV'
-      Size = 30
-      Calculated = True
-    end
-    object CadastroC_DCST: TStringField
-      FieldKind = fkCalculated
-      FieldName = 'C_DCST'
-      Size = 200
-      Calculated = True
     end
   end
   object DTSCadastro: TDataSource

@@ -12,7 +12,6 @@ inherited frmctr_nfe: Tfrmctr_nfe
     inherited siEVE: TSpeedItem [5]
       ImageIndex = 8
       Visible = False
-      OnClick = siEVEClick
     end
     inherited siREF: TSpeedItem [6]
       Left = 143

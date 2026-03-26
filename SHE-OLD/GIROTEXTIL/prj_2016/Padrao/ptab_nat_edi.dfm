@@ -1,21 +1,21 @@
 inherited frmtab_nat_edi: Tfrmtab_nat_edi
-  Left = 137
-  Top = 73
-  ClientHeight = 495
+  Left = 517
+  Top = 102
+  ClientHeight = 454
   ClientWidth = 564
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 14
   inherited pnlcadastro: TPanel
     Width = 564
-    Height = 362
+    Height = 435
     inherited PaintBox: TPaintBox
       Width = 564
-      Height = 152
+      Height = 160
     end
-    object Label36: TLabel
+    object Label36: TLabel [1]
       Left = 6
-      Top = 13
+      Top = 77
       Width = 140
       Height = 14
       AutoSize = False
@@ -30,9 +30,9 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
       ParentFont = False
       Transparent = True
     end
-    object Label1: TLabel
+    object Label1: TLabel [2]
       Left = 6
-      Top = 37
+      Top = 101
       Width = 140
       Height = 14
       AutoSize = False
@@ -47,9 +47,9 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
       ParentFont = False
       Transparent = True
     end
-    object Label54: TLabel
+    object Label54: TLabel [3]
       Left = 6
-      Top = 61
+      Top = 125
       Width = 140
       Height = 14
       AutoSize = False
@@ -64,9 +64,9 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
       ParentFont = False
       Transparent = True
     end
-    object Label2: TLabel
+    object Label2: TLabel [4]
       Left = 381
-      Top = 61
+      Top = 125
       Width = 140
       Height = 14
       AutoSize = False
@@ -81,9 +81,9 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
       ParentFont = False
       Transparent = True
     end
-    object Label3: TLabel
+    object Label3: TLabel [5]
       Left = 6
-      Top = 85
+      Top = 149
       Width = 140
       Height = 14
       AutoSize = False
@@ -98,9 +98,9 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
       ParentFont = False
       Transparent = True
     end
-    object Label4: TLabel
+    object Label4: TLabel [6]
       Left = 6
-      Top = 109
+      Top = 173
       Width = 140
       Height = 14
       AutoSize = False
@@ -115,9 +115,9 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
       ParentFont = False
       Transparent = True
     end
-    object Label5: TLabel
+    object Label5: TLabel [7]
       Left = 6
-      Top = 133
+      Top = 197
       Width = 140
       Height = 14
       AutoSize = False
@@ -132,10 +132,14 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
       ParentFont = False
       Transparent = True
     end
+    inherited SBMenuPrincipal: TSpeedBar
+      Width = 564
+      TabOrder = 9
+    end
     object eddnat: TdxEdit
       Tag = 1
       Left = 144
-      Top = 32
+      Top = 96
       Width = 417
       Hint = 'Natureza de Opera'#231#227'o'
       Font.Charset = DEFAULT_CHARSET
@@ -157,7 +161,7 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
     object cbtipo: TdxImageEdit
       Tag = 1
       Left = 144
-      Top = 56
+      Top = 120
       Width = 209
       Hint = 'Tipo da Natureza'
       Color = clWhite
@@ -214,7 +218,7 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
     object cboper: TdxImageEdit
       Tag = 1
       Left = 448
-      Top = 56
+      Top = 120
       Width = 113
       Hint = 'Opera'#231#227'o'
       Color = clWhite
@@ -247,7 +251,7 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
     end
     object pcmain: TdxPageControl
       Left = 0
-      Top = 152
+      Top = 225
       Width = 564
       Height = 210
       ActivePage = tsicms
@@ -774,7 +778,7 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
     end
     object edid: TdxEdit
       Left = 144
-      Top = 8
+      Top = 72
       Width = 25
       Hint = 'C.F.O.P.'
       Font.Charset = DEFAULT_CHARSET
@@ -798,7 +802,7 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
     object edcnat: TdxEdit
       Tag = 1
       Left = 144
-      Top = 8
+      Top = 72
       Width = 113
       Hint = 'C.F.O.P.'
       Font.Charset = DEFAULT_CHARSET
@@ -820,7 +824,7 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
     end
     object cbccst: TdxImageEdit
       Left = 144
-      Top = 80
+      Top = 144
       Width = 417
       Hint = 'C.S.T.'
       Color = clWhite
@@ -849,7 +853,7 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
     end
     object cbcsts: TdxImageEdit
       Left = 144
-      Top = 104
+      Top = 168
       Width = 417
       Hint = 'C.S.O.S.N.'
       Color = clWhite
@@ -878,7 +882,7 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
     end
     object cbcsta: TdxImageEdit
       Left = 144
-      Top = 128
+      Top = 192
       Width = 417
       Hint = 'C.S.O.S.N. [C.I.C.M.]'
       Color = clWhite
@@ -907,18 +911,7 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
     end
   end
   inherited sbMSG: TStatusBar
-    Top = 476
+    Top = 435
     Width = 564
-  end
-  inherited SpeedBar2: TSpeedBar
-    Width = 564
-  end
-  inherited imageOPC: TImageList
-    Left = 292
-    Top = 62
-  end
-  inherited imageITEM: TImageList
-    Left = 324
-    Top = 62
   end
 end

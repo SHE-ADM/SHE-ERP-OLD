@@ -13,65 +13,19 @@ uses
 
 type
   Tfrmven_ped = class(TForm)
-    imageOPC: TImageList;
-    SpeedBar2: TSpeedBar;
-    SpeedbarSection5: TSpeedbarSection;
-    SpeedbarSection6: TSpeedbarSection;
-    SpeedbarSection7: TSpeedbarSection;
-    SpeedbarSection8: TSpeedbarSection;
+    SBMenuPrincipal: TSpeedBar;
+    SSMenuPrincipal: TSpeedbarSection;
     BSair: TSpeedItem;
     BSal: TSpeedItem;
-    imageOPC2: TImageList;
     IBTra: TIBTransaction;
     ibSP: TIBStoredProc;
-    rom_001: TIBDataSet;
-    dtsrom_001: TDataSource;
+    Edicao: TIBDataSet;
+    DTSEdicao: TDataSource;
     tSHEILD: TIBTransaction;
     consulta_s: TIBQuery;
-    pnlconsulta: TPanel;
-    imageOPC3: TImageList;
-    rom_001ID: TIntegerField;
-    rom_001ROM_ITEM: TIBStringField;
-    rom_001ROM_CART: TIBStringField;
-    rom_001ROM_CPRO: TIBStringField;
-    rom_001ROM_DPRO: TIBStringField;
-    rom_001ROM_CCOR: TIntegerField;
-    rom_001ROM_DCOR: TIBStringField;
-    rom_001ROM_DUNI: TIBStringField;
-    rom_001ROM_QTDE: TIBBCDField;
-    rom_001ROM_VDSC: TIBBCDField;
-    rom_001ROM_TOTA: TIBBCDField;
-    rom_001ROM_CDET: TIBStringField;
-    rom_001ROM_CBAR: TIBStringField;
-    rom_001ROM_FOTO: TBlobField;
-    rom_001ROM_QDIS: TIBBCDField;
-    SpeedBar4: TSpeedBar;
-    SpeedbarSection17: TSpeedbarSection;
-    SpeedbarSection18: TSpeedbarSection;
-    SpeedbarSection19: TSpeedbarSection;
-    SpeedbarSection20: TSpeedbarSection;
-    siDEL: TSpeedItem;
-    siSAV: TSpeedItem;
-    siCAN: TSpeedItem;
-    siALT: TSpeedItem;
-    rom_001ROM_PPRO: TIBBCDField;
-    rom_001ROM_PEMB: TIBBCDField;
     consulta: TIBQuery;
-    BInf: TSpeedItem;
-    rom_001ROM_CGRD: TIBStringField;
-    rom_001ROM_DGRD: TIBStringField;
-    rom_001ROM_FLAG: TSmallintField;
-    rom_001ROM_CDOC: TIntegerField;
-    rom_001ROM_RCOR: TIBStringField;
-    siINC: TSpeedItem;
     aux: TIBQuery;
     aux2: TIBQuery;
-    rom_001ROM_CPR2: TIBStringField;
-    rom_001ROM_CCO2: TIntegerField;
-    rom_001ROM_RCO2: TIBStringField;
-    rom_001ROM_DCO2: TIBStringField;
-    rom_001ROM_IPRO: TIntegerField;
-    rom_001ROM_IPR2: TIntegerField;
     tab_pag: TIBQuery;
     tab_pagID: TIntegerField;
     tab_pagPAG_DPAG: TIBStringField;
@@ -88,29 +42,9 @@ type
     tab_pagPAG_STA: TIBStringField;
     tab_pagPAG_PARC: TSmallintField;
     pnlpri: TPanel;
-    dbgrom: TdxDBGrid;
     psq_cli: TIBQuery;
-    rom_001ROM_CCAB: TIntegerField;
-    rom_001ROM_CDPR: TIntegerField;
-    rom_001ROM_CDPD: TIntegerField;
-    rom_001ROM_CDRO: TIntegerField;
-    rom_001ROM_CDNF: TIntegerField;
-    rom_001ROM_QTSP: TIBBCDField;
-    rom_001ROM_QTPD: TIBBCDField;
-    rom_001ROM_QTRL: TIntegerField;
-    rom_001ROM_RLSP: TIntegerField;
-    rom_001ROM_RLPD: TIntegerField;
-    rom_001ROM_RLDI: TIntegerField;
-    rom_001ROM_METR: TIBBCDField;
-    rom_001ROM_PESO: TIBBCDField;
-    rom_001ROM_REND: TIBBCDField;
-    rom_001ROM_PSCN: TIBBCDField;
-    rom_001ROM_PSMR: TIBBCDField;
     siCLO: TSpeedItem;
     siDES: TSpeedItem;
-    rom_001ROM_VBCIPI: TIBBCDField;
-    rom_001ROM_PIPI: TIBBCDField;
-    rom_001ROM_VIPI: TIBBCDField;
     rom_cab: TIBQuery;
     rom_cabID: TIntegerField;
     rom_cabROM_CDOC: TIntegerField;
@@ -197,11 +131,6 @@ type
     ped_ven_cabCLI_FANT: TIBStringField;
     ped_ven_cabREP_FANT: TIBStringField;
     ped_ven_cabPAG_DPAG: TIBStringField;
-    rom_002: TIBDataSet;
-    rom_001ROM_TPRC: TIBStringField;
-    rom_001ROM_PCOR: TIBStringField;
-    rom_001ROM_PCO2: TIBStringField;
-    rom_001ROM_ABCD: TIBStringField;
     ped_ven_cabUSU_DUSU: TIBStringField;
     rom_cabROM_COMI: TIBBCDField;
     rom_cabUSU_DUSU: TIBStringField;
@@ -212,16 +141,10 @@ type
     cli_staFIN_VALO: TIBBCDField;
     Panel1: TPanel;
     pnlped: TPanel;
-    Shape4: TShape;
     Label3: TLabel;
-    Label4: TLabel;
-    linha1: TShape;
     Label9: TLabel;
     Label10: TLabel;
     Label6: TLabel;
-    linha3: TShape;
-    Shape7: TShape;
-    Label16: TLabel;
     Shape9: TShape;
     Label17: TLabel;
     Shape10: TShape;
@@ -236,12 +159,7 @@ type
     Label18: TLabel;
     Label29: TLabel;
     Label14: TLabel;
-    linha2: TShape;
-    Shape3: TShape;
-    Label7: TLabel;
-    Label8: TLabel;
     Label12: TLabel;
-    Label30: TLabel;
     Shape6: TShape;
     Label19: TLabel;
     Shape8: TShape;
@@ -289,147 +207,11 @@ type
     pTRA: TIBTransaction;
     edodsc: TdxMaskEdit;
     aux_S: TIBQuery;
-    rom_003: TIBDataSet;
     ped_prg_ite: TIBQuery;
     aux2_S: TIBQuery;
     edagrp: TdxMaskEdit;
     edbest: TdxMaskEdit;
     edfatu: TdxMaskEdit;
-    rom_001ROM_UNIT: TFloatField;
-    rom_001ROM_STFI: TIBStringField;
-    rom_003ID: TIntegerField;
-    rom_003ROM_CCAB: TIntegerField;
-    rom_003ROM_CDOC: TIntegerField;
-    rom_003ROM_CDPR: TIntegerField;
-    rom_003ROM_CDPD: TIntegerField;
-    rom_003ROM_CDRO: TIntegerField;
-    rom_003ROM_CDNF: TIntegerField;
-    rom_003ROM_ITEM: TIBStringField;
-    rom_003ROM_CART: TIBStringField;
-    rom_003ROM_IPRO: TIntegerField;
-    rom_003ROM_CPRO: TIBStringField;
-    rom_003ROM_IPR2: TIntegerField;
-    rom_003ROM_CPR2: TIBStringField;
-    rom_003ROM_DPRO: TIBStringField;
-    rom_003ROM_CCOR: TIntegerField;
-    rom_003ROM_RCOR: TIBStringField;
-    rom_003ROM_DCOR: TIBStringField;
-    rom_003ROM_PCOR: TIBStringField;
-    rom_003ROM_CCO2: TIntegerField;
-    rom_003ROM_RCO2: TIBStringField;
-    rom_003ROM_DCO2: TIBStringField;
-    rom_003ROM_PCO2: TIBStringField;
-    rom_003ROM_CGRD: TIBStringField;
-    rom_003ROM_DGRD: TIBStringField;
-    rom_003ROM_DUNI: TIBStringField;
-    rom_003ROM_QTDE: TIBBCDField;
-    rom_003ROM_QTRL: TIntegerField;
-    rom_003ROM_QTSP: TIBBCDField;
-    rom_003ROM_RLSP: TIntegerField;
-    rom_003ROM_QTPD: TIBBCDField;
-    rom_003ROM_RLPD: TIntegerField;
-    rom_003ROM_QDIS: TIBBCDField;
-    rom_003ROM_RLDI: TIntegerField;
-    rom_003ROM_PRCA: TFloatField;
-    rom_003ROM_PRPA: TFloatField;
-    rom_003ROM_VPRC: TFloatField;
-    rom_003ROM_VPRO: TFloatField;
-    rom_003ROM_RPRC: TFloatField;
-    rom_003ROM_RPRO: TFloatField;
-    rom_003ROM_PCOM: TFloatField;
-    rom_003ROM_CUST: TFloatField;
-    rom_003ROM_UNIT: TFloatField;
-    rom_003ROM_PREC: TFloatField;
-    rom_003ROM_VDSC: TIBBCDField;
-    rom_003ROM_TOTA: TIBBCDField;
-    rom_003ROM_PPRO: TIBBCDField;
-    rom_003ROM_PEMB: TIBBCDField;
-    rom_003ROM_METR: TIBBCDField;
-    rom_003ROM_PESO: TIBBCDField;
-    rom_003ROM_REND: TIBBCDField;
-    rom_003ROM_PSCN: TIBBCDField;
-    rom_003ROM_PSMR: TIBBCDField;
-    rom_003ROM_VBCIPI: TIBBCDField;
-    rom_003ROM_PIPI: TIBBCDField;
-    rom_003ROM_VIPI: TIBBCDField;
-    rom_003ROM_CDET: TIBStringField;
-    rom_003ROM_CBAR: TIBStringField;
-    rom_003ROM_TPRC: TIBStringField;
-    rom_003ROM_FLAG: TSmallintField;
-    rom_003ROM_FOTO: TBlobField;
-    rom_003ROM_ABCD: TIBStringField;
-    rom_003ROM_STFI: TIBStringField;
-    rom_002ID: TIntegerField;
-    rom_002ROM_CCAB: TIntegerField;
-    rom_002ROM_CDOC: TIntegerField;
-    rom_002ROM_CDPR: TIntegerField;
-    rom_002ROM_CDPD: TIntegerField;
-    rom_002ROM_CDRO: TIntegerField;
-    rom_002ROM_CDNF: TIntegerField;
-    rom_002ROM_ITEM: TIBStringField;
-    rom_002ROM_CART: TIBStringField;
-    rom_002ROM_IPRO: TIntegerField;
-    rom_002ROM_CPRO: TIBStringField;
-    rom_002ROM_IPR2: TIntegerField;
-    rom_002ROM_CPR2: TIBStringField;
-    rom_002ROM_DPRO: TIBStringField;
-    rom_002ROM_CCOR: TIntegerField;
-    rom_002ROM_RCOR: TIBStringField;
-    rom_002ROM_DCOR: TIBStringField;
-    rom_002ROM_PCOR: TIBStringField;
-    rom_002ROM_CCO2: TIntegerField;
-    rom_002ROM_RCO2: TIBStringField;
-    rom_002ROM_DCO2: TIBStringField;
-    rom_002ROM_PCO2: TIBStringField;
-    rom_002ROM_CGRD: TIBStringField;
-    rom_002ROM_DGRD: TIBStringField;
-    rom_002ROM_DUNI: TIBStringField;
-    rom_002ROM_QTDE: TIBBCDField;
-    rom_002ROM_QTRL: TIntegerField;
-    rom_002ROM_QTSP: TIBBCDField;
-    rom_002ROM_RLSP: TIntegerField;
-    rom_002ROM_QTPD: TIBBCDField;
-    rom_002ROM_RLPD: TIntegerField;
-    rom_002ROM_QDIS: TIBBCDField;
-    rom_002ROM_RLDI: TIntegerField;
-    rom_002ROM_PRCA: TFloatField;
-    rom_002ROM_PRPA: TFloatField;
-    rom_002ROM_VPRC: TFloatField;
-    rom_002ROM_VPRO: TFloatField;
-    rom_002ROM_RPRC: TFloatField;
-    rom_002ROM_RPRO: TFloatField;
-    rom_002ROM_PCOM: TFloatField;
-    rom_002ROM_CUST: TFloatField;
-    rom_002ROM_UNIT: TFloatField;
-    rom_002ROM_PREC: TFloatField;
-    rom_002ROM_VDSC: TIBBCDField;
-    rom_002ROM_TOTA: TIBBCDField;
-    rom_002ROM_PPRO: TIBBCDField;
-    rom_002ROM_PEMB: TIBBCDField;
-    rom_002ROM_METR: TIBBCDField;
-    rom_002ROM_PESO: TIBBCDField;
-    rom_002ROM_REND: TIBBCDField;
-    rom_002ROM_PSCN: TIBBCDField;
-    rom_002ROM_PSMR: TIBBCDField;
-    rom_002ROM_VBCIPI: TIBBCDField;
-    rom_002ROM_PIPI: TIBBCDField;
-    rom_002ROM_VIPI: TIBBCDField;
-    rom_002ROM_CDET: TIBStringField;
-    rom_002ROM_CBAR: TIBStringField;
-    rom_002ROM_TPRC: TIBStringField;
-    rom_002ROM_FLAG: TSmallintField;
-    rom_002ROM_FOTO: TBlobField;
-    rom_002ROM_ABCD: TIBStringField;
-    rom_002ROM_STFI: TIBStringField;
-    rom_001ROM_PRCA: TFloatField;
-    rom_001ROM_PRPA: TFloatField;
-    rom_001ROM_VPRC: TFloatField;
-    rom_001ROM_VPRO: TFloatField;
-    rom_001ROM_RPRC: TFloatField;
-    rom_001ROM_RPRO: TFloatField;
-    rom_001ROM_PCOM: TFloatField;
-    rom_001ROM_CUST: TFloatField;
-    rom_001ROM_PREC: TFloatField;
     ped_prg_iteID: TIntegerField;
     ped_prg_iteROM_CCAB: TIntegerField;
     ped_prg_iteROM_CDOC: TIntegerField;
@@ -522,13 +304,7 @@ type
     rom_itePRO_CEMB: TIntegerField;
     rom_itePRO_GRAD: TIBStringField;
     rom_itePRO_FOTO: TBlobField;
-    rom_001ROM_CSEP: TIntegerField;
-    rom_001ROM_DSEP: TIBStringField;
     edddsc: TdxMaskEdit;
-    rom_003ROM_CSEP: TIntegerField;
-    rom_003ROM_DSEP: TIBStringField;
-    rom_002ROM_CSEP: TIntegerField;
-    rom_002ROM_DSEP: TIBStringField;
     ped_ven_cabROM_DPRD: TDateField;
     ped_ven_cabROM_CTNR: TIBStringField;
     ped_ven_cabROM_DEMB: TDateField;
@@ -555,12 +331,6 @@ type
     edpacr: TdxMaskEdit;
     eddesc: TdxMaskEdit;
     edptng: TdxMaskEdit;
-    rom_001ROM_APRC: TIBStringField;
-    rom_001ROM_LDSC: TIBBCDField;
-    rom_002ROM_APRC: TIBStringField;
-    rom_002ROM_LDSC: TIBBCDField;
-    rom_003ROM_APRC: TIBStringField;
-    rom_003ROM_LDSC: TIBBCDField;
     tab_cor: TIBDataSet;
     tab_corID: TIntegerField;
     tab_corCOR_CCOR: TSmallintField;
@@ -570,9 +340,6 @@ type
     tab_corCOR_REFE: TIBStringField;
     tab_corCOR_PADR: TIBStringField;
     tab_corCOR_PCOR: TIBStringField;
-    rom_001ROM_TSDE: TIBBCDField;
-    rom_002ROM_TSDE: TIBBCDField;
-    rom_003ROM_TSDE: TIBBCDField;
     cad_proID: TIntegerField;
     cad_proPRO_DCAD: TDateField;
     cad_proPRO_DALT: TDateField;
@@ -662,28 +429,6 @@ type
     cad_proPRO_APRC: TIBStringField;
     cad_proPRO_LDSC: TIBBCDField;
     cad_proPRO_DMAP: TIBStringField;
-    rom_001ROM_OBSE: TMemoField;
-    rom_002ROM_OBSE: TMemoField;
-    rom_003ROM_OBSE: TMemoField;
-    dbgromROM_ITEM: TdxDBGridMaskColumn;
-    dbgromROM_CPRO: TdxDBGridMaskColumn;
-    dbgromROM_DCOR: TdxDBGridPickColumn;
-    dbgromROM_DCO2: TdxDBGridPickColumn;
-    dbgromROM_DPRO: TdxDBGridMaskColumn;
-    dbgromROM_DUNI: TdxDBGridPickColumn;
-    dbgromROM_QDIS: TdxDBGridMaskColumn;
-    dbgromROM_RLDI: TdxDBGridMaskColumn;
-    dbgromROM_QTDE: TdxDBGridCalcColumn;
-    dbgromROM_QTRL: TdxDBGridMaskColumn;
-    dbgromROM_UNIT: TdxDBGridButtonColumn;
-    dbgromROM_VDSC: TdxDBGridMaskColumn;
-    dbgromROM_TOTA: TdxDBGridMaskColumn;
-    dbgromROM_OBSE: TdxDBGridBlobColumn;
-    dbgromROM_PREC: TdxDBGridMaskColumn;
-    dbgromROM_TSDE: TdxDBGridMaskColumn;
-    dbgromROM_PIPI: TdxDBGridMaskColumn;
-    dbgromROM_VIPI: TdxDBGridMaskColumn;
-    dbgromROM_TPRC: TdxDBGridPickColumn;
     ped_prg_iteROM_DUNI: TIBStringField;
     ped_prg_iteROM_OBSE: TMemoField;
     eddrom: TdxDateEdit;
@@ -692,23 +437,6 @@ type
     cad_cli_crdCLI_CDEP: TIntegerField;
     cad_cli_crdCLI_CCLI: TIntegerField;
     cad_cli_crdCLI_CRED: TIBBCDField;
-    pcout: TdxPageControl;
-    tsHST: TdxTabSheet;
-    tsTRA: TdxTabSheet;
-    Bevel1: TBevel;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label37: TLabel;
-    edctnr: TdxMaskEdit;
-    edvfrt: TdxMaskEdit;
-    cbdtra: TdxImageEdit;
-    Bevel2: TBevel;
-    Label5: TLabel;
-    Label11: TLabel;
-    Label15: TLabel;
-    edCLI_DCAD: TdxMaskEdit;
-    edCLI_VULT: TdxMaskEdit;
-    edCLI_DULT: TdxMaskEdit;
     edcdrd: TdxMaskEdit;
     psq_cliID: TIntegerField;
     psq_cliCLI_FANT: TIBStringField;
@@ -741,25 +469,145 @@ type
     psq_cliCLI_DTRA: TIBStringField;
     psq_cliCLI_DUSU: TIBStringField;
     psq_cliCLI_OBSO: TIBStringField;
+    EdicaoID: TIntegerField;
+    EdicaoROM_CCAB: TIntegerField;
+    EdicaoROM_CDOC: TIntegerField;
+    EdicaoROM_CDPR: TIntegerField;
+    EdicaoROM_CDPD: TIntegerField;
+    EdicaoROM_CDRO: TIntegerField;
+    EdicaoROM_CDNF: TIntegerField;
+    EdicaoROM_ITEM: TIBStringField;
+    EdicaoROM_CART: TIBStringField;
+    EdicaoROM_IPRO: TIntegerField;
+    EdicaoROM_CPRO: TIBStringField;
+    EdicaoROM_IPR2: TIntegerField;
+    EdicaoROM_CPR2: TIBStringField;
+    EdicaoROM_DPRO: TIBStringField;
+    EdicaoROM_CCOR: TIntegerField;
+    EdicaoROM_RCOR: TIBStringField;
+    EdicaoROM_DCOR: TIBStringField;
+    EdicaoROM_PCOR: TIBStringField;
+    EdicaoROM_CCO2: TIntegerField;
+    EdicaoROM_RCO2: TIBStringField;
+    EdicaoROM_DCO2: TIBStringField;
+    EdicaoROM_PCO2: TIBStringField;
+    EdicaoROM_CGRD: TIBStringField;
+    EdicaoROM_DGRD: TIBStringField;
+    EdicaoROM_DUNI: TIBStringField;
+    EdicaoROM_QTDE: TIBBCDField;
+    EdicaoROM_QTRL: TIntegerField;
+    EdicaoROM_QTSP: TIBBCDField;
+    EdicaoROM_RLSP: TIntegerField;
+    EdicaoROM_QTPD: TIBBCDField;
+    EdicaoROM_RLPD: TIntegerField;
+    EdicaoROM_QDIS: TIBBCDField;
+    EdicaoROM_RLDI: TIntegerField;
+    EdicaoROM_PRCA: TFloatField;
+    EdicaoROM_PRPA: TFloatField;
+    EdicaoROM_VPRC: TFloatField;
+    EdicaoROM_VPRO: TFloatField;
+    EdicaoROM_RPRC: TFloatField;
+    EdicaoROM_RPRO: TFloatField;
+    EdicaoROM_PCOM: TFloatField;
+    EdicaoROM_CUST: TFloatField;
+    EdicaoROM_UNIT: TFloatField;
+    EdicaoROM_PREC: TFloatField;
+    EdicaoROM_VDSC: TIBBCDField;
+    EdicaoROM_TOTA: TIBBCDField;
+    EdicaoROM_PPRO: TIBBCDField;
+    EdicaoROM_PEMB: TIBBCDField;
+    EdicaoROM_METR: TIBBCDField;
+    EdicaoROM_PESO: TIBBCDField;
+    EdicaoROM_REND: TIBBCDField;
+    EdicaoROM_PSCN: TIBBCDField;
+    EdicaoROM_PSMR: TIBBCDField;
+    EdicaoROM_VBCIPI: TIBBCDField;
+    EdicaoROM_PIPI: TIBBCDField;
+    EdicaoROM_VIPI: TIBBCDField;
+    EdicaoROM_CDET: TIBStringField;
+    EdicaoROM_CBAR: TIBStringField;
+    EdicaoROM_TPRC: TIBStringField;
+    EdicaoROM_FLAG: TSmallintField;
+    EdicaoROM_ABCD: TIBStringField;
+    EdicaoROM_STFI: TIBStringField;
+    EdicaoROM_CSEP: TIntegerField;
+    EdicaoROM_DSEP: TIBStringField;
+    EdicaoROM_APRC: TIBStringField;
+    EdicaoROM_LDSC: TIBBCDField;
+    EdicaoROM_TSDE: TIBBCDField;
+    EdicaoROM_DERO: TIBStringField;
+    EdicaoROM_CCLF: TIBStringField;
+    EdicaoROM_FOTO: TBlobField;
+    EdicaoROM_OBSE: TMemoField;
+    EdicaoROM_CFOR: TIBStringField;
+    EdicaoROM_PSBR: TIBBCDField;
+    EdicaoROM_PSLQ: TIBBCDField;
+    Label37: TLabel;
+    Label2: TLabel;
+    edvfrt: TdxMaskEdit;
+    cbdtra: TdxImageEdit;
+    TSHST: TdxTabSheet;
+    PED_HST: TIBQuery;
+    DTSPED_HST: TDataSource;
+    DBGPED_HST: TdxDBGrid;
+    PED_HSTIDPK: TIntegerField;
+    PED_HSTIDFK: TIntegerField;
+    PED_HSTDEPK: TIBStringField;
+    PED_HSTDTPK: TDateField;
+    PED_HSTVPRC_COM: TFloatField;
+    PED_HSTQTDE: TIBBCDField;
+    PED_HSTDECP: TIBStringField;
+    PED_HSTDGCP: TIBStringField;
+    PED_HSTUCOM: TIBStringField;
+    PED_HSTSKU: TIBStringField;
+    DBGPED_HSTDEPK: TdxDBGridMaskColumn;
+    DBGPED_HSTDTPK: TdxDBGridDateColumn;
+    DBGPED_HSTVPRC_COM: TdxDBGridMaskColumn;
+    DBGPED_HSTQTDE: TdxDBGridMaskColumn;
+    DBGPED_HSTUCOM: TdxDBGridMaskColumn;
+    DBGPED_HSTSKU: TdxDBGridMaskColumn;
+    DBGPED_HSTDECP: TdxDBGridMaskColumn;
+    DBGPED_HSTDGCP: TdxDBGridMaskColumn;
+    ILMenuPrincipal: TImageList;
+    ILMenuEdicao: TImageList;
+    GBMenuEdicao: TGroupBox;
+    SBMenuEdicao: TSpeedBar;
+    SSMenuEdicao: TSpeedbarSection;
+    SIMEAppend: TSpeedItem;
+    SIMEEdit: TSpeedItem;
+    SIMEDelete: TSpeedItem;
+    SIMEPost: TSpeedItem;
+    SIMECancel: TSpeedItem;
+    GBConsulta: TGroupBox;
+    DBGEdicao: TdxDBGrid;
+    DBGEdicaoROM_ITEM: TdxDBGridMaskColumn;
+    DBGEdicaoROM_CPRO: TdxDBGridMaskColumn;
+    DBGEdicaoROM_DPRO: TdxDBGridMaskColumn;
+    DBGEdicaoROM_DCOR: TdxDBGridPickColumn;
+    DBGEdicaoROM_DCO2: TdxDBGridPickColumn;
+    DBGEdicaoROM_DUNI: TdxDBGridPickColumn;
+    DBGEdicaoROM_QDIS: TdxDBGridMaskColumn;
+    DBGEdicaoROM_RLDI: TdxDBGridMaskColumn;
+    DBGEdicaoROM_QTDE: TdxDBGridCalcColumn;
+    DBGEdicaoROM_QTRL: TdxDBGridMaskColumn;
+    DBGEdicaoROM_UNIT: TdxDBGridButtonColumn;
+    DBGEdicaoROM_VDSC: TdxDBGridMaskColumn;
+    DBGEdicaoROM_TOTA: TdxDBGridMaskColumn;
+    DBGEdicaoROM_TSDE: TdxDBGridMaskColumn;
+    DBGEdicaoROM_TPRC: TdxDBGridPickColumn;
+    BINF: TSpeedItem;
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure BSairClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure edtsdeKeyPress(Sender: TObject; var Key: Char);
-    procedure siDELClick(Sender: TObject);
-    procedure siINCClick(Sender: TObject);
-    procedure siSAVClick(Sender: TObject);
-    procedure siCANClick(Sender: TObject);
-    procedure siALTClick(Sender: TObject);
-    procedure rom_001AfterCancel(DataSet: TDataSet);
-    procedure rom_001AfterEdit(DataSet: TDataSet);
-    procedure rom_001AfterPost(DataSet: TDataSet);
-    procedure dbgromKeyDown(Sender: TObject; var Key: Word;
+    procedure EdicaoAfterPost(DataSet: TDataSet);
+    procedure DBGEdicaoKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure edderoKeyPress(Sender: TObject; var Key: Char);
-    procedure rom_001AfterInsert(DataSet: TDataSet);
-    procedure rom_001BeforeCancel(DataSet: TDataSet);
+    procedure EdicaoAfterInsert(DataSet: TDataSet);
+    procedure EdicaoBeforeCancel(DataSet: TDataSet);
     procedure edcvenValidate(Sender: TObject; var ErrorText: String;
       var Accept: Boolean);
     procedure edcrepValidate(Sender: TObject; var ErrorText: String;
@@ -774,19 +622,17 @@ type
       var Accept: Boolean);
     procedure edrcliValidate(Sender: TObject; var ErrorText: String;
       var Accept: Boolean);
-    procedure rom_001AfterDelete(DataSet: TDataSet);
-    procedure rom_001AfterOpen(DataSet: TDataSet);
-    procedure rom_001NewRecord(DataSet: TDataSet);
-    procedure dtsrom_001DataChange(Sender: TObject; Field: TField);
-    procedure rom_001ROM_VDSCValidate(Sender: TField);
-    procedure rom_001ROM_QTDEValidate(Sender: TField);
+    procedure EdicaoAfterDelete(DataSet: TDataSet);
+    procedure EdicaoNewRecord(DataSet: TDataSet);
+    procedure DTSEdicaoDataChange(Sender: TObject; Field: TField);
+    procedure EdicaoROM_VDSCValidate(Sender: TField);
+    procedure EdicaoROM_QTDEValidate(Sender: TField);
     procedure BSalClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-    procedure BInfClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure edpdscValidate(Sender: TObject; var ErrorText: String;
       var Accept: Boolean);
-    procedure dbgromROM_UNITValidate(Sender: TObject;
+    procedure DBGEdicaoROM_UNITValidate(Sender: TObject;
       var ErrorText: String; var Accept: Boolean);
     procedure cbstpdChange(Sender: TObject);
     procedure latdscClick(Sender: TObject);
@@ -799,44 +645,37 @@ type
     procedure edcnpjValidate(Sender: TObject; var ErrorText: String;
       var Accept: Boolean);
     procedure siDESClick(Sender: TObject);
-    procedure rom_002AfterPost(DataSet: TDataSet);
     procedure edderoValidate(Sender: TObject; var ErrorText: String;
       var Accept: Boolean);
-    procedure rom_001ROM_TPRCValidate(Sender: TField);
-    procedure dbgromCustomDrawCell(Sender: TObject; ACanvas: TCanvas;
+    procedure EdicaoROM_TPRCValidate(Sender: TField);
+    procedure DBGEdicaoCustomDrawCell(Sender: TObject; ACanvas: TCanvas;
       ARect: TRect; ANode: TdxTreeListNode; AColumn: TdxTreeListColumn;
       ASelected, AFocused, ANewItemRow: Boolean; var AText: String;
       var AColor: TColor; AFont: TFont; var AAlignment: TAlignment;
       var ADone: Boolean);
-    procedure rom_001BeforeDelete(DataSet: TDataSet);
+    procedure EdicaoBeforeDelete(DataSet: TDataSet);
     procedure siCLOClick(Sender: TObject);
     procedure edtsdeValidate(Sender: TObject; var ErrorText: String;
       var Accept: Boolean);
-    procedure dbgromROM_DCORValidate(Sender: TObject;
+    procedure DBGEdicaoROM_DCORValidate(Sender: TObject;
       var ErrorText: String; var Accept: Boolean);
-    procedure dbgromROM_QTDEValidate(Sender: TObject;
+    procedure DBGEdicaoROM_QTDEValidate(Sender: TObject;
       var ErrorText: String; var Accept: Boolean);
     procedure cbstcoChange(Sender: TObject);
-    procedure dbgromROM_CPROValidate(Sender: TObject;
+    procedure DBGEdicaoROM_CPROValidate(Sender: TObject;
       var ErrorText: String; var Accept: Boolean);
-    procedure SpeedItem1Click(Sender: TObject);
-    procedure dbgromROM_DPROValidate(Sender: TObject;
+    procedure DBGEdicaoROM_DPROValidate(Sender: TObject;
       var ErrorText: String; var Accept: Boolean);
-    procedure dbgromROM_QTRLValidate(Sender: TObject;
+    procedure DBGEdicaoROM_QTRLValidate(Sender: TObject;
       var ErrorText: String; var Accept: Boolean);
-    procedure rom_003NewRecord(DataSet: TDataSet);
-    procedure dbgromROM_DCO2Validate(Sender: TObject;
+    procedure DBGEdicaoROM_DCO2Validate(Sender: TObject;
       var ErrorText: String; var Accept: Boolean);
     procedure cbstcoExit(Sender: TObject);
-    procedure rom_003AfterPost(DataSet: TDataSet);
-    procedure rom_001BeforePost(DataSet: TDataSet);
-    procedure tsoutShow(Sender: TObject);
-    procedure edctnrValidate(Sender: TObject; var ErrorText: String;
-      var Accept: Boolean);
+    procedure EdicaoBeforePost(DataSet: TDataSet);
     procedure edvfrtValidate(Sender: TObject; var ErrorText: String;
       var Accept: Boolean);
     procedure pro_fotoClick(Sender: TObject);
-    procedure dbgromROM_VDSCValidate(Sender: TObject;
+    procedure DBGEdicaoROM_VDSCValidate(Sender: TObject;
       var ErrorText: String; var Accept: Boolean);
     procedure tab_corNewRecord(DataSet: TDataSet);
     procedure eddcadExit(Sender: TObject);
@@ -845,6 +684,17 @@ type
     procedure FormActivate(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure FormResize(Sender: TObject);
+    procedure PED_HSTBeforeOpen(DataSet: TDataSet);
+    procedure PED_HSTAfterScroll(DataSet: TDataSet);
+    procedure SIMEAppendClick(Sender: TObject);
+    procedure SIMEEditClick(Sender: TObject);
+    procedure SIMEDeleteClick(Sender: TObject);
+    procedure SIMEPostClick(Sender: TObject);
+    procedure SIMECancelClick(Sender: TObject);
+    procedure BINFClick(Sender: TObject);
+    procedure DTSEdicaoStateChange(Sender: TObject);
+    procedure EdicaoBeforeInsert(DataSet: TDataSet);
+    procedure DTSPED_HSTDataChange(Sender: TObject; Field: TField);
   private
     { Private declarations }
     FrmStyle   : TFormStyle;
@@ -855,7 +705,6 @@ type
     procedure SALVA;
     procedure FINALIZA;
     procedure FINALIZA_SEMBAIXA;
-    procedure FINALIZA_PROGRAMACAO;
     procedure EDITAQUANTIDADE;
     procedure EDITAPECA;
     procedure BAIXA_CARTEIRA;
@@ -864,9 +713,7 @@ type
     procedure BAIXA_BANCARIO;
     procedure BAIXA_BANCARIO_DEVOLUCAO;
     procedure BAIXA_BANCARIO_ABATIMENTO;
-    procedure AGRUPA_PEDIDO;
     function  RETORNA_LOGIN(texto: string) : boolean;
-    function  RETORNA_FOCO(campo: string): integer;
     function  PESQUISA_PEDIDO: string;
   public
     auto,limite: boolean;
@@ -902,6 +749,7 @@ begin
   limite := true;
 
   ABRE_TABELA;
+  CARREGAFOTO(EdicaoROM_FOTO.BlobSize,EdicaoROM_FOTO,Edicao);
 
   AUTORIZACAO    := '';
   TP_AUTORIZACAO := '';
@@ -956,8 +804,8 @@ begin
 
       while not eof do
       begin
-        dbgromROM_DCOR.Items.Add(fields[0].AsString);
-        dbgromROM_DCO2.Items.Add(fields[0].AsString);
+        DBGEdicaoROM_DCOR.Items.Add(fields[0].AsString);
+        DBGEdicaoROM_DCO2.Items.Add(fields[0].AsString);
         next;
       end;
 
@@ -1064,7 +912,7 @@ begin
 
   try
     pro_foto.Tag := 1;
-    rom_001.DisableControls;
+    Edicao.DisableControls;
 
     if assigned(frmctr_ped) then
     begin
@@ -1092,7 +940,6 @@ begin
             cbcred.Text := frmctr_ped.cadastroROM_CONC.AsString;
             edcdro.Text := frmctr_ped.cadastroID.AsString;
             eddero.Text := frmctr_ped.cadastroROM_DERO.AsString;
-            edctnr.Text := frmctr_ped.cadastroROM_CTNR.AsString;
             edvfrt.Text := formatfloat('#,0.00',frmctr_ped.cadastroROM_VFRT.AsFloat);
             cbdtra.Text := frmctr_ped.cadastroROM_DTRA.AsString;
             edcdcx.Text := frmctr_ped.cadastroROM_CDCX.AsString;
@@ -1123,35 +970,35 @@ begin
             frmctr_ped.rom_ite.First;
             while not frmctr_ped.rom_ite.Eof do
             begin
-              rom_001.Append;
+              Edicao.Append;
               PESQUISA_PRODUTO('',frmctr_ped.rom_iteROM_CPRO.AsString,0);
 
-              rom_001ROM_IPRO.Value := frmctr_ped.rom_iteROM_CPRO.AsInteger;
-              rom_001ROM_IPR2.Value := frmctr_ped.rom_iteROM_CPR2.AsInteger;
-              rom_001ROM_DPRO.Value := frmctr_ped.rom_iteROM_DPRO.AsString;
-              rom_001ROM_CCOR.Value := frmctr_ped.rom_itePRO_CCOR.AsInteger;
-              rom_001ROM_DCOR.Value := frmctr_ped.rom_itePRO_DCOR.AsString;
-              rom_001ROM_DCO2.Value := frmctr_ped.rom_iteROM_DCO2.AsString;
-              rom_001ROM_DUNI.Value := frmctr_ped.rom_iteROM_DUNI.AsString;
+              EdicaoROM_IPRO.Value := frmctr_ped.rom_iteROM_CPRO.AsInteger;
+              EdicaoROM_IPR2.Value := frmctr_ped.rom_iteROM_CPR2.AsInteger;
+              EdicaoROM_DPRO.Value := frmctr_ped.rom_iteROM_DPRO.AsString;
+              EdicaoROM_CCOR.Value := frmctr_ped.rom_itePRO_CCOR.AsInteger;
+              EdicaoROM_DCOR.Value := frmctr_ped.rom_itePRO_DCOR.AsString;
+              EdicaoROM_DCO2.Value := frmctr_ped.rom_iteROM_DCO2.AsString;
+              EdicaoROM_DUNI.Value := frmctr_ped.rom_iteROM_DUNI.AsString;
 
               if frmctr_ped.rom_iteROM_TPRC.AsString = '' then
-              rom_001ROM_TPRC.Value := TRIM(cbprec.Items.Strings[0]) else
-              rom_001ROM_TPRC.Value := TRIM(cbprec.Items.Strings[frmctr_ped.rom_iteROM_TPRC.AsInteger]);
+              EdicaoROM_TPRC.Value := TRIM(cbprec.Items.Strings[0]) else
+              EdicaoROM_TPRC.Value := TRIM(cbprec.Items.Strings[frmctr_ped.rom_iteROM_TPRC.AsInteger]);
 
-              rom_001ROM_QTDE.Value := frmctr_ped.rom_iteROM_QTDE.AsFloat;
-              rom_001ROM_QTRL.Value := frmctr_ped.rom_iteROM_QTRL.AsInteger;
-              rom_001ROM_QTPD.Value := frmctr_ped.rom_iteROM_QTPD.AsFloat;
-              rom_001ROM_RLPD.Value := frmctr_ped.rom_iteROM_RLPD.AsInteger;
-              rom_001ROM_CDET.Value := frmctr_ped.rom_iteROM_CDET.AsString;
-              rom_001ROM_PREC.Value := frmctr_ped.rom_iteROM_PREC.AsFloat;
-              rom_001ROM_UNIT.Value := frmctr_ped.rom_iteROM_UNIT.AsFloat;
-              rom_001ROM_VDSC.Value := frmctr_ped.rom_iteROM_VDSC.AsFloat;
-              rom_001ROM_OBSE.Value := frmctr_ped.rom_iteROM_OBSE.AsString;
-              rom_001.Post;
+              EdicaoROM_QTDE.Value := frmctr_ped.rom_iteROM_QTDE.AsFloat;
+              EdicaoROM_QTRL.Value := frmctr_ped.rom_iteROM_QTRL.AsInteger;
+              EdicaoROM_QTPD.Value := frmctr_ped.rom_iteROM_QTPD.AsFloat;
+              EdicaoROM_RLPD.Value := frmctr_ped.rom_iteROM_RLPD.AsInteger;
+              EdicaoROM_CDET.Value := frmctr_ped.rom_iteROM_CDET.AsString;
+              EdicaoROM_PREC.Value := frmctr_ped.rom_iteROM_PREC.AsFloat;
+              EdicaoROM_UNIT.Value := frmctr_ped.rom_iteROM_UNIT.AsFloat;
+              EdicaoROM_VDSC.Value := frmctr_ped.rom_iteROM_VDSC.AsFloat;
+              EdicaoROM_OBSE.Value := frmctr_ped.rom_iteROM_OBSE.AsString;
+              Edicao.Post;
               frmctr_ped.rom_ite.Next;
             end;
-            rom_001.Close;
-            rom_001.Open;
+            Edicao.Close;
+            Edicao.Open;
           end;
         finally
           tag          := 0;
@@ -1171,7 +1018,7 @@ begin
     DISPLAY_GRID;
 
     pro_foto.Tag := 0;
-    rom_001.EnableControls;
+    Edicao.EnableControls;
 
     if not assigned(frmctr_ped) then
     eddcli.SetFocus;
@@ -1190,15 +1037,15 @@ procedure Tfrmven_ped.FormCloseQuery(Sender: TObject;
 begin
   pro_foto.Tag := 1;
 
-  if rom_001.State in [dsEdit,dsInsert] then
+  if Edicao.State in [dsEdit,dsInsert] then
   begin
-    if (rom_001ROM_DPRO.AsString = '') or (rom_001ROM_TOTA.AsFloat = 0) then
-    rom_001.Cancel else
-    rom_001.Post;
+    if (EdicaoROM_DPRO.AsString = '') or (EdicaoROM_TOTA.AsFloat = 0) then
+    Edicao.Cancel else
+    Edicao.Post;
   end;
-  rom_001.First;
+  Edicao.First;
 
-  if (BSal.Enabled) and (rom_001ROM_DPRO.AsString <> '') then
+  if (BSal.Enabled) and (EdicaoROM_DPRO.AsString <> '') then
   begin
     case messageBox(handle,PChar('Existem alterações pendentes. Deseja salvar antes de fechar '),
                            PChar(caption),MB_ICONQUESTION+MB_YESNOCANCEL) of
@@ -1271,7 +1118,7 @@ begin
                       not (activeControl is TComboBox)    and
                       not (activeControl is TMemo)) then
                       selectNext (activecontrol, false, true);
-       VK_INSERT: if rom_001.State = dsBrowse then siINC.Click;
+       VK_INSERT: if Edicao.State = dsBrowse then SIMEAppend.Click;
        121      : if BSal.Enabled then BSal.Click;
        117      : if BInf.Enabled then BInf.Click;
   end;
@@ -1351,202 +1198,6 @@ begin
   end else
   NewString   := '0';
   result      := NewString;
-end;
-
-procedure Tfrmven_ped.AGRUPA_PEDIDO;
-begin
-  with rom_003 do
-  begin
-    Close;
-    SelectSQL.Clear;
-    SelectSQL.Add('DELETE FROM PED_PRG_ITE');
-    ExecSQL;
-    tSHEILD.CommitRetaining;
-
-    SelectSQL.Clear;
-    SelectSQL.Add('SELECT * FROM PED_PRG_ITE');
-    SelectSQL.Add('ORDER BY ROM_ITEM');
-    Open;
-  end;
-
-  try
-    rom_001.DisableControls;
-    with rom_001 do
-    begin
-       Close;
-       SelectSQL.Clear;
-       SelectSQL.Add('SELECT * FROM PED_VEN_ITE');
-       SelectSQL.Add('ORDER BY ID');
-       Open;
-    end;
-
-    rom_001.First;
-    while not rom_001.Eof do
-    begin
-      with consulta_S do
-      begin
-        SQL.Clear;
-        SQL.Add('SELECT ID FROM PED_PRG_ITE');
-        SQL.Add('WHERE  ROM_CPRO = '''+rom_001ROM_CPRO.AsString+'''');
-        Open;
-
-        if fields[0].IsNull then
-        rom_003.Append else
-        rom_003.Edit;
-      end;
-
-      rom_003ROM_CCAB.Value   := rom_001ROM_CCAB.Value;
-      rom_003ROM_CDOC.Value   := rom_001ROM_CDOC.Value;
-      rom_003ROM_CDPR.Value   := rom_001ROM_CDPR.Value;
-      rom_003ROM_CDPD.Value   := rom_001ROM_CDPD.Value;
-      rom_003ROM_CDRO.Value   := rom_001ROM_CDRO.Value;
-      rom_003ROM_CDNF.Value   := rom_001ROM_CDNF.Value;
-      rom_003ROM_ITEM.Value   := rom_001ROM_ITEM.Value;
-      rom_003ROM_CART.Value   := rom_001ROM_CART.Value;
-      rom_003ROM_IPRO.Value   := rom_001ROM_IPRO.Value;
-      rom_003ROM_CPRO.Value   := rom_001ROM_CPRO.Value;
-      rom_003ROM_IPR2.Value   := rom_001ROM_IPR2.Value;
-      rom_003ROM_CPR2.Value   := rom_001ROM_CPR2.Value;
-      rom_003ROM_DPRO.Value   := rom_001ROM_DPRO.Value;
-      rom_003ROM_CCOR.Value   := rom_001ROM_CCOR.Value;
-      rom_003ROM_RCOR.Value   := rom_001ROM_RCOR.Value;
-      rom_003ROM_DCOR.Value   := rom_001ROM_DCOR.Value;
-      rom_003ROM_PCOR.Value   := rom_001ROM_PCOR.Value;
-      rom_003ROM_CCO2.Value   := rom_001ROM_CCO2.Value;
-      rom_003ROM_RCO2.Value   := rom_001ROM_RCO2.Value;
-      rom_003ROM_DCO2.Value   := rom_001ROM_DCO2.Value;
-      rom_003ROM_PCO2.Value   := rom_001ROM_PCO2.Value;
-      rom_003ROM_CGRD.Value   := rom_001ROM_CGRD.Value;
-      rom_003ROM_DGRD.Value   := rom_001ROM_DGRD.Value;
-      rom_003ROM_DUNI.Value   := rom_001ROM_DUNI.Value;
-      rom_003ROM_QTDE.Value   := rom_003ROM_QTDE.AsFloat   + rom_001ROM_QTDE.AsFloat;
-      rom_003ROM_QTRL.Value   := rom_003ROM_QTRL.AsInteger + rom_001ROM_QTRL.AsInteger;
-      rom_003ROM_QTSP.Value   := rom_003ROM_QTSP.AsFloat   + rom_001ROM_QTSP.AsFloat;
-      rom_003ROM_RLSP.Value   := rom_003ROM_RLSP.AsInteger + rom_001ROM_RLSP.AsInteger;
-      rom_003ROM_QTPD.Value   := rom_003ROM_QTPD.AsFloat   + rom_001ROM_QTPD.AsFloat;
-      rom_003ROM_RLPD.Value   := rom_003ROM_RLPD.AsInteger + rom_001ROM_RLPD.AsInteger;
-      rom_003ROM_QDIS.Value   := rom_001ROM_QDIS.Value;
-      rom_003ROM_RLDI.Value   := rom_001ROM_RLDI.Value;
-      rom_003ROM_PRCA.Value   := rom_001ROM_PRCA.Value;
-      rom_003ROM_PRPA.Value   := rom_001ROM_PRPA.Value;
-      rom_003ROM_VPRC.Value   := rom_001ROM_VPRC.Value;
-      rom_003ROM_VPRO.Value   := rom_001ROM_VPRO.Value;
-      rom_003ROM_RPRC.Value   := rom_001ROM_RPRC.Value;
-      rom_003ROM_RPRO.Value   := rom_001ROM_RPRO.Value;
-      rom_003ROM_PCOM.Value   := rom_001ROM_PCOM.Value;
-      rom_003ROM_CUST.Value   := rom_001ROM_CUST.Value;
-      rom_003ROM_PREC.Value   := rom_001ROM_PREC.Value;
-      rom_003ROM_UNIT.Value   := rom_001ROM_UNIT.Value;
-      rom_003ROM_VDSC.Value   := rom_001ROM_VDSC.Value;
-      rom_003ROM_PPRO.Value   := rom_001ROM_PPRO.Value;
-      rom_003ROM_PEMB.Value   := rom_001ROM_PEMB.Value;
-      rom_003ROM_METR.Value   := rom_001ROM_METR.Value;
-      rom_003ROM_PESO.Value   := rom_001ROM_PESO.Value;
-      rom_003ROM_REND.Value   := rom_001ROM_REND.Value;
-      rom_003ROM_PSCN.Value   := rom_001ROM_PSCN.Value;
-      rom_003ROM_PSMR.Value   := rom_001ROM_PSMR.Value;
-      rom_003ROM_VBCIPI.Value := rom_001ROM_VBCIPI.Value;
-      rom_003ROM_PIPI.Value   := rom_001ROM_PIPI.Value;
-      rom_003ROM_VIPI.Value   := rom_001ROM_VIPI.Value;
-      rom_003ROM_CDET.Value   := rom_001ROM_CDET.Value;
-      rom_003ROM_CBAR.Value   := rom_001ROM_CBAR.Value;
-      rom_003ROM_TPRC.Value   := rom_001ROM_TPRC.Value;
-      rom_003ROM_FLAG.Value   := rom_001ROM_FLAG.Value;
-      rom_003ROM_FOTO.Value   := rom_001ROM_FOTO.Value;
-      rom_003ROM_ABCD.Value   := rom_001ROM_ABCD.Value;
-      rom_003ROM_OBSE.Value   := rom_001ROM_OBSE.Value;
-      rom_003.Post;
-      rom_001.Next;
-    end;
-    rom_001.EnableControls;
-
-    with rom_001 do
-    begin
-      Close;
-      SelectSQL.Clear;
-      SelectSQL.Add('DELETE FROM PED_VEN_ITE');
-      ExecSQL;
-      tSHEILD.CommitRetaining;
-
-      Close;
-      SelectSQL.Clear;
-      SelectSQL.Add('SELECT * FROM PED_VEN_ITE');
-      SelectSQL.Add('WHERE    ROM_FLAG = 0');
-      SelectSQL.Add('ORDER BY ID');
-      Open;
-    end;
-
-    rom_003.First;
-    while not rom_003.Eof do
-    begin
-      rom_001.Append;
-      rom_001ROM_CCAB.Value   := rom_003ROM_CCAB.Value;
-      rom_001ROM_CDOC.Value   := rom_003ROM_CDOC.Value;
-      rom_001ROM_CDPR.Value   := rom_003ROM_CDPR.Value;
-      rom_001ROM_CDPD.Value   := rom_003ROM_CDPD.Value;
-      rom_001ROM_CDRO.Value   := rom_003ROM_CDRO.Value;
-      rom_001ROM_CDNF.Value   := rom_003ROM_CDNF.Value;
-      rom_001ROM_ITEM.Value   := rom_003ROM_ITEM.Value;
-      rom_001ROM_CART.Value   := rom_003ROM_CART.Value;
-      rom_001ROM_IPRO.Value   := rom_003ROM_IPRO.Value;
-      rom_001ROM_CPRO.Value   := rom_003ROM_CPRO.Value;
-      rom_001ROM_IPR2.Value   := rom_003ROM_IPR2.Value;
-      rom_001ROM_CPR2.Value   := rom_003ROM_CPR2.Value;
-      rom_001ROM_DPRO.Value   := rom_003ROM_DPRO.Value;
-      rom_001ROM_CCOR.Value   := rom_003ROM_CCOR.Value;
-      rom_001ROM_RCOR.Value   := rom_003ROM_RCOR.Value;
-      rom_001ROM_DCOR.Value   := rom_003ROM_DCOR.Value;
-      rom_001ROM_PCOR.Value   := rom_003ROM_PCOR.Value;
-      rom_001ROM_CCO2.Value   := rom_003ROM_CCO2.Value;
-      rom_001ROM_RCO2.Value   := rom_003ROM_RCO2.Value;
-      rom_001ROM_DCO2.Value   := rom_003ROM_DCO2.Value;
-      rom_001ROM_PCO2.Value   := rom_003ROM_PCO2.Value;
-      rom_001ROM_CGRD.Value   := rom_003ROM_CGRD.Value;
-      rom_001ROM_DGRD.Value   := rom_003ROM_DGRD.Value;
-      rom_001ROM_DUNI.Value   := rom_003ROM_DUNI.Value;
-      rom_001ROM_QTDE.Value   := rom_003ROM_QTDE.Value;
-      rom_001ROM_QTRL.Value   := rom_003ROM_QTRL.Value;
-      rom_001ROM_QTSP.Value   := rom_003ROM_QTSP.Value;
-      rom_001ROM_RLSP.Value   := rom_003ROM_RLSP.Value;
-      rom_001ROM_QTPD.Value   := rom_003ROM_QTPD.Value;
-      rom_001ROM_RLPD.Value   := rom_003ROM_RLPD.Value;
-      rom_001ROM_QDIS.Value   := rom_003ROM_QDIS.Value;
-      rom_001ROM_RLDI.Value   := rom_003ROM_RLDI.Value;
-      rom_001ROM_PRCA.Value   := rom_003ROM_PRCA.Value;
-      rom_001ROM_PRPA.Value   := rom_003ROM_PRPA.Value;
-      rom_001ROM_VPRC.Value   := rom_003ROM_VPRC.Value;
-      rom_001ROM_VPRO.Value   := rom_003ROM_VPRO.Value;
-      rom_001ROM_RPRC.Value   := rom_003ROM_RPRC.Value;
-      rom_001ROM_RPRO.Value   := rom_003ROM_RPRO.Value;
-      rom_001ROM_PCOM.Value   := rom_003ROM_PCOM.Value;
-      rom_001ROM_CUST.Value   := rom_003ROM_CUST.Value;
-      rom_001ROM_PREC.Value   := rom_003ROM_PREC.Value;
-      rom_001ROM_UNIT.Value   := rom_003ROM_UNIT.Value;
-      rom_001ROM_VDSC.Value   := rom_003ROM_VDSC.Value;
-      rom_001ROM_PPRO.Value   := rom_003ROM_PPRO.Value;
-      rom_001ROM_PEMB.Value   := rom_003ROM_PEMB.Value;
-      rom_001ROM_METR.Value   := rom_003ROM_METR.Value;
-      rom_001ROM_PESO.Value   := rom_003ROM_PESO.Value;
-      rom_001ROM_REND.Value   := rom_003ROM_REND.Value;
-      rom_001ROM_PSCN.Value   := rom_003ROM_PSCN.Value;
-      rom_001ROM_PSMR.Value   := rom_003ROM_PSMR.Value;
-      rom_001ROM_VBCIPI.Value := rom_003ROM_VBCIPI.Value;
-      rom_001ROM_PIPI.Value   := rom_003ROM_PIPI.Value;
-      rom_001ROM_VIPI.Value   := rom_003ROM_VIPI.Value;
-      rom_001ROM_CDET.Value   := rom_003ROM_CDET.Value;
-      rom_001ROM_CBAR.Value   := rom_003ROM_CBAR.Value;
-      rom_001ROM_TPRC.Value   := rom_003ROM_TPRC.Value;
-      rom_001ROM_FLAG.Value   := rom_003ROM_FLAG.Value;
-      rom_001ROM_FOTO.Value   := rom_003ROM_FOTO.Value;
-      rom_001ROM_ABCD.Value   := rom_003ROM_ABCD.Value;
-      rom_001ROM_OBSE.Value   := rom_003ROM_OBSE.Value;
-      rom_001.Post;
-      rom_003.Next;                    
-    end;
-  finally
-    rom_001.First;
-    rom_001.EnableControls;
-  end;
 end;
 
 procedure Tfrmven_ped.FINALIZA_SEMBAIXA;
@@ -1742,7 +1393,7 @@ begin
   frmctr_ped_fin.fin_recFIN_DOCT.Value := edcdro.Text;
   frmctr_ped_fin.fin_recFIN_VALO.Value := roundto(valo,-2);
   frmctr_ped_fin.fin_recFIN_COBR.Value := 'C';
-  frmctr_ped_fin.fin_recFIN_CTNR.Value := edctnr.Text;
+  frmctr_ped_fin.fin_recFIN_CTNR.Value := '';
   frmctr_ped_fin.fin_rec.Post;
 end;
 
@@ -1850,7 +1501,7 @@ begin
   frmctr_ped_fin.fin_recFIN_DPRA.Value := cbdpag.Text;
   frmctr_ped_fin.fin_recFIN_VALO.Value := consulta.Fields[0].AsFloat;
   frmctr_ped_fin.fin_recFIN_COBR.Value := 'B';
-  frmctr_ped_fin.fin_recFIN_CTNR.Value := edctnr.Text;
+  frmctr_ped_fin.fin_recFIN_CTNR.Value := '';
   frmctr_ped_fin.fin_rec.Post;
 end;
 
@@ -1876,7 +1527,7 @@ begin
   frmctr_ped_fin.fin_recFIN_DPRA.Value := cbdpag.Text;
   frmctr_ped_fin.fin_recFIN_VALO.Value := RETORNA_REAL(edtcde.Text);
   frmctr_ped_fin.fin_recFIN_COBR.Value := 'C';
-  frmctr_ped_fin.fin_recFIN_CTNR.Value := edctnr.Text;
+  frmctr_ped_fin.fin_recFIN_CTNR.Value := '';
   frmctr_ped_fin.fin_rec.Post;
 
   frmctr_ped_fin.fin_rec_bai.Append;
@@ -1912,7 +1563,7 @@ begin
   frmctr_ped_fin.fin_recFIN_DPRA.Value := cbdpag.Text;
   frmctr_ped_fin.fin_recFIN_VALO.Value := RETORNA_REAL(edtcde.Text);
   frmctr_ped_fin.fin_recFIN_COBR.Value := 'B';
-  frmctr_ped_fin.fin_recFIN_CTNR.Value := edctnr.Text;
+  frmctr_ped_fin.fin_recFIN_CTNR.Value := '';
   frmctr_ped_fin.fin_rec.Post;
 
   frmctr_ped_fin.fin_rec_bai.Append;
@@ -1948,7 +1599,7 @@ begin
   frmctr_ped_fin.fin_recFIN_DPRA.Value := cbdpag.Text;
   frmctr_ped_fin.fin_recFIN_VALO.Value := RETORNA_REAL(edtcde.Text);
   frmctr_ped_fin.fin_recFIN_COBR.Value := 'C';
-  frmctr_ped_fin.fin_recFIN_CTNR.Value := edctnr.Text;
+  frmctr_ped_fin.fin_recFIN_CTNR.Value := '';
   frmctr_ped_fin.fin_rec.Post;
 
   frmctr_ped_fin.fin_rec_bai.Append;
@@ -1984,7 +1635,7 @@ begin
   frmctr_ped_fin.fin_recFIN_DPRA.Value := cbdpag.Text;
   frmctr_ped_fin.fin_recFIN_VALO.Value := RETORNA_REAL(edtcde.Text);
   frmctr_ped_fin.fin_recFIN_COBR.Value := 'B';
-  frmctr_ped_fin.fin_recFIN_CTNR.Value := edctnr.Text;
+  frmctr_ped_fin.fin_recFIN_CTNR.Value := '';
   frmctr_ped_fin.fin_rec.Post;
 
   frmctr_ped_fin.fin_rec_bai.Append;
@@ -2104,449 +1755,40 @@ begin
   IBTra.CommitRetaining;
 end;
 
-procedure Tfrmven_ped.FINALIZA_PROGRAMACAO;
-var
-  drom: TDate;
-
-function RETORNA_PROGRAMACAO: string;
-var
-  i: word;
-  dero1,dero2: string;
-begin
-  dero1 := '';
-  for i := 1 to length(eddero.Text) do
-  begin
-    if (copy(eddero.Text,i,1) = '.') or (copy(eddero.Text,i,1) = '/') then
-    break;
-
-    dero1 := dero1 + trim(copy(eddero.Text,i,1));
-  end;
-
-  i := 0;
-  while true do
-  begin
-    inc(i);
-    dero2 := dero1+'/'+inttostr(i);
-
-    with consulta do
-    begin
-      SQL.Clear;
-      SQL.Add('SELECT ID FROM '+SLPrincipal.Values['ped_prg_cab']);
-      SQL.Add('WHERE  ROM_DERO = '''+dero2+'''');
-      Open;
-
-      if fields[0].IsNull then
-      break;
-    end;
-  end;
-
-  result := dero2;
-end;
-
-begin
-  with consulta_S do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT   ROM_CDPR FROM PED_VEN_ITE');
-    SQL.Add('WHERE    ROM_CDPR > 0');
-    SQL.Add('GROUP BY ROM_CDPR');
-    Open;
-  end;
-
-  if consulta_s.Fields[0].IsNull then
-  exit;
-
-  while not consulta_S.Eof do
-  begin
-    with frmprincipal.sp_sql do
-    begin
-      ibSP.StoredProcName := 'SP_SQL';
-
-      SQL.Clear;
-      SQL.Add('UPDATE '+SLPrincipal.Values['ped_prg_cab']);
-      SQL.Add('SET    ROM_CEXP = ''0'',');
-      SQL.Add('       ROM_DBAI = '''+formatDateTime('mm/dd/yy',strtodate(SLPrincipal.Values['data_sistema']))+''',');
-      SQL.Add('       ROM_STFI = ''FINALIZADO''');
-      SQL.Add('WHERE  ID       = '''+consulta_S.Fields[0].AsString+'''');
-
-      ibSP.Prepare;
-      ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
-      ibSP.ExecProc;
-
-      SQL.Clear;
-      SQL.Add('UPDATE '+SLPrincipal.Values['cad_pro_prg']);
-      SQL.Add('SET    EST_CDPD = '''+consulta_S.Fields[0].AsString+'''');
-      SQL.Add('WHERE  EST_CDRO = '''+consulta_S.Fields[0].AsString+'''');
-
-      ibSP.Prepare;
-      ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
-      ibSP.ExecProc;
-    end;
-
-    with ped_prg_ite do
-    begin
-      SQL.Clear;
-      SQL.Add('SELECT    PED_PRG_ITE.*,CAD_PRO.ID,CAD_PRO.PRO_CART,CAD_PRO.PRO_CPRO,CAD_PRO.PRO_CCOR,');
-      SQL.Add('          CAD_PRO.PRO_RCOR,CAD_PRO.PRO_DCOR,CAD_PRO.PRO_DUNI,CAD_PRO.PRO_PIPI,CAD_PRO.PRO_REPR,CAD_PRO.PRO_APRO,');
-      SQL.Add('          CAD_PRO.PRO_CBAR,CAD_PRO.PRO_PPRO,CAD_PRO.PRO_CEMB,CAD_PRO.PRO_GRAD,');
-      SQL.Add('          CAD_PRO_IMG.PRO_FOTO');
-      SQL.Add('FROM      CAD_PRO,CAD_PRO_IMG,'+SLPrincipal.Values['ped_prg_ite']+' "PED_PRG_ITE"');
-      SQL.Add('WHERE     PED_PRG_ITE.ROM_CPRO = CAD_PRO.ID');
-      SQL.Add('AND       CAD_PRO.PRO_CART     = CAD_PRO_IMG.PRO_CART');
-      SQL.Add('AND       PED_PRG_ITE.ROM_CCAB = '''+consulta_S.Fields[0].AsString+'''');
-      SQL.Add('ORDER  BY PED_PRG_ITE.ROM_ITEM');
-      Open;
-    end;
-
-    with rom_003 do
-    begin
-      Close;
-      SelectSQL.Clear;
-      SelectSQL.Add('DELETE FROM PED_PRG_ITE');
-      ExecSQL;
-      tSHEILD.CommitRetaining;
-
-      SelectSQL.Clear;
-      SelectSQL.Add('SELECT * FROM PED_PRG_ITE');
-      SelectSQL.Add('ORDER BY ROM_ITEM');
-      Open;
-    end;
-
-    while not ped_prg_ite.Eof do
-    begin
-      with aux_S do
-      begin
-        SQL.Clear;
-        SQL.Add('SELECT ID FROM PED_VEN_ITE');
-        SQL.Add('WHERE  ROM_IPR2 = '''+ped_prg_iteROM_CPRO.AsString+'''');
-        Open;
-      end;
-
-      if aux_S.Fields[0].IsNull then
-      begin
-        rom_003.Append;
-        rom_003ROM_CDPR.Value := consulta_S.Fields[0].AsInteger;
-        rom_003ROM_IPRO.Value := ped_prg_iteROM_CPRO.AsInteger;
-        rom_003ROM_IPR2.Value := ped_prg_iteROM_CPR2.AsInteger;
-        rom_003ROM_CPRO.Value := ped_prg_itePRO_CPRO.AsString;
-        rom_003ROM_CPR2.Value := ped_prg_itePRO_CPRO.AsString;
-        rom_003ROM_DPRO.Value := ped_prg_iteROM_DPRO.AsString;
-        rom_003ROM_QTDE.Value := ped_prg_iteROM_QTDE.AsFloat;
-        rom_003ROM_QTRL.Value := ped_prg_iteROM_QTRL.AsInteger;
-        rom_003ROM_QTPD.Value := ped_prg_iteROM_QTPD.AsFloat;
-        rom_003ROM_RLPD.Value := ped_prg_iteROM_RLPD.AsInteger;
-        rom_003ROM_TPRC.Value := ped_prg_iteROM_TPRC.AsString;
-        rom_003ROM_PREC.Value := ped_prg_iteROM_PREC.AsFloat;
-        rom_003ROM_UNIT.Value := ped_prg_iteROM_UNIT.AsFloat;
-        rom_003ROM_VDSC.Value := ped_prg_iteROM_VDSC.AsFloat;
-        rom_003ROM_TOTA.Value := ped_prg_iteROM_TOTA.AsFloat;
-        rom_003ROM_CDET.Value := ped_prg_iteROM_CDET.AsString;
-        rom_003ROM_ABCD.Value := ped_prg_iteROM_ABCD.AsString;
-        rom_003ROM_OBSE.Value := ped_prg_iteROM_OBSE.AsString;
-        rom_003ROM_DCOR.Value := ped_prg_iteROM_DCOR.AsString;
-        rom_003ROM_PCOR.Value := ped_prg_iteROM_PCOR.AsString;
-        rom_003.Post;
-      end;
-
-      ped_prg_ite.Next;
-    end;
-    consulta_S.Next;
-  end;
-  rom_003.Close;
-  rom_003.Open;
-
-  if rom_003.Fields[0].IsNull then
-  exit;
-
-  with aux_S do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT SUM(ROM_TOTA),SUM(ROM_QTDE),SUM(ROM_QTRL) FROM PED_PRG_ITE');
-    Open;
-  end;
-
-  adsc := RETORNA_REAL(edadsc.Text);
-  pdsc := RETORNA_REAL(edpdsc.Text);
-  if (edpdsc.Text = '') or (RETORNA_REAL(edpdsc.Text) < 0) then
-  pdsc := 0;
-
-  qtde := aux_S.fields[1].AsFloat;
-  qtrl := aux_S.fields[2].AsInteger;
-  tsde := aux_S.fields[0].AsFloat;
-  tcde := aux_S.fields[0].AsFloat;
-
-  if pdsc > 0 then
-  begin
-    if latdsc.Caption = '%' then
-       tcde := tsde - ((tsde * pdsc) / 100)
-    else if latdsc.Caption = '$' then
-    begin
-      if tsde >= pdsc then
-      tcde := tsde - pdsc;
-    end;
-  end;
-
-  if adsc > 0 then
-  tcde := tcde - ((tcde * adsc) / 100);
-
-  with consulta do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT GEN_ID(ID_NO_'+SLPrincipal.Values['ped_prg_cab']+',0) FROM RDB$DATABASE');
-    Open;
-    ID := fields[0].AsInteger+1;
-
-    SQL.Clear;
-    SQL.Add('SELECT ID,ROM_DROM FROM '+SLPrincipal.Values['ped_prg_cab']);
-    SQL.Add('WHERE  ROM_DERO = '''+eddero.Text+'''');
-    Open;
-    if fields[0].IsNull then
-    drom := eddcad.Date else
-    drom := fields[1].AsDateTime;
-  end;
-
-  ibSP.StoredProcName := 'SP_PED_PRG_CAB';
-  ibSP.Prepare;
-
-  ibSP.ParamByName('ped').Value  := 'PED_PRG_CAB';
-  if frmprincipal.parametrosID.AsInteger > 1 then
-  ibSP.ParamByName('ped').Value  := 'PED_PRG_CAB_'+strzero(frmprincipal.parametrosID.AsInteger,3);
-
-  ibSP.ParamByName('id').Value   := 0;
-  ibSP.ParamByName('cdcx').Value := edcdcx.Text;
-  ibSP.ParamByName('dero').Value := RETORNA_PROGRAMACAO;
-  ibSP.ParamByName('stpd').Value := cbstpd.Text;
-  ibSP.ParamByName('stco').Value := cbstco.Text;
-  ibSP.ParamByName('stfi').Value := 'PENDENTE';
-  ibSP.ParamByName('drom').Value := drom;
-  ibSP.ParamByName('hrom').Value := strtotime(edhrom.Text);
-  ibSP.ParamByName('dexp').Value := 0;
-  ibSP.ParamByName('hexp').Value := 0;
-  ibSP.ParamByName('cexp').Value := 0;
-  ibSP.ParamByName('ccli').Value := edccli.Text;
-  ibSP.ParamByName('cven').Value := edcven.Text;
-  ibSP.ParamByName('crep').Value := edcrep.Text;
-  ibSP.ParamByName('cpag').Value := edcpag.Text;
-  ibSP.ParamByName('qtve').Value := qtde;
-  ibSP.ParamByName('rlve').Value := qtrl;
-  ibSP.ParamByName('tdsc').Value := latdsc.Caption;
-  ibSP.ParamByName('pdsc').Value := edpdsc.Text;
-  ibSP.ParamByName('cdsc').Value := edcdsc.Text;
-  ibSP.ParamByName('adsc').Value := edadsc.Text;
-  ibSP.ParamByName('tsde').Value := tsde;
-  ibSP.ParamByName('tcde').Value := tcde;
-  ibSP.ParamByName('conc').Value := cbcred.Text;
-  ibSP.ParamByName('obse').Value := 'CONTINUADO DA PROGRAMAÇÃO No '+eddero.Text;
-  ibSP.ParamByName('sta').Value  := '0';
-  ibSP.ParamByName('comi').Value := '0';
-  ibSP.ExecProc;
-
-  while not rom_003.Eof do
-  begin
-    ibSP.StoredProcName := 'SP_PED_PRG_ITE';
-    ibSP.Prepare;
-
-    ibSP.ParamByName('ped').Value  := 'PED_PRG_ITE';
-    if frmprincipal.parametrosID.AsInteger > 1 then
-    ibSP.ParamByName('ped').Value  := 'PED_PRG_ITE_'+strzero(frmprincipal.parametrosID.AsInteger,3);
-
-    ibSP.ParamByName('ID').Value   := 0;
-    ibSP.ParamByName('CCAB').Value := ID;
-    ibSP.ParamByName('ITEM').Value := rom_003ROM_ITEM.AsString;
-    ibSP.ParamByName('CPRO').Value := rom_003ROM_IPRO.AsInteger;
-    ibSP.ParamByName('CPR2').Value := rom_003ROM_IPR2.AsInteger;
-    ibSP.ParamByName('DPRO').Value := rom_003ROM_DPRO.AsString;
-    ibSP.ParamByName('DUNI').Value := rom_003ROM_DUNI.AsString;
-    ibSP.ParamByName('QTDE').Value := rom_003ROM_QTDE.AsFloat;
-    ibSP.ParamByName('QTRL').Value := qtrl;
-    ibSP.ParamByName('QTPD').Value := rom_003ROM_QTDE.AsFloat;
-    ibSP.ParamByName('RLPD').Value := qtrl;
-    ibSP.ParamByName('PREC').Value := rom_003ROM_PREC.AsFloat;
-    ibSP.ParamByName('UNIT').Value := rom_003ROM_UNIT.AsFloat;
-    ibSP.ParamByName('VDSC').Value := rom_003ROM_VDSC.AsFloat;
-    ibSP.ParamByName('TOTA').Value := rom_003ROM_TOTA.AsFloat;
-    ibSP.ParamByName('CDET').Value := '';
-    ibSP.ParamByName('COMI').Value := 0;
-    ibSP.ParamByName('TPRC').Value := '0';
-    ibSP.ParamByName('ABCD').Value := rom_003ROM_ABCD.AsString;
-    ibSP.ParamByName('OBSE').Value := rom_003ROM_OBSE.AsString;
-    ibSP.ParamByName('DCOR').Value := rom_003ROM_DCOR.AsString;
-    ibSP.ParamByName('PCOR').Value := rom_003ROM_PCOR.AsString;
-    ibSP.ParamByName('DCO2').Value := rom_003ROM_DCO2.AsString;
-    ibSP.ParamByName('PCO2').Value := rom_003ROM_PCO2.AsString;
-    ibSP.ExecProc;
-
-    ibSP.StoredProcName := 'SP_CAD_PRO_PRG';
-    ibSP.Prepare;
-
-    ibSP.ParamByName('est').Value  := 'CAD_PRO_PRG';
-    if frmprincipal.parametrosID.AsInteger > 1 then
-    ibSP.ParamByName('est').Value  := 'CAD_PRO_PRG_'+strzero(frmprincipal.parametrosID.AsInteger,3);
-
-    ibSP.ParamByName('id').Value   := 0;
-    ibSP.ParamByName('cdep').Value := frmprincipal.parametrosID.AsInteger;
-    ibSP.ParamByName('cdro').Value := ID;
-    ibSP.ParamByName('cdpd').Value := 0;
-    ibSP.ParamByName('cdbx').Value := 0;
-    ibSP.ParamByName('cpro').Value := rom_003ROM_IPR2.AsInteger;
-    ibSP.ParamByName('cusu').Value := edcven.Text;
-    ibSP.ParamByName('dusu').Value := cbdven.Text;
-    ibSP.ParamByName('cfav').Value := edccli.Text;
-    ibSP.ParamByName('dfav').Value := eddcli.Text;
-    ibSP.ParamByName('dcad').Value := drom;
-    ibSP.ParamByName('docu').Value := trim(copy(RETORNA_PROGRAMACAO,1,10));
-    ibSP.ParamByName('flag').Value := 'P';
-    ibSP.ParamByName('cdet').Value := '';
-    ibSP.ParamByName('debi').Value := 0;
-    ibSP.ParamByName('cred').Value := rom_003ROM_QTDE.AsFloat;
-    ibSP.ParamByName('dmap').Value := '';
-    ibSP.ParamByName('ctnr').Value := '';
-    ibSP.ParamByName('lote').Value := '';
-    ibSP.ExecProc;
-
-    with frmprincipal.sp_sql do
-    begin
-      ibSP.StoredProcName := 'SP_SQL';
-
-      SQL.Clear;
-      SQL.Add('DELETE FROM '+SLPrincipal.Values['ped_prg_ite']);
-      SQL.Add('WHERE  ROM_CCAB = '''+rom_003ROM_CDPR.AsString+'''');
-      SQL.Add('AND    ROM_CPRO = '''+rom_003ROM_IPR2.AsString+'''');
-
-      ibSP.Prepare;
-      ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
-      ibSP.ExecProc;
-
-      SQL.Clear;
-      SQL.Add('DELETE FROM '+SLPrincipal.Values['cad_pro_prg']);
-      SQL.Add('WHERE  EST_CDRO = '''+rom_003ROM_CDPR.AsString+'''');
-      SQL.Add('AND    EST_CPRO = '''+rom_003ROM_IPR2.AsString+'''');
-
-      ibSP.Prepare;
-      ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
-      ibSP.ExecProc;
-    end;
-
-    rom_003.Next;
-  end;
-
-  rom_001.First;
-  while not rom_001.Eof do
-  begin
-    with frmprincipal.sp_sql do
-    begin
-      ibSP.StoredProcName := 'SP_SQL';
-
-      SQL.Clear;
-      SQL.Add('UPDATE '+SLPrincipal.Values['cad_pro_prg']);
-      SQL.Add('SET    EST_CDPD = '''+rom_001ROM_CDPR.AsString+'''');
-      SQL.Add('WHERE  EST_CDRO = '''+rom_001ROM_CDPR.AsString+'''');
-      SQL.Add('AND    EST_CPRO = '''+rom_001ROM_IPR2.AsString+'''');
-
-      ibSP.Prepare;
-      ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
-      ibSP.ExecProc;
-    end;
-    rom_001.Next;
-  end;
-
-  consulta_S.First;
-  while not consulta_S.Eof do
-  begin
-    with consulta do
-    begin
-      SQL.Clear;
-      SQL.Add('SELECT ROM_ADSC,ROM_PDSC FROM '+SLPrincipal.Values['ped_prg_cab']);
-      SQL.Add('WHERE  ID = '''+consulta_S.Fields[0].AsString+'''');
-      Open;
-      adsc := fields[0].AsFloat;
-      pdsc := fields[0].AsFloat;
-
-      SQL.Clear;
-      SQL.Add('SELECT SUM(ROM_TOTA),SUM(ROM_QTDE),SUM(ROM_QTRL) FROM '+SLPrincipal.Values['ped_prg_ite']);
-      SQL.Add('WHERE  ROM_CCAB = '''+consulta_S.Fields[0].AsString+'''');
-      Open;
-    end;
-
-
-    qtde := consulta.fields[1].AsFloat;
-    qtrl := consulta.fields[2].AsInteger;
-    tsde := consulta.fields[0].AsFloat;
-    tcde := consulta.fields[0].AsFloat;
-
-    if pdsc > 0 then
-    begin
-      if latdsc.Caption = '%' then
-         tcde := tsde - ((tsde * pdsc) / 100)
-      else if latdsc.Caption = '$' then
-      begin
-        if tsde >= pdsc then
-        tcde := tsde - pdsc;
-      end;
-    end;
-
-    if adsc > 0 then
-    tcde := tcde - ((tcde * adsc) / 100);
-
-    with frmprincipal.sp_sql do
-    begin
-      ibSP.StoredProcName := 'SP_SQL';
-
-      SQL.Clear;
-      SQL.Add('UPDATE '+SLPrincipal.Values['ped_prg_cab']);
-      SQL.Add('SET    ROM_TSDE = '''+strtran(floattostr(tsde),',','.')+''',');
-      SQL.Add('       ROM_TCDE = '''+strtran(floattostr(tcde),',','.')+''',');
-      SQL.Add('       ROM_QTVE = '''+strtran(floattostr(qtde),',','.')+''',');
-      SQL.Add('       ROM_RLVE = '''+strtran(floattostr(qtrl),',','.')+''',');
-      SQL.Add('       ROM_QTPD = '''+strtran(floattostr(qtde),',','.')+''',');
-      SQL.Add('       ROM_CEXP = ''0'',');
-      SQL.Add('       ROM_DBAI = '''+formatDateTime('mm/dd/yy',strtodate(SLPrincipal.Values['data_sistema']))+''',');
-      SQL.Add('       ROM_STFI = ''FINALIZADO''');
-      SQL.Add('WHERE  ID       = '''+consulta_S.Fields[0].AsString+'''');
-
-      ibSP.Prepare;
-      ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
-      ibSP.ExecProc;
-    end;
-
-    consulta_S.Next;
-  end;
-end;
-
 procedure Tfrmven_ped.EDITAPECA;
 begin
-  if rom_001ROM_QTRL.AsInteger = 0 then
-  rom_001ROM_QTRL.Value := 1;
+  if EdicaoROM_QTRL.AsInteger = 0 then
+  EdicaoROM_QTRL.Value := 1;
 
-  if copy(rom_001ROM_DUNI.AsString,1,1) = 'K' then
-  rom_001ROM_QTDE.Value := roundto(rom_001ROM_QTRL.AsFloat*(rom_001ROM_PESO.AsFloat+rom_001ROM_PSCN.AsFloat),-2)
-  else if (copy(rom_001ROM_DUNI.AsString,1,1) = 'M') then
-  rom_001ROM_QTDE.Value := roundto(rom_001ROM_QTRL.AsFloat*rom_001ROM_METR.AsFloat,-2);
+  if copy(EdicaoROM_DUNI.AsString,1,1) = 'K' then
+  EdicaoROM_QTDE.Value := roundto(EdicaoROM_QTRL.AsFloat*(EdicaoROM_PESO.AsFloat+EdicaoROM_PSCN.AsFloat),-2)
+  else if (copy(EdicaoROM_DUNI.AsString,1,1) = 'M') then
+  EdicaoROM_QTDE.Value := roundto(EdicaoROM_QTRL.AsFloat*EdicaoROM_METR.AsFloat,-2);
 end;
 
 procedure Tfrmven_ped.EDITAQUANTIDADE;
 begin
-  if copy(rom_001ROM_DUNI.AsString,1,1) = 'M' then
+  if copy(EdicaoROM_DUNI.AsString,1,1) = 'M' then
   begin
     if edqtsp.Text = '1' then
     begin
-      if rom_001ROM_METR.AsFloat > 0 then
-         rom_001ROM_QTRL.Value := trunc(roundto((rom_001ROM_QTDE.AsFloat/rom_001ROM_METR.AsFloat),-2));
+      if EdicaoROM_METR.AsFloat > 0 then
+         EdicaoROM_QTRL.Value := trunc(roundto((EdicaoROM_QTDE.AsFloat/EdicaoROM_METR.AsFloat),-2));
     end;
   end
-  else if copy(rom_001ROM_DUNI.AsString,1,1) = 'K' then
+  else if copy(EdicaoROM_DUNI.AsString,1,1) = 'K' then
   begin
     if edqtsp.Text = '1' then
     begin
-      if rom_001ROM_PESO.AsFloat > 0 then
-         rom_001ROM_QTRL.Value := trunc(roundto(rom_001ROM_QTDE.AsFloat/(rom_001ROM_PESO.AsFloat+rom_001ROM_PSCN.AsFloat),-2));
+      if EdicaoROM_PESO.AsFloat > 0 then
+         EdicaoROM_QTRL.Value := trunc(roundto(EdicaoROM_QTDE.AsFloat/(EdicaoROM_PESO.AsFloat+EdicaoROM_PSCN.AsFloat),-2));
     end;
   end
-  else if (copy(rom_001ROM_DUNI.AsString,1,1) = 'P') or (copy(rom_001ROM_DUNI.AsString,1,1) = 'C') then
-  rom_001ROM_QTRL.Value := trunc(rom_001ROM_QTDE.AsFloat);
+  else if (copy(EdicaoROM_DUNI.AsString,1,1) = 'P') or (copy(EdicaoROM_DUNI.AsString,1,1) = 'C') then
+  EdicaoROM_QTRL.Value := trunc(EdicaoROM_QTDE.AsFloat);
 
-  if rom_001ROM_QTRL.AsInteger = 0 then
-  rom_001ROM_QTRL.Value := 1;
+  if EdicaoROM_QTRL.AsInteger = 0 then
+  EdicaoROM_QTRL.Value := 1;
 end;
 
 procedure Tfrmven_ped.PESQUISA_PRODUTO(campo,cpro:string;qtde: double);
@@ -2621,66 +1863,66 @@ begin
        end;
      end;
 
-     if rom_001.State = dsBrowse then
+     if Edicao.State = dsBrowse then
      begin
        if (edQTPC.Text = 'PC') or (cbstpd.Text = 'DEVOLUÇÃO') then
-          rom_001.Append
+          Edicao.Append
        else
        begin
-         rom_001.First;
-         if rom_001.Locate('ROM_CPRO',frmprincipal.psq_proPRO_CPRO.AsString,[]) then
-         rom_001.Edit
+         Edicao.First;
+         if Edicao.Locate('ROM_CPRO',frmprincipal.psq_proPRO_CPRO.AsString,[]) then
+         Edicao.Edit
          else
-         rom_001.Append;
+         Edicao.Append;
        end;
      end;
 
-     rom_001ROM_PRCA.Value := frmprincipal.psq_proPRO_PREC.AsFloat;
-     rom_001ROM_PRPA.Value := frmprincipal.psq_proPRO_PPRO.AsFloat;
-     rom_001ROM_VPRC.Value := frmprincipal.psq_proPRO_VPRC.AsFloat;
-     rom_001ROM_VPRO.Value := frmprincipal.psq_proPRO_VPRO.AsFloat;
-     rom_001ROM_RPRC.Value := frmprincipal.psq_proPRO_RPRC.AsFloat;
-     rom_001ROM_RPRO.Value := frmprincipal.psq_proPRO_RPRO.AsFloat;
-     rom_001ROM_PCOM.Value := frmprincipal.psq_proPRO_PCOM.AsFloat;
-     rom_001ROM_CUST.Value := frmprincipal.psq_proPRO_CUST.AsFloat;
-     rom_001ROM_TPRC.Value := TRIM(cbprec.Text);
-     rom_001ROM_PREC.Value := rom_001ROM_UNIT.AsFloat;
+     EdicaoROM_PRCA.Value := frmprincipal.psq_proPRO_PREC.AsFloat;
+     EdicaoROM_PRPA.Value := frmprincipal.psq_proPRO_PPRO.AsFloat;
+     EdicaoROM_VPRC.Value := frmprincipal.psq_proPRO_VPRC.AsFloat;
+     EdicaoROM_VPRO.Value := frmprincipal.psq_proPRO_VPRO.AsFloat;
+     EdicaoROM_RPRC.Value := frmprincipal.psq_proPRO_RPRC.AsFloat;
+     EdicaoROM_RPRO.Value := frmprincipal.psq_proPRO_RPRO.AsFloat;
+     EdicaoROM_PCOM.Value := frmprincipal.psq_proPRO_PCOM.AsFloat;
+     EdicaoROM_CUST.Value := frmprincipal.psq_proPRO_CUST.AsFloat;
+     EdicaoROM_TPRC.Value := TRIM(cbprec.Text);
+     EdicaoROM_PREC.Value := EdicaoROM_UNIT.AsFloat;
 
-     rom_001ROM_DPRO.Value := frmprincipal.psq_proPRO_DPRO.AsString;
-     rom_001ROM_DUNI.Value := frmprincipal.psq_proPRO_DUNI.AsString;
+     EdicaoROM_DPRO.Value := frmprincipal.psq_proPRO_DPRO.AsString;
+     EdicaoROM_DUNI.Value := frmprincipal.psq_proPRO_DUNI.AsString;
 
      if qtde > 0 then
-     rom_001ROM_QTDE.Value := qtde;
+     EdicaoROM_QTDE.Value := qtde;
 
-     if rom_001ROM_DPRO.AsString = '' then
-     rom_001ROM_DPRO.Value := frmprincipal.psq_proPRO_DPRO.AsString;
-     rom_001ROM_IPRO.Value := frmprincipal.psq_proID.AsInteger;
-     rom_001ROM_IPR2.Value := frmprincipal.psq_proID.AsInteger;
-     rom_001ROM_CART.Value := frmprincipal.psq_proPRO_CART.AsString;
-     rom_001ROM_CPRO.Value := frmprincipal.psq_proPRO_CPRO.AsString;
-     rom_001ROM_CPR2.Value := frmprincipal.psq_proPRO_CPRO.AsString;
-     rom_001ROM_CCOR.Value := frmprincipal.psq_proPRO_CCOR.AsInteger;
-     rom_001ROM_DCOR.Value := frmprincipal.psq_proPRO_DCOR.AsString;
-     rom_001ROM_CCO2.Value := frmprincipal.psq_proPRO_CCOR.AsInteger;
-     rom_001ROM_DCO2.Value := frmprincipal.psq_proPRO_DCOR.AsString;
-     rom_001ROM_DUNI.Value := frmprincipal.psq_proPRO_DUNI.AsString;
-     rom_001ROM_FOTO.Value := frmprincipal.psq_proPRO_FOTO.Value;
-     rom_001ROM_CBAR.Value := frmprincipal.psq_proPRO_CBAR.AsString;
-     rom_001ROM_PPRO.Value := frmprincipal.psq_proPRO_PPRO.AsFloat;
-     rom_001ROM_METR.Value := frmprincipal.psq_proPRO_METR.AsFloat;
-     rom_001ROM_PESO.Value := frmprincipal.psq_proPRO_PESO.AsFloat;
-     rom_001ROM_REND.Value := frmprincipal.psq_proPRO_REND.AsFloat;
-     rom_001ROM_PSCN.Value := frmprincipal.psq_proPRO_PSCN.AsFloat;
-     rom_001ROM_PSMR.Value := frmprincipal.psq_proPRO_PSMR.AsFloat;
-     rom_001ROM_PIPI.Value := frmprincipal.psq_proPRO_PIPI.AsFloat;
-     rom_001ROM_QDIS.Value := frmprincipal.psq_proC_QDIS.AsFloat;
-     rom_001ROM_RLDI.Value := frmprincipal.psq_proC_RDIS.AsInteger;
-     rom_001ROM_APRC.Value := frmprincipal.psq_proPRO_APRC.AsString;
-     rom_001ROM_LDSC.Value := frmprincipal.psq_proPRO_LDSC.AsFloat;
-     rom_001ROM_QTRL.Value := 1;
+     if EdicaoROM_DPRO.AsString = '' then
+     EdicaoROM_DPRO.Value := frmprincipal.psq_proPRO_DPRO.AsString;
+     EdicaoROM_IPRO.Value := frmprincipal.psq_proID.AsInteger;
+     EdicaoROM_IPR2.Value := frmprincipal.psq_proID.AsInteger;
+     EdicaoROM_CART.Value := frmprincipal.psq_proPRO_CART.AsString;
+     EdicaoROM_CPRO.Value := frmprincipal.psq_proPRO_CPRO.AsString;
+     EdicaoROM_CPR2.Value := frmprincipal.psq_proPRO_CPRO.AsString;
+     EdicaoROM_CCOR.Value := frmprincipal.psq_proPRO_CCOR.AsInteger;
+     EdicaoROM_DCOR.Value := frmprincipal.psq_proPRO_DCOR.AsString;
+     EdicaoROM_CCO2.Value := frmprincipal.psq_proPRO_CCOR.AsInteger;
+     EdicaoROM_DCO2.Value := frmprincipal.psq_proPRO_DCOR.AsString;
+     EdicaoROM_DUNI.Value := frmprincipal.psq_proPRO_DUNI.AsString;
+     EdicaoROM_FOTO.Value := frmprincipal.psq_proPRO_FOTO.Value;
+     EdicaoROM_CBAR.Value := frmprincipal.psq_proPRO_CBAR.AsString;
+     EdicaoROM_PPRO.Value := frmprincipal.psq_proPRO_PPRO.AsFloat;
+     EdicaoROM_METR.Value := frmprincipal.psq_proPRO_METR.AsFloat;
+     EdicaoROM_PESO.Value := frmprincipal.psq_proPRO_PESO.AsFloat;
+     EdicaoROM_REND.Value := frmprincipal.psq_proPRO_REND.AsFloat;
+     EdicaoROM_PSCN.Value := frmprincipal.psq_proPRO_PSCN.AsFloat;
+     EdicaoROM_PSMR.Value := frmprincipal.psq_proPRO_PSMR.AsFloat;
+     EdicaoROM_PIPI.Value := frmprincipal.psq_proPRO_PIPI.AsFloat;
+     EdicaoROM_QDIS.Value := frmprincipal.psq_proC_QDIS.AsFloat;
+     EdicaoROM_RLDI.Value := frmprincipal.psq_proC_RDIS.AsInteger;
+     EdicaoROM_APRC.Value := frmprincipal.psq_proPRO_APRC.AsString;
+     EdicaoROM_LDSC.Value := frmprincipal.psq_proPRO_LDSC.AsFloat;
+     EdicaoROM_QTRL.Value := 1;
 
-     if (copy(rom_001ROM_DUNI.AsString,1,1) = 'P') or (copy(rom_001ROM_DUNI.AsString,1,1) = 'C') then
-     rom_001ROM_QTRL.Value := trunc(rom_001ROM_QTDE.AsFloat);
+     if (copy(EdicaoROM_DUNI.AsString,1,1) = 'P') or (copy(EdicaoROM_DUNI.AsString,1,1) = 'C') then
+     EdicaoROM_QTRL.Value := trunc(EdicaoROM_QTDE.AsFloat);
 
      if frmprincipal.parametrosPAR_FANT.AsString = 'LEBIANCO' then
      EDITAPECA;
@@ -2690,86 +1932,59 @@ begin
      aux.SQL.Add('WHERE  GRD_CGRD = '''+frmprincipal.psq_proPRO_GRAD.AsString+'''');
      aux.Open;
 
-     rom_001ROM_CGRD.Value := aux.Fields[0].AsString;
-     rom_001ROM_DGRD.Value := aux.Fields[1].AsString;
+     EdicaoROM_CGRD.Value := aux.Fields[0].AsString;
+     EdicaoROM_DGRD.Value := aux.Fields[1].AsString;
 
-     if rom_001.State = dsInsert then
-     CARREGAFOTO(rom_001ROM_FOTO.BlobSize,rom_001ROM_FOTO,rom_001);
+     if Edicao.State = dsInsert then
+     CARREGAFOTO(EdicaoROM_FOTO.BlobSize,EdicaoROM_FOTO,Edicao);
 
      if qtde > 0 then
      begin
-       rom_001.Post;
+       Edicao.Post;
 
        if campo = 'Barra' then
        begin
-         rom_001.Append;
-         dbgrom.FocusedColumn := 1;
+         Edicao.Append;
+         DBGEdicao.FocusedColumn := 1;
        end;
      end;
    end;
-end;
-
-function Tfrmven_ped.RETORNA_FOCO(campo: string): integer;
-var i,j: word;
-begin
-  i := 0;
-  j := 0;
-  while true do
-  begin
-    inc(j);
-    if dbgrom.Columns[j].Visible then
-    begin
-      inc(i);
-      if dbgrom.Columns[j].FieldName = campo then
-      break;
-    end;
-  end;
-
-  result := i;
 end;
 
 procedure Tfrmven_ped.DISPLAY_GRID;
 var
   tam: word;
 begin
-  tam := dbgromROM_DPRO.Tag;
+  tam := DBGEdicaoROM_DPRO.Tag;
 
   if screen.Width >= 1360 then
      tam := tam + 85;
 
   if frmprincipal.parametrosPAR_PECA.AsString = '1' then
   begin
-    dbgromROM_RLDI.Visible := true;
-    dbgromROM_QTRL.Visible := true;
+    DBGEdicaoROM_RLDI.Visible := true;
+    DBGEdicaoROM_QTRL.Visible := true;
   end
   else
   begin
-    dbgromROM_RLDI.Visible := false;
-    dbgromROM_QTRL.Visible := false;
+    DBGEdicaoROM_RLDI.Visible := false;
+    DBGEdicaoROM_QTRL.Visible := false;
   end;
 
-  if dbgromROM_RLDI.Visible then
-     tam := tam - (dbgromROM_RLDI.Width + dbgromROM_QTRL.Width);
+  if DBGEdicaoROM_RLDI.Visible then
+  tam := tam - (DBGEdicaoROM_RLDI.Width + DBGEdicaoROM_QTRL.Width);
 
-  if (frmprincipal.parametrosPAR_TIPO.AsString <> '0') and (frmprincipal.parametrosPAR_TIPO.AsString <> '1') then
+  if DBGEdicaoROM_DCO2.Visible then
   begin
-    if rom_001ROM_DCOR.AsString = '' then
-    dbgromROM_DCOR.Visible := false
-    else
-    dbgromROM_DCOR.Visible := true;
+    DBGEdicaoROM_DCOR.Width := 100;
+    DBGEdicaoROM_DCO2.Width := 100;
+    tam := (tam - DBGEdicaoROM_DCO2.Width)
   end;
 
-  if dbgromROM_DCO2.Visible then
-  begin
-    dbgromROM_DCOR.Width := 100;
-    dbgromROM_DCO2.Width := 100;
-    tam := (tam - dbgromROM_DCO2.Width)
-  end;
+  if DBGEdicaoROM_DCOR.Visible then
+  tam := (tam - DBGEdicaoROM_DCOR.Width);
 
-  if dbgromROM_DCOR.Visible then
-  tam := (tam - dbgromROM_DCOR.Width);
-
-  dbgromROM_DPRO.Width := tam;
+  DBGEdicaoROM_DPRO.Width := tam;
 end;
 
 procedure Tfrmven_ped.PESQUISA_TIPO(pesq,chave: string);
@@ -2793,7 +2008,7 @@ begin
     edptng.Text            := fields[14].AsString;
     cbstpd.Text            := fields[15].AsString;
     cbdpag.Text            := fields[3].AsString;
-    dbgromROM_DCO2.Visible := (fields[9].AsString = '1');
+    DBGEdicaoROM_DCO2.Visible := (fields[9].AsString = '1');
     edddsc.Text            := '';
     edstpd.Text            := cbstpd.Text;
     cbstco.Text            := fields[2].AsString;
@@ -2859,16 +2074,16 @@ var
 begin
   activecontrol := nil;
 
-  if rom_001.State in [dsEdit,dsInsert] then
+  if Edicao.State in [dsEdit,dsInsert] then
   begin
-    if (rom_001ROM_DPRO.AsString = '') or (rom_001ROM_TOTA.AsFloat = 0) then
-    rom_001.Cancel
+    if (EdicaoROM_DPRO.AsString = '') or (EdicaoROM_TOTA.AsFloat = 0) then
+    Edicao.Cancel
     else
-    rom_001.Post;
+    Edicao.Post;
   end;
-  rom_001.First;
+  Edicao.First;
 
-  if (rom_001.Fields[0].IsNull) and (cbstpd.Text <> 'ABATIMENTO')then
+  if (Edicao.Fields[0].IsNull) and (cbstpd.Text <> 'ABATIMENTO')then
   begin
     messageBox(handle,'Pedido sem itens selecionados !',PChar(Self.Caption),MB_ICONERROR+MB_OK);
     Abort;
@@ -3112,7 +2327,7 @@ begin
         begin
           limite := false;
 
-          dbgrom.SetFocus;
+          DBGEdicao.SetFocus;
           messageBox(handle,PChar('Cliente ultrapassou o limite de crédito estabelecido no cadastro.'+#13+
                                   'Limite de Crédito Cadastrado '+formatfloat('R$ #,0.00.',cad_cli_crdCLI_CRED.AsFloat)+#13+#13+
                                   'Pendente BANCÁRIO '+formatfloat('R$ #,0.00',VALOR_BANCARIO)+#13+
@@ -3172,9 +2387,6 @@ begin
     end;
   end;
 
-  if edagrp.Text = '1' then
-  AGRUPA_PEDIDO;
-
   with consulta do
   begin
     if (edcdro.Text = '0') or (edcdro.Text = '') or (edcdro.Text = ' ') then
@@ -3229,10 +2441,10 @@ begin
 
       ibSP.ParamByName('id').Value   := ID;
       ibSP.ParamByName('cdcx').Value := edcdcx.Text;
-     // ibSP.ParamByName('cdrd').Value := edcdrd.Text;
-     // ibSP.ParamByName('derd').Value := edcdrd.Hint;
+      ibSP.ParamByName('cdrd').Value := edcdrd.Text;
+      ibSP.ParamByName('derd').Value := edcdrd.Hint;
       ibSP.ParamByName('dero').Value := eddero.Text;
-      ibSP.ParamByName('ctnr').Value := edctnr.Text;
+      ibSP.ParamByName('ctnr').Value := '';
       ibSP.ParamByName('stpd').Value := cbstpd.Text;
       ibSP.ParamByName('stco').Value := cbstco.Text;
       if edqtsp.Text = '1' then
@@ -3252,7 +2464,7 @@ begin
         ibSP.ParamByName('hexp').Value := strtotime(edhrom.Text);
         ibSP.ParamByName('cexp').Value := frmprincipal.parametrosPAR_DSEP.AsInteger;
       end;
-      
+
       ibSP.ParamByName('ccli').Value := edccli.Text;
       ibSP.ParamByName('cven').Value := edcven.Text;
       ibSP.ParamByName('crep').Value := edcrep.Text;
@@ -3326,9 +2538,9 @@ begin
       ibSP.ExecProc;
     end;
 
-    rom_001.DisableControls;
-    rom_001.First;
-    while not rom_001.Eof do
+    Edicao.DisableControls;
+    Edicao.First;
+    while not Edicao.Eof do
     begin
       try
         ibSP.StoredProcName := 'SP_PED_VEN_ITE';
@@ -3340,33 +2552,33 @@ begin
 
         ibSP.ParamByName('ID').Value   := 0;
         ibSP.ParamByName('CCAB').Value := edcdro.Text;
-        ibSP.ParamByName('ITEM').Value := rom_001ROM_ITEM.AsString;
-        ibSP.ParamByName('CPRO').Value := rom_001ROM_IPRO.AsInteger;
-        ibSP.ParamByName('CPR2').Value := rom_001ROM_IPR2.AsInteger;
-        ibSP.ParamByName('DPRO').Value := rom_001ROM_DPRO.AsString;
-        ibSP.ParamByName('DUNI').Value := rom_001ROM_DUNI.AsString;
-        ibSP.ParamByName('QTDE').Value := rom_001ROM_QTDE.AsFloat;
-        ibSP.ParamByName('QTRL').Value := rom_001ROM_QTRL.AsInteger;
-        ibSP.ParamByName('QTPD').Value := rom_001ROM_QTPD.AsFloat;
-        ibSP.ParamByName('RLPD').Value := rom_001ROM_RLPD.AsInteger;
-        ibSP.ParamByName('PREC').Value := rom_001ROM_PREC.AsFloat;
-        ibSP.ParamByName('UNIT').Value := rom_001ROM_UNIT.AsFloat;
-        ibSP.ParamByName('VDSC').Value := rom_001ROM_VDSC.AsFloat;
-        ibSP.ParamByName('TOTA').Value := rom_001ROM_TOTA.AsFloat;
+        ibSP.ParamByName('ITEM').Value := EdicaoROM_ITEM.AsString;
+        ibSP.ParamByName('CPRO').Value := EdicaoROM_IPRO.AsInteger;
+        ibSP.ParamByName('CPR2').Value := EdicaoROM_IPR2.AsInteger;
+        ibSP.ParamByName('DPRO').Value := EdicaoROM_DPRO.AsString;
+        ibSP.ParamByName('DUNI').Value := EdicaoROM_DUNI.AsString;
+        ibSP.ParamByName('QTDE').Value := EdicaoROM_QTDE.AsFloat;
+        ibSP.ParamByName('QTRL').Value := EdicaoROM_QTRL.AsInteger;
+        ibSP.ParamByName('QTPD').Value := EdicaoROM_QTPD.AsFloat;
+        ibSP.ParamByName('RLPD').Value := EdicaoROM_RLPD.AsInteger;
+        ibSP.ParamByName('PREC').Value := EdicaoROM_PREC.AsFloat;
+        ibSP.ParamByName('UNIT').Value := EdicaoROM_UNIT.AsFloat;
+        ibSP.ParamByName('VDSC').Value := EdicaoROM_VDSC.AsFloat;
+        ibSP.ParamByName('TOTA').Value := EdicaoROM_TOTA.AsFloat;
         ibSP.ParamByName('CDET').Value := '';
         ibSP.ParamByName('COMI').Value := 0;
-        if TRIM(rom_001ROM_TPRC.AsString) = '' then
+        if TRIM(EdicaoROM_TPRC.AsString) = '' then
         ibSP.ParamByName('TPRC').Value := '0' else
-        ibSP.ParamByName('TPRC').Value := inttostr(cbprec.Items.IndexOf(TRIM(rom_001ROM_TPRC.AsString)));
-        ibSP.ParamByName('ABCD').Value := rom_001ROM_ABCD.AsString;
-        ibSP.ParamByName('OBSE').Value := rom_001ROM_OBSE.AsString;
-        ibSP.ParamByName('DCOR').Value := rom_001ROM_DCOR.AsString;
-        if (rom_001ROM_DCOR.AsString <> rom_001ROM_DCO2.AsString) and (rom_001ROM_DCO2.AsString <> '') then
-        ibSP.ParamByName('DCOR').Value := copy(rom_001ROM_DCOR.AsString+' -> '+rom_001ROM_DCO2.AsString,1,30);
-        ibSP.ParamByName('PCOR').Value := rom_001ROM_PCOR.AsString;
-        ibSP.ParamByName('DCO2').Value := rom_001ROM_DCO2.AsString;
-        ibSP.ParamByName('PCO2').Value := rom_001ROM_PCO2.AsString;
-        ibSP.ParamByName('DSEP').Value := rom_001ROM_DSEP.AsString;
+        ibSP.ParamByName('TPRC').Value := inttostr(cbprec.Items.IndexOf(TRIM(EdicaoROM_TPRC.AsString)));
+        ibSP.ParamByName('ABCD').Value := EdicaoROM_ABCD.AsString;
+        ibSP.ParamByName('OBSE').Value := EdicaoROM_OBSE.AsString;
+        ibSP.ParamByName('DCOR').Value := EdicaoROM_DCOR.AsString;
+        if (EdicaoROM_DCOR.AsString <> EdicaoROM_DCO2.AsString) and (EdicaoROM_DCO2.AsString <> '') then
+        ibSP.ParamByName('DCOR').Value := copy(EdicaoROM_DCOR.AsString+' -> '+EdicaoROM_DCO2.AsString,1,30);
+        ibSP.ParamByName('PCOR').Value := EdicaoROM_PCOR.AsString;
+        ibSP.ParamByName('DCO2').Value := EdicaoROM_DCO2.AsString;
+        ibSP.ParamByName('PCO2').Value := EdicaoROM_PCO2.AsString;
+        ibSP.ParamByName('DSEP').Value := EdicaoROM_DSEP.AsString;
         ibSP.ExecProc;
 
         if edbest.Text = '1' then
@@ -3378,12 +2590,12 @@ begin
           if frmprincipal.parametrosID.AsInteger > 1 then
           ibSP.ParamByName('est').Value  := 'CAD_PRO_RES_'+strzero(frmprincipal.parametrosID.AsInteger,3);
 
-          ibSP.ParamByName('id').Value   := 0;
+          ibSP.ParamByName('id'  ).Value   := 0;
           ibSP.ParamByName('cdep').Value := frmprincipal.parametrosID.AsInteger;
           ibSP.ParamByName('cdro').Value := 0;
           ibSP.ParamByName('cdpd').Value := edcdro.Text;
           ibSP.ParamByName('cdbx').Value := 0;
-          ibSP.ParamByName('cpro').Value := rom_001ROM_IPRO.AsInteger;
+          ibSP.ParamByName('cpro').Value := EdicaoROM_IPRO.AsInteger;
           ibSP.ParamByName('cusu').Value := edcven.Text;
           ibSP.ParamByName('dusu').Value := cbdven.Text;
           ibSP.ParamByName('cfav').Value := edccli.Text;
@@ -3391,19 +2603,21 @@ begin
           ibSP.ParamByName('dcad').Value := eddcad.Date;
           ibSP.ParamByName('docu').Value := trim(copy(eddero.Text,1,10));
           ibSP.ParamByName('flag').Value := 'R';
-          ibSP.ParamByName('cdet').Value := rom_001ROM_CDET.AsString;
-          ibSP.ParamByName('dsep').Value := rom_001ROM_DSEP.AsString;
-          ibSP.ParamByName('debi').Value := 0;
-          ibSP.ParamByName('cred').Value := rom_001ROM_QTDE.AsFloat;
+          ibSP.ParamByName('cdet').Value := EdicaoROM_CDET.AsString;
           ibSP.ParamByName('dmap').Value := '';
-          ibSP.ParamByName('lote').Value := '';
           ibSP.ParamByName('ctnr').Value := '';
+          ibSP.ParamByName('lote').Value := '';
 
-          if rom_001ROM_CDET.AsString <> '' then
+          ibSP.ParamByName('dsep').Value := EdicaoROM_DSEP.AsString;
+          ibSP.ParamByName('unit').Value := 0;
+          ibSP.ParamByName('debi').Value := 0;
+          ibSP.ParamByName('cred').Value := EdicaoROM_QTDE.AsFloat;
+
+          if EdicaoROM_CDET.AsString <> '' then
           begin
             frmprincipal.consulta.SQL.Clear;
             frmprincipal.consulta.SQL.Add('SELECT EST_CTNR FROM '+SLPrincipal.Values['cad_pro_est']);
-            frmprincipal.consulta.SQL.Add('WHERE  EST_CDET = '''+rom_001ROM_CDET.AsString+'''');
+            frmprincipal.consulta.SQL.Add('WHERE  EST_CDET = '''+EdicaoROM_CDET.AsString+'''');
             frmprincipal.consulta.Open;
 
             ibSP.ParamByName('ctnr').Value := frmprincipal.consulta.Fields[0].AsString;
@@ -3420,20 +2634,20 @@ begin
       end;
       
       IBTra.CommitRetaining;
-      rom_001.Next;
+      Edicao.Next;
     end;
 
     with frmprincipal.sp_sql do
     begin
       ibSP.StoredProcName := 'SP_SQL';
 
-      if rom_001ROM_CDOC.AsInteger > 0 then
+      if EdicaoROM_CDOC.AsInteger > 0 then
       begin
         SQL.Clear;
         SQL.Add('UPDATE '+SLPrincipal.Values['ped_oca_cab']);
         SQL.Add('SET    ROM_STFI = ''FINALIZADO'',');
         SQL.Add('       ROM_DBAI = '''+formatDateTime('mm/dd/yy',strtodate(SLPrincipal.Values['data_sistema']))+'''');
-        SQL.Add('WHERE  ID       = '''+rom_001ROM_CDOC.AsString+'''');
+        SQL.Add('WHERE  ID       = '''+EdicaoROM_CDOC.AsString+'''');
       end;
 
       if edcdrd.Text <> '0' then
@@ -3496,11 +2710,7 @@ begin
           ibSP.ExecProc;
         end;
       end;
-
     end;
-
-    FINALIZA_PROGRAMACAO;
-
     IBTra.CommitRetaining;
 
     if ID = 0 then
@@ -3533,7 +2743,7 @@ begin
     pTRA.Commit;
 
     Tag := 0;
-    rom_001.EnableControls;
+    Edicao.EnableControls;
   end;
 end;
 
@@ -3990,7 +3200,7 @@ begin
 
       if (edobso.Text <> '') and (not impo) then
       begin
-        pcobs.ActivePageIndex := 1;
+        pcobs.ActivePageIndex := 2;
         ShowMessage(PChar('Cliente '+eddcli.Text+' com ocorrência registrado !')+#13+'Leia com atenção.');
       end;
     end
@@ -4039,18 +3249,21 @@ begin
         Open;
       end;
 
-      if (Screen.Width <= 1024) or (Screen.Width < 1280) then
-      begin
+      try
         frmcad_cli.FormStyle := fsNormal;
         frmcad_cli.Visible   := false;
         frmcad_cli.ShowModal;
-      end
-      else
-        frmcad_cli.Show;
+      finally
+        if frmcad_cli.Editado then
+        PESQUISA_CLIENTE('I',frmcad_cli.cadastroID.AsString,0,false,false);
+      end;
     end;
   finally
     if psq_cliCLI_STPD.AsInteger > 0 then
     PESQUISA_TIPO('ID',psq_cliCLI_STPD.AsString);
+
+    if psq_cliUSU_DUSU.AsString <> '' then
+    PESQUISA_VENDEDOR('F',psq_cliUSU_DUSU.AsString);
 
     if psq_cliCLI_DTRA.AsString <> '' then
     cbdtra.Text := psq_cliCLI_DTRA.AsString;
@@ -4085,7 +3298,7 @@ end;
 procedure Tfrmven_ped.ABRE_TABELA;
 begin
   oOTransact(TSheild);
-  with rom_001 do
+  with Edicao do
   begin
     SelectSQL.Clear;
     SelectSQL.Add('DELETE FROM PED_VEN_ITE');
@@ -4112,112 +3325,13 @@ begin
      key := #0;
 end;
 
-procedure Tfrmven_ped.siDELClick(Sender: TObject);
+procedure Tfrmven_ped.EdicaoAfterPost(DataSet: TDataSet);
 begin
-  if rom_001ID.IsNull then
-     abort;
-
-  if yesno(handle,'Excluir Item ?') =   mrNo then
-  abort;
-
-  if (rom_001ROM_QTPD.AsFloat > 0) and (edqtsp.Text = '1') then
-  raise exception.Create('Produto em processo de separação !');
-
-  rom_001.Edit;
-  rom_001ROM_FLAG.Value := 1;
-  rom_001.Post;
-end;
-
-procedure Tfrmven_ped.siINCClick(Sender: TObject);
-begin
-  rom_001.Append;
-end;
-
-procedure Tfrmven_ped.siSAVClick(Sender: TObject);
-begin
-  if rom_001.State in [dsEdit,dsInsert] then
-     rom_001.Post;
-end;
-
-procedure Tfrmven_ped.SpeedItem1Click(Sender: TObject);
-begin
-  if rom_001.State in [dsEdit,dsInsert] then
-     abort;
-
-  rom_001.Append;
-end;
-
-procedure Tfrmven_ped.siALTClick(Sender: TObject);
-begin
-  if (rom_001ID.IsNull) or (rom_001.State in [dsEdit,dsInsert]) then
-     abort;
-
-  rom_001.Edit;
-end;
-
-procedure Tfrmven_ped.siCANClick(Sender: TObject);
-begin
-  rom_001.Cancel;
-end;
-
-procedure Tfrmven_ped.rom_001AfterCancel(DataSet: TDataSet);
-begin
-  if tag = 0 then
+  if TAG = 0 then
   begin
-    siINC.Enabled := true;
-    siALT.Enabled := true;
-    siDEL.Enabled := true;
-    siSAV.Enabled := false;
-    siCAN.Enabled := false;
+    oRefresh(Edicao);
+    TOTAL;
   end;  
-end;
-
-procedure Tfrmven_ped.rom_001AfterEdit(DataSet: TDataSet);
-begin
-  if tag = 0 then
-  begin
-    siINC.Enabled := false;
-    siALT.Enabled := false;
-    siDEL.Enabled := false;
-    siSAV.Enabled := true;
-    siCAN.Enabled := true;
-
-    dbgrom.SetFocus
-  end;
-end;
-
-procedure Tfrmven_ped.rom_001AfterPost(DataSet: TDataSet);
-var
-  wRec: TBookMark;
-begin
-  tSHEILD.CommitRetaining;
-  try
-    rom_001.DisableControls;
-    if tag = 0 then
-    begin
-      siINC.Enabled := true;
-      siALT.Enabled := true;
-      siDEL.Enabled := true;
-      siSAV.Enabled := false;
-      siCAN.Enabled := false;
-
-      if (rom_001ROM_DPRO.AsString <> '') then
-          BSal.Enabled := true;
-
-      wRec := rom_001.GetBookmark;
-
-      rom_001.Close;
-      rom_001.Open;
-      if (wRec = Nil) or (rom_001.Fields[0].IsNull) then rom_001.last
-         else rom_001.GotoBookmark(wRec);
-      rom_001.FreeBookmark(wRec);
-
-      dbgrom.SetFocus;
-      TOTAL;
-    end;
-  finally
-    rom_001.EnableControls;
-  end;
 end;
 
 procedure Tfrmven_ped.TOTAL;
@@ -4264,43 +3378,25 @@ begin
   key := #0;
 end;
 
-procedure Tfrmven_ped.rom_001AfterInsert(DataSet: TDataSet);
+procedure Tfrmven_ped.EdicaoAfterInsert(DataSet: TDataSet);
 begin
-  if tag = 0 then
-  begin
-    siINC.Enabled := false;
-    siALT.Enabled := false;
-    siDEL.Enabled := false;
-    siSAV.Enabled := true;
-    siCAN.Enabled := true;
-  end;
-
   if frmprincipal.parametrosPAR_PGRD.AsString = '4' then
   begin
-    if not dbgromROM_DCOR.Visible then
-    dbgrom.FocusedColumn := 2 else
-    dbgrom.FocusedColumn := 3;
+    if not DBGEdicaoROM_DCOR.Visible then
+    DBGEdicao.FocusedColumn := 2 else
+    DBGEdicao.FocusedColumn := 3;
   end else
-  dbgrom.FocusedColumn := 1;
-  dbgrom.SetFocus;
+  DBGEdicao.FocusedColumn := 1;
+  DBGEdicao.SetFocus;
 end;
 
-procedure Tfrmven_ped.rom_001BeforeCancel(DataSet: TDataSet);
+procedure Tfrmven_ped.EdicaoBeforeCancel(DataSet: TDataSet);
 begin
-  if tag = 0 then
+  if Edicao.Fields[0].Tag = 0 then
   begin
-    siINC.Enabled := true;
-    siALT.Enabled := true;
-    siDEL.Enabled := true;
-    siSAV.Enabled := false;
-    siCAN.Enabled := false;
-  end;
+    Edicao.Close;
+    Edicao.Open;
 
-  dbgrom.SetFocus;
-  if rom_001.RecordCount = 0 then
-  begin
-    rom_001.Close;
-    rom_001.Open;
     ABORT;
   end;
 end;
@@ -4469,30 +3565,18 @@ begin
   PESQUISA_CLIENTE('R',edrcli.Text,0,true,false);
 end;
 
-procedure Tfrmven_ped.rom_001AfterDelete(DataSet: TDataSet);
+procedure Tfrmven_ped.EdicaoAfterDelete(DataSet: TDataSet);
 begin
   tSHEILD.CommitRetaining;
   TOTAL;
 end;
 
-procedure Tfrmven_ped.rom_001AfterOpen(DataSet: TDataSet);
+procedure Tfrmven_ped.EdicaoNewRecord(DataSet: TDataSet);
 begin
-  if tag = 0 then
-  begin
-    siINC.Enabled := true;
-    siALT.Enabled := true;
-    siDEL.Enabled := true;
-    siSAV.Enabled := false;
-    siCAN.Enabled := false;
-  end;
-end;
-
-procedure Tfrmven_ped.rom_001NewRecord(DataSet: TDataSet);
-begin
-  rom_001ID.Value       := 0;
-  rom_001ROM_FLAG.Value := 0;
-  rom_001ROM_CDOC.Value := 0;
-  rom_001ROM_VDSC.Value := 0;
+  EdicaoID.Value       := 0;
+  EdicaoROM_FLAG.Value := 0;
+  EdicaoROM_CDOC.Value := 0;
+  EdicaoROM_VDSC.Value := 0;
 
   with consulta_S do
   begin
@@ -4502,54 +3586,34 @@ begin
     Open;
 
     if fields[0].IsNull then
-    rom_001ROM_ITEM.Value := '0001'
+    EdicaoROM_ITEM.Value := '0001'
     else
-    rom_001ROM_ITEM.Value := strzero(fields[0].AsInteger + 1,4);
+    EdicaoROM_ITEM.Value := strzero(fields[0].AsInteger + 1,4);
   end;
 end;
 
-procedure Tfrmven_ped.rom_003NewRecord(DataSet: TDataSet);
+procedure Tfrmven_ped.DTSEdicaoDataChange(Sender: TObject; Field: TField);
 begin
-  rom_003ID.Value := 0;
-
-  with aux2_S do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT MAX(ROM_ITEM) FROM PED_PRG_ITE');
-    Open;
-    if fields[0].IsNull then
-    rom_003ROM_ITEM.Value := '0001'
-    else
-    rom_003ROM_ITEM.Value := strzero(fields[0].AsInteger + 1,4);
-  end;
-end;
-
-
-procedure Tfrmven_ped.dtsrom_001DataChange(Sender: TObject; Field: TField);
-begin
-  if (rom_001.State = dsBrowse) and (rom_001.RecNo > 0) then
+  if (Edicao.State = dsBrowse) and (Edicao.RecNo > 0) then
   begin
     if pro_foto.Tag = 0 then
-    CARREGAFOTO(rom_001ROM_FOTO.BlobSize,rom_001ROM_FOTO,rom_001);
+    CARREGAFOTO(EdicaoROM_FOTO.BlobSize,EdicaoROM_FOTO,Edicao);
     DISPLAY_GRID;
   end;
-
-  dbgromROM_PREC.Visible := (rom_001ROM_VDSC.AsFloat > 0);
-  dbgromROM_TSDE.Visible := (rom_001ROM_VDSC.AsFloat > 0);
 end;
 
-procedure Tfrmven_ped.rom_001ROM_VDSCValidate(Sender: TField);
+procedure Tfrmven_ped.EdicaoROM_VDSCValidate(Sender: TField);
 begin
   if Tag = 0 then
-  rom_001ROM_UNIT.Value := rom_001ROM_PREC.AsFloat - ((rom_001ROM_PREC.AsFloat*rom_001ROM_VDSC.AsFloat)/100);
+  EdicaoROM_UNIT.Value := EdicaoROM_PREC.AsFloat - ((EdicaoROM_PREC.AsFloat*EdicaoROM_VDSC.AsFloat)/100);
 end;
 
-procedure Tfrmven_ped.rom_001ROM_QTDEValidate(Sender: TField);
+procedure Tfrmven_ped.EdicaoROM_QTDEValidate(Sender: TField);
 begin
-  rom_001ROM_TSDE.Value := RoundTO(rom_001ROM_QTDE.AsFloat  * rom_001ROM_PREC.AsFloat,-2);
-  rom_001ROM_TOTA.Value := RoundTO(rom_001ROM_QTDE.AsFloat  * rom_001ROM_UNIT.AsFloat,-2);
-  rom_001ROM_VIPI.Value := roundto((rom_001ROM_TOTA.AsFloat * rom_001ROM_PIPI.AsFloat) /100,-2);
-  rom_001ROM_TOTA.Value := RoundTO(rom_001ROM_TOTA.AsFloat  + IFThen(RECParametros.Fantasia = 'OTIMOTEX FARDO',rom_001ROM_VIPI.AsFloat,0),-2);
+  EdicaoROM_TSDE.Value := RoundTO(EdicaoROM_QTDE.AsFloat  * EdicaoROM_PREC.AsFloat,-2);
+  EdicaoROM_TOTA.Value := RoundTO(EdicaoROM_QTDE.AsFloat  * EdicaoROM_UNIT.AsFloat,-2);
+  EdicaoROM_VIPI.Value := roundto((EdicaoROM_TOTA.AsFloat * EdicaoROM_PIPI.AsFloat) /100,-2);
+  EdicaoROM_TOTA.Value := RoundTO(EdicaoROM_TOTA.AsFloat  + IFThen(RECParametros.Fantasia = 'OTIMOTEX FARDO',EdicaoROM_VIPI.AsFloat,0),-2);
 end;
 
 procedure Tfrmven_ped.BSalClick(Sender: TObject);
@@ -4564,22 +3628,6 @@ begin
   end;
 
   Close;
-end;
-
-procedure Tfrmven_ped.BInfClick(Sender: TObject);
-begin
-  if edccli.Text = '' then
-  begin
-    edccli.SetFocus;
-    raise exception.Create('Cliente não selecionado !');
-  end;
-
-  frmcad_cli_inf := tfrmcad_cli_inf.create(self);
-  frmcad_cli_inf.gbinfo.Caption := 'Informaçãoes Resumidas - '+eddcli.Text;
-  frmcad_cli_inf.gbinfo.Hint    := eddcli.Text;
-  frmcad_cli_inf.gbinfo.Tag     := strtoint(edccli.Text);
-  frmcad_cli_inf.lacred.Caption := formatfloat('R$ #,0.00########',cad_cli_crdCLI_CRED.AsFloat);
-  frmcad_cli_inf.ShowModal;
 end;
 
 procedure Tfrmven_ped.edpdscValidate(Sender: TObject;
@@ -4618,10 +3666,10 @@ begin
   TOTAL;
 end;
 
-procedure Tfrmven_ped.dbgromROM_UNITValidate(Sender: TObject;
+procedure Tfrmven_ped.DBGEdicaoROM_UNITValidate(Sender: TObject;
   var ErrorText: String; var Accept: Boolean);
 begin
-  if rom_001ROM_APRC.AsString <> '1' then
+  if EdicaoROM_APRC.AsString <> '1' then
   begin
     if not auto then
     begin
@@ -4634,20 +3682,20 @@ begin
     end;
   end;
 
-  if (rom_001.State in [dsEdit,dsInsert]) and (not oEmpty(dbgrom.EditingText)) then
+  if (Edicao.State in [dsEdit,dsInsert]) and (not oEmpty(DBGEdicao.EditingText)) then
   begin
-    rom_001ROM_PREC.Value := oTextToValor(dbgrom.EditingText,9);
-    rom_001ROM_UNIT.Value := rom_001ROM_PREC.AsFloat - ((rom_001ROM_PREC.AsFloat*rom_001ROM_VDSC.AsFloat)/100);
+    EdicaoROM_PREC.Value := oTextToValor(DBGEdicao.EditingText,9);
+    EdicaoROM_UNIT.Value := EdicaoROM_PREC.AsFloat - ((EdicaoROM_PREC.AsFloat*EdicaoROM_VDSC.AsFloat)/100);
   end;
 end;
 
-procedure Tfrmven_ped.dbgromROM_VDSCValidate(Sender: TObject;
+procedure Tfrmven_ped.DBGEdicaoROM_VDSCValidate(Sender: TObject;
   var ErrorText: String; var Accept: Boolean);
 begin
-  if (rom_001.State in [dsEdit,dsInsert]) and (not oEmpty(dbgrom.EditingText)) then
-  rom_001ROM_VDSC.Value := oTextToValor(dbgrom.EditingText);
+  if (Edicao.State in [dsEdit,dsInsert]) and (not oEmpty(DBGEdicao.EditingText)) then
+  EdicaoROM_VDSC.Value := oTextToValor(DBGEdicao.EditingText);
 
-  if (rom_001ROM_VDSC.AsFloat > rom_001ROM_LDSC.AsFloat) and (rom_001ROM_LDSC.AsFloat > 0) then
+  if (EdicaoROM_VDSC.AsFloat > EdicaoROM_LDSC.AsFloat) and (EdicaoROM_LDSC.AsFloat > 0) then
   begin
     if not auto then
     begin
@@ -4728,70 +3776,60 @@ begin
   end
 end;
 
-procedure Tfrmven_ped.rom_002AfterPost(DataSet: TDataSet);
-begin
-  tSHEILD.CommitRetaining;
-end;
-
-procedure Tfrmven_ped.rom_003AfterPost(DataSet: TDataSet);
-begin
-  tSHEILD.CommitRetaining;
-end;
-
 procedure Tfrmven_ped.edderoValidate(Sender: TObject;
   var ErrorText: String; var Accept: Boolean);
 begin
   BSal.Enabled := true;
 end;
 
-procedure Tfrmven_ped.rom_001ROM_TPRCValidate(Sender: TField);
+procedure Tfrmven_ped.EdicaoROM_TPRCValidate(Sender: TField);
 begin
   if tag = 1 then
   exit;
 
-  if rom_001ROM_TPRC.AsString = 'ATACADO - NORMAL' then
+  if EdicaoROM_TPRC.AsString = 'ATACADO - NORMAL' then
   begin
-    rom_001ROM_PREC.Value := rom_001ROM_PRCA.AsFloat;
-    rom_001ROM_UNIT.Value := rom_001ROM_PRCA.AsFloat;
+    EdicaoROM_PREC.Value := EdicaoROM_PRCA.AsFloat;
+    EdicaoROM_UNIT.Value := EdicaoROM_PRCA.AsFloat;
   end
-  else if rom_001ROM_TPRC.AsString = 'ATACADO - PROMOÇÃO' then
+  else if EdicaoROM_TPRC.AsString = 'ATACADO - PROMOÇÃO' then
   begin
-    rom_001ROM_PREC.Value := rom_001ROM_PRPA.AsFloat;
-    rom_001ROM_UNIT.Value := rom_001ROM_PRPA.AsFloat;
+    EdicaoROM_PREC.Value := EdicaoROM_PRPA.AsFloat;
+    EdicaoROM_UNIT.Value := EdicaoROM_PRPA.AsFloat;
   end
-  else if rom_001ROM_TPRC.AsString = 'VAREJO - NORMAL' then
+  else if EdicaoROM_TPRC.AsString = 'VAREJO - NORMAL' then
   begin
-    rom_001ROM_PREC.Value := rom_001ROM_VPRC.AsFloat;
-    rom_001ROM_UNIT.Value := rom_001ROM_VPRC.AsFloat;
+    EdicaoROM_PREC.Value := EdicaoROM_VPRC.AsFloat;
+    EdicaoROM_UNIT.Value := EdicaoROM_VPRC.AsFloat;
   end
-  else if rom_001ROM_TPRC.AsString = 'VAREJO - PROMOÇÃO' then
+  else if EdicaoROM_TPRC.AsString = 'VAREJO - PROMOÇÃO' then
   begin
-    rom_001ROM_PREC.Value := rom_001ROM_VPRO.AsFloat;
-    rom_001ROM_UNIT.Value := rom_001ROM_VPRO.AsFloat;
+    EdicaoROM_PREC.Value := EdicaoROM_VPRO.AsFloat;
+    EdicaoROM_UNIT.Value := EdicaoROM_VPRO.AsFloat;
   end
-  else if rom_001ROM_TPRC.AsString = 'REPRESENTAÇÃO - NORMAL' then
+  else if EdicaoROM_TPRC.AsString = 'REPRESENTAÇÃO - NORMAL' then
   begin
-    rom_001ROM_PREC.Value := rom_001ROM_RPRC.AsFloat;
-    rom_001ROM_UNIT.Value := rom_001ROM_RPRC.AsFloat;
+    EdicaoROM_PREC.Value := EdicaoROM_RPRC.AsFloat;
+    EdicaoROM_UNIT.Value := EdicaoROM_RPRC.AsFloat;
   end
-  else if rom_001ROM_TPRC.AsString = 'REPRESENTAÇÃO - PROMOÇÃO' then
+  else if EdicaoROM_TPRC.AsString = 'REPRESENTAÇÃO - PROMOÇÃO' then
   begin
-    rom_001ROM_PREC.Value := rom_001ROM_RPRO.AsFloat;
-    rom_001ROM_UNIT.Value := rom_001ROM_RPRO.AsFloat;
+    EdicaoROM_PREC.Value := EdicaoROM_RPRO.AsFloat;
+    EdicaoROM_UNIT.Value := EdicaoROM_RPRO.AsFloat;
   end
-  else if rom_001ROM_TPRC.AsString = 'COMPRA' then
+  else if EdicaoROM_TPRC.AsString = 'COMPRA' then
   begin
-    rom_001ROM_PREC.Value := rom_001ROM_PCOM.AsFloat;
-    rom_001ROM_UNIT.Value := rom_001ROM_PCOM.AsFloat;
+    EdicaoROM_PREC.Value := EdicaoROM_PCOM.AsFloat;
+    EdicaoROM_UNIT.Value := EdicaoROM_PCOM.AsFloat;
   end
-  else if rom_001ROM_TPRC.AsString = 'CUSTO' then
+  else if EdicaoROM_TPRC.AsString = 'CUSTO' then
   begin
-    rom_001ROM_PREC.Value := rom_001ROM_CUST.AsFloat  ;
-    rom_001ROM_UNIT.Value := rom_001ROM_CUST.AsFloat;
+    EdicaoROM_PREC.Value := EdicaoROM_CUST.AsFloat  ;
+    EdicaoROM_UNIT.Value := EdicaoROM_CUST.AsFloat;
   end;
 end;
 
-procedure Tfrmven_ped.dbgromCustomDrawCell(Sender: TObject;
+procedure Tfrmven_ped.DBGEdicaoCustomDrawCell(Sender: TObject;
   ACanvas: TCanvas; ARect: TRect; ANode: TdxTreeListNode;
   AColumn: TdxTreeListColumn; ASelected, AFocused, ANewItemRow: Boolean;
   var AText: String; var AColor: TColor; AFont: TFont;
@@ -4799,17 +3837,17 @@ procedure Tfrmven_ped.dbgromCustomDrawCell(Sender: TObject;
 begin
   if not ASelected then
   begin
-    if (AColumn = dbgromROM_QDIS) or (AColumn = dbgromROM_RLDI) or (AColumn = dbgromROM_TOTA) then
+    if (AColumn = DBGEdicaoROM_QDIS) or (AColumn = DBGEdicaoROM_RLDI) or (AColumn = DBGEdicaoROM_TOTA) then
     begin
-      AColor      := $000024B3;
+      AColor      := $00D69F30;
       AFont.Color := clWhite;
     end;
   end;
 end;
 
-procedure Tfrmven_ped.rom_001BeforeDelete(DataSet: TDataSet);
+procedure Tfrmven_ped.EdicaoBeforeDelete(DataSet: TDataSet);
 begin
-  if (edqtsp.Text = '1') and (Length(rom_001ROM_CDET.AsString) >= 10) then
+  if (edqtsp.Text = '1') and (Length(EdicaoROM_CDET.AsString) >= 10) then
      DataBaseError('Não é possível excluir peça que já foi separada !');
 end;
 
@@ -4897,59 +3935,59 @@ begin
       frmimporta_geral.imp_ite.First;
       while not frmimporta_geral.imp_ite.Eof do
       begin
-        rom_001.Append;
-        rom_001ROM_TPRC.Value := TRIM(cbprec.Text);
-        rom_001ROM_PRCA.Value := frmimporta_geral.imp_iteROM_PRCA.Value;
-        rom_001ROM_PRPA.Value := frmimporta_geral.imp_iteROM_PRPA.Value;
-        rom_001ROM_VPRC.Value := frmimporta_geral.imp_iteROM_VPRC.Value;
-        rom_001ROM_VPRO.Value := frmimporta_geral.imp_iteROM_VPRO.Value;
-        rom_001ROM_RPRC.Value := frmimporta_geral.imp_iteROM_RPRC.Value;
-        rom_001ROM_RPRO.Value := frmimporta_geral.imp_iteROM_RPRO.Value;
-        rom_001ROM_PCOM.Value := frmimporta_geral.imp_iteROM_PCOM.Value;
-        rom_001ROM_CUST.Value := frmimporta_geral.imp_iteROM_CUST.Value;
-        rom_001ROM_PREC.Value := frmimporta_geral.imp_iteROM_PREC.Value;
-        rom_001ROM_UNIT.Value := frmimporta_geral.imp_iteROM_UNIT.Value;
-        rom_001ROM_VDSC.Value := frmimporta_geral.imp_iteROM_VDSC.Value;
-        rom_001ROM_DPRO.Value := frmimporta_geral.imp_iteROM_DPRO.Value;
-        rom_001ROM_IPRO.Value := frmimporta_geral.imp_iteROM_IPRO.Value;
-        rom_001ROM_IPR2.Value := frmimporta_geral.imp_iteROM_IPR2.Value;
-        rom_001ROM_CART.Value := frmimporta_geral.imp_iteROM_CART.Value;
-        rom_001ROM_CPRO.Value := frmimporta_geral.imp_iteROM_CPRO.Value;
-        rom_001ROM_CPR2.Value := frmimporta_geral.imp_iteROM_CPR2.Value;
-        rom_001ROM_CCOR.Value := frmimporta_geral.imp_iteROM_CCOR.Value;
-        rom_001ROM_DCOR.Value := frmimporta_geral.imp_iteROM_DCOR.Value;
-        rom_001ROM_CCO2.Value := frmimporta_geral.imp_iteROM_CCO2.Value;
-        rom_001ROM_DCO2.Value := frmimporta_geral.imp_iteROM_DCO2.Value;
-        rom_001ROM_DUNI.Value := frmimporta_geral.imp_iteROM_DUNI.Value;
-        rom_001ROM_FOTO.Value := frmimporta_geral.imp_iteROM_FOTO.Value;
-        rom_001ROM_CBAR.Value := frmimporta_geral.imp_iteROM_CBAR.Value;
-        rom_001ROM_PPRO.Value := frmimporta_geral.imp_iteROM_PPRO.Value;
-        rom_001ROM_METR.Value := frmimporta_geral.imp_iteROM_METR.Value;
-        rom_001ROM_PESO.Value := frmimporta_geral.imp_iteROM_PESO.Value;
-        rom_001ROM_REND.Value := frmimporta_geral.imp_iteROM_REND.Value;
-        rom_001ROM_PSCN.Value := frmimporta_geral.imp_iteROM_PSCN.Value;
-        rom_001ROM_PSMR.Value := frmimporta_geral.imp_iteROM_PSMR.Value;
-        rom_001ROM_PIPI.Value := frmimporta_geral.imp_iteROM_PIPI.Value;
-        rom_001ROM_QDIS.Value := frmimporta_geral.imp_iteROM_QDIS.Value;
-        rom_001ROM_RLDI.Value := frmimporta_geral.imp_iteROM_RLDI.Value;
-        rom_001ROM_QTDE.Value := frmimporta_geral.imp_iteROM_QTDE.Value;
-        rom_001ROM_QTRL.Value := frmimporta_geral.imp_iteROM_QTRL.Value;
-        rom_001ROM_QDIS.Value := frmimporta_geral.imp_iteROM_QDIS.Value;
-        rom_001ROM_RLDI.Value := frmimporta_geral.imp_iteROM_RLDI.Value;
+        Edicao.Append;
+        EdicaoROM_TPRC.Value := TRIM(cbprec.Text);
+        EdicaoROM_PRCA.Value := frmimporta_geral.imp_iteROM_PRCA.Value;
+        EdicaoROM_PRPA.Value := frmimporta_geral.imp_iteROM_PRPA.Value;
+        EdicaoROM_VPRC.Value := frmimporta_geral.imp_iteROM_VPRC.Value;
+        EdicaoROM_VPRO.Value := frmimporta_geral.imp_iteROM_VPRO.Value;
+        EdicaoROM_RPRC.Value := frmimporta_geral.imp_iteROM_RPRC.Value;
+        EdicaoROM_RPRO.Value := frmimporta_geral.imp_iteROM_RPRO.Value;
+        EdicaoROM_PCOM.Value := frmimporta_geral.imp_iteROM_PCOM.Value;
+        EdicaoROM_CUST.Value := frmimporta_geral.imp_iteROM_CUST.Value;
+        EdicaoROM_PREC.Value := frmimporta_geral.imp_iteROM_PREC.Value;
+        EdicaoROM_UNIT.Value := frmimporta_geral.imp_iteROM_UNIT.Value;
+        EdicaoROM_VDSC.Value := frmimporta_geral.imp_iteROM_VDSC.Value;
+        EdicaoROM_DPRO.Value := frmimporta_geral.imp_iteROM_DPRO.Value;
+        EdicaoROM_IPRO.Value := frmimporta_geral.imp_iteROM_IPRO.Value;
+        EdicaoROM_IPR2.Value := frmimporta_geral.imp_iteROM_IPR2.Value;
+        EdicaoROM_CART.Value := frmimporta_geral.imp_iteROM_CART.Value;
+        EdicaoROM_CPRO.Value := frmimporta_geral.imp_iteROM_CPRO.Value;
+        EdicaoROM_CPR2.Value := frmimporta_geral.imp_iteROM_CPR2.Value;
+        EdicaoROM_CCOR.Value := frmimporta_geral.imp_iteROM_CCOR.Value;
+        EdicaoROM_DCOR.Value := frmimporta_geral.imp_iteROM_DCOR.Value;
+        EdicaoROM_CCO2.Value := frmimporta_geral.imp_iteROM_CCO2.Value;
+        EdicaoROM_DCO2.Value := frmimporta_geral.imp_iteROM_DCO2.Value;
+        EdicaoROM_DUNI.Value := frmimporta_geral.imp_iteROM_DUNI.Value;
+        EdicaoROM_FOTO.Value := frmimporta_geral.imp_iteROM_FOTO.Value;
+        EdicaoROM_CBAR.Value := frmimporta_geral.imp_iteROM_CBAR.Value;
+        EdicaoROM_PPRO.Value := frmimporta_geral.imp_iteROM_PPRO.Value;
+        EdicaoROM_METR.Value := frmimporta_geral.imp_iteROM_METR.Value;
+        EdicaoROM_PESO.Value := frmimporta_geral.imp_iteROM_PESO.Value;
+        EdicaoROM_REND.Value := frmimporta_geral.imp_iteROM_REND.Value;
+        EdicaoROM_PSCN.Value := frmimporta_geral.imp_iteROM_PSCN.Value;
+        EdicaoROM_PSMR.Value := frmimporta_geral.imp_iteROM_PSMR.Value;
+        EdicaoROM_PIPI.Value := frmimporta_geral.imp_iteROM_PIPI.Value;
+        EdicaoROM_QDIS.Value := frmimporta_geral.imp_iteROM_QDIS.Value;
+        EdicaoROM_RLDI.Value := frmimporta_geral.imp_iteROM_RLDI.Value;
+        EdicaoROM_QTDE.Value := frmimporta_geral.imp_iteROM_QTDE.Value;
+        EdicaoROM_QTRL.Value := frmimporta_geral.imp_iteROM_QTRL.Value;
+        EdicaoROM_QDIS.Value := frmimporta_geral.imp_iteROM_QDIS.Value;
+        EdicaoROM_RLDI.Value := frmimporta_geral.imp_iteROM_RLDI.Value;
 
         if frmimporta_geral.cbTIPO.Text = 'PROGRAMAÇÃO DE VENDA' then
-        rom_001ROM_CDPR.Value := frmimporta_geral.imp_cabROM_CDPR.AsInteger else
+        EdicaoROM_CDPR.Value := frmimporta_geral.imp_cabROM_CDPR.AsInteger else
         if frmimporta_geral.cbTIPO.Text = 'ORÇAMENTO' then
-        rom_001ROM_CDOC.Value := frmimporta_geral.imp_cabROM_CDOC.AsInteger;
+        EdicaoROM_CDOC.Value := frmimporta_geral.imp_cabROM_CDOC.AsInteger;
 
-        if rom_001ROM_QTRL.AsInteger = 0 then
+        if EdicaoROM_QTRL.AsInteger = 0 then
         begin
-          if (copy(rom_001ROM_DUNI.AsString,1,1) = 'P') or (copy(rom_001ROM_DUNI.AsString,1,1) = 'C') then
-          rom_001ROM_QTRL.Value := trunc(rom_001ROM_QTDE.AsFloat) else
-          rom_001ROM_QTRL.Value := 1;
+          if (copy(EdicaoROM_DUNI.AsString,1,1) = 'P') or (copy(EdicaoROM_DUNI.AsString,1,1) = 'C') then
+          EdicaoROM_QTRL.Value := trunc(EdicaoROM_QTDE.AsFloat) else
+          EdicaoROM_QTRL.Value := 1;
         end;
         
-        rom_001.Post;
+        Edicao.Post;
         frmimporta_geral.imp_ite.Next;
       end;
     end;
@@ -4971,13 +4009,13 @@ begin
   end;
 end;
 
-procedure Tfrmven_ped.dbgromROM_DCORValidate(Sender: TObject;
+procedure Tfrmven_ped.DBGEdicaoROM_DCORValidate(Sender: TObject;
   var ErrorText: String; var Accept: Boolean);
   var ccor: integer;
   var dcor: string;
 begin
   try
-    if (not (rom_001.State in [dsInsert,dsEdit])) or (dbgrom.EditingText = '') then
+    if (not (Edicao.State in [dsInsert,dsEdit])) or (DBGEdicao.EditingText = '') then
     exit;
 
     if not frmprincipal.ACESSO(frmprincipal.cad_usuUSU_CUSU.AsString,'USU_AUTO','Vendas','Pedidos','Alterar Cor',false) then
@@ -4986,9 +4024,9 @@ begin
       Databaseerror('ACESSO NEGADO !'+#13+'Contate o admnistrador do sistema.');
     end;
 
-    dcor := dbgrom.EditingText;
+    dcor := DBGEdicao.EditingText;
     if dcor = '' then
-    dcor := rom_001ROM_DCOR.AsString;
+    dcor := EdicaoROM_DCOR.AsString;
 
     tab_cor.Close;
     tab_cor.Params[0].Value := dcor;
@@ -5003,55 +4041,55 @@ begin
     begin
       SQL.Clear;
       SQL.Add('SELECT ID FROM CAD_PRO');
-      SQL.Add('WHERE  PRO_CPRO = '''+rom_001ROM_CART.AsString+'.'+strzero(ccor,4)+'''');
+      SQL.Add('WHERE  PRO_CPRO = '''+EdicaoROM_CART.AsString+'.'+strzero(ccor,4)+'''');
       Open;
     end;
 
     if consulta.Fields[0].IsNull  then
     begin
-      if dbgromROM_DCO2.Visible then
+      if DBGEdicaoROM_DCO2.Visible then
       DataBaseError('Produto não encontrado para a cor desejada !'+#13+
-                    'Referencia '+rom_001ROM_CART.AsString+#13+
+                    'Referencia '+EdicaoROM_CART.AsString+#13+
                     'Cor '+dcor) else
-      CADASTRA_PRODUTO(rom_001ROM_CART.AsString,ccor);
+      CADASTRA_PRODUTO(EdicaoROM_CART.AsString,ccor);
     end;
 
     with consulta do
     begin
       SQL.Clear;
       SQL.Add('SELECT ID,PRO_CPRO,PRO_CCOR,PRO_RCOR,PRO_DCOR,PRO_PCOR FROM CAD_PRO');
-      SQL.Add('WHERE  PRO_CPRO = '''+rom_001ROM_CART.AsString+'.'+strzero(ccor,4)+'''');
+      SQL.Add('WHERE  PRO_CPRO = '''+EdicaoROM_CART.AsString+'.'+strzero(ccor,4)+'''');
       Open;
 
       if not fields[0].IsNull then
       begin
-        rom_001ROM_IPR2.Value := fields[0].AsInteger;
-        rom_001ROM_CPR2.Value := fields[1].AsString;
-        rom_001ROM_CCO2.Value := fields[2].AsInteger;
-        rom_001ROM_RCO2.Value := fields[3].AsString;
-        rom_001ROM_DCO2.Value := fields[4].AsString;
-        rom_001ROM_PCO2.Value := fields[5].AsString;
+        EdicaoROM_IPR2.Value := fields[0].AsInteger;
+        EdicaoROM_CPR2.Value := fields[1].AsString;
+        EdicaoROM_CCO2.Value := fields[2].AsInteger;
+        EdicaoROM_RCO2.Value := fields[3].AsString;
+        EdicaoROM_DCO2.Value := fields[4].AsString;
+        EdicaoROM_PCO2.Value := fields[5].AsString;
 
-        rom_001ROM_IPRO.Value := fields[0].AsInteger;
-        rom_001ROM_CPRO.Value := fields[1].AsString;
-        rom_001ROM_CCOR.Value := fields[2].AsInteger;
-        rom_001ROM_RCOR.Value := fields[3].AsString;
-        rom_001ROM_DCOR.Value := fields[4].AsString;
-        rom_001ROM_PCOR.Value := fields[5].AsString;
+        EdicaoROM_IPRO.Value := fields[0].AsInteger;
+        EdicaoROM_CPRO.Value := fields[1].AsString;
+        EdicaoROM_CCOR.Value := fields[2].AsInteger;
+        EdicaoROM_RCOR.Value := fields[3].AsString;
+        EdicaoROM_DCOR.Value := fields[4].AsString;
+        EdicaoROM_PCOR.Value := fields[5].AsString;
       end;
     end;
   finally
-    dbgrom.SetFocus;
+    DBGEdicao.SetFocus;
   end;
 end;
 
-procedure Tfrmven_ped.dbgromROM_DCO2Validate(Sender: TObject;
+procedure Tfrmven_ped.DBGEdicaoROM_DCO2Validate(Sender: TObject;
   var ErrorText: String; var Accept: Boolean);
   var ccor: integer;
   var dcor: string;
 begin
   try
-    if (not (rom_001.State in [dsInsert,dsEdit])) or (dbgrom.EditingText = '') then
+    if (not (Edicao.State in [dsInsert,dsEdit])) or (DBGEdicao.EditingText = '') then
     exit;
 
     if not frmprincipal.ACESSO(frmprincipal.cad_usuUSU_CUSU.AsString,'USU_AUTO','Vendas','Pedidos','Alterar Tingimento',false) then
@@ -5060,9 +4098,9 @@ begin
       Databaseerror('ACESSO NEGADO !'+#13+'Contate o admnistrador do sistema.');
     end;
 
-    dcor := dbgrom.EditingText;
+    dcor := DBGEdicao.EditingText;
     if dcor = '' then
-    dcor := rom_001ROM_DCOR.AsString;
+    dcor := EdicaoROM_DCOR.AsString;
 
     tab_cor.Close;
     tab_cor.Params[0].Value := dcor;
@@ -5085,46 +4123,46 @@ begin
     begin
       SQL.Clear;
       SQL.Add('SELECT ID FROM CAD_PRO');
-      SQL.Add('WHERE  PRO_CPRO = '''+rom_001ROM_CART.AsString+'.'+strzero(ccor,4)+'''');
+      SQL.Add('WHERE  PRO_CPRO = '''+EdicaoROM_CART.AsString+'.'+strzero(ccor,4)+'''');
       Open;
     end;
 
     if consulta.Fields[0].IsNull  then
-    CADASTRA_PRODUTO(rom_001ROM_CART.AsString,ccor);
+    CADASTRA_PRODUTO(EdicaoROM_CART.AsString,ccor);
 
     with consulta do
     begin
       SQL.Clear;
       SQL.Add('SELECT ID,PRO_CPRO,PRO_CCOR,PRO_RCOR,PRO_DCOR,PRO_PCOR FROM CAD_PRO');
-      SQL.Add('WHERE  PRO_CPRO = '''+rom_001ROM_CART.AsString+'.'+strzero(ccor,4)+'''');
+      SQL.Add('WHERE  PRO_CPRO = '''+EdicaoROM_CART.AsString+'.'+strzero(ccor,4)+'''');
       Open;
 
       if not fields[0].IsNull then
       begin
-        rom_001ROM_IPR2.Value := fields[0].AsInteger;
-        rom_001ROM_CPR2.Value := fields[1].AsString;
-        rom_001ROM_CCO2.Value := fields[2].AsInteger;
-        rom_001ROM_RCO2.Value := fields[3].AsString;
-        rom_001ROM_DCO2.Value := fields[4].AsString;
-        rom_001ROM_PCO2.Value := fields[5].AsString;
+        EdicaoROM_IPR2.Value := fields[0].AsInteger;
+        EdicaoROM_CPR2.Value := fields[1].AsString;
+        EdicaoROM_CCO2.Value := fields[2].AsInteger;
+        EdicaoROM_RCO2.Value := fields[3].AsString;
+        EdicaoROM_DCO2.Value := fields[4].AsString;
+        EdicaoROM_PCO2.Value := fields[5].AsString;
 
-        if (frmprincipal.parametrosPAR_TIPO.AsString = '1') and (rom_001ROM_DCOR.AsString <> rom_001ROM_DCO2.AsString) then
+        if (frmprincipal.parametrosPAR_TIPO.AsString = '1') and (EdicaoROM_DCOR.AsString <> EdicaoROM_DCO2.AsString) then
         begin
           SQL.Clear;
           SQL.Add('SELECT PRO_PREC,ID FROM CAD_PRO');
-          SQL.Add('WHERE  PRO_CART = '''+rom_001ROM_CART.AsString+'''');
+          SQL.Add('WHERE  PRO_CART = '''+EdicaoROM_CART.AsString+'''');
           SQL.Add('AND    PRO_DCOR = ''COLORIDO''');
           Open;
 
           if not fields[0].IsNull then
           begin
-            rom_001ROM_PREC.Value := fields[0].AsFloat;
-            rom_001ROM_UNIT.Value := fields[0].AsFloat;
+            EdicaoROM_PREC.Value := fields[0].AsFloat;
+            EdicaoROM_UNIT.Value := fields[0].AsFloat;
 
             SQL.Clear;
             SQL.Add('UPDATE CAD_PRO');
-            SQL.Add('SET    PRO_PREC = '''+strtran(rom_001ROM_UNIT.AsString,',','.')+'''');
-            SQL.Add('WHERE  ID = '''+rom_001ROM_IPR2.AsString+'''');
+            SQL.Add('SET    PRO_PREC = '''+strtran(EdicaoROM_UNIT.AsString,',','.')+'''');
+            SQL.Add('WHERE  ID = '''+EdicaoROM_IPR2.AsString+'''');
             ExecSQL;
             IBTra.CommitRetaining;
           end;
@@ -5132,39 +4170,39 @@ begin
       end;
     end;
   finally
-    dbgrom.SetFocus;
+    DBGEdicao.SetFocus;
   end;  
 end;
 
-procedure Tfrmven_ped.dbgromROM_QTDEValidate(Sender: TObject;
+procedure Tfrmven_ped.DBGEdicaoROM_QTDEValidate(Sender: TObject;
   var ErrorText: String; var Accept: Boolean);
 begin
-  if (dbgrom.EditingText <> '') and (rom_001.State in [dsInsert,dsEdit]) then
+  if (DBGEdicao.EditingText <> '') and (Edicao.State in [dsInsert,dsEdit]) then
   begin
-    rom_001ROM_QTDE.Value := strtofloat(dbgrom.EditingText);
+    EdicaoROM_QTDE.Value := strtofloat(DBGEdicao.EditingText);
     EDITAQUANTIDADE;
   end;
 end;
 
-procedure Tfrmven_ped.dbgromROM_QTRLValidate(Sender: TObject;
+procedure Tfrmven_ped.DBGEdicaoROM_QTRLValidate(Sender: TObject;
   var ErrorText: String; var Accept: Boolean);
 begin
 //  if frmprincipal.parametrosPAR_FANT.AsString = 'LEBIANCO' then
 //  begin
-    if (dbgrom.EditingText <> '') and (rom_001.State in [dsInsert,dsEdit]) then
-    rom_001ROM_QTRL.Value := strtoint(dbgrom.EditingText);
+    if (DBGEdicao.EditingText <> '') and (Edicao.State in [dsInsert,dsEdit]) then
+    EdicaoROM_QTRL.Value := strtoint(DBGEdicao.EditingText);
     EDITAPECA;
 //  end;
 end;
 
-procedure Tfrmven_ped.dbgromROM_CPROValidate(Sender: TObject;
+procedure Tfrmven_ped.DBGEdicaoROM_CPROValidate(Sender: TObject;
   var ErrorText: String; var Accept: Boolean);
   var
     cpro: string;
 begin
-  cpro := dbgrom.EditingText;
+  cpro := DBGEdicao.EditingText;
 
-  if not (rom_001.State in [dsEdit,dsInsert]) or (cpro = '') then
+  if not (Edicao.State in [dsEdit,dsInsert]) or (cpro = '') then
   exit;
 
   if (frmprincipal.parametrosPAR_FANT.AsString = 'MIXXON') or
@@ -5190,17 +4228,17 @@ begin
   end;
 end;
 
-procedure Tfrmven_ped.dbgromROM_DPROValidate(Sender: TObject;
+procedure Tfrmven_ped.DBGEdicaoROM_DPROValidate(Sender: TObject;
   var ErrorText: String; var Accept: Boolean);
   var
     cpro: string;
 begin
- cpro := dbgrom.EditingText;
+ cpro := DBGEdicao.EditingText;
 
-  if not (rom_001.State in [dsEdit,dsInsert])then
+  if not (Edicao.State in [dsEdit,dsInsert])then
   exit;
 
-  if rom_001ROM_IPRO.AsInteger > 0 then
+  if EdicaoROM_IPRO.AsInteger > 0 then
   begin
     if not frmprincipal.ACESSO(frmprincipal.cad_usuUSU_CUSU.AsString,'USU_AUTO','Vendas','Pedidos','Alterar Descrição',false) then
     begin
@@ -5209,62 +4247,39 @@ begin
     end;
   end;
   
-  if rom_001ROM_IPRO.AsInteger = 0 then
+  if EdicaoROM_IPRO.AsInteger = 0 then
   PESQUISA_PRODUTO('Descrição',cpro,0);
 end;
 
-procedure Tfrmven_ped.dbgromKeyDown(Sender: TObject; var Key: Word;
+procedure Tfrmven_ped.DBGEdicaoKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   case key of
-    VK_RETURN: begin
-                 dbgrom.SetFocus;
-                 if rom_001.State = dsBrowse then
-                 dbgrom.FocusedColumn := dbgrom.FocusedColumn + 1 else
-                 begin
-                   if rom_001ROM_CPRO.AsString <> '' then
-                   begin
-                     if (dbgrom.FocusedColumn = 1) or (dbgrom.FocusedColumn = 2) or (dbgrom.FocusedColumn = 3) or
-                        (dbgrom.FocusedColumn = 4)  then
+       vk_insert: SIMEAppend.Click;
+       vk_return: if Edicao.State = dsBrowse then SIMEEdit.Click else
+                     if EdicaoROM_IPRO.AsInteger > 0 then
                      begin
-                       if frmprincipal.parametrosPAR_FANT.AsString <> 'LEBIANCO' then
-                       begin
-                         if (frmprincipal.parametrosPAR_TIPO.AsString = '1') and (dbgromROM_DCO2.Visible) and (dbgrom.FocusedColumn <> 3) and (rom_001ROM_DCOR.AsString = 'BRANCO') or
-                            (frmprincipal.parametrosPAR_TIPO.AsString = '1') and (dbgromROM_DCO2.Visible) and (dbgrom.FocusedColumn <> 3) and (rom_001ROM_DCOR.AsString = 'CRU') or
-                            (frmprincipal.parametrosPAR_TIPO.AsString = '1') and (dbgromROM_DCO2.Visible) and (dbgrom.FocusedColumn <> 3) and (rom_001ROM_DCOR.AsString = 'NATURAL') then
-                         dbgrom.FocusedColumn := 3 else
-                         dbgrom.FocusedColumn := RETORNA_FOCO('ROM_QTDE');
-                       end else
-                       begin
-                         if rom_001ROM_QTDE.AsFloat > 0 then
-                         dbgrom.FocusedColumn   := RETORNA_FOCO('ROM_UNIT') else
-                         dbgrom.FocusedColumn   := RETORNA_FOCO('ROM_QTDE');
-                       end;
-                     end else
-                     dbgrom.FocusedColumn := dbgrom.FocusedColumn + 1;
+                       if Pos(DBGEdicao.FocusedField.FieldName,'ROM_CPROROM_DPROROM_DCOR') > 0 then
+                       DBGEdicao.FocusedColumn := DBGEdicaoROM_QTDE.ColIndex else
 
-                     if ((dbgrom.Columns[dbgrom.FocusedAbsoluteIndex-1].Name = 'dbgromROM_QTDE') and (rom_001ROM_QTDE.AsFloat > 0) and (rom_001ROM_UNIT.AsFloat > 0)) or
-                        ((dbgrom.Columns[dbgrom.FocusedAbsoluteIndex-1].Name = 'dbgromROM_QTRL') and (rom_001ROM_QTDE.AsFloat > 0) and (rom_001ROM_UNIT.AsFloat > 0)) or
-                        ((dbgrom.Columns[dbgrom.FocusedAbsoluteIndex-1].Name = 'dbgromROM_UNIT') and (rom_001ROM_QTDE.AsFloat > 0) and (rom_001ROM_UNIT.AsFloat > 0)) or
-                        ((dbgrom.Columns[dbgrom.FocusedAbsoluteIndex-1].Name = 'dbgromROM_RLDI') and (rom_001ROM_QTDE.AsFloat > 0) and (rom_001ROM_UNIT.AsFloat > 0)) or
-                        ((dbgrom.Columns[dbgrom.FocusedAbsoluteIndex-1].Name = 'dbgromROM_VDSC') and (rom_001ROM_QTDE.AsFloat > 0) and (rom_001ROM_UNIT.AsFloat > 0))
-                        then
-                     begin
-                       referencia := rom_001ROM_CPRO.AsString;
-                       rom_001.Next;
-                       if rom_001.Eof then
+                       if Pos(DBGEdicao.FocusedField.FieldName,'ROM_QTDE') > 0 then
+                       DBGEdicao.FocusedColumn := IFThen(EdicaoROM_QTRL.AsInteger > 0,DBGEdicaoROM_UNIT.ColIndex,DBGEdicaoROM_QTRL.ColIndex) else
+
+                       if Pos(DBGEdicao.FocusedField.FieldName,'ROM_QTRL') > 0 then
+                       DBGEdicao.FocusedColumn := DBGEdicaoROM_UNIT.ColIndex else
+                       DBGEdicao.FocusedColumn := DBGEdicao.FocusedColumn + 1;
+
+                       if ((EdicaoROM_TOTA.AsCurrency > 0) and
+                           (DBGEdicao.FocusedColumn > DBGEdicaoROM_QTDE.ColIndex) or
+                           (DBGEdicao.FocusedColumn > DBGEdicaoROM_UNIT.ColIndex)) then
                        begin
-                         rom_001.Append;
-                         if (frmprincipal.parametrosPAR_PECA.AsString = '1') and (referencia <> '') then
-                         PESQUISA_PRODUTO('Produto',referencia,0);
+                         Edicao.Next;
+                         if Edicao.Eof then
+                         Edicao.Append else
+                         DBGEdicao.FocusedColumn := DBGEdicao.FocusedColumn - 1;
                        end;
                      end;
-                   end;
-                 end;
-               end;
-    VK_INSERT: if rom_001.State = dsBrowse then            siINC.Click;
-    VK_DELETE: if rom_001.State = dsBrowse then            siDEL.Click;
-    VK_ESCAPE: if rom_001.State = dsBrowse then close else siCAN.Click;
+       vk_delete: SIMEDelete.Click;
   end;
 end;
 
@@ -5288,31 +4303,18 @@ begin
   end;
 end;
 
-procedure Tfrmven_ped.rom_001BeforePost(DataSet: TDataSet);
+procedure Tfrmven_ped.EdicaoBeforePost(DataSet: TDataSet);
 begin
-  if rom_001ROM_DPRO.AsString = '' then
+  if EdicaoROM_DPRO.AsString = '' then
   DataBaseError('Descrição do produto não pode ficar em branco !');
 
-  if (rom_001ROM_CPRO.AsString <> '') and (rom_001ROM_QTDE.AsFloat = 0) then
+  if (EdicaoROM_CPRO.AsString <> '') and (EdicaoROM_QTDE.AsFloat = 0) then
   begin
-    dbgrom.SetFocus;
-    dbgrom.FocusedColumn := 10;
+    DBGEdicao.SetFocus;
+    DBGEdicao.FocusedColumn := 10;
 
     DataBaseError('Quantidade não informada !');
   end;
-end;
-
-procedure Tfrmven_ped.tsoutShow(Sender: TObject);
-begin
-  edctnr.SetFocus;
-end;
-
-procedure Tfrmven_ped.edctnrValidate(Sender: TObject;
-  var ErrorText: String; var Accept: Boolean);
-begin
-  if tag = 0 then
-  BSal.Enabled := true;
-
 end;
 
 procedure Tfrmven_ped.edvfrtValidate(Sender: TObject;
@@ -5329,8 +4331,8 @@ procedure Tfrmven_ped.pro_fotoClick(Sender: TObject);
 begin
   frmcad_pro_img := tfrmcad_pro_img.create(self);
   try
-    frmcad_pro_img.carregaFoto2(rom_001ROM_FOTO.BlobSize,rom_001ROM_FOTO,rom_001,frmprincipal.parametros);
-    frmcad_pro_img.Caption := rom_001ROM_DPRO.AsString;
+    frmcad_pro_img.carregaFoto2(EdicaoROM_FOTO.BlobSize,EdicaoROM_FOTO,Edicao,frmprincipal.parametros);
+    frmcad_pro_img.Caption := EdicaoROM_DPRO.AsString;
     frmcad_pro_img.showmodal;
   finally
     FreeAndNil(frmcad_pro_img);
@@ -5391,23 +4393,102 @@ end;
 
 procedure Tfrmven_ped.psq_cliAfterOpen(DataSet: TDataSet);
 begin
-  if psq_cliID.AsInteger > 0 then
+  with PED_HST do
   begin
-    with cad_cli_crd do
-    begin
-      Close;
-      SelectSQL.Clear;
-      SelectSQL.Add('SELECT * FROM CAD_CLI_CRD');
-      SelectSQL.Add('WHERE  CLI_CDEP = '''+frmprincipal.parametrosID.AsString+'''');
-      SelectSQL.Add('AND    CLI_CCLI = '''+psq_cliID.AsString+'''');
-      Open;
-    end;
+    Close;
+    SQL.Clear;
+    SQL.Add('SELECT FIRST 500');
+    SQL.Add('       PK.ID AS IDPK,FK.ID AS IDFK,PK.ROM_DERO AS DEPK,PK.ROM_DROM AS DTPK,');
+    SQL.Add('       FK.ROM_UNIT AS VPRC_COM,FK.ROM_QTDE AS QTDE,FK.ROM_DUNI AS UCOM,');
+    SQL.Add('       CP.PRO_CPRO AS SKU,FK.ROM_DPRO AS DECP,FK.ROM_DCOR AS DGCP');
 
-    edCLI_DCAD.Text := formatDateTime('dd/mm/yyyy',psq_cliCLI_DCAD.AsDateTime);
-    edCLI_DULT.Text := formatDateTime('dd/mm/yyyy',psq_cliCLI_DULT.AsDateTime);
-    edCLI_VULT.Text := formatFloat('R$ #,0.00'    ,psq_cliCLI_VULT.AsFloat);
+    SQL.Add('FROM ' + oREPZero('PED_VEN_CAB','_',FrmPrincipal.ParametrosID.AsInteger,3) + ' AS PK');
+    SQL.Add('JOIN ' + oREPZero('PED_VEN_ITE','_',FrmPrincipal.ParametrosID.AsInteger,3) + ' AS FK ON (FK.ROM_CCAB = PK.ID)');
+    SQL.Add('JOIN   CAD_PRO AS CP ON (CP.ID = FK.ROM_CPRO)');
+
+    SQL.Add('WHERE    PK.ROM_CCLI = ''' + INTTOSTR(psq_cliID.AsInteger) + '''');
+    SQL.Add('ORDER BY PK.ID DESC');
+
+    Prepare;
+    Open;
   end;  
 end;
 
+procedure Tfrmven_ped.PED_HSTBeforeOpen(DataSet: TDataSet);
+begin
+  DBGPED_HSTDGCP.Visible := False;
+end;
+
+procedure Tfrmven_ped.PED_HSTAfterScroll(DataSet: TDataSet);
+begin
+  if PED_HSTDGCP.AsString <> EmptyStr then
+  DBGPED_HSTDGCP.Visible := True;
+end;
+
+procedure Tfrmven_ped.SIMEAppendClick(Sender: TObject);
+begin
+  if Edicao.State = dsBrowse then
+  Edicao.Append;
+end;
+
+procedure Tfrmven_ped.SIMEEditClick(Sender: TObject);
+begin
+  if (Edicao.State = dsBrowse) and (Edicao.RecNo > 0) then
+  Edicao.Edit;
+end;
+
+procedure Tfrmven_ped.SIMEDeleteClick(Sender: TObject);
+begin
+  if (Edicao.State = dsBrowse) and (Edicao.RecNo > 0) then
+  begin
+    Edicao.Edit;
+    EdicaoROM_FLAG.Value := 1;
+    Edicao.Post;
+  end;
+end;
+
+procedure Tfrmven_ped.SIMEPostClick(Sender: TObject);
+begin
+  if Edicao.State in [dsInsert,dsEdit] then
+  Edicao.Post;
+end;
+
+procedure Tfrmven_ped.SIMECancelClick(Sender: TObject);
+begin
+  if Edicao.State in [dsInsert,dsEdit] then
+  Edicao.Cancel;
+end;
+
+procedure Tfrmven_ped.BINFClick(Sender: TObject);
+begin
+  if edccli.Text = '' then
+  begin
+    edccli.SetFocus;
+    raise exception.Create('Cliente não selecionado !');
+  end;
+
+  frmcad_cli_inf := tfrmcad_cli_inf.create(self);
+  frmcad_cli_inf.gbinfo.Caption := 'Informaçãoes Resumidas - '+eddcli.Text;
+  frmcad_cli_inf.gbinfo.Hint    := eddcli.Text;
+  frmcad_cli_inf.gbinfo.Tag     := strtoint(edccli.Text);
+  frmcad_cli_inf.lacred.Caption := formatfloat('R$ #,0.00########',cad_cli_crdCLI_CRED.AsFloat);
+  frmcad_cli_inf.ShowModal;
+end;
+
+procedure Tfrmven_ped.DTSEdicaoStateChange(Sender: TObject);
+begin
+  oState(Edicao,SBMenuEdicao);
+end;
+
+procedure Tfrmven_ped.EdicaoBeforeInsert(DataSet: TDataSet);
+begin
+  Edicao.Fields[0].Tag := Edicao.RecNo;
+end;
+
+procedure Tfrmven_ped.DTSPED_HSTDataChange(Sender: TObject; Field: TField);
+begin
+  DBGPED_HST.ApplyBestFit(DBGPED_HSTSKU );
+  DBGPED_HST.ApplyBestFit(DBGPED_HSTDECP);
+end;
 
 end.

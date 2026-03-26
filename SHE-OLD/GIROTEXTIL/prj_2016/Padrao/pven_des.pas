@@ -8,7 +8,7 @@ uses
   Dialogs, ppadr3, DB, IBCustomDataSet, ImgList, IBStoredProc, IBDatabase,
   IBQuery,  ComCtrls, ExtCtrls, dxTL, dxDBCtrl,
   dxDBGrid, dxCntner, dxEditor, dxEdLib, dxPageControl, QRExport, dxExEdtr,
-  rxSpeedbar;
+  rxSpeedbar, StdCtrls, IBSQL, math, StrUtils;
 
 type
   Tfrmven_des = class(Tfrmpadr3)
@@ -70,151 +70,13 @@ type
     dtsdes_001: TDataSource;
     pcDES: TdxPageControl;
     tsDES01: TdxTabSheet;
-    Panel11: TPanel;
-    Panel12: TPanel;
-    Panel91: TPanel;
-    edDES1: TdxEdit;
-    dbg001: TdxDBGrid;
-    dbg001ROM_DCOR: TdxDBGridMaskColumn;
-    dbg001ROM_QTDE: TdxDBGridMaskColumn;
     tsDES02: TdxTabSheet;
-    Panel13: TPanel;
-    Panel14: TPanel;
-    Panel27: TPanel;
-    edDES2: TdxEdit;
-    dbg002: TdxDBGrid;
-    dbg002ROM_DCOR: TdxDBGridMaskColumn;
-    dbg002ROM_QTDE: TdxDBGridMaskColumn;
     tsDES03: TdxTabSheet;
-    Panel15: TPanel;
-    Panel16: TPanel;
-    Panel28: TPanel;
-    edDES3: TdxEdit;
-    dbg003: TdxDBGrid;
-    dbg003ROM_DCOR: TdxDBGridMaskColumn;
-    dbg003ROM_QTDE: TdxDBGridMaskColumn;
     tsDES04: TdxTabSheet;
-    Panel17: TPanel;
-    Panel18: TPanel;
-    Panel92: TPanel;
-    edDES4: TdxEdit;
-    dbg004: TdxDBGrid;
-    dbg004ROM_DCOR: TdxDBGridMaskColumn;
-    dbg004ROM_QTDE: TdxDBGridMaskColumn;
     tsDES05: TdxTabSheet;
-    Panel19: TPanel;
-    Panel20: TPanel;
-    Panel93: TPanel;
-    edDES5: TdxEdit;
-    dbg005: TdxDBGrid;
-    dbg005ROM_DCOR: TdxDBGridMaskColumn;
-    dbg005ROM_QTDE: TdxDBGridMaskColumn;
     tsDES06: TdxTabSheet;
-    Panel21: TPanel;
-    Panel22: TPanel;
-    Panel94: TPanel;
-    edDES6: TdxEdit;
-    dbg006: TdxDBGrid;
-    dxDBGridMaskColumn73: TdxDBGridMaskColumn;
-    dxDBGridMaskColumn74: TdxDBGridMaskColumn;
     tsDES07: TdxTabSheet;
-    Panel23: TPanel;
-    Panel24: TPanel;
-    Panel95: TPanel;
-    edDES7: TdxEdit;
-    dbg007: TdxDBGrid;
-    dxDBGridMaskColumn75: TdxDBGridMaskColumn;
-    dxDBGridMaskColumn76: TdxDBGridMaskColumn;
     tsDES08: TdxTabSheet;
-    Panel25: TPanel;
-    Panel26: TPanel;
-    dbg008: TdxDBGrid;
-    dxDBGridMaskColumn77: TdxDBGridMaskColumn;
-    dxDBGridMaskColumn78: TdxDBGridMaskColumn;
-    Panel96: TPanel;
-    edDES8: TdxEdit;
-    SpeedBar6: TSpeedBar;
-    SpeedbarSection25: TSpeedbarSection;
-    SpeedbarSection26: TSpeedbarSection;
-    SpeedbarSection27: TSpeedbarSection;
-    SpeedbarSection28: TSpeedbarSection;
-    d1I: TSpeedItem;
-    d1E: TSpeedItem;
-    d1S: TSpeedItem;
-    d1C: TSpeedItem;
-    d1A: TSpeedItem;
-    SpeedBar7: TSpeedBar;
-    SpeedbarSection29: TSpeedbarSection;
-    SpeedbarSection30: TSpeedbarSection;
-    SpeedbarSection31: TSpeedbarSection;
-    SpeedbarSection32: TSpeedbarSection;
-    d2I: TSpeedItem;
-    d2E: TSpeedItem;
-    d2S: TSpeedItem;
-    d2C: TSpeedItem;
-    d2A: TSpeedItem;
-    SpeedBar8: TSpeedBar;
-    SpeedbarSection33: TSpeedbarSection;
-    SpeedbarSection34: TSpeedbarSection;
-    SpeedbarSection35: TSpeedbarSection;
-    SpeedbarSection36: TSpeedbarSection;
-    d3I: TSpeedItem;
-    d3E: TSpeedItem;
-    d3S: TSpeedItem;
-    d3C: TSpeedItem;
-    d3A: TSpeedItem;
-    SpeedBar9: TSpeedBar;
-    SpeedbarSection37: TSpeedbarSection;
-    SpeedbarSection38: TSpeedbarSection;
-    SpeedbarSection39: TSpeedbarSection;
-    SpeedbarSection40: TSpeedbarSection;
-    d4I: TSpeedItem;
-    d4E: TSpeedItem;
-    d4S: TSpeedItem;
-    d4C: TSpeedItem;
-    d4A: TSpeedItem;
-    SpeedBar10: TSpeedBar;
-    SpeedbarSection41: TSpeedbarSection;
-    SpeedbarSection42: TSpeedbarSection;
-    SpeedbarSection43: TSpeedbarSection;
-    SpeedbarSection44: TSpeedbarSection;
-    d5I: TSpeedItem;
-    d5E: TSpeedItem;
-    d5S: TSpeedItem;
-    d5C: TSpeedItem;
-    d5A: TSpeedItem;
-    SpeedBar11: TSpeedBar;
-    SpeedbarSection45: TSpeedbarSection;
-    SpeedbarSection46: TSpeedbarSection;
-    SpeedbarSection47: TSpeedbarSection;
-    SpeedbarSection48: TSpeedbarSection;
-    d6I: TSpeedItem;
-    d6E: TSpeedItem;
-    d6S: TSpeedItem;
-    d6C: TSpeedItem;
-    d6A: TSpeedItem;
-    SpeedBar12: TSpeedBar;
-    SpeedbarSection49: TSpeedbarSection;
-    SpeedbarSection50: TSpeedbarSection;
-    SpeedbarSection51: TSpeedbarSection;
-    SpeedbarSection52: TSpeedbarSection;
-    d7I: TSpeedItem;
-    d7E: TSpeedItem;
-    d7S: TSpeedItem;
-    d7C: TSpeedItem;
-    d7A: TSpeedItem;
-    SpeedBar13: TSpeedBar;
-    SpeedbarSection53: TSpeedbarSection;
-    SpeedbarSection54: TSpeedbarSection;
-    SpeedbarSection55: TSpeedbarSection;
-    SpeedbarSection56: TSpeedbarSection;
-    d8I: TSpeedItem;
-    d8E: TSpeedItem;
-    d8S: TSpeedItem;
-    d8C: TSpeedItem;
-    d8A: TSpeedItem;
-    siVIS: TSpeedItem;
-    siPRI: TSpeedItem;
     des_001ROM_CCAB: TIntegerField;
     des_002ROM_CCAB: TIntegerField;
     des_003ROM_CCAB: TIntegerField;
@@ -223,11 +85,126 @@ type
     des_006ROM_CCAB: TIntegerField;
     des_007ROM_CCAB: TIntegerField;
     des_008ROM_CCAB: TIntegerField;
-    SpeedItem1: TSpeedItem;
     QRRTFFilter1: TQRRTFFilter;
     expXLS: TQRExcelFilter;
-    siPSQ: TSpeedItem;
+    SQLConsulta: TIBSQL;
+    Panel1: TPanel;
     edcdro: TdxMaskEdit;
+    EDCDNF: TdxMaskEdit;
+    IECDNF: TdxImageEdit;
+    EDTITULO: TdxMaskEdit;
+    GBMenuEdicao: TGroupBox;
+    SBMenuEdicao: TSpeedBar;
+    SSMenuEdicao: TSpeedbarSection;
+    d1I: TSpeedItem;
+    d1A: TSpeedItem;
+    d1E: TSpeedItem;
+    d1S: TSpeedItem;
+    d1C: TSpeedItem;
+    GBConsulta: TGroupBox;
+    GroupBox1: TGroupBox;
+    SpeedBar1: TSpeedBar;
+    SpeedbarSection1: TSpeedbarSection;
+    d2I: TSpeedItem;
+    d2A: TSpeedItem;
+    d2E: TSpeedItem;
+    d2S: TSpeedItem;
+    d2C: TSpeedItem;
+    GroupBox2: TGroupBox;
+    GroupBox3: TGroupBox;
+    SpeedBar2: TSpeedBar;
+    SpeedbarSection2: TSpeedbarSection;
+    d3I: TSpeedItem;
+    d3A: TSpeedItem;
+    d3E: TSpeedItem;
+    d3S: TSpeedItem;
+    d3C: TSpeedItem;
+    GroupBox4: TGroupBox;
+    GroupBox5: TGroupBox;
+    SpeedBar3: TSpeedBar;
+    SpeedbarSection3: TSpeedbarSection;
+    d4I: TSpeedItem;
+    d4A: TSpeedItem;
+    d4E: TSpeedItem;
+    d4S: TSpeedItem;
+    d4C: TSpeedItem;
+    GroupBox6: TGroupBox;
+    GroupBox7: TGroupBox;
+    SpeedBar4: TSpeedBar;
+    SpeedbarSection4: TSpeedbarSection;
+    d5I: TSpeedItem;
+    d5A: TSpeedItem;
+    d5E: TSpeedItem;
+    d5S: TSpeedItem;
+    d5C: TSpeedItem;
+    GroupBox8: TGroupBox;
+    GroupBox9: TGroupBox;
+    SpeedBar5: TSpeedBar;
+    SpeedbarSection5: TSpeedbarSection;
+    d6I: TSpeedItem;
+    d6A: TSpeedItem;
+    d6E: TSpeedItem;
+    d6S: TSpeedItem;
+    d6C: TSpeedItem;
+    GroupBox10: TGroupBox;
+    GroupBox11: TGroupBox;
+    SpeedBar6: TSpeedBar;
+    SpeedbarSection6: TSpeedbarSection;
+    d7I: TSpeedItem;
+    d7A: TSpeedItem;
+    d7E: TSpeedItem;
+    d7S: TSpeedItem;
+    d7C: TSpeedItem;
+    GroupBox12: TGroupBox;
+    GroupBox13: TGroupBox;
+    SpeedBar7: TSpeedBar;
+    SpeedbarSection7: TSpeedbarSection;
+    d8I: TSpeedItem;
+    d8A: TSpeedItem;
+    d8E: TSpeedItem;
+    d8S: TSpeedItem;
+    d8C: TSpeedItem;
+    GroupBox14: TGroupBox;
+    dbg001: TdxDBGrid;
+    dbg001ROM_DCOR: TdxDBGridMaskColumn;
+    dbg001ROM_QTDE: TdxDBGridMaskColumn;
+    Panel27: TPanel;
+    edDES2: TdxEdit;
+    dbg002: TdxDBGrid;
+    dbg002ROM_DCOR: TdxDBGridMaskColumn;
+    dbg002ROM_QTDE: TdxDBGridMaskColumn;
+    Panel28: TPanel;
+    edDES3: TdxEdit;
+    dbg003: TdxDBGrid;
+    dbg003ROM_DCOR: TdxDBGridMaskColumn;
+    dbg003ROM_QTDE: TdxDBGridMaskColumn;
+    Panel92: TPanel;
+    edDES4: TdxEdit;
+    dbg004: TdxDBGrid;
+    dbg004ROM_DCOR: TdxDBGridMaskColumn;
+    dbg004ROM_QTDE: TdxDBGridMaskColumn;
+    Panel93: TPanel;
+    edDES5: TdxEdit;
+    dbg005: TdxDBGrid;
+    dbg005ROM_DCOR: TdxDBGridMaskColumn;
+    dbg005ROM_QTDE: TdxDBGridMaskColumn;
+    Panel94: TPanel;
+    edDES6: TdxEdit;
+    dbg006: TdxDBGrid;
+    dxDBGridMaskColumn73: TdxDBGridMaskColumn;
+    dxDBGridMaskColumn74: TdxDBGridMaskColumn;
+    Panel95: TPanel;
+    edDES7: TdxEdit;
+    dbg007: TdxDBGrid;
+    dxDBGridMaskColumn75: TdxDBGridMaskColumn;
+    dxDBGridMaskColumn76: TdxDBGridMaskColumn;
+    Panel96: TPanel;
+    edDES8: TdxEdit;
+    dbg008: TdxDBGrid;
+    dxDBGridMaskColumn77: TdxDBGridMaskColumn;
+    dxDBGridMaskColumn78: TdxDBGridMaskColumn;
+    Panel2: TPanel;
+    edDES1: TdxEdit;
     procedure d1IClick(Sender: TObject);
     procedure d1AClick(Sender: TObject);
     procedure d1EClick(Sender: TObject);
@@ -351,6 +328,10 @@ type
     procedure des_008BeforeInsert(DataSet: TDataSet);
     procedure siPSQClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure edcdroValidate(Sender: TObject; var ErrorText: String;
+      var Accept: Boolean);
+    procedure EDCDNFValidate(Sender: TObject; var ErrorText: String;
+      var Accept: Boolean);
   private
     { Private declarations }
     procedure ABRE_DESENHOS;
@@ -513,12 +494,35 @@ begin
     qrpven_des.qrlend2.Caption      := frmprincipal.parametrosPAR_BAI.AsString+' - '+frmprincipal.parametrosPAR_CID.AsString+' - '+frmprincipal.parametrosPAR_UF.AsString;
     qrpven_des.qrlemai_site.Caption := frmprincipal.parametrosPAR_MAIL.AsString+' / '+frmprincipal.parametrosPAR_SITE.AsString;
     qrpven_des.qrlfone.Caption      := '('+frmprincipal.parametrosPAR_DDD.AsString+')'+' '+copy(frmprincipal.parametrosPAR_FONE.AsString,1,4)+'-'+
-                                                                              copy(frmprincipal.parametrosPAR_FONE.AsString,5,4);
-    qrpven_des.qrltitulo.Caption    := 'Romaneio: '+edcdro.Text;
-    qrpven_des.ReportTitle          := 'Romaneio: '+edcdro.Text;
-    qrpven_des.qrlrodape.Caption    := frmprincipal.cad_usuUSU_DUSU.AsString;
+                                                                                          copy(frmprincipal.parametrosPAR_FONE.AsString,5,4);
+    qrpven_des.ReportTitle       := '';
+    qrpven_des.qrltitulo.Caption := '';
+    qrpven_des.qrlrodape.Caption := frmprincipal.cad_usuUSU_DUSU.AsString;
 
+    if (EDCDNF.Text <> '0') and (EDCDNF.Text <> '') then
+    begin
+      with SQLConsulta do
+      begin
+        Close;
+        SQL.Clear;
+        SQL.Add('SELECT ' + IFThen(IECDNF.Text = '0','PK.ROM_CDNF','PK.ROM_DERO') + ',' + IFThen(IECDNF.Text = '0','PK.ROM_DNFS','PK.ROM_DROM') + ',CD.CLI_FANT');
+        SQL.Add('FROM   PED_VEN_CAB AS PK');
+        SQL.Add('JOIN   CAD_CLI     AS CD ON (CD.ID = PK.ROM_CCLI)');
 
+        if IECDNF.Text = '0' then
+        SQL.Add('WHERE  PK.ROM_CDNF = ''' + EDCDNF.Text + '''') else
+        SQL.Add('WHERE  PK.ROM_DERO = ''' + EDCDNF.Text + '''');
+
+        Prepare;
+        ExecQuery;
+      end;
+
+      if not SQLConsulta.Eof then
+      EDTITULO.Text := IFTHEN(IECDNF.Text = '0','Nota Fiscal ','Pedido ') + SQLConsulta.Current.Vars[0].AsString + ' de ' + FormatDateTime('dd/mm/yyyy',SQLConsulta.Current.Vars[1].AsDateTime) + ' - ' + SQLConsulta.Current.Vars[2].AsString;
+    end;
+
+    qrpven_des.qrltitulo.Caption := EDTITULO.Text;
+    qrpven_des.ReportTitle       := qrpven_des.qrltitulo.Caption;
     qrpven_des.Prepare;
     if tag = 0 then
        qrpven_des.Preview
@@ -1663,6 +1667,26 @@ procedure Tfrmven_des.FormActivate(Sender: TObject);
 begin
   inherited;
   ABRE_DESENHOS;
+end;
+
+procedure Tfrmven_des.edcdroValidate(Sender: TObject;
+  var ErrorText: String; var Accept: Boolean);
+begin
+  if IECDNF.Text = '0' then 
+  if not oBSONumero(edcdro.Text) then
+  begin
+    oErro(handle,'Número da nota fiscal não informado ou incorreto !');
+    edcdro.Text := '0';
+    Abort;
+  end;
+end;
+
+procedure Tfrmven_des.EDCDNFValidate(Sender: TObject;
+  var ErrorText: String; var Accept: Boolean);
+begin
+  if EDCDNF.Text <> '' then
+  if not oBSONumero(EDCDNF.Text) then
+  oException(EDCDNF,'Número da nota fiscal não informado ou incorreto !');
 end;
 
 end.

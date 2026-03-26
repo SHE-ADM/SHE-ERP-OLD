@@ -1,9 +1,9 @@
 inherited frmcai_abr: Tfrmcai_abr
-  Left = 345
-  Top = 148
+  Left = 515
+  Top = 231
   ActiveControl = edvabr
   Caption = 'Abertura de Caixa'
-  ClientHeight = 303
+  ClientHeight = 265
   ClientWidth = 520
   OldCreateOrder = True
   Position = poDesktopCenter
@@ -11,14 +11,14 @@ inherited frmcai_abr: Tfrmcai_abr
   TextHeight = 14
   inherited pnlcadastro: TPanel
     Width = 520
-    Height = 170
+    Height = 246
     inherited PaintBox: TPaintBox
       Width = 520
-      Height = 170
+      Height = 181
     end
-    object Label4: TLabel
+    object Label4: TLabel [1]
       Left = 11
-      Top = 133
+      Top = 197
       Width = 39
       Height = 14
       Caption = 'Usu'#225'rio'
@@ -30,9 +30,9 @@ inherited frmcai_abr: Tfrmcai_abr
       ParentFont = False
       Transparent = True
     end
-    object Label6: TLabel
+    object Label6: TLabel [2]
       Left = 11
-      Top = 37
+      Top = 101
       Width = 60
       Height = 14
       Caption = 'Valor Inicial'
@@ -44,9 +44,9 @@ inherited frmcai_abr: Tfrmcai_abr
       ParentFont = False
       Transparent = True
     end
-    object Label1: TLabel
+    object Label1: TLabel [3]
       Left = 11
-      Top = 13
+      Top = 77
       Width = 77
       Height = 14
       Caption = 'Data Abertura'
@@ -58,9 +58,9 @@ inherited frmcai_abr: Tfrmcai_abr
       ParentFont = False
       Transparent = True
     end
-    object Label2: TLabel
+    object Label2: TLabel [4]
       Left = 11
-      Top = 61
+      Top = 125
       Width = 27
       Height = 14
       Caption = 'Caixa'
@@ -72,9 +72,9 @@ inherited frmcai_abr: Tfrmcai_abr
       ParentFont = False
       Transparent = True
     end
-    object Label3: TLabel
+    object Label3: TLabel [5]
       Left = 11
-      Top = 85
+      Top = 149
       Width = 137
       Height = 14
       Caption = 'Identifica'#231#227'o do Terminal'
@@ -86,9 +86,9 @@ inherited frmcai_abr: Tfrmcai_abr
       ParentFont = False
       Transparent = True
     end
-    object Label5: TLabel
+    object Label5: TLabel [6]
       Left = 347
-      Top = 13
+      Top = 77
       Width = 77
       Height = 14
       Caption = 'Hora Abertura'
@@ -100,9 +100,9 @@ inherited frmcai_abr: Tfrmcai_abr
       ParentFont = False
       Transparent = True
     end
-    object Label7: TLabel
+    object Label7: TLabel [7]
       Left = 11
-      Top = 109
+      Top = 173
       Width = 11
       Height = 14
       Caption = 'IP'
@@ -114,9 +114,13 @@ inherited frmcai_abr: Tfrmcai_abr
       ParentFont = False
       Transparent = True
     end
+    inherited SBMenuPrincipal: TSpeedBar
+      Width = 520
+      TabOrder = 7
+    end
     object edvabr: TdxEdit
       Left = 160
-      Top = 32
+      Top = 96
       Width = 99
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -139,7 +143,7 @@ inherited frmcai_abr: Tfrmcai_abr
     end
     object eddabr: TdxDateEdit
       Left = 160
-      Top = 9
+      Top = 73
       Width = 100
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -158,7 +162,7 @@ inherited frmcai_abr: Tfrmcai_abr
     end
     object cbdecx: TdxImageEdit
       Left = 160
-      Top = 56
+      Top = 120
       Width = 99
       Color = clWhite
       Enabled = False
@@ -208,7 +212,7 @@ inherited frmcai_abr: Tfrmcai_abr
     end
     object edterm: TdxEdit
       Left = 160
-      Top = 80
+      Top = 144
       Width = 345
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -228,7 +232,7 @@ inherited frmcai_abr: Tfrmcai_abr
     end
     object eddusu: TdxEdit
       Left = 160
-      Top = 128
+      Top = 192
       Width = 345
       Color = clWhite
       Enabled = False
@@ -249,7 +253,7 @@ inherited frmcai_abr: Tfrmcai_abr
     end
     object edhabr: TdxEdit
       Left = 432
-      Top = 8
+      Top = 72
       Width = 73
       Color = clWhite
       Enabled = False
@@ -272,7 +276,7 @@ inherited frmcai_abr: Tfrmcai_abr
     end
     object edip: TdxEdit
       Left = 160
-      Top = 104
+      Top = 168
       Width = 345
       Color = clWhite
       Enabled = False
@@ -293,15 +297,8 @@ inherited frmcai_abr: Tfrmcai_abr
     end
   end
   inherited sbMSG: TStatusBar
-    Top = 284
-    Width = 520
-  end
-  inherited SpeedBar2: TSpeedBar
-    Width = 520
-  end
-  inherited imageOPC: TImageList
-    Left = 364
     Top = 246
+    Width = 520
   end
   object aux: TIBQuery
     Database = dmDADOS.ibDB

@@ -7,53 +7,25 @@ inherited frmcai_sar: Tfrmcai_sar
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 14
-  inherited sbMSG: TStatusBar
-    Top = 535
+  inherited SBMenuPrincipal: TSpeedBar
     Width = 1051
-  end
-  inherited SpeedBar9: TSpeedBar
-    Width = 1051
-    inherited siREF: TSpeedItem [4]
-    end
-    inherited siSAIR: TSpeedItem [5]
-    end
-    inherited siLIXO: TSpeedItem [6]
-    end
-    inherited siPRN: TSpeedItem [7]
-    end
-    inherited siEVE: TSpeedItem [8]
-    end
-    inherited siPSQ: TSpeedItem [9]
-    end
   end
   inherited pnldir: TPanel
     Left = 1051
-    Height = 421
+    Height = 470
   end
   inherited pnlpri: TPanel
     Width = 1051
-    Height = 421
+    Height = 470
     inherited pnldbg: TPanel
       Width = 1051
-      Height = 211
+      Height = 260
       inherited gbDET: TGroupBox
-        Width = 1051
-        Height = 211
-        inherited SpeedBar1: TSpeedBar
-          Height = 193
-          inherited siDEL: TSpeedItem
-            Visible = False
-          end
-          inherited siSAV: TSpeedItem
-            Top = 92
-          end
-          inherited siCAN: TSpeedItem
-            Top = 137
-          end
-        end
+        Width = 997
+        Height = 260
         inherited DBGConsulta: TdxDBGrid
-          Width = 998
-          Height = 193
+          Width = 993
+          Height = 239
           KeyField = 'ID'
           ShowSummaryFooter = True
           Filter.Criteria = {00000000}
@@ -106,9 +78,15 @@ inherited frmcai_sar: Tfrmcai_sar
           end
         end
       end
+      inherited GBMenuEdicao: TGroupBox
+        Height = 260
+        inherited SBMenuEdicao: TSpeedBar
+          Height = 239
+        end
+      end
     end
     inherited pnlbot: TPanel
-      Top = 211
+      Top = 260
       Width = 1051
       Height = 210
       Visible = True
@@ -139,8 +117,6 @@ inherited frmcai_sar: Tfrmcai_sar
           Ctl3D = True
           ParentCtl3D = False
           TabOrder = 0
-          OnDblClick = DBGConsultaDblClick
-          OnKeyDown = DBGConsultaKeyDown
           AutoSearchColor = 9395
           AutoSearchTextColor = clWhite
           DataSource = dtsfin_rec
@@ -205,6 +181,10 @@ inherited frmcai_sar: Tfrmcai_sar
         end
       end
     end
+  end
+  inherited sbMSG: TStatusBar
+    Top = 535
+    Width = 1051
   end
   inherited DTSCadastro: TDataSource
     OnDataChange = dtscadastroDataChange

@@ -781,7 +781,6 @@ type
     procedure actlog_usuExecute(Sender: TObject);
     procedure actsen_usuExecute(Sender: TObject);
     procedure actpar_priExecute(Sender: TObject);
-    procedure actpar_sisExecute(Sender: TObject);
     procedure actcad_pro_conExecute(Sender: TObject);
     procedure actsobreExecute(Sender: TObject);
     procedure acttab_clfExecute(Sender: TObject);
@@ -837,7 +836,6 @@ type
     procedure mREL_FAT_VEN_VENClick(Sender: TObject);
     procedure Containers1Click(Sender: TObject);
     procedure mREL_PED_PRO_DEVClick(Sender: TObject);
-    procedure mtab_ncmClick(Sender: TObject);
     procedure mREL_PRG_COM_PROClick(Sender: TObject);
     procedure ComprasporContainer1Click(Sender: TObject);
     procedure CFOP1Click(Sender: TObject);
@@ -847,7 +845,6 @@ type
     procedure ComposicaoClick(Sender: TObject);
     procedure actcad_traExecute(Sender: TObject);
     procedure actfin_pag_pag_comExecute(Sender: TObject);
-    procedure actcad_funExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -889,18 +886,17 @@ var
 implementation
 
 uses uFrmLogin, pcad_cli, ppar_pri, pSobre,
-  pcad_pro, pcad_rep, pcad_tra, pcad_for, ptab_alq, ptab_cor, 
+  pcad_pro, pcad_rep, pcad_tra, pcad_for, ptab_cor, 
   ptab_nat, ptab_pag, ptab_mun,
   psenha,
   pcad_pro_con,
-  ptab_clf, bDados,
-  ppar_sis, 
+  bDados,
   pcai_abr, pcai_mov, pcai_tsr,
   pven_ped, pctr_ped,
   pven_nfe, pctr_rom, pctr_nfe,
   pcai_sar, pcai_fec, pfin_dup, pven_des,
   prelatorio_geral,
-  pcai_sar_edi, pCFeSat, ppag_com, pcad_fun;
+  pcai_sar_edi, pCFeSat, ppag_com;
 
 
 {$R *.dfm}
@@ -1359,7 +1355,7 @@ begin
     SQL.Add('WHERE    CAD_PRO.PRO_CART = CAD_PRO_IMG.PRO_CART');
     SQL.Add('AND      CAD_PRO.PRO_STAV <> ''I''');
 
-    if (CField = 'CAD_PRO.ID')       or (CField = 'CAD_PRO.PRO_CBAR') or (CField = 'CAD_PRO.PRO_CART') then
+    if (CField = 'CAD_PRO.ID')       or (CField = 'CAD_PRO.PRO_CBAR') then
     SQL.Add('AND '+CField+' = '''    +CPro+'''' ) else
     if (CField = 'CAD_PRO.PRO_CART') or (CField = 'CAD_PRO.PRO_CPRO') then
     SQL.Add('AND '+CField+' LIKE ''' +CPro+'%''') else
@@ -1637,7 +1633,7 @@ end;
 
 procedure TFrmPrincipal.acttab_alqExecute(Sender: TObject);
 begin
-  uFrmCreate(Application,Tfrmtab_alq, frmtab_alq);
+  //uFrmCreate(Application,Tfrmtab_alq, frmtab_alq);
 end;
 
 procedure TFrmPrincipal.acttab_natExecute(Sender: TObject);
@@ -2077,6 +2073,19 @@ begin
 
   mREL.Visible               := (cad_usuUSU_RELA.AsString = '1');
 
+  with consulta do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Add('SELECT CURRENT_DATE - EXTRACT(WEEKDAY FROM CURRENT_DATE)     AS week_start_date,');
+    SQL.Add('       CURRENT_DATE - EXTRACT(WEEKDAY FROM CURRENT_DATE) + 6 AS week_end_date');
+    SQL.Add('FROM   RDB$DATABASE');
+    Open;
+
+    Aweek_start_date := Fields[0].AsDateTime;
+    Aweek_end_date   := Fields[1].AsDateTime;
+  end;
+
   with par_pri do
   begin
     SQL.Clear;
@@ -2270,26 +2279,6 @@ begin
   end;  
 end;
 
-procedure TFrmPrincipal.actpar_sisExecute(Sender: TObject);
-begin
-  if frmpar_sis = nil then
-  begin
-    if cad_usuUSU_ADM.AsString <> '1' then
-       raise exception.Create('ACESSO NEGADO !'+#13+'Contate o admnistrador do sistema.');
-
-    Application.CreateForm (TfrmPar_Sis, frmPar_Sis);
-    try
-      frmPar_Sis.ShowModal;
-    finally
-      parametros.Close;
-      parametros.Open;
-
-      freeAndNil(frmpar_sis);
-      frmpar_sis.Free;
-    end;
-  end;
-end;
-
 procedure TFrmPrincipal.actcad_pro_conExecute(Sender: TObject);
 begin
   if frmcad_pro_con = nil then
@@ -2310,7 +2299,7 @@ end;
 
 procedure TFrmPrincipal.acttab_clfExecute(Sender: TObject);
 begin
-  uFrmCreate(Application,Tfrmtab_clf, frmtab_clf);
+  //uFrmCreate(Application,Tfrmtab_clf, frmtab_clf);
 end;
 
 procedure TFrmPrincipal.carregaFoto(tam: Integer; valor: TBlobField; tab: TIbDataSet);
@@ -2878,23 +2867,6 @@ begin
   ABRE_RELATORIO('FATURAMENTO POR NÚMERO DE CONTAINER');
 end;
 
-procedure TFrmPrincipal.mtab_ncmClick(Sender: TObject);
-begin
-  if frmtab_clf = nil then
-  begin
-    Application.CreateForm (Tfrmtab_clf, frmtab_clf);
-
-    if Screen.Width <= 1024 then
-    begin
-      frmtab_clf.FormStyle := fsNormal;
-      frmtab_clf.Visible   := false;
-      frmtab_clf.ShowModal;
-    end
-    else
-    frmtab_clf.Show;
-  end;
-end;
-
 procedure TFrmPrincipal.CFOP1Click(Sender: TObject);
 const
   aCFOP: Array [1..78] of String =
@@ -3331,11 +3303,6 @@ begin
       frmpag_com.Show;
   end;
 
-end;
-
-procedure TFrmPrincipal.actcad_funExecute(Sender: TObject);
-begin
-  uFrmCreate(Application,TFRMCAD_FUN,FRMCAD_FUN);
 end;
 
 end.

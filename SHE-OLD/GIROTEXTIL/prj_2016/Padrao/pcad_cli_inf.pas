@@ -443,8 +443,6 @@ type
     dbgven_prcPRO_CART: TdxDBGridMaskColumn;
     dbgven_prcPRO_PREC: TdxDBGridMaskColumn;
     dbgven_prcAVG: TdxDBGridMaskColumn;
-    siFCO: TSpeedItem;
-    siLIB: TSpeedItem;
     aux: TIBQuery;
     tsPRC: TdxTabSheet;
     dxDBGrid1: TdxDBGrid;
@@ -489,7 +487,6 @@ type
     dbgfin_banPAR_FANT: TdxDBGridMaskColumn;
     fin_carPAR_FANT: TIBStringField;
     dbgfin_carPAR_FANT: TdxDBGridMaskColumn;
-    siSEP: TSpeedItem;
     procedure cad_cli_infNewRecord(DataSet: TDataSet);
     procedure cad_cli_infAfterPost(DataSet: TDataSet);
     procedure cad_cli_infCalcFields(DataSet: TDataSet);

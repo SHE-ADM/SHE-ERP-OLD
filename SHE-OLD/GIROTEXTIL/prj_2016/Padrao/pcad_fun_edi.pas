@@ -560,7 +560,7 @@ begin
        cbSSIN.Text := 'SIM';
     edCOMI.Text := formatfloat('0.00',cadastroFUN_COMI.AsFloat);
     edREGI.Text := cadastroFUN_REGI.AsString;
-    ednord.Text := strzero(cadastroFUN_NORD.AsInteger,3);
+    ednord.Text := ostrzero(cadastroFUN_NORD.AsInteger,3);
     edMDIS.Text := inttostr(cadastroFUN_MDIS.AsInteger);
     edHEIN.Text := cadastroFUN_HEIN.AsString;
     edHSIN.Text := cadastroFUN_HSIN.AsString;
@@ -2071,7 +2071,7 @@ begin
   if edcomi.Text = '' then
      edcomi.Text := '0';
 
-  edcomi.Text := formatfloat('0.00',RETORNA_REAL(edcomi.Text));   
+  edcomi.Text := formatfloat('0.00',strtofloat(edcomi.Text));   
 end;
 
 procedure Tfrmcad_fun_edi.ednordValidate(Sender: TObject;
@@ -2080,7 +2080,7 @@ begin
   if ednord.Text = '' then
      ednord.Text := '0';
 
-  ednord.Text := strzero(strtoint(ednord.Text),3);   
+  ednord.Text := ostrzero(strtoint(ednord.Text),3);   
 end;
 
 end.

@@ -1,12 +1,12 @@
 object frmven_nfe: Tfrmven_nfe
-  Left = 613
-  Top = 136
+  Left = -7
+  Top = 1
   ActiveControl = eddfav
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Emiss'#227'o de Nota Fiscal'
-  ClientHeight = 695
-  ClientWidth = 1276
+  ClientHeight = 1000
+  ClientWidth = 1916
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -266,7 +266,7 @@ object frmven_nfe: Tfrmven_nfe
   object SpeedBar1: TSpeedBar
     Left = 0
     Top = 0
-    Width = 1276
+    Width = 1916
     Height = 99
     Cursor = crHandPoint
     Font.Charset = DEFAULT_CHARSET
@@ -427,8 +427,8 @@ object frmven_nfe: Tfrmven_nfe
   object PNLPrincipal: TPanel
     Left = 0
     Top = 99
-    Width = 1276
-    Height = 577
+    Width = 1916
+    Height = 882
     Align = alClient
     BevelOuter = bvNone
     Color = 15788249
@@ -437,7 +437,7 @@ object frmven_nfe: Tfrmven_nfe
       Left = 0
       Top = 0
       Width = 280
-      Height = 577
+      Height = 882
       Align = alLeft
       BevelOuter = bvNone
       Color = 15788249
@@ -1098,7 +1098,7 @@ object frmven_nfe: Tfrmven_nfe
           TabOrder = 1
           AutoSize = False
           CharCase = ecUpperCase
-          Text = 'EMISS'#195'O NF'
+          Text = 'SA'#205'DA NF'
           OnChange = cbduplChange
           Items.Strings = (
             'EMISS'#195'O NF'
@@ -1110,7 +1110,7 @@ object frmven_nfe: Tfrmven_nfe
         Left = 0
         Top = 181
         Width = 280
-        Height = 396
+        Height = 701
         Align = alClient
         Caption = '  Totais  '
         Color = 15788249
@@ -1124,7 +1124,7 @@ object frmven_nfe: Tfrmven_nfe
         TabOrder = 2
         object LAVBC: TLabel
           Left = 3
-          Top = 65
+          Top = 59
           Width = 87
           Height = 17
           Caption = 'Base de C'#225'lculo'
@@ -1140,10 +1140,10 @@ object frmven_nfe: Tfrmven_nfe
         end
         object LAVICMS: TLabel
           Left = 3
-          Top = 89
-          Width = 62
+          Top = 83
+          Width = 112
           Height = 17
-          Caption = 'Valor ICMS'
+          Caption = 'Valor ICMS Estadual'
           Color = clBtnFace
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
@@ -1156,7 +1156,7 @@ object frmven_nfe: Tfrmven_nfe
         end
         object LAVIPI: TLabel
           Left = 3
-          Top = 209
+          Top = 371
           Width = 47
           Height = 17
           Caption = 'Valor IPI'
@@ -1172,7 +1172,7 @@ object frmven_nfe: Tfrmven_nfe
         end
         object LAVPIS: TLabel
           Left = 3
-          Top = 233
+          Top = 395
           Width = 50
           Height = 17
           Caption = 'Valor PIS'
@@ -1188,7 +1188,7 @@ object frmven_nfe: Tfrmven_nfe
         end
         object LAVCOFINS: TLabel
           Left = 3
-          Top = 257
+          Top = 419
           Width = 77
           Height = 17
           Caption = 'Valor COFINS'
@@ -1204,7 +1204,7 @@ object frmven_nfe: Tfrmven_nfe
         end
         object LAVNF: TLabel
           Left = 3
-          Top = 329
+          Top = 491
           Width = 66
           Height = 17
           Caption = 'Nota Fiscal'
@@ -1220,7 +1220,7 @@ object frmven_nfe: Tfrmven_nfe
         end
         object LAQTDE: TLabel
           Left = 3
-          Top = 17
+          Top = 11
           Width = 114
           Height = 17
           Caption = 'Quantidades / Pe'#231'as'
@@ -1234,25 +1234,9 @@ object frmven_nfe: Tfrmven_nfe
           ParentFont = False
           Transparent = True
         end
-        object LAVBST: TLabel
-          Left = 3
-          Top = 161
-          Width = 120
-          Height = 17
-          Caption = 'Base Subst. Tribut'#225'ria'
-          Color = clBtnFace
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Segoe UI'
-          Font.Style = [fsItalic]
-          ParentColor = False
-          ParentFont = False
-          Transparent = True
-        end
         object LAVST: TLabel
           Left = 3
-          Top = 185
+          Top = 323
           Width = 125
           Height = 17
           Caption = 'Valor Subst. Tribut'#225'ria'
@@ -1268,7 +1252,7 @@ object frmven_nfe: Tfrmven_nfe
         end
         object LAVCREDICMSSN: TLabel
           Left = 3
-          Top = 113
+          Top = 275
           Width = 89
           Height = 17
           Caption = 'Cr'#233'dito de ICMS'
@@ -1284,7 +1268,7 @@ object frmven_nfe: Tfrmven_nfe
         end
         object LAVPROD: TLabel
           Left = 3
-          Top = 41
+          Top = 35
           Width = 49
           Height = 17
           Caption = 'Produtos'
@@ -1300,7 +1284,7 @@ object frmven_nfe: Tfrmven_nfe
         end
         object LAVICMSDeson: TLabel
           Left = 3
-          Top = 137
+          Top = 299
           Width = 121
           Height = 17
           Caption = 'Desonera'#231#227'o de ICMS'
@@ -1316,7 +1300,7 @@ object frmven_nfe: Tfrmven_nfe
         end
         object LAVTotTrib: TLabel
           Left = 3
-          Top = 305
+          Top = 467
           Width = 48
           Height = 17
           Caption = 'Tributos'
@@ -1332,7 +1316,7 @@ object frmven_nfe: Tfrmven_nfe
         end
         object Label16: TLabel
           Left = 3
-          Top = 281
+          Top = 443
           Width = 55
           Height = 17
           Caption = 'Valor FCP'
@@ -1346,10 +1330,146 @@ object frmven_nfe: Tfrmven_nfe
           ParentFont = False
           Transparent = True
         end
+        object Label27: TLabel
+          Left = 3
+          Top = 107
+          Width = 141
+          Height = 17
+          Caption = 'Base de C'#225'lculo NRT CBS'
+          Color = clBtnFace
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsItalic]
+          ParentColor = False
+          ParentFont = False
+          Transparent = True
+        end
+        object Label28: TLabel
+          Left = 3
+          Top = 131
+          Width = 50
+          Height = 17
+          Caption = 'NRT CBS'
+          Color = clBtnFace
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsItalic]
+          ParentColor = False
+          ParentFont = False
+          Transparent = True
+        end
+        object Label32: TLabel
+          Left = 3
+          Top = 155
+          Width = 151
+          Height = 17
+          Caption = 'Base C'#225'lculo NRT IBS Mun.'
+          Color = clBtnFace
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsItalic]
+          ParentColor = False
+          ParentFont = False
+          Transparent = True
+        end
+        object Label33: TLabel
+          Left = 3
+          Top = 179
+          Width = 103
+          Height = 17
+          Caption = 'NRT IBS Municipal'
+          Color = clBtnFace
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsItalic]
+          ParentColor = False
+          ParentFont = False
+          Transparent = True
+        end
+        object Label34: TLabel
+          Left = 3
+          Top = 203
+          Width = 133
+          Height = 17
+          Caption = 'Base de C'#225'lculo IBS/CBS'
+          Color = clBtnFace
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsItalic]
+          ParentColor = False
+          ParentFont = False
+          Transparent = True
+        end
+        object Label36: TLabel
+          Left = 3
+          Top = 227
+          Width = 141
+          Height = 17
+          Caption = 'Base C'#225'lculo NRT IBS Est.'
+          Color = clBtnFace
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsItalic]
+          ParentColor = False
+          ParentFont = False
+          Transparent = True
+        end
+        object Label37: TLabel
+          Left = 3
+          Top = 251
+          Width = 95
+          Height = 17
+          Caption = 'NRT IBS Estadual'
+          Color = clBtnFace
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsItalic]
+          ParentColor = False
+          ParentFont = False
+          Transparent = True
+        end
+        object EDNFE_VNFTOT: TdxMaskEdit
+          Left = 165
+          Top = 464
+          Width = 110
+          Color = 14065456
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Style.BorderColor = 16644596
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 26
+          Visible = False
+          Alignment = taRightJustify
+          AutoSize = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0,00'
+          Height = 22
+          StoredValues = 1
+        end
         object EDvICMSUFDest: TdxMaskEdit
-          Left = 156
-          Top = 134
-          Width = 120
+          Left = 165
+          Top = 296
+          Width = 110
           Color = 16644596
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1360,7 +1480,7 @@ object frmven_nfe: Tfrmven_nfe
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 18
+          TabOrder = 25
           Alignment = taRightJustify
           AutoSize = False
           CharCase = ecUpperCase
@@ -1370,9 +1490,9 @@ object frmven_nfe: Tfrmven_nfe
           StoredValues = 1
         end
         object EDVDup: TdxMaskEdit
-          Left = 156
-          Top = 254
-          Width = 120
+          Left = 165
+          Top = 416
+          Width = 110
           Color = 16644596
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
@@ -1384,7 +1504,7 @@ object frmven_nfe: Tfrmven_nfe
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 17
+          TabOrder = 24
           Visible = False
           Alignment = taRightJustify
           AutoSize = False
@@ -1395,9 +1515,9 @@ object frmven_nfe: Tfrmven_nfe
           StoredValues = 1
         end
         object EDVII: TdxMaskEdit
-          Left = 156
-          Top = 302
-          Width = 120
+          Left = 165
+          Top = 464
+          Width = 110
           Color = 16644596
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1408,7 +1528,7 @@ object frmven_nfe: Tfrmven_nfe
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 15
+          TabOrder = 22
           Visible = False
           Alignment = taRightJustify
           CharCase = ecUpperCase
@@ -1417,9 +1537,9 @@ object frmven_nfe: Tfrmven_nfe
           StoredValues = 1
         end
         object EDTRCom: TdxMaskEdit
-          Left = 236
-          Top = 14
-          Width = 40
+          Left = 165
+          Top = 8
+          Width = 110
           Color = 14065456
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWhite
@@ -1430,7 +1550,8 @@ object frmven_nfe: Tfrmven_nfe
           Style.BorderColor = 16644596
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 1
+          TabOrder = 21
+          Visible = False
           OnKeyPress = EDTQComKeyPress
           Alignment = taRightJustify
           CharCase = ecUpperCase
@@ -1439,9 +1560,9 @@ object frmven_nfe: Tfrmven_nfe
           StoredValues = 1
         end
         object EDVOutro: TdxMaskEdit
-          Left = 156
-          Top = 302
-          Width = 120
+          Left = 165
+          Top = 464
+          Width = 110
           Color = 16644596
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1452,7 +1573,7 @@ object frmven_nfe: Tfrmven_nfe
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 16
+          TabOrder = 23
           Visible = False
           Alignment = taRightJustify
           CharCase = ecUpperCase
@@ -1460,33 +1581,10 @@ object frmven_nfe: Tfrmven_nfe
           Text = '0,00'
           StoredValues = 1
         end
-        object EDVST: TdxMaskEdit
-          Left = 156
-          Top = 182
-          Width = 120
-          Color = 16644596
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 8
-          Alignment = taRightJustify
-          AutoSize = False
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-          Text = '0,00'
-          Height = 22
-          StoredValues = 1
-        end
         object EDVBCST: TdxMaskEdit
-          Left = 156
-          Top = 158
-          Width = 120
+          Left = 165
+          Top = 320
+          Width = 110
           Color = 16644596
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1497,7 +1595,8 @@ object frmven_nfe: Tfrmven_nfe
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 7
+          TabOrder = 13
+          Visible = False
           Alignment = taRightJustify
           AutoSize = False
           CharCase = ecUpperCase
@@ -1507,148 +1606,9 @@ object frmven_nfe: Tfrmven_nfe
           StoredValues = 1
         end
         object EDVCREDICMSSN: TdxMaskEdit
-          Left = 156
-          Top = 110
-          Width = 120
-          Color = 16644596
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 5
-          Alignment = taRightJustify
-          AutoSize = False
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-          Text = '0,00'
-          Height = 22
-          StoredValues = 1
-        end
-        object EDVProd: TdxMaskEdit
-          Left = 156
-          Top = 38
-          Width = 120
-          Color = 14065456
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Style.BorderColor = 16644596
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 2
-          OnKeyPress = EDTQComKeyPress
-          Alignment = taRightJustify
-          AutoSize = False
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-          Text = '0,00'
-          Height = 22
-          StoredValues = 1
-        end
-        object EDVBC: TdxMaskEdit
-          Left = 156
-          Top = 62
-          Width = 120
-          Color = 16644596
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 3
-          Alignment = taRightJustify
-          AutoSize = False
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-          Text = '0,00'
-          Height = 22
-          StoredValues = 1
-        end
-        object EDVICMS: TdxMaskEdit
-          Left = 156
-          Top = 86
-          Width = 120
-          Color = 16644596
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 4
-          Alignment = taRightJustify
-          AutoSize = False
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-          Text = '0,00'
-          Height = 22
-          StoredValues = 1
-        end
-        object EDVIPI: TdxMaskEdit
-          Left = 156
-          Top = 206
-          Width = 120
-          Color = 16644596
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 9
-          Alignment = taRightJustify
-          AutoSize = False
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-          Text = '0,00'
-          Height = 22
-          StoredValues = 1
-        end
-        object EDVPIS: TdxMaskEdit
-          Left = 156
-          Top = 230
-          Width = 120
-          Color = 16644596
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 10
-          Alignment = taRightJustify
-          AutoSize = False
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-          Text = '0,00'
-          Height = 22
-          StoredValues = 1
-        end
-        object EDVCOFINS: TdxMaskEdit
-          Left = 156
-          Top = 254
-          Width = 120
+          Left = 165
+          Top = 272
+          Width = 110
           Color = 16644596
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1668,10 +1628,10 @@ object frmven_nfe: Tfrmven_nfe
           Height = 22
           StoredValues = 1
         end
-        object EDVNF: TdxMaskEdit
-          Left = 156
-          Top = 326
-          Width = 120
+        object EDVProd: TdxMaskEdit
+          Left = 165
+          Top = 32
+          Width = 110
           Color = 14065456
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWhite
@@ -1682,7 +1642,376 @@ object frmven_nfe: Tfrmven_nfe
           Style.BorderColor = 16644596
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 14
+          TabOrder = 1
+          OnKeyPress = EDTQComKeyPress
+          Alignment = taRightJustify
+          AutoSize = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0,00'
+          Height = 22
+          StoredValues = 1
+        end
+        object EDVBC: TdxMaskEdit
+          Left = 165
+          Top = 56
+          Width = 110
+          Color = 16644596
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 2
+          Alignment = taRightJustify
+          AutoSize = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0,00'
+          Height = 22
+          StoredValues = 1
+        end
+        object EDVICMS: TdxMaskEdit
+          Left = 165
+          Top = 80
+          Width = 110
+          Color = 16644596
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 3
+          Alignment = taRightJustify
+          AutoSize = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0,00'
+          Height = 22
+          StoredValues = 1
+        end
+        object EDVIPI: TdxMaskEdit
+          Left = 165
+          Top = 368
+          Width = 110
+          Color = 16644596
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 15
+          Alignment = taRightJustify
+          AutoSize = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0,00'
+          Height = 22
+          StoredValues = 1
+        end
+        object EDVPIS: TdxMaskEdit
+          Left = 165
+          Top = 392
+          Width = 110
+          Color = 16644596
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 16
+          Alignment = taRightJustify
+          AutoSize = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0,00'
+          Height = 22
+          StoredValues = 1
+        end
+        object EDVCOFINS: TdxMaskEdit
+          Left = 165
+          Top = 416
+          Width = 110
+          Color = 16644596
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 17
+          Alignment = taRightJustify
+          AutoSize = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0,00'
+          Height = 22
+          StoredValues = 1
+        end
+        object EDVNF: TdxMaskEdit
+          Left = 165
+          Top = 488
+          Width = 110
+          Color = 14065456
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Style.BorderColor = 16644596
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 20
+          Alignment = taRightJustify
+          AutoSize = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0,00'
+          Height = 22
+          StoredValues = 1
+        end
+        object EDVICMSDeson: TdxMaskEdit
+          Left = 165
+          Top = 296
+          Width = 110
+          Color = 16644596
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 12
+          Alignment = taRightJustify
+          AutoSize = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0,00'
+          Height = 22
+          StoredValues = 1
+        end
+        object EDVTotTrib: TdxMaskEdit
+          Left = 165
+          Top = 464
+          Width = 110
+          Color = 14065456
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Style.BorderColor = 16644596
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 19
+          Alignment = taRightJustify
+          AutoSize = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0,00'
+          Height = 22
+          StoredValues = 1
+        end
+        object edvFCPUFDest: TdxMaskEdit
+          Left = 165
+          Top = 440
+          Width = 110
+          Color = 16644596
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 18
+          Alignment = taRightJustify
+          AutoSize = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0,00'
+          Height = 22
+          StoredValues = 1
+        end
+        object EDNFE_CBS_VBCCBS: TdxMaskEdit
+          Left = 165
+          Top = 104
+          Width = 110
+          Color = 16644596
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 4
+          Alignment = taRightJustify
+          AutoSize = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0,00'
+          Height = 22
+          StoredValues = 1
+        end
+        object EDNFE_CBS_VCBS: TdxMaskEdit
+          Left = 165
+          Top = 128
+          Width = 110
+          Color = 16644596
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 5
+          Alignment = taRightJustify
+          AutoSize = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0,00'
+          Height = 22
+          StoredValues = 1
+        end
+        object EDNFE_IBSMUN_VBCMUN: TdxMaskEdit
+          Left = 165
+          Top = 152
+          Width = 110
+          Color = 16644596
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 6
+          Alignment = taRightJustify
+          AutoSize = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0,00'
+          Height = 22
+          StoredValues = 1
+        end
+        object EDNFE_IBSMUN_VIBSMUN: TdxMaskEdit
+          Left = 165
+          Top = 176
+          Width = 110
+          Color = 16644596
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 7
+          Alignment = taRightJustify
+          AutoSize = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0,00'
+          Height = 22
+          StoredValues = 1
+        end
+        object EDNFE_IBSCBS_VBCIBSCBS: TdxMaskEdit
+          Left = 165
+          Top = 200
+          Width = 110
+          Color = 16644596
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 8
+          Alignment = taRightJustify
+          AutoSize = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0,00'
+          Height = 22
+          StoredValues = 1
+        end
+        object EDNFE_IBSUF_VBCIBSUF: TdxMaskEdit
+          Left = 165
+          Top = 224
+          Width = 110
+          Color = 16644596
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 9
+          Alignment = taRightJustify
+          AutoSize = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0,00'
+          Height = 22
+          StoredValues = 1
+        end
+        object EDNFE_IBSUF_VIBSUF: TdxMaskEdit
+          Left = 165
+          Top = 248
+          Width = 110
+          Color = 16644596
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 10
           Alignment = taRightJustify
           AutoSize = False
           CharCase = ecUpperCase
@@ -1692,9 +2021,9 @@ object frmven_nfe: Tfrmven_nfe
           StoredValues = 1
         end
         object EDTQCom: TdxMaskEdit
-          Left = 156
-          Top = 14
-          Width = 80
+          Left = 165
+          Top = 8
+          Width = 110
           Color = 14065456
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWhite
@@ -1715,10 +2044,10 @@ object frmven_nfe: Tfrmven_nfe
           Height = 22
           StoredValues = 1
         end
-        object EDVICMSDeson: TdxMaskEdit
-          Left = 156
-          Top = 134
-          Width = 120
+        object EDVST: TdxMaskEdit
+          Left = 165
+          Top = 320
+          Width = 110
           Color = 16644596
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1729,53 +2058,7 @@ object frmven_nfe: Tfrmven_nfe
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 6
-          Alignment = taRightJustify
-          AutoSize = False
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-          Text = '0,00'
-          Height = 22
-          StoredValues = 1
-        end
-        object EDVTotTrib: TdxMaskEdit
-          Left = 156
-          Top = 302
-          Width = 120
-          Color = 14065456
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Style.BorderColor = 16644596
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 13
-          Alignment = taRightJustify
-          AutoSize = False
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-          Text = '0,00'
-          Height = 22
-          StoredValues = 1
-        end
-        object edvFCPUFDest: TdxMaskEdit
-          Left = 156
-          Top = 278
-          Width = 120
-          Color = 16644596
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 12
+          TabOrder = 14
           Alignment = taRightJustify
           AutoSize = False
           CharCase = ecUpperCase
@@ -1789,8 +2072,8 @@ object frmven_nfe: Tfrmven_nfe
     object PNLMargemD: TPanel
       Left = 280
       Top = 0
-      Width = 996
-      Height = 577
+      Width = 1636
+      Height = 882
       Align = alClient
       BevelOuter = bvNone
       Color = 15788249
@@ -1798,7 +2081,7 @@ object frmven_nfe: Tfrmven_nfe
       object PNLDestinatario: TPanel
         Left = 0
         Top = 0
-        Width = 996
+        Width = 1636
         Height = 255
         Align = alTop
         BevelOuter = bvNone
@@ -2601,7 +2884,6 @@ object frmven_nfe: Tfrmven_nfe
                   BandFont.Height = -12
                   BandFont.Name = 'Tahoma'
                   BandFont.Style = []
-                  DataSource = DTSFrete
                   Filter.Criteria = {00000000}
                   HeaderFont.Charset = DEFAULT_CHARSET
                   HeaderFont.Color = clWindowText
@@ -2652,7 +2934,7 @@ object frmven_nfe: Tfrmven_nfe
         object PNLDestinatarioMargemD: TPanel
           Left = 495
           Top = 0
-          Width = 501
+          Width = 1141
           Height = 255
           Align = alClient
           BevelOuter = bvNone
@@ -2661,7 +2943,7 @@ object frmven_nfe: Tfrmven_nfe
           object GBInfCplNF: TGroupBox
             Left = 0
             Top = 0
-            Width = 501
+            Width = 1141
             Height = 176
             Align = alClient
             Caption = '  Informa'#231#245'es Complementares  '
@@ -2675,7 +2957,7 @@ object frmven_nfe: Tfrmven_nfe
             object PCInfoA: TdxPageControl
               Left = 2
               Top = 19
-              Width = 497
+              Width = 1137
               Height = 155
               ActivePage = TSInfoNF
               Align = alClient
@@ -2700,7 +2982,7 @@ object frmven_nfe: Tfrmven_nfe
                 object EDInfAdNF: TdxMemo
                   Left = 0
                   Top = 0
-                  Width = 497
+                  Width = 1137
                   Align = alClient
                   Color = 16644596
                   Font.Charset = ANSI_CHARSET
@@ -2747,7 +3029,7 @@ object frmven_nfe: Tfrmven_nfe
           object GBInfoPedido: TGroupBox
             Left = 0
             Top = 176
-            Width = 501
+            Width = 1141
             Height = 79
             Align = alBottom
             Caption = '  Informa'#231#245'es do Pedido  '
@@ -2761,7 +3043,7 @@ object frmven_nfe: Tfrmven_nfe
             object EDInfAdPed: TdxMemo
               Left = 2
               Top = 19
-              Width = 497
+              Width = 1137
               Align = alClient
               Color = 16644596
               Enabled = False
@@ -2784,8 +3066,8 @@ object frmven_nfe: Tfrmven_nfe
       object PNLRodape: TPanel
         Left = 0
         Top = 255
-        Width = 996
-        Height = 322
+        Width = 1636
+        Height = 627
         Align = alClient
         BevelOuter = bvNone
         Color = 15788249
@@ -2793,8 +3075,8 @@ object frmven_nfe: Tfrmven_nfe
         object GBEdicao: TGroupBox
           Left = 0
           Top = 0
-          Width = 996
-          Height = 322
+          Width = 1636
+          Height = 627
           Align = alClient
           Caption = '  Edi'#231#227'o  '
           Font.Charset = ANSI_CHARSET
@@ -2807,8 +3089,8 @@ object frmven_nfe: Tfrmven_nfe
           object PCEdicao: TdxPageControl
             Left = 2
             Top = 19
-            Width = 992
-            Height = 301
+            Width = 1632
+            Height = 606
             ActivePage = TSProduto
             Align = alClient
             Font.Charset = ANSI_CHARSET
@@ -2833,7 +3115,7 @@ object frmven_nfe: Tfrmven_nfe
                 Left = 0
                 Top = 0
                 Width = 55
-                Height = 274
+                Height = 579
                 Cursor = crHandPoint
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
@@ -3052,8 +3334,8 @@ object frmven_nfe: Tfrmven_nfe
               object PNLConsulta: TPanel
                 Left = 55
                 Top = 0
-                Width = 937
-                Height = 274
+                Width = 1577
+                Height = 579
                 Align = alClient
                 BevelOuter = bvNone
                 Color = 16644596
@@ -3061,13 +3343,12 @@ object frmven_nfe: Tfrmven_nfe
                 object dbgnfe: TdxDBGrid
                   Left = 0
                   Top = 0
-                  Width = 937
-                  Height = 172
+                  Width = 1577
+                  Height = 477
                   Bands = <
                     item
                     end>
                   DefaultLayout = True
-                  HeaderMinRowCount = 2
                   HeaderPanelRowCount = 1
                   KeyField = 'ID'
                   ShowSummaryFooter = True
@@ -3075,7 +3356,7 @@ object frmven_nfe: Tfrmven_nfe
                   SummarySeparator = ', '
                   Align = alClient
                   BorderStyle = bsNone
-                  Color = clWhite
+                  Color = clHighlightText
                   Ctl3D = True
                   Font.Charset = DEFAULT_CHARSET
                   Font.Color = clWindowText
@@ -3095,6 +3376,7 @@ object frmven_nfe: Tfrmven_nfe
                   BandFont.Name = 'Tahoma'
                   BandFont.Style = []
                   DataSource = dtsnfe_001
+                  Filter.Active = True
                   Filter.Criteria = {00000000}
                   HeaderFont.Charset = DEFAULT_CHARSET
                   HeaderFont.Color = clWindowText
@@ -3113,8 +3395,8 @@ object frmven_nfe: Tfrmven_nfe
                   PreviewFont.Style = []
                   OnCustomDrawCell = dbgnfeCustomDrawCell
                   object dbgnfeNFE_ITEMPED: TdxDBGridMaskColumn
+                    Alignment = taRightJustify
                     CharCase = ecUpperCase
-                    HeaderAlignment = taRightJustify
                     Width = 40
                     BandIndex = 0
                     RowIndex = 0
@@ -3122,23 +3404,25 @@ object frmven_nfe: Tfrmven_nfe
                     SummaryFooterType = cstCount
                     SummaryFooterField = 'ID'
                     SummaryFooterFormat = '0'
+                    DisableFilter = True
                   end
                   object dbgnfeNFE_CFOP: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
-                    Width = 40
+                    Width = 55
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_CFOP'
                   end
                   object dbgnfeNFE_CPROD: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
-                    Width = 77
+                    Width = 80
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_CPROD'
                   end
                   object dbgnfeNFE_NCM: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
+                    Width = 80
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_NCM'
@@ -3152,30 +3436,29 @@ object frmven_nfe: Tfrmven_nfe
                   end
                   object dbgnfeNFE_ORIG: TdxDBGridPickColumn
                     CharCase = ecUpperCase
-                    Width = 28
+                    Width = 45
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_ORIG'
                   end
                   object dbgnfeNFE_CST: TdxDBGridPickColumn
                     CharCase = ecUpperCase
-                    Width = 28
+                    Width = 45
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_CST'
                   end
                   object dbgnfeNFE_UCOM: TdxDBGridPickColumn
                     CharCase = ecUpperCase
-                    Width = 60
+                    Width = 45
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_UCOM'
                   end
                   object dbgnfeNFE_QCOM: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
-                    Color = clBtnFace
                     HeaderAlignment = taRightJustify
-                    Width = 70
+                    Width = 76
                     BandIndex = 0
                     RowIndex = 0
                     OnValidate = dbgnfeNFE_QCOMValidate
@@ -3187,7 +3470,6 @@ object frmven_nfe: Tfrmven_nfe
                   end
                   object dbgnfeNFE_VUNCOM: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
-                    Color = clBtnFace
                     HeaderAlignment = taRightJustify
                     Width = 60
                     BandIndex = 0
@@ -3197,15 +3479,14 @@ object frmven_nfe: Tfrmven_nfe
                     DisableFilter = True
                   end
                   object dbgnfeNFE_UTRIB: TdxDBGridMaskColumn
-                    Color = 15658734
                     Visible = False
                     Width = 55
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_UTRIB'
+                    DisableFilter = True
                   end
                   object dbgnfeNFE_QTRIB: TdxDBGridCurrencyColumn
-                    Color = 15658734
                     HeaderAlignment = taRightJustify
                     Visible = False
                     Width = 65
@@ -3220,7 +3501,6 @@ object frmven_nfe: Tfrmven_nfe
                     DisableFilter = True
                   end
                   object dbgnfeNFE_VUNTRIB: TdxDBGridMaskColumn
-                    Color = 15658734
                     HeaderAlignment = taRightJustify
                     Visible = False
                     Width = 65
@@ -3240,36 +3520,29 @@ object frmven_nfe: Tfrmven_nfe
                     SummaryFooterType = cstSum
                     SummaryFooterField = 'NFE_VPROD'
                     SummaryFooterFormat = '#,0.00'
+                    DisableFilter = True
                   end
                   object dbgnfeNFE_VDESC: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
                     HeaderAlignment = taRightJustify
-                    Width = 58
+                    Width = 56
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_VDESC'
                     SummaryFooterType = cstSum
                     SummaryFooterField = 'NFE_VDESC'
                     SummaryFooterFormat = '#,0.00'
-                  end
-                  object dbgnfeNFE_VFRETE: TdxDBGridCurrencyColumn
-                    HeaderAlignment = taRightJustify
-                    Width = 68
-                    BandIndex = 0
-                    RowIndex = 0
-                    FieldName = 'NFE_VFRETE'
-                    SummaryFooterType = cstSum
-                    SummaryFooterField = 'NFE_VFRETE'
-                    SummaryFooterFormat = '#,0.00'
-                    DisplayFormat = ',0.00;-,0.00'
-                    Nullable = False
                     DisableFilter = True
                   end
                   object dbgnfeNFE_VNF: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
-                    Color = clBtnFace
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -12
+                    Font.Name = 'Tahoma'
+                    Font.Style = []
                     HeaderAlignment = taRightJustify
-                    Width = 80
+                    Width = 83
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_VNF'
@@ -3281,7 +3554,7 @@ object frmven_nfe: Tfrmven_nfe
                   object dbgnfeNFE_VBC: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
                     HeaderAlignment = taRightJustify
-                    Width = 75
+                    Width = 72
                     BandIndex = 0
                     RowIndex = 0
                     OnValidate = dbgnfeNFE_VBCValidate
@@ -3289,19 +3562,11 @@ object frmven_nfe: Tfrmven_nfe
                     SummaryFooterType = cstSum
                     SummaryFooterField = 'NFE_VBC'
                     SummaryFooterFormat = '#,0.00'
-                  end
-                  object dbgnfeNFE_PREDBC: TdxDBGridMaskColumn
-                    CharCase = ecUpperCase
-                    HeaderAlignment = taRightJustify
-                    Width = 55
-                    BandIndex = 0
-                    RowIndex = 0
-                    FieldName = 'NFE_PREDBC'
+                    DisableFilter = True
                   end
                   object dbgnfeNFE_PICMS: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
-                    HeaderAlignment = taRightJustify
-                    Width = 40
+                    Width = 66
                     BandIndex = 0
                     RowIndex = 0
                     OnValidate = dbgnfeNFE_PICMSValidate
@@ -3309,9 +3574,8 @@ object frmven_nfe: Tfrmven_nfe
                   end
                   object dbgnfeNFE_VICMS: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
-                    Color = clBtnFace
                     HeaderAlignment = taRightJustify
-                    Width = 65
+                    Width = 72
                     BandIndex = 0
                     RowIndex = 0
                     OnValidate = dbgnfeNFE_VICMSValidate
@@ -3319,10 +3583,25 @@ object frmven_nfe: Tfrmven_nfe
                     SummaryFooterType = cstSum
                     SummaryFooterField = 'NFE_VICMS'
                     SummaryFooterFormat = '#,0.00'
+                    DisableFilter = True
+                  end
+                  object dbgnfeNFE_PREDBC: TdxDBGridMaskColumn
+                    CharCase = ecUpperCase
+                    HeaderAlignment = taRightJustify
+                    Width = 40
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'NFE_PREDBC'
+                    DisableFilter = True
                   end
                   object dbgnfeNFE_CSTIPI: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
-                    Width = 40
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -12
+                    Font.Name = 'Tahoma'
+                    Font.Style = []
+                    Width = 38
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_CSTIPI'
@@ -3330,22 +3609,25 @@ object frmven_nfe: Tfrmven_nfe
                   object dbgnfeNFE_VBCIPI: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
                     HeaderAlignment = taRightJustify
+                    Width = 59
                     BandIndex = 0
                     RowIndex = 0
                     OnValidate = dbgnfeNFE_VBCIPIValidate
                     FieldName = 'NFE_VBCIPI'
+                    DisableFilter = True
                   end
                   object dbgnfeNFE_PIPI: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
-                    HeaderAlignment = taRightJustify
-                    Width = 35
+                    Width = 39
                     BandIndex = 0
                     RowIndex = 0
                     OnValidate = dbgnfeNFE_PIPIValidate
                     FieldName = 'NFE_PIPI'
+                    DisableFilter = True
                   end
                   object dbgnfeNFE_VBCST: TdxDBGridCurrencyColumn
                     HeaderAlignment = taRightJustify
+                    Visible = False
                     Width = 73
                     BandIndex = 0
                     RowIndex = 0
@@ -3355,6 +3637,7 @@ object frmven_nfe: Tfrmven_nfe
                     SummaryFooterFormat = '#,0.00'
                     DisplayFormat = ',0.00;-,0.00'
                     Nullable = False
+                    DisableFilter = True
                   end
                   object dbgnfeNFE_VIPI: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
@@ -3367,18 +3650,39 @@ object frmven_nfe: Tfrmven_nfe
                     SummaryFooterType = cstSum
                     SummaryFooterField = 'NFE_VIPI'
                     SummaryFooterFormat = '#,0.00'
+                    DisableFilter = True
+                  end
+                  object dbgnfeNFE_EXTIPI: TdxDBGridMaskColumn
+                    Width = 60
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'NFE_EXTIPI'
+                  end
+                  object dbgnfeNFE_CEST: TdxDBGridMaskColumn
+                    Width = 52
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'NFE_CEST'
+                  end
+                  object dbgnfeNFE_CENQ: TdxDBGridMaskColumn
+                    Width = 110
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'NFE_CENQ'
                   end
                   object dbgnfeNFE_PICMSST: TdxDBGridCurrencyColumn
-                    HeaderAlignment = taRightJustify
+                    Visible = False
                     Width = 55
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_PICMSST'
                     DisplayFormat = ',0.00;-,0.00'
                     Nullable = False
+                    DisableFilter = True
                   end
                   object dbgnfeNFE_VICMSST: TdxDBGridCurrencyColumn
                     HeaderAlignment = taRightJustify
+                    Visible = False
                     Width = 55
                     BandIndex = 0
                     RowIndex = 0
@@ -3388,28 +3692,16 @@ object frmven_nfe: Tfrmven_nfe
                     SummaryFooterFormat = '#,0.00'
                     DisplayFormat = ',0.00;-,0.00'
                     Nullable = False
-                  end
-                  object dbgnfeNFE_CENQ: TdxDBGridMaskColumn
-                    Width = 41
-                    BandIndex = 0
-                    RowIndex = 0
-                    FieldName = 'NFE_CENQ'
-                  end
-                  object dbgnfeNFE_EXTIPI: TdxDBGridMaskColumn
-                    Width = 43
-                    BandIndex = 0
-                    RowIndex = 0
-                    FieldName = 'NFE_EXTIPI'
-                  end
-                  object dbgnfeNFE_CEST: TdxDBGridMaskColumn
-                    Width = 36
-                    BandIndex = 0
-                    RowIndex = 0
-                    FieldName = 'NFE_CEST'
+                    DisableFilter = True
                   end
                   object dbgnfeNFE_CSTPIS: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
-                    Width = 39
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -12
+                    Font.Name = 'Tahoma'
+                    Font.Style = []
+                    Width = 41
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_CSTPIS'
@@ -3417,15 +3709,15 @@ object frmven_nfe: Tfrmven_nfe
                   object dbgnfeNFE_VBCPIS: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
                     HeaderAlignment = taRightJustify
-                    Width = 75
+                    Width = 62
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_VBCPIS'
+                    DisableFilter = True
                   end
                   object dbgnfeNFE_PPIS: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
-                    HeaderAlignment = taRightJustify
-                    Width = 40
+                    Width = 57
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_PPIS'
@@ -3433,17 +3725,23 @@ object frmven_nfe: Tfrmven_nfe
                   object dbgnfeNFE_VPIS: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
                     HeaderAlignment = taRightJustify
-                    Width = 75
+                    Width = 67
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_VPIS'
                     SummaryFooterType = cstSum
                     SummaryFooterField = 'NFE_VPIS'
                     SummaryFooterFormat = '#,0.00'
+                    DisableFilter = True
                   end
                   object dbgnfeNFE_CSTCOFINS: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
-                    Width = 41
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -12
+                    Font.Name = 'Tahoma'
+                    Font.Style = []
+                    Width = 70
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_CSTCOFINS'
@@ -3451,15 +3749,15 @@ object frmven_nfe: Tfrmven_nfe
                   object dbgnfeNFE_VBCOFINS: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
                     HeaderAlignment = taRightJustify
-                    Width = 75
+                    Width = 85
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_VBCOFINS'
+                    DisableFilter = True
                   end
                   object dbgnfeNFE_PCOFINS: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
-                    HeaderAlignment = taRightJustify
-                    Width = 40
+                    Width = 80
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_PCOFINS'
@@ -3467,13 +3765,40 @@ object frmven_nfe: Tfrmven_nfe
                   object dbgnfeNFE_VCOFINS: TdxDBGridMaskColumn
                     CharCase = ecUpperCase
                     HeaderAlignment = taRightJustify
-                    Width = 75
+                    Width = 67
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_VCOFINS'
                     SummaryFooterType = cstSum
                     SummaryFooterField = 'NFE_VCOFINS'
                     SummaryFooterFormat = '#,0.00'
+                    DisableFilter = True
+                  end
+                  object dbgnfeNFE_VSEG: TdxDBGridCurrencyColumn
+                    HeaderAlignment = taRightJustify
+                    Width = 65
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'NFE_VSEG'
+                    SummaryFooterType = cstSum
+                    SummaryFooterField = 'NFE_VSEG'
+                    SummaryFooterFormat = '#,0.00'
+                    DisplayFormat = ',0.00;-,0.00'
+                    Nullable = False
+                    DisableFilter = True
+                  end
+                  object dbgnfeNFE_VFRETE: TdxDBGridCurrencyColumn
+                    HeaderAlignment = taRightJustify
+                    Width = 55
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'NFE_VFRETE'
+                    SummaryFooterType = cstSum
+                    SummaryFooterField = 'NFE_VFRETE'
+                    SummaryFooterFormat = '#,0.00'
+                    DisplayFormat = ',0.00;-,0.00'
+                    Nullable = False
+                    DisableFilter = True
                   end
                   object dbgnfeNFE_VOUTRO: TdxDBGridCurrencyColumn
                     HeaderAlignment = taRightJustify
@@ -3486,18 +3811,6 @@ object frmven_nfe: Tfrmven_nfe
                     SummaryFooterFormat = '#,0.00'
                     DisplayFormat = ',0.00;-,0.00'
                     Nullable = False
-                  end
-                  object dbgnfeNFE_VSEG: TdxDBGridCurrencyColumn
-                    HeaderAlignment = taRightJustify
-                    Width = 78
-                    BandIndex = 0
-                    RowIndex = 0
-                    FieldName = 'NFE_VSEG'
-                    SummaryFooterType = cstSum
-                    SummaryFooterField = 'NFE_VSEG'
-                    SummaryFooterFormat = '#,0.00'
-                    DisplayFormat = ',0.00;-,0.00'
-                    Nullable = False
                     DisableFilter = True
                   end
                   object dbgnfeNFE_FLAG: TdxDBGridMaskColumn
@@ -3506,18 +3819,26 @@ object frmven_nfe: Tfrmven_nfe
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_FLAG'
+                    DisableFilter = True
                   end
                   object dbgnfeNFE_NFCI: TdxDBGridMaskColumn
-                    Width = 256
+                    Width = 150
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_NFCI'
+                    DisableFilter = True
+                  end
+                  object dbgnfeMAO_OBRA: TdxDBGridMaskColumn
+                    Visible = False
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'MAO_OBRA'
                   end
                 end
                 object GBInfoComp: TGroupBox
                   Left = 0
-                  Top = 214
-                  Width = 937
+                  Top = 519
+                  Width = 1577
                   Height = 60
                   Align = alBottom
                   Caption = '  Informa'#231#245'es Complementares  '
@@ -3533,7 +3854,7 @@ object frmven_nfe: Tfrmven_nfe
                   object DBInfoComp: TdxDBMemo
                     Left = 2
                     Top = 19
-                    Width = 933
+                    Width = 1573
                     Align = alClient
                     Color = clWhite
                     Font.Charset = ANSI_CHARSET
@@ -3554,8 +3875,8 @@ object frmven_nfe: Tfrmven_nfe
                 end
                 object GBDescricao: TGroupBox
                   Left = 0
-                  Top = 172
-                  Width = 937
+                  Top = 477
+                  Width = 1577
                   Height = 42
                   Align = alBottom
                   Caption = '  Descri'#231#227'o Original do XML  '
@@ -3572,7 +3893,7 @@ object frmven_nfe: Tfrmven_nfe
                   object DBDescricao: TdxDBEdit
                     Left = 1
                     Top = 17
-                    Width = 1104
+                    Width = 1576
                     Color = clBtnFace
                     Font.Charset = DEFAULT_CHARSET
                     Font.Color = clWindowText
@@ -3599,8 +3920,8 @@ object frmven_nfe: Tfrmven_nfe
               object dbgdup: TdxDBGrid
                 Left = 55
                 Top = 0
-                Width = 937
-                Height = 274
+                Width = 1577
+                Height = 579
                 Bands = <
                   item
                   end>
@@ -3682,7 +4003,7 @@ object frmven_nfe: Tfrmven_nfe
                 Left = 0
                 Top = 0
                 Width = 55
-                Height = 274
+                Height = 579
                 Cursor = crHandPoint
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
@@ -3768,8 +4089,8 @@ object frmven_nfe: Tfrmven_nfe
               object dbgcli: TdxDBGrid
                 Left = 55
                 Top = 0
-                Width = 1428
-                Height = 305
+                Width = 1577
+                Height = 579
                 Bands = <
                   item
                   end>
@@ -3785,6 +4106,7 @@ object frmven_nfe: Tfrmven_nfe
                 Ctl3D = True
                 ParentCtl3D = False
                 TabOrder = 0
+                OnKeyDown = dbgcliKeyDown
                 AutoSearchColor = 9395
                 AutoSearchTextColor = clWhite
                 DataSource = dtscli_001
@@ -3827,7 +4149,7 @@ object frmven_nfe: Tfrmven_nfe
                 Left = 0
                 Top = 0
                 Width = 55
-                Height = 305
+                Height = 579
                 Cursor = crHandPoint
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
@@ -3912,8 +4234,8 @@ object frmven_nfe: Tfrmven_nfe
               object PNLFavorecido: TPanel
                 Left = 0
                 Top = 0
-                Width = 992
-                Height = 274
+                Width = 1632
+                Height = 579
                 Align = alClient
                 BevelOuter = bvNone
                 Color = 15788249
@@ -3921,8 +4243,8 @@ object frmven_nfe: Tfrmven_nfe
                 object GBFavEnd: TGroupBox
                   Left = 449
                   Top = 0
-                  Width = 543
-                  Height = 274
+                  Width = 1183
+                  Height = 579
                   Align = alClient
                   Caption = '  Endere'#231'os  '
                   Font.Charset = ANSI_CHARSET
@@ -3935,8 +4257,8 @@ object frmven_nfe: Tfrmven_nfe
                   object PCEndereco: TdxPageControl
                     Left = 2
                     Top = 19
-                    Width = 539
-                    Height = 253
+                    Width = 1179
+                    Height = 558
                     ActivePage = TSEC
                     Align = alClient
                     Font.Charset = ANSI_CHARSET
@@ -3961,8 +4283,8 @@ object frmven_nfe: Tfrmven_nfe
                       object BVEC: TBevel
                         Left = 0
                         Top = 0
-                        Width = 710
-                        Height = 257
+                        Width = 742
+                        Height = 398
                         Align = alClient
                       end
                       object LAxLgr: TLabel
@@ -24134,7 +24456,7 @@ object frmven_nfe: Tfrmven_nfe
                   Left = 0
                   Top = 0
                   Width = 449
-                  Height = 274
+                  Height = 579
                   Align = alLeft
                   BevelOuter = bvNone
                   Color = 15788249
@@ -24856,7 +25178,7 @@ object frmven_nfe: Tfrmven_nfe
                     Left = 0
                     Top = 327
                     Width = 449
-                    Height = 65
+                    Height = 119
                     Align = alClient
                     Caption = '  Informa'#231#245'es Adicionais do Cadastro  '
                     Font.Charset = ANSI_CHARSET
@@ -24885,7 +25207,7 @@ object frmven_nfe: Tfrmven_nfe
                       Style.Shadow = False
                       TabOrder = 0
                       ReadOnly = False
-                      Height = 44
+                      Height = 98
                       StoredValues = 64
                     end
                   end
@@ -27880,8 +28202,8 @@ object frmven_nfe: Tfrmven_nfe
   end
   object sbMAIN: TStatusBar
     Left = 0
-    Top = 676
-    Width = 1276
+    Top = 981
+    Width = 1916
     Height = 19
     Panels = <
       item
@@ -41336,7 +41658,6 @@ object frmven_nfe: Tfrmven_nfe
     BeforeCancel = nfe_001BeforeCancel
     BeforePost = nfe_001BeforePost
     OnNewRecord = nfe_001NewRecord
-    BufferChunks = 100
     DeleteSQL.Strings = (
       'delete from NFE_ITE'
       'where'
@@ -41344,10 +41665,28 @@ object frmven_nfe: Tfrmven_nfe
     InsertSQL.Strings = (
       'insert into NFE_ITE'
       
-        '  (ID, NFE_CART, NFE_CBENEF, NFE_CBPRODUTO, NFE_CBUNIDADE, NFE_C' +
-        'CAB, NFE_CDEP, '
+        '  (CAT_DESC, CAT_ID, CDEV, CF_CDNF, CF_CDPD, CF_CEAN, CF_CNPJ, C' +
+        'F_DECP, '
       
-        '   NFE_CDNF, NFE_CEAN, NFE_CENQ, NFE_CEST, NFE_CEXPORTADOR, NFE_' +
+        '   CF_DEPD, CF_FANTASIA, CF_ID, CF_PIPI, CF_RAZAO, CF_SKU, CF_UC' +
+        'OM, CF_UESP_QT, '
+      
+        '   CF_UESP_RF, CF_VPRC_COM, CF_VPRC_PAD, CF_VPRC_PAD_ORI, COL_DE' +
+        'SC, COL_ID, '
+      
+        '   CP_IDEP, FLAG, HOST, ID, IDAK, IDEK, IDEV, IP, IS_PDSC, MAO_O' +
+        'BRA, NFE_CART, '
+      
+        '   NFE_CBENEF, NFE_CBPRODUTO, NFE_CBS_PCBS, NFE_CBS_PDIF, NFE_CB' +
+        'S_VBCCBS, '
+      
+        '   NFE_CBS_VCBS, NFE_CBS_VCREDPRES, NFE_CBS_VCREDPRESCONDSUS, NF' +
+        'E_CBS_VDEVTRIB, '
+      
+        '   NFE_CBS_VDIF, NFE_CBUNIDADE, NFE_CCAB, NFE_CDBX, NFE_CDEP, NF' +
+        'E_CDNF, '
+      
+        '   NFE_CDRO, NFE_CEAN, NFE_CENQ, NFE_CEST, NFE_CEXPORTADOR, NFE_' +
         'CFABRICANTE, '
       
         '   NFE_CFOP, NFE_CHNFE, NFE_CLENQ, NFE_CLISTSERV, NFE_CMUNFGISSQ' +
@@ -41359,85 +41698,130 @@ object frmven_nfe: Tfrmven_nfe
         '   NFE_CSTA, NFE_CSTCOFINS, NFE_CSTIPI, NFE_CSTPIS, NFE_CSTS, NF' +
         'E_DCOR, '
       
-        '   NFE_DDESEMB, NFE_DDI, NFE_ESP, NFE_EXTIPI, NFE_FLAG, NFE_FRET' +
-        ', NFE_GRAM, '
+        '   NFE_DDESEMB, NFE_DDI, NFE_DERO, NFE_ESP, NFE_EXTIPI, NFE_FLAG' +
+        ', NFE_FRET, '
       
-        '   NFE_INDESCALA, NFE_INDTOT, NFE_INFADPROD, NFE_INFADTRIB, NFE_' +
-        'IPRO, NFE_ITEMPED, '
+        '   NFE_GRAM, NFE_IBSCBS_CCLASSTRIBIS, NFE_IBSCBS_CSTIS, NFE_IBSC' +
+        'BS_INDDOACAO, '
       
-        '   NFE_LARG, NFE_METR, NFE_MODBC, NFE_MODBCST, NFE_MOTDESICMS, N' +
-        'FE_MVA, '
+        '   NFE_IBSCBS_VBCIBSCBS, NFE_IBSCBS_VIBSCBS, NFE_IBSMUN_PDIF, NF' +
+        'E_IBSMUN_PIBSMUN, '
       
-        '   NFE_MVAST, NFE_NADICAO, NFE_NCM, NFE_NDI, NFE_NDRAW, NFE_NFCI' +
-        ', NFE_NRE, '
+        '   NFE_IBSMUN_VBCIBSMUN, NFE_IBSMUN_VCREDPRES, NFE_IBSMUN_VCREDP' +
+        'RESCONDSUS, '
       
-        '   NFE_NRECOPI, NFE_NSEQADIC, NFE_NVE, NFE_ORIG, NFE_PCOFINS, NF' +
-        'E_PCOFINSST, '
+        '   NFE_IBSMUN_VDEVTRIB, NFE_IBSMUN_VDIF, NFE_IBSMUN_VIBSMUN, NFE' +
+        '_IBSUF_PDIF, '
       
-        '   NFE_PCREDSN, NFE_PDIF, NFE_PESO, NFE_PFCP, NFE_PFCPST, NFE_PF' +
-        'CPSTRET, '
+        '   NFE_IBSUF_PIBSUF, NFE_IBSUF_VBCIBSUF, NFE_IBSUF_VDEVTRIB, NFE' +
+        '_IBSUF_VDIF, '
       
-        '   NFE_PFCPUFDEST, NFE_PICMS, NFE_PICMSINTER, NFE_PICMSINTERPART' +
-        ', NFE_PICMSST, '
+        '   NFE_IBSUF_VIBSUF, NFE_INDESCALA, NFE_INDTOT, NFE_INFADPROD, N' +
+        'FE_INFADTRIB, '
       
-        '   NFE_PICMSUFDEST, NFE_PIMP, NFE_PIPI, NFE_PPIS, NFE_PPISST, NF' +
-        'E_PREC, '
+        '   NFE_IPRO, NFE_IS_CCLASSTRIBIS, NFE_IS_CSTIS, NFE_IS_PIS, NFE_' +
+        'IS_PISESPEC, '
       
-        '   NFE_PREDBC, NFE_PREDBCST, NFE_PSBR, NFE_PSCN, NFE_PSLQ, NFE_P' +
-        'SMR, NFE_PST, '
+        '   NFE_IS_QTRIB, NFE_IS_UTRIB, NFE_IS_VBCIS, NFE_IS_VIS, NFE_ISS' +
+        'QN_VISSQN, '
       
-        '   NFE_QCOM, NFE_QEXPORT, NFE_QTRIB, NFE_QTUN, NFE_QVOL, NFE_RCO' +
-        'M, NFE_REND, '
+        '   NFE_ITEMPED, NFE_LARG, NFE_METR, NFE_MODBC, NFE_MODBCST, NFE_' +
+        'MOTDESICMS, '
       
-        '   NFE_REPR, NFE_STAV, NFE_TIPI, NFE_TIPO, NFE_TPINTERMEDIO, NFE' +
-        '_TPVIATRANSP, '
+        '   NFE_MVA, NFE_MVAST, NFE_NADICAO, NFE_NCM, NFE_NDI, NFE_NDRAW,' +
+        ' NFE_NFCI, '
       
-        '   NFE_TRIBESTADUAL, NFE_TRIBFEDIMPORTADO, NFE_TRIBFEDNACIONAL, ' +
-        'NFE_TRIBIPI, '
+        '   NFE_NRE, NFE_NRECOPI, NFE_NSEQADIC, NFE_NVE, NFE_ORIG, NFE_PC' +
+        'OFINS, '
       
-        '   NFE_TRIBMUNICIPAL, NFE_UCOM, NFE_UEXP, NFE_UFDESEMB, NFE_UFEM' +
-        'BARQ, NFE_UFSAIDAPAIS, '
+        '   NFE_PCOFINSST, NFE_PCREDSN, NFE_PDIF, NFE_PESO, NFE_PFCP, NFE' +
+        '_PFCPST, '
       
-        '   NFE_UFTERCEIRO, NFE_UTRIB, NFE_VAFRMM, NFE_VALIQISSQN, NFE_VA' +
-        'LIQPROD, '
+        '   NFE_PFCPSTRET, NFE_PFCPUFDEST, NFE_PICMS, NFE_PICMSINTER, NFE' +
+        '_PICMSINTERPART, '
       
-        '   NFE_VBC, NFE_VBCFCP, NFE_VBCFCPST, NFE_VBCFCPSTRET, NFE_VBCFC' +
-        'PUFDEST, '
+        '   NFE_PICMSST, NFE_PICMSUFDEST, NFE_PIMP, NFE_PIPI, NFE_PPIS, N' +
+        'FE_PPISST, '
       
-        '   NFE_VBCIMP, NFE_VBCIPI, NFE_VBCISSQN, NFE_VBCOFINS, NFE_VBCOF' +
-        'INSST, '
+        '   NFE_PREC, NFE_PREDBC, NFE_PREDBCST, NFE_PSBR, NFE_PSCN, NFE_P' +
+        'SLQ, NFE_PSMR, '
       
-        '   NFE_VBCPIS, NFE_VBCPISST, NFE_VBCST, NFE_VBCSTDEST, NFE_VBCST' +
-        'RET, NFE_VBCUFDEST, '
+        '   NFE_PST, NFE_QCOM, NFE_QEXPORT, NFE_QTRIB, NFE_QTUN, NFE_QVOL' +
+        ', NFE_RCOM, '
       
-        '   NFE_VCOFINS, NFE_VCOFINSST, NFE_VCREDICMSSN, NFE_VDESC, NFE_V' +
-        'DESCDI, '
+        '   NFE_REND, NFE_REPR, NFE_STAV, NFE_TIPI, NFE_TIPO, NFE_TPINTER' +
+        'MEDIO, '
       
-        '   NFE_VDESPADU, NFE_VFCP, NFE_VFCPST, NFE_VFCPSTRET, NFE_VFCPUF' +
-        'DEST, NFE_VFRETE, '
+        '   NFE_TPVIATRANSP, NFE_TRIBESTADUAL, NFE_TRIBFEDIMPORTADO, NFE_' +
+        'TRIBFEDNACIONAL, '
       
-        '   NFE_VI04, NFE_VI07, NFE_VI12, NFE_VI18, NFE_VICMS, NFE_VICMSD' +
-        'ESON, NFE_VICMSDIF, '
+        '   NFE_TRIBIPI, NFE_TRIBMUNICIPAL, NFE_UCOM, NFE_UEXP, NFE_UFDES' +
+        'EMB, NFE_UFEMBARQ, '
       
-        '   NFE_VICMSOP, NFE_VICMSST, NFE_VICMSSTDEST, NFE_VICMSSTRET, NF' +
-        'E_VICMSUFDEST, '
+        '   NFE_UFSAIDAPAIS, NFE_UFTERCEIRO, NFE_UTRIB, NFE_VAFRMM, NFE_V' +
+        'ALIQISSQN, '
       
-        '   NFE_VICMSUFREMET, NFE_VIIIMP, NFE_VIOFIMP, NFE_VIPI, NFE_VISS' +
-        'QN, NFE_VMULTA, '
+        '   NFE_VALIQPROD, NFE_VBC, NFE_VBCCREDICMSSN, NFE_VBCFCP, NFE_VB' +
+        'CFCPST, '
       
-        '   NFE_VNF, NFE_VOUTRO, NFE_VPIS, NFE_VPISST, NFE_VPROD, NFE_VSE' +
-        'G, NFE_VTOTTRIB, '
+        '   NFE_VBCFCPSTRET, NFE_VBCFCPUFDEST, NFE_VBCIMP, NFE_VBCIPI, NF' +
+        'E_VBCISSQN, '
       
-        '   NFE_VUNCOM, NFE_VUNTRIB, NFE_XLOCDESEMB, NFE_XLOCDESPACHO, NF' +
-        'E_XLOCEMBARQ, '
-      '   NFE_XPED, NFE_XPROD, NFE_XPROX)'
+        '   NFE_VBCOFINS, NFE_VBCOFINSST, NFE_VBCPIS, NFE_VBCPISST, NFE_V' +
+        'BCST, NFE_VBCSTDEST, '
+      
+        '   NFE_VBCSTRET, NFE_VBCUFDEST, NFE_VCOFINS, NFE_VCOFINSST, NFE_' +
+        'VCREDICMSSN, '
+      
+        '   NFE_VDESC, NFE_VDESCDI, NFE_VDESPADU, NFE_VFCP, NFE_VFCPST, N' +
+        'FE_VFCPSTRET, '
+      
+        '   NFE_VFCPUFDEST, NFE_VFRETE, NFE_VI04, NFE_VI07, NFE_VI12, NFE' +
+        '_VI18, '
+      
+        '   NFE_VICMS, NFE_VICMSDESON, NFE_VICMSDIF, NFE_VICMSMONO, NFE_V' +
+        'ICMSOP, '
+      
+        '   NFE_VICMSST, NFE_VICMSSTDEST, NFE_VICMSSTRET, NFE_VICMSUFDEST' +
+        ', NFE_VICMSUFREMET, '
+      
+        '   NFE_VII, NFE_VIIIMP, NFE_VIOFIMP, NFE_VIPI, NFE_VISSQN, NFE_V' +
+        'MULTA, '
+      
+        '   NFE_VNF, NFE_VNFTOT, NFE_VOUTRO, NFE_VPIS, NFE_VPISST, NFE_VP' +
+        'ROD, NFE_VSEG, '
+      
+        '   NFE_VSERV, NFE_VTOTTRIB, NFE_VUNCOM, NFE_VUNTRIB, NFE_XLOCDES' +
+        'EMB, NFE_XLOCDESPACHO, '
+      
+        '   NFE_XLOCEMBARQ, NFE_XPED, NFE_XPROD, NFE_XPROX, UCDBE, UPRC_P' +
+        'AD, UPSBR, '
+      '   UPSLQ, UQTMD, UQTRL)'
       'values'
       
-        '  (:ID, :NFE_CART, :NFE_CBENEF, :NFE_CBPRODUTO, :NFE_CBUNIDADE, ' +
-        ':NFE_CCAB, '
+        '  (:CAT_DESC, :CAT_ID, :CDEV, :CF_CDNF, :CF_CDPD, :CF_CEAN, :CF_' +
+        'CNPJ, :CF_DECP, '
       
-        '   :NFE_CDEP, :NFE_CDNF, :NFE_CEAN, :NFE_CENQ, :NFE_CEST, :NFE_C' +
-        'EXPORTADOR, '
+        '   :CF_DEPD, :CF_FANTASIA, :CF_ID, :CF_PIPI, :CF_RAZAO, :CF_SKU,' +
+        ' :CF_UCOM, '
+      
+        '   :CF_UESP_QT, :CF_UESP_RF, :CF_VPRC_COM, :CF_VPRC_PAD, :CF_VPR' +
+        'C_PAD_ORI, '
+      
+        '   :COL_DESC, :COL_ID, :CP_IDEP, :FLAG, :HOST, :ID, :IDAK, :IDEK' +
+        ', :IDEV, '
+      
+        '   :IP, :IS_PDSC, :MAO_OBRA, :NFE_CART, :NFE_CBENEF, :NFE_CBPROD' +
+        'UTO, :NFE_CBS_PCBS, '
+      
+        '   :NFE_CBS_PDIF, :NFE_CBS_VBCCBS, :NFE_CBS_VCBS, :NFE_CBS_VCRED' +
+        'PRES, :NFE_CBS_VCREDPRESCONDSUS, '
+      
+        '   :NFE_CBS_VDEVTRIB, :NFE_CBS_VDIF, :NFE_CBUNIDADE, :NFE_CCAB, ' +
+        ':NFE_CDBX, '
+      
+        '   :NFE_CDEP, :NFE_CDNF, :NFE_CDRO, :NFE_CEAN, :NFE_CENQ, :NFE_C' +
+        'EST, :NFE_CEXPORTADOR, '
       
         '   :NFE_CFABRICANTE, :NFE_CFOP, :NFE_CHNFE, :NFE_CLENQ, :NFE_CLI' +
         'STSERV, '
@@ -41449,13 +41833,34 @@ object frmven_nfe: Tfrmven_nfe
         'NFE_CSTIPI, '
       
         '   :NFE_CSTPIS, :NFE_CSTS, :NFE_DCOR, :NFE_DDESEMB, :NFE_DDI, :N' +
-        'FE_ESP, '
+        'FE_DERO, '
       
-        '   :NFE_EXTIPI, :NFE_FLAG, :NFE_FRET, :NFE_GRAM, :NFE_INDESCALA,' +
-        ' :NFE_INDTOT, '
+        '   :NFE_ESP, :NFE_EXTIPI, :NFE_FLAG, :NFE_FRET, :NFE_GRAM, :NFE_' +
+        'IBSCBS_CCLASSTRIBIS, '
       
-        '   :NFE_INFADPROD, :NFE_INFADTRIB, :NFE_IPRO, :NFE_ITEMPED, :NFE' +
-        '_LARG, '
+        '   :NFE_IBSCBS_CSTIS, :NFE_IBSCBS_INDDOACAO, :NFE_IBSCBS_VBCIBSC' +
+        'BS, :NFE_IBSCBS_VIBSCBS, '
+      
+        '   :NFE_IBSMUN_PDIF, :NFE_IBSMUN_PIBSMUN, :NFE_IBSMUN_VBCIBSMUN,' +
+        ' :NFE_IBSMUN_VCREDPRES, '
+      
+        '   :NFE_IBSMUN_VCREDPRESCONDSUS, :NFE_IBSMUN_VDEVTRIB, :NFE_IBSM' +
+        'UN_VDIF, '
+      
+        '   :NFE_IBSMUN_VIBSMUN, :NFE_IBSUF_PDIF, :NFE_IBSUF_PIBSUF, :NFE' +
+        '_IBSUF_VBCIBSUF, '
+      
+        '   :NFE_IBSUF_VDEVTRIB, :NFE_IBSUF_VDIF, :NFE_IBSUF_VIBSUF, :NFE' +
+        '_INDESCALA, '
+      
+        '   :NFE_INDTOT, :NFE_INFADPROD, :NFE_INFADTRIB, :NFE_IPRO, :NFE_' +
+        'IS_CCLASSTRIBIS, '
+      
+        '   :NFE_IS_CSTIS, :NFE_IS_PIS, :NFE_IS_PISESPEC, :NFE_IS_QTRIB, ' +
+        ':NFE_IS_UTRIB, '
+      
+        '   :NFE_IS_VBCIS, :NFE_IS_VIS, :NFE_ISSQN_VISSQN, :NFE_ITEMPED, ' +
+        ':NFE_LARG, '
       
         '   :NFE_METR, :NFE_MODBC, :NFE_MODBCST, :NFE_MOTDESICMS, :NFE_MV' +
         'A, :NFE_MVAST, '
@@ -41493,41 +41898,45 @@ object frmven_nfe: Tfrmven_nfe
         '   :NFE_UFEMBARQ, :NFE_UFSAIDAPAIS, :NFE_UFTERCEIRO, :NFE_UTRIB,' +
         ' :NFE_VAFRMM, '
       
-        '   :NFE_VALIQISSQN, :NFE_VALIQPROD, :NFE_VBC, :NFE_VBCFCP, :NFE_' +
-        'VBCFCPST, '
+        '   :NFE_VALIQISSQN, :NFE_VALIQPROD, :NFE_VBC, :NFE_VBCCREDICMSSN' +
+        ', :NFE_VBCFCP, '
       
-        '   :NFE_VBCFCPSTRET, :NFE_VBCFCPUFDEST, :NFE_VBCIMP, :NFE_VBCIPI' +
-        ', :NFE_VBCISSQN, '
+        '   :NFE_VBCFCPST, :NFE_VBCFCPSTRET, :NFE_VBCFCPUFDEST, :NFE_VBCI' +
+        'MP, :NFE_VBCIPI, '
       
-        '   :NFE_VBCOFINS, :NFE_VBCOFINSST, :NFE_VBCPIS, :NFE_VBCPISST, :' +
-        'NFE_VBCST, '
+        '   :NFE_VBCISSQN, :NFE_VBCOFINS, :NFE_VBCOFINSST, :NFE_VBCPIS, :' +
+        'NFE_VBCPISST, '
       
-        '   :NFE_VBCSTDEST, :NFE_VBCSTRET, :NFE_VBCUFDEST, :NFE_VCOFINS, ' +
-        ':NFE_VCOFINSST, '
+        '   :NFE_VBCST, :NFE_VBCSTDEST, :NFE_VBCSTRET, :NFE_VBCUFDEST, :N' +
+        'FE_VCOFINS, '
       
-        '   :NFE_VCREDICMSSN, :NFE_VDESC, :NFE_VDESCDI, :NFE_VDESPADU, :N' +
-        'FE_VFCP, '
+        '   :NFE_VCOFINSST, :NFE_VCREDICMSSN, :NFE_VDESC, :NFE_VDESCDI, :' +
+        'NFE_VDESPADU, '
       
-        '   :NFE_VFCPST, :NFE_VFCPSTRET, :NFE_VFCPUFDEST, :NFE_VFRETE, :N' +
-        'FE_VI04, '
+        '   :NFE_VFCP, :NFE_VFCPST, :NFE_VFCPSTRET, :NFE_VFCPUFDEST, :NFE' +
+        '_VFRETE, '
       
-        '   :NFE_VI07, :NFE_VI12, :NFE_VI18, :NFE_VICMS, :NFE_VICMSDESON,' +
-        ' :NFE_VICMSDIF, '
+        '   :NFE_VI04, :NFE_VI07, :NFE_VI12, :NFE_VI18, :NFE_VICMS, :NFE_' +
+        'VICMSDESON, '
       
-        '   :NFE_VICMSOP, :NFE_VICMSST, :NFE_VICMSSTDEST, :NFE_VICMSSTRET' +
-        ', :NFE_VICMSUFDEST, '
+        '   :NFE_VICMSDIF, :NFE_VICMSMONO, :NFE_VICMSOP, :NFE_VICMSST, :N' +
+        'FE_VICMSSTDEST, '
       
-        '   :NFE_VICMSUFREMET, :NFE_VIIIMP, :NFE_VIOFIMP, :NFE_VIPI, :NFE' +
-        '_VISSQN, '
+        '   :NFE_VICMSSTRET, :NFE_VICMSUFDEST, :NFE_VICMSUFREMET, :NFE_VI' +
+        'I, :NFE_VIIIMP, '
       
-        '   :NFE_VMULTA, :NFE_VNF, :NFE_VOUTRO, :NFE_VPIS, :NFE_VPISST, :' +
-        'NFE_VPROD, '
+        '   :NFE_VIOFIMP, :NFE_VIPI, :NFE_VISSQN, :NFE_VMULTA, :NFE_VNF, ' +
+        ':NFE_VNFTOT, '
       
-        '   :NFE_VSEG, :NFE_VTOTTRIB, :NFE_VUNCOM, :NFE_VUNTRIB, :NFE_XLO' +
-        'CDESEMB, '
+        '   :NFE_VOUTRO, :NFE_VPIS, :NFE_VPISST, :NFE_VPROD, :NFE_VSEG, :' +
+        'NFE_VSERV, '
       
-        '   :NFE_XLOCDESPACHO, :NFE_XLOCEMBARQ, :NFE_XPED, :NFE_XPROD, :N' +
-        'FE_XPROX)')
+        '   :NFE_VTOTTRIB, :NFE_VUNCOM, :NFE_VUNTRIB, :NFE_XLOCDESEMB, :N' +
+        'FE_XLOCDESPACHO, '
+      
+        '   :NFE_XLOCEMBARQ, :NFE_XPED, :NFE_XPROD, :NFE_XPROX, :UCDBE, :' +
+        'UPRC_PAD, '
+      '   :UPSBR, :UPSLQ, :UQTMD, :UQTRL)')
     RefreshSQL.Strings = (
       'Select '
       '  ID,'
@@ -41565,6 +41974,7 @@ object frmven_nfe: Tfrmven_nfe
       '  NFE_VBC,'
       '  NFE_PICMS,'
       '  NFE_VICMS,'
+      '  NFE_VBCCREDICMSSN,'
       '  NFE_PCREDSN,'
       '  NFE_VCREDICMSSN,'
       '  NFE_CLISTSERV,'
@@ -41704,7 +42114,87 @@ object frmven_nfe: Tfrmven_nfe
       '  NFE_QTRIB,'
       '  NFE_VUNTRIB,'
       '  NFE_STAV,'
-      '  NFE_INFADTRIB'
+      '  NFE_INFADTRIB,'
+      '  NFE_CDRO,'
+      '  NFE_DERO,'
+      '  NFE_CDBX,'
+      '  CP_IDEP,'
+      '  IDAK,'
+      '  IDEK,'
+      '  UCDBE,'
+      '  UQTRL,'
+      '  UQTMD,'
+      '  UPSBR,'
+      '  UPSLQ,'
+      '  IP,'
+      '  HOST,'
+      '  FLAG,'
+      '  COL_ID,'
+      '  COL_DESC,'
+      '  CAT_ID,'
+      '  CAT_DESC,'
+      '  CF_ID,'
+      '  CF_FANTASIA,'
+      '  CF_RAZAO,'
+      '  CF_CNPJ,'
+      '  CF_CDPD,'
+      '  CF_DEPD,'
+      '  CF_CDNF,'
+      '  CF_SKU,'
+      '  CF_CEAN,'
+      '  CF_DECP,'
+      '  CF_UCOM,'
+      '  CF_UESP_RF,'
+      '  CF_UESP_QT,'
+      '  CF_VPRC_PAD_ORI,'
+      '  CF_VPRC_PAD,'
+      '  CF_VPRC_COM,'
+      '  CF_PIPI,'
+      '  IS_PDSC,'
+      '  UPRC_PAD,'
+      '  IDEV,'
+      '  CDEV,'
+      '  MAO_OBRA,'
+      '  NFE_IS_CSTIS,'
+      '  NFE_IS_CCLASSTRIBIS,'
+      '  NFE_IS_VBCIS,'
+      '  NFE_IS_PIS,'
+      '  NFE_IS_PISESPEC,'
+      '  NFE_IS_VIS,'
+      '  NFE_IS_UTRIB,'
+      '  NFE_IS_QTRIB,'
+      '  NFE_IBSCBS_CSTIS,'
+      '  NFE_IBSCBS_CCLASSTRIBIS,'
+      '  NFE_IBSCBS_INDDOACAO,'
+      '  NFE_IBSCBS_VBCIBSCBS,'
+      '  NFE_IBSCBS_VIBSCBS,'
+      '  NFE_IBSUF_VBCIBSUF,'
+      '  NFE_IBSUF_PIBSUF,'
+      '  NFE_IBSUF_VIBSUF,'
+      '  NFE_IBSUF_PDIF,'
+      '  NFE_IBSUF_VDIF,'
+      '  NFE_IBSUF_VDEVTRIB,'
+      '  NFE_IBSMUN_VBCIBSMUN,'
+      '  NFE_IBSMUN_PIBSMUN,'
+      '  NFE_IBSMUN_VIBSMUN,'
+      '  NFE_IBSMUN_PDIF,'
+      '  NFE_IBSMUN_VDIF,'
+      '  NFE_IBSMUN_VDEVTRIB,'
+      '  NFE_IBSMUN_VCREDPRES,'
+      '  NFE_IBSMUN_VCREDPRESCONDSUS,'
+      '  NFE_CBS_VBCCBS,'
+      '  NFE_CBS_PCBS,'
+      '  NFE_CBS_VCBS,'
+      '  NFE_CBS_PDIF,'
+      '  NFE_CBS_VDIF,'
+      '  NFE_CBS_VDEVTRIB,'
+      '  NFE_CBS_VCREDPRES,'
+      '  NFE_CBS_VCREDPRESCONDSUS,'
+      '  NFE_VSERV,'
+      '  NFE_VII,'
+      '  NFE_VICMSMONO,'
+      '  NFE_VNFTOT,'
+      '  NFE_ISSQN_VISSQN'
       'from NFE_ITE '
       'where'
       '  ID = :ID')
@@ -41714,14 +42204,55 @@ object frmven_nfe: Tfrmven_nfe
     ModifySQL.Strings = (
       'update NFE_ITE'
       'set'
+      '  CAT_DESC = :CAT_DESC,'
+      '  CAT_ID = :CAT_ID,'
+      '  CDEV = :CDEV,'
+      '  CF_CDNF = :CF_CDNF,'
+      '  CF_CDPD = :CF_CDPD,'
+      '  CF_CEAN = :CF_CEAN,'
+      '  CF_CNPJ = :CF_CNPJ,'
+      '  CF_DECP = :CF_DECP,'
+      '  CF_DEPD = :CF_DEPD,'
+      '  CF_FANTASIA = :CF_FANTASIA,'
+      '  CF_ID = :CF_ID,'
+      '  CF_PIPI = :CF_PIPI,'
+      '  CF_RAZAO = :CF_RAZAO,'
+      '  CF_SKU = :CF_SKU,'
+      '  CF_UCOM = :CF_UCOM,'
+      '  CF_UESP_QT = :CF_UESP_QT,'
+      '  CF_UESP_RF = :CF_UESP_RF,'
+      '  CF_VPRC_COM = :CF_VPRC_COM,'
+      '  CF_VPRC_PAD = :CF_VPRC_PAD,'
+      '  CF_VPRC_PAD_ORI = :CF_VPRC_PAD_ORI,'
+      '  COL_DESC = :COL_DESC,'
+      '  COL_ID = :COL_ID,'
+      '  CP_IDEP = :CP_IDEP,'
+      '  FLAG = :FLAG,'
+      '  HOST = :HOST,'
       '  ID = :ID,'
+      '  IDAK = :IDAK,'
+      '  IDEK = :IDEK,'
+      '  IDEV = :IDEV,'
+      '  IP = :IP,'
+      '  IS_PDSC = :IS_PDSC,'
+      '  MAO_OBRA = :MAO_OBRA,'
       '  NFE_CART = :NFE_CART,'
       '  NFE_CBENEF = :NFE_CBENEF,'
       '  NFE_CBPRODUTO = :NFE_CBPRODUTO,'
+      '  NFE_CBS_PCBS = :NFE_CBS_PCBS,'
+      '  NFE_CBS_PDIF = :NFE_CBS_PDIF,'
+      '  NFE_CBS_VBCCBS = :NFE_CBS_VBCCBS,'
+      '  NFE_CBS_VCBS = :NFE_CBS_VCBS,'
+      '  NFE_CBS_VCREDPRES = :NFE_CBS_VCREDPRES,'
+      '  NFE_CBS_VCREDPRESCONDSUS = :NFE_CBS_VCREDPRESCONDSUS,'
+      '  NFE_CBS_VDEVTRIB = :NFE_CBS_VDEVTRIB,'
+      '  NFE_CBS_VDIF = :NFE_CBS_VDIF,'
       '  NFE_CBUNIDADE = :NFE_CBUNIDADE,'
       '  NFE_CCAB = :NFE_CCAB,'
+      '  NFE_CDBX = :NFE_CDBX,'
       '  NFE_CDEP = :NFE_CDEP,'
       '  NFE_CDNF = :NFE_CDNF,'
+      '  NFE_CDRO = :NFE_CDRO,'
       '  NFE_CEAN = :NFE_CEAN,'
       '  NFE_CENQ = :NFE_CENQ,'
       '  NFE_CEST = :NFE_CEST,'
@@ -41747,16 +42278,45 @@ object frmven_nfe: Tfrmven_nfe
       '  NFE_DCOR = :NFE_DCOR,'
       '  NFE_DDESEMB = :NFE_DDESEMB,'
       '  NFE_DDI = :NFE_DDI,'
+      '  NFE_DERO = :NFE_DERO,'
       '  NFE_ESP = :NFE_ESP,'
       '  NFE_EXTIPI = :NFE_EXTIPI,'
       '  NFE_FLAG = :NFE_FLAG,'
       '  NFE_FRET = :NFE_FRET,'
       '  NFE_GRAM = :NFE_GRAM,'
+      '  NFE_IBSCBS_CCLASSTRIBIS = :NFE_IBSCBS_CCLASSTRIBIS,'
+      '  NFE_IBSCBS_CSTIS = :NFE_IBSCBS_CSTIS,'
+      '  NFE_IBSCBS_INDDOACAO = :NFE_IBSCBS_INDDOACAO,'
+      '  NFE_IBSCBS_VBCIBSCBS = :NFE_IBSCBS_VBCIBSCBS,'
+      '  NFE_IBSCBS_VIBSCBS = :NFE_IBSCBS_VIBSCBS,'
+      '  NFE_IBSMUN_PDIF = :NFE_IBSMUN_PDIF,'
+      '  NFE_IBSMUN_PIBSMUN = :NFE_IBSMUN_PIBSMUN,'
+      '  NFE_IBSMUN_VBCIBSMUN = :NFE_IBSMUN_VBCIBSMUN,'
+      '  NFE_IBSMUN_VCREDPRES = :NFE_IBSMUN_VCREDPRES,'
+      '  NFE_IBSMUN_VCREDPRESCONDSUS = :NFE_IBSMUN_VCREDPRESCONDSUS,'
+      '  NFE_IBSMUN_VDEVTRIB = :NFE_IBSMUN_VDEVTRIB,'
+      '  NFE_IBSMUN_VDIF = :NFE_IBSMUN_VDIF,'
+      '  NFE_IBSMUN_VIBSMUN = :NFE_IBSMUN_VIBSMUN,'
+      '  NFE_IBSUF_PDIF = :NFE_IBSUF_PDIF,'
+      '  NFE_IBSUF_PIBSUF = :NFE_IBSUF_PIBSUF,'
+      '  NFE_IBSUF_VBCIBSUF = :NFE_IBSUF_VBCIBSUF,'
+      '  NFE_IBSUF_VDEVTRIB = :NFE_IBSUF_VDEVTRIB,'
+      '  NFE_IBSUF_VDIF = :NFE_IBSUF_VDIF,'
+      '  NFE_IBSUF_VIBSUF = :NFE_IBSUF_VIBSUF,'
       '  NFE_INDESCALA = :NFE_INDESCALA,'
       '  NFE_INDTOT = :NFE_INDTOT,'
       '  NFE_INFADPROD = :NFE_INFADPROD,'
       '  NFE_INFADTRIB = :NFE_INFADTRIB,'
       '  NFE_IPRO = :NFE_IPRO,'
+      '  NFE_IS_CCLASSTRIBIS = :NFE_IS_CCLASSTRIBIS,'
+      '  NFE_IS_CSTIS = :NFE_IS_CSTIS,'
+      '  NFE_IS_PIS = :NFE_IS_PIS,'
+      '  NFE_IS_PISESPEC = :NFE_IS_PISESPEC,'
+      '  NFE_IS_QTRIB = :NFE_IS_QTRIB,'
+      '  NFE_IS_UTRIB = :NFE_IS_UTRIB,'
+      '  NFE_IS_VBCIS = :NFE_IS_VBCIS,'
+      '  NFE_IS_VIS = :NFE_IS_VIS,'
+      '  NFE_ISSQN_VISSQN = :NFE_ISSQN_VISSQN,'
       '  NFE_ITEMPED = :NFE_ITEMPED,'
       '  NFE_LARG = :NFE_LARG,'
       '  NFE_METR = :NFE_METR,'
@@ -41830,6 +42390,7 @@ object frmven_nfe: Tfrmven_nfe
       '  NFE_VALIQISSQN = :NFE_VALIQISSQN,'
       '  NFE_VALIQPROD = :NFE_VALIQPROD,'
       '  NFE_VBC = :NFE_VBC,'
+      '  NFE_VBCCREDICMSSN = :NFE_VBCCREDICMSSN,'
       '  NFE_VBCFCP = :NFE_VBCFCP,'
       '  NFE_VBCFCPST = :NFE_VBCFCPST,'
       '  NFE_VBCFCPSTRET = :NFE_VBCFCPSTRET,'
@@ -41863,23 +42424,27 @@ object frmven_nfe: Tfrmven_nfe
       '  NFE_VICMS = :NFE_VICMS,'
       '  NFE_VICMSDESON = :NFE_VICMSDESON,'
       '  NFE_VICMSDIF = :NFE_VICMSDIF,'
+      '  NFE_VICMSMONO = :NFE_VICMSMONO,'
       '  NFE_VICMSOP = :NFE_VICMSOP,'
       '  NFE_VICMSST = :NFE_VICMSST,'
       '  NFE_VICMSSTDEST = :NFE_VICMSSTDEST,'
       '  NFE_VICMSSTRET = :NFE_VICMSSTRET,'
       '  NFE_VICMSUFDEST = :NFE_VICMSUFDEST,'
       '  NFE_VICMSUFREMET = :NFE_VICMSUFREMET,'
+      '  NFE_VII = :NFE_VII,'
       '  NFE_VIIIMP = :NFE_VIIIMP,'
       '  NFE_VIOFIMP = :NFE_VIOFIMP,'
       '  NFE_VIPI = :NFE_VIPI,'
       '  NFE_VISSQN = :NFE_VISSQN,'
       '  NFE_VMULTA = :NFE_VMULTA,'
       '  NFE_VNF = :NFE_VNF,'
+      '  NFE_VNFTOT = :NFE_VNFTOT,'
       '  NFE_VOUTRO = :NFE_VOUTRO,'
       '  NFE_VPIS = :NFE_VPIS,'
       '  NFE_VPISST = :NFE_VPISST,'
       '  NFE_VPROD = :NFE_VPROD,'
       '  NFE_VSEG = :NFE_VSEG,'
+      '  NFE_VSERV = :NFE_VSERV,'
       '  NFE_VTOTTRIB = :NFE_VTOTTRIB,'
       '  NFE_VUNCOM = :NFE_VUNCOM,'
       '  NFE_VUNTRIB = :NFE_VUNTRIB,'
@@ -41888,7 +42453,13 @@ object frmven_nfe: Tfrmven_nfe
       '  NFE_XLOCEMBARQ = :NFE_XLOCEMBARQ,'
       '  NFE_XPED = :NFE_XPED,'
       '  NFE_XPROD = :NFE_XPROD,'
-      '  NFE_XPROX = :NFE_XPROX'
+      '  NFE_XPROX = :NFE_XPROX,'
+      '  UCDBE = :UCDBE,'
+      '  UPRC_PAD = :UPRC_PAD,'
+      '  UPSBR = :UPSBR,'
+      '  UPSLQ = :UPSLQ,'
+      '  UQTMD = :UQTMD,'
+      '  UQTRL = :UQTRL'
       'where'
       '  ID = :OLD_ID')
     Left = 1168
@@ -41963,14 +42534,14 @@ object frmven_nfe: Tfrmven_nfe
       Size = 120
     end
     object nfe_001NFE_UCOM: TIBStringField
-      DisplayLabel = 'Unidade Comercial'
+      DisplayLabel = 'UN'
       FieldName = 'NFE_UCOM'
       Origin = '"LAN_NFE_001"."NFE_UCOM"'
       OnValidate = nfe_001NFE_UCOMValidate
       Size = 6
     end
     object nfe_001NFE_QCOM: TIBBCDField
-      DisplayLabel = 'Quantidade Comercial'
+      DisplayLabel = 'Quantidades'
       FieldName = 'NFE_QCOM'
       Origin = '"LAN_NFE_001"."NFE_QCOM"'
       OnValidate = nfe_001NFE_UCOMValidate
@@ -41979,14 +42550,14 @@ object frmven_nfe: Tfrmven_nfe
       Size = 4
     end
     object nfe_001NFE_VUNCOM: TFloatField
-      DisplayLabel = 'Pre'#231'o Comercial'
+      DisplayLabel = 'Pre'#231'o'
       FieldName = 'NFE_VUNCOM'
       Origin = '"NFE_ITE"."NFE_VUNCOM"'
       OnValidate = nfe_001NFE_UCOMValidate
-      DisplayFormat = '#,0.00#######'
+      DisplayFormat = '#,0.00###'
     end
     object nfe_001NFE_UTRIB: TIBStringField
-      DisplayLabel = 'Unidade Tributada'
+      DisplayLabel = 'UN TRIB'
       FieldName = 'NFE_UTRIB'
       Origin = '"NFE_ITE"."NFE_UTRIB"'
       Size = 6
@@ -41996,7 +42567,7 @@ object frmven_nfe: Tfrmven_nfe
       Origin = '"LAN_NFE_001"."NFE_RCOM"'
     end
     object nfe_001NFE_QTRIB: TIBBCDField
-      DisplayLabel = 'Quantidade Tributada'
+      DisplayLabel = 'Quantidades'
       FieldName = 'NFE_QTRIB'
       Origin = '"NFE_ITE"."NFE_QTRIB"'
       DisplayFormat = '#,0.00##'
@@ -42004,13 +42575,13 @@ object frmven_nfe: Tfrmven_nfe
       Size = 4
     end
     object nfe_001NFE_VUNTRIB: TFloatField
-      DisplayLabel = 'Pre'#231'o Tributado'
+      DisplayLabel = 'Pre'#231'o'
       FieldName = 'NFE_VUNTRIB'
       Origin = '"NFE_ITE"."NFE_VUNTRIB"'
-      DisplayFormat = '#,0.00#######'
+      DisplayFormat = '#,0.00###'
     end
     object nfe_001NFE_VPROD: TIBBCDField
-      DisplayLabel = 'Total Produto'
+      DisplayLabel = 'Produtos R$'
       FieldName = 'NFE_VPROD'
       Origin = '"LAN_NFE_001"."NFE_VPROD"'
       OnValidate = nfe_001NFE_VPRODValidate
@@ -42019,7 +42590,7 @@ object frmven_nfe: Tfrmven_nfe
       Size = 2
     end
     object nfe_001NFE_VFRETE: TIBBCDField
-      DisplayLabel = 'Valor Frete'
+      DisplayLabel = 'Frete R$'
       FieldName = 'NFE_VFRETE'
       Origin = '"LAN_NFE_001"."NFE_VFRETE"'
       DisplayFormat = '#,0.00'
@@ -42027,7 +42598,7 @@ object frmven_nfe: Tfrmven_nfe
       Size = 2
     end
     object nfe_001NFE_VSEG: TIBBCDField
-      DisplayLabel = 'Valor Seguro'
+      DisplayLabel = 'Seguro R$'
       FieldName = 'NFE_VSEG'
       Origin = '"LAN_NFE_001"."NFE_VSEG"'
       DisplayFormat = '#,0.00'
@@ -42035,7 +42606,7 @@ object frmven_nfe: Tfrmven_nfe
       Size = 2
     end
     object nfe_001NFE_VDESC: TIBBCDField
-      DisplayLabel = 'Total Desconto'
+      DisplayLabel = 'Desc. R$'
       FieldName = 'NFE_VDESC'
       Origin = '"LAN_NFE_001"."NFE_VDESC"'
       DisplayFormat = '#,0.00'
@@ -42126,7 +42697,7 @@ object frmven_nfe: Tfrmven_nfe
       Size = 15
     end
     object nfe_001NFE_ORIG: TIBStringField
-      DisplayLabel = 'Origem'
+      DisplayLabel = 'Orig'
       FieldName = 'NFE_ORIG'
       Origin = '"LAN_NFE_001"."NFE_ORIG"'
       FixedChar = True
@@ -42153,7 +42724,7 @@ object frmven_nfe: Tfrmven_nfe
       Size = 2
     end
     object nfe_001NFE_VBC: TIBBCDField
-      DisplayLabel = 'Base C'#225'lculo ICMS'
+      DisplayLabel = 'ICMS BC R$'
       FieldName = 'NFE_VBC'
       Origin = '"LAN_NFE_001"."NFE_VBC"'
       DisplayFormat = '#,0.00'
@@ -42161,7 +42732,7 @@ object frmven_nfe: Tfrmven_nfe
       Size = 2
     end
     object nfe_001NFE_PICMS: TIBBCDField
-      DisplayLabel = '% ICMS'
+      DisplayLabel = 'ICMS %'
       FieldName = 'NFE_PICMS'
       Origin = '"LAN_NFE_001"."NFE_PICMS"'
       DisplayFormat = '#,0.00'
@@ -42169,7 +42740,7 @@ object frmven_nfe: Tfrmven_nfe
       Size = 2
     end
     object nfe_001NFE_VICMS: TIBBCDField
-      DisplayLabel = 'Valor ICMS'
+      DisplayLabel = 'ICMS R$'
       FieldName = 'NFE_VICMS'
       Origin = '"LAN_NFE_001"."NFE_VICMS"'
       DisplayFormat = '#,0.00'
@@ -42196,7 +42767,7 @@ object frmven_nfe: Tfrmven_nfe
       Size = 2
     end
     object nfe_001NFE_VBCST: TIBBCDField
-      DisplayLabel = 'Base C'#225'lculo ICMS-ST'
+      DisplayLabel = 'ST'
       FieldName = 'NFE_VBCST'
       Origin = '"LAN_NFE_001"."NFE_VBCST"'
       DisplayFormat = '#,0.00'
@@ -42247,14 +42818,14 @@ object frmven_nfe: Tfrmven_nfe
       Size = 2
     end
     object nfe_001NFE_CSTIPI: TIBStringField
-      DisplayLabel = 'CST IPI'
+      DisplayLabel = 'IPI'
       FieldName = 'NFE_CSTIPI'
       Origin = '"LAN_NFE_001"."NFE_CSTIPI"'
       OnValidate = nfe_001NFE_CSTIPIValidate
       Size = 3
     end
     object nfe_001NFE_VBCIPI: TIBBCDField
-      DisplayLabel = 'Base C'#225'lculo IPI'
+      DisplayLabel = 'IPI BC R$'
       FieldName = 'NFE_VBCIPI'
       Origin = '"LAN_NFE_001"."NFE_VBCIPI"'
       DisplayFormat = '#,0.00'
@@ -42262,7 +42833,7 @@ object frmven_nfe: Tfrmven_nfe
       Size = 2
     end
     object nfe_001NFE_PIPI: TIBBCDField
-      DisplayLabel = '% IPI'
+      DisplayLabel = 'IPI %'
       FieldName = 'NFE_PIPI'
       Origin = '"LAN_NFE_001"."NFE_PIPI"'
       OnValidate = nfe_001NFE_PIPIValidate
@@ -42271,7 +42842,7 @@ object frmven_nfe: Tfrmven_nfe
       Size = 2
     end
     object nfe_001NFE_VIPI: TIBBCDField
-      DisplayLabel = 'Valor IPI'
+      DisplayLabel = 'IPI R$'
       FieldName = 'NFE_VIPI'
       Origin = '"LAN_NFE_001"."NFE_VIPI"'
       DisplayFormat = '#,0.00'
@@ -42307,13 +42878,13 @@ object frmven_nfe: Tfrmven_nfe
       Size = 2
     end
     object nfe_001NFE_CSTPIS: TIBStringField
-      DisplayLabel = 'CST PIS'
+      DisplayLabel = 'PIS'
       FieldName = 'NFE_CSTPIS'
       Origin = '"LAN_NFE_001"."NFE_CSTPIS"'
       Size = 3
     end
     object nfe_001NFE_VBCPIS: TIBBCDField
-      DisplayLabel = 'Base C'#225'lculo PIS'
+      DisplayLabel = 'PIS BC R$'
       FieldName = 'NFE_VBCPIS'
       Origin = '"LAN_NFE_001"."NFE_VBCPIS"'
       DisplayFormat = '#,0.00'
@@ -42321,7 +42892,7 @@ object frmven_nfe: Tfrmven_nfe
       Size = 2
     end
     object nfe_001NFE_PPIS: TIBBCDField
-      DisplayLabel = '% PIS'
+      DisplayLabel = 'PIS %'
       FieldName = 'NFE_PPIS'
       Origin = '"LAN_NFE_001"."NFE_PPIS"'
       DisplayFormat = '#,0.00'
@@ -42329,7 +42900,7 @@ object frmven_nfe: Tfrmven_nfe
       Size = 2
     end
     object nfe_001NFE_VPIS: TIBBCDField
-      DisplayLabel = 'Valor PIS'
+      DisplayLabel = 'PIS R$'
       FieldName = 'NFE_VPIS'
       Origin = '"LAN_NFE_001"."NFE_VPIS"'
       DisplayFormat = '#,0.00'
@@ -42358,13 +42929,13 @@ object frmven_nfe: Tfrmven_nfe
       Size = 2
     end
     object nfe_001NFE_CSTCOFINS: TIBStringField
-      DisplayLabel = 'CST Cofins'
+      DisplayLabel = 'COFINS'
       FieldName = 'NFE_CSTCOFINS'
       Origin = '"LAN_NFE_001"."NFE_CSTCOFINS"'
       Size = 3
     end
     object nfe_001NFE_VBCOFINS: TIBBCDField
-      DisplayLabel = 'Base C'#225'lculo Cofins'
+      DisplayLabel = 'COFINS BC R$'
       FieldName = 'NFE_VBCOFINS'
       Origin = '"LAN_NFE_001"."NFE_VBCOFINS"'
       DisplayFormat = '#,0.00'
@@ -42372,7 +42943,7 @@ object frmven_nfe: Tfrmven_nfe
       Size = 2
     end
     object nfe_001NFE_PCOFINS: TIBBCDField
-      DisplayLabel = '% Cofins'
+      DisplayLabel = 'COFINS %'
       FieldName = 'NFE_PCOFINS'
       Origin = '"LAN_NFE_001"."NFE_PCOFINS"'
       DisplayFormat = '#,0.00'
@@ -42380,7 +42951,7 @@ object frmven_nfe: Tfrmven_nfe
       Size = 2
     end
     object nfe_001NFE_VCOFINS: TIBBCDField
-      DisplayLabel = 'Valor Cofins'
+      DisplayLabel = 'COFINS R$'
       FieldName = 'NFE_VCOFINS'
       Origin = '"LAN_NFE_001"."NFE_VCOFINS"'
       DisplayFormat = '#,0.00'
@@ -42439,7 +43010,7 @@ object frmven_nfe: Tfrmven_nfe
       Origin = '"LAN_NFE_001"."NFE_CLISTSERV"'
     end
     object nfe_001NFE_VNF: TIBBCDField
-      DisplayLabel = 'Total Nota Fiscal'
+      DisplayLabel = 'Nota Fiscal R$'
       FieldName = 'NFE_VNF'
       Origin = '"NFE_ITE"."NFE_VNF"'
       DisplayFormat = '#,0.00'
@@ -42960,9 +43531,439 @@ object frmven_nfe: Tfrmven_nfe
       FieldName = 'NFE_CDEP'
       Origin = '"NFE_ITE"."NFE_CDEP"'
     end
+    object nfe_001NFE_VBCCREDICMSSN: TIBBCDField
+      FieldName = 'NFE_VBCCREDICMSSN'
+      Origin = '"NFE_ITE"."NFE_VBCCREDICMSSN"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_CDRO: TLargeintField
+      FieldName = 'NFE_CDRO'
+      Origin = '"NFE_ITE"."NFE_CDRO"'
+    end
+    object nfe_001NFE_DERO: TIBStringField
+      FieldName = 'NFE_DERO'
+      Origin = '"NFE_ITE"."NFE_DERO"'
+      Size = 30
+    end
+    object nfe_001NFE_CDBX: TLargeintField
+      FieldName = 'NFE_CDBX'
+      Origin = '"NFE_ITE"."NFE_CDBX"'
+    end
+    object nfe_001CP_IDEP: TSmallintField
+      FieldName = 'CP_IDEP'
+      Origin = '"NFE_ITE"."CP_IDEP"'
+    end
+    object nfe_001IDAK: TLargeintField
+      FieldName = 'IDAK'
+      Origin = '"NFE_ITE"."IDAK"'
+    end
+    object nfe_001IDEK: TLargeintField
+      FieldName = 'IDEK'
+      Origin = '"NFE_ITE"."IDEK"'
+    end
+    object nfe_001UCDBE: TIBStringField
+      FieldName = 'UCDBE'
+      Origin = '"NFE_ITE"."UCDBE"'
+      FixedChar = True
+      Size = 2
+    end
+    object nfe_001UQTRL: TSmallintField
+      FieldName = 'UQTRL'
+      Origin = '"NFE_ITE"."UQTRL"'
+    end
+    object nfe_001UQTMD: TIBBCDField
+      FieldName = 'UQTMD'
+      Origin = '"NFE_ITE"."UQTMD"'
+      Precision = 9
+      Size = 2
+    end
+    object nfe_001UPSBR: TIBBCDField
+      FieldName = 'UPSBR'
+      Origin = '"NFE_ITE"."UPSBR"'
+      Precision = 9
+      Size = 3
+    end
+    object nfe_001UPSLQ: TIBBCDField
+      FieldName = 'UPSLQ'
+      Origin = '"NFE_ITE"."UPSLQ"'
+      Precision = 9
+      Size = 3
+    end
+    object nfe_001IP: TIBStringField
+      FieldName = 'IP'
+      Origin = '"NFE_ITE"."IP"'
+    end
+    object nfe_001HOST: TIBStringField
+      FieldName = 'HOST'
+      Origin = '"NFE_ITE"."HOST"'
+      Size = 30
+    end
+    object nfe_001FLAG: TIntegerField
+      FieldName = 'FLAG'
+      Origin = '"NFE_ITE"."FLAG"'
+    end
+    object nfe_001COL_ID: TSmallintField
+      FieldName = 'COL_ID'
+      Origin = '"NFE_ITE"."COL_ID"'
+    end
+    object nfe_001COL_DESC: TIBStringField
+      FieldName = 'COL_DESC'
+      Origin = '"NFE_ITE"."COL_DESC"'
+      Size = 60
+    end
+    object nfe_001CAT_ID: TSmallintField
+      FieldName = 'CAT_ID'
+      Origin = '"NFE_ITE"."CAT_ID"'
+    end
+    object nfe_001CAT_DESC: TIBStringField
+      FieldName = 'CAT_DESC'
+      Origin = '"NFE_ITE"."CAT_DESC"'
+      Size = 60
+    end
+    object nfe_001CF_ID: TSmallintField
+      FieldName = 'CF_ID'
+      Origin = '"NFE_ITE"."CF_ID"'
+    end
+    object nfe_001CF_FANTASIA: TIBStringField
+      FieldName = 'CF_FANTASIA'
+      Origin = '"NFE_ITE"."CF_FANTASIA"'
+      Size = 60
+    end
+    object nfe_001CF_RAZAO: TIBStringField
+      FieldName = 'CF_RAZAO'
+      Origin = '"NFE_ITE"."CF_RAZAO"'
+      Size = 60
+    end
+    object nfe_001CF_CNPJ: TIBStringField
+      FieldName = 'CF_CNPJ'
+      Origin = '"NFE_ITE"."CF_CNPJ"'
+      Size = 14
+    end
+    object nfe_001CF_CDPD: TLargeintField
+      FieldName = 'CF_CDPD'
+      Origin = '"NFE_ITE"."CF_CDPD"'
+    end
+    object nfe_001CF_DEPD: TIBStringField
+      FieldName = 'CF_DEPD'
+      Origin = '"NFE_ITE"."CF_DEPD"'
+      Size = 30
+    end
+    object nfe_001CF_CDNF: TLargeintField
+      FieldName = 'CF_CDNF'
+      Origin = '"NFE_ITE"."CF_CDNF"'
+    end
+    object nfe_001CF_SKU: TIBStringField
+      FieldName = 'CF_SKU'
+      Origin = '"NFE_ITE"."CF_SKU"'
+      Size = 30
+    end
+    object nfe_001CF_CEAN: TIBStringField
+      FieldName = 'CF_CEAN'
+      Origin = '"NFE_ITE"."CF_CEAN"'
+      Size = 44
+    end
+    object nfe_001CF_DECP: TIBStringField
+      FieldName = 'CF_DECP'
+      Origin = '"NFE_ITE"."CF_DECP"'
+      Size = 120
+    end
+    object nfe_001CF_UCOM: TIBStringField
+      FieldName = 'CF_UCOM'
+      Origin = '"NFE_ITE"."CF_UCOM"'
+      Size = 10
+    end
+    object nfe_001CF_UESP_RF: TIBStringField
+      FieldName = 'CF_UESP_RF'
+      Origin = '"NFE_ITE"."CF_UESP_RF"'
+      Size = 30
+    end
+    object nfe_001CF_UESP_QT: TIBBCDField
+      FieldName = 'CF_UESP_QT'
+      Origin = '"NFE_ITE"."CF_UESP_QT"'
+      Precision = 9
+      Size = 2
+    end
+    object nfe_001CF_VPRC_PAD_ORI: TIBStringField
+      FieldName = 'CF_VPRC_PAD_ORI'
+      Origin = '"NFE_ITE"."CF_VPRC_PAD_ORI"'
+      Size = 2
+    end
+    object nfe_001CF_VPRC_PAD: TFloatField
+      FieldName = 'CF_VPRC_PAD'
+      Origin = '"NFE_ITE"."CF_VPRC_PAD"'
+    end
+    object nfe_001CF_VPRC_COM: TFloatField
+      FieldName = 'CF_VPRC_COM'
+      Origin = '"NFE_ITE"."CF_VPRC_COM"'
+    end
+    object nfe_001CF_PIPI: TIBBCDField
+      FieldName = 'CF_PIPI'
+      Origin = '"NFE_ITE"."CF_PIPI"'
+      Precision = 9
+      Size = 2
+    end
+    object nfe_001IS_PDSC: TSmallintField
+      FieldName = 'IS_PDSC'
+      Origin = '"NFE_ITE"."IS_PDSC"'
+    end
+    object nfe_001UPRC_PAD: TIBBCDField
+      FieldName = 'UPRC_PAD'
+      Origin = '"NFE_ITE"."UPRC_PAD"'
+      Precision = 9
+      Size = 2
+    end
+    object nfe_001IDEV: TLargeintField
+      FieldName = 'IDEV'
+      Origin = '"NFE_ITE"."IDEV"'
+    end
+    object nfe_001CDEV: TSmallintField
+      FieldName = 'CDEV'
+      Origin = '"NFE_ITE"."CDEV"'
+    end
+    object nfe_001MAO_OBRA: TSmallintField
+      FieldName = 'MAO_OBRA'
+      Origin = '"NFE_ITE"."MAO_OBRA"'
+    end
+    object nfe_001NFE_IS_CSTIS: TIBStringField
+      FieldName = 'NFE_IS_CSTIS'
+      Origin = '"NFE_ITE"."NFE_IS_CSTIS"'
+      Size = 3
+    end
+    object nfe_001NFE_IS_CCLASSTRIBIS: TIBStringField
+      FieldName = 'NFE_IS_CCLASSTRIBIS'
+      Origin = '"NFE_ITE"."NFE_IS_CCLASSTRIBIS"'
+      Size = 6
+    end
+    object nfe_001NFE_IS_VBCIS: TIBBCDField
+      FieldName = 'NFE_IS_VBCIS'
+      Origin = '"NFE_ITE"."NFE_IS_VBCIS"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_IS_PIS: TIBBCDField
+      FieldName = 'NFE_IS_PIS'
+      Origin = '"NFE_ITE"."NFE_IS_PIS"'
+      Precision = 9
+      Size = 4
+    end
+    object nfe_001NFE_IS_PISESPEC: TIBBCDField
+      FieldName = 'NFE_IS_PISESPEC'
+      Origin = '"NFE_ITE"."NFE_IS_PISESPEC"'
+      Precision = 9
+      Size = 4
+    end
+    object nfe_001NFE_IS_VIS: TIBBCDField
+      FieldName = 'NFE_IS_VIS'
+      Origin = '"NFE_ITE"."NFE_IS_VIS"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_IS_UTRIB: TIBStringField
+      FieldName = 'NFE_IS_UTRIB'
+      Origin = '"NFE_ITE"."NFE_IS_UTRIB"'
+      Size = 6
+    end
+    object nfe_001NFE_IS_QTRIB: TIBBCDField
+      FieldName = 'NFE_IS_QTRIB'
+      Origin = '"NFE_ITE"."NFE_IS_QTRIB"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_IBSCBS_CSTIS: TIBStringField
+      FieldName = 'NFE_IBSCBS_CSTIS'
+      Origin = '"NFE_ITE"."NFE_IBSCBS_CSTIS"'
+      Size = 3
+    end
+    object nfe_001NFE_IBSCBS_CCLASSTRIBIS: TIBStringField
+      FieldName = 'NFE_IBSCBS_CCLASSTRIBIS'
+      Origin = '"NFE_ITE"."NFE_IBSCBS_CCLASSTRIBIS"'
+      Size = 6
+    end
+    object nfe_001NFE_IBSCBS_INDDOACAO: TIBStringField
+      FieldName = 'NFE_IBSCBS_INDDOACAO'
+      Origin = '"NFE_ITE"."NFE_IBSCBS_INDDOACAO"'
+      FixedChar = True
+      Size = 1
+    end
+    object nfe_001NFE_IBSCBS_VBCIBSCBS: TIBBCDField
+      FieldName = 'NFE_IBSCBS_VBCIBSCBS'
+      Origin = '"NFE_ITE"."NFE_IBSCBS_VBCIBSCBS"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_IBSCBS_VIBSCBS: TIBBCDField
+      FieldName = 'NFE_IBSCBS_VIBSCBS'
+      Origin = '"NFE_ITE"."NFE_IBSCBS_VIBSCBS"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_IBSUF_VBCIBSUF: TIBBCDField
+      FieldName = 'NFE_IBSUF_VBCIBSUF'
+      Origin = '"NFE_ITE"."NFE_IBSUF_VBCIBSUF"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_IBSUF_PIBSUF: TIBBCDField
+      FieldName = 'NFE_IBSUF_PIBSUF'
+      Origin = '"NFE_ITE"."NFE_IBSUF_PIBSUF"'
+      Precision = 9
+      Size = 4
+    end
+    object nfe_001NFE_IBSUF_VIBSUF: TIBBCDField
+      FieldName = 'NFE_IBSUF_VIBSUF'
+      Origin = '"NFE_ITE"."NFE_IBSUF_VIBSUF"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_IBSUF_PDIF: TIBBCDField
+      FieldName = 'NFE_IBSUF_PDIF'
+      Origin = '"NFE_ITE"."NFE_IBSUF_PDIF"'
+      Precision = 9
+      Size = 4
+    end
+    object nfe_001NFE_IBSUF_VDIF: TIBBCDField
+      FieldName = 'NFE_IBSUF_VDIF'
+      Origin = '"NFE_ITE"."NFE_IBSUF_VDIF"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_IBSUF_VDEVTRIB: TIBBCDField
+      FieldName = 'NFE_IBSUF_VDEVTRIB'
+      Origin = '"NFE_ITE"."NFE_IBSUF_VDEVTRIB"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_IBSMUN_VBCIBSMUN: TIBBCDField
+      FieldName = 'NFE_IBSMUN_VBCIBSMUN'
+      Origin = '"NFE_ITE"."NFE_IBSMUN_VBCIBSMUN"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_IBSMUN_PIBSMUN: TIBBCDField
+      FieldName = 'NFE_IBSMUN_PIBSMUN'
+      Origin = '"NFE_ITE"."NFE_IBSMUN_PIBSMUN"'
+      Precision = 9
+      Size = 4
+    end
+    object nfe_001NFE_IBSMUN_VIBSMUN: TIBBCDField
+      FieldName = 'NFE_IBSMUN_VIBSMUN'
+      Origin = '"NFE_ITE"."NFE_IBSMUN_VIBSMUN"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_IBSMUN_PDIF: TIBBCDField
+      FieldName = 'NFE_IBSMUN_PDIF'
+      Origin = '"NFE_ITE"."NFE_IBSMUN_PDIF"'
+      Precision = 9
+      Size = 4
+    end
+    object nfe_001NFE_IBSMUN_VDIF: TIBBCDField
+      FieldName = 'NFE_IBSMUN_VDIF'
+      Origin = '"NFE_ITE"."NFE_IBSMUN_VDIF"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_IBSMUN_VDEVTRIB: TIBBCDField
+      FieldName = 'NFE_IBSMUN_VDEVTRIB'
+      Origin = '"NFE_ITE"."NFE_IBSMUN_VDEVTRIB"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_IBSMUN_VCREDPRES: TIBBCDField
+      FieldName = 'NFE_IBSMUN_VCREDPRES'
+      Origin = '"NFE_ITE"."NFE_IBSMUN_VCREDPRES"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_IBSMUN_VCREDPRESCONDSUS: TIBBCDField
+      FieldName = 'NFE_IBSMUN_VCREDPRESCONDSUS'
+      Origin = '"NFE_ITE"."NFE_IBSMUN_VCREDPRESCONDSUS"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_CBS_VBCCBS: TIBBCDField
+      FieldName = 'NFE_CBS_VBCCBS'
+      Origin = '"NFE_ITE"."NFE_CBS_VBCCBS"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_CBS_PCBS: TIBBCDField
+      FieldName = 'NFE_CBS_PCBS'
+      Origin = '"NFE_ITE"."NFE_CBS_PCBS"'
+      Precision = 9
+      Size = 4
+    end
+    object nfe_001NFE_CBS_VCBS: TIBBCDField
+      FieldName = 'NFE_CBS_VCBS'
+      Origin = '"NFE_ITE"."NFE_CBS_VCBS"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_CBS_PDIF: TIBBCDField
+      FieldName = 'NFE_CBS_PDIF'
+      Origin = '"NFE_ITE"."NFE_CBS_PDIF"'
+      Precision = 9
+      Size = 4
+    end
+    object nfe_001NFE_CBS_VDIF: TIBBCDField
+      FieldName = 'NFE_CBS_VDIF'
+      Origin = '"NFE_ITE"."NFE_CBS_VDIF"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_CBS_VDEVTRIB: TIBBCDField
+      FieldName = 'NFE_CBS_VDEVTRIB'
+      Origin = '"NFE_ITE"."NFE_CBS_VDEVTRIB"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_CBS_VCREDPRES: TIBBCDField
+      FieldName = 'NFE_CBS_VCREDPRES'
+      Origin = '"NFE_ITE"."NFE_CBS_VCREDPRES"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_CBS_VCREDPRESCONDSUS: TIBBCDField
+      FieldName = 'NFE_CBS_VCREDPRESCONDSUS'
+      Origin = '"NFE_ITE"."NFE_CBS_VCREDPRESCONDSUS"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_VSERV: TIBBCDField
+      FieldName = 'NFE_VSERV'
+      Origin = '"NFE_ITE"."NFE_VSERV"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_VII: TIBBCDField
+      FieldName = 'NFE_VII'
+      Origin = '"NFE_ITE"."NFE_VII"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_VICMSMONO: TIBBCDField
+      FieldName = 'NFE_VICMSMONO'
+      Origin = '"NFE_ITE"."NFE_VICMSMONO"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_VNFTOT: TIBBCDField
+      FieldName = 'NFE_VNFTOT'
+      Origin = '"NFE_ITE"."NFE_VNFTOT"'
+      Precision = 18
+      Size = 2
+    end
+    object nfe_001NFE_ISSQN_VISSQN: TIBBCDField
+      FieldName = 'NFE_ISSQN_VISSQN'
+      Origin = '"NFE_ITE"."NFE_ISSQN_VISSQN"'
+      Precision = 18
+      Size = 2
+    end
   end
   object dtsnfe_001: TDataSource
     DataSet = nfe_001
+    OnDataChange = dtsnfe_001DataChange
     Left = 1200
     Top = 168
   end
@@ -42972,12 +43973,129 @@ object frmven_nfe: Tfrmven_nfe
     SQL.Strings = (
       'SELECT * FROM TAB_NAT')
     Left = 1008
-    Top = 296
+    Top = 264
     object tab_natID: TIntegerField
       FieldName = 'ID'
       Origin = '"TAB_NAT"."ID"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
+    end
+    object tab_natCFOP: TIBStringField
+      FieldName = 'CFOP'
+      Origin = '"TAB_NAT"."CFOP"'
+      Size = 10
+    end
+    object tab_natCFOP_CONTRA: TIBStringField
+      FieldName = 'CFOP_CONTRA'
+      Origin = '"TAB_NAT"."CFOP_CONTRA"'
+      Size = 10
+    end
+    object tab_natDESCRICAO: TIBStringField
+      FieldName = 'DESCRICAO'
+      Origin = '"TAB_NAT"."DESCRICAO"'
+      Size = 120
+    end
+    object tab_natFINALIDADE: TIBStringField
+      FieldName = 'FINALIDADE'
+      Origin = '"TAB_NAT"."FINALIDADE"'
+      Size = 30
+    end
+    object tab_natFAPD: TSmallintField
+      FieldName = 'FAPD'
+      Origin = '"TAB_NAT"."FAPD"'
+    end
+    object tab_natTIPO: TIBStringField
+      FieldName = 'TIPO'
+      Origin = '"TAB_NAT"."TIPO"'
+      Size = 30
+    end
+    object tab_natTPNF: TSmallintField
+      FieldName = 'TPNF'
+      Origin = '"TAB_NAT"."TPNF"'
+    end
+    object tab_natCSOSN: TIBStringField
+      FieldName = 'CSOSN'
+      Origin = '"TAB_NAT"."CSOSN"'
+      Size = 30
+    end
+    object tab_natCST_ICMS: TIBStringField
+      FieldName = 'CST_ICMS'
+      Origin = '"TAB_NAT"."CST_ICMS"'
+      FixedChar = True
+      Size = 2
+    end
+    object tab_natCST_IPI_ENT: TIBStringField
+      FieldName = 'CST_IPI_ENT'
+      Origin = '"TAB_NAT"."CST_IPI_ENT"'
+      FixedChar = True
+      Size = 2
+    end
+    object tab_natCST_IPI_SAI: TIBStringField
+      FieldName = 'CST_IPI_SAI'
+      Origin = '"TAB_NAT"."CST_IPI_SAI"'
+      FixedChar = True
+      Size = 2
+    end
+    object tab_natCENQ: TIBStringField
+      FieldName = 'CENQ'
+      Origin = '"TAB_NAT"."CENQ"'
+      Size = 3
+    end
+    object tab_natCST_PIS: TIBStringField
+      FieldName = 'CST_PIS'
+      Origin = '"TAB_NAT"."CST_PIS"'
+      FixedChar = True
+      Size = 2
+    end
+    object tab_natPPIS: TIBBCDField
+      FieldName = 'PPIS'
+      Origin = '"TAB_NAT"."PPIS"'
+      Precision = 9
+      Size = 2
+    end
+    object tab_natPPIS_REAL: TIBBCDField
+      FieldName = 'PPIS_REAL'
+      Origin = '"TAB_NAT"."PPIS_REAL"'
+      Precision = 9
+      Size = 2
+    end
+    object tab_natCST_COFINS: TIBStringField
+      FieldName = 'CST_COFINS'
+      Origin = '"TAB_NAT"."CST_COFINS"'
+      FixedChar = True
+      Size = 2
+    end
+    object tab_natPCOFINS: TIBBCDField
+      FieldName = 'PCOFINS'
+      Origin = '"TAB_NAT"."PCOFINS"'
+      Precision = 9
+      Size = 2
+    end
+    object tab_natPCOFINS_REAL: TIBBCDField
+      FieldName = 'PCOFINS_REAL'
+      Origin = '"TAB_NAT"."PCOFINS_REAL"'
+      Precision = 9
+      Size = 2
+    end
+    object tab_natINFADCAD: TMemoField
+      FieldName = 'INFADCAD'
+      Origin = '"TAB_NAT"."INFADCAD"'
+      ProviderFlags = [pfInUpdate]
+      BlobType = ftMemo
+      Size = 8
+    end
+    object tab_natIP: TIBStringField
+      FieldName = 'IP'
+      Origin = '"TAB_NAT"."IP"'
+    end
+    object tab_natHOST: TIBStringField
+      FieldName = 'HOST'
+      Origin = '"TAB_NAT"."HOST"'
+      Size = 30
+    end
+    object tab_natFLAG: TSmallintField
+      FieldName = 'FLAG'
+      Origin = '"TAB_NAT"."FLAG"'
     end
     object tab_natNAT_CNAT: TIBStringField
       FieldName = 'NAT_CNAT'
@@ -42992,6 +44110,7 @@ object frmven_nfe: Tfrmven_nfe
     object tab_natNAT_TIPO: TIBStringField
       FieldName = 'NAT_TIPO'
       Origin = '"TAB_NAT"."NAT_TIPO"'
+      Size = 30
     end
     object tab_natNAT_OPER: TIBStringField
       FieldName = 'NAT_OPER'
@@ -43042,11 +44161,6 @@ object frmven_nfe: Tfrmven_nfe
       Origin = '"TAB_NAT"."NAT_CSTI"'
       Size = 3
     end
-    object tab_natNAT_CSTI0: TIBStringField
-      FieldName = 'NAT_CSTI0'
-      Origin = '"TAB_NAT"."NAT_CSTI0"'
-      Size = 3
-    end
     object tab_natNAT_CSTP: TIBStringField
       FieldName = 'NAT_CSTP'
       Origin = '"TAB_NAT"."NAT_CSTP"'
@@ -43068,13 +44182,6 @@ object frmven_nfe: Tfrmven_nfe
       Origin = '"TAB_NAT"."NAT_PIPC"'
       Precision = 9
       Size = 2
-    end
-    object tab_natNAT_OBSE: TMemoField
-      FieldName = 'NAT_OBSE'
-      Origin = '"TAB_NAT"."NAT_OBSE"'
-      ProviderFlags = [pfInUpdate]
-      BlobType = ftMemo
-      Size = 8
     end
     object tab_natNAT_STA: TIBStringField
       FieldName = 'NAT_STA'
@@ -43105,6 +44212,23 @@ object frmven_nfe: Tfrmven_nfe
       FixedChar = True
       Size = 1
     end
+    object tab_natIPISEME: TIBStringField
+      FieldName = 'IPISEME'
+      Origin = '"TAB_NAT"."IPISEME"'
+      Size = 3
+    end
+    object tab_natIPISEMS: TIBStringField
+      FieldName = 'IPISEMS'
+      Origin = '"TAB_NAT"."IPISEMS"'
+      Size = 3
+    end
+    object tab_natNAT_OBSE: TMemoField
+      FieldName = 'NAT_OBSE'
+      Origin = '"TAB_NAT"."NAT_OBSE"'
+      ProviderFlags = [pfInUpdate]
+      BlobType = ftMemo
+      Size = 8
+    end
     object tab_natNAT_TPNF: TIBStringField
       FieldName = 'NAT_TPNF'
       Origin = '"TAB_NAT"."NAT_TPNF"'
@@ -43117,10 +44241,54 @@ object frmven_nfe: Tfrmven_nfe
       Precision = 9
       Size = 2
     end
-    object tab_natCENQ: TIBStringField
-      FieldName = 'CENQ'
-      Origin = '"TAB_NAT"."CENQ"'
+    object tab_natNAT_CSTI0: TIBStringField
+      FieldName = 'NAT_CSTI0'
+      Origin = '"TAB_NAT"."NAT_CSTI0"'
       Size = 3
+    end
+    object tab_natCSTIS: TIBStringField
+      FieldName = 'CSTIS'
+      Origin = '"TAB_NAT"."CSTIS"'
+      Size = 3
+    end
+    object tab_natCCLASSTRIBIS: TIBStringField
+      FieldName = 'CCLASSTRIBIS'
+      Origin = '"TAB_NAT"."CCLASSTRIBIS"'
+      Size = 6
+    end
+    object tab_natPIS: TIBBCDField
+      FieldName = 'PIS'
+      Origin = '"TAB_NAT"."PIS"'
+      Precision = 9
+      Size = 4
+    end
+    object tab_natPISESPEC: TIBBCDField
+      FieldName = 'PISESPEC'
+      Origin = '"TAB_NAT"."PISESPEC"'
+      Precision = 9
+      Size = 4
+    end
+    object tab_natCSTCBS: TIBStringField
+      FieldName = 'CSTCBS'
+      Origin = '"TAB_NAT"."CSTCBS"'
+      Size = 3
+    end
+    object tab_natCCLASSTRIBCBS: TIBStringField
+      FieldName = 'CCLASSTRIBCBS'
+      Origin = '"TAB_NAT"."CCLASSTRIBCBS"'
+      Size = 6
+    end
+    object tab_natPCBS: TIBBCDField
+      FieldName = 'PCBS'
+      Origin = '"TAB_NAT"."PCBS"'
+      Precision = 9
+      Size = 4
+    end
+    object tab_natINDDOACAO: TIBStringField
+      FieldName = 'INDDOACAO'
+      Origin = '"TAB_NAT"."INDDOACAO"'
+      FixedChar = True
+      Size = 1
     end
   end
   object consulta_S: TIBQuery
@@ -43136,7 +44304,7 @@ object frmven_nfe: Tfrmven_nfe
       'SELECT * FROM TAB_ALQ'
       'WHERE ALQ_ESTA = :ESTA')
     Left = 1008
-    Top = 264
+    Top = 232
     ParamData = <
       item
         DataType = ftString
@@ -43150,27 +44318,42 @@ object frmven_nfe: Tfrmven_nfe
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
+    object tab_alqUF: TIBStringField
+      FieldName = 'UF'
+      Origin = '"TAB_ALQ"."UF"'
+      FixedChar = True
+      Size = 2
+    end
+    object tab_alqDESCRICAO: TIBStringField
+      FieldName = 'DESCRICAO'
+      Origin = '"TAB_ALQ"."DESCRICAO"'
+      Size = 30
+    end
+    object tab_alqPICMS: TIBBCDField
+      FieldName = 'PICMS'
+      Origin = '"TAB_ALQ"."PICMS"'
+      Precision = 9
+      Size = 2
+    end
+    object tab_alqPFCP: TIBBCDField
+      FieldName = 'PFCP'
+      Origin = '"TAB_ALQ"."PFCP"'
+      Precision = 9
+      Size = 2
+    end
     object tab_alqALQ_ESTA: TIBStringField
       FieldName = 'ALQ_ESTA'
       Origin = '"TAB_ALQ"."ALQ_ESTA"'
-      Size = 2
-    end
-    object tab_alqALQ_ICMS: TIBBCDField
-      FieldName = 'ALQ_ICMS'
-      Origin = '"TAB_ALQ"."ALQ_ICMS"'
-      Precision = 9
-      Size = 2
-    end
-    object tab_alqALQ_ICME: TIBBCDField
-      FieldName = 'ALQ_ICME'
-      Origin = '"TAB_ALQ"."ALQ_ICME"'
-      Precision = 9
       Size = 2
     end
     object tab_alqALQ_DESC: TIBStringField
       FieldName = 'ALQ_DESC'
       Origin = '"TAB_ALQ"."ALQ_DESC"'
       Size = 30
+    end
+    object tab_alqALQ_MEI: TSmallintField
+      FieldName = 'ALQ_MEI'
+      Origin = '"TAB_ALQ"."ALQ_MEI"'
     end
     object tab_alqALQ_UFORIGEM: TIBStringField
       FieldName = 'ALQ_UFORIGEM'
@@ -43180,6 +44363,12 @@ object frmven_nfe: Tfrmven_nfe
     object tab_alqALQ_UFDESTINO: TIBStringField
       FieldName = 'ALQ_UFDESTINO'
       Origin = '"TAB_ALQ"."ALQ_UFDESTINO"'
+      Size = 2
+    end
+    object tab_alqALQ_ICMS: TIBBCDField
+      FieldName = 'ALQ_ICMS'
+      Origin = '"TAB_ALQ"."ALQ_ICMS"'
+      Precision = 9
       Size = 2
     end
     object tab_alqALQ_ICMO: TIBBCDField
@@ -43197,6 +44386,12 @@ object frmven_nfe: Tfrmven_nfe
     object tab_alqALQ_ICMI: TIBBCDField
       FieldName = 'ALQ_ICMI'
       Origin = '"TAB_ALQ"."ALQ_ICMI"'
+      Precision = 9
+      Size = 2
+    end
+    object tab_alqALQ_ICME: TIBBCDField
+      FieldName = 'ALQ_ICME'
+      Origin = '"TAB_ALQ"."ALQ_ICME"'
       Precision = 9
       Size = 2
     end
@@ -43220,6 +44415,10 @@ object frmven_nfe: Tfrmven_nfe
       Origin = '"TAB_ALQ"."ALQ_FCP"'
       Precision = 9
       Size = 2
+    end
+    object tab_alqFLAG: TSmallintField
+      FieldName = 'FLAG'
+      Origin = '"TAB_ALQ"."FLAG"'
     end
   end
   object dtsdup_001: TDataSource
@@ -43413,7 +44612,7 @@ object frmven_nfe: Tfrmven_nfe
     SQL.Strings = (
       'SELECT * FROM TAB_PAG')
     Left = 1008
-    Top = 328
+    Top = 296
     object tab_pagID: TIntegerField
       FieldName = 'ID'
       Origin = '"TAB_PAG"."ID"'
@@ -43524,10 +44723,6 @@ object frmven_nfe: Tfrmven_nfe
       FixedChar = True
       Size = 1
     end
-    object tab_pagPAG_ENVWEB: TSmallintField
-      FieldName = 'PAG_ENVWEB'
-      Origin = '"TAB_PAG"."PAG_ENVWEB"'
-    end
   end
   object ibSP: TIBStoredProc
     Database = dmDADOS.ibDB
@@ -43545,8 +44740,7 @@ object frmven_nfe: Tfrmven_nfe
         'TA,FOR_STA,FOR_STAV,FOR_DPAG,'
       
         '       FOR_VDSC,FOR_DCAD,FOR_DFUN,FOR_DALT,FOR_DULT,FOR_VULT,FOR' +
-        '_DDD,FOR_TEL1,REP_FANT,USU_DUSU,FOR_STPD,FOR_DTRA,FOR_DUSU,FOR_E' +
-        'NVMAIL,'
+        '_DDD,FOR_TEL1,REP_FANT,USU_DUSU,FOR_STPD,FOR_DTRA,FOR_DUSU,'
       
         '       TRIM(CAST(SUBSTRING(FOR_OBSO FROM 1 FOR 512) AS VARCHAR(5' +
         '12))) FOR_OBSO'
@@ -43711,10 +44905,6 @@ object frmven_nfe: Tfrmven_nfe
       ProviderFlags = []
       Size = 512
     end
-    object psq_forFOR_ENVMAIL: TSmallintField
-      FieldName = 'FOR_ENVMAIL'
-      Origin = '"CAD_FOR"."FOR_ENVMAIL"'
-    end
   end
   object cli_001: TIBDataSet
     Tag = 1
@@ -43848,7 +45038,6 @@ object frmven_nfe: Tfrmven_nfe
       
         '          CLI_TLOV,CLI_LOGV,CLI_NUMV,CLI_COMV,CLI_CEPV,CLI_BAIV,' +
         'CLI_CIDV,CLI_ESTV,CLI_CMUV,'
-      '          CLI_ENVMAIL,'
       
         '          TRIM(CAST(SUBSTRING(CLI_OBSE FROM 1 FOR 512) AS VARCHA' +
         'R(512))) CLI_OBSE,TRIM(CAST(SUBSTRING(CLI_OBSO FROM 1 FOR 512) A' +
@@ -44040,10 +45229,6 @@ object frmven_nfe: Tfrmven_nfe
       ProviderFlags = []
       Size = 512
     end
-    object cad_cliCLI_ENVMAIL: TSmallintField
-      FieldName = 'CLI_ENVMAIL'
-      Origin = '"CAD_CLI"."CLI_ENVMAIL"'
-    end
   end
   object dtscad_cli: TDataSource
     DataSet = cad_cli
@@ -44057,7 +45242,7 @@ object frmven_nfe: Tfrmven_nfe
       
         'SELECT CAD_CLI.ID,CLI_FANT,CLI_RAZA,CLI_CNPJ,CLI_CPF,CLI_CRED,CL' +
         'I_CID,CLI_BAI,CLI_TLOG,CLI_LOGR,CLI_NUME,CLI_CEP,CLI_COMP,CLI_ES' +
-        'TA,CLI_STA,CLI_STAV,CLI_DPAG,CLI_ENVMAIL,'
+        'TA,CLI_STA,CLI_STAV,CLI_DPAG,'
       
         '       CLI_VDSC,CLI_DCAD,CLI_DFUN,CLI_DALT,CLI_DULT,CLI_VULT,CLI' +
         '_DDD,CLI_TEL1,REP_FANT,USU_DUSU,CLI_STPD,CLI_DTRA,CLI_DUSU,'
@@ -44226,10 +45411,6 @@ object frmven_nfe: Tfrmven_nfe
       ProviderFlags = []
       Size = 512
     end
-    object psq_cliCLI_ENVMAIL: TSmallintField
-      FieldName = 'CLI_ENVMAIL'
-      Origin = '"CAD_CLI"."CLI_ENVMAIL"'
-    end
   end
   object cad_for: TIBQuery
     Database = dmDADOS.ibDB
@@ -44244,7 +45425,7 @@ object frmven_nfe: Tfrmven_nfe
         'FOR_CID ,FOR_ESTA,FOR_CMUN,FOR_DPAG,'
       
         '          FOR_TLOV,FOR_LOGV,FOR_NUMV,FOR_COMV,FOR_CEPV,FOR_BAIV,' +
-        'FOR_CIDV,FOR_ESTV,FOR_CMUV,FOR_ENVMAIL,'
+        'FOR_CIDV,FOR_ESTV,FOR_CMUV,'
       
         '          TRIM(CAST(SUBSTRING(FOR_OBSE FROM 1 FOR 512) AS VARCHA' +
         'R(512))) FOR_OBSE,TRIM(CAST(SUBSTRING(FOR_OBSO FROM 1 FOR 512) A' +
@@ -44436,256 +45617,34 @@ object frmven_nfe: Tfrmven_nfe
       ProviderFlags = []
       Size = 512
     end
-    object cad_forFOR_ENVMAIL: TSmallintField
-      FieldName = 'FOR_ENVMAIL'
-      Origin = '"CAD_FOR"."FOR_ENVMAIL"'
-    end
   end
   object dtscad_for: TDataSource
     DataSet = cad_for
     Left = 1040
     Top = 168
   end
-  object SFrete: TIBQuery
+  object SQLSEdicao: TIBSQL
+    Database = dmDADOS.bSHEILD
+    Transaction = TSheild
+    Left = 1201
+    Top = 38
+  end
+  object SQLSPKEdicao: TIBSQL
+    Database = dmDADOS.bSHEILD
+    Transaction = TSheild
+    Left = 1233
+    Top = 38
+  end
+  object SQLConsulta: TIBSQL
     Database = dmDADOS.ibDB
     Transaction = IBTra
-    SQL.Strings = (
-      'SELECT * FROM SP_PSQ_CAD_TRA_LOG('#39'28970000'#39',7548.73,385.75)'
-      'ORDER BY LOG_VFRETE')
-    Left = 1008
-    Top = 360
-    object SFreteLOG_TRANSPORTADORA: TIBStringField
-      DisplayLabel = 'Transportadora'
-      FieldName = 'LOG_TRANSPORTADORA'
-      Origin = '"SP_PSQ_CAD_TRA_LOG"."LOG_TRANSPORTADORA"'
-      Size = 60
-    end
-    object SFreteLOG_DESTINO: TIBStringField
-      DisplayLabel = 'Destino'
-      FieldName = 'LOG_DESTINO'
-      Origin = '"SP_PSQ_CAD_TRA_LOG"."LOG_DESTINO"'
-      Size = 60
-    end
-    object SFreteLOG_PRAZO: TIBStringField
-      DisplayLabel = 'Prazo'
-      FieldName = 'LOG_PRAZO'
-      Origin = '"SP_PSQ_CAD_TRA_LOG"."LOG_PRAZO"'
-      Size = 10
-    end
-    object SFreteLOG_PFRETE: TIBBCDField
-      FieldName = 'LOG_PFRETE'
-      Origin = '"SP_PSQ_CAD_TRA_LOG"."LOG_PFRETE"'
-      Precision = 9
-      Size = 2
-    end
-    object SFreteLOG_VPFRETE: TIBBCDField
-      FieldName = 'LOG_VPFRETE'
-      Origin = '"SP_PSQ_CAD_TRA_LOG"."LOG_VPFRETE"'
-      Precision = 18
-      Size = 2
-    end
-    object SFreteLOG_KFRETE: TIBBCDField
-      FieldName = 'LOG_KFRETE'
-      Origin = '"SP_PSQ_CAD_TRA_LOG"."LOG_KFRETE"'
-      Precision = 9
-      Size = 3
-    end
-    object SFreteLOG_VKFRETE: TIBBCDField
-      FieldName = 'LOG_VKFRETE'
-      Origin = '"SP_PSQ_CAD_TRA_LOG"."LOG_VKFRETE"'
-      Precision = 18
-      Size = 2
-    end
-    object SFreteLOG_MFRETE: TIBBCDField
-      FieldName = 'LOG_MFRETE'
-      Origin = '"SP_PSQ_CAD_TRA_LOG"."LOG_MFRETE"'
-      Precision = 9
-      Size = 2
-    end
-    object SFreteLOG_VFRETE: TIBBCDField
-      DisplayLabel = 'Vl. Frete'
-      FieldName = 'LOG_VFRETE'
-      Origin = '"SP_PSQ_CAD_TRA_LOG"."LOG_VFRETE"'
-      DisplayFormat = 'R$ ,##,0.00'
-      Precision = 18
-      Size = 2
-    end
-    object SFreteLOG_CAT: TIBBCDField
-      FieldName = 'LOG_CAT'
-      Origin = '"SP_PSQ_CAD_TRA_LOG"."LOG_CAT"'
-      Precision = 9
-      Size = 2
-    end
-  end
-  object DTSFrete: TDataSource
-    DataSet = SFrete
     Left = 1040
-    Top = 360
+    Top = 40
   end
-  object psq_rep: TIBQuery
+  object SQLPKConsulta: TIBSQL
     Database = dmDADOS.ibDB
     Transaction = IBTra
-    SQL.Strings = (
-      
-        'SELECT CAD_REP.ID,REP_FANT,REP_RAZA,REP_CNPJ,REP_CPF,REP_CRED,RE' +
-        'P_CID,REP_BAI,REP_TLOG,REP_LOGR,REP_NUME,REP_CEP,REP_COMP,REP_ES' +
-        'TA,REP_STA,REP_STAV,REP_DPAG,REP_ENVMAIL,'
-      
-        '       REP_VDSC,REP_DCAD,REP_DFUN,REP_DALT,REP_DULT,REP_VULT,REP' +
-        '_DDD,REP_TEL1,REP_FANT,USU_DUSU,REP_DTRA,'
-      
-        '       TRIM(CAST(SUBSTRING(REP_OBSO FROM 1 FOR 512) AS VARCHAR(5' +
-        '12))) REP_OBSO'
-      'FROM   CAD_REP'
-      'LEFT   OUTER JOIN CAD_USU ON CAD_REP.REP_CVEN = CAD_USU.USU_CUSU'
-      'WHERE  CAD_REP.ID = 0')
-    Left = 1008
-    Top = 232
-    object psq_repID: TIntegerField
-      FieldName = 'ID'
-      Origin = '"CAD_REP"."ID"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object psq_repREP_FANT: TIBStringField
-      FieldName = 'REP_FANT'
-      Origin = '"CAD_REP"."REP_FANT"'
-      Size = 40
-    end
-    object psq_repREP_RAZA: TIBStringField
-      FieldName = 'REP_RAZA'
-      Origin = '"CAD_REP"."REP_RAZA"'
-      Size = 60
-    end
-    object psq_repREP_CNPJ: TIBStringField
-      FieldName = 'REP_CNPJ'
-      Origin = '"CAD_REP"."REP_CNPJ"'
-      Size = 14
-    end
-    object psq_repREP_CPF: TIBStringField
-      FieldName = 'REP_CPF'
-      Origin = '"CAD_REP"."REP_CPF"'
-      Size = 11
-    end
-    object psq_repREP_CRED: TIBBCDField
-      FieldName = 'REP_CRED'
-      Origin = '"CAD_REP"."REP_CRED"'
-      Precision = 9
-      Size = 2
-    end
-    object psq_repREP_CID: TIBStringField
-      FieldName = 'REP_CID'
-      Origin = '"CAD_REP"."REP_CID"'
-      Size = 40
-    end
-    object psq_repREP_BAI: TIBStringField
-      FieldName = 'REP_BAI'
-      Origin = '"CAD_REP"."REP_BAI"'
-      Size = 40
-    end
-    object psq_repREP_TLOG: TIBStringField
-      FieldName = 'REP_TLOG'
-      Origin = '"CAD_REP"."REP_TLOG"'
-      Size = 15
-    end
-    object psq_repREP_LOGR: TIBStringField
-      FieldName = 'REP_LOGR'
-      Origin = '"CAD_REP"."REP_LOGR"'
-      Size = 60
-    end
-    object psq_repREP_NUME: TIBStringField
-      FieldName = 'REP_NUME'
-      Origin = '"CAD_REP"."REP_NUME"'
-      Size = 10
-    end
-    object psq_repREP_CEP: TIBStringField
-      FieldName = 'REP_CEP'
-      Origin = '"CAD_REP"."REP_CEP"'
-      Size = 9
-    end
-    object psq_repREP_COMP: TIBStringField
-      FieldName = 'REP_COMP'
-      Origin = '"CAD_REP"."REP_COMP"'
-      Size = 40
-    end
-    object psq_repREP_ESTA: TIBStringField
-      FieldName = 'REP_ESTA'
-      Origin = '"CAD_REP"."REP_ESTA"'
-      Size = 2
-    end
-    object psq_repREP_STA: TIBStringField
-      FieldName = 'REP_STA'
-      Origin = '"CAD_REP"."REP_STA"'
-      FixedChar = True
-      Size = 1
-    end
-    object psq_repREP_STAV: TIBStringField
-      FieldName = 'REP_STAV'
-      Origin = '"CAD_REP"."REP_STAV"'
-      FixedChar = True
-      Size = 1
-    end
-    object psq_repREP_DPAG: TIBStringField
-      FieldName = 'REP_DPAG'
-      Origin = '"CAD_REP"."REP_DPAG"'
-      Size = 50
-    end
-    object psq_repREP_VDSC: TIBBCDField
-      FieldName = 'REP_VDSC'
-      Origin = '"CAD_REP"."REP_VDSC"'
-      Precision = 9
-      Size = 2
-    end
-    object psq_repREP_DCAD: TDateField
-      FieldName = 'REP_DCAD'
-      Origin = '"CAD_REP"."REP_DCAD"'
-    end
-    object psq_repREP_DFUN: TDateField
-      FieldName = 'REP_DFUN'
-      Origin = '"CAD_REP"."REP_DFUN"'
-    end
-    object psq_repREP_DALT: TDateField
-      FieldName = 'REP_DALT'
-      Origin = '"CAD_REP"."REP_DALT"'
-    end
-    object psq_repREP_DULT: TDateField
-      FieldName = 'REP_DULT'
-      Origin = '"CAD_REP"."REP_DULT"'
-    end
-    object psq_repREP_VULT: TIBBCDField
-      FieldName = 'REP_VULT'
-      Origin = '"CAD_REP"."REP_VULT"'
-      Precision = 9
-      Size = 2
-    end
-    object psq_repREP_DDD: TIBStringField
-      FieldName = 'REP_DDD'
-      Origin = '"CAD_REP"."REP_DDD"'
-      Size = 2
-    end
-    object psq_repREP_TEL1: TIBStringField
-      FieldName = 'REP_TEL1'
-      Origin = '"CAD_REP"."REP_TEL1"'
-      Size = 9
-    end
-    object psq_repREP_FANT1: TIBStringField
-      FieldName = 'REP_FANT1'
-      Origin = '"CAD_REP"."REP_FANT"'
-      Size = 40
-    end
-    object psq_repUSU_DUSU: TIBStringField
-      FieldName = 'USU_DUSU'
-      Origin = '"CAD_USU"."USU_DUSU"'
-      Size = 40
-    end
-    object psq_repREP_DTRA: TIBStringField
-      FieldName = 'REP_DTRA'
-      Origin = '"CAD_REP"."REP_DTRA"'
-    end
-    object psq_repREP_OBSO: TIBStringField
-      FieldName = 'REP_OBSO'
-      ProviderFlags = []
-      Size = 512
-    end
+    Left = 1072
+    Top = 40
   end
 end

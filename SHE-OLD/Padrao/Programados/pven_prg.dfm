@@ -7,7 +7,7 @@ object frmven_prg: Tfrmven_prg
   BorderStyle = bsSingle
   Caption = 'Programa'#231#245'es de Vendas'
   ClientHeight = 823
-  ClientWidth = 1358
+  ClientWidth = 1434
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -266,7 +266,7 @@ object frmven_prg: Tfrmven_prg
   object SBMenu: TSpeedBar
     Left = 0
     Top = 0
-    Width = 1358
+    Width = 1434
     Height = 95
     Cursor = crHandPoint
     Font.Charset = DEFAULT_CHARSET
@@ -341,7 +341,7 @@ object frmven_prg: Tfrmven_prg
   object PNLFormRodape: TPanel
     Left = 0
     Top = 390
-    Width = 1358
+    Width = 1434
     Height = 412
     Align = alClient
     BevelOuter = bvNone
@@ -363,11 +363,13 @@ object frmven_prg: Tfrmven_prg
         Height = 412
         Align = alClient
         Caption = ' Edi'#231#227'o '
+        Color = clBtnFace
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold, fsItalic]
+        ParentColor = False
         ParentFont = False
         TabOrder = 0
         object SBEdicao: TSpeedBar
@@ -390,7 +392,6 @@ object frmven_prg: Tfrmven_prg
           BtnHeight = 40
           Images = ILEdicao
           BevelOuter = bvNone
-          Color = 15388567
           TabOrder = 0
           InternalVer = 1
           object SSEdicao: TSpeedbarSection
@@ -468,7 +469,7 @@ object frmven_prg: Tfrmven_prg
     object PNLConsulta: TPanel
       Left = 60
       Top = 0
-      Width = 1298
+      Width = 1374
       Height = 412
       Align = alClient
       BevelOuter = bvNone
@@ -477,22 +478,24 @@ object frmven_prg: Tfrmven_prg
       object GBConsulta: TGroupBox
         Left = 0
         Top = 0
-        Width = 1298
+        Width = 1374
         Height = 412
         Align = alClient
         Caption = '  Itens  '
+        Color = clBtnFace
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
         Font.Name = 'Segoe UI Semibold'
         Font.Style = [fsBold, fsItalic]
+        ParentColor = False
         ParentFont = False
         TabOrder = 0
         object DBGEdicao: TdxDBGrid
           Left = 2
           Top = 19
-          Width = 1294
-          Height = 376
+          Width = 1370
+          Height = 391
           Bands = <
             item
               Alignment = taRightJustify
@@ -575,7 +578,6 @@ object frmven_prg: Tfrmven_prg
           end
           object DBGEdicaoROM_DCOR: TdxDBGridPickColumn
             CharCase = ecUpperCase
-            Visible = False
             Width = 200
             BandIndex = 0
             RowIndex = 0
@@ -704,7 +706,7 @@ object frmven_prg: Tfrmven_prg
             FieldName = 'ROM_PTABF'
           end
           object DBGEdicaoROM_STFI: TdxDBGridPickColumn
-            Width = 100
+            Width = 80
             BandIndex = 0
             RowIndex = 0
             FieldName = 'ROM_STFI'
@@ -713,22 +715,113 @@ object frmven_prg: Tfrmven_prg
               'FINALIZADO')
           end
         end
-        object PNLInfAdProd: TPanel
+        object PNLTAB_PRC: TPanel
           Left = 2
-          Top = 395
-          Width = 1294
-          Height = 15
+          Top = 410
+          Width = 1370
+          Height = 0
           Align = alBottom
-          Alignment = taLeftJustify
-          BevelOuter = bvNone
-          Color = 15388567
+          Alignment = taRightJustify
+          Color = clGray
           Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
+          Font.Color = clWhite
           Font.Height = -12
-          Font.Name = 'Segoe UI'
-          Font.Style = [fsItalic]
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 1
+          object LALTAB_PRC_ABAIXO: TLabel
+            Left = 30
+            Top = 6
+            Width = 118
+            Height = 15
+            Caption = 'Pre'#231'o abaixo da tabela'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWhite
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object LALTAB_PRC_ACIMA_MIN: TLabel
+            Left = 214
+            Top = 6
+            Width = 163
+            Height = 15
+            Caption = 'Pre'#231'o acima da tabela m'#237'nima:'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWhite
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object LALTAB_PRC_ACIMA_MAX: TLabel
+            Left = 502
+            Top = 6
+            Width = 210
+            Height = 15
+            Caption = 'Pre'#231'o igual ou acima da tabela m'#225'xima:'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWhite
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            ParentFont = False
+          end
+          object LATAB_PRC_ACIMA_MIN: TLabel
+            Left = 387
+            Top = 4
+            Width = 43
+            Height = 17
+            Caption = 'R$ 0.00'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWhite
+            Font.Height = -13
+            Font.Name = 'Segoe UI Semibold'
+            Font.Style = [fsBold, fsItalic]
+            ParentFont = False
+          end
+          object LATAB_PRC_ACIMA_MAX: TLabel
+            Left = 724
+            Top = 4
+            Width = 43
+            Height = 17
+            Caption = 'R$ 0.00'
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWhite
+            Font.Height = -13
+            Font.Name = 'Segoe UI Semibold'
+            Font.Style = [fsBold, fsItalic]
+            ParentFont = False
+          end
+          object PNLTAB_PRC_ABAIXO: TPanel
+            Left = 9
+            Top = 4
+            Width = 18
+            Height = 17
+            BevelInner = bvRaised
+            Color = 9395
+            TabOrder = 0
+          end
+          object PNLTAB_PRC_ACIMA_MIN: TPanel
+            Left = 193
+            Top = 4
+            Width = 18
+            Height = 17
+            BevelInner = bvRaised
+            Color = 12910532
+            TabOrder = 1
+          end
+          object PNLTAB_PRC_ACIMA_MAX: TPanel
+            Left = 481
+            Top = 4
+            Width = 18
+            Height = 17
+            BevelInner = bvRaised
+            Color = 14789952
+            TabOrder = 2
+          end
         end
       end
     end
@@ -736,7 +829,7 @@ object frmven_prg: Tfrmven_prg
   object PNLPrincipal: TPanel
     Left = 0
     Top = 95
-    Width = 1358
+    Width = 1434
     Height = 295
     Align = alTop
     BevelOuter = bvNone
@@ -745,7 +838,7 @@ object frmven_prg: Tfrmven_prg
     object PNLPedido: TPanel
       Left = 0
       Top = 0
-      Width = 1041
+      Width = 1121
       Height = 295
       Align = alLeft
       BevelOuter = bvNone
@@ -760,7 +853,7 @@ object frmven_prg: Tfrmven_prg
       object PNLMargemE: TPanel
         Left = 0
         Top = 0
-        Width = 433
+        Width = 489
         Height = 215
         Align = alLeft
         BevelOuter = bvNone
@@ -775,19 +868,21 @@ object frmven_prg: Tfrmven_prg
         object GBFavorecido: TGroupBox
           Left = 0
           Top = 0
-          Width = 433
+          Width = 489
           Height = 100
           Align = alClient
           Caption = '  Cliente  '
+          Color = clBtnFace
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Segoe UI Semibold'
           Font.Style = [fsBold, fsItalic]
+          ParentColor = False
           ParentFont = False
           TabOrder = 0
           object LACNPJ: TLabel
-            Left = 263
+            Left = 319
             Top = 19
             Width = 30
             Height = 17
@@ -806,7 +901,7 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object LAIDCD: TLabel
-            Left = 35
+            Left = 37
             Top = 20
             Width = 39
             Height = 17
@@ -822,7 +917,7 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object LADECD: TLabel
-            Left = 28
+            Left = 30
             Top = 43
             Width = 46
             Height = 17
@@ -838,7 +933,7 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object LARZCD: TLabel
-            Left = 3
+            Left = 5
             Top = 67
             Width = 71
             Height = 17
@@ -1108,7 +1203,7 @@ object frmven_prg: Tfrmven_prg
           object EDDECD: TdxMaskEdit
             Left = 85
             Top = 40
-            Width = 344
+            Width = 400
             Hint = 'Nome Fantasia do Cliente'
             HelpType = htKeyword
             HelpKeyword = 'PK.DECD'
@@ -1133,7 +1228,7 @@ object frmven_prg: Tfrmven_prg
           object EDRZCD: TdxMaskEdit
             Left = 85
             Top = 64
-            Width = 344
+            Width = 400
             Hint = 'Raz'#227'o Social do Cliente'
             HelpType = htKeyword
             HelpKeyword = 'PK.RZCD'
@@ -1156,7 +1251,7 @@ object frmven_prg: Tfrmven_prg
             Height = 22
           end
           object EDCNPJ: TdxMaskEdit
-            Left = 300
+            Left = 356
             Top = 16
             Width = 129
             Hint = 'CNPJ do Cliente'
@@ -1188,19 +1283,21 @@ object frmven_prg: Tfrmven_prg
         object GBPedido: TGroupBox
           Left = 0
           Top = 100
-          Width = 433
+          Width = 489
           Height = 115
           Align = alBottom
           Caption = '  Pedido  '
+          Color = clBtnFace
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Segoe UI Semibold'
           Font.Style = [fsBold, fsItalic]
+          ParentColor = False
           ParentFont = False
           TabOrder = 1
           object Label3: TLabel
-            Left = 4
+            Left = 37
             Top = 19
             Width = 46
             Height = 17
@@ -1216,7 +1313,7 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object Label9: TLabel
-            Left = 4
+            Left = 30
             Top = 67
             Width = 53
             Height = 17
@@ -1232,7 +1329,7 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object Label10: TLabel
-            Left = 4
+            Left = 5
             Top = 91
             Width = 78
             Height = 17
@@ -1248,8 +1345,8 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object Label28: TLabel
-            Left = 4
-            Top = 43
+            Left = 281
+            Top = 67
             Width = 32
             Height = 17
             Caption = 'Prazo'
@@ -1264,8 +1361,8 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object Label6: TLabel
-            Left = 234
-            Top = 19
+            Left = 59
+            Top = 43
             Width = 24
             Height = 17
             Caption = 'Tipo'
@@ -1280,7 +1377,7 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object Label13: TLabel
-            Left = 234
+            Left = 259
             Top = 43
             Width = 54
             Height = 17
@@ -1293,12 +1390,12 @@ object frmven_prg: Tfrmven_prg
             ParentFont = False
             Transparent = True
           end
-          object lactnr: TLabel
-            Left = 235
-            Top = 67
-            Width = 54
+          object Label4: TLabel
+            Left = 273
+            Top = 19
+            Width = 40
             Height = 17
-            Caption = 'Container'
+            Caption = 'Cr'#233'dito'
             Color = clBtnFace
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
@@ -1310,9 +1407,9 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object EDDROM: TdxDateEdit
-            Left = 335
+            Left = 315
             Top = 16
-            Width = 90
+            Width = 40
             Color = clWhite
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -1323,7 +1420,7 @@ object frmven_prg: Tfrmven_prg
             Style.BorderColor = 14065456
             Style.BorderStyle = xbsSingle
             Style.ButtonStyle = btsFlat
-            TabOrder = 15
+            TabOrder = 14
             Visible = False
             AutoSize = False
             Date = -700000.000000000000000000
@@ -1332,7 +1429,30 @@ object frmven_prg: Tfrmven_prg
             StoredValues = 4
           end
           object edcpag: TdxMaskEdit
-            Left = 85
+            Left = 86
+            Top = 16
+            Width = 100
+            Color = 16644596
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderColor = 14065456
+            Style.BorderStyle = xbsSingle
+            Style.ButtonStyle = btsFlat
+            TabOrder = 12
+            Visible = False
+            AutoSize = False
+            CharCase = ecUpperCase
+            IgnoreMaskBlank = False
+            Text = '0'
+            Height = 22
+          end
+          object edstpd: TdxMaskEdit
+            Left = 86
             Top = 16
             Width = 100
             Color = 16644596
@@ -1354,31 +1474,8 @@ object frmven_prg: Tfrmven_prg
             Text = '0'
             Height = 22
           end
-          object edstpd: TdxMaskEdit
-            Left = 85
-            Top = 16
-            Width = 100
-            Color = 16644596
-            Enabled = False
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Style.BorderColor = 14065456
-            Style.BorderStyle = xbsSingle
-            Style.ButtonStyle = btsFlat
-            TabOrder = 14
-            Visible = False
-            AutoSize = False
-            CharCase = ecUpperCase
-            IgnoreMaskBlank = False
-            Text = '0'
-            Height = 22
-          end
           object cbprec: TdxPickEdit
-            Left = 85
+            Left = 86
             Top = 16
             Width = 52
             Color = 16644596
@@ -1392,7 +1489,7 @@ object frmven_prg: Tfrmven_prg
             Style.BorderColor = 14065456
             Style.BorderStyle = xbsSingle
             Style.ButtonStyle = btsFlat
-            TabOrder = 12
+            TabOrder = 11
             Visible = False
             CharCase = ecUpperCase
             Text = 'ATACADO - NORMAL'
@@ -1407,27 +1504,7 @@ object frmven_prg: Tfrmven_prg
               'CUSTO')
           end
           object edcdro: TdxMaskEdit
-            Left = 292
-            Top = 16
-            Width = 40
-            Color = 16644596
-            Enabled = False
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Style.BorderColor = 14065456
-            Style.BorderStyle = xbsSingle
-            Style.ButtonStyle = btsFlat
-            TabOrder = 11
-            CharCase = ecUpperCase
-            IgnoreMaskBlank = False
-            Text = '0'
-          end
-          object edcdbx: TdxMaskEdit
-            Left = 292
+            Left = 315
             Top = 16
             Width = 40
             Color = 16644596
@@ -1446,8 +1523,8 @@ object frmven_prg: Tfrmven_prg
             IgnoreMaskBlank = False
             Text = '0'
           end
-          object edcdpd: TdxMaskEdit
-            Left = 292
+          object edcdbx: TdxMaskEdit
+            Left = 315
             Top = 16
             Width = 40
             Color = 16644596
@@ -1466,8 +1543,8 @@ object frmven_prg: Tfrmven_prg
             IgnoreMaskBlank = False
             Text = '0'
           end
-          object edcdnf: TdxMaskEdit
-            Left = 292
+          object edcdpd: TdxMaskEdit
+            Left = 315
             Top = 16
             Width = 40
             Color = 16644596
@@ -1486,10 +1563,30 @@ object frmven_prg: Tfrmven_prg
             IgnoreMaskBlank = False
             Text = '0'
           end
+          object edcdnf: TdxMaskEdit
+            Left = 315
+            Top = 16
+            Width = 40
+            Color = 16644596
+            Enabled = False
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderColor = 14065456
+            Style.BorderStyle = xbsSingle
+            Style.ButtonStyle = btsFlat
+            TabOrder = 7
+            CharCase = ecUpperCase
+            IgnoreMaskBlank = False
+            Text = '0'
+          end
           object PEDEPG: TdxPickEdit
-            Left = 85
-            Top = 40
-            Width = 140
+            Left = 315
+            Top = 64
+            Width = 170
             Color = 16644596
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -1500,15 +1597,15 @@ object frmven_prg: Tfrmven_prg
             Style.BorderColor = 14065456
             Style.BorderStyle = xbsSingle
             Style.ButtonStyle = btsFlat
-            TabOrder = 3
+            TabOrder = 6
             CharCase = ecUpperCase
             OnChange = edderoChange
             OnValidate = PEDEPGValidate
           end
           object cbstco: TdxPickEdit
-            Left = 290
+            Left = 315
             Top = 40
-            Width = 140
+            Width = 170
             Color = 16644596
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -1519,13 +1616,13 @@ object frmven_prg: Tfrmven_prg
             Style.BorderColor = 14065456
             Style.BorderStyle = xbsSingle
             Style.ButtonStyle = btsFlat
-            TabOrder = 4
+            TabOrder = 5
             OnExit = cbstcoExit
             CharCase = ecUpperCase
             OnChange = edderoChange
           end
           object cbcred: TdxPickEdit
-            Left = 185
+            Left = 315
             Top = 16
             Width = 40
             Color = 16644596
@@ -1538,7 +1635,7 @@ object frmven_prg: Tfrmven_prg
             Style.BorderColor = 14065456
             Style.BorderStyle = xbsSingle
             Style.ButtonStyle = btsFlat
-            TabOrder = 1
+            TabOrder = 0
             Alignment = taRightJustify
             AutoSize = False
             Text = '1'
@@ -1560,9 +1657,9 @@ object frmven_prg: Tfrmven_prg
             StoredValues = 1
           end
           object eddero: TdxMaskEdit
-            Left = 85
+            Left = 86
             Top = 16
-            Width = 100
+            Width = 170
             Color = 16644596
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -1573,7 +1670,7 @@ object frmven_prg: Tfrmven_prg
             Style.BorderColor = 14065456
             Style.BorderStyle = xbsSingle
             Style.ButtonStyle = btsFlat
-            TabOrder = 0
+            TabOrder = 1
             AutoSize = False
             CharCase = ecUpperCase
             IgnoreMaskBlank = False
@@ -1582,9 +1679,9 @@ object frmven_prg: Tfrmven_prg
             Height = 22
           end
           object cbstpd: TdxPickEdit
-            Left = 290
-            Top = 16
-            Width = 140
+            Left = 86
+            Top = 40
+            Width = 170
             Color = 16644596
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -1602,29 +1699,10 @@ object frmven_prg: Tfrmven_prg
             OnValidate = CESubTotalValidate
             DropDownRows = 15
           end
-          object PECTNR: TdxPickEdit
-            Left = 290
-            Top = 64
-            Width = 140
-            Color = 16644596
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Style.BorderColor = 14065456
-            Style.BorderStyle = xbsSingle
-            Style.ButtonStyle = btsFlat
-            TabOrder = 6
-            CharCase = ecUpperCase
-            OnChange = edderoChange
-            OnValidate = PECTNRValidate
-          end
           object IEIDCV: TdxImageEdit
-            Left = 85
+            Left = 86
             Top = 64
-            Width = 140
+            Width = 170
             Color = 16644596
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
@@ -1636,7 +1714,7 @@ object frmven_prg: Tfrmven_prg
             Style.BorderStyle = xbsSingle
             Style.ButtonStyle = btsFlat
             Style.Shadow = False
-            TabOrder = 5
+            TabOrder = 3
             Text = '0'
             AutoSize = False
             OnChange = edderoChange
@@ -1649,9 +1727,9 @@ object frmven_prg: Tfrmven_prg
             Height = 22
           end
           object IEIDCR: TdxImageEdit
-            Left = 85
+            Left = 86
             Top = 88
-            Width = 346
+            Width = 170
             Color = 16644596
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
@@ -1663,7 +1741,7 @@ object frmven_prg: Tfrmven_prg
             Style.BorderStyle = xbsSingle
             Style.ButtonStyle = btsFlat
             Style.Shadow = False
-            TabOrder = 7
+            TabOrder = 4
             Text = '0'
             AutoSize = False
             OnChange = edderoChange
@@ -1678,9 +1756,9 @@ object frmven_prg: Tfrmven_prg
         end
       end
       object PNLMargemD: TPanel
-        Left = 433
+        Left = 489
         Top = 0
-        Width = 608
+        Width = 632
         Height = 215
         Align = alClient
         BevelOuter = bvNone
@@ -1695,21 +1773,23 @@ object frmven_prg: Tfrmven_prg
         object GBInfoComplementar: TGroupBox
           Left = 0
           Top = 100
-          Width = 608
+          Width = 632
           Height = 115
           Align = alBottom
           Caption = '  Informa'#231#245'es Complementares  '
+          Color = clBtnFace
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Segoe UI Semibold'
           Font.Style = [fsBold, fsItalic]
+          ParentColor = False
           ParentFont = False
           TabOrder = 1
           object pcobs: TdxPageControl
             Left = 2
             Top = 19
-            Width = 604
+            Width = 628
             Height = 94
             ActivePage = tsobs
             Align = alClient
@@ -1734,7 +1814,7 @@ object frmven_prg: Tfrmven_prg
               object edobse: TdxMemo
                 Left = 0
                 Top = 0
-                Width = 604
+                Width = 628
                 Align = alClient
                 Color = 16644596
                 Font.Charset = ANSI_CHARSET
@@ -1781,21 +1861,23 @@ object frmven_prg: Tfrmven_prg
         object GBInfoAdicional: TGroupBox
           Left = 0
           Top = 0
-          Width = 608
+          Width = 632
           Height = 100
           Align = alClient
           Caption = '  Informa'#231#245'es Adicionais  '
+          Color = clBtnFace
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Segoe UI Semibold'
           Font.Style = [fsBold, fsItalic]
+          ParentColor = False
           ParentFont = False
           TabOrder = 0
           object PCInfoAdicional: TdxPageControl
             Left = 2
             Top = 19
-            Width = 604
+            Width = 628
             Height = 79
             ActivePage = TSLogistica
             Align = alClient
@@ -1820,12 +1902,12 @@ object frmven_prg: Tfrmven_prg
               object BVLogistica: TBevel
                 Left = 0
                 Top = 0
-                Width = 604
+                Width = 628
                 Height = 52
                 Align = alClient
               end
               object laVFrete: TLabel
-                Left = 321
+                Left = 467
                 Top = 30
                 Width = 30
                 Height = 17
@@ -1841,7 +1923,7 @@ object frmven_prg: Tfrmven_prg
                 Transparent = True
               end
               object Label1: TLabel
-                Left = 4
+                Left = 26
                 Top = 30
                 Width = 65
                 Height = 17
@@ -1872,11 +1954,27 @@ object frmven_prg: Tfrmven_prg
                 ParentFont = False
                 Transparent = True
               end
+              object lactnr: TLabel
+                Left = 443
+                Top = 6
+                Width = 54
+                Height = 17
+                Caption = 'Container'
+                Color = clBtnFace
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -13
+                Font.Name = 'Segoe UI'
+                Font.Style = [fsItalic]
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
               object CEVFRT: TdxCurrencyEdit
                 Tag = 9
-                Left = 353
+                Left = 505
                 Top = 27
-                Width = 90
+                Width = 120
                 Color = 16644596
                 Font.Charset = ANSI_CHARSET
                 Font.Color = clWindowText
@@ -1901,7 +1999,7 @@ object frmven_prg: Tfrmven_prg
               object IEMFRT: TdxImageEdit
                 Left = 93
                 Top = 27
-                Width = 220
+                Width = 340
                 Color = 16644596
                 Font.Charset = ANSI_CHARSET
                 Font.Color = clWindowText
@@ -1940,7 +2038,7 @@ object frmven_prg: Tfrmven_prg
               object PEDECT: TdxPickEdit
                 Left = 93
                 Top = 3
-                Width = 350
+                Width = 340
                 Color = 16644596
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
@@ -1955,6 +2053,25 @@ object frmven_prg: Tfrmven_prg
                 CharCase = ecUpperCase
                 OnChange = PEDECTChange
                 DropDownRows = 15
+              end
+              object PECTNR: TdxPickEdit
+                Left = 505
+                Top = 3
+                Width = 120
+                Color = 16644596
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderColor = 14065456
+                Style.BorderStyle = xbsSingle
+                Style.ButtonStyle = btsFlat
+                TabOrder = 3
+                CharCase = ecUpperCase
+                OnChange = edderoChange
+                OnValidate = PECTNRValidate
               end
             end
             object TSHistorico: TdxTabSheet
@@ -2089,7 +2206,7 @@ object frmven_prg: Tfrmven_prg
       object PNLSumario: TPanel
         Left = 0
         Top = 215
-        Width = 1041
+        Width = 1121
         Height = 80
         Align = alBottom
         BevelOuter = bvNone
@@ -2098,19 +2215,21 @@ object frmven_prg: Tfrmven_prg
         object GBSumario: TGroupBox
           Left = 0
           Top = 0
-          Width = 1041
+          Width = 1121
           Height = 80
           Align = alClient
           Caption = '  Sum'#225'rio  '
+          Color = clBtnFace
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
           Font.Name = 'Segoe UI Semibold'
           Font.Style = [fsBold, fsItalic]
+          ParentColor = False
           ParentFont = False
           TabOrder = 0
           object Shape9: TShape
-            Left = 404
+            Left = 407
             Top = 17
             Width = 131
             Height = 26
@@ -2118,7 +2237,7 @@ object frmven_prg: Tfrmven_prg
             Pen.Color = 14065456
           end
           object LASubTotal: TLabel
-            Left = 407
+            Left = 410
             Top = 21
             Width = 130
             Height = 19
@@ -2134,7 +2253,7 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object Shape10: TShape
-            Left = 537
+            Left = 540
             Top = 17
             Width = 80
             Height = 26
@@ -2142,7 +2261,7 @@ object frmven_prg: Tfrmven_prg
             Pen.Color = 14065456
           end
           object LATDesc: TLabel
-            Left = 589
+            Left = 592
             Top = 21
             Width = 19
             Height = 19
@@ -2160,7 +2279,7 @@ object frmven_prg: Tfrmven_prg
             OnClick = LATDescClick
           end
           object Shape29: TShape
-            Left = 619
+            Left = 622
             Top = 17
             Width = 131
             Height = 26
@@ -2168,7 +2287,7 @@ object frmven_prg: Tfrmven_prg
             Pen.Color = 14065456
           end
           object LATotal: TLabel
-            Left = 621
+            Left = 624
             Top = 21
             Width = 126
             Height = 19
@@ -2184,7 +2303,7 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object LADesconto: TLabel
-            Left = 540
+            Left = 543
             Top = 21
             Width = 50
             Height = 19
@@ -2198,7 +2317,7 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object LADesconto2: TLabel
-            Left = 607
+            Left = 610
             Top = 21
             Width = 7
             Height = 19
@@ -2212,7 +2331,7 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object Shape6: TShape
-            Left = 4
+            Left = 7
             Top = 17
             Width = 106
             Height = 26
@@ -2220,7 +2339,7 @@ object frmven_prg: Tfrmven_prg
             Pen.Color = 14065456
           end
           object LAQuantidade: TLabel
-            Left = 6
+            Left = 9
             Top = 21
             Width = 101
             Height = 19
@@ -2236,35 +2355,35 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object Shape24: TShape
-            Left = 404
+            Left = 407
             Top = 45
             Width = 131
             Height = 30
             Pen.Color = 14065456
           end
           object Shape11: TShape
-            Left = 537
+            Left = 540
             Top = 45
             Width = 80
             Height = 30
             Pen.Color = 14065456
           end
           object Shape12: TShape
-            Left = 619
+            Left = 622
             Top = 45
             Width = 131
             Height = 30
             Pen.Color = 14065456
           end
           object Shape8: TShape
-            Left = 4
+            Left = 7
             Top = 45
             Width = 106
             Height = 30
             Pen.Color = 14065456
           end
           object Shape1: TShape
-            Left = 112
+            Left = 115
             Top = 17
             Width = 66
             Height = 26
@@ -2272,7 +2391,7 @@ object frmven_prg: Tfrmven_prg
             Pen.Color = 14065456
           end
           object LAPeca: TLabel
-            Left = 115
+            Left = 118
             Top = 21
             Width = 60
             Height = 19
@@ -2288,14 +2407,14 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object Shape2: TShape
-            Left = 112
+            Left = 115
             Top = 45
             Width = 66
             Height = 30
             Pen.Color = 14065456
           end
           object Shape3: TShape
-            Left = 180
+            Left = 183
             Top = 17
             Width = 110
             Height = 26
@@ -2303,7 +2422,7 @@ object frmven_prg: Tfrmven_prg
             Pen.Color = 14065456
           end
           object LAPesoB: TLabel
-            Left = 183
+            Left = 186
             Top = 21
             Width = 104
             Height = 19
@@ -2319,14 +2438,14 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object Shape4: TShape
-            Left = 180
+            Left = 183
             Top = 45
             Width = 110
             Height = 30
             Pen.Color = 14065456
           end
           object Shape5: TShape
-            Left = 292
+            Left = 295
             Top = 17
             Width = 110
             Height = 26
@@ -2334,7 +2453,7 @@ object frmven_prg: Tfrmven_prg
             Pen.Color = 14065456
           end
           object LAPesoL: TLabel
-            Left = 295
+            Left = 298
             Top = 21
             Width = 104
             Height = 19
@@ -2350,14 +2469,14 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object Shape7: TShape
-            Left = 292
+            Left = 295
             Top = 45
             Width = 110
             Height = 30
             Pen.Color = 14065456
           end
           object Shape13: TShape
-            Left = 752
+            Left = 755
             Top = 17
             Width = 121
             Height = 26
@@ -2365,7 +2484,7 @@ object frmven_prg: Tfrmven_prg
             Pen.Color = 14065456
           end
           object Label2: TLabel
-            Left = 755
+            Left = 758
             Top = 21
             Width = 115
             Height = 19
@@ -2381,14 +2500,14 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object Shape14: TShape
-            Left = 752
+            Left = 755
             Top = 45
             Width = 121
             Height = 30
             Pen.Color = 14065456
           end
           object Shape15: TShape
-            Left = 875
+            Left = 878
             Top = 17
             Width = 117
             Height = 26
@@ -2396,7 +2515,7 @@ object frmven_prg: Tfrmven_prg
             Pen.Color = 14065456
           end
           object Label5: TLabel
-            Left = 878
+            Left = 881
             Top = 21
             Width = 117
             Height = 19
@@ -2412,14 +2531,14 @@ object frmven_prg: Tfrmven_prg
             Transparent = True
           end
           object Shape16: TShape
-            Left = 875
+            Left = 878
             Top = 45
             Width = 117
             Height = 30
             Pen.Color = 14065456
           end
           object CEQuantidade: TdxCurrencyEdit
-            Left = 7
+            Left = 10
             Top = 46
             Width = 100
             Cursor = crNo
@@ -2445,7 +2564,7 @@ object frmven_prg: Tfrmven_prg
             StoredValues = 1
           end
           object CEPeca: TdxCurrencyEdit
-            Left = 115
+            Left = 118
             Top = 46
             Width = 60
             Cursor = crNo
@@ -2472,7 +2591,7 @@ object frmven_prg: Tfrmven_prg
             StoredValues = 1
           end
           object CEPesoB: TdxCurrencyEdit
-            Left = 183
+            Left = 186
             Top = 46
             Width = 104
             Cursor = crNo
@@ -2499,7 +2618,7 @@ object frmven_prg: Tfrmven_prg
             StoredValues = 1
           end
           object CEPesoL: TdxCurrencyEdit
-            Left = 295
+            Left = 298
             Top = 46
             Width = 104
             Cursor = crNo
@@ -2526,7 +2645,7 @@ object frmven_prg: Tfrmven_prg
             StoredValues = 1
           end
           object CESubTotal: TdxCurrencyEdit
-            Left = 407
+            Left = 410
             Top = 46
             Width = 125
             Cursor = crNo
@@ -2554,7 +2673,7 @@ object frmven_prg: Tfrmven_prg
             StoredValues = 1
           end
           object CEPDesc: TdxCurrencyEdit
-            Left = 540
+            Left = 543
             Top = 46
             Width = 74
             Color = 14789952
@@ -2580,7 +2699,7 @@ object frmven_prg: Tfrmven_prg
             StoredValues = 1
           end
           object CETotal: TdxCurrencyEdit
-            Left = 622
+            Left = 625
             Top = 46
             Width = 125
             Cursor = crNo
@@ -2606,7 +2725,7 @@ object frmven_prg: Tfrmven_prg
             StoredValues = 1
           end
           object CEVIPI: TdxCurrencyEdit
-            Left = 755
+            Left = 758
             Top = 46
             Width = 115
             Cursor = crNo
@@ -2632,7 +2751,7 @@ object frmven_prg: Tfrmven_prg
             StoredValues = 1
           end
           object dxCurrencyEdit1: TdxCurrencyEdit
-            Left = 878
+            Left = 881
             Top = 46
             Width = 110
             Cursor = crNo
@@ -2660,9 +2779,9 @@ object frmven_prg: Tfrmven_prg
       end
     end
     object PNLIMG_PAD: TPanel
-      Left = 1041
+      Left = 1121
       Top = 0
-      Width = 317
+      Width = 313
       Height = 295
       Align = alClient
       Color = clHighlightText
@@ -2676,7 +2795,7 @@ object frmven_prg: Tfrmven_prg
       object GBIMG_PAD: TGroupBox
         Left = 1
         Top = 1
-        Width = 315
+        Width = 311
         Height = 231
         Align = alClient
         Caption = '  Imagem do Produto  '
@@ -2692,7 +2811,7 @@ object frmven_prg: Tfrmven_prg
         object IMG_PAD: TImage
           Left = 2
           Top = 19
-          Width = 311
+          Width = 307
           Height = 210
           Cursor = crHandPoint
           Hint = 'Amostragem do Produto'#13#10'Click para visualizar tela inteira'
@@ -2705,7 +2824,7 @@ object frmven_prg: Tfrmven_prg
       object GBIMG_ILA: TGroupBox
         Left = 1
         Top = 232
-        Width = 315
+        Width = 311
         Height = 62
         Align = alBottom
         Caption = '  Instru'#231#245'es de Lavagem'
@@ -2957,7 +3076,7 @@ object frmven_prg: Tfrmven_prg
     Tag = 1
     Left = 0
     Top = 802
-    Width = 1358
+    Width = 1434
     Height = 21
     Cursor = crHandPoint
     Panels = <

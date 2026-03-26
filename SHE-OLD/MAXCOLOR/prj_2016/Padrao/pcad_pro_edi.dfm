@@ -2,7 +2,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
   Left = 445
   Top = 22
   ActiveControl = edcart
-  ClientHeight = 691
+  ClientHeight = 643
   ClientWidth = 954
   OldCreateOrder = True
   Position = poDesktopCenter
@@ -10,15 +10,15 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
   TextHeight = 14
   inherited pnlcadastro: TPanel
     Width = 954
-    Height = 558
+    Height = 624
     inherited PaintBox: TPaintBox
       Width = 954
-      Height = 159
+      Height = 160
     end
-    object Label1: TLabel
+    object Label1: TLabel [1]
       Tag = 1
       Left = 10
-      Top = 13
+      Top = 77
       Width = 39
       Height = 14
       Hint = 'Referencia'
@@ -33,9 +33,9 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       ParentFont = False
       Transparent = True
     end
-    object Label7: TLabel
+    object Label7: TLabel [2]
       Left = 10
-      Top = 37
+      Top = 101
       Width = 51
       Height = 14
       Caption = 'Descri'#231#227'o'
@@ -49,9 +49,9 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       ParentFont = False
       Transparent = True
     end
-    object ladfor: TLabel
+    object ladfor: TLabel [3]
       Left = 10
-      Top = 85
+      Top = 149
       Width = 62
       Height = 14
       Caption = 'Fornecedor'
@@ -65,9 +65,9 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       ParentFont = False
       Transparent = True
     end
-    object Label6: TLabel
+    object Label6: TLabel [4]
       Left = 445
-      Top = 109
+      Top = 173
       Width = 33
       Height = 14
       Caption = 'Grupo'
@@ -81,9 +81,9 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       ParentFont = False
       Transparent = True
     end
-    object Label18: TLabel
+    object Label18: TLabel [5]
       Left = 445
-      Top = 85
+      Top = 149
       Width = 42
       Height = 14
       Caption = 'Cole'#231#227'o'
@@ -97,9 +97,9 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       ParentFont = False
       Transparent = True
     end
-    object Label33: TLabel
+    object Label33: TLabel [6]
       Left = 10
-      Top = 109
+      Top = 173
       Width = 57
       Height = 14
       Caption = 'Refer'#234'ncia'
@@ -113,9 +113,9 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       ParentFont = False
       Transparent = True
     end
-    object Label10: TLabel
+    object Label10: TLabel [7]
       Left = 10
-      Top = 133
+      Top = 197
       Width = 27
       Height = 14
       Caption = 'NCM'
@@ -129,9 +129,9 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       ParentFont = False
       Transparent = True
     end
-    object Label37: TLabel
+    object Label37: TLabel [8]
       Left = 505
-      Top = 13
+      Top = 77
       Width = 41
       Height = 14
       Caption = 'Status'
@@ -145,9 +145,9 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       ParentFont = False
       Transparent = True
     end
-    object Label45: TLabel
+    object Label45: TLabel [9]
       Left = 445
-      Top = 133
+      Top = 197
       Width = 51
       Height = 14
       Caption = 'Categoria'
@@ -161,9 +161,9 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       ParentFont = False
       Transparent = True
     end
-    object Label12: TLabel
+    object Label12: TLabel [10]
       Left = 10
-      Top = 61
+      Top = 125
       Width = 64
       Height = 14
       Caption = 'Composi'#231#227'o'
@@ -177,10 +177,14 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       ParentFont = False
       Transparent = True
     end
+    inherited SBMenuPrincipal: TSpeedBar
+      Width = 954
+      TabOrder = 14
+    end
     object edid: TdxEdit
       Tag = 1
       Left = 80
-      Top = 8
+      Top = 72
       Width = 110
       Hint = 'Referencia'
       Enabled = False
@@ -200,8 +204,8 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       StoredValues = 2
     end
     object eddcad: TdxMaskEdit
-      Left = 600
-      Top = 8
+      Left = 595
+      Top = 72
       Width = 110
       Hint = 'C'#243'digo'
       Color = clWhite
@@ -224,7 +228,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     end
     object edcfor: TdxMaskEdit
       Left = 85
-      Top = 104
+      Top = 168
       Width = 150
       Hint = 'C'#243'digo'
       Color = clWhite
@@ -246,7 +250,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     object edcomp: TdxEdit
       Tag = 1
       Left = 85
-      Top = 56
+      Top = 120
       Width = 620
       Hint = 'Composi'#231#227'o'
       Enabled = False
@@ -266,7 +270,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     end
     object eddpro: TdxEdit
       Left = 85
-      Top = 32
+      Top = 96
       Width = 620
       Hint = 'Descri'#231#227'o'
       Font.Charset = DEFAULT_CHARSET
@@ -286,7 +290,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     end
     object cbdcol: TdxImageEdit
       Left = 505
-      Top = 80
+      Top = 144
       Width = 200
       Hint = 'Cole'#231#227'o'
       Color = clWhite
@@ -312,7 +316,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     end
     object cbdgrp: TdxImageEdit
       Left = 505
-      Top = 104
+      Top = 168
       Width = 200
       Hint = 'Grupo'
       Color = clWhite
@@ -338,7 +342,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     end
     object GroupBox6: TGroupBox
       Left = 720
-      Top = 1
+      Top = 65
       Width = 225
       Height = 152
       Caption = 'C'#243'digo de Barras'
@@ -369,7 +373,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     end
     object pnlpri: TPanel
       Left = 0
-      Top = 159
+      Top = 225
       Width = 954
       Height = 399
       Align = alBottom
@@ -407,8 +411,8 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
             Align = alClient
           end
           object Label15: TLabel
-            Left = 10
-            Top = 45
+            Left = 54
+            Top = 37
             Width = 62
             Height = 14
             Caption = 'Peso M'#233'dio'
@@ -423,8 +427,8 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
             Transparent = True
           end
           object Label8: TLabel
-            Left = 10
-            Top = 149
+            Left = 50
+            Top = 133
             Width = 66
             Height = 14
             Caption = 'Rendimento'
@@ -439,8 +443,8 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
             Transparent = True
           end
           object Label11: TLabel
-            Left = 10
-            Top = 205
+            Left = 44
+            Top = 181
             Width = 72
             Height = 14
             Caption = 'Largura Total'
@@ -455,8 +459,8 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
             Transparent = True
           end
           object lametr: TLabel
-            Left = 10
-            Top = 101
+            Left = 61
+            Top = 85
             Width = 55
             Height = 14
             Caption = 'Metragem'
@@ -471,8 +475,8 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
             Transparent = True
           end
           object Label9: TLabel
-            Left = 10
-            Top = 69
+            Left = 45
+            Top = 61
             Width = 71
             Height = 14
             Caption = 'Peso Canudo'
@@ -487,8 +491,8 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
             Transparent = True
           end
           object Label21: TLabel
-            Left = 10
-            Top = 125
+            Left = 60
+            Top = 109
             Width = 56
             Height = 14
             Caption = 'Gramatura'
@@ -503,8 +507,8 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
             Transparent = True
           end
           object Label24: TLabel
-            Left = 10
-            Top = 181
+            Left = 55
+            Top = 157
             Width = 61
             Height = 14
             Caption = 'Largura '#218'til'
@@ -519,7 +523,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
             Transparent = True
           end
           object Label4: TLabel
-            Left = 10
+            Left = 5
             Top = 13
             Width = 111
             Height = 14
@@ -535,8 +539,8 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
             Transparent = True
           end
           object edpeso: TdxEdit
-            Left = 130
-            Top = 40
+            Left = 122
+            Top = 32
             Width = 60
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -554,8 +558,8 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
             StoredValues = 1
           end
           object edrend: TdxEdit
-            Left = 130
-            Top = 144
+            Left = 122
+            Top = 128
             Width = 60
             Style.BorderStyle = xbsNone
             Style.ButtonStyle = btsFlat
@@ -568,8 +572,8 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
             StoredValues = 1
           end
           object edlarg: TdxEdit
-            Left = 130
-            Top = 200
+            Left = 122
+            Top = 176
             Width = 60
             Style.BorderStyle = xbsNone
             Style.ButtonStyle = btsFlat
@@ -582,8 +586,8 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
             StoredValues = 1
           end
           object edmetr: TdxEdit
-            Left = 130
-            Top = 96
+            Left = 122
+            Top = 80
             Width = 60
             Style.BorderStyle = xbsNone
             Style.ButtonStyle = btsFlat
@@ -596,8 +600,8 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
             StoredValues = 1
           end
           object edpscn: TdxEdit
-            Left = 130
-            Top = 64
+            Left = 122
+            Top = 56
             Width = 60
             Style.BorderStyle = xbsNone
             Style.ButtonStyle = btsFlat
@@ -610,8 +614,8 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
             StoredValues = 1
           end
           object edgram: TdxEdit
-            Left = 130
-            Top = 120
+            Left = 122
+            Top = 104
             Width = 60
             Style.BorderStyle = xbsNone
             Style.ButtonStyle = btsFlat
@@ -624,8 +628,8 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
             StoredValues = 1
           end
           object edutil: TdxEdit
-            Left = 130
-            Top = 176
+            Left = 122
+            Top = 152
             Width = 60
             Style.BorderStyle = xbsNone
             Style.ButtonStyle = btsFlat
@@ -638,7 +642,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
             StoredValues = 1
           end
           object cbduni: TdxImageEdit
-            Left = 130
+            Left = 122
             Top = 8
             Width = 120
             Hint = 'Unidade'
@@ -1537,7 +1541,6 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
             BtnOffsetVert = 2
             BtnWidth = 40
             BtnHeight = 40
-            Images = imageITEM
             BevelOuter = bvNone
             TabOrder = 0
             InternalVer = 1
@@ -1792,7 +1795,6 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
               BtnOffsetVert = 2
               BtnWidth = 40
               BtnHeight = 40
-              Images = imageITEM
               BevelOuter = bvNone
               TabOrder = 1
               InternalVer = 1
@@ -3205,7 +3207,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     end
     object cbstav: TdxImageEdit
       Left = 555
-      Top = 8
+      Top = 72
       Width = 150
       Color = 14065456
       Font.Charset = DEFAULT_CHARSET
@@ -3238,7 +3240,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     end
     object edcart: TdxEdit
       Left = 85
-      Top = 8
+      Top = 72
       Width = 150
       Hint = 'Referencia'
       Color = clInfoBk
@@ -3259,7 +3261,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     end
     object cbdcat: TdxImageEdit
       Left = 505
-      Top = 128
+      Top = 192
       Width = 200
       Hint = 'Grupo'
       Color = clWhite
@@ -3286,7 +3288,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     end
     object cbcclf: TdxPickEdit
       Left = 85
-      Top = 128
+      Top = 192
       Width = 150
       Color = clInfoBk
       Font.Charset = DEFAULT_CHARSET
@@ -3305,7 +3307,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     end
     object cbdfor: TdxPickEdit
       Left = 85
-      Top = 80
+      Top = 144
       Width = 300
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -3324,25 +3326,8 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     end
   end
   inherited sbMSG: TStatusBar
-    Top = 672
+    Top = 624
     Width = 954
-  end
-  inherited SpeedBar2: TSpeedBar
-    Width = 954
-    inherited siCAN: TSpeedItem [5]
-    end
-    inherited siVAL: TSpeedItem [6]
-    end
-    inherited siSAV: TSpeedItem [7]
-    end
-  end
-  inherited imageOPC: TImageList
-    Left = 436
-    Top = 46
-  end
-  inherited imageITEM: TImageList
-    Left = 436
-    Top = 6
   end
   object OpenPictureDialogEdit: TOpenPictureDialog
     Filter = 'JPEG Image File (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.jpeg'

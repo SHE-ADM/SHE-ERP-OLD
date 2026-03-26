@@ -2,9 +2,9 @@ unit qcad_fun_eti;
 
 interface
 
-uses Windows, SysUtils, Messages, Classes, Graphics, Controls,
+uses oPrincipal, Windows, SysUtils, Messages, Classes, Graphics, Controls,
   StdCtrls, ExtCtrls, Forms, QuickRpt, QRCtrls, DB, IBCustomDataSet,
-  IBQuery, IBDatabase;
+  IBQuery, IBDatabase, DateUtils;
 
 type
   Tqrpcad_fun_eti = class(TQuickRep)

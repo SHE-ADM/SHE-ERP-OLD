@@ -1013,6 +1013,16 @@ begin
           ibSP.ParamByName('CONT').Value := '';
           ibSP.ParamByName('NCHQ').Value := '';
           ibSP.ParamByName('TIPO').Value := fin_rec_baiFIN_TIPO.AsString;
+          ibSP.ParamByName('CPPL').Value := fin_recFIN_IPPL.AsInteger;
+          ibSP.ParamByName('CCUS').Value := fin_recFIN_CCUS.AsInteger;
+          ibSP.ParamByName('CDCO').Value := 0;
+          ibSP.ParamByName('CDBA').Value := 0;
+          ibSP.ParamByName('DEBA').Value := '';
+          ibSP.ParamByName('BCON').Value := 0;
+          ibSP.ParamByName('DCON').Value := '';
+          ibSP.ParamByName('LOTE').Value := 0;
+          ibSP.ParamByName('DLOT').Value := 0;
+          ibSP.ParamByName('CDCH').Value := 0;
 
           if edDROM.Date = fin_rec_baiFIN_DVEN.AsDateTime then
           stfi := 'PAGO' else
@@ -1072,12 +1082,22 @@ begin
             ibSP.ParamByName('NCHQ').Value := fin_rec_baiFIN_NCHQ.AsString;
             ibSP.ParamByName('TIPO').Value := fin_rec_baiFIN_TIPO.AsString;
             ibSP.ParamByName('STFI').Value := 'PAGO';
+            ibSP.ParamByName('CPPL').Value := fin_recFIN_IPPL.AsInteger;
+            ibSP.ParamByName('CCUS').Value := fin_recFIN_CCUS.AsInteger;
+            ibSP.ParamByName('CDCO').Value := 0;
+            ibSP.ParamByName('CDBA').Value := 0;
+            ibSP.ParamByName('DEBA').Value := '';
             ibSP.ParamByName('DPAG').Value := edDROM.Date;
             ibSP.ParamByName('VALO').Value := fin_rec_baiFIN_VALO.AsFloat;
             ibSP.ParamByName('VPAG').Value := fin_rec_baiFIN_VALO.AsFloat;
             ibSP.ParamByName('VPEN').Value := 0;
             ibSP.ParamByName('OBSE').Value := fin_rec_baiFIN_OBSE.AsString;
             ibSP.ParamByName('STA').Value  := '0';
+            ibSP.ParamByName('BCON').Value := 0;
+            ibSP.ParamByName('DCON').Value := '';
+            ibSP.ParamByName('LOTE').Value := 0;
+            ibSP.ParamByName('DLOT').Value := 0;
+            ibSP.ParamByName('CDCH').Value := 0;
             ibSP.ExecProc;
           end;
 
@@ -1300,7 +1320,6 @@ begin
             ibSP.ParamByName('DCAD').Value := edDROM.Date;
             ibSP.ParamByName('DBAI').Value := edDBAI.Date;
             ibSP.ParamByName('DVEN').Value := fin_rec_baiFIN_DVEN.AsDateTime;
-            ibSP.ParamByName('DPAG').Value := edDROM.Date;
             ibSP.ParamByName('DOCT').Value := fin_rec_baiFIN_DOCT.AsString;
             ibSP.ParamByName('BANC').Value := fin_rec_baiFIN_BANC.AsString;
             ibSP.ParamByName('DBAN').Value := fin_rec_baiFIN_DBAN.AsString;
@@ -1309,6 +1328,7 @@ begin
             ibSP.ParamByName('NCHQ').Value := fin_rec_baiFIN_NCHQ.AsString;
             ibSP.ParamByName('TIPO').Value := fin_rec_baiFIN_TIPO.AsString;
             ibSP.ParamByName('STFI').Value := 'PAGO';
+            ibSP.ParamByName('DPAG').Value := edDROM.Date;
             ibSP.ParamByName('VALO').Value := fin_rec_baiFIN_VALO.AsFloat;
             ibSP.ParamByName('VPAG').Value := fin_rec_baiFIN_VALO.AsFloat;
             ibSP.ParamByName('VPEN').Value := 0;

@@ -74,36 +74,13 @@ type
     dbgromROM_CDET: TdxDBGridMaskColumn;
     Panel1: TPanel;
     pnlped: TPanel;
-    Shape4: TShape;
     Label3: TLabel;
-    Label4: TLabel;
-    linha1: TShape;
     Label9: TLabel;
     Label10: TLabel;
     Label6: TLabel;
-    linha3: TShape;
-    Shape7: TShape;
-    Label16: TLabel;
     Label13: TLabel;
     Label28: TLabel;
-    linha2: TShape;
-    Shape3: TShape;
-    Label7: TLabel;
     Label30: TLabel;
-    Shape9: TShape;
-    Label17: TLabel;
-    Shape10: TShape;
-    latdsc: TLabel;
-    Shape29: TShape;
-    Label24: TLabel;
-    Shape24: TShape;
-    Shape11: TShape;
-    Shape12: TShape;
-    Label18: TLabel;
-    Label29: TLabel;
-    Shape6: TShape;
-    Label19: TLabel;
-    Shape8: TShape;
     cbstfi: TdxPickEdit;
     edcdro: TdxMaskEdit;
     cbdven: TdxPickEdit;
@@ -121,16 +98,9 @@ type
     edcven: TdxMaskEdit;
     cbcred: TdxPickEdit;
     edqtsp: TdxMaskEdit;
-    edadsc: TdxMaskEdit;
-    edcdsc: TdxMaskEdit;
-    edtsde: TdxMaskEdit;
-    edtcde: TdxMaskEdit;
-    edpdsc: TdxMaskEdit;
-    edqtrl: TdxMaskEdit;
     eddero: TdxMaskEdit;
     edcdpd: TdxMaskEdit;
     Label14: TLabel;
-    Label8: TLabel;
     Label12: TLabel;
     Label20: TLabel;
     dxPickEdit1: TdxPickEdit;
@@ -388,7 +358,6 @@ type
     cad_pro_estEST_CDET: TIBStringField;
     cad_pro_estEST_CRED: TIBBCDField;
     dbgromROM_ITEM: TdxDBGridMaskColumn;
-    rom_001ROM_DERO: TIBStringField;
     cad_pro_estEST_ITEM: TLargeintField;
     psq_cliID: TIntegerField;
     psq_cliCLI_FANT: TIBStringField;
@@ -421,19 +390,33 @@ type
     psq_cliCLI_DTRA: TIBStringField;
     psq_cliCLI_DUSU: TIBStringField;
     psq_cliCLI_OBSO: TIBStringField;
-    rom_001ROM_CCLF: TIBStringField;
-    rom_001ROM_CFOR: TIBStringField;
-    rom_001ROM_CCST: TIBStringField;
-    rom_001ROM_COMP: TIBStringField;
-    rom_001ROM_APRO: TIBStringField;
     SQLConsulta: TIBSQL;
     edfatu: TdxMaskEdit;
     Label37: TLabel;
     cbdtra: TdxImageEdit;
     edvfrt: TdxMaskEdit;
     Label2: TLabel;
-    Label1: TLabel;
     edctnr: TdxMaskEdit;
+    PNLSumario: TPanel;
+    Shape9: TShape;
+    Label17: TLabel;
+    Shape10: TShape;
+    latdsc: TLabel;
+    Shape29: TShape;
+    Label24: TLabel;
+    Shape24: TShape;
+    Shape11: TShape;
+    Shape12: TShape;
+    Label18: TLabel;
+    Label29: TLabel;
+    Shape6: TShape;
+    Label19: TLabel;
+    Shape8: TShape;
+    edtsde: TdxMaskEdit;
+    edtcde: TdxMaskEdit;
+    edpdsc: TdxMaskEdit;
+    edtqtrl: TdxMaskEdit;
+    rom_001CTNR: TIBStringField;
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -490,18 +473,14 @@ type
     procedure SIMNFeClick(Sender: TObject);
   private
     { Private declarations }
-    FrmStyle   : TFormStyle;
-    FrmPosition: TPosition;
-    procedure CALCULA_COMISSAO_CAB(id: integer);
-    procedure ROMANEIO;
     procedure ABRE_TABELA;
     procedure TOTAL;
     procedure SALVA;
     procedure ITE_COMSEPARACAO(cdpd,dero: string);
     procedure ITE_SEMSEPARACAO(cdpd,dero: string);
-    function  CALCULA_COMISSAO_ITE(prec: double): double;
     function  RETORNA_LOGIN : boolean;
   public
+    RECDefault: TRECDefault;
     auto: boolean;
     procedure PESQUISA_TIPO;
     procedure PESQUISA_CLIENTE(pesq,chave: string;cdsc: double);
@@ -514,7 +493,7 @@ type
 var
   frmven_rom: Tfrmven_rom;
   ID: integer;
-  qtde,qtrl,tsde,tcde,adsc,pdsc: double;
+  qtde,qtrl,tsde,tcde,pdsc: double;
 
 implementation
 
@@ -525,8 +504,15 @@ uses uPrincipal, pcad_pro_con, pcad_cli, uFrmLogin, pven_nfe, pctr_ped,
 
 procedure Tfrmven_rom.FormCreate(Sender: TObject);
 begin
+  Screen.Cursor := crAppStart;
+  oIRECDefault(RECDefault);
+
+  { Paginação }
+  RECDefault.FrmPosition := poDesigned; { Abertura Controlada  }
+  RECDefault.WorkArea    := True;       { Toda Tela do Windows }
+  RECDefault.MainArea    := True;       { Toda Tela MainForm + Exclusão Botões }
+
   oOTransact(IBTra);
-  auto := false;
   ABRE_TABELA;
 
   edcdcx.Text := '0';
@@ -540,6 +526,7 @@ begin
   cbstco.Text := frmprincipal.parametrosPAR_STCO.AsString;
   edcpag.Text := frmprincipal.parametrosPAR_CPAG.AsString;
   cbcred.Text := '1';
+  Auto := False;
 
   try
     tag := 1;
@@ -643,15 +630,12 @@ end;
 procedure Tfrmven_rom.FormShow(Sender: TObject);
 begin
   OnShow := Nil;
-  { Herança }
-  FrmStyle    := FormStyle;
-  FrmPosition := Position;
 
   { Eventos }
   with pEVE do
   begin
     UnregisterEvents;
-    Events.Add('CTR_PED');
+    Events.Add(oREPZero('CTR_PED','_',RECParametros.Id,3));
     RegisterEvents;
   end;
 
@@ -659,58 +643,49 @@ begin
     if assigned(frmctr_ped) then
     begin
       try
-        PESQUISA_CLIENTE('C',frmctr_ped.cadastroROM_CCLI.AsString,frmctr_ped.cadastroROM_CDSC.AsFloat);
-        PESQUISA_VENDEDOR('C',frmctr_ped.cadastroROM_CVEN.AsString);
-        PESQUISA_REPRESENTANTE('C',frmctr_ped.cadastroROM_CREP.AsString);
+        PESQUISA_CLIENTE('C',frmctr_ped.CadastroROM_CCLI.AsString,0);
+        PESQUISA_VENDEDOR('C',frmctr_ped.CadastroROM_CVEN.AsString);
+        PESQUISA_REPRESENTANTE('C',frmctr_ped.CadastroROM_CREP.AsString);
 
-        if frmctr_ped.Tag = 0 then
-        begin
-          Tag := 1;
+        ABRE_TABELA;
+        Tag := 1;
 
-          ABRE_TABELA;
+        edccli.Text := frmctr_ped.CadastroROM_CCLI.AsString;
+        edcdpd.Text := frmctr_ped.CadastroID.AsString;
+        eddero.Text := frmctr_ped.CadastroROM_DERO.AsString;
+        cbcred.Text := frmctr_ped.CadastroROM_CONC.AsString;
+        cbcred.Tag  := frmctr_ped.CadastroROM_CONC.AsInteger;
+        if frmctr_ped.CadastroROM_CONC.AsInteger = 0 then
+        cbcred.Tag  := 1;
+        edcdcx.Text := frmctr_ped.CadastroROM_CDCX.AsString;
+        eddcad.Date := strtodate(SLPrincipal.Values['data_sistema']);
+        edhrom.Text := timetostr(frmctr_ped.CadastroROM_HROM.AsDateTime);
+        edobse.Text := frmctr_ped.CadastroROM_OBSE.AsString;
 
-          edctnr.Text := frmctr_ped.cadastroROM_CTNR.AsString;
-          edccli.Text := frmctr_ped.cadastroROM_CCLI.AsString;
-          edcdpd.Text := frmctr_ped.cadastroID.AsString;
-          eddero.Text := frmctr_ped.cadastroROM_DERO.AsString;
-          cbcred.Text := frmctr_ped.cadastroROM_CONC.AsString;
-          cbcred.Tag  := frmctr_ped.cadastroROM_CONC.AsInteger;
-          if frmctr_ped.cadastroROM_CONC.AsInteger = 0 then
-          cbcred.Tag  := 1;
-          edcdcx.Text := frmctr_ped.cadastroROM_CDCX.AsString;
-          eddcad.Date := strtodate(SLPrincipal.Values['data_sistema']);
-          edhrom.Text := timetostr(frmctr_ped.cadastroROM_HROM.AsDateTime);
-          edobse.Text := frmctr_ped.cadastroROM_OBSE.AsString;
+        edcven.Text := frmctr_ped.CadastroROM_CVEN.AsString;
+        edcrep.Text := frmctr_ped.CadastroROM_CREP.AsString;
 
-          edcven.Text := frmctr_ped.cadastroROM_CVEN.AsString;
-          edcrep.Text := frmctr_ped.cadastroROM_CREP.AsString;
+        cbstpd.Text := frmctr_ped.CadastroROM_STPD.AsString;
+        PESQUISA_TIPO;
 
-          cbstpd.Text := frmctr_ped.cadastroROM_STPD.AsString;
-          PESQUISA_TIPO;
+        cbstfi.Text := frmctr_ped.CadastroROM_STFI.AsString;
+        cbstco.Text := frmctr_ped.CadastroROM_STCO.AsString;
+        edcpag.Text := frmctr_ped.CadastroROM_CPAG.AsString;
 
-          cbstfi.Text := frmctr_ped.cadastroROM_STFI.AsString;
-          cbstco.Text := frmctr_ped.cadastroROM_STCO.AsString;
-          edcpag.Text := frmctr_ped.cadastroROM_CPAG.AsString;
+        cbdtra.Text := frmctr_ped.CadastroROM_DTRA.AsString;
+        edvfrt.Text := formatfloat('#,0.00',frmctr_ped.CadastroROM_VFRT.AsFloat);
 
-          cbdtra.Text := frmctr_ped.cadastroROM_DTRA.AsString;
-          edvfrt.Text := formatfloat('#,0.00',frmctr_ped.cadastroROM_VFRT.AsFloat);
+        latdsc.Caption := frmctr_ped.CadastroROM_TDSC.AsString;
+        edpdsc.Text    := formatfloat('#,0.00###',frmctr_ped.CadastroROM_PDSC.AsFloat);
 
-          latdsc.Caption := frmctr_ped.cadastroROM_TDSC.AsString;
-          edpdsc.Text    := formatfloat('#,0.00########',frmctr_ped.cadastroROM_PDSC.AsFloat);
-          edcdsc.Text    := formatfloat('#,0.00########',frmctr_ped.cadastroROM_CDSC.AsFloat);
-          edadsc.Text    := formatfloat('#,0.00########',frmctr_ped.cadastroROM_ADSC.AsFloat);
-          if frmctr_ped.cadastroROM_ADSC.AsFloat > 0 then
-             edddsc.Text := 'Desconto adicional: '+formatfloat('0.00% '+cbstpd.Text,frmctr_ped.cadastroROM_ADSC.AsFloat);
+        PESQUISA_FPAGTO('C',frmctr_ped.CadastroROM_CPAG.AsString);
+        Tag := 1;
 
-          PESQUISA_FPAGTO('C',frmctr_ped.cadastroROM_CPAG.AsString);
-
-          tag := 1;
-          if (frmprincipal.parametrosPAR_TIPO.AsString = '0') and (edqtsp.Text = '1') then
-          ITE_COMSEPARACAO(edcdpd.Text,eddero.Text) else
-          ITE_SEMSEPARACAO(edcdpd.Text,eddero.Text);
-        end;
+        if edqtsp.Text = '1' then
+        ITE_COMSEPARACAO(edcdpd.Text,eddero.Text) else
+        ITE_SEMSEPARACAO(edcdpd.Text,eddero.Text);
       finally
-        tag := 0;
+        Tag := 0;
 
         TOTAL;
         BSal.Enabled := true;
@@ -732,18 +707,58 @@ end;
 
 procedure Tfrmven_rom.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  OnClose := Nil;
-  Screen.Cursor := crAppStart;
-
-  pEve.UnRegisterEvents;
   Action := caFree;
 end;
 
 procedure Tfrmven_rom.FormDestroy(Sender: TObject);
 begin
-  OnDestroy := Nil;
-  oFTransact(IBTra);
-  Screen.Cursor := crDefault;
+  try
+     Screen.Cursor := crAppStart;
+     OnDestroy     := Nil;
+
+     { Transação Principal }
+     try
+       oFTransact(IBTra);
+     except
+       on E: Exception do
+       begin
+         oErro(Application.Handle,'Falha ao tentar fechar tabelas !'+#13+#13+
+                                  'Error Code: '+E.Message+'.'      +#13+
+                                   Caption+'.');
+       end;
+     end;
+  finally
+    try
+      { Eventos }
+      try
+        pEVE.UnRegisterEvents;
+      except
+        on E: Exception do
+        begin
+          oErro(Application.Handle,'Falha ao tentar fechar eventos !'+#13+#13+
+                                   'Error Code: '+E.Message+'.'      +#13+
+                                    Caption+'.');
+        end;
+      end;
+    finally
+      try
+        { record e afins }
+        try
+          oFRECDefault(RECDefault);
+        except
+          on E: Exception do
+          begin
+            oErro(Application.Handle,'Falha ao tentar esvaziar memória !'+#13+#13+
+                                     'Error Code: '+E.Message+'.'        +#13+
+                                      Caption+'.');
+          end;
+        end;
+      finally
+        Screen.Cursor := crDefault;
+      end;
+    end;
+  end;
+
   frmven_rom := Nil;
 end;
 
@@ -784,160 +799,190 @@ end;
 
 procedure Tfrmven_rom.FormPaint(Sender: TObject);
 var
-  R: TRect;
+  S: TRect;
+  H,
+  T,
+  B,
+  L,
+  R,
+  FHeight,
+  FWidth: Word;
 begin
-  if (Showing) and ((HelpContext = 0) or (HelpContext = 1)) then
+  if Showing then
   begin
-    { Definição sobre o Painel de utilitários do form principal }
-    FrmPrincipal.PNBot.Visible := (Screen.Height > 768);
-    HelpContext := IFThen((Screen.Height > 768),0,1);
-
     { Ajusta o Form para o tamanho da area livre do MainForm }
-    GetWindowRect(FrmPrincipal.ClientHandle,R);
+    GetWindowRect(FrmPrincipal.ClientHandle,S);
+    T := S.Top;
+    B := S.Bottom;
+    L := S.Left;
+    R := S.Right;
+    H := B;
 
-    if FrmPosition = poDefault then
+    if RECDefault.FrmPosition = poDesigned then
     begin
-      if (AlphaBlendValue = 0) and (HelpContext = 0) then
+      FHeight := IFThen(HelpContext     > 0,Trunc((H-T) * (HelpContext     / 100)),0);
+      FWidth  := IFThen(AlphaBlendValue > 0,Trunc((R-L) * (AlphaBlendValue / 100)),0);
+
+      if (RECDefault.Top > 0) and (RECDefault.Left > 0) then
       begin
-        { Width padrão acima de 768 = 1032 }
-        Height := Trunc((R.Bottom - R.Top) * 0.9);
-        Top    := ((R.Bottom - R.Top ) - Height) div 2;
-        Left   := ((R.Right  - R.Left) - Width ) div 2;
+        Top    := RECDefault.Top;
+        Left   := RECDefault.Left;
       end else
       begin
-        Top    := IFThen(FrmStyle    = fsNormal ,R.Top ,0);
-        Left   := IFThen(FrmStyle    = fsNormal ,R.Left,0);
-        Width  := IFThen(FrmPosition = poDefault,R.Right -R.Left-5,0);
-        Height := IFThen(FrmPosition = poDefault,R.Bottom-R.Top -5,0);
+        if FHeight > 0 then Height := FHeight;
+        if FWidth  > 0 then Width  := FWidth;
+
+        if FormStyle = fsNormal then
+        begin
+          Top  := (T  + (H - Height)) div 2;
+          Left := ((R + L) - Width )  div 2;
+        end else
+        begin
+          Top  := ((B - T ) - Height) div 2;
+          Left := ((R - L)  - Width ) div 2;
+        end;
       end;
     end else
+    if (RECDefault.WorkArea) and (FormStyle = fsNormal) then
     begin
-      if FrmStyle = fsNormal then
-      begin
-        Top  := R.Top + ((R.Bottom - R.Top ) - Height) div 2;
-        Left :=         ((R.Right  + R.Left) - Width ) div 2;
-      end else
-      begin
-        Top  := ((R.Bottom - R.Top ) - Height) div 2;
-        Left := ((R.Right  - R.Left) - Width ) div 2;
-      end;
+      Top    := Screen.WorkAreaTop;
+      Left   := Screen.WorkAreaLeft;
+      Width  := Screen.WorkAreaWidth;
+      Height := Screen.WorkAreaHeight;
+    end else
+    if (RECDefault.MainArea) and (FormStyle = fsNormal) then
+    begin
+      Top    := 0;
+      Left   := 0;
+      Width  := R - L - 5;
+      Height := H - T - 5;
+    end else
+    if RECDefault.FrmPosition = poDefault then
+    begin
+      Top    := IFThen(FormStyle = fsNormal,T,0);
+      Left   := IFThen(FormStyle = fsNormal,L,0);
+      Width  := IFThen(RECDefault.FrmPosition = poDefault,R - L - 5,0);
+      Height := IFThen(RECDefault.FrmPosition = poDefault,H - T - 5,0);
     end;
+
+    if RECUsuarios.Id = 0 then
+       Caption := 'DIMENSÕES: Monitor: Altura = '+IntToStr(Screen.Height)+' Largura: '+IntToStr(Screen.Width)+' / '+
+                  'Tela: Altura = '              +IntToStr(Self.Height  )+' Largura: '+IntToStr(Self.Width  )+' - '+
+                  'Font Size: '+IntToSTr(DBGROM.Font.Size);
   end;
 end;
 
 procedure Tfrmven_rom.FormResize(Sender: TObject);
 begin
-  if frmven_rom <> Nil then
-  Paint;
+  if Self <> Nil then
+  begin
+    if (RECDefault.WorkArea) and (Screen.Width > 1024) then
+        RECDefault.WorkArea := False;
+
+    if (RECDefault.MainArea) and (Screen.Width > 1366) then
+        RECDefault.MainArea := False;
+
+    if (RECDefault.WorkArea) or (RECDefault.MainArea) then
+    begin
+      HelpKeyword := '3';
+      RECDefault.FrmPosition := poDefault;
+    end else
+    if (HelpKeyword = '5') and (Screen.Width >= 1360) and (Screen.Width <= 1366) then {MainArea, mas sem desabilitar botões }
+    begin
+      if FrmPrincipal.PNLPrincipal.Visible then
+         RECDefault.FrmPosition := poDefault;
+    end else
+    if RECDefault.Id = -3 then
+    begin
+      RECDefault.FrmPosition := poDesigned;
+      Self.HelpContext       := 90;
+      Self.AlphaBlendValue   := 90;
+    end;
+
+    if Screen.Width <= 1366 then
+       Self.Font.Size := 8;
+
+    Paint;
+  end;
 end;
 
 procedure Tfrmven_rom.ITE_COMSEPARACAO(cdpd,dero: string);
 begin
-  with cad_pro_est do
+  with psq_ite do
   begin
     SQL.Clear;
-    SQL.Add('SELECT EST_CPRO,EST_CDET,EST_CRED,COUNT(*) "EST_ITEM"');
-    if edtest.Text = 'DEFEITO' then
-    SQL.Add('FROM  '+SLPrincipal.Values['cad_pro_def']+' "CAD_PRO_EST"') else
-    SQL.Add('FROM  '+SLPrincipal.Values['cad_pro_est']+' "CAD_PRO_EST"');
-    SQL.Add('WHERE EST_CDPD = '''+cdpd+'''');
-    SQL.Add('AND   EST_FLAG <> ''V''');
-    SQL.Add('GROUP BY EST_CPRO,EST_CDET,EST_CRED');
+    SQL.Add('SELECT   PED_VEN_ITE.*,CAD_PRO.PRO_CART,PRO_CPRO,PRO_DPR2,PRO_DPR3,PRO_DPR4,PRO_DPR5,PRO_PPRO,PRO_METR,PRO_PESO,PRO_REND,PRO_PSCN,PRO_PSMR,PRO_FOTO,PRO_PIPI,PRO_CBAR');
+    SQL.Add('FROM     CAD_PRO,CAD_PRO_IMG,'+SLPrincipal.Values['ped_ven_ite']+' "PED_VEN_ITE"');
+    SQL.Add('WHERE    PED_VEN_ITE.ROM_CPRO = CAD_PRO.ID');
+    SQL.Add('AND      CAD_PRO_IMG.PRO_CART = CAD_PRO.PRO_CART');
+    SQL.Add('AND      PED_VEN_ITE.ROM_CCAB = '''+cdpd+'''');
+    SQL.Add('ORDER BY PED_VEN_ITE.ROM_ITEM');
     Open;
   end;
 
-  while not cad_pro_est.Eof do
+  while not psq_ite.Eof do
   begin
-    if cad_pro_estEST_ITEM.AsInteger = 1 then
+    rom_001.Append;
+
+    with consulta_S do
     begin
-      with psq_ite do
-      begin
-        SQL.Clear;
-        SQL.Add('SELECT   PED_VEN_ITE.*,CAD_PRO.PRO_CART,PRO_CPRO,PRO_DPR2,PRO_DPR3,PRO_DPR4,PRO_DPR5,PRO_PPRO,PRO_METR,PRO_PESO,PRO_REND,PRO_PSCN,PRO_PSMR,PRO_FOTO,PRO_PIPI,PRO_CBAR');
-        SQL.Add('FROM     CAD_PRO,CAD_PRO_IMG,'+SLPrincipal.Values['ped_ven_ite']+' "PED_VEN_ITE"');
-        SQL.Add('WHERE    PED_VEN_ITE.ROM_CPRO = CAD_PRO.ID');
-        SQL.Add('AND      CAD_PRO_IMG.PRO_CART = CAD_PRO.PRO_CART');
-        SQL.Add('AND      PED_VEN_ITE.ROM_CCAB = '''+cdpd+'''');
-        SQL.Add('AND      PED_VEN_ITE.ROM_CPRO = '''+cad_pro_estEST_CPRO.AsString+'''');
-        SQL.Add('ORDER BY PED_VEN_ITE.ROM_ITEM');
-        Open;
-      end;
+      SQL.Clear;
+      SQL.Add('SELECT MAX(ROM_ITEM) FROM ROM_ITE');
+      Open;
 
-      rom_001.Append;
-
-      with consulta_S do
-      begin
-        SQL.Clear;
-        SQL.Add('SELECT MAX(ROM_ITEM) FROM ROM_ITE');
-        Open;
-
-        if fields[0].IsNull then
-        rom_001ROM_ITEM.Value := '0001'
-        else
-        rom_001ROM_ITEM.Value := oStrZero(fields[0].AsInteger + 1,4);
-      end;
-
-      rom_001ROM_DERO.Value := dero;
-      rom_001ROM_CDRO.Value := psq_iteROM_CCAB.AsInteger;
-      rom_001ROM_CDPD.Value := psq_iteID.AsInteger;
-      rom_001ROM_IPRO.Value := psq_iteROM_CPRO.AsInteger;
-      rom_001ROM_IPR2.Value := psq_iteROM_CPR2.AsInteger;
-      rom_001ROM_CART.Value := psq_itePRO_CART.AsString;
-      rom_001ROM_CPRO.Value := psq_itePRO_CPRO.AsString;
-      rom_001ROM_DPRO.Value := psq_iteROM_DPRO.AsString;
-      rom_001ROM_DCOR.Value := psq_iteROM_DCOR.AsString;
-      rom_001ROM_DUNI.Value := psq_iteROM_DUNI.AsString;
-      rom_001ROM_FOTO.Value := psq_itePRO_FOTO.Value;
-      rom_001ROM_CBAR.Value := psq_itePRO_CBAR.AsString;
-      rom_001ROM_PIPI.Value := psq_itePRO_PIPI.AsFloat;
-      rom_001ROM_CDET.Value := cad_pro_estEST_CDET.AsString;
-      rom_001ROM_PPRO.Value := psq_itePRO_PPRO.AsFloat;
-      rom_001ROM_METR.Value := psq_itePRO_METR.AsFloat;
-      rom_001ROM_PESO.Value := psq_itePRO_PESO.AsFloat;
-      rom_001ROM_REND.Value := psq_itePRO_REND.AsFloat;
-      rom_001ROM_PSCN.Value := psq_itePRO_PSCN.AsFloat;
-      rom_001ROM_PSMR.Value := psq_itePRO_PSMR.AsFloat;
-      rom_001ROM_DSEP.Value := psq_iteROM_DSEP.AsString;
-      rom_001ROM_TPRC.Value := TRIM(cbprec.Text);
-      rom_001ROM_QTDE.Value := cad_pro_estEST_CRED.AsFloat;
-      rom_001ROM_QTPD.Value := cad_pro_estEST_CRED.AsFloat;
-      rom_001ROM_QTRL.Value := 1;
-
-      if (copy(rom_001ROM_DUNI.AsString,1,1) = 'P') or (copy(rom_001ROM_DUNI.AsString,1,1) = 'C') then
-      rom_001ROM_QTRL.Value := trunc(rom_001ROM_QTDE.AsFloat);
-
-      rom_001ROM_PREC.Value := psq_iteROM_PREC.AsFloat;
-      rom_001ROM_UNIT.Value := psq_iteROM_UNIT.AsFloat;
-
-      if copy(rom_001ROM_CPRO.AsString,1,2) <> 'EX' then
-      begin
-        if cbcred.Text <> '0' then
-        begin
-          if (rom_001ROM_PIPI.AsFloat > 0) and (frmprincipal.parametrosPAR_FANT.AsString = 'LEBIANCO') then
-          begin
-            rom_001ROM_PREC.Value := rom_001ROM_UNIT.AsFloat/cbcred.Tag;
-            rom_001ROM_UNIT.Value := rom_001ROM_UNIT.AsFloat/((rom_001ROM_PIPI.AsFloat/100)+1);
-          end;
-          rom_001ROM_UNIT.Value   := rom_001ROM_UNIT.AsFloat/cbcred.Tag;
-        end;
-      end;
-
-      rom_001ROM_UNIT.AsString := oTextToValor(rom_001ROM_UNIT.AsString);
-      rom_001ROM_PREC.AsString := oTextToValor(rom_001ROM_PREC.AsString);
-
-      if (cbcred.Tag >= 2) and (cbcred.Tag <= 5) and (frmprincipal.parametrosPAR_DCRD.AsString = '1') then
-      begin
-        case cbcred.Tag of
-          2: rom_001ROM_DPRO.Value := psq_itePRO_DPR2.AsString;
-          3: rom_001ROM_DPRO.Value := psq_itePRO_DPR3.AsString;
-          4: rom_001ROM_DPRO.Value := psq_itePRO_DPR4.AsString;
-          5: rom_001ROM_DPRO.Value := psq_itePRO_DPR5.AsString;
-        end;
-      end;
-
-      rom_001.Post;
+      if fields[0].IsNull then
+      rom_001ROM_ITEM.Value := '0001'
+      else
+      rom_001ROM_ITEM.Value := oStrZero(fields[0].AsInteger + 1,4);
     end;
-    cad_pro_est.Next;
+
+    rom_001CTNR.Value := dero;
+    rom_001ROM_CDRO.Value := psq_iteROM_CCAB.AsInteger;
+    rom_001ROM_CDPD.Value := psq_iteID.AsInteger;
+    rom_001ROM_IPRO.Value := psq_iteROM_CPRO.AsInteger;
+    rom_001ROM_IPR2.Value := psq_iteROM_CPR2.AsInteger;
+    rom_001ROM_CART.Value := psq_itePRO_CART.AsString;
+    rom_001ROM_CPRO.Value := psq_itePRO_CPRO.AsString;
+    rom_001ROM_DPRO.Value := psq_iteROM_DPRO.AsString;
+    rom_001ROM_DCOR.Value := psq_iteROM_DCOR.AsString;
+    rom_001ROM_DUNI.Value := psq_iteROM_DUNI.AsString;
+    rom_001ROM_FOTO.Value := psq_itePRO_FOTO.Value;
+    rom_001ROM_CBAR.Value := psq_itePRO_CBAR.AsString;
+    rom_001ROM_PIPI.Value := psq_itePRO_PIPI.AsFloat;
+    rom_001ROM_CDET.Value := PSQ_ITEID.AsString;
+    rom_001ROM_PPRO.Value := psq_itePRO_PPRO.AsFloat;
+    rom_001ROM_METR.Value := psq_itePRO_METR.AsFloat;
+    rom_001ROM_PESO.Value := psq_itePRO_PESO.AsFloat;
+    rom_001ROM_REND.Value := psq_itePRO_REND.AsFloat;
+    rom_001ROM_PSCN.Value := psq_itePRO_PSCN.AsFloat;
+    rom_001ROM_PSMR.Value := psq_itePRO_PSMR.AsFloat;
+    rom_001ROM_DSEP.Value := psq_iteROM_DSEP.AsString;
+    rom_001ROM_TPRC.Value := TRIM(cbprec.Text);
+    rom_001ROM_QTDE.Value := PSQ_ITEROM_QTPD.AsFloat;
+    rom_001ROM_QTPD.Value := PSQ_ITEROM_QTPD.AsFloat;
+    rom_001ROM_QTRL.Value := 1;
+
+    if (copy(rom_001ROM_DUNI.AsString,1,1) = 'P') or (copy(rom_001ROM_DUNI.AsString,1,1) = 'C') then
+    rom_001ROM_QTRL.Value := trunc(rom_001ROM_QTDE.AsFloat);
+
+    rom_001ROM_PREC.AsFloat := psq_iteROM_PREC.AsFloat;
+    rom_001ROM_UNIT.AsFloat := psq_iteROM_UNIT.AsFloat;
+
+    if copy(rom_001ROM_CPRO.AsString,1,2) <> 'EX' then
+    begin
+      if cbcred.Text <> '0' then
+      begin
+        if (rom_001ROM_PIPI.AsFloat > 0) and (frmprincipal.parametrosPAR_FANT.AsString = 'LEBIANCO') then
+        begin
+          rom_001ROM_PREC.AsFloat := rom_001ROM_UNIT.AsFloat/cbcred.Tag;
+          rom_001ROM_UNIT.AsFloat := rom_001ROM_UNIT.AsFloat/((rom_001ROM_PIPI.AsFloat/100)+1);
+        end;
+        rom_001ROM_UNIT.AsFloat   := rom_001ROM_UNIT.AsFloat/cbcred.Tag;
+      end;
+    end;
+
+    rom_001.Post;
+    psq_ite.Next;
   end;
 end;
 
@@ -966,7 +1011,7 @@ begin
     if BRet then
     begin
       rom_001.Append;
-      rom_001ROM_DERO.Value := dero;
+      rom_001CTNR.Value := dero;
       rom_001ROM_ITEM.Value := psq_iteROM_ITEM.Value;
       rom_001ROM_CDRO.Value := psq_iteROM_CCAB.AsInteger;
       rom_001ROM_CDPD.Value := psq_iteID.AsInteger;
@@ -999,11 +1044,11 @@ begin
         rom_001ROM_QTRL.Value := psq_iteROM_RLPD.Value;
       end;
 
-      rom_001ROM_PREC.Value := psq_iteROM_PREC.AsFloat;
-      rom_001ROM_UNIT.Value := psq_iteROM_UNIT.AsFloat;
+      rom_001ROM_PREC.AsFloat := psq_iteROM_PREC.AsFloat;
+      rom_001ROM_UNIT.AsFloat := psq_iteROM_UNIT.AsFloat;
 
       if Pos(cbcred.Text,'01') = 0 then
-         rom_001ROM_UNIT.Value   := rom_001ROM_UNIT.AsFloat/cbcred.Tag;
+         rom_001ROM_UNIT.AsFloat := rom_001ROM_UNIT.AsFloat/cbcred.Tag;
 
       if (cbcred.Tag >= 2) and (cbcred.Tag <= 5) and (frmprincipal.parametrosPAR_DCRD.AsString = '1') then
       begin
@@ -1020,329 +1065,6 @@ begin
   end;
 end;
 
-procedure Tfrmven_rom.CALCULA_COMISSAO_CAB(id: integer);
-begin
-  with consulta do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT SUM(ROM_UNIT*ROM_COMI)/SUM(ROM_UNIT)');
-    SQL.Add('FROM '+SLPrincipal.Values['ped_ven_ite']);
-    SQL.Add('WHERE  ROM_CCAB = '''+inttostr(id)+'''');
-    SQL.Add('AND    ROM_COMI > 0');
-    Open;
-  end;
-
-  with aux do
-  begin
-    SQL.Clear;
-    SQL.Add('UPDATE '+SLPrincipal.Values['ped_ven_cab']);
-    SQL.Add('SET  ROM_COMI = '''+oStrTran(formatfloat('0.00',roundto(consulta.Fields[0].AsFloat,-2)),',','.')+'''');
-    SQL.Add('WHERE ID = '''+inttostr(id)+'''');
-    ExecSQL;
-  end;
-end;
-
-function Tfrmven_rom.CALCULA_COMISSAO_ITE(prec: double): double;
-var
-  comi: double;
-begin
-  comi := 0;
-  with consulta do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT PRO_CPRO,CAT_PRCI,CAT_PRCF,CAT_COMI');
-    SQL.Add('FROM   CAD_PRO,CAD_PRO_CAC,CAD_PRO_CAI');
-    SQL.Add('WHERE  CAD_PRO_CAC.ID       = CAD_PRO_CAI.CAT_CCAB');
-    SQL.Add('AND    CAD_PRO.PRO_CCAT     = CAD_PRO_CAC.ID');
-    SQL.Add('AND    CAD_PRO_CAC.CAT_CDEP = '''+frmprincipal.parametrosID.AsString+'''');
-    SQL.Add('AND    CAD_PRO.ID           = '''+rom_001ROM_IPRO.AsString+'''');
-    Open;
-
-    while not eof do
-    begin
-      if (prec >= fields[1].AsFloat) and
-         (prec <= fields[2].AsFloat) then
-      begin
-        comi := fields[3].AsFloat;
-        break;
-      end;
-      next;
-    end;
-
-    if comi = 0 then
-    begin
-      Last;
-      if prec > fields[2].AsFloat then
-      comi := fields[3].AsFloat;
-    end;
-
-    if copy(fields[0].AsString,1,2) = 'EX' then
-    comi := 0;
-
-    if (comi = 0) and (copy(fields[0].AsString,1,2) <> 'EX') then
-    begin
-      SQL.Clear;
-      SQL.Add('SELECT REP_COMI FROM CAD_REP');
-      SQL.Add('WHERE  ID = '''+edcrep.Text+'''');
-      Open;
-      comi := fields[0].AsFloat;
-    end;
-  end;
-  result := comi;
-end;
-
-procedure Tfrmven_rom.ROMANEIO;
-function RETORNA_ITEM(ID: integer): string;
-var
-  item: string;
-begin
-  item := '0001';
-
-  with consulta do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT MAX(ROM_ITEM) FROM '+SLPrincipal.Values['ped_ven_ite']+' "PED_VEN_ITE"');
-    SQL.Add('WHERE  ROM_CCAB = '''+inttostr(ID)+'''');
-    Open;
-
-    if not fields[0].IsNull then
-    item := oStrZero(fields[0].AsInteger + 1,4);
-  end;
-
-  result := item;
-end;
-
-function RETORNA_PEDIDO: string;
-var
-  i: word;
-  dero1,dero2: string;
-begin
-  dero1 := '';
-  for i := 1 to length(eddero.Text) do
-  begin
-    if (copy(eddero.Text,i,1) = '.') or (copy(eddero.Text,i,1) = '/') then
-    break;
-
-    dero1 := dero1 + trim(copy(eddero.Text,i,1));
-  end;
-
-  i := 0;
-  while true do
-  begin
-    inc(i);
-    dero2 := dero1+'/'+inttostr(i);
-
-    with consulta do
-    begin
-      SQL.Clear;
-      SQL.Add('SELECT ID FROM '+SLPrincipal.Values['ped_ven_cab']);
-      SQL.Add('WHERE  ROM_DERO = '''+dero2+'''');
-      Open;
-
-      if fields[0].IsNull then
-      break;
-    end;
-  end;
-
-  result := dero2;
-end;
-
-begin
-  with rom_001 do
-  begin
-    Close;
-    SelectSQL.Clear;
-    SelectSQL.Add('SELECT * FROM ROM_ITE');
-    SelectSQL.Add('WHERE    ROM_FLAG = 1');
-    SelectSQL.Add('ORDER BY ROM_CPRO');
-    Open;
-
-    while not rom_001.Eof do
-    begin
-      rom_001.Edit;
-      rom_001ROM_UNIT.Value := rom_001ROM_UNIT.AsFloat*strtoint(cbcred.Text);
-      rom_001.Post;
-      rom_001.Next;
-    end;
-  end;
-
-  if rom_001.Fields[0].IsNull then
-  exit;
-
-  with consulta_S do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT SUM(ROM_TOTA),SUM(ROM_QTPD),SUM(ROM_QTRL) FROM ROM_ITE');
-    SQL.Add('WHERE  ROM_FLAG = 1');
-    Open;
-  end;
-
-  adsc := oTextToValor(edadsc.Text);
-  pdsc := oTextToValor(edpdsc.Text);
-  if (edpdsc.Text = '') or (oTextToValor(edpdsc.Text) < 0) then
-  pdsc := 0;
-
-  qtde := consulta_S.fields[1].AsFloat;
-  qtrl := consulta_S.fields[2].AsInteger;
-  tsde := consulta_S.fields[0].AsFloat;
-  tcde := consulta_S.fields[0].AsFloat;
-
-  if pdsc > 0 then
-  begin
-    if latdsc.Caption = '%' then
-       tcde := tsde - ((tsde * pdsc) / 100)
-    else if latdsc.Caption = '$' then
-    begin
-      if tsde >= pdsc then
-      tcde := tsde - pdsc;
-    end;
-  end;
-
-  if adsc > 0 then
-  tcde := tcde - ((tcde * adsc) / 100);
-
-  with consulta do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT GEN_ID(ID_NO_'+SLPrincipal.Values['ped_ven_cab']+',0) FROM RDB$DATABASE');
-    Open;
-    ID := fields[0].AsInteger+1;
-  end;
-
-  ibSP.StoredProcName := 'SP_PED_VEN_CAB';
-  ibSP.Prepare;
-
-  ibSP.ParamByName('ped').Value  := 'PED_VEN_CAB';
-  if frmprincipal.parametrosID.AsInteger > 1 then
-  ibSP.ParamByName('ped').Value  := 'PED_VEN_CAB_'+oStrZero(frmprincipal.parametrosID.AsInteger,3);
-
-  ibSP.ParamByName('id').Value   := 0;
-  ibSP.ParamByName('cdcx').Value := edcdcx.Text;
-//  ibSP.ParamByName('cdrd').Value := 0;
-//  ibSP.ParamByName('derd').Value := '';
-  ibSP.ParamByName('dero').Value := RETORNA_PEDIDO;
-  ibSP.ParamByName('ctnr').Value := edctnr.Text;
-  ibSP.ParamByName('stpd').Value := cbstpd.Text;
-  ibSP.ParamByName('stco').Value := cbstco.Text;
-  ibSP.ParamByName('stfi').Value := 'PENDENTE';
-  ibSP.ParamByName('drom').Value := eddcad.Date;
-  ibSP.ParamByName('hrom').Value := strtotime(edhrom.Text);
-  ibSP.ParamByName('dexp').Value := 0;
-  ibSP.ParamByName('hexp').Value := 0;
-  ibSP.ParamByName('cexp').Value := 0;
-  ibSP.ParamByName('ccli').Value := edccli.Text;
-  ibSP.ParamByName('cven').Value := edcven.Text;
-  ibSP.ParamByName('crep').Value := edcrep.Text;
-  ibSP.ParamByName('cpag').Value := edcpag.Text;
-  ibSP.ParamByName('qtve').Value := qtde;
-  ibSP.ParamByName('rlve').Value := qtrl;
-  ibSP.ParamByName('tdsc').Value := latdsc.Caption;
-  ibSP.ParamByName('pdsc').Value := edpdsc.Text;
-  ibSP.ParamByName('cdsc').Value := edcdsc.Text;
-  ibSP.ParamByName('adsc').Value := edadsc.Text;
-  ibSP.ParamByName('tsde').Value := tsde;
-  ibSP.ParamByName('tcde').Value := tcde;
-  ibSP.ParamByName('conc').Value := cbcred.Text;
-  ibSP.ParamByName('vfrt').Value := oTextToValor(edvfrt.Text);
-  ibSP.ParamByName('dtra').Value := cbdtra.Text;
-  ibSP.ParamByName('obse').Value := 'CONTINUADO DO ROMANEIO No '+eddero.Text;
-  ibSP.ParamByName('sta').Value  := '0';
-  ibSP.ParamByName('comi').Value := '0';
-  ibSP.ExecProc;
-
-  rom_002.Close;
-  rom_002.Open;
-  while not rom_002.Eof do
-  begin
-    ibSP.StoredProcName := 'SP_PED_VEN_ITE';
-    ibSP.Prepare;
-
-    ibSP.ParamByName('ped').Value  := 'PED_VEN_ITE';
-    if frmprincipal.parametrosID.AsInteger > 1 then
-    ibSP.ParamByName('ped').Value  := 'PED_VEN_ITE_'+oStrZero(frmprincipal.parametrosID.AsInteger,3);
-
-    ibSP.ParamByName('ID').Value   := 0;
-    ibSP.ParamByName('CCAB').Value := ID;
-    ibSP.ParamByName('ITEM').Value := RETORNA_ITEM(ID);
-    ibSP.ParamByName('CPRO').Value := rom_002ROM_IPRO.AsInteger;
-    ibSP.ParamByName('CPR2').Value := rom_002ROM_IPR2.AsInteger;
-    ibSP.ParamByName('DPRO').Value := rom_002ROM_DPRO.AsString;
-    ibSP.ParamByName('DUNI').Value := rom_002ROM_DUNI.AsString;
-    ibSP.ParamByName('QTDE').Value := rom_002ROM_QTDE.AsFloat;
-    ibSP.ParamByName('QTRL').Value := qtrl;
-    ibSP.ParamByName('QTPD').Value := 0;
-    ibSP.ParamByName('RLPD').Value := 0;
-    ibSP.ParamByName('UNIT').Value := rom_002ROM_UNIT.AsFloat;
-    ibSP.ParamByName('PREC').Value := rom_002ROM_PREC.AsFloat;
-    ibSP.ParamByName('VDSC').Value := rom_002ROM_VDSC.AsFloat;
-    ibSP.ParamByName('TOTA').Value := ROUNDTO(rom_002ROM_QTDE.AsFloat*rom_002ROM_UNIT.AsFloat,-2);
-    ibSP.ParamByName('CDET').Value := '';
-    ibSP.ParamByName('DSEP').Value := rom_002ROM_DSEP.AsString;
-    ibSP.ParamByName('COMI').Value := CALCULA_COMISSAO_ITE(rom_002ROM_UNIT.AsFloat);
-    ibSP.ParamByName('TPRC').Value := inttostr(cbprec.Items.IndexOf(TRIM(rom_002ROM_TPRC.AsString)));
-    ibSP.ParamByName('ABCD').Value := rom_002ROM_ABCD.AsString;
-    ibSP.ParamByName('OBSE').Value := rom_002ROM_OBSE.AsString;
-    ibSP.ParamByName('DCOR').Value := rom_002ROM_DCOR.AsString;
-    ibSP.ParamByName('PCOR').Value := rom_002ROM_PCOR.AsString;
-    ibSP.ParamByName('DCO2').Value := rom_002ROM_DCO2.AsString;
-    ibSP.ParamByName('PCO2').Value := rom_002ROM_PCO2.AsString;
-    ibSP.ExecProc;
-
-    with frmprincipal.sp_sql do
-    begin
-      SQL.Clear;
-      SQL.Add('UPDATE '+SLPrincipal.Values['ped_ven_ite']);
-      SQL.Add('SET    ROM_QTPD = 0,');
-      SQL.Add('       ROM_RLPD = 0');
-      SQL.Add('WHERE  ROM_CCAB = '''+rom_002ROM_CDRO.AsString+'''');
-      SQL.Add('AND    ROM_CPRO = '''+rom_002ROM_IPRO.AsString+'''');
-
-      ibSP.StoredProcName := 'SP_SQL';
-      ibSP.Prepare;
-      ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
-      ibSP.ExecProc;
-    end;
-
-    rom_002.Next;
-  end;
-
-  rom_001.First;
-  while not rom_001.Eof do
-  begin
-    with frmprincipal.sp_sql do
-    begin
-      SQL.Clear;
-      SQL.Add('UPDATE '+SLPrincipal.Values['cad_pro_est']);
-      SQL.Add('SET    EST_CDPD = '''+inttostr(ID)+'''');
-      SQL.Add('WHERE  EST_CDET = '''+rom_001ROM_CDET.AsString+'''');
-      SQL.Add('AND    EST_CRED > 0 AND EST_FLAG = ''E''');
-
-      ibSP.StoredProcName := 'SP_SQL';
-      ibSP.Prepare;
-      ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
-      ibSP.ExecProc;
-
-      SQL.Clear;
-      SQL.Add('DELETE FROM '+SLPrincipal.Values['cad_pro_res']);
-      SQL.Add('WHERE  EST_CDPD = '''+edcdpd.Text+'''');
-      SQL.Add('AND    EST_CPRO = '''+rom_001ROM_IPRO.AsString+'''');
-
-      ibSP.StoredProcName := 'SP_SQL';
-      ibSP.Prepare;
-      ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
-      ibSP.ExecProc;
-    end;
-
-    rom_001.Next;
-  end;
-
-  CALCULA_COMISSAO_CAB(id);
-  IBTra.CommitRetaining;
-
-  frmprincipal.Log_Eve('Vendas','Pedidos','Inclusão',RETORNA_PEDIDO,RETORNA_PEDIDO,LOWERCASE(eddcli.Text),'','');
-  IBTra.CommitRetaining;
-end;
-
 procedure Tfrmven_rom.PESQUISA_TIPO;
 begin
   with aux do
@@ -1356,7 +1078,6 @@ begin
     edtest.Text := fields[7].AsString;
     cbprec.Text := fields[5].AsString;
     edqtsp.Text := fields[6].AsString;
-    edadsc.Text := formatfloat('0.00',fields[1].AsFloat);
     edddsc.Text := '';
 
     if fields[1].AsFloat > 0 then
@@ -1593,8 +1314,8 @@ begin
       ibSP.ParamByName('tsde').Value := oTextToValor(edtsde.Text);
       ibSP.ParamByName('tdsc').Value := latdsc.Caption;
       ibSP.ParamByName('pdsc').Value := edpdsc.Text;
-      ibSP.ParamByName('cdsc').Value := edcdsc.Text;
-      ibSP.ParamByName('adsc').Value := edadsc.Text;
+      ibSP.ParamByName('cdsc').Value := 0;
+      ibSP.ParamByName('adsc').Value := 0;
       ibSP.ParamByName('tcde').Value := oTextToValor(edtcde.Text);
       ibSP.ParamByName('conc').Value := cbcred.Text;
       ibSP.ParamByName('obse').Value := edobse.Text;
@@ -1623,10 +1344,9 @@ begin
 
       while not consulta_S.Eof do
       begin
-        with frmprincipal.sp_sql do
+        with Consulta do
         begin
-          ibSP.StoredProcName := 'SP_SQL';
-
+          Close;
           SQL.Clear;
           SQL.Add('UPDATE '+SLPrincipal.Values['ped_ven_cab']);
           SQL.Add('SET    ROM_CDRO = '''+edcdro.Text+''',');
@@ -1635,44 +1355,15 @@ begin
           SQL.Add('       ROM_RLVE = '''+consulta_S.Fields[2].AsString+''',');
           SQL.Add('       ROM_CPAG = '''+edcpag.Text+'''');
           SQL.Add('WHERE  ID = '''+consulta_S.Fields[0].AsString+'''');
+          ExecSQL;
 
-          ibSP.Prepare;
-          ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
-          ibSP.ExecProc;
-
+          Close;
           SQL.Clear;
-          SQL.Add('DELETE FROM '+SLPrincipal.Values['cad_pro_res']);
-          SQL.Add('WHERE  EST_CDPD = '''+consulta_S.Fields[0].AsString+'''');
-          SQL.Add('AND    EST_FLAG = ''R''');
-          SQL.Add('AND    EST_CDEP = '''+frmprincipal.parametrosID.AsString+'''');
-
-          ibSP.Prepare;
-          ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
-          ibSP.ExecProc;
-
-          SQL.Clear;
-          SQL.Add('UPDATE '+SLPrincipal.Values['cad_pro_sep']);
-          SQL.Add('SET    EST_FLAG = ''V''');
-          SQL.Add('WHERE  EST_CDPD = '''+consulta_S.Fields[0].AsString+'''');
-          SQL.Add('AND    EST_CDEP = '''+frmprincipal.parametrosID.AsString+'''');
-
-          ibSP.Prepare;
-          ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
-          ibSP.ExecProc;
-
-          SQL.Clear;
-          if edtest.Text = 'DEFEITO' then
-          SQL.Add('DELETE FROM '+SLPrincipal.Values['cad_pro_def']+' "CAD_PRO_EST"') else
-          SQL.Add('DELETE FROM '+SLPrincipal.Values['cad_pro_est']+' "CAD_PRO_EST"');
-          SQL.Add('WHERE  EST_CDRO = '''+consulta_S.Fields[0].AsString+'''');
-          SQL.Add('AND    EST_FLAG = ''V''');
-          SQL.Add('AND    EST_CDEP = '''+frmprincipal.parametrosID.AsString+'''');
-
-          ibSP.Prepare;
-          ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
-          ibSP.ExecProc;
+          SQL.Add('DELETE FROM CAD_PRO_RES');
+          SQL.Add('WHERE  EST_CDEP = ''' + RECParametros.ID              + '''');
+          SQL.Add('AND    EST_CDPD = ''' + Consulta_S.Fields[0].AsString + '''');
+          ExecSQL;
         end;
-
         consulta_S.Next;
       end;
     except
@@ -1683,16 +1374,13 @@ begin
     end;
 
     try
-      with frmprincipal.sp_sql do
+      with Consulta do
       begin
+        Close;
         SQL.Clear;
         SQL.Add('DELETE FROM '+SLPrincipal.Values['rom_ite']);
         SQL.Add('WHERE  ROM_CCAB = '''+edcdro.Text+'''');
-
-        ibSP.StoredProcName := 'SP_SQL';
-        ibSP.Prepare;
-        ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
-        ibSP.ExecProc;
+        ExecSQL;
       end;
 
       rom_001.DisableControls;
@@ -1735,20 +1423,17 @@ begin
         ibSP.ExecProc;
 
         if rom_001ROM_CDRO.AsInteger > 0 then
-        with frmprincipal.sp_sql do
+        with Consulta do
         begin
+          Close;
           SQL.Clear;
           SQL.Add('UPDATE '+SLPrincipal.Values['ped_ven_ite']);
           SQL.Add('SET    ROM_CDRO = '''+edcdro.Text+'''');
           SQL.Add('WHERE  ID = '''+rom_001ROM_CDRO.AsString+'''');
-
-          ibSP.StoredProcName := 'SP_SQL';
-          ibSP.Prepare;
-          ibSP.ParamByName('sqltexto').Value := frmprincipal.sp_sql.SQL.Text;
-          ibSP.ExecProc;
+          ExecSQL;
         end;
 
-        if best then
+        if (best) and (tag = 999) then
         begin
           if edtest.Text = 'DEFEITO' then
           begin
@@ -1756,17 +1441,12 @@ begin
             ibSP.Prepare;
 
             ibSP.ParamByName('est').Value  := 'CAD_PRO_DEF';
-            if frmprincipal.parametrosID.AsInteger > 1 then
-            ibSP.ParamByName('est').Value  := 'CAD_PRO_DEF_'+oStrZero(frmprincipal.parametrosID.AsInteger,3);
-          end
-          else
+          end else
           begin
             ibSP.StoredProcName := 'SP_CAD_PRO_EST';
             ibSP.Prepare;
 
             ibSP.ParamByName('est').Value  := 'CAD_PRO_EST';
-            if frmprincipal.parametrosID.AsInteger > 1 then
-            ibSP.ParamByName('est').Value  := 'CAD_PRO_EST_'+oStrZero(frmprincipal.parametrosID.AsInteger,3);
           end;
 
           ibSP.ParamByName('dmap').Value := '';
@@ -1788,16 +1468,16 @@ begin
 
           ibSP.ParamByName('id').Value   := 0;
           ibSP.ParamByName('cdep').Value := frmprincipal.parametrosID.AsInteger;
-          ibSP.ParamByName('cdro').Value := rom_001ROM_CDRO.AsInteger;
-          ibSP.ParamByName('cdpd').Value := 0;
+          ibSP.ParamByName('cdro').Value := 0;
+          ibSP.ParamByName('cdpd').Value := rom_001ROM_CDRO.AsInteger;
           ibSP.ParamByName('cdbx').Value := 0;
-          ibSP.ParamByName('cpro').Value := rom_001ROM_IPR2.AsInteger;
+          ibSP.ParamByName('cpro').Value := rom_001ROM_IPRO.AsInteger;
           ibSP.ParamByName('cusu').Value := edcven.Text;
           ibSP.ParamByName('dusu').Value := cbdven.Text;
           ibSP.ParamByName('cfav').Value := edccli.Text;
           ibSP.ParamByName('dfav').Value := eddcli.Text;
           ibSP.ParamByName('dcad').Value := eddcad.Date;
-          ibSP.ParamByName('docu').Value := trim(copy(rom_001ROM_DERO.AsString,1,10));
+          ibSP.ParamByName('docu').Value := trim(copy(rom_001CTNR.AsString,1,10));
           ibSP.ParamByName('flag').Value := 'V';
           ibSP.ParamByName('cdet').Value := rom_001ROM_CDET.AsString;
           ibSP.ParamByName('dsep').Value := rom_001ROM_DSEP.AsString;
@@ -1827,15 +1507,13 @@ begin
 
     pSP.StoredProcName := 'SP_EVENT';
     pSP.Prepare;
-    pSP.Params[0].AsString := 'CTR_PED';
+    pSP.Params[0].AsString := oREPZero('CTR_PED','_',RECParametros.Id,3);
     pSP.ExecProc;
 
     pTRA.Commit;
 
-    frmprincipal.Log_Eve('Vendas','Pedidos',edcdro.Hint,eddero.Text,eddero.Text,LOWERCASE(eddcli.Text),'','');
-
-    ROMANEIO;
     BSal.Enabled := false;
+    frmprincipal.Log_Eve('Vendas','Pedidos',edcdro.Hint,eddero.Text,eddero.Text,LOWERCASE(eddcli.Text),'','');
   finally
     with rom_001 do
     begin
@@ -2147,7 +1825,6 @@ begin
       eddcli.Text := psq_cliCLI_FANT.AsString;
       edrcli.Text := psq_cliCLI_RAZA.AsString;
       edcnpj.Text := psq_cliCLI_CNPJ.AsString;
-      edcdsc.Text := formatfloat('#,0.00########',psq_cliCLI_VDSC.AsFloat);
 
       if psq_cliCLI_DPAG.AsString <> '' then
          cbdpag.Text := psq_cliCLI_DPAG.AsString;
@@ -2161,7 +1838,6 @@ begin
       if edobso.Text <> '' then
       begin
         pcobs.ActivePageIndex := 1;
-        ShowMessage(PChar('Cliente '+eddcli.Text+' com ocorrência registrado !')+#13+'Leia com atenção.');
       end;
     end
     else
@@ -2329,24 +2005,21 @@ begin
   if (edpdsc.Text = '') or (oTextToValor(edpdsc.Text) < 0) then
       edpdsc.Text := '0';
 
-  edtsde.Text := formatfloat('R$ #,0.00########',consulta_S.fields[0].AsFloat);
-  edtcde.Text := formatfloat('R$ #,0.00########',consulta_S.fields[0].AsFloat);
-  edqtrl.Text := formatfloat('#,0.00########'   ,consulta_S.fields[1].AsFloat)+'/'+
-                 formatfloat('0'        ,consulta_S.fields[2].AsFloat);
+  edtsde.Text  := formatfloat('R$ #,0.00',consulta_S.fields[0].AsFloat);
+  edtcde.Text  := formatfloat('R$ #,0.00',consulta_S.fields[0].AsFloat);
+  edtqtrl.Text := formatfloat('#,0.00'   ,consulta_S.fields[1].AsFloat)+'/'+
+                  formatfloat('0'        ,consulta_S.fields[2].AsFloat);
 
   if oTextToValor(edpdsc.Text) > 0 then
   begin
     if latdsc.Caption = '%' then
-       edtcde.Text := formatFloat('R$ #,0.00########',oTextToValor(edtsde.Text)  - (oTextToValor(edtsde.Text) * oTextToValor(edpdsc.Text)) / 100)
+       edtcde.Text := formatFloat('R$ #,0.00###',oTextToValor(edtsde.Text)  - (oTextToValor(edtsde.Text) * oTextToValor(edpdsc.Text)) / 100)
     else if latdsc.Caption = '$' then
     begin
       if oTextToValor(edtsde.Text) >= oTextToValor(edpdsc.Text) then
-         edtcde.Text    := formatFloat('R$ #,0.00########',oTextToValor(edtsde.Text)  - oTextToValor(edpdsc.Text));
+         edtcde.Text := formatFloat('R$ #,0.00###',oTextToValor(edtsde.Text) - oTextToValor(edpdsc.Text));
     end;
   end;
-
-  if strtofloat(edadsc.Text) > 0 then
-     edtcde.Text := formatFloat('R$ #,0.00########',oTextToValor(edtcde.Text)  - (oTextToValor(edtcde.Text) * strtofloat(edadsc.Text)) / 100);
 
   BSal.Enabled:= true;
 end;
@@ -2514,15 +2187,16 @@ end;
 
 procedure Tfrmven_rom.dtsrom_001DataChange(Sender: TObject; Field: TField);
 begin
+  if rom_001.State = dsBrowse then
   CARREGAFOTO(rom_001ROM_FOTO.BlobSize,rom_001ROM_FOTO,rom_001);
 end;
 
 procedure Tfrmven_rom.rom_001ROM_VDSCValidate(Sender: TField);
 begin
   if rom_001ROM_VDSC.AsFloat = 0 then
-     rom_001ROM_UNIT.Value := rom_001ROM_PREC.Value
+     rom_001ROM_UNIT.AsFloat := rom_001ROM_PREC.Value
   else
-     rom_001ROM_UNIT.Value := rom_001ROM_PREC.AsFloat - ((rom_001ROM_PREC.AsFloat*rom_001ROM_VDSC.AsFloat)/100);
+     rom_001ROM_UNIT.AsFloat := rom_001ROM_PREC.AsFloat - ((rom_001ROM_PREC.AsFloat*rom_001ROM_VDSC.AsFloat)/100);
 end;
 
 procedure Tfrmven_rom.rom_001ROM_QTDEValidate(Sender: TField);
@@ -2585,7 +2259,7 @@ begin
   if edpdsc.Text = '' then
      edpdsc.Text := '0';
 
-  edpdsc.Text := formatfloat('#,0.00########',oTextToValor(edpdsc.Text));
+  edpdsc.Text := formatfloat('#,0.00###',oTextToValor(edpdsc.Text));
   TOTAL;
 end;
 
@@ -2594,7 +2268,7 @@ procedure Tfrmven_rom.dbgromROM_UNITValidate(Sender: TObject;
 begin
   if not auto then
   begin
-    if not frmprincipal.ACESSO(frmprincipal.cad_usuUSU_CUSU.AsString,'USU_AUTO','Vendas','Programações','Alterar Preço da Tabela',false) then
+    if not frmprincipal.ACESSO(RECUsuarios.ID,'USU_AUTO','Vendas','Programações','Alterar Preço da Tabela',false) then
     begin
       if not RETORNA_LOGIN then
          Databaseerror('ACESSO NEGADO !'+#13+'Contate o admnistrador do sistema.');
@@ -2682,7 +2356,7 @@ end;
 
 procedure Tfrmven_rom.siCLOClick(Sender: TObject);
 begin
-  Application.CreateForm (Tfrmimporta_geral, frmimporta_geral);
+  FRMIMPORTA_GERAL := TFRMIMPORTA_GERAL.Create(Self);
 
   frmimporta_geral.cbTIPO.Enabled := false;
   frmimporta_geral.cbTIPO.Text    := 'PEDIDO DE VENDA';
@@ -2771,19 +2445,19 @@ begin
     begin
       Close;
       SQL.Clear;
-      SQL.Add('SELECT   FK.ID AS IDCP,FK.PRO_CPRO AS CPROD,PK.ROM_DPRO||'' ''||COALESCE(PK.ROM_DCOR,'''') AS XPROD,PK.ROM_DUNI AS UCOM,');
-      SQL.Add('         FK.PRO_CBAR AS CEAN,FK.PRO_CCLF AS NCM,FK.PRO_PIPI AS TRIBIPI,FK.PRO_CCST AS ORIG,');
-      SQL.Add('         FK.PRO_PESO AS PESO,FK.PRO_PSCN AS PSCN,FK.PRO_METR AS METR,FK.PRO_REND AS REND,');
-      SQL.Add('         FK.PRO_COMP AS COMPBASE,LEFT(FK.PRO_STAV,1) AS DECAST,');
-      SQL.Add('         0 AS UQVOL,NULL AS UESP,');
-      SQL.Add('         PK.ROM_PREC,PK.ROM_UNIT AS VUNCOM,PK.ROM_NFCI,');
-      SQL.Add('         SUM(PK.ROM_QTDE) AS ROM_QTDE,SUM(PK.ROM_QTRL) AS ROM_QTRL');
+      SQL.Add('SELECT   FK.ID AS IDCP,FK.PRO_CPRO AS CPROD,FK.PRO_CBAR AS CEAN,');
+      SQL.Add('         FK.PRO_CCLF AS NCM,FK.PRO_PIPI AS PIPI,');
+      SQL.Add('         PK.ROM_DPRO || '' '' || COALESCE(PK.ROM_DCOR,'''')  AS XPROD,FK.PRO_COMP AS COMP,');
+      SQL.Add('         FK.PRO_PESO AS PESO,FK.PRO_PSCN AS PSCN,FK.PRO_METR AS METR ,FK.PRO_REND AS REND,');
+      SQL.Add('         PK.ROM_DUNI AS UCOM,PK.ROM_QTDE AS QTDE,PK.ROM_QTRL AS QTRL ,PK.ROM_PREC,PK.ROM_UNIT AS VUNCOM,');
+      SQL.Add('         FK.PRO_CCST AS ORIG,PK.ROM_NFCI AS NFCI,LEFT(FK.PRO_STAV,1) AS REST');
+
       SQL.Add('FROM   '+SLPrincipal.Values['rom_ite']+' AS PK');
       SQL.Add('JOIN     CAD_PRO AS FK ON (FK.ID = PK.ROM_CPRO)');
-      SQL.Add('WHERE    ROM_CCAB = '''+edcdro.Text+'''');
-      SQL.Add('GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19');
+      SQL.Add('WHERE    ROM_CCAB = ''' + edcdro.Text + '''');
       ExecQuery;
     end;
+
     while not SQLConsulta.Eof do
     begin
       frmven_nfe.nfe_001.Append;
@@ -2793,34 +2467,32 @@ begin
       frmven_nfe.nfe_001NFE_UCOM.Value      := SQLConsulta.Current.ByName('UCOM').AsString;
       frmven_nfe.nfe_001NFE_CEAN.Value      := SQLConsulta.Current.ByName('CEAN').AsString;
       frmven_nfe.nfe_001NFE_NCM.Value       := SQLConsulta.Current.ByName('NCM').AsString;
-      frmven_nfe.nfe_001NFE_PIPI.Value      := SQLConsulta.Current.ByName('TRIBIPI').AsFloat;
+      frmven_nfe.nfe_001NFE_PIPI.Value      := SQLConsulta.Current.ByName('PIPI').Value;
       frmven_nfe.nfe_001NFE_ORIG.Value      := SQLConsulta.Current.ByName('ORIG').AsString;
-      frmven_nfe.nfe_001NFE_PESO.Value      := SQLConsulta.Current.ByName('PESO').AsFloat;
-      frmven_nfe.nfe_001NFE_PSCN.Value      := SQLConsulta.Current.ByName('PSCN').AsFloat;
-      frmven_nfe.nfe_001NFE_METR.Value      := SQLConsulta.Current.ByName('METR').AsFloat;
-      frmven_nfe.nfe_001NFE_REND.Value      := SQLConsulta.Current.ByName('REND').AsFloat;
-      frmven_nfe.nfe_001NFE_VUNCOM.Value    := SQLConsulta.Current.ByName('VUNCOM').AsFloat;
-      frmven_nfe.nfe_001NFE_PREC.Value      := SQLConsulta.Current.ByName('VUNCOM').AsFloat;
-      frmven_nfe.nfe_001NFE_QCOM.Value      := SQLConsulta.Current.ByName('ROM_QTDE').AsFloat;
-      frmven_nfe.nfe_001NFE_RCOM.Value      := SQLConsulta.Current.ByName('ROM_QTRL').AsInteger;
-      frmven_nfe.nfe_001NFE_STAV.Value      := SQLConsulta.Current.ByName('DECAST').AsString;
-      frmven_nfe.nfe_001NFE_COMP.Value      := SQLConsulta.Current.ByName('COMPBASE').AsString;
-      frmven_nfe.nfe_001NFE_INFADPROD.Value := SQLConsulta.Current.ByName('COMPBASE').AsString;
-      frmven_nfe.nfe_001NFE_NFCI.Value      := SQLConsulta.Current.ByName('ROM_NFCI').AsString;
+      frmven_nfe.nfe_001NFE_PESO.Value      := SQLConsulta.Current.ByName('PESO').Value;
+      frmven_nfe.nfe_001NFE_PSCN.Value      := SQLConsulta.Current.ByName('PSCN').Value;
+      frmven_nfe.nfe_001NFE_METR.Value      := SQLConsulta.Current.ByName('METR').Value;
+      frmven_nfe.nfe_001NFE_REND.Value      := SQLConsulta.Current.ByName('REND').Value;
+      frmven_nfe.nfe_001NFE_VUNCOM.Value    := SQLConsulta.Current.ByName('VUNCOM').Value;
+      frmven_nfe.nfe_001NFE_PREC.Value      := SQLConsulta.Current.ByName('VUNCOM').Value;
+      frmven_nfe.nfe_001NFE_QCOM.Value      := SQLConsulta.Current.ByName('QTDE').Value;
+      frmven_nfe.nfe_001NFE_RCOM.Value      := SQLConsulta.Current.ByName('QTRL').AsInteger;
+      frmven_nfe.nfe_001NFE_STAV.Value      := SQLConsulta.Current.ByName('REST').AsString;
+      frmven_nfe.nfe_001NFE_COMP.Value      := SQLConsulta.Current.ByName('COMP').AsString;
+      frmven_nfe.nfe_001NFE_INFADPROD.Value := SQLConsulta.Current.ByName('COMP').AsString;
+      frmven_nfe.nfe_001NFE_NFCI.Value      := SQLConsulta.Current.ByName('NFCI').AsString;
 
       if not oEmpty(frmven_nfe.nfe_001NFE_INFADPROD.AsString) then
-         frmven_nfe.nfe_001NFE_INFADPROD.Value := 'COMPOSICAO: '+frmven_nfe.nfe_001NFE_INFADPROD.AsString;
+         frmven_nfe.nfe_001NFE_INFADPROD.Value := 'COMPOSICAO: ' + frmven_nfe.nfe_001NFE_INFADPROD.AsString;
 
-      if ((SQLConsulta.Current.ByName('UQVOL').AsFloat > 0) and (not oEmpty(SQLConsulta.Current.ByName('UESP').AsString))) then
-           frmven_nfe.nfe_001NFE_INFADPROD.Value := frmven_nfe.nfe_001NFE_INFADPROD.AsString+#13+'CONTEUDO: '+SQLConsulta.Current.ByName('UQVOL').AsString+' '+SQLConsulta.Current.ByName('UESP').AsString
-      else
-           if Pos(LeftStr(frmven_nfe.nfe_001NFE_UCOM.AsString,1),'KMY') = 0 then
-              if  frmven_nfe.nfe_001NFE_METR.AsFloat > 0 then
-                  frmven_nfe.nfe_001NFE_INFADPROD.Value := frmven_nfe.nfe_001NFE_INFADPROD.AsString+#13+'CONTEUDO: '+FormatFloat('0.00M',frmven_nfe.nfe_001NFE_METR.AsFloat);
+      if Pos(LeftStr(frmven_nfe.nfe_001NFE_UCOM.AsString,1),'KMY') = 0 then
+         if  frmven_nfe.nfe_001NFE_METR.AsFloat > 0 then
+             frmven_nfe.nfe_001NFE_INFADPROD.Value := frmven_nfe.nfe_001NFE_INFADPROD.AsString + #13 + 'CONTEUDO: ' + FormatFloat('0.00M',frmven_nfe.nfe_001NFE_METR.AsFloat);
 
       frmven_nfe.nfe_001NFE_INFADPROD.Value := Trim(frmven_nfe.nfe_001NFE_INFADPROD.AsString);
       frmven_nfe.nfe_001NFE_REPR.Value      := 'R';//FBird.FBCAD_PROPRO_REPR.AsString;
       frmven_nfe.nfe_001.Post;
+
       SQLConsulta.Next;
     end;
   finally
@@ -2843,14 +2515,10 @@ begin
     
     oRTransact(frmven_nfe.TSheild);
     frmven_nfe.CALCULA_NF;
-    if (Screen.Width <= 1024) or (Screen.Width < 1280) then
-    begin
-      frmven_nfe.FormStyle := fsnormal;
-      frmven_nfe.Visible   := false;
-      frmven_nfe.ShowModal;
-    end else
     frmven_nfe.Show;
   end;
+
+  frmven_rom.Close;
 end;
 
 end.

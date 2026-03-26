@@ -3004,6 +3004,10 @@ begin
 
     if Edicao.State = dsBrowse then
     begin
+      DBGEdicao.ApplyBestFit(DBGEdicaoROM_CPRO);
+      DBGEdicao.ApplyBestFit(DBGEdicaoROM_DCOR);
+      DBGEdicao.ApplyBestFit(DBGEdicaoROM_DUNI);
+
       { Tabela de Preços }
       LAPRC_TAB_ACIMA_MIN.Caption := FormatFloat('R$ #,0.00',EdicaoROM_PTABI.AsCurrency);
       LAPRC_TAB_ACIMA_MAX.Caption := FormatFloat('R$ #,0.00',EdicaoROM_PTABF.AsCurrency);

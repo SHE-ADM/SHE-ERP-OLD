@@ -41,17 +41,16 @@ type
     dbgConsultaREP_STAV: TdxDBGridMaskColumn;
     cadastroREP_COMI: TIBBCDField;
     procedure FormCreate(Sender: TObject);
-    procedure siINCClick(Sender: TObject);
-    procedure siALTClick(Sender: TObject);
     procedure dbgConsultaCustomDrawCell(Sender: TObject; ACanvas: TCanvas;
       ARect: TRect; ANode: TdxTreeListNode; AColumn: TdxTreeListColumn;
       ASelected, AFocused, ANewItemRow: Boolean; var AText: String;
       var AColor: TColor; AFont: TFont; var AAlignment: TAlignment;
       var ADone: Boolean);
-    procedure siDELClick(Sender: TObject);
     procedure siPRNClick(Sender: TObject);
-    procedure siEVEClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure SIMEAppendClick(Sender: TObject);
+    procedure SIMEEditClick(Sender: TObject);
+    procedure SIMEDeleteClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -63,8 +62,7 @@ var
 
 implementation
 
-uses uPrincipal, pcad_rep_edi, prelatorio_geral,
-  plog_eve;
+uses uPrincipal, pcad_rep_edi, prelatorio_geral;
 
 {$R *.dfm}
 
@@ -89,7 +87,48 @@ begin
   frmcad_rep := Nil;
 end;
 
-procedure Tfrmcad_rep.siINCClick(Sender: TObject);
+procedure Tfrmcad_rep.siPRNClick(Sender: TObject);
+begin
+  frmrelatorio_geral := TFrmrelatorio_geral.Create(self);
+  try
+    frmrelatorio_geral.tsCAD_REP.TabVisible := true;
+    frmrelatorio_geral.pcMAIN.ActivePage    := frmrelatorio_geral.tsCAD_REP;
+
+    with consulta do
+    begin
+      SQL.Clear;
+      SQL.Add('SELECT   REP_FANT FROM CAD_REP');
+      SQL.Add('GROUP BY REP_FANT');
+      SQL.Add('ORDER BY REP_FANT');
+      Open;
+
+      while not eof do
+      begin
+        frmrelatorio_geral.cbCAD_REP_DREP.Values.Add(fields[0].AsString);
+        frmrelatorio_geral.cbCAD_REP_DREP.Descriptions.Add(fields[0].AsString);
+        next;
+      end;
+
+      SQL.Clear;
+      SQL.Add('SELECT   REP_CID FROM CAD_REP');
+      SQL.Add('GROUP BY REP_CID');
+      SQL.Add('ORDER BY REP_CID');
+      Open;
+
+      while not eof do
+      begin
+        frmrelatorio_geral.cbCAD_REP_CID.Items.Add(fields[0].AsString);
+        next;
+      end;
+    end;
+    frmrelatorio_geral.ShowModal;
+  finally
+    freeAndNil(frmrelatorio_geral);
+    frmrelatorio_geral.Free;
+  end;
+end;
+
+procedure Tfrmcad_rep.SIMEAppendClick(Sender: TObject);
 begin
   PCampo[0] := 'USU_NOVO';
   PCampo[1] := 'Representantes';
@@ -108,7 +147,7 @@ begin
   end;
 end;
 
-procedure Tfrmcad_rep.siALTClick(Sender: TObject);
+procedure Tfrmcad_rep.SIMEEditClick(Sender: TObject);
 begin
   PCampo[0] := 'USU_EDIT';
   PCampo[1] := 'Representantes';
@@ -128,47 +167,7 @@ begin
   end;
 end;
 
-procedure Tfrmcad_rep.dbgConsultaCustomDrawCell(Sender: TObject;
-  ACanvas: TCanvas; ARect: TRect; ANode: TdxTreeListNode;
-  AColumn: TdxTreeListColumn; ASelected, AFocused, ANewItemRow: Boolean;
-  var AText: String; var AColor: TColor; AFont: TFont;
-  var AAlignment: TAlignment; var ADone: Boolean);
-  var Value: Variant;
-begin
-  if not ASelected then
-  begin
-    Value := ANode.Values[9];
-
-    AFont.Color := clBlack;
-    if dbgconsulta.Tag = 0 then
-       AColor := clWhite
-    else
-       AColor := clBtnface;
-
-    if not VarIsNull(Value) then
-    begin
-      if Value = 'I' then
-      begin
-         AFont.Color := clwhite;
-         AColor      := clRed;
-      end;
-    end;
-
-    Value := ANode.Values[4];
-    if (Value = '') or (VarIsNull(Value)) then
-    begin
-      AColor      := clWhite;
-      AFont.Color := clBlack;
-    end
-    else
-    begin
-      AColor      := $00BEEFF8;
-      AFont.Color := clBlack;
-    end;
-  end;
-end;
-
-procedure Tfrmcad_rep.siDELClick(Sender: TObject);
+procedure Tfrmcad_rep.SIMEDeleteClick(Sender: TObject);
 begin
   PCampo[0] := 'USU_DELE';
   PCampo[1] := 'Representantes';
@@ -269,66 +268,46 @@ begin
     end;
   end;
   ExecuteEvent;
-  if dbgconsulta.Tag = 1 then
-     siLIXO.Click;
 end;
 
-procedure Tfrmcad_rep.siPRNClick(Sender: TObject);
+procedure Tfrmcad_rep.dbgConsultaCustomDrawCell(Sender: TObject;
+  ACanvas: TCanvas; ARect: TRect; ANode: TdxTreeListNode;
+  AColumn: TdxTreeListColumn; ASelected, AFocused, ANewItemRow: Boolean;
+  var AText: String; var AColor: TColor; AFont: TFont;
+  var AAlignment: TAlignment; var ADone: Boolean);
+  var Value: Variant;
 begin
-  frmrelatorio_geral := TFrmrelatorio_geral.Create(self);
-  try
-    frmrelatorio_geral.tsCAD_REP.TabVisible := true;
-    frmrelatorio_geral.pcMAIN.ActivePage    := frmrelatorio_geral.tsCAD_REP;
+  if not ASelected then
+  begin
+    Value := ANode.Values[9];
 
-    with consulta do
+    AFont.Color := clBlack;
+    if dbgconsulta.Tag = 0 then
+       AColor := clWhite
+    else
+       AColor := clBtnface;
+
+    if not VarIsNull(Value) then
     begin
-      SQL.Clear;
-      SQL.Add('SELECT   REP_FANT FROM CAD_REP');
-      SQL.Add('GROUP BY REP_FANT');
-      SQL.Add('ORDER BY REP_FANT');
-      Open;
-
-      while not eof do
+      if Value = 'I' then
       begin
-        frmrelatorio_geral.cbCAD_REP_DREP.Values.Add(fields[0].AsString);
-        frmrelatorio_geral.cbCAD_REP_DREP.Descriptions.Add(fields[0].AsString);
-        next;
-      end;
-
-      SQL.Clear;
-      SQL.Add('SELECT   REP_CID FROM CAD_REP');
-      SQL.Add('GROUP BY REP_CID');
-      SQL.Add('ORDER BY REP_CID');
-      Open;
-
-      while not eof do
-      begin
-        frmrelatorio_geral.cbCAD_REP_CID.Items.Add(fields[0].AsString);
-        next;
+         AFont.Color := clwhite;
+         AColor      := clRed;
       end;
     end;
-    frmrelatorio_geral.ShowModal;
-  finally
-    freeAndNil(frmrelatorio_geral);
-    frmrelatorio_geral.Free;
-  end;
-end;
 
-procedure Tfrmcad_rep.siEVEClick(Sender: TObject);
-begin
-  frmlog_eve := tfrmlog_eve.create(self);
-  with frmlog_eve.cadastro do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT LOG_EVE.*,PAR_SIS.PAR_FANT,CAD_FUN.FUN_FOTO');
-    SQL.Add('FROM   LOG_EVE,PAR_SIS');
-    SQL.Add('LEFT   OUTER JOIN CAD_FUN ON LOG_EVE.EVE_CLOG = CAD_FUN.ID');
-    SQL.Add('WHERE  LOG_EVE.EVE_CDEP = PAR_SIS.ID');
-    SQL.Add('AND    LOG_EVE.EVE_FUNC = ''Representantes''');
-    SQL.Add('ORDER BY ID DESC');
-    Open;
+    Value := ANode.Values[4];
+    if (Value = '') or (VarIsNull(Value)) then
+    begin
+      AColor      := clWhite;
+      AFont.Color := clBlack;
+    end
+    else
+    begin
+      AColor      := $00BEEFF8;
+      AFont.Color := clBlack;
+    end;
   end;
-  frmlog_eve.show;
 end;
 
 end.

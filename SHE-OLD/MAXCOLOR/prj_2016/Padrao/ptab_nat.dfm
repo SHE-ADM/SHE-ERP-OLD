@@ -5,29 +5,8 @@ inherited frmtab_nat: Tfrmtab_nat
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 14
-  inherited sbMSG: TStatusBar
+  inherited SBMenuPrincipal: TSpeedBar
     Width = 1089
-  end
-  inherited SpeedBar9: TSpeedBar
-    Width = 1089
-    inherited siPSQ: TSpeedItem
-      Visible = False
-    end
-    inherited siREF: TSpeedItem
-      Left = 112
-    end
-    inherited siSAIR: TSpeedItem
-      Left = 332
-    end
-    inherited siLIXO: TSpeedItem
-      Left = 222
-    end
-    inherited siPRN: TSpeedItem
-      Visible = False
-    end
-    inherited siEVE: TSpeedItem
-      Left = 2
-    end
   end
   inherited pnldir: TPanel
     Left = 1089
@@ -37,9 +16,9 @@ inherited frmtab_nat: Tfrmtab_nat
     inherited pnldbg: TPanel
       Width = 1089
       inherited gbDET: TGroupBox
-        Width = 1089
+        Width = 1035
         inherited DBGConsulta: TdxDBGrid
-          Width = 1036
+          Width = 1031
           HeaderMinRowCount = 2
           KeyField = 'ID'
           Filter.Criteria = {00000000}
@@ -129,6 +108,9 @@ inherited frmtab_nat: Tfrmtab_nat
     inherited pnlbot: TPanel
       Width = 1089
     end
+  end
+  inherited sbMSG: TStatusBar
+    Width = 1089
   end
   inherited Cadastro: TIBQuery
     SQL.Strings = (
@@ -265,9 +247,5 @@ inherited frmtab_nat: Tfrmtab_nat
       Origin = '"TAB_NAT"."NAT_CFOP"'
       Size = 10
     end
-  end
-  inherited imageOPC: TImageList
-    Left = 268
-    Top = 206
   end
 end

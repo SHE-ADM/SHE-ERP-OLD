@@ -328,7 +328,6 @@ type
     cbCAD_FUN_DATA: TdxImageEdit;
     cbCAD_FUN_DCAR: TdxImageEdit;
     cbCAD_FUN_APEL: TdxPickEdit;
-    cbCAD_FUN_MES: TdxPickEdit;
     cbCAD_FUN_ANO: TdxPickEdit;
     tsVEN_PRC: TdxTabSheet;
     Bevel11: TBevel;
@@ -611,6 +610,7 @@ type
     Shape246: TShape;
     clVEN_PED_VIA: TLabel;
     cbVEN_PED_VIA: TdxImageEdit;
+    cbCAD_FUN_MES: TdxImageEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
@@ -643,6 +643,7 @@ type
     cDATA: string;
 
     procedure DEFINE_RELATORIO;
+    procedure CAD_FUN_ETQ;
     procedure ENT_PRO_ROMANEIOS;
     procedure ENT_PRO_ROMANEIOS_CONFERENCIA;
     procedure CAD_PRO_ESTOQUE;
@@ -694,7 +695,7 @@ uses uPrincipal, parquivo_geral, qcad_pro_fic_foto,
   qcai_mov_ger_ana, qcob_ped, qprg_con, qrom_con_001,
   qrom_con_002, qven_con, qven_sim_bematech, qven_ped_bematech, qven_ped,
   qcob_rom, qcob_rom_ref, qsep_ped, qcad_pro_est,
-  qfin_rec_ger, qpag_com, qnfe_ger, qProduto_Preco_Tabela;
+  qfin_rec_ger, qpag_com, qnfe_ger, qProduto_Preco_Tabela, qcad_fun_eti;
  
 {$R *.dfm}
 
@@ -715,6 +716,9 @@ begin
   tsFIN_DUP.TabVisible     := false;
   tsFIN_REC.TabVisible     := false;
   tsGER.TabVisible         := false;
+
+  cbCAD_FUN_MES.Text := INTTOSTR(oRETMES(Date));
+  cbCAD_FUN_ANO.Text := INTTOSTR(oRETANO(Date));
 end;
 
 procedure Tfrmrelatorio_geral.FormShow(Sender: TObject);
@@ -919,7 +923,6 @@ begin
     end;
   finally
     freeAndNil(qrpfin_rec_ger);
-    qrpfin_rec_ger.Free;
   end;
 end;
 
@@ -1030,7 +1033,6 @@ begin
     end;
   finally
     freeAndNil(qrpcad_pro_fic_foto);
-    qrpcad_pro_fic_foto.Free;
   end;
 end;
 
@@ -1114,7 +1116,6 @@ begin
     end;
   finally
     freeAndNil(qrpent_pro_rom);
-    qrpent_pro_rom.Free;
   end;
 end;
 
@@ -1196,7 +1197,6 @@ begin
     end;
   finally
     freeAndNil(qrpent_pro_con);
-    qrpent_pro_con.Free;
   end;
 end;
 
@@ -1299,7 +1299,6 @@ begin
     end;
   finally
     freeAndNil(qrpven_oca_bematech);
-    qrpven_oca_bematech.Free;
   end;
 end;
 
@@ -1413,7 +1412,6 @@ begin
     end;
   finally
     freeAndNil(qrpfin_dup);
-    qrpfin_dup.Free;
   end;
 end;
 
@@ -1547,7 +1545,6 @@ begin
     end;
   finally
     freeAndNil(qrpcai_mov_flx_car);
-    qrpcai_mov_flx_car.Free;
   end;
 end;
 
@@ -1679,7 +1676,6 @@ begin
     end;
   finally
     freeAndNil(qrpcai_mov_flx_ban);
-    qrpcai_mov_flx_ban.Free;
   end;
 end;
 
@@ -1857,7 +1853,6 @@ begin
     end;
   finally
     freeAndNil(qrpcai_mov_cai_ana);
-    qrpcai_mov_cai_ana.Free;
   end;
 end;
 
@@ -1989,7 +1984,6 @@ begin
     end;
   finally
     freeAndNil(qrpcai_mov_cai_sin);
-    qrpcai_mov_cai_sin.Free;
   end;
 end;
 
@@ -2116,7 +2110,6 @@ begin
     end;
   finally
     freeAndNil(qrpcai_mov_ger);
-    qrpcai_mov_ger.Free;
   end;
 end;
 
@@ -2241,7 +2234,6 @@ begin
     end;
   finally
     freeAndNil(qrpcai_mov_ger_ana);
-    qrpcai_mov_ger_ana.Free;
   end;
 end;
 
@@ -2457,7 +2449,6 @@ begin
     end;
   finally
     freeAndNil(qrpcob_ped);
-    qrpcob_ped.Free;
   end;
 end;
 
@@ -2710,7 +2701,6 @@ begin
     end;
   finally
     freeAndNil(qrprom_con_001);
-    qrprom_con_001.Free;
   end;
 end;
 
@@ -2790,7 +2780,6 @@ begin
     end;
   finally
     freeAndNil(qrprom_con_002);
-    qrprom_con_002.Free;
   end;
 end;
 
@@ -2885,7 +2874,6 @@ begin
     end;
   finally
     freeAndNil(qrpven_con);
-    qrpven_con.Free;
   end;
 end;
 
@@ -2989,7 +2977,6 @@ begin
     end;
   finally
     freeAndNil(qrpven_sim_bematech);
-    qrpven_sim_bematech.Free;
   end;
 end;
 
@@ -3110,7 +3097,6 @@ begin
     end;
   finally
     freeAndNil(qrpven_ped_bematech);
-    qrpven_ped_bematech.Free;
   end;
 end;
 
@@ -3364,7 +3350,6 @@ begin
     end;
   finally
     freeAndNil(qrpven_ped);
-    qrpven_ped.Free;
   end;
 end;
 
@@ -3605,7 +3590,6 @@ begin
     end;
   finally
     freeAndNil(qrpcob_rom);
-    qrpcob_rom.Free;
   end;
 end;
 
@@ -3852,7 +3836,6 @@ begin
     end;
   finally
     freeAndNil(qrpcob_rom_ref);
-    qrpcob_rom_ref.Free;
   end;
 end;
 
@@ -4697,7 +4680,6 @@ begin
     end;
   finally
     freeAndNil(qrpsep_ped);
-    qrpsep_ped.Free;
   end;
 end;
 
@@ -5018,7 +5000,6 @@ begin
     end;
   finally
     freeAndNil(qrpcad_pro_est);
-    qrpcad_pro_est.Free;
   end;
 end;
 
@@ -5225,7 +5206,6 @@ begin
     end;
   finally
     freeAndNil(qrppag_com);
-    qrppag_com.Free;
   end;
 end;
 
@@ -5361,7 +5341,6 @@ begin
     end;
   finally
     freeAndNil(qrpnfe_ger);
-    qrpnfe_ger.Free;
   end;
 end;
 
@@ -5581,6 +5560,7 @@ begin
     end
     else if tsCAD_FUN.TabVisible then
     begin
+      CAD_FUN_ETQ;
     end
     else if tsCAI_MOV.TabVisible then
     begin
@@ -5684,7 +5664,6 @@ begin
     frmarquivo_geral.ShowModal;
   finally
     freeAndNil(frmarquivo_geral);
-    frmarquivo_geral.Free;
   end;
 end;
 
@@ -6448,6 +6427,42 @@ begin
   cbCAD_PRO_CART2.Text := cbCAD_PRO_CART1.Text;
 end;
 
+procedure Tfrmrelatorio_geral.CAD_FUN_ETQ;
+begin
+  if qrpcad_fun_eti <> nil then
+  Exit;
+
+  try
+    qrpcad_fun_eti := Tqrpcad_fun_eti.Create(self);
+    qrpcad_fun_eti.Prepare;
+    qrpcad_fun_eti.relatorio.Open;
+
+    qrpcad_fun_eti.qrlmes.Caption := cbCAD_FUN_MES.Descriptions[cbCAD_FUN_MES.Values.IndexOf(cbCAD_FUN_MES.Text)];
+    qrpcad_fun_eti.qrlano.Caption := cbCAD_FUN_ANO.Text;
+
+    if tag = 0 then
+       qrpcad_fun_eti.Preview
+    else if tag = 1 then
+       qrpcad_fun_eti.Print
+    else if tag = 2 then
+    begin
+      qrpcad_fun_eti.ExportToFilter(
+                  TQRPDFDocumentFilter.Create(PChar(frmarquivo_geral.cblfile.Text+'\'+frmarquivo_geral.edfile.Text+'.PDF')));
+    end
+    else if tag = 3 then
+    begin
+      qrpcad_fun_eti.ExportToFilter(
+                  TQRXLSFilter.Create(PChar(frmarquivo_geral.cblfile.Text+'\'+frmarquivo_geral.edfile.Text+'.XLS')));
+    end
+    else if tag = 4 then
+    begin
+      qrpcad_fun_eti.ExportToFilter(
+                  TQRRTFExportFilter.Create(PChar(frmarquivo_geral.cblfile.Text+'\'+frmarquivo_geral.edfile.Text+'.DOC')));
+    end;
+  finally
+    freeAndNil(qrpcad_fun_eti);
+  end;
+
+end;
+
 end.
-
-

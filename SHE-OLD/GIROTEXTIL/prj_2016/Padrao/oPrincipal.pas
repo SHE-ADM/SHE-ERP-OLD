@@ -135,6 +135,21 @@ Type TRECParametros = record
      FTFacebook,
      FTInstagram,
      FTTWitter: TBlobField;
+
+    IMG_JPG_SPLASH,
+    IMG_JPG_REL,
+    IMG_JPG_ETQ,
+    IMG_JPG_BLANK,
+    IMG_BMP_ETQ,
+    IMG_BMP_ETQ_MONO,
+    IMG_BMP_BLANK,
+    IMG_BMP_BLANK_MONO: TBlobField;
+
+    IP,
+    HOST,
+    REL_PAD: String[60];
+
+
 End;
 
 Type TRECUsuarios = record
@@ -164,6 +179,84 @@ Type TRECUsuarios = record
      Comprador,
      AbrirCaixa,
      FecharCaixa: Boolean;
+End;
+
+Type TRECDefault = record
+     ID: Variant;
+     CD: String[30];
+
+     IDEP,
+     IDPK,
+     IDFK,
+     IDAK,
+     IDEK: Variant;
+
+     GEN_ID: String[30];
+
+     IDEV,
+     CDEV: Variant;
+     REEV: String[30];
+     DEEV: String[60];
+
+     Tabela: String[60];
+
+     { Acessos e Permissões }
+     Funcao,
+     Rotina,
+     Nome,
+     InsertValue: String[120];
+
+     View,
+     Append,
+     Edit,
+     Delete,
+     Post,
+     Print,
+     Auto,
+
+     Editing,
+     Edited,
+
+     Selected: Boolean;
+
+     { Grid }
+     GridOptionsEdit: Boolean;
+
+     { Pesquisa }
+     PSQValue: String[120];
+     PSQField: String[30];
+
+     PSQDTField: String[30];
+     PSQDTINI,
+     PSQDTFIM: TDate;
+
+     { Screen }
+     WorkArea,
+     MainArea: Boolean;
+     FrmPosition: TPosition;
+
+     Top ,
+     Left,
+     FHeight,
+     FWidth : Word;
+     PBCount: Integer;
+
+     { Motivos e Justificativas }
+     Justificativa: TStringList;
+
+     { IBX }
+     ASQLConsulta,
+     ASQLEdicao: TIBSQL;
+
+     { Firebird Server }
+     FB_EventAlert: Boolean;
+     FB_Event: String;
+
+     { Outros }
+     EventAlert: Boolean;
+     Event: String;
+
+     ForceClose: Boolean;
 End;
 
 Type TRECPrincipal = record
@@ -723,6 +816,7 @@ aAlfabeto: Array[00..35,00..01] of String = (('A','0'),
   Function oStrFormat(AValue,ACaracter: String; Size: Word; Local: TAlign): String; STDCall;
   Function oPadr(AString: String; AQuant: Integer): String; STDCall;
   Function oJPEGLoad(ACampo: TField; AImagem: TPicture;ARETPadrao: Boolean = True): LongInt; STDCall;
+  function _oLoadJPG(FIMG_ID,FIMG_PAD: TField; AIMG_PAD: TObject;AIMG_PAD_SHOW: Boolean = False): String; STDCall;
   Function oBITMAPLoad(ACampo: TField; AImagem: TPicture): LongInt; STDCall;
   Function oNullIF(AValue: Variant): Variant; STDCall;
   Function oOdatabase(Adatabase: TIBdatabase;AWarning: TWarning = lwNone;Adatabasename: String = ''): String; STDCall;
@@ -733,8 +827,8 @@ aAlfabeto: Array[00..35,00..01] of String = (('A','0'),
   { Biblioteca de Procedures - Última Versão 21/09/2017 09:42 }
   Procedure oTreeDeleteItem(var Sender: TTreeView; ItemList: TStrings; Level: Integer); STDCall;
 
-  Procedure oState(AIBCustomDataSet: TIBCustomDataSet; ASpeedBar: TSpeedBar); STDCall;
-  Procedure oRefresh(AIBCustomDataSet: TIBCustomDataSet;ACommit: Boolean = True;AInsertValue: String = ''); STDCAll;
+  procedure oState(AIBCustomDataSet: TIBCustomDataSet; ASpeedBar: TSpeedBar); STDCall;
+  procedure oRefresh(AIBCustomDataSet: TIBCustomDataSet;ACommit: Boolean = True;AInsertValue: String = ''; ABMRecord: TBookMark = Nil); STDCAll;
   Procedure oAppend(AIBCustomDataSet: TIBCustomDataSet; AdxDBGrid: TdxDBGrid; ASpeedItem: TSpeedItem); STDCall;
   Procedure oEdit(AIBCustomDataSet: TIBCustomDataSet; AdxDBGrid: TdxDBGrid; ASpeedItem: TSpeedItem); STDCall;
   Procedure oDelete(AIBCustomDataSet: TIBCustomDataSet; AdxDBGrid: TdxDBGrid; ASpeedItem: TSpeedItem); STDCall;
@@ -764,6 +858,9 @@ aAlfabeto: Array[00..35,00..01] of String = (('A','0'),
   procedure oLockWindowUpdate; STDCall;
   procedure oUnLockWindowUpdate; STDCall;
 
+  procedure oIRECDefault(var ARECDefault: TRECDefault); STDCall;
+  procedure oFRECDefault(var ARECDefault: TRECDefault); STDCall;
+
 var
   RECUsuarios      : TRECUsuarios;
   RECParametros    : TRECParametros;
@@ -776,6 +873,65 @@ var
   ALockWindowUpdate: LongBool;
 
 implementation
+
+{ Inicializa TRecord Default - Principal }
+(*************************************************************)
+procedure oIRECDefault(var ARECDefault: TRECDefault); STDCall;
+(*************************************************************)
+begin
+  Initialize(ARECDefault);
+  FillChar  (ARECDefault,SizeOf(ARECDefault),0);
+
+  with ARECDefault do
+  begin
+     ID   := '0';
+     IDEP := RECParametros.ID;
+     
+     IDPK := '0';
+     IDFK := '0';
+
+     IDAK := '0';
+     IDEK := '0';
+
+     IDEV := '0';
+     CDEV := '0';
+
+     { Pesquisa }
+     PSQValue := '0' ;
+     PSQField := 'ID';
+
+     PSQDTField := EmptyStr;
+     PSQDTINI   := 0;
+     PSQDTFIM   := 0;
+
+     { Motivos e Justificativas }
+     Justificativa := TStringList.Create;
+     Justificativa.Clear;
+  end;
+end;
+
+{ Finaliza TRecord Default - Principal }
+(*************************************************************)
+procedure oFRECDefault(var ARECDefault: TRECDefault); STDCall;
+(*************************************************************)
+begin
+  with ARECDefault do
+  begin
+    { Motivos e Justificativas }
+    if Justificativa <> Nil then
+       FreeAndNil(Justificativa);
+
+    { IBX }
+    if ASQLConsulta <> Nil  then
+       ASQLConsulta := Nil;
+
+    if ASQLEdicao <> Nil  then
+       ASQLEdicao := Nil;
+  end;
+
+  Finalize(ARECDefault);
+  FillChar(ARECDefault,SizeOf(ARECDefault),0);
+end;
 
 { Consisteência dos campos }
 (*******************************************************************************************************)
@@ -1219,49 +1375,65 @@ end;
 
 { Propriedade SpeedBar de Edição }
 (**********************************************************************************)
-Procedure oState(AIBCustomDataSet: TIBCustomDataSet; ASpeedBar: TSpeedBar); STDCall;
+procedure oState(AIBCustomDataSet: TIBCustomDataSet; ASpeedBar: TSpeedBar); STDCall;
 (**********************************************************************************)
 var
   i: Word;
 begin
+  if (not ALockWindowUpdate) then
   if (ASpeedBar.Enabled) and (ASpeedBar.Visible) then
-      for i := 0 to ASpeedBar.ItemsCount(0) - 1 do
-          if ASpeedBar.Items(0,i).GroupIndex = 0 then
-             ASpeedBar.Items(0,i).Enabled := ((AIBCustomDataSet.State = dsBrowse)           and (ASpeedBar.Items(0,i).Tag = 0))  or
-                                             ((AIBCustomDataSet.State = dsBrowse)           and (not AIBCustomDataSet.Fields[0].IsNull) and (ASpeedBar.Items(0,i).Tag = 1)) or
-                                             ((AIBCustomDataSet.State in [dsInsert,dsEdit]) and (ASpeedBar.Items(0,i).Tag = 2));
+  begin
+    for i := 0 to ASpeedBar.ItemsCount(0)  -  1 do
+    if ASpeedBar.Items(0,i).GroupIndex =  0 then
+    if ASpeedBar.Items(0,i).Tag        <> 9 then { não mexe com quem tá quieto }
+    begin
+      ASpeedBar.Items(0,i).Enabled := ((AIBCustomDataSet.State = dsBrowse)           and (ASpeedBar.Items(0,i).Tag = 0)) or
+                                      ((AIBCustomDataSet.State = dsBrowse)           and (ASpeedBar.Items(0,i).Tag = 1)) or
+                                      ((AIBCustomDataSet.State in [dsInsert,dsEdit]) and (ASpeedBar.Items(0,i).Tag = 2));
+
+      if TAction(ASpeedBar.Items(0,i).Action) <> Nil then
+         TAction(ASpeedBar.Items(0,i).Action).Enabled := ASpeedBar.Items(0,i).Enabled;
+    end;
+  end;
 end;
 
-{ Atualiza Registros }
-(****************************************************************************************************************)
-procedure oRefresh(AIBCustomDataSet: TIBCustomDataSet;ACommit: Boolean = True;AInsertValue: String = ''); STDCall;
-(****************************************************************************************************************)
-var
-  BMRecord: TBookMark;
+{ Refresh Records }
+(********************************************************************************************************************************************)
+procedure oRefresh(AIBCustomDataSet: TIBCustomDataSet;ACommit: Boolean = True;AInsertValue: String = ''; ABMRecord: TBookMark = Nil); STDCall;
+(********************************************************************************************************************************************)
 begin
-  if not ALockWindowUpdate then
+  if (AIBCustomDataSet <> Nil) and (not ALockWindowUpdate) then
+  if not (AIBCustomDataSet.State in [dsInsert,dsEdit]) then
   begin
-    BMRecord := Nil;
+    if ABMRecord = Nil then
+    if AIBCustomDataSet.State  = dsBrowse then
     if AIBCustomDataSet.RecNo > 0 then
-       BMRecord := AIBCustomDataSet.GetBookmark;
+       ABMRecord := AIBCustomDataSet.GetBookmark;
 
     if ACommit then
-       oRTransact(AIBCustomDataSet.Transaction)
-    else
-       AIBCustomDataSet.Close;
+       oRTransact(AIBCustomDataSet.Transaction,ltRead_Only_Release_Commit) else
+       oRTransact(AIBCustomDataSet.Transaction,ltRead_Only_Release_Rollback);
 
     if AIBCustomdataSet.State = dsInactive then
-       AIBCustomDataSet.Open;
+       AIBCustomdataSet.Open;
 
-    if (BMRecord <> Nil) and (AIBCustomDataSet.RecNo > 0) then
+    if AIBCustomDataSet.RecNo = 0 then
     begin
-      if not oEmpty(AInsertValue) then
-         AIBCustomdataSet.Locate('Descricao',AInsertValue,[])
-      else
-         AIBCustomDataSet.GotoBookmark(BMRecord);
-         AIBCustomDataSet.FreeBookmark(BMRecord);
-    end else AIBCustomDataSet.Last;
-  end;  
+      AIBCustomDataSet.FreeBookmark(ABMRecord);
+      ABMRecord := Nil;
+    end;
+
+    if AInsertValue <> EmptyStr then
+       AIBCustomdataSet.Locate('Descricao',AInsertValue,[]) else
+    begin
+      if ABMRecord <> Nil then
+      begin
+        AIBCustomDataSet.GotoBookmark(ABMRecord);
+        AIBCustomDataSet.FreeBookmark(ABMRecord);
+      end else
+      AIBCustomDataSet.Last;
+    end;
+  end;
 end;
 
 { Append Registros }
@@ -3820,6 +3992,56 @@ begin
          LockWindowUpdate(0);
        end;
      end;  
+end;
+
+{ Assign Imagem Jpeg }
+(*************************************************************************************************************)
+function _oLoadJPG(FIMG_ID,FIMG_PAD: TField; AIMG_PAD: TObject;AIMG_PAD_SHOW: Boolean = False): String; STDCall;
+(*************************************************************************************************************)
+var
+  FTStream: TMemoryStream;
+  FTJpeg  : TJpegImage;
+begin
+  if (not ALockWindowUpdate) or (AIMG_PAD_SHOW) then
+      if not (TDataSetState(FIMG_ID) in [dsInsert,dsEdit]) then
+         if  (FIMG_PAD.Tag = 0) or (FIMG_ID.Tag <> FIMG_ID.AsInteger) then
+              try
+                FTJpeg   := TJpegImage.Create;
+                FTStream := TMemoryStream.Create;
+                FTStream.Clear;
+
+                FIMG_ID.Tag  := FIMG_ID.AsInteger;
+                FIMG_PAD.Tag := 1;
+
+                if not FIMG_PAD.IsNull then
+                   TBlobField(FIMG_PAD).SaveToStream(FTStream)
+                else
+                   if (AIMG_PAD_SHOW) and (RECParametros.Id > 0) then
+                       TBlobField(RECParametros.IMG_JPG_BLANK).SaveToStream(FTStream);
+
+                   FTStream.Position := 0;
+                if FTStream.Size      > 0 then
+                begin
+                  FTJpeg.LoadFromStream(FTStream);
+                  if AIMG_PAD.ClassType = TImage then
+                  begin
+                    TImage(AIMG_PAD).Picture.Assign(FTJpeg);
+                    TImage(AIMG_PAD).Hint := 'Dimensões: ' + IntToStr(FTJpeg.Width) + 'x' + IntToStr(FTJpeg.Height) + ' - ' + FormatFloat('Tamanho: ,##,0 KB',Trunc(FTStream.Size / 1000));  // Format('Tamanho: %f KB',[FTStream.Size / 1000]);
+                  end;
+                end else
+                if AIMG_PAD.ClassType = TImage then
+                begin
+                  TImage(AIMG_PAD).Picture.Assign(Nil);
+                  TImage(AIMG_PAD).Hint := EmptyStr;
+                end;
+              finally
+                FreeAndNil(FTStream);
+                FreeAndNil(FTJpeg);
+              end;
+
+  if AIMG_PAD.ClassType = TImage then
+     result := TImage(AIMG_PAD).Hint else
+     result := EmptyStr;
 end;
 
 end.

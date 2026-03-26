@@ -10,28 +10,6 @@ inherited frmtab_pag: Tfrmtab_pag
   inherited sbMSG: TStatusBar
     Width = 791
   end
-  inherited SpeedBar2: TSpeedBar
-    Width = 791
-    inherited siEVE: TSpeedItem [4]
-    end
-    inherited siREF: TSpeedItem
-      Left = 2
-    end
-    inherited siSAIR: TSpeedItem
-      Left = 442
-    end
-    inherited siPSQ: TSpeedItem [7]
-      Tag = 1
-      Visible = False
-    end
-    inherited siREL: TSpeedItem
-      Left = 332
-    end
-    inherited siLIXO: TSpeedItem [9]
-      Left = 222
-      OnClick = siLIXOClick
-    end
-  end
   inherited pnldir: TPanel
     Left = 791
   end
@@ -41,9 +19,9 @@ inherited frmtab_pag: Tfrmtab_pag
       Width = 791
     end
     inherited gbDET: TGroupBox
-      Width = 791
+      Width = 737
       inherited DBGConsulta: TdxDBGrid
-        Width = 738
+        Width = 733
         KeyField = 'ID'
         ShowSummaryFooter = True
         Filter.Criteria = {00000000}
@@ -155,6 +133,9 @@ inherited frmtab_pag: Tfrmtab_pag
         end
       end
     end
+  end
+  inherited SBMenuPrincipal: TSpeedBar
+    Width = 791
   end
   inherited Cadastro: TIBDataSet
     BeforePost = cadastroBeforePost
@@ -308,8 +289,10 @@ inherited frmtab_pag: Tfrmtab_pag
       Origin = '"TAB_PAG"."PAG_PRAZ"'
     end
   end
-  inherited imageOPC: TImageList
-    Left = 252
-    Top = 206
+  inherited ILMenuPrincipal: TImageList
+    Top = 376
+  end
+  inherited ILMenuEdicao: TImageList
+    Top = 376
   end
 end

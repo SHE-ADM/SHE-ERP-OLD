@@ -11,7 +11,7 @@ uses
   DBCtrls, Grids, DBGrids, math, dateutils, IBStoredProc, ComCtrls,
   Registry, jpeg, rxSpeedbar, IBEvents,
   StrInt, StrIntImp, XMLDom, XMLIntf, MSXMLDom, XMLDoc, XMLXForm,
-  IDGlobal {Unit do componente Indy para usar Fetch() };
+  IDGlobal, IBSQL {Unit do componente Indy para usar Fetch() };
 
 const
   dllNFe = 'NFe.dll';
@@ -119,33 +119,10 @@ type
     nfe_001NFE_VISSQN: TIBBCDField;
     nfe_001NFE_CMUNFGISSQN: TIBStringField;
     nfe_001NFE_CLISTSERV: TIntegerField;
-    tab_natID: TIntegerField;
-    tab_natNAT_CNAT: TIBStringField;
-    tab_natNAT_DNAT: TIBStringField;
-    tab_natNAT_TIPO: TIBStringField;
-    tab_natNAT_OPER: TIBStringField;
-    tab_natNAT_CCST: TIBStringField;
-    tab_natNAT_CSTS: TIBStringField;
-    tab_natNAT_CSTA: TIBStringField;
-    tab_natNAT_BIPI: TIBStringField;
-    tab_natNAT_FRET: TIBStringField;
-    tab_natNAT_MATE: TIBStringField;
-    tab_natNAT_PENF: TIBBCDField;
-    tab_natNAT_CSTI: TIBStringField;
-    tab_natNAT_CSTP: TIBStringField;
-    tab_natNAT_PIPP: TIBBCDField;
-    tab_natNAT_CSTC: TIBStringField;
-    tab_natNAT_PIPC: TIBBCDField;
-    tab_natNAT_OBSE: TMemoField;
-    tab_natNAT_STA: TIBStringField;
     tab_nat: TIBQuery;
     consulta_S: TIBQuery;
-    tab_natNAT_INDT: TIBStringField;
     nfe_001NFE_VNF: TIBBCDField;
     tab_alq: TIBQuery;
-    tab_alqID: TIntegerField;
-    tab_alqALQ_ESTA: TIBStringField;
-    tab_alqALQ_ICMS: TIBBCDField;
     dtsdup_001: TDataSource;
     dup_001: TIBDataSet;
     dup_001ID: TIntegerField;
@@ -200,7 +177,6 @@ type
     nfe_001NFE_VI04: TIBBCDField;
     nfe_001NFE_VI07: TIBBCDField;
     nfe_001NFE_VI12: TIBBCDField;
-    tab_alqALQ_ICME: TIBBCDField;
     nfe_001NFE_VBCSTDEST: TIBBCDField;
     nfe_001NFE_VICMSSTDEST: TIBBCDField;
     nfe_001NFE_VBCUFDEST: TIBBCDField;
@@ -367,7 +343,6 @@ type
     LAVCOFINS: TLabel;
     LAVNF: TLabel;
     LAQTDE: TLabel;
-    LAVBST: TLabel;
     LAVST: TLabel;
     LAVCREDICMSSN: TLabel;
     LAVPROD: TLabel;
@@ -397,11 +372,6 @@ type
     EDInfAdFisco: TdxMemo;
     GBInfoPedido: TGroupBox;
     EDInfAdPed: TdxMemo;
-    tab_natNAT_CFOP: TIBStringField;
-    tab_natNAT_INV: TIBStringField;
-    tab_natNAT_FATU: TIBStringField;
-    tab_natNAT_TPNF: TIBStringField;
-    tab_natNAT_REDBC: TIBBCDField;
     EDVDup: TdxMaskEdit;
     PNLConsulta: TPanel;
     dbgnfe: TdxDBGrid;
@@ -755,16 +725,6 @@ type
     EDInfAdC: TdxMemo;
     GBInfAdF: TGroupBox;
     EDInfAdF: TdxMemo;
-    tab_alqALQ_DESC: TIBStringField;
-    tab_alqALQ_UFORIGEM: TIBStringField;
-    tab_alqALQ_UFDESTINO: TIBStringField;
-    tab_alqALQ_ICMO: TIBBCDField;
-    tab_alqALQ_ICMD: TIBBCDField;
-    tab_alqALQ_ICMI: TIBBCDField;
-    tab_alqALQ_STMENSAGEM: TIBStringField;
-    tab_alqALQ_STARTIGO: TIBStringField;
-    tab_alqALQ_STPROTOCOLO: TIBStringField;
-    tab_alqALQ_FCP: TIBBCDField;
     EDvICMSUFDest: TdxMaskEdit;
     nfe_001NFE_STAV: TIBStringField;
     nfe_001NFE_INFADTRIB: TIBStringField;
@@ -798,8 +758,6 @@ type
     psq_forFOR_STPD: TSmallintField;
     psq_forFOR_DTRA: TIBStringField;
     psq_forFOR_DUSU: TIBStringField;
-    tab_natNAT_CSTI0: TIBStringField;
-    tab_natCENQ: TIBStringField;
     PCTransporte: TdxPageControl;
     dxTabSheet1: TdxTabSheet;
     dxTabSheet2: TdxTabSheet;
@@ -828,61 +786,15 @@ type
     CEVFrete: TdxCurrencyEdit;
     CEVSeg: TdxCurrencyEdit;
     DBGSFrete: TdxDBGrid;
-    SFrete: TIBQuery;
-    DTSFrete: TDataSource;
-    SFreteLOG_TRANSPORTADORA: TIBStringField;
-    SFreteLOG_DESTINO: TIBStringField;
-    SFreteLOG_PRAZO: TIBStringField;
-    SFreteLOG_PFRETE: TIBBCDField;
-    SFreteLOG_VPFRETE: TIBBCDField;
-    SFreteLOG_KFRETE: TIBBCDField;
-    SFreteLOG_VKFRETE: TIBBCDField;
-    SFreteLOG_MFRETE: TIBBCDField;
-    SFreteLOG_VFRETE: TIBBCDField;
-    SFreteLOG_CAT: TIBBCDField;
     DBGSFreteLOG_TRANSPORTADORA: TdxDBGridMaskColumn;
     DBGSFreteLOG_DESTINO: TdxDBGridMaskColumn;
     DBGSFreteLOG_PRAZO: TdxDBGridMaskColumn;
     DBGSFreteLOG_VFRETE: TdxDBGridCurrencyColumn;
-    psq_rep: TIBQuery;
-    psq_repID: TIntegerField;
-    psq_repREP_FANT: TIBStringField;
-    psq_repREP_RAZA: TIBStringField;
-    psq_repREP_CNPJ: TIBStringField;
-    psq_repREP_CPF: TIBStringField;
-    psq_repREP_CRED: TIBBCDField;
-    psq_repREP_CID: TIBStringField;
-    psq_repREP_BAI: TIBStringField;
-    psq_repREP_TLOG: TIBStringField;
-    psq_repREP_LOGR: TIBStringField;
-    psq_repREP_NUME: TIBStringField;
-    psq_repREP_CEP: TIBStringField;
-    psq_repREP_COMP: TIBStringField;
-    psq_repREP_ESTA: TIBStringField;
-    psq_repREP_STA: TIBStringField;
-    psq_repREP_STAV: TIBStringField;
-    psq_repREP_DPAG: TIBStringField;
-    psq_repREP_VDSC: TIBBCDField;
-    psq_repREP_DCAD: TDateField;
-    psq_repREP_DFUN: TDateField;
-    psq_repREP_DALT: TDateField;
-    psq_repREP_DULT: TDateField;
-    psq_repREP_VULT: TIBBCDField;
-    psq_repREP_DDD: TIBStringField;
-    psq_repREP_TEL1: TIBStringField;
-    psq_repREP_FANT1: TIBStringField;
-    psq_repUSU_DUSU: TIBStringField;
-    psq_repREP_DTRA: TIBStringField;
-    psq_repREP_OBSO: TIBStringField;
     psq_cliCLI_OBSO: TIBStringField;
     psq_forFOR_OBSO: TIBStringField;
     edfatu: TdxMaskEdit;
     Label16: TLabel;
     edvFCPUFDest: TdxMaskEdit;
-    cad_cliCLI_ENVMAIL: TSmallintField;
-    cad_forFOR_ENVMAIL: TSmallintField;
-    psq_forFOR_ENVMAIL: TSmallintField;
-    psq_cliCLI_ENVMAIL: TSmallintField;
     IEEnvMail: TdxImageEdit;
     Label19: TLabel;
     tab_pagID: TIntegerField;
@@ -911,7 +823,6 @@ type
     tab_pagPAG_PRAZ: TSmallintField;
     tab_pagPAG_DUPL: TIBStringField;
     tab_pagPAG_STA: TIBStringField;
-    tab_pagPAG_ENVWEB: TSmallintField;
     nfe_001NFE_CDEP: TSmallintField;
     nfe_001NFE_VI18: TIBBCDField;
     dbgnfeNFE_VBCST: TdxDBGridCurrencyColumn;
@@ -920,6 +831,185 @@ type
     dbgnfeNFE_EXTIPI: TdxDBGridMaskColumn;
     dbgnfeNFE_CEST: TdxDBGridMaskColumn;
     dbgnfeNFE_NFCI: TdxDBGridMaskColumn;
+    tab_alqID: TIntegerField;
+    tab_alqUF: TIBStringField;
+    tab_alqDESCRICAO: TIBStringField;
+    tab_alqPICMS: TIBBCDField;
+    tab_alqPFCP: TIBBCDField;
+    tab_alqALQ_ESTA: TIBStringField;
+    tab_alqALQ_DESC: TIBStringField;
+    tab_alqALQ_MEI: TSmallintField;
+    tab_alqALQ_UFORIGEM: TIBStringField;
+    tab_alqALQ_UFDESTINO: TIBStringField;
+    tab_alqALQ_ICMS: TIBBCDField;
+    tab_alqALQ_ICMO: TIBBCDField;
+    tab_alqALQ_ICMD: TIBBCDField;
+    tab_alqALQ_ICMI: TIBBCDField;
+    tab_alqALQ_ICME: TIBBCDField;
+    tab_alqALQ_STMENSAGEM: TIBStringField;
+    tab_alqALQ_STARTIGO: TIBStringField;
+    tab_alqALQ_STPROTOCOLO: TIBStringField;
+    tab_alqALQ_FCP: TIBBCDField;
+    tab_alqFLAG: TSmallintField;
+    tab_natID: TIntegerField;
+    tab_natCFOP: TIBStringField;
+    tab_natCFOP_CONTRA: TIBStringField;
+    tab_natDESCRICAO: TIBStringField;
+    tab_natFINALIDADE: TIBStringField;
+    tab_natFAPD: TSmallintField;
+    tab_natTIPO: TIBStringField;
+    tab_natTPNF: TSmallintField;
+    tab_natCSOSN: TIBStringField;
+    tab_natCST_ICMS: TIBStringField;
+    tab_natCST_IPI_ENT: TIBStringField;
+    tab_natCST_IPI_SAI: TIBStringField;
+    tab_natCENQ: TIBStringField;
+    tab_natCST_PIS: TIBStringField;
+    tab_natPPIS: TIBBCDField;
+    tab_natPPIS_REAL: TIBBCDField;
+    tab_natCST_COFINS: TIBStringField;
+    tab_natPCOFINS: TIBBCDField;
+    tab_natPCOFINS_REAL: TIBBCDField;
+    tab_natINFADCAD: TMemoField;
+    tab_natIP: TIBStringField;
+    tab_natHOST: TIBStringField;
+    tab_natFLAG: TSmallintField;
+    tab_natNAT_CNAT: TIBStringField;
+    tab_natNAT_DNAT: TIBStringField;
+    tab_natNAT_TIPO: TIBStringField;
+    tab_natNAT_OPER: TIBStringField;
+    tab_natNAT_CCST: TIBStringField;
+    tab_natNAT_CSTS: TIBStringField;
+    tab_natNAT_CSTA: TIBStringField;
+    tab_natNAT_BIPI: TIBStringField;
+    tab_natNAT_FRET: TIBStringField;
+    tab_natNAT_MATE: TIBStringField;
+    tab_natNAT_PENF: TIBBCDField;
+    tab_natNAT_CSTI: TIBStringField;
+    tab_natNAT_CSTP: TIBStringField;
+    tab_natNAT_PIPP: TIBBCDField;
+    tab_natNAT_CSTC: TIBStringField;
+    tab_natNAT_PIPC: TIBBCDField;
+    tab_natNAT_STA: TIBStringField;
+    tab_natNAT_INDT: TIBStringField;
+    tab_natNAT_CFOP: TIBStringField;
+    tab_natNAT_INV: TIBStringField;
+    tab_natNAT_FATU: TIBStringField;
+    tab_natIPISEME: TIBStringField;
+    tab_natIPISEMS: TIBStringField;
+    tab_natNAT_OBSE: TMemoField;
+    tab_natNAT_TPNF: TIBStringField;
+    tab_natNAT_REDBC: TIBBCDField;
+    SQLSEdicao: TIBSQL;
+    SQLSPKEdicao: TIBSQL;
+    SQLConsulta: TIBSQL;
+    SQLPKConsulta: TIBSQL;
+    nfe_001NFE_VBCCREDICMSSN: TIBBCDField;
+    nfe_001NFE_CDRO: TLargeintField;
+    nfe_001NFE_DERO: TIBStringField;
+    nfe_001NFE_CDBX: TLargeintField;
+    nfe_001CP_IDEP: TSmallintField;
+    nfe_001IDAK: TLargeintField;
+    nfe_001IDEK: TLargeintField;
+    nfe_001UCDBE: TIBStringField;
+    nfe_001UQTRL: TSmallintField;
+    nfe_001UQTMD: TIBBCDField;
+    nfe_001UPSBR: TIBBCDField;
+    nfe_001UPSLQ: TIBBCDField;
+    nfe_001IP: TIBStringField;
+    nfe_001HOST: TIBStringField;
+    nfe_001FLAG: TIntegerField;
+    nfe_001COL_ID: TSmallintField;
+    nfe_001COL_DESC: TIBStringField;
+    nfe_001CAT_ID: TSmallintField;
+    nfe_001CAT_DESC: TIBStringField;
+    nfe_001CF_ID: TSmallintField;
+    nfe_001CF_FANTASIA: TIBStringField;
+    nfe_001CF_RAZAO: TIBStringField;
+    nfe_001CF_CNPJ: TIBStringField;
+    nfe_001CF_CDPD: TLargeintField;
+    nfe_001CF_DEPD: TIBStringField;
+    nfe_001CF_CDNF: TLargeintField;
+    nfe_001CF_SKU: TIBStringField;
+    nfe_001CF_CEAN: TIBStringField;
+    nfe_001CF_DECP: TIBStringField;
+    nfe_001CF_UCOM: TIBStringField;
+    nfe_001CF_UESP_RF: TIBStringField;
+    nfe_001CF_UESP_QT: TIBBCDField;
+    nfe_001CF_VPRC_PAD_ORI: TIBStringField;
+    nfe_001CF_VPRC_PAD: TFloatField;
+    nfe_001CF_VPRC_COM: TFloatField;
+    nfe_001CF_PIPI: TIBBCDField;
+    nfe_001IS_PDSC: TSmallintField;
+    nfe_001UPRC_PAD: TIBBCDField;
+    nfe_001IDEV: TLargeintField;
+    nfe_001CDEV: TSmallintField;
+    nfe_001MAO_OBRA: TSmallintField;
+    dbgnfeMAO_OBRA: TdxDBGridMaskColumn;
+    nfe_001NFE_IS_CSTIS: TIBStringField;
+    nfe_001NFE_IS_CCLASSTRIBIS: TIBStringField;
+    nfe_001NFE_IS_VBCIS: TIBBCDField;
+    nfe_001NFE_IS_PIS: TIBBCDField;
+    nfe_001NFE_IS_PISESPEC: TIBBCDField;
+    nfe_001NFE_IS_VIS: TIBBCDField;
+    nfe_001NFE_IS_UTRIB: TIBStringField;
+    nfe_001NFE_IS_QTRIB: TIBBCDField;
+    nfe_001NFE_IBSCBS_CSTIS: TIBStringField;
+    nfe_001NFE_IBSCBS_CCLASSTRIBIS: TIBStringField;
+    nfe_001NFE_IBSCBS_INDDOACAO: TIBStringField;
+    nfe_001NFE_IBSCBS_VBCIBSCBS: TIBBCDField;
+    nfe_001NFE_IBSCBS_VIBSCBS: TIBBCDField;
+    nfe_001NFE_IBSUF_VBCIBSUF: TIBBCDField;
+    nfe_001NFE_IBSUF_PIBSUF: TIBBCDField;
+    nfe_001NFE_IBSUF_VIBSUF: TIBBCDField;
+    nfe_001NFE_IBSUF_PDIF: TIBBCDField;
+    nfe_001NFE_IBSUF_VDIF: TIBBCDField;
+    nfe_001NFE_IBSUF_VDEVTRIB: TIBBCDField;
+    nfe_001NFE_IBSMUN_VBCIBSMUN: TIBBCDField;
+    nfe_001NFE_IBSMUN_PIBSMUN: TIBBCDField;
+    nfe_001NFE_IBSMUN_VIBSMUN: TIBBCDField;
+    nfe_001NFE_IBSMUN_PDIF: TIBBCDField;
+    nfe_001NFE_IBSMUN_VDIF: TIBBCDField;
+    nfe_001NFE_IBSMUN_VDEVTRIB: TIBBCDField;
+    nfe_001NFE_IBSMUN_VCREDPRES: TIBBCDField;
+    nfe_001NFE_IBSMUN_VCREDPRESCONDSUS: TIBBCDField;
+    nfe_001NFE_CBS_VBCCBS: TIBBCDField;
+    nfe_001NFE_CBS_PCBS: TIBBCDField;
+    nfe_001NFE_CBS_VCBS: TIBBCDField;
+    nfe_001NFE_CBS_PDIF: TIBBCDField;
+    nfe_001NFE_CBS_VDIF: TIBBCDField;
+    nfe_001NFE_CBS_VDEVTRIB: TIBBCDField;
+    nfe_001NFE_CBS_VCREDPRES: TIBBCDField;
+    nfe_001NFE_CBS_VCREDPRESCONDSUS: TIBBCDField;
+    Label27: TLabel;
+    EDNFE_CBS_VBCCBS: TdxMaskEdit;
+    Label28: TLabel;
+    EDNFE_CBS_VCBS: TdxMaskEdit;
+    Label32: TLabel;
+    EDNFE_IBSMUN_VBCMUN: TdxMaskEdit;
+    Label33: TLabel;
+    EDNFE_IBSMUN_VIBSMUN: TdxMaskEdit;
+    Label34: TLabel;
+    EDNFE_IBSCBS_VBCIBSCBS: TdxMaskEdit;
+    EDNFE_IBSUF_VBCIBSUF: TdxMaskEdit;
+    Label36: TLabel;
+    Label37: TLabel;
+    EDNFE_IBSUF_VIBSUF: TdxMaskEdit;
+    tab_natNAT_CSTI0: TIBStringField;
+    tab_natCSTIS: TIBStringField;
+    tab_natCCLASSTRIBIS: TIBStringField;
+    tab_natPIS: TIBBCDField;
+    tab_natPISESPEC: TIBBCDField;
+    tab_natCSTCBS: TIBStringField;
+    tab_natCCLASSTRIBCBS: TIBStringField;
+    tab_natPCBS: TIBBCDField;
+    tab_natINDDOACAO: TIBStringField;
+    nfe_001NFE_VSERV: TIBBCDField;
+    nfe_001NFE_VII: TIBBCDField;
+    nfe_001NFE_VICMSMONO: TIBBCDField;
+    nfe_001NFE_VNFTOT: TIBBCDField;
+    nfe_001NFE_ISSQN_VISSQN: TIBBCDField;
+    EDNFE_VNFTOT: TdxMaskEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormDestroy(Sender: TObject);
@@ -1064,6 +1154,9 @@ type
     procedure nfe_001NFE_PIPIValidate(Sender: TField);
     procedure edcdroValidate(Sender: TObject; var ErrorText: String;
       var Accept: Boolean);
+    procedure dtsnfe_001DataChange(Sender: TObject; Field: TField);
+    procedure dbgcliKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
     FrmStyle   : TFormStyle;
@@ -1090,6 +1183,7 @@ type
     procedure PESQUISA_FORNECEDOR(pesq,chave: string;cdsc: double);
     procedure PESQUISA_NATUREZA(pesq,chave: string);
     procedure CALCULA_NF;
+    procedure CALCULA_MAO_OBRA;
     procedure CALCULA_FRETE;
     procedure CALCULA_SEGURO;
     procedure DUPLICATAS;
@@ -1299,11 +1393,6 @@ end;
 
 procedure Tfrmven_nfe.FormDestroy(Sender: TObject);
 begin
-  FrmPrincipal.pnCustomize.Visible := True;
-  if FrmPrincipal.pnbot.Tag = 1 then
-     FrmPrincipal.pnbot.Visible := True;
-     FrmPrincipal.pnbot.Tag := 0;
-
   Screen.Cursor := crDefault;
   Frmven_nfe    := Nil;
   InfAd.Free;
@@ -1780,9 +1869,6 @@ begin
     finally
       sbMAIN.Panels[1].Text := '';
     end;
-
-    if RECParametros.EnvMail then
-       ENVIA_EMAIL;
 
     BVal.Enabled := false;
     BVis.Enabled := true;
@@ -2770,7 +2856,6 @@ begin
         SQL.Add('       CLI_CMUV = '''+PEEcMun.Text+''',');
         SQL.Add('       CLI_CTRA = '''+edCTRA.Text +''',');
         SQL.Add('       CLI_MAIL = '''+IFThen(oEmail(PEEmail.Text),PEEmail.Text,EmptyStr)+''',');
-        SQL.Add('       CLI_ENVMAIL = '''+IEEnvMail.Text+''',');
         SQL.Add('       CLI_DTRA = '''+cbDTRA.Text+'''');
         SQL.Add('WHERE ID = '''+edcfav.Text+'''');
         ExecSQL;
@@ -2803,7 +2888,6 @@ begin
         SQL.Add('       FOR_CIDV = '''+oDELCharEsp(EDExMun.Text)+''',');
         SQL.Add('       FOR_ESTV = '''+PEEUF.Text+''',');
         SQL.Add('       FOR_MAIL = '''+IFThen(oEmail(PEEmail.Text),PEEmail.Text,EmptyStr)+''',');
-        SQL.Add('       FOR_ENVMAIL = '''+IEEnvMail.Text+''',');
         SQL.Add('       FOR_CMUV = '''+PEEcMun.Text+'''');
         SQL.Add('WHERE ID = '''+edcfav.Text+'''');
         ExecSQL;
@@ -2962,381 +3046,6 @@ begin
   end;
 end;
 
-procedure Tfrmven_nfe.CALCULA_NF;
-begin
-  try
-    Tag := 1;
-
-    if ((cbcnat.Text = '6102') and ((IEIndFinal.Text = '1') or (IEindIEDest.Text = '9')) and (PEUF.Text <> RECParametros.UnidadeFederada) and (PEUF.Text <> 'EX')) then
-         PESQUISA_NATUREZA('6108','C');
-
-    nfe_001.DisableControls;
-    nfe_001.First;
-    cli_001.First;
-
-    if (BCalc) and ((IEFinNFe.Text <> '2') and (IEFinNFe.Text <> '3')) then
-    begin
-      if (oTextToValor(EDTDesc.Text) > 0) or (LATDesc.Tag = 1) then
-      begin
-        LATDesc.Tag := 0;
-        EDTDesc.Tag := nfe_001.RecordCount;
-        while not nfe_001.Eof do
-        begin
-          nfe_001.Edit;
-          if LATDesc.Caption = '%' then
-          nfe_001NFE_VDESC.Value := RoundTO((nfe_001NFE_VPROD.AsFloat * oTextToValor(EDTDesc.Text,2))/100,-2) else
-          nfe_001NFE_VDESC.Value := RoundTO(oTextToValor(EDTDesc.Text,2)/EDTDesc.Tag,-2);
-          nfe_001.Post;
-          nfe_001.Next;
-        end;
-        oRTransact(TSheild);
-      end;
-
-      if IEFinNFe.Text <> '2' then
-      while not nfe_001.Eof do
-      begin
-        nfe_001.Edit;
-        if nfe_001NFE_CFOP.AsString <> tab_natNAT_CNAT.AsString then
-        with tab_nat do
-        begin
-          SQL.Clear;
-          SQL.Add('SELECT * FROM TAB_NAT');
-          SQL.Add('WHERE  NAT_CNAT = '''+nfe_001NFE_CFOP.AsString+'''');
-          Open;
-        end;
-
-        if nfe_001NFE_FLAG.AsString <> '1' then
-        begin
-          nfe_001NFE_VBC.Value            := 0;
-          nfe_001NFE_VICMS.Value          := 0;
-          nfe_001NFE_VBCIPI.Value         := 0;
-          nfe_001NFE_VIPI.Value           := 0;
-          nfe_001NFE_VBCPIS.Value         := 0;
-          nfe_001NFE_VPIS.Value           := 0;
-          nfe_001NFE_VBCOFINS.Value       := 0;
-          nfe_001NFE_VCOFINS.Value        := 0;
-          nfe_001NFE_PCREDSN.Value        := 0;
-          nfe_001NFE_VCREDICMSSN.Value    := 0;
-          nfe_001NFE_VICMSST.Value        := 0;
-          nfe_001NFE_PICMSST.Value        := 0;
-          nfe_001NFE_VBCST.Value          := 0;
-          nfe_001NFE_MVAST.Value          := 0;
-          nfe_001NFE_MODBCST.Value        := '';
-          nfe_001NFE_vBCUFDest.Value      := 0;
-          nfe_001NFE_vBCFCPUFDest.Value   := 0;
-          nfe_001NFE_pFCPUFDest.Value     := 0;
-          nfe_001NFE_pICMSUFDest.Value    := 0;
-          nfe_001NFE_pICMSInter.Value     := 0;
-          nfe_001NFE_pICMSInterPart.Value := 0;
-          nfe_001NFE_vFCPUFDest.Value     := 0;
-          nfe_001NFE_vICMSUFDest.Value    := 0;
-          nfe_001NFE_vICMSUFRemet.Value   := 0;
-          nfe_001NFE_INFADTRIB.Value      := '';
-
-          if nfe_001NFE_INDTOT.AsString = '1' then
-          begin
-            if (RECParametros.RegimeTributario = '3') or (nfe_001NFE_CST.AsString = '900') then
-            begin
-              nfe_001NFE_VBC.Value := (nfe_001NFE_VPROD.AsFloat - nfe_001NFE_VDESC.AsFloat);
-
-              if LeftStr(nfe_001NFE_CFOP.AsString,1) <> '3' then
-              begin
-                nfe_001NFE_VBC.Value      := nfe_001NFE_VBC.AsFloat + nfe_001NFE_VFRETE.AsFloat + nfe_001NFE_VSEG.AsFloat;
-                nfe_001NFE_VBCIPI.Value   := IFThen(nfe_001NFE_PIPI.AsFloat > 0,nfe_001NFE_VBC.AsFloat,0);
-                nfe_001NFE_VBCPIS.Value   := nfe_001NFE_VBC.AsFloat;
-                nfe_001NFE_VBCOFINS.Value := nfe_001NFE_VBC.AsFloat;
-              end else
-              begin
-                nfe_001NFE_VBCIPI.Value   := IFThen(nfe_001NFE_PIPI.AsFloat > 0,nfe_001NFE_VBCIMP.AsFloat,0);
-                nfe_001NFE_VBCPIS.Value   := nfe_001NFE_VBCIMP.AsFloat;
-                nfe_001NFE_VBCOFINS.Value := nfe_001NFE_VBCIMP.AsFloat;
-              end;
-
-              nfe_001NFE_VIPI.Value    := RoundTO((nfe_001NFE_VBCIPI.AsFloat   * nfe_001NFE_PIPI.AsFloat)    / 100,-2);
-              nfe_001NFE_VPIS.Value    := RoundTO((nfe_001NFE_VBCPIS.AsFloat   * nfe_001NFE_PPIS.AsFloat)    / 100,-2);
-              nfe_001NFE_VCOFINS.Value := RoundTO((nfe_001NFE_VBCOFINS.AsFloat * nfe_001NFE_PCOFINS.AsFloat) / 100,-2);
-
-              if LeftStr(nfe_001NFE_CFOP.AsString,1) = '3' then
-              begin
-                nfe_001NFE_VBC.Value := RoundTO((nfe_001NFE_VBC.AsFloat + nfe_001NFE_VIPI.AsFloat + nfe_001NFE_VPIS.AsFloat + nfe_001NFE_VCOFINS.AsFloat) / 0.82,-2);
-                nfe_001NFE_VNF.Value := nfe_001NFE_VBC.AsFloat;
-              end else
-              if IEindFinal.Text = '1' then
-              nfe_001NFE_VBC.Value := nfe_001NFE_VBC.AsFloat + nfe_001NFE_VIPI.AsFloat;
-
-              if (nfe_001NFE_CFOP.AsString = '5101')            and (edcnpj.Text <> '') and
-                 (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5402') and
-                 (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5404') and (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5405') and
-                 (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5406') and
-                 (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5501') and (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5502') and
-                 (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5503') and (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5504') and
-                 (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5505') and (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5506') and
-                 (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5507') and
-                 (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5601') and (LeftStr(nfe_001NFE_NCM.AsString,4) <> '6309') and
-                 (nfe_001NFE_NCM.AsString <> '59011000') then
-                 if (LeftStr(nfe_001NFE_NCM.AsString,2) = '50')     or (LeftStr(nfe_001NFE_NCM.AsString,2) = '51') or
-                    (LeftStr(nfe_001NFE_NCM.AsString,2) = '52')     or (LeftStr(nfe_001NFE_NCM.AsString,2) = '53') or
-                    (LeftStr(nfe_001NFE_NCM.AsString,2) = '54')     or (LeftStr(nfe_001NFE_NCM.AsString,2) = '55') or
-                    (LeftStr(nfe_001NFE_NCM.AsString,2) = '56')     or (LeftStr(nfe_001NFE_NCM.AsString,2) = '57') or
-                    (LeftStr(nfe_001NFE_NCM.AsString,2) = '58')     or
-                    (LeftStr(nfe_001NFE_NCM.AsString,2) = '60')     or (LeftStr(nfe_001NFE_NCM.AsString,2) = '61') or
-                    (LeftStr(nfe_001NFE_NCM.AsString,2) = '62')     or (LeftStr(nfe_001NFE_NCM.AsString,2) = '63') or
-                    (LeftStr(nfe_001NFE_NCM.AsString,4) = '5901')   or
-                    (LeftStr(nfe_001NFE_NCM.AsString,5) = '96071')  or
-                    (LeftStr(nfe_001NFE_NCM.AsString,6) = '560130') or
-                    (copy(nfe_001NFE_NCM.AsString,1,7) = '6505001') or
-                    (copy(nfe_001NFE_NCM.AsString,1,7) = '6505002') or
-                    (copy(nfe_001NFE_NCM.AsString,1,7) = '6505003') or
-                    (nfe_001NFE_NCM.AsString = '94049000') then
-                    begin
-                      nfe_001NFE_CST.Value    := '20';
-                      nfe_001NFE_PREDBC.Value := 33.33;
-                      nfe_001NFE_VBC.Value    := nfe_001NFE_VBC.AsFloat - ((nfe_001NFE_VBC.AsFloat * nfe_001NFE_PREDBC.AsFloat)/100);
-                    end;
-
-              if nfe_001NFE_CST.AsString <> '20' then
-              nfe_001NFE_PREDBC.Value := 0;
-              nfe_001NFE_VICMS.Value  := RoundTO((nfe_001NFE_VBC.AsFloat * nfe_001NFE_PICMS.AsFloat) / 100,-2);
-
-              if nfe_001NFE_CST.AsString = '90' then
-              begin
-                nfe_001NFE_VBC.Value   := 0;
-                nfe_001NFE_PICMS.Value := 0;
-                nfe_001NFE_VICMS.Value := 0;
-              end;
-
-              { REDUÇÃO DE PIS / COFINS }
-              if (Pos(RECParametros.Fantasia,'MAX COLORGIROTEXTIL') > 0) then
-              if (LeftStr(nfe_001NFE_CFOP.AsString,1) <> '3') and (LeftStr(nfe_001NFE_CFOP.AsString,1) <> '7') and
-                 (nfe_001NFE_VICMS.AsFloat > 0) then { Redução }
-              begin
-                { PIS }
-                nfe_001NFE_VBCPIS.Value := nfe_001NFE_VBC.AsFloat - nfe_001NFE_VICMS.AsFloat;
-                nfe_001NFE_VPIS.Value   := RoundTO((nfe_001NFE_VBCPIS.AsFloat   * nfe_001NFE_PPIS.AsFloat)    / 100,-2);
-
-                { COFINS }
-                nfe_001NFE_VBCOFINS.Value := nfe_001NFE_VBC.AsFloat - nfe_001NFE_VICMS.AsFloat;
-                nfe_001NFE_VCOFINS.Value  := RoundTO((nfe_001NFE_VBCOFINS.AsFloat * nfe_001NFE_PCOFINS.AsFloat) / 100,-2);
-              end;
-
-              if (nfe_001NFE_PICMS.AsFloat = 4)  and (nfe_001NFE_VI04.AsFloat > 0) and (nfe_001NFE_CFOP.AsString <> '6108') then
-              begin
-                nfe_001NFE_VBCST.Value := nfe_001NFE_VPROD.AsFloat + nfe_001NFE_VIPI.AsFloat    + nfe_001NFE_VFRETE.AsFloat + nfe_001NFE_VSEG.AsFloat;
-                nfe_001NFE_VBCST.Value := nfe_001NFE_VBCST.AsFloat + ((nfe_001NFE_VBCST.AsFloat * nfe_001NFE_VI04.AsFloat)/100);
-              end else
-              if (nfe_001NFE_PICMS.AsFloat = 7) and (nfe_001NFE_VI07.AsFloat > 0) and (nfe_001NFE_CFOP.AsString <> '6108') then
-              begin
-                nfe_001NFE_VBCST.Value := nfe_001NFE_VPROD.AsFloat + nfe_001NFE_VIPI.AsFloat    + nfe_001NFE_VFRETE.AsFloat + nfe_001NFE_VSEG.AsFloat;
-                nfe_001NFE_VBCST.Value := nfe_001NFE_VBCST.AsFloat + ((nfe_001NFE_VBCST.AsFloat * nfe_001NFE_VI07.AsFloat)/100);
-              end else
-              if (nfe_001NFE_PICMS.AsFloat = 12) and (nfe_001NFE_VI12.AsFloat > 0) and (nfe_001NFE_CFOP.AsString <> '6108') then
-              begin
-                nfe_001NFE_VBCST.Value := nfe_001NFE_VPROD.AsFloat + nfe_001NFE_VIPI.AsFloat    + nfe_001NFE_VFRETE.AsFloat + nfe_001NFE_VSEG.AsFloat;
-                nfe_001NFE_VBCST.Value := nfe_001NFE_VBCST.AsFloat + ((nfe_001NFE_VBCST.AsFloat * nfe_001NFE_VI12.AsFloat)/100);
-              end else
-              if (nfe_001NFE_PICMS.AsFloat = 18) and (nfe_001NFE_VI18.AsFloat > 0) and (nfe_001NFE_CFOP.AsString <> '6108') then
-              begin
-                nfe_001NFE_VBCST.Value := nfe_001NFE_VPROD.AsFloat + nfe_001NFE_VIPI.AsFloat    + nfe_001NFE_VFRETE.AsFloat + nfe_001NFE_VSEG.AsFloat;
-                nfe_001NFE_VBCST.Value := nfe_001NFE_VBCST.AsFloat + ((nfe_001NFE_VBCST.AsFloat * nfe_001NFE_VI18.AsFloat)/100);
-              end;
-
-              if nfe_001NFE_VBCST.AsFloat > 0 then
-              begin
-                nfe_001NFE_CFOP.Value    := IFThen(IETPNF.Text = '0','2411',
-                                            IFThen(PEUF.Text   = RECParametros.UnidadeFederada,'5403','6404'));
-                nfe_001NFE_pICMSST.Value := tab_alqALQ_ICMI.AsFloat + tab_alqALQ_FCP.AsFloat;
-                nfe_001NFE_VICMSST.Value := ((nfe_001NFE_VBCST.AsFloat*nfe_001NFE_pICMSST.AsFloat)/100) - nfe_001NFE_VICMS.AsFloat;
-                nfe_001NFE_MVAST.Value   := 50;
-                nfe_001NFE_CST.Value     := '10';
-                nfe_001NFE_MODBCST.Value := '4';
-              end;
-
-              if (nfe_001NFE_ORIG.AsString = '0') and (EDISUF.Text <> '') then
-              begin
-                nfe_001NFE_CFOP.Value     := '6110';
-                nfe_001NFE_VBCPIS.Value   := 0;
-                nfe_001NFE_VPIS.Value     := 0;
-                nfe_001NFE_PPIS.Value     := 0;
-                nfe_001NFE_VBCOFINS.Value := 0;
-                nfe_001NFE_VCOFINS.Value  := 0;
-                nfe_001NFE_PCOFINS.Value  := 0;
-                nfe_001NFE_VNF.Value      := nfe_001NFE_VPROD.AsFloat;
-                nfe_001NFE_VUNCOM.Value   := nfe_001NFE_VUNCOM.AsFloat + ((nfe_001NFE_VUNCOM.AsFloat*7)/100);
-                nfe_001NFE_VUNCOM.AsString:= oTextToValor(nfe_001NFE_VUNCOM.AsString,9);
-                nfe_001NFE_VDESC.Value    := nfe_001NFE_VPROD.AsFloat - nfe_001NFE_VNF.AsFloat;
-              end;
-
-              if (nfe_001NFE_CST.AsString = '40') or (nfe_001NFE_CST.AsString = '41') or (nfe_001NFE_CST.AsString = '50') then
-              begin
-                nfe_001NFE_VBCIPI.Value   := 0;
-                nfe_001NFE_VIPI.Value     := 0;
-                nfe_001NFE_PIPI.Value     := 0;
-                nfe_001NFE_VBCPIS.Value   := 0;
-                nfe_001NFE_VPIS.Value     := 0;
-                nfe_001NFE_PPIS.Value     := 0;
-                nfe_001NFE_VBCOFINS.Value := 0;
-                nfe_001NFE_VCOFINS.Value  := 0;
-                nfe_001NFE_PCOFINS.Value  := 0;
-                nfe_001NFE_VBC.Value      := 0;
-                nfe_001NFE_VICMS.Value    := 0;
-                nfe_001NFE_PICMS.Value    := 0;
-              end;
-
-              if nfe_001NFE_CST.AsString = '51' then
-              begin
-                nfe_001NFE_VBC.Value      := 0;
-                nfe_001NFE_VICMS.Value    := 0;
-                nfe_001NFE_PICMS.Value    := 0;
-                nfe_001NFE_PDIF.Value     := 100.00;
-                nfe_001NFE_VICMSOP.Value  := 0;
-                nfe_001NFE_VICMSDIF.Value := 0;
-                { Ricardo - Calculo para diferimento <> 100% - Criar/Colocar no grid o campo PDIF - Fazer o mesmo para Cadastro de Produtos
-                  nfe_001NFE_PDIF.Value     := 33.33;
-                  nfe_001NFE_VICMSOP.Value  := oTextToValor((nfe_001NFE_VBC.AsFloat *nfe_001NFE_PICMS.AsFloat)   / 100);
-                  nfe_001NFE_VICMSDIF.Value := oTextToValor((nfe_001NFE_PDIF.AsFloat*nfe_001NFE_VICMSOP.AsFloat) / 100);
-                  nfe_001NFE_VICMS.Value    := nfe_001NFE_VICMS.AsFloat - nfe_001NFE_VICMSDIF.AsFloat; }
-              end;
-
-              if (((IEIndFinal.Text = '1') or (IEindIEDest.Text = '9')) and (PEUF.Text <> RECParametros.UnidadeFederada) and (PEUF.Text <> 'EX')) then
-              begin
-                nfe_001NFE_vBCUFDest.Value      := nfe_001NFE_VBC.AsFloat;
-                nfe_001NFE_vBCFCPUFDest.Value   := IFThen(tab_alqALQ_FCP.AsFloat = 0,0,nfe_001NFE_VBC.AsFloat);
-                nfe_001NFE_pFCPUFDest.Value     := tab_alqALQ_FCP.AsFloat;
-                nfe_001NFE_pICMSUFDest.Value    := tab_alqALQ_ICMI.AsFloat + tab_alqALQ_FCP.AsFloat;
-                nfe_001NFE_pICMSInter.Value     := nfe_001NFE_PICMS.AsInteger;
-                nfe_001NFE_pICMSInterPart.Value := 100;
-                nfe_001NFE_vFCPUFDest.Value     := IFThen(tab_alqALQ_FCP.AsFloat = 0,0,(nfe_001NFE_vBCFCPUFDest.AsFloat*nfe_001NFE_pFCPUFDest.AsFloat)/100);
-                nfe_001NFE_vICMSUFDest.Value    := RoundTo((nfe_001NFE_vBCUFDest.AsFloat * (nfe_001NFE_pICMSUFDest.AsFloat - nfe_001NFE_pICMSInter.AsFloat)) / 100,-2);
-                nfe_001NFE_vICMSUFRemet.Value   := 0;
-                nfe_001NFE_INFADTRIB.Value      := Trim('% Partilha UF Dest.: '     +FormatFloat(',##,0.00',nfe_001NFE_pICMSInterPart.AsFloat)+' - '+
-                                                        '% ICMS Inter. UF Dest.: '  +FormatFloat(',##,0.00',nfe_001NFE_pICMSUFDest.AsFloat)   +' - '+
-                                                        'Vlr.ICMS Inter. UF Dest.: '+FormatFloat(',##,0.00',nfe_001NFE_vICMSUFDest.AsFloat)   +' - '+
-                                                        '% ICMS Part. UF Remet.: '  +FormatFloat(',##,0.00',0.00)                             +' - '+
-                                                        'Vlr.ICMS Part. UF Remet.: '+FormatFloat(',##,0.00',nfe_001NFE_vICMSUFRemet.AsFloat));
-              end;
-            end;
-
-            { Ricardo - Como a planilha do renato, já está embutido o valor do frete, tive q isolar o VNF para importações }
-            if LeftStr(nfe_001NFE_CFOP.AsString,1) <> '3' then
-               nfe_001NFE_VNF.Value := (nfe_001NFE_VPROD.AsFloat  - nfe_001NFE_VDESC.AsFloat  - nfe_001NFE_VICMSDeson.AsFloat) +
-                                       (nfe_001NFE_VIPI.AsFloat   + nfe_001NFE_VFRETE.AsFloat + nfe_001NFE_VSEG.AsFloat +
-                                        nfe_001NFE_VOUTRO.AsFloat + nfe_001NFE_VICMSST.AsFloat);
-
-            if RECParametros.RegimeTributario = '1' then
-            begin
-              nfe_001NFE_VNF.Value       := nfe_001NFE_VNF.AsFloat;
-              nfe_001NFE_CST.Value       := tab_natNAT_CSTS.AsString;
-              nfe_001NFE_CSTIPI.Value    := '99';
-              nfe_001NFE_VBCIPI.Value    := 0;
-              nfe_001NFE_PIPI.Value      := 0;
-              nfe_001NFE_VIPI.Value      := 0;
-              nfe_001NFE_VBCPIS.Value    := 0;
-              nfe_001NFE_CSTPIS.Value    := '49';
-              nfe_001NFE_PPIS.Value      := 0;
-              nfe_001NFE_VPIS.Value      := 0;
-              nfe_001NFE_VBCOFINS.Value  := 0;
-              nfe_001NFE_CSTCOFINS.Value := '49';
-              nfe_001NFE_PCOFINS.Value   := 0;
-              nfe_001NFE_VCOFINS.Value   := 0;
-
-              if (RECParametros.PCreditoICMS > 0) and (IECredICMS.Text = '1') then
-                 if (LeftStr(nfe_001NFE_CFOP.AsString,4) = '5101') or (LeftStr(nfe_001NFE_CFOP.AsString,4) = '5102') or
-                    (LeftStr(nfe_001NFE_CFOP.AsString,4) = '6101') or (LeftStr(nfe_001NFE_CFOP.AsString,4) = '6102') or
-                    (LeftStr(nfe_001NFE_CFOP.AsString,4) = '5124') or (LeftStr(nfe_001NFE_CFOP.AsString,4) = '6124') or
-                    (LeftStr(nfe_001NFE_CFOP.AsString,4) = '5125') or (LeftStr(nfe_001NFE_CFOP.AsString,4) = '5925') or
-                    (LeftStr(nfe_001NFE_CFOP.AsString,4) = '6107') or (LeftStr(nfe_001NFE_CFOP.AsString,4) = '6108') then
-                 begin
-                   nfe_001NFE_CST.Value         := tab_natNAT_CSTA.AsString;
-                   nfe_001NFE_PCREDSN.Value     := RECParametros.PCreditoICMS;
-                   nfe_001NFE_VCREDICMSSN.Value := RoundTO((nfe_001NFE_PCREDSN.AsFloat * nfe_001NFE_VNF.AsFloat) / 100,-2);
-                 end;
-
-                 if LeftStr(nfe_001NFE_CFOP.AsString,1) = '3' then nfe_001NFE_CST.Value := '900';
-            end;
-          end;
-        end;
-
-        if nfe_001NFE_VBC.AsFloat  = 0 then
-           nfe_001NFE_PICMS.Value := 0;
-           
-        nfe_001.Post;
-        nfe_001.Next;
-      end;
-    end;
-  finally
-    Tag := 0;
-    nfe_001.EnableControls;
-    oRTransact(TSheild);
-
-    with Consulta_S do
-    begin
-      SQL.Clear;
-      SQL.Add('SELECT SUM(NFE_QCOM)    ,SUM(NFE_RCOM)   ,COUNT(*)        ,SUM(NFE_PSBR)  ,SUM(NFE_PSLQ),');
-      SQL.Add('       SUM(NFE_VPROD)   ,SUM(NFE_VDESC)  ,SUM(NFE_VBC)    ,SUM(NFE_VICMS) ,SUM(NFE_VCREDICMSSN),SUM(NFE_VICMSDESON),');
-      SQL.Add('       SUM(NFE_VBCST)   ,SUM(NFE_VICMSST),');
-      SQL.Add('       SUM(NFE_VIPI)    ,SUM(NFE_VPIS)   ,SUM(NFE_VCOFINS),SUM(NFE_VIIIMP)     ,SUM(NFE_VOUTRO),');
-      SQL.Add('       SUM(NFE_VTOTTRIB),SUM(NFE_VFRETE) ,SUM(NFE_VSEG)   ,SUM(NFE_vICMSUFDest),SUM(NFE_VNF),SUM(NFE_vFCPUFDest)');
-      SQL.Add('FROM   NFE_ITE');
-      Open;
-
-      { Volume }
-      EDTRCom.Tag  := IFThen(not oEmpty(Fields[02].AsInteger),Fields[02].AsInteger,1);
-      EDTQCom.Text := FormatFloat('#,0.00',Fields[00].AsFloat);
-      EDTRCom.Text := FormatFloat('0'     ,Fields[01].AsInteger);
-
-      if BCalc then
-      begin
-        if Fields[01].AsInteger <> Fields[02].AsInteger then
-        if EDQVol.Tag = 0 then EDQVol.Text := FormatFloat('0',Fields[01].AsInteger) else
-        if EDQVol.Tag = 0 then EDQVol.Text := FormatFloat('0',Fields[02].AsInteger);
-        if EDEsp.Tag  = 0 then EDEsp.Text  := RECParametros.Volume;
-
-        { Peso }
-        if CEPesoB.Tag = 0 then CEPesoB.Text := FormatFloat('#,0.000',Fields[03].AsFloat);
-        if CEPesoL.Tag = 0 then CEPesoL.Text := FormatFloat('#,0.000',Fields[04].AsFloat);
-
-        edvprod.Text       := FormatFloat('#,0.00' ,Fields[05].AsFloat);
-        edvdesc.Text       := FormatFloat('#,0.00' ,Fields[06].AsFloat);
-
-        edvbc.Text         := FormatFloat('#,0.00',Fields[07].AsFloat);
-        edvicms.Text       := FormatFloat('#,0.00',Fields[08].AsFloat);
-        edvcredicmssn.Text := FormatFloat('#,0.00',Fields[09].AsFloat);
-        edvicmsdeson.Text  := FormatFloat('#,0.00',Fields[10].AsFloat);
-
-        edvbcst.Text       := FormatFloat('#,0.00',Fields[11].AsFloat);
-        edvst.Text         := FormatFloat('#,0.00',Fields[12].AsFloat);
-
-        edvipi.Text        := FormatFloat('#,0.00',Fields[13].AsFloat);
-        edvpis.Text        := FormatFloat('#,0.00',Fields[14].AsFloat);
-        edvcofins.Text     := FormatFloat('#,0.00',Fields[15].AsFloat);
-        edvII.Text         := FormatFloat('#,0.00',Fields[16].AsFloat);
-        edvoutro.Text      := FormatFloat('#,0.00',Fields[17].AsFloat);
-        edvtottrib.Text    := FormatFloat('#,0.00',Fields[18].AsFloat);
-        CEVFrete.Value     := Fields[19].AsFloat;
-        CEVSeg.Value       := Fields[20].AsFloat;
-        EDvICMSUFDest.Text := FormatFloat('#,0.00',Fields[21].AsFloat);
-        edvnf.Text         := FormatFloat('#,0.00',Fields[22].AsFloat);
-        edvFCPUFDest.Text  := FormatFloat('#,0.00',Fields[23].AsFloat);
-
-        SQL.Clear;
-        SQL.Add('SELECT SUM(NFE_VDUP) FROM NFE_DUP');
-        Open;
-        if (oTextToValor(edvnf.Text) <> fields[0].AsFloat) and (cbdupl.Text = 'SIM') then
-            DUPLICATAS;
-      end;
-    end;
-
-    if ((LeftStr(cbcnat.Text,1) = '3') and (FrmPrincipal.ParametrosPAR_IEST.AsString = '1')) then
-    begin
-      siEST.Tag        := 1;
-      siEST.Hint       := 'Essa Nota Fiscal Efetuará Baixa no Estoque';
-      siEST.ImageIndex := 11;
-    end;
-
-    ATUALIZA_MENSAGENS;
-  end;
-end;
-
 procedure Tfrmven_nfe.PESQUISA_NATUREZA(pesq,chave: string);
 begin
   if pesq = '' then
@@ -3386,7 +3095,7 @@ begin
     begin
       SQL.Clear;
       SQL.Add('SELECT CAD_CLI.ID,CLI_FANT,CLI_RAZA,CLI_CNPJ,CLI_CPF,CLI_CRED,CLI_CID,CLI_BAI,CLI_TLOG,CLI_LOGR,CLI_NUME,CLI_CEP,CLI_COMP,CLI_ESTA,CLI_STA,CLI_STAV,CLI_DPAG,');
-      SQL.Add('       CLI_VDSC,CLI_DCAD,CLI_DFUN,CLI_DALT,CLI_DULT,CLI_VULT,CLI_DDD,CLI_TEL1,REP_FANT,USU_DUSU,CLI_STPD,CLI_DTRA,CLI_DUSU,CLI_ENVMAIL,');
+      SQL.Add('       CLI_VDSC,CLI_DCAD,CLI_DFUN,CLI_DALT,CLI_DULT,CLI_VULT,CLI_DDD,CLI_TEL1,REP_FANT,USU_DUSU,CLI_STPD,CLI_DTRA,CLI_DUSU,');
       SQL.Add('       TRIM(CAST(SUBSTRING(CLI_OBSO FROM 1 FOR 512) AS VARCHAR(512))) CLI_OBSO');
       SQL.Add('FROM   CAD_CLI');
       SQL.Add('LEFT   OUTER JOIN CAD_USU ON CAD_CLI.CLI_CVEN = CAD_USU.USU_CUSU');
@@ -3478,7 +3187,8 @@ begin
       cbcnat.SetFocus;
     end else
     begin
-      Application.CreateForm (Tfrmcad_cli, frmcad_cli);
+      FRMCAD_CLI := TFRMCAD_CLI.Create(Self);
+
       with frmcad_cli.cadastro do
       begin
         SQL.Clear;
@@ -3529,7 +3239,7 @@ begin
     begin
       SQL.Clear;
       SQL.Add('SELECT CAD_FOR.ID,FOR_FANT,FOR_RAZA,FOR_CNPJ,FOR_CPF,FOR_CRED,FOR_CID,FOR_BAI,FOR_TLOG,FOR_LOGR,FOR_NUME,FOR_CEP,FOR_COMP,FOR_ESTA,FOR_STA,FOR_STAV,FOR_DPAG,');
-      SQL.Add('       FOR_VDSC,FOR_DCAD,FOR_DFUN,FOR_DALT,FOR_DULT,FOR_VULT,FOR_DDD,FOR_TEL1,REP_FANT,USU_DUSU,FOR_STPD,FOR_DTRA,FOR_DUSU,FOR_ENVMAIL,');
+      SQL.Add('       FOR_VDSC,FOR_DCAD,FOR_DFUN,FOR_DALT,FOR_DULT,FOR_VULT,FOR_DDD,FOR_TEL1,REP_FANT,USU_DUSU,FOR_STPD,FOR_DTRA,FOR_DUSU,');
       SQL.Add('       TRIM(CAST(SUBSTRING(FOR_OBSO FROM 1 FOR 512) AS VARCHAR(512))) FOR_OBSO');
       SQL.Add('FROM   CAD_FOR');
       SQL.Add('LEFT   OUTER JOIN CAD_USU ON CAD_FOR.FOR_CVEN = CAD_USU.USU_CUSU');
@@ -3615,7 +3325,7 @@ begin
       cad_for.Open;
     end else
     begin
-      Application.CreateForm (Tfrmcad_for, frmcad_for);
+      FRMCAD_FOR := TFRMCAD_FOR.Create(Self);
       with frmcad_for.cadastro do
       begin
         SQL.Clear;
@@ -3777,6 +3487,7 @@ begin
   nfe_001NFE_IPRO.Value    := 0;
   nfe_001NFE_ITEMPED.Value := Aux_S.Fields[0].AsInteger + 1;
   nfe_001NFE_QCOM.Value    := 0;
+  nfe_001NFE_RCOM.Value    := 1;
   nfe_001NFE_VUNCOM.Value  := 0;
   nfe_001NFE_VPROD.Value   := 0;
   nfe_001NFE_VNF.Value     := 0;
@@ -3853,7 +3564,6 @@ begin
   eddfav.Text      := cad_cliCLI_FANT.AsString;
   EDxNome.Text     := cad_cliCLI_RAZA.AsString;
   PEEmail.Text     := cad_cliCLI_MAIL.AsString;
-  IEEnvMail.Text   := IntToStr(cad_cliCLI_ENVMAIL.AsInteger);
   edCNPJ.Text      := cad_cliCLI_CNPJ.AsString;
   edCPF.Text       := cad_cliCLI_CPF.AsString;
   EDISUF.Text      := cad_cliCLI_CCM.AsString;
@@ -3957,7 +3667,6 @@ begin
   eddfav.Text     := cad_forFOR_FANT.AsString;
   EDxNome.Text    := cad_forFOR_RAZA.AsString;
   PEEmail.Text    := cad_forFOR_MAIL.AsString;
-  IEEnvMail.Text  := IntToStr(cad_forFOR_ENVMAIL.AsInteger);
   edCNPJ.Text     := cad_forFOR_CNPJ.AsString;
   edCPF.Text      := cad_forFOR_CPF.AsString;
   edDDD.Text      := cad_forFOR_DDD.AsString;
@@ -4387,6 +4096,9 @@ begin
     siSCL.Enabled := true;
     siCCL.Enabled := true;
   end;
+
+  if PCEdicao.ActivePage = TSServico then
+  DBGCLI.SetFocus;
 end;
 
 procedure Tfrmven_nfe.cli_001AfterInsert(DataSet: TDataSet);
@@ -4401,6 +4113,9 @@ begin
 
     dbgcli.FocusedColumn := 0;
   end;
+
+  if PCEdicao.ActivePage = TSServico then
+  DBGCLI.SetFocus;
 end;
 
 procedure Tfrmven_nfe.cli_001AfterOpen(DataSet: TDataSet);
@@ -4430,6 +4145,9 @@ begin
     dbgnfeNFE_QCOM.Tag := 0; 
     wRec := cli_001.GetBookmark;
     oRTransact(TSheild);
+
+    if Pos('/',CBCNAT.Text) > 0 then
+    CALCULA_MAO_OBRA;
     Calcula_NF;
 
     if (wRec = Nil) or (cli_001.Fields[0].IsNull) then cli_001.last else
@@ -4536,7 +4254,7 @@ begin
   end;
   if not tab_nat.Fields[0].IsNull then
   begin
-    nfe_001NFE_CSTIPI.Value    := IFThen(nfe_001NFE_PIPI.AsFloat > 0,tab_natNAT_CSTI.AsString,tab_natNAT_CSTI0.AsString);
+    nfe_001NFE_CSTIPI.Value    := tab_natNAT_CSTI.AsString;
     nfe_001NFE_CSTPIS.Value    := tab_natNAT_CSTP.AsString;
     nfe_001NFE_PPIS.Value      := tab_natNAT_PIPP.AsFloat;
     nfe_001NFE_CSTCOFINS.Value := tab_natNAT_CSTC.AsString;
@@ -4598,14 +4316,12 @@ begin
     end;
     nfe_001NFE_VPROD.Value := RoundTO(nfe_001NFE_QCOM.AsFloat * nfe_001NFE_VUNCOM.AsFloat,-2);
   end;
-  if dbgnfeNFE_QCOM.Tag = 1 then
-  BCalc := False;
 end;
 
 procedure Tfrmven_nfe.nfe_001NFE_PIPIValidate(Sender: TField);
 begin
   if IEFinNFe.Text <> '2' then
-     nfe_001NFE_CSTIPI.Value := IFThen(nfe_001NFE_PIPI.AsFloat > 0,tab_natNAT_CSTI.AsString,tab_natNAT_CSTI0.AsString);
+     nfe_001NFE_CSTIPI.Value := tab_natNAT_CSTI.AsString;
 end;
 
 procedure Tfrmven_nfe.nfe_001NFE_VPRODValidate(Sender: TField);
@@ -4645,7 +4361,7 @@ begin
     begin
       if LeftStr(nfe_001NFE_CEAN.AsString,3) <> '789' then nfe_001NFE_CEAN.Value := '';
 
-      if nfe_001NFE_CCAB.AsInteger <> 99999 then
+      if (nfe_001NFE_CCAB.AsInteger <> 99999) and (nfe_001.State = dsInsert) then
          nfe_001NFE_PICMS.Value := IFThen((nfe_001NFE_CST.AsString <> '900') and (RECParametros.RegimeTributario = '1'),0,
                                    IFThen(PEUF.Text = 'EX',RECParametros.PICMS,
                                    IFThen((Pos(nfe_001NFE_ORIG.AsString,'123') > 0) and (PEUF.Text <> RECParametros.UnidadeFederada),4,tab_alqALQ_ICMS.AsFloat)));
@@ -4823,11 +4539,44 @@ procedure Tfrmven_nfe.dbgnfeCustomDrawCell(Sender: TObject;
   var AAlignment: TAlignment; var ADone: Boolean);
 begin
   if not ASelected then
-     if ANode.Values[DBGNFeNFE_FLAG.Index] = '1' then
-     begin
-       AFont.Color := clwhite;
-       AColor      := $00E1AD40;
-     end;
+  begin
+    { Zebra
+    if (ANode.Values[DBGNFEMAO_OBRA.Index] <> Null) then
+    if (ANode.Values[DBGNFEMAO_OBRA.Index]  = 1   ) then
+    AColor := $00F3F3F3 else
+    AColor := clHighLightText; }
+
+    if  (ANode.Values[DBGNFENFE_ITEMPED.Index] <> Null) then
+    if ((ANode.Values[DBGNFENFE_ITEMPED.Index] >= 04) and (ANode.Values[DBGNFENFE_ITEMPED.Index] <= 06)) or
+       ((ANode.Values[DBGNFENFE_ITEMPED.Index] >= 10) and (ANode.Values[DBGNFENFE_ITEMPED.Index] <= 12)) then
+    begin
+      AColor      := clBtnFace;
+      AFont.Color := clWindowText;
+    end;
+
+    if (ANode.Values[DBGNFeMAO_OBRA.Index] <> Null) then
+    if (ANode.Values[DBGNFeMAO_OBRA.Index] = 1    ) then
+
+    if (AColumn = DBGNFENFE_ITEMPED) or (AColumn = DBGNFENFE_CFOP ) or (AColumn = DBGNFENFE_NCM) or
+       (AColumn = DBGNFENFE_CPROD  ) or (AColumn = DBGNFENFE_XPROD) then
+    begin
+      AFont.Style := [fsBold];
+    end;
+
+    if (AColumn = DBGNFENFE_CST) or (AColumn = DBGNFENFE_VBC) or (AColumn = DBGNFENFE_PICMS) or (AColumn = DBGNFENFE_VICMS) then
+    if (ANode.Values[DBGNFENFE_VICMS.Index] <> Null) then
+    if (ANode.Values[DBGNFeNFE_VICMS.Index]  > 0   ) then
+    begin
+      AFont.Style := [fsBold];
+    end;
+
+    if (ANode.Values[DBGNFENFE_FLAG.Index] <> Null) then
+    if (ANode.Values[DBGNFeNFE_FLAG.Index] = '1'  ) then
+    begin
+      AColor      := $00E1AD40;
+      AFont.Color := clwhite;
+    end;
+  end;
 end;
 
 procedure Tfrmven_nfe.dbgnfeNFE_QCOMValidate(Sender: TObject;
@@ -4869,8 +4618,9 @@ var
   tPag,
   tInfAdic,
   autXML: array of ShortString;
-  tProd : aNFe;
-  x: Word;
+
+  tProd : ANFe;
+  x: word;
   BRet: Boolean;
 begin
   try
@@ -4880,20 +4630,20 @@ begin
     sbMAIN.Panels[0].Text := 'Gerando NF-e';
     sbMAIN.Refresh;
 
-    SetLength(tIde    ,44);              //ide
+    SetLength(tIde    ,46);              //ide
     SetLength(tEmit   ,15);              //emit
     SetLength(tDest   ,56);              //dest
-    SetLength(tProd   ,EDTRCom.Tag,206); //prod
-    SetLength(tTotal  ,42);              //total
+    SetLength(tProd   ,EDTRCom.Tag,297); //prod
+    SetLength(tTotal  ,71);              //total
     SetLength(tTransp ,28);              //transp
     SetLength(tCobr   ,11);              //cobr
-    SetLength(tPag    ,9);               //pag
-    SetLength(tInfAdic,25);              //infAdic
+    SetLength(tPag    ,14);              //pag
+    SetLength(tInfAdic,27);              //infAdic
     SetLength(autXML  ,1);               //autXML
 
     {Tag do Grupo das informações de identificação da NFe }
     tIde[00] := FrmPrincipal.ParametrosPAR_CUF.AsString;  //<cUF> Código da UF do emitente do Documento Fiscal
-//    tIde[01] := IntToStr(Random(StrToInt(edcdnf.Text))+1); //<cNF> Código Numérico que compõe a Chave de Acesso - Numero aleatorio: apenas 8 digitos: NF-e 2.00
+//  tIde[01] := IntToStr(Random(StrToInt(edcdnf.Text))+1); //<cNF> Código Numérico que compõe a Chave de Acesso - Numero aleatorio: apenas 8 digitos: NF-e 2.00
     tIde[01] := oStrZero(DayOf(DEdhEmi.Date),8-Length(IntToStr(StrToInt(edcdnf.Text))))+IntToStr(StrToInt(edcdnf.Text));        //<cNF> Código Numérico que compõe a Chave de Acesso - Numero aleatorio: apenas 8 digitos: NF-e 2.00
     tIde[02] := oREPAcentos(cbdnat.Text);               //<natOp> Descrição da Natureza da Operação
     tIde[03] := '';                                     //<indPag> Indicador da forma de pagamento - Retirado na versão 4.00
@@ -4908,6 +4658,30 @@ begin
     tIde[10] := FrmPrincipal.ParametrosPAR_CCID.AsString; //<cMunFG> Código do Município de Ocorrência do Fato Gerador - composto de 7 dígitos numéricos
     tIde[11] := '1';                                    //<tpEmis> Tipo de Emissão da NF-e
     tIde[12] := IEFinNFe.Text;                          //<finNFe> Finalidade de emissão da NF-e - 1=NF-e Normal; 2=NF-e Complementar; 3=NF-e Ajuste; 4=Devolução de mercadoria
+
+    { NRT - NOVA REFORMA TRIBUTÁRIA }
+    tIde[42] := '';  // <cMunFGIBS> Código do Município de ocorrência do fato gerador do IBS / CBS
+                    {
+                     Preencher somente quando “indPres = 5 (Operação
+                     presencial, fora do estabelecimento)”, e não tiver endereço do
+                     destinatário (Grupo: E05) ou local de entrega (Grupo: G01)*
+                    }
+
+    tIde[43] := ''; // <tpNFDebito> Tipo de Nota de Débito
+                    {
+                     01 = Transferência de créditos para Cooperativas;
+                     02 = Anulação de Crédito por Saídas Imunes/Isentas;
+                     03 = Débitos de notas fiscais não processadas na apuração;
+                     04 = Multa e juros;
+                     05 = Transferência de crédito de sucessão.
+                    }
+
+    tIde[44] := '';  // <tpNFCredito> Tipo de Nota de Crédito
+                     {
+                      01 = Multa e juros
+                      02 = Apropriação de crédito presumido de IBS sobre o saldo devedor na ZFM
+                      03 = Retorno
+                     }
 
     { Tag Grupo de informação das NF-e´s referenciadas. Informar ";" no final de cada ocorrência do grupo.}
     tIde[13] := ''; //<refNFe>  - chave da nfe referenciada  (Grupo 1/5: até 5 chaves de NF-e)
@@ -4956,6 +4730,7 @@ begin
     tIde[42] := '';  //CNPJ - Informar o CNPJ do Intermediador da Transação (agenciador, plataforma de delivery, marketplace e similar) de serviços e de negócios.
     tIde[43] := '';  //idCadIntTran  - Nome do usuário ou identificação do perfil do vendedor no site do intermediador (agenciador, plataforma de delivery, marketplace e similar) de serviços e de negócios.
 
+    tIde[45] := ''; //<refNFe> Chave de acesso da NF-e de antecipação de pagamento
 
     { Tag de Grupo de identificação do emitente da NF-e }
     tEmit[00] := FrmPrincipal.ParametrosPAR_RAZA.AsString;     //<xNome>
@@ -5067,7 +4842,7 @@ begin
       tProd[x,146] := oREPAcentos(nfe_001NFE_CEST.AsString);  //<CEST>
       tProd[x,156] := '';                                     //<indEscala> Indicador de Escala Relevante - S - Produzido em Escala Relevante; N – Produzido em Escala NÃO Relevante. -> Campo Novo Obrigatorio NFE 4.0
       tProd[x,157] := '';                                     //<CNPJFab> CNPJ do Fabricante da Mercadoria, obrigatório para produto em escala NÃO relevante -> Campo Novo NFE 4.0
-      tProd[x,158] := '';                                     //<cBenef> Código de Benefício Fiscal utilizado pela UF, aplicado ao item. -> Campo Novo NFE 4.0
+      tProd[x,158] := 'SEM CBENEF';                           //<cBenef> Código de Benefício Fiscal utilizado pela UF, aplicado ao item. -> Campo Novo NFE 4.0
       tProd[x,004] := nfe_001NFE_EXTIPI.AsString;                                                                      //<EXTIPI>
       tProd[x,005] := nfe_001NFE_CFOP.AsString;                                                                        //<CFOP> Código Fiscal de Operações e Prestações
       tProd[x,006] := nfe_001NFE_UCOM.AsString;                                                                        //<uCom> Uniade Comercial
@@ -5161,13 +4936,24 @@ begin
       tProd[x,174] := ''; //<pFCPSTRet> Percentual do FCP retido anteriormente por Substituição Tributária
       tProd[x,175] := ''; //<vFCPSTRet> Valor do FCP retido anteriormente por Substituição Tributária
 
-      tProd[x,046] := nfe_001NFE_MODBCST.AsString;                                                                         //<modBCST> Modalidade de determinação da BC do ICMS ST
-      tProd[x,047] := IFThen(not oEmpty(nfe_001NFE_MVAST.AsFloat   ),oTextToValor(nfe_001NFE_MVAST.AsFloat   ,4,True),''); //<pMVAST> Percentual da margem de valor Adicionado do ICMS ST
-      tProd[x,048] := IFThen(not oEmpty(nfe_001NFE_PREDBCST.AsFloat),oTextToValor(nfe_001NFE_PREDBCST.AsFloat,4,True),''); //<pRedBCST> Percentual da Redução de BC do ICMS ST
-      tProd[x,049] := IFThen(not oEmpty(nfe_001NFE_VBCST.AsFloat   ),oTextToValor(nfe_001NFE_VBCST.AsFloat   ,2,True),''); //<vBCST>    //icms60, icmspart, ICMSSN500: <vBCSTRet>
-      tProd[x,050] := IFThen(not oEmpty(nfe_001NFE_pICMSST.AsFloat ),oTextToValor(nfe_001NFE_pICMSST.AsFloat ,2,True),''); //<pICMSST>
-      tProd[x,051] := IFThen(not oEmpty(nfe_001NFE_VICMSST.AsFloat ),oTextToValor(nfe_001NFE_VICMSST.AsFloat ,2,True),''); //<vICMSST>  //icms60,ICMSSN500: <vICMSSTRet>
-      tProd[x,052] := IFThen(not oEmpty(nfe_001NFE_PREDBC.AsFloat  ),oTextToValor(nfe_001NFE_PREDBC.AsFloat  ,2,True),''); //<pRedBC>
+      tProd[x,046] := '0';
+      tProd[x,047] := '0';
+      tProd[x,048] := '0';
+      tProd[x,049] := '0';
+      tProd[x,050] := '0';
+      tProd[x,051] := '0';
+      tProd[x,052] := '0';
+
+      if NFE_001NFE_MODBCST.AsString <> EmptyStr then
+      begin
+        tProd[x,046] := NFE_001NFE_MODBCST.AsString;          //<modBCST> Modalidade de determinação da BC do ICMS ST
+        tProd[x,047] := oTextToValor(NFE_001NFE_MVAST.AsFloat   ,4,True); //<pMVAST> Percentual da margem de valor Adicionado do ICMS ST
+        tProd[x,048] := oTextToValor(NFE_001NFE_PREDBCST.AsFloat,4,True); //<pRedBCST> Percentual da Redução de BC do ICMS ST
+        tProd[x,049] := oTextToValor(NFE_001NFE_VBCST.AsFloat   ,2,True); //<vBCST>    //icms60, icmspart, ICMSSN500: <vBCSTRet>
+        tProd[x,050] := oTextToValor(NFE_001NFE_pICMSST.AsFloat ,2,True); //<pICMSST>
+        tProd[x,051] := oTextToValor(NFE_001NFE_VICMSST.AsFloat ,2,True); //<vICMSST>  //icms60,ICMSSN500: <vICMSSTRet>
+        tProd[x,052] := oTextToValor(NFE_001NFE_PREDBC.AsFloat  ,2,True); //<pRedBC>
+      end;
 
       tProd[x,080] := IFThen(not oEmpty(nfe_001NFE_PCREDSN.AsFloat    ),oTextToValor(nfe_001NFE_PCREDSN.AsFloat    ,2,True),''); //<pCredSN> Alíquota aplicável de cálculo do crédito (Simples Nacional).
       tProd[x,081] := IFThen(not oEmpty(nfe_001NFE_VCREDICMSSN.AsFloat),oTextToValor(nfe_001NFE_VCREDICMSSN.AsFloat,2,True),''); //<vCredICMSSN> Valor crédito do ICMS que pode ser aproveitado nos termos do art. 23 da LC 123 (Simples Nacional)
@@ -5333,6 +5119,201 @@ begin
       tprod[x,131] := ''; //<vIPIDevol> Valor do IPI devolvido
       tProd[x,132] := ''; //<pMixGN> Percentual de Gás Natural para o produto GLP (cProdANP=210203001)
 
+      { NRT - NOVA REFORMA TRIBUTÁRIA }
+      // Informações dos tributos IBS / CBS e Imposto Seletivo
+      // tag IS
+      tProd[x,241] := ''; // <CSTIS> Código da Situação Tributária do Imposto Seletivo
+      tProd[x,242] := ''; // <cClassTribIS> Código de Classificação Tributária do Imposto Seletivo
+      tProd[x,243] := ''; // <vBCIS> Valor da Base de Cálculo do Imposto Seletivo
+      tProd[x,244] := ''; // <pIS> Alíquota do Imposto Seletivo
+      tProd[x,245] := ''; // <pISEspec> Alíquota específica por unidade de medida apropriada
+      tProd[x,246] := ''; // <uTrib> Unidade de Medida Tributável
+      tProd[x,247] := ''; // <qTrib> Quantidade Tributável
+      tProd[x,248] := ''; // <vIS> Valor do Imposto Seletivo
+      tProd[x,249] := '';        // IBSCBS <CST> Código de Situação Tributária do IBS e CBS
+      tProd[x,250] := ''; // IBSCBS <cClassTrib> Código de Classificação Tributária do IBS e CBS
+      tProd[x,251] := ''; //gIBSCBS <vBC> Base de Cálculo do IBS e da CBS
+      tProd[x,252] := ''; // <pIBSUF> Alíquota vigente do IBS da UF
+      tProd[x,253] := ''; // <pDif> Percentual do Diferimento
+      tProd[x,254] := ''; // <vDif> Valor do Diferimento
+      tProd[x,255] := ''; //<vDevTrib> Valor do tributo devolvido
+      tProd[x,256] := ''; // <pRedAliq> Percentual de redução da alíquota do cClassTrib
+      tProd[x,257] := ''; // <pAliqEfet> Alíquota Efetiva do IBS de competência da UF que será aplicada a Base de Cálculo
+      tProd[x,258] := ''; // <vIBSUF> gIBSUF Valor do IBS de competência da UF
+      tProd[x,259] := ''; // <pIBSMun> gIBSMun Alíquota do IBS de competência do Município
+      tProd[x,260] := ''; // <pDif> Percentual do Diferimento
+      tProd[x,261] := ''; // <vDif> Valor do Diferimento
+      tProd[x,262] := ''; // <vDevTrib> Valor do tributo devolvido
+      tProd[x,263] := ''; // <pRedAliq> Percentual de redução da alíquota do cClassTrib
+      tProd[x,264] := ''; // <pAliqEfet> Alíquota Efetiva do IBS de competência do Município que será aplicada a Base de Cálculo
+      tProd[x,266] := ''; //gIBSCBS <vIBS> Valor do IBS
+      tProd[x,267] := ''; // <pCBS> gCBS Alíquota da CBS
+      tProd[x,268] := ''; // <pDif> Percentual do Diferimento
+      tProd[x,269] := ''; // <vDif> Valor do Diferimento
+      tProd[x,270] := ''; // <vDevTrib> Valor do tributo devolvido
+      tProd[x,271] := ''; // <pRedAliq> Percentual de redução da alíquota do cClassTrib
+      tProd[x,272] := ''; // <pAliqEfet> Alíquota Efetiva da CBS que será aplicada a Base de Cálculo
+      tProd[x,273] := ''; // <vCBS> Valor da CBS
+
+      //tag IBSCBS
+      tProd[x,249] := NFE_001NFE_IBSCBS_CSTIS.AsString;        // IBSCBS <CST> Código de Situação Tributária do IBS e CBS
+      tProd[x,250] := NFE_001NFE_IBSCBS_CCLASSTRIBIS.AsString; // IBSCBS <cClassTrib> Código de Classificação Tributária do IBS e CBS
+
+      if NFE_001NFE_IBSCBS_CSTIS.AsString = '000' then
+      begin
+        {Grupo de Informações do IBS e da CBS <gIBSCBS>}
+        {Indexes obrigatórios: 251, 252, 258, 259, 265, 266, 267, 273}
+        tProd[x,251] := oTextToValor(NFE_001NFE_IBSCBS_VBCIBSCBS.AsFloat,2,True); //gIBSCBS <vBC> Base de Cálculo do IBS e da CBS
+
+        {Grupo de Informações do IBS para a UF <gIBSCBS/gIBSUF>}
+        tProd[x,252] := oTextToValor(NFE_001NFE_IBSUF_PIBSUF.ASFloat,4,True); // <pIBSUF> Alíquota vigente do IBS da UF
+        tProd[x,258] := oTextToValor(NFE_001NFE_IBSUF_VIBSUF.ASFloat,2,True); // <vIBSUF> gIBSUF Valor do IBS de competência da UF
+
+        {Grupo de Informações do Diferimento <gIBSCBS/gIBSUF/gDif>}
+        tProd[x,253] := ''; // <pDif> Percentual do Diferimento
+        tProd[x,254] := ''; // <vDif> Valor do Diferimento
+
+        {Grupo de Informações da devolução de tributos <gIBSCBS/gIBSUF/gDevTrib>}
+        tProd[x,255] := ''; //<vDevTrib> Valor do tributo devolvido
+
+        {Grupo de informações da redução da alíquota <gIBSCBS/gIBSUF/gRed>}
+        tProd[x,256] := ''; // <pRedAliq> Percentual de redução da alíquota do cClassTrib
+        tProd[x,257] := ''; // <pAliqEfet> Alíquota Efetiva do IBS de competência da UF que será aplicada a Base de Cálculo
+
+        {Grupo de Informações do IBS para o município <gIBSCBS/gIBSMun>}
+        tProd[x,259] := '0.0000'; // <pIBSMun> gIBSMun Alíquota do IBS de competência do Município
+        tProd[x,265] := '0.00';   // <vIBSMun> gIBSMun Valor do IBS de competência do Município
+
+        {Grupo de Informações do Diferimento <gIBSCBS/gIBSMun/gDif>}
+        tProd[x,260] := ''; // <pDif> Percentual do Diferimento
+        tProd[x,261] := ''; // <vDif> Valor do Diferimento
+
+        {Grupo de Informações da devolução de tributos <gIBSCBS/gIBSMun/gDevTrib>}
+        tProd[x,262] := ''; // <vDevTrib> Valor do tributo devolvido
+
+        {Grupo de informações da redução da alíquota <gIBSCBS/gIBSMun/gRed>}
+        tProd[x,263] := ''; // <pRedAliq> Percentual de redução da alíquota do cClassTrib
+        tProd[x,264] := ''; // <pAliqEfet> Alíquota Efetiva do IBS de competência do Município que será aplicada a Base de Cálculo
+
+        tProd[x,266] := oTextToValor(NFE_001NFE_IBSUF_VIBSUF.ASFloat,2,True); //gIBSCBS <vIBS> Valor do IBS
+
+        {Grupo de informações da CBS}
+        tProd[x,267] := oTextToValor(NFE_001NFE_CBS_PCBS.AsFloat,4,True); // <pCBS> gCBS Alíquota da CBS
+        tProd[x,273] := oTextToValor(NFE_001NFE_CBS_VCBS.AsFloat,2,True); // <vCBS> Valor da CBS
+      end;
+      
+      {Grupo de Informações do Diferimento <gIBSCBS/gCBS/gDif>}
+      tProd[x,268] := ''; // <pDif> Percentual do Diferimento
+      tProd[x,269] := ''; // <vDif> Valor do Diferimento
+
+      {Grupo de Informações da devolução de tributos <gIBSCBS/gCBS/gDevTrib>}
+      tProd[x,270] := ''; // <vDevTrib> Valor do tributo devolvido
+
+      {Grupo de informações da redução da alíquota <gIBSCBS/gCBS/gRed>}
+      tProd[x,271] := ''; // <pRedAliq> Percentual de redução da alíquota do cClassTrib
+      tProd[x,272] := ''; // <pAliqEfet> Alíquota Efetiva da CBS que será aplicada a Base de Cálculo
+
+      {Grupo de Informações do IBS e CBS monofásico <gIBSCBSMono>}
+      {Indexes obrigatórios: 293 e 294}
+
+      {Grupo de informações da Tributação Monofásica Padrão <gMonoPadrao>}
+      {Informar todas as tags do grupo se for gerá-lo}
+      tProd[x,274] := ''; //<qBCMono> Quantidade tributada na monofasia
+      tProd[x,275] := ''; //<adRemIBS> Alíquota ad rem do IBS
+      tProd[x,276] := ''; //<adRemCBS> Alíquota ad rem do CBS
+      tProd[x,277] := ''; //<vIBSMono> Valor do IBS monofásico
+      tProd[x,278] := ''; //<vCBSMono> Valor do CBS monofásico
+
+      {Grupo de informações da Tributação Monofásica Sujeita a retenção <gMonoReten>}
+      {Informar todas as tags do grupo se for gerá-lo}
+      tProd[x,279] := ''; //<qBCMonoReten> Quantidade tributada sujeita a retenção na monofasia
+      tProd[x,280] := ''; //<adRemIBSReten> Alíquota ad rem do IBS sujeito a retenção
+      tProd[x,281] := ''; //<vIBSMonoReten> Valor do IBS monofásico sujeito a retenção
+      tProd[x,282] := ''; //<adRemCBSReten> Alíquota ad rem do CBS sujeito a retenção
+      tProd[x,283] := ''; //<vCBSMonoReten> Valor da CBS monofásica sujeita a retenção
+
+      {Grupo de informações da Tributação Monofásica Retida Anteriormente <gMonoRet>}
+      {Informar todas as tags do grupo se for gerá-lo}
+      tProd[x,284] := ''; //<qBCMonoRet> Quantidade tributada retida anteriormente
+      tProd[x,285] := ''; //<adRemIBSRet> Alíquota ad rem do IBS retido anteriormente
+      tProd[x,286] := ''; //<vIBSMonoRet> Valor do IBS monofásico retido anteriormente
+      tProd[x,287] := ''; //<adRemCBSRet> Alíquota ad rem do CBS retida anteriormente
+      tProd[x,288] := ''; //<vCBSMonoRet> Valor da CBS monofásica retida anteriormente
+
+      {Grupo de informações do Diferimento da Tributação Monofásica <gMonoDif>}
+      {Informar todas as tags do grupo se for gerá-lo}
+      tProd[x,289] := ''; //<pDifIBS> Percentual do diferimento do IBS monofásico
+      tProd[x,290] := ''; //<vIBSMonoDif> Valor do IBS monofásico diferido
+      tProd[x,291] := ''; //<pDifCBS> Percentual do diferimento da CBS monofásica
+      tProd[x,292] := ''; //<vCBSMonoDif> Alíquota ad rem do CBS retida anteriormente
+
+      tProd[x,293] := ''; //gIBSCBSMono <vTotIBSMonoItem> Total de IBS monofásico
+      tProd[x,294] := ''; //gIBSCBSMono <vTotCBSMonoItem> Total da CBS monofásica
+
+      {Tranferências de Crédito <gTransfCred>}
+      tProd[x,295] := ''; //<vIBS> Valor do IBS a ser transferido
+      tProd[x,296] := ''; //<vCBS> Valor da CBS a ser transferida
+
+  		{ NT 2016.002 v1.60 - Jun/2018}
+  		tProd[x,200] := '';	//pRedBCEfet
+  		tProd[x,201] := '';	//vBCEfet
+  		tProd[x,202] := '';	//pICMSEfet
+  		tProd[x,203] := '';	//vICMSEfet
+
+  		{ NT 2018_005 v1.20 mar/2019}
+  		tProd[x,204] := '';	//vICMSSubstituto NT 2018_005 v1.20
+  		tProd[x,205] := ''; //<xMotivoIsencao> CMotivo da isenção da ANVISA   NT 2018_005 v1.20
+
+      tProd[x,206] := ''; //<cBarra> Código de barras diferente do padrão GTIN NT 2017_001 v1.40
+      tProd[x,207] := ''; //<cBarraTrib> Código de Barras da unidade tributável que seja diferente do padrão GTIN. NT 2017_001 v1.40
+      tProd[x,208] := ''; //<indSomaPISST> Indica se o valor do PISST compõe o valor total da NF-e. NT 2017_001 v1.40
+      tProd[x,209] := ''; //<indSomaCOFINSST> Indica se o valor da COFINS ST compõe o valor total da NFe. NT 2017_001 v1.40
+
+      tProd[x,210] := ''; //<pFCPDif> Percentual do diferimento do ICMS relativo ao FCP
+      tProd[x,211] := ''; //<vFCPDif> Valor do ICMS relativo ao FCP
+      tProd[x,212] := ''; //<vFCPEfet> Valor efetivo do ICMS relativo ao FCP
+
+      tProd[x,213] := ''; //<vICMSSTDeson> Valor do ICMS- ST desonerado
+      tProd[x,214] := ''; //<motDesICMSST> Motivo da desoneração do ICMS-ST
+
+      tProd[x,215] := ''; //pBCOp
+      tProd[x,216] := ''; //UFST
+
+      { Combustíveis Ticket #515270 }
+      tProd[x,217] := ''; //pBio
+      tProd[x,218] := ''; //indImport
+      tProd[x,219] := ''; //cUFOrig
+      tProd[x,220] := ''; //pOrig
+
+      tProd[x,221] := ''; //adRemICMS
+      tProd[x,222] := ''; //adRemICMSReten
+      tProd[x,223] := ''; //adRemICMSRet
+
+      tProd[x,224] := ''; //vICMSMono
+      tProd[x,225] := ''; //vICMSMonoOp
+      tProd[x,226] := ''; //vICMSMonoDif
+      tProd[x,227] := ''; //vICMSMonoReten
+      tProd[x,228] := ''; //vICMSMonoRet
+
+      tProd[x,229] := ''; //qBCMono
+      tProd[x,230] := ''; //qBCMonoReten
+      tProd[x,231] := ''; //qBCMonoRet
+
+      tProd[x,232] := ''; //pRedAdRem
+      tProd[x,233] := ''; //pDif
+      tProd[x,234] := ''; //motRedAdRem
+
+      tProd[x,235] := ''; //indDeduzDeson
+      //if (EDISUF.Text <> EmptyStr) and (RECRomaneio.ZFM_CMUN) and (NFE_001NFE_MOTDESICMS.AsInteger = 7) then
+      //tProd[x,235] := '1'; //indDeduzDeson
+
+      tProd[x,236] := ''; //cBenefRBC
+      tProd[x,238] := oTextToValor(NFE_001NFE_VUNCOM.AsFloat,9,True); //<vItem> Valor total do Item, correspondente à sua participação no total da nota. A soma dos itens deverá corresponder ao total da nota.
+
+      //Referenciamento de item de outro Documento Fiscal Eletrônico
+      tProd[x,239] := ''; //<chaveAcesso> Chave de acesso do DF-e referenciado
+      tProd[x,240] := ''; //<nItem> Número do item do documento referenciado
+
       inc(x);
       nfe_001.Next;
     end;
@@ -5425,16 +5406,16 @@ begin
      *90= Sem pagamento
      *99=Outros *}
 
-    if IEFinNFe.Text <> '1' then
+    if cbdupl.Text = 'SIM' then
+    begin
+      tPag[0] := '15;';                                   //<tPag>   Forma de Pagamento
+      tPag[1] := oTextToValor(IFThen(cbdupl.Text = 'SIM',EDVDup.Text,EDVNF.Text),2,True)+';'; //<vPag>   Valor do Pagamento
+      tPag[7] := IFThen(cbdpag.Text = 'A VISTA','0','1')+';';                                 //<indPag> Indicador de pgto 0|1
+    end else
     begin
       tPag[0] := '90;';   //<tPag>   Forma de Pagamento
       tPag[1] := '0.00;'; //<vPag>   Valor do Pagamento
       tPag[7] := '';      //<indPag> Indicador de pgto 0|1
-    end else
-    begin
-      tPag[0] := IFThen(cbdupl.Text = 'SIM','15','99')+';';                                   //<tPag>   Forma de Pagamento
-      tPag[1] := oTextToValor(IFThen(cbdupl.Text = 'SIM',EDVDup.Text,EDVNF.Text),2,True)+';'; //<vPag>   Valor do Pagamento
-      tPag[7] := IFThen(cbdpag.Text = 'A VISTA','0','1')+';';                                 //<indPag> Indicador de pgto 0|1
     end;
 
     {* 1=Pagamento integrado com o sistema de automação da empresa (Ex.: equipamento TEF, Comércio Eletrônico);
@@ -5461,6 +5442,100 @@ begin
     tTotal[11] := oTextToValor(edvcofins.Text,2,True); //<vCOFINS>
     tTotal[12] := oTextToValor(edvoutro.Text ,2,True); //<vOutro>
     tTotal[13] := oTextToValor(edvnf.Text    ,2,True); //<vNF>
+
+    tTotal[39] := '0.00'; //ICMSTot <vFCPST> Valor Total do FCP (Fundo de Combate à Pobreza) retido por substituição tributária
+    tTotal[40] := '0.00'; //ICMSTot <vFCPSTRet> Valor Total do FCP retido anteriormente por Substituição Tributária
+    tTotal[41] := '0.00'; //ICMSTot <vIPIDevol> Valor Total do IPI devolvido
+
+    tTotal[26] := '0.00'; // <vTotTrib>
+
+    { Totais ICMSUF }
+    tTotal[37] := '0.00'; //oTextToValor(FIS_NFE_SUMNFE_VFCPUFDEST.AsFloat,2,True);  //ICMSTot <vFCPUFDest>
+
+    //if FIS_NFE_SUMNFE_VICMSUFDEST.AsFloat > 0 then
+    //tTotal[35] := oTextToValor(FIS_NFE_SUMNFE_VICMSUFDEST.AsFloat,2,True); //ICMSTot <vICMSUFDest>
+
+    tTotal[36] := '0.00'; //ICMSTot <vICMSUFRemet>
+    tTotal[38] := '0.00'; //ICMSTot <vFCP> Valor Total do FCP (Fundo de Combate à Pobreza)
+
+    { grupo ISSQN }
+    tTotal[14] := ''; //ISSQNtot <vServ>
+    tTotal[15] := ''; //ISSQNtot <vBC>
+    tTotal[16] := ''; //ISSQNtot <vISS>
+    tTotal[17] := ''; //ISSQNtot <vPIS>
+    tTotal[18] := ''; //ISSQNtot <vCOFINS>
+
+    tTotal[28] := FormatDateTime('yyyy-mm-dd',DEdhEmi.Date); //ISSQNtot <dCompet>
+    tTotal[29] := ''; //ISSQNtot <vDeducao>
+    tTotal[30] := ''; //ISSQNtot <vOutro>
+    tTotal[31] := ''; //ISSQNtot <vDescIncond>
+    tTotal[32] := ''; //ISSQNtot <vDescCond>
+    tTotal[33] := ''; //ISSQNtot <vISSRet>
+    tTotal[34] := ''; //ISSQNtot <cRegTrib>
+
+    { retTrib: Grupo de Retenções de Tributos }
+    tTotal[19] := ''; //retTrib  <vRetPIS>
+    tTotal[20] := ''; //retTrib  <vRetCOFINS>
+    tTotal[21] := ''; //retTrib  <vRetCSLL>
+    tTotal[22] := ''; //retTrib  <vBCIRRF>
+    tTotal[23] := ''; //retTrib  <vIRRF>
+    tTotal[24] := ''; //retTrib  <vBCRetPrev>
+    tTotal[25] := ''; //retTrib  <vRetPrev>
+
+    { <ICMSTot> Tributacao ICMS monofásico. Ticket #515270 }
+    tTotal[42] := ''; //qBCMono
+    tTotal[43] := ''; //vICMSMono
+    tTotal[44] := ''; //qBCMonoReten
+    tTotal[45] := ''; //vICMSMonoReten
+    tTotal[46] := ''; //qBCMonoRet
+    tTotal[47] := ''; //vICMSMonoRet
+
+    { NRT - NOVA REFORMA TRIBUTÁRIA }
+    //<ISTot> Grupo total do imposto seletivo
+    tTotal[48] := ''; //<vIS> Total do Imposto Seletivo
+
+    //<IBSCBSTot> Totais da NF-e com IBS e CBS
+    tTotal[49] := oTextToValor(EDNFE_IBSCBS_VBCIBSCBS.Text,2,True); //<vBCIBSCBS> Valor total da BC do IBS e da CBS
+
+    {<gIBS> Grupo Total do IBS}
+    {Para gerar este grupo todas tags abaixo devem ser informadas}
+
+    {<gIBSUF> Grupo Total do IBS da UF}
+    tTotal[50] := '0.00'; //<vDif> Valor total do diferimento
+    tTotal[51] := '0.00'; //<vDevTrib> Valor total de devolução de tributos
+    tTotal[52] := oTextToValor(EDNFE_IBSUF_VIBSUF.Text,2,True); //<vIBSUF> Valor total do IBS da UF
+
+    {<gIBSMun> Grupo Total do IBS do Município}
+    tTotal[53] := '0.00'; //<vDif> Valor total do diferimento
+    tTotal[54] := '0.00'; //<vDevTrib> Valor total de devolução de tributos
+    tTotal[55] := '0.00'; //<vIBSMun> Valor total do IBS da UF
+
+    tTotal[56] := oTextToValor(EDNFE_IBSUF_VIBSUF.Text,2,True); //<vIBS> Valor total do IBS
+    tTotal[57] := '0.00'; //<vCredPres> Valor total do crédito presumido
+    tTotal[58] := '0.00'; //<vCredPresCondSus> Valor total do crédito presumido em condição suspensiva
+
+    {<gCBS> Grupo Total da CBS}
+    {Para gerar este grupo todas tags abaixo devem ser informadas}
+    tTotal[59] := '0.00'; //<vDif> Valor total do diferimento
+    tTotal[60] := '0.00'; //<vDevTrib> Valor total de devolução de tributos
+    tTotal[61] := oTextToValor(EDNFE_CBS_VCBS.Text,2,True); //<vCBS> Valor total da CBS
+    tTotal[62] := '0.00'; //<vCredPres> Valor total do crédito presumido
+    tTotal[63] := '0.00'; //<vCredPresCondSus> Valor total do crédito presumido em condição suspensiva
+
+    {<gMono> Grupo Total da Monofasia}
+    {Para gerar este grupo todas tags abaixo devem ser informadas}
+    tTotal[64] := ''; //<vIBSMono> Valor total do IBS Monofásico
+    tTotal[65] := ''; //<vCBSMono> Valor total da CBS Monofásica
+    tTotal[66] := ''; //<vIBSMonoReten> Valor total do IBS Monofásico sujeito a retenção
+    tTotal[67] := ''; //<vCBSMonoReten> Valor total da CBS Monofásica sujeito a retenção
+    tTotal[68] := ''; //<vIBSMonoRet> Valor total do IBS Monofásico retido anteriormente
+    tTotal[69] := ''; //<vCBSMonoRet> Valor total da CBS Monofásica retida anteriormente
+
+    tTotal[70] := ''; //<vNFTot> Valor total da NF-e com IBS / CBS / IS
+
+    if NFE_001NFE_VNFTOT.AsFloat > 0 then
+    tTotal[70] := oTextToValor(NFE_001NFE_VNFTOT.AsFloat,2,True);
+
     tTotal[14] := '';     //ISSQNtot <vServ>
     tTotal[15] := '';     //ISSQNtot <vBC>
     tTotal[16] := '';     //ISSQNtot <vISS>
@@ -5525,7 +5600,10 @@ begin
     tInfAdic[23] := ''; //ProcRef <nProc>
     tInfAdic[24] := ''; //ProcRef <indProc>
 
-    Chave := GeraNFe(tIde,tEmit,tDest,tProd,tTotal,tTransp,tCobr,tPag,tInfAdic,autXML,False);
+    tInfAdic[25] := ''; //infIntermed <CNPJ> - Informar o CNPJ do Intermediador da Transação (agenciador, plataforma de delivery, marketplace e similar) de serviços e de negócios.
+    tInfAdic[26] := ''; //infIntermed <idCadIntTran>  - Nome do usuário ou identificação do perfil do vendedor no site do intermediador (agenciador, plataforma de delivery, marketplace e similar) de serviços e de negócios.
+
+    Chave := GeraNFe(tIde,tEmit,tDest,tProd,tTotal,tTransp,tCobr,tPag,tInfAdic,autXML,True);
 
     if Length(chave) > 44 then
     begin
@@ -6061,7 +6139,7 @@ begin
       if Pos(IEModFrete.Text,'01') = 0 then
       IEModFrete.Text := '0';
     end;
-  end;  
+  end;
 end;
 
 procedure Tfrmven_nfe.CEVFreteValidate(Sender: TObject;
@@ -6094,5 +6172,760 @@ begin
   LAXPed.Refresh;
 end;
 
-end.
+procedure Tfrmven_nfe.CALCULA_NF;
+begin
+  try
+    Tag := 1;
 
+    if ((cbcnat.Text = '6102') and ((IEIndFinal.Text = '1') or (IEindIEDest.Text = '9')) and (PEUF.Text <> RECParametros.UnidadeFederada) and (PEUF.Text <> 'EX')) then
+         PESQUISA_NATUREZA('6108','C');
+
+    nfe_001.DisableControls;
+    nfe_001.First;
+    cli_001.First;
+
+    if (BCalc) and ((IEFinNFe.Text <> '2') and (IEFinNFe.Text <> '3')) then
+    begin
+      if (oTextToValor(EDTDesc.Text) > 0) or (LATDesc.Tag = 1) then
+      begin
+        LATDesc.Tag := 0;
+        EDTDesc.Tag := nfe_001.RecordCount;
+        while not nfe_001.Eof do
+        begin
+          nfe_001.Edit;
+          if LATDesc.Caption = '%' then
+          nfe_001NFE_VDESC.Value := RoundTO((nfe_001NFE_VPROD.AsFloat * oTextToValor(EDTDesc.Text,2))/100,-2) else
+          nfe_001NFE_VDESC.Value := RoundTO(oTextToValor(EDTDesc.Text,2)/EDTDesc.Tag,-2);
+          nfe_001.Post;
+          nfe_001.Next;
+        end;
+        oRTransact(TSheild);
+      end;
+
+      if IEFinNFe.Text <> '2' then
+      while not nfe_001.Eof do
+      begin
+        nfe_001.Edit;
+        if nfe_001NFE_CFOP.AsString <> tab_natNAT_CNAT.AsString then
+        with tab_nat do
+        begin
+          SQL.Clear;
+          SQL.Add('SELECT * FROM TAB_NAT');
+          SQL.Add('WHERE  NAT_CNAT = '''+nfe_001NFE_CFOP.AsString+'''');
+          Open;
+        end;
+
+        if nfe_001NFE_FLAG.AsString <> '1' then
+        begin
+          nfe_001NFE_VBC.Value            := 0;
+          nfe_001NFE_VICMS.Value          := 0;
+          nfe_001NFE_VBCIPI.Value         := 0;
+          nfe_001NFE_VIPI.Value           := 0;
+          nfe_001NFE_VBCPIS.Value         := 0;
+          nfe_001NFE_VPIS.Value           := 0;
+          nfe_001NFE_VBCOFINS.Value       := 0;
+          nfe_001NFE_VCOFINS.Value        := 0;
+          nfe_001NFE_PCREDSN.Value        := 0;
+          nfe_001NFE_VCREDICMSSN.Value    := 0;
+          nfe_001NFE_VICMSST.Value        := 0;
+          nfe_001NFE_PICMSST.Value        := 0;
+          nfe_001NFE_VBCST.Value          := 0;
+          nfe_001NFE_MVAST.Value          := 0;
+          nfe_001NFE_MODBCST.Value        := '';
+          nfe_001NFE_vBCUFDest.Value      := 0;
+          nfe_001NFE_vBCFCPUFDest.Value   := 0;
+          nfe_001NFE_pFCPUFDest.Value     := 0;
+          nfe_001NFE_pICMSUFDest.Value    := 0;
+          nfe_001NFE_pICMSInter.Value     := 0;
+          nfe_001NFE_pICMSInterPart.Value := 0;
+          nfe_001NFE_vFCPUFDest.Value     := 0;
+          nfe_001NFE_vICMSUFDest.Value    := 0;
+          nfe_001NFE_vICMSUFRemet.Value   := 0;
+          nfe_001NFE_INFADTRIB.Value      := '';
+
+          if nfe_001NFE_INDTOT.AsString = '1' then
+          begin
+            if (RECParametros.RegimeTributario = '3') or (nfe_001NFE_CST.AsString = '900') then
+            begin
+              nfe_001NFE_VBC.Value := (nfe_001NFE_VPROD.AsFloat - nfe_001NFE_VDESC.AsFloat);
+
+              if LeftStr(nfe_001NFE_CFOP.AsString,1) <> '3' then
+              begin
+                nfe_001NFE_VBC.Value      := nfe_001NFE_VBC.AsFloat + nfe_001NFE_VFRETE.AsFloat + nfe_001NFE_VSEG.AsFloat;
+                nfe_001NFE_VBCIPI.Value   := IFThen(nfe_001NFE_PIPI.AsFloat > 0,nfe_001NFE_VBC.AsFloat,0);
+                nfe_001NFE_VBCPIS.Value   := nfe_001NFE_VBC.AsFloat;
+                nfe_001NFE_VBCOFINS.Value := nfe_001NFE_VBC.AsFloat;
+              end else
+              begin
+                nfe_001NFE_VBCIPI.Value   := IFThen(nfe_001NFE_PIPI.AsFloat > 0,nfe_001NFE_VBCIMP.AsFloat,0);
+                nfe_001NFE_VBCPIS.Value   := nfe_001NFE_VBCIMP.AsFloat;
+                nfe_001NFE_VBCOFINS.Value := nfe_001NFE_VBCIMP.AsFloat;
+              end;
+
+              nfe_001NFE_VIPI.Value    := RoundTO((nfe_001NFE_VBCIPI.AsFloat   * nfe_001NFE_PIPI.AsFloat)    / 100,-2);
+              nfe_001NFE_VPIS.Value    := RoundTO((nfe_001NFE_VBCPIS.AsFloat   * nfe_001NFE_PPIS.AsFloat)    / 100,-2);
+              nfe_001NFE_VCOFINS.Value := RoundTO((nfe_001NFE_VBCOFINS.AsFloat * nfe_001NFE_PCOFINS.AsFloat) / 100,-2);
+
+              if LeftStr(nfe_001NFE_CFOP.AsString,1) = '3' then
+              begin
+                nfe_001NFE_VBC.Value := RoundTO((nfe_001NFE_VBC.AsFloat + nfe_001NFE_VIPI.AsFloat + nfe_001NFE_VPIS.AsFloat + nfe_001NFE_VCOFINS.AsFloat) / 0.82,-2);
+                nfe_001NFE_VNF.Value := nfe_001NFE_VBC.AsFloat;
+              end else
+              if IEindFinal.Text = '1' then
+              nfe_001NFE_VBC.Value := nfe_001NFE_VBC.AsFloat + nfe_001NFE_VIPI.AsFloat;
+
+              if (nfe_001NFE_CFOP.AsString = '5101')            and (edcnpj.Text <> '') and
+                 (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5402') and
+                 (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5404') and (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5405') and
+                 (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5406') and
+                 (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5501') and (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5502') and
+                 (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5503') and (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5504') and
+                 (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5505') and (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5506') and
+                 (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5507') and
+                 (LeftStr(nfe_001NFE_NCM.AsString,4) <> '5601') and (LeftStr(nfe_001NFE_NCM.AsString,4) <> '6309') and
+                 (nfe_001NFE_NCM.AsString <> '59011000') then
+                 if (LeftStr(nfe_001NFE_NCM.AsString,2) = '50')     or (LeftStr(nfe_001NFE_NCM.AsString,2) = '51') or
+                    (LeftStr(nfe_001NFE_NCM.AsString,2) = '52')     or (LeftStr(nfe_001NFE_NCM.AsString,2) = '53') or
+                    (LeftStr(nfe_001NFE_NCM.AsString,2) = '54')     or (LeftStr(nfe_001NFE_NCM.AsString,2) = '55') or
+                    (LeftStr(nfe_001NFE_NCM.AsString,2) = '56')     or (LeftStr(nfe_001NFE_NCM.AsString,2) = '57') or
+                    (LeftStr(nfe_001NFE_NCM.AsString,2) = '58')     or
+                    (LeftStr(nfe_001NFE_NCM.AsString,2) = '60')     or (LeftStr(nfe_001NFE_NCM.AsString,2) = '61') or
+                    (LeftStr(nfe_001NFE_NCM.AsString,2) = '62')     or (LeftStr(nfe_001NFE_NCM.AsString,2) = '63') or
+                    (LeftStr(nfe_001NFE_NCM.AsString,4) = '5901')   or
+                    (LeftStr(nfe_001NFE_NCM.AsString,5) = '96071')  or
+                    (LeftStr(nfe_001NFE_NCM.AsString,6) = '560130') or
+                    (copy(nfe_001NFE_NCM.AsString,1,7) = '6505001') or
+                    (copy(nfe_001NFE_NCM.AsString,1,7) = '6505002') or
+                    (copy(nfe_001NFE_NCM.AsString,1,7) = '6505003') or
+                    (nfe_001NFE_NCM.AsString = '94049000') then
+                    begin
+                      nfe_001NFE_CST.Value    := '20';
+                      nfe_001NFE_PREDBC.Value := 33.33;
+                      nfe_001NFE_VBC.Value    := nfe_001NFE_VBC.AsFloat - ((nfe_001NFE_VBC.AsFloat * nfe_001NFE_PREDBC.AsFloat)/100);
+                    end;
+
+              if nfe_001NFE_CST.AsString <> '20' then
+              nfe_001NFE_PREDBC.Value := 0;
+              nfe_001NFE_VICMS.Value  := RoundTO((nfe_001NFE_VBC.AsFloat * nfe_001NFE_PICMS.AsFloat) / 100,-2);
+
+              if nfe_001NFE_CST.AsString = '90' then
+              begin
+                nfe_001NFE_VBC.Value   := 0;
+                nfe_001NFE_PICMS.Value := 0;
+                nfe_001NFE_VICMS.Value := 0;
+              end;
+
+              { REDUÇÃO DE PIS / COFINS }
+              if (Pos(RECParametros.Fantasia,'MAX COLORGIROTEXTIL') > 0) then
+              if (LeftStr(nfe_001NFE_CFOP.AsString,1) <> '3') and (LeftStr(nfe_001NFE_CFOP.AsString,1) <> '7') and
+                 (nfe_001NFE_VICMS.AsFloat > 0) then { Redução }
+              begin
+                { PIS }
+                nfe_001NFE_VBCPIS.Value := nfe_001NFE_VBC.AsFloat - nfe_001NFE_VICMS.AsFloat;
+                nfe_001NFE_VPIS.Value   := RoundTO((nfe_001NFE_VBCPIS.AsFloat   * nfe_001NFE_PPIS.AsFloat)    / 100,-2);
+
+                { COFINS }
+                nfe_001NFE_VBCOFINS.Value := nfe_001NFE_VBC.AsFloat - nfe_001NFE_VICMS.AsFloat;
+                nfe_001NFE_VCOFINS.Value  := RoundTO((nfe_001NFE_VBCOFINS.AsFloat * nfe_001NFE_PCOFINS.AsFloat) / 100,-2);
+              end;
+
+              if (nfe_001NFE_PICMS.AsFloat = 4)  and (nfe_001NFE_VI04.AsFloat > 0) and (nfe_001NFE_CFOP.AsString <> '6108') then
+              begin
+                nfe_001NFE_VBCST.Value := nfe_001NFE_VPROD.AsFloat + nfe_001NFE_VIPI.AsFloat    + nfe_001NFE_VFRETE.AsFloat + nfe_001NFE_VSEG.AsFloat;
+                nfe_001NFE_VBCST.Value := nfe_001NFE_VBCST.AsFloat + ((nfe_001NFE_VBCST.AsFloat * nfe_001NFE_VI04.AsFloat)/100);
+              end else
+              if (nfe_001NFE_PICMS.AsFloat = 7) and (nfe_001NFE_VI07.AsFloat > 0) and (nfe_001NFE_CFOP.AsString <> '6108') then
+              begin
+                nfe_001NFE_VBCST.Value := nfe_001NFE_VPROD.AsFloat + nfe_001NFE_VIPI.AsFloat    + nfe_001NFE_VFRETE.AsFloat + nfe_001NFE_VSEG.AsFloat;
+                nfe_001NFE_VBCST.Value := nfe_001NFE_VBCST.AsFloat + ((nfe_001NFE_VBCST.AsFloat * nfe_001NFE_VI07.AsFloat)/100);
+              end else
+              if (nfe_001NFE_PICMS.AsFloat = 12) and (nfe_001NFE_VI12.AsFloat > 0) and (nfe_001NFE_CFOP.AsString <> '6108') then
+              begin
+                nfe_001NFE_VBCST.Value := nfe_001NFE_VPROD.AsFloat + nfe_001NFE_VIPI.AsFloat    + nfe_001NFE_VFRETE.AsFloat + nfe_001NFE_VSEG.AsFloat;
+                nfe_001NFE_VBCST.Value := nfe_001NFE_VBCST.AsFloat + ((nfe_001NFE_VBCST.AsFloat * nfe_001NFE_VI12.AsFloat)/100);
+              end else
+              if (nfe_001NFE_PICMS.AsFloat = 18) and (nfe_001NFE_VI18.AsFloat > 0) and (nfe_001NFE_CFOP.AsString <> '6108') then
+              begin
+                nfe_001NFE_VBCST.Value := nfe_001NFE_VPROD.AsFloat + nfe_001NFE_VIPI.AsFloat    + nfe_001NFE_VFRETE.AsFloat + nfe_001NFE_VSEG.AsFloat;
+                nfe_001NFE_VBCST.Value := nfe_001NFE_VBCST.AsFloat + ((nfe_001NFE_VBCST.AsFloat * nfe_001NFE_VI18.AsFloat)/100);
+              end;
+
+              if nfe_001NFE_VBCST.AsFloat > 0 then
+              begin
+                nfe_001NFE_CFOP.Value    := IFThen(IETPNF.Text = '0','2411',
+                                            IFThen(PEUF.Text   = RECParametros.UnidadeFederada,'5403','6404'));
+                nfe_001NFE_pICMSST.Value := tab_alqALQ_ICMI.AsFloat + tab_alqALQ_FCP.AsFloat;
+                nfe_001NFE_VICMSST.Value := ((nfe_001NFE_VBCST.AsFloat*nfe_001NFE_pICMSST.AsFloat)/100) - nfe_001NFE_VICMS.AsFloat;
+                nfe_001NFE_MVAST.Value   := 50;
+                nfe_001NFE_CST.Value     := '10';
+                nfe_001NFE_MODBCST.Value := '4';
+              end;
+
+              if (nfe_001NFE_ORIG.AsString = '0') and (EDISUF.Text <> '') then
+              begin
+                nfe_001NFE_CFOP.Value     := '6110';
+                nfe_001NFE_VBCPIS.Value   := 0;
+                nfe_001NFE_VPIS.Value     := 0;
+                nfe_001NFE_PPIS.Value     := 0;
+                nfe_001NFE_VBCOFINS.Value := 0;
+                nfe_001NFE_VCOFINS.Value  := 0;
+                nfe_001NFE_PCOFINS.Value  := 0;
+                nfe_001NFE_VNF.Value      := nfe_001NFE_VPROD.AsFloat;
+                nfe_001NFE_VUNCOM.Value   := nfe_001NFE_VUNCOM.AsFloat + ((nfe_001NFE_VUNCOM.AsFloat*7)/100);
+                nfe_001NFE_VUNCOM.AsString:= oTextToValor(nfe_001NFE_VUNCOM.AsString,9);
+                nfe_001NFE_VDESC.Value    := nfe_001NFE_VPROD.AsFloat - nfe_001NFE_VNF.AsFloat;
+              end;
+
+              if (nfe_001NFE_CST.AsString = '40') or (nfe_001NFE_CST.AsString = '41') or (nfe_001NFE_CST.AsString = '50') then
+              begin
+                nfe_001NFE_VBCIPI.Value   := 0;
+                nfe_001NFE_VIPI.Value     := 0;
+                nfe_001NFE_PIPI.Value     := 0;
+                nfe_001NFE_VBCPIS.Value   := 0;
+                nfe_001NFE_VPIS.Value     := 0;
+                nfe_001NFE_PPIS.Value     := 0;
+                nfe_001NFE_VBCOFINS.Value := 0;
+                nfe_001NFE_VCOFINS.Value  := 0;
+                nfe_001NFE_PCOFINS.Value  := 0;
+                nfe_001NFE_VBC.Value      := 0;
+                nfe_001NFE_VICMS.Value    := 0;
+                nfe_001NFE_PICMS.Value    := 0;
+              end;
+
+              if nfe_001NFE_CST.AsString = '51' then
+              begin
+                nfe_001NFE_VBC.Value      := 0;
+                nfe_001NFE_VICMS.Value    := 0;
+                nfe_001NFE_PICMS.Value    := 0;
+                nfe_001NFE_PDIF.Value     := 100.00;
+                nfe_001NFE_VICMSOP.Value  := 0;
+                nfe_001NFE_VICMSDIF.Value := 0;
+                { Ricardo - Calculo para diferimento <> 100% - Criar/Colocar no grid o campo PDIF - Fazer o mesmo para Cadastro de Produtos
+                  nfe_001NFE_PDIF.Value     := 33.33;
+                  nfe_001NFE_VICMSOP.Value  := oTextToValor((nfe_001NFE_VBC.AsFloat *nfe_001NFE_PICMS.AsFloat)   / 100);
+                  nfe_001NFE_VICMSDIF.Value := oTextToValor((nfe_001NFE_PDIF.AsFloat*nfe_001NFE_VICMSOP.AsFloat) / 100);
+                  nfe_001NFE_VICMS.Value    := nfe_001NFE_VICMS.AsFloat - nfe_001NFE_VICMSDIF.AsFloat; }
+              end;
+
+              if (((IEIndFinal.Text = '1') or (IEindIEDest.Text = '9')) and (PEUF.Text <> RECParametros.UnidadeFederada) and (PEUF.Text <> 'EX')) then
+              begin
+                nfe_001NFE_vBCUFDest.Value      := nfe_001NFE_VBC.AsFloat;
+                nfe_001NFE_vBCFCPUFDest.Value   := IFThen(tab_alqALQ_FCP.AsFloat = 0,0,nfe_001NFE_VBC.AsFloat);
+                nfe_001NFE_pFCPUFDest.Value     := tab_alqALQ_FCP.AsFloat;
+                nfe_001NFE_pICMSUFDest.Value    := tab_alqALQ_ICMI.AsFloat + tab_alqALQ_FCP.AsFloat;
+                nfe_001NFE_pICMSInter.Value     := nfe_001NFE_PICMS.AsInteger;
+                nfe_001NFE_pICMSInterPart.Value := 100;
+                nfe_001NFE_vFCPUFDest.Value     := IFThen(tab_alqALQ_FCP.AsFloat = 0,0,(nfe_001NFE_vBCFCPUFDest.AsFloat*nfe_001NFE_pFCPUFDest.AsFloat)/100);
+                nfe_001NFE_vICMSUFDest.Value    := RoundTo((nfe_001NFE_vBCUFDest.AsFloat * (nfe_001NFE_pICMSUFDest.AsFloat - nfe_001NFE_pICMSInter.AsFloat)) / 100,-2);
+                nfe_001NFE_vICMSUFRemet.Value   := 0;
+                nfe_001NFE_INFADTRIB.Value      := Trim('% Partilha UF Dest.: '     +FormatFloat(',##,0.00',nfe_001NFE_pICMSInterPart.AsFloat)+' - '+
+                                                        '% ICMS Inter. UF Dest.: '  +FormatFloat(',##,0.00',nfe_001NFE_pICMSUFDest.AsFloat)   +' - '+
+                                                        'Vlr.ICMS Inter. UF Dest.: '+FormatFloat(',##,0.00',nfe_001NFE_vICMSUFDest.AsFloat)   +' - '+
+                                                        '% ICMS Part. UF Remet.: '  +FormatFloat(',##,0.00',0.00)                             +' - '+
+                                                        'Vlr.ICMS Part. UF Remet.: '+FormatFloat(',##,0.00',nfe_001NFE_vICMSUFRemet.AsFloat));
+              end;
+            end;
+
+            { NRT - NOVA REFORMA TRIBUTÁRIA }
+            { IS
+            NFE_001NFE_CSTIS_UB02.Value        := TAB_NATCSTIS.AsString;
+            NFE_001NFE_CCLASSTRIBIS_UB03.Value := TAB_NATCCLASSTRIBIS.AsString; }
+
+            { IBS CBS }
+            NFE_001NFE_IBSCBS_CSTIS.Value        := TAB_NATCSTCBS.AsString;
+            NFE_001NFE_IBSCBS_CCLASSTRIBIS.Value := TAB_NATCCLASSTRIBCBS.AsString;
+
+            if NFE_001NFE_IBSCBS_CSTIS.AsString = '000' then
+            begin
+              NFE_001NFE_IBSCBS_VBCIBSCBS.Value    :=
+
+              NFE_001NFE_VPROD.AsFloat      + NFE_001NFE_VSERV.AsFloat     + NFE_001NFE_VFRETE.AsFloat       + NFE_001NFE_VSEG.AsFloat  + NFE_001NFE_VOUTRO.AsFloat      + NFE_001NFE_VII.AsFloat  -
+              NFE_001NFE_VDESC.AsFloat      - NFE_001NFE_VPIS.AsFloat      - NFE_001NFE_VCOFINS.AsFloat      - NFE_001NFE_VICMS.AsFloat - NFE_001NFE_VICMSUFDEST.AsFloat - NFE_001NFE_VFCP.AsFloat -
+              NFE_001NFE_VFCPUFDEST.AsFloat - NFE_001NFE_VICMSMONO.AsFloat - NFE_001NFE_ISSQN_VISSQN.AsFloat +
+              NFE_001NFE_IS_VIS.AsFloat;
+
+              { CBS }
+              NFE_001NFE_CBS_VBCCBS.Value := NFE_001NFE_IBSCBS_VBCIBSCBS.AsFloat;
+              NFE_001NFE_CBS_PCBS.Value   := TAB_NATPCBS.AsFloat;
+              NFE_001NFE_CBS_VCBS.Value   := RoundTO((NFE_001NFE_CBS_PCBS.AsFloat / 100) * NFE_001NFE_CBS_VBCCBS.AsFloat,-2);
+
+              { IBS }
+              NFE_001NFE_IBSUF_VBCIBSUF.Value := NFE_001NFE_IBSCBS_VBCIBSCBS.AsFloat;
+              NFE_001NFE_IBSUF_PIBSUF.Value   := TAB_NATPIS.AsCurrency;
+              NFE_001NFE_IBSUF_VIBSUF.Value   := RoundTo((NFE_001NFE_IBSUF_PIBSUF.AsFloat / 100) * NFE_001NFE_IBSCBS_VBCIBSCBS.AsFloat,-2);
+            end else
+            begin
+              NFE_001NFE_IBSCBS_VBCIBSCBS.Value := 0;
+              NFE_001NFE_CBS_VBCCBS.Value       := 0;
+              NFE_001NFE_CBS_VCBS.Value         := 0;
+              NFE_001NFE_IBSUF_VBCIBSUF.Value   := 0;
+              NFE_001NFE_IBSUF_VIBSUF.Value     := 0;
+              NFE_001NFE_VNFTOT.Value           := 0;
+            end;
+
+            { Ricardo - Como a planilha do renato, já está embutido o valor do frete, tive q isolar o VNF para importações }
+            if LeftStr(nfe_001NFE_CFOP.AsString,1) <> '3' then
+               nfe_001NFE_VNF.Value := (nfe_001NFE_VPROD.AsFloat  - nfe_001NFE_VDESC.AsFloat  - nfe_001NFE_VICMSDeson.AsFloat) +
+                                       (nfe_001NFE_VIPI.AsFloat   + nfe_001NFE_VFRETE.AsFloat + nfe_001NFE_VSEG.AsFloat +
+                                        nfe_001NFE_VOUTRO.AsFloat + nfe_001NFE_VICMSST.AsFloat);
+
+            if RECParametros.RegimeTributario = '1' then
+            begin
+              nfe_001NFE_VNF.Value       := nfe_001NFE_VNF.AsFloat;
+              nfe_001NFE_CST.Value       := tab_natNAT_CSTS.AsString;
+              nfe_001NFE_CSTIPI.Value    := '99';
+              nfe_001NFE_VBCIPI.Value    := 0;
+              nfe_001NFE_PIPI.Value      := 0;
+              nfe_001NFE_VIPI.Value      := 0;
+              nfe_001NFE_VBCPIS.Value    := 0;
+              nfe_001NFE_CSTPIS.Value    := '49';
+              nfe_001NFE_PPIS.Value      := 0;
+              nfe_001NFE_VPIS.Value      := 0;
+              nfe_001NFE_VBCOFINS.Value  := 0;
+              nfe_001NFE_CSTCOFINS.Value := '49';
+              nfe_001NFE_PCOFINS.Value   := 0;
+              nfe_001NFE_VCOFINS.Value   := 0;
+
+              if (RECParametros.PCreditoICMS > 0) and (IECredICMS.Text = '1') then
+                 if (LeftStr(nfe_001NFE_CFOP.AsString,4) = '5101') or (LeftStr(nfe_001NFE_CFOP.AsString,4) = '5102') or
+                    (LeftStr(nfe_001NFE_CFOP.AsString,4) = '6101') or (LeftStr(nfe_001NFE_CFOP.AsString,4) = '6102') or
+                    (LeftStr(nfe_001NFE_CFOP.AsString,4) = '5124') or (LeftStr(nfe_001NFE_CFOP.AsString,4) = '6124') or
+                    (LeftStr(nfe_001NFE_CFOP.AsString,4) = '5125') or (LeftStr(nfe_001NFE_CFOP.AsString,4) = '5925') or
+                    (LeftStr(nfe_001NFE_CFOP.AsString,4) = '6107') or (LeftStr(nfe_001NFE_CFOP.AsString,4) = '6108') then
+                 begin
+                   nfe_001NFE_CST.Value         := tab_natNAT_CSTA.AsString;
+                   nfe_001NFE_PCREDSN.Value     := RECParametros.PCreditoICMS;
+                   nfe_001NFE_VCREDICMSSN.Value := RoundTO((nfe_001NFE_PCREDSN.AsFloat * nfe_001NFE_VNF.AsFloat) / 100,-2);
+                 end;
+
+                 if LeftStr(nfe_001NFE_CFOP.AsString,1) = '3' then nfe_001NFE_CST.Value := '900';
+            end;
+          end;
+        end;
+
+        if nfe_001NFE_VBC.AsFloat  = 0 then
+           nfe_001NFE_PICMS.Value := 0;
+           
+        nfe_001.Post;
+        nfe_001.Next;
+      end;
+    end;
+  finally
+    Tag := 0;
+    nfe_001.EnableControls;
+    oRTransact(TSheild);
+
+    with Consulta_S do
+    begin
+      SQL.Clear;
+      SQL.Add('SELECT SUM(NFE_QCOM)    ,SUM(NFE_RCOM)   ,COUNT(*)        ,SUM(NFE_PSBR)  ,SUM(NFE_PSLQ),');
+      SQL.Add('       SUM(NFE_VPROD)   ,SUM(NFE_VDESC)  ,SUM(NFE_VBC)    ,SUM(NFE_VICMS) ,SUM(NFE_VCREDICMSSN),SUM(NFE_VICMSDESON),');
+      SQL.Add('       SUM(NFE_VBCST)   ,SUM(NFE_VICMSST),');
+      SQL.Add('       SUM(NFE_VIPI)    ,SUM(NFE_VPIS)   ,SUM(NFE_VCOFINS),SUM(NFE_VIIIMP)     ,SUM(NFE_VOUTRO),');
+      SQL.Add('       SUM(NFE_VTOTTRIB),SUM(NFE_VFRETE) ,SUM(NFE_VSEG)   ,SUM(NFE_vICMSUFDest),SUM(NFE_VNF),SUM(NFE_vFCPUFDest),');
+
+      { NRT - NOVA REFORMA TRIBUTÁRIA }
+      SQL.Add('       SUM(NFE_IBSCBS_VBCIBSCBS),');
+      SQL.Add('       SUM(NFE_CBS_VBCCBS),');
+      SQL.Add('       SUM(NFE_CBS_VCBS),');
+      SQL.Add('       SUM(NFE_IBSUF_VBCIBSUF),');
+      SQL.Add('       SUM(NFE_IBSUF_VIBSUF),');
+      SQL.Add('       SUM(NFE_VNFTOT)');
+
+      SQL.Add('FROM NFE_ITE');
+      Open;
+
+      { Volume }
+      EDTRCom.Tag  := IFThen(not oEmpty(Fields[02].AsInteger),Fields[02].AsInteger,1);
+      EDTQCom.Text := FormatFloat('#,0.00',Fields[00].AsFloat);
+      EDTRCom.Text := FormatFloat('0'     ,Fields[01].AsInteger);
+
+      if BCalc then
+      begin
+        if Fields[01].AsInteger <> Fields[02].AsInteger then
+        if EDQVol.Tag = 0 then EDQVol.Text := FormatFloat('0',Fields[01].AsInteger) else
+        if EDQVol.Tag = 0 then EDQVol.Text := FormatFloat('0',Fields[02].AsInteger);
+        if EDEsp.Tag  = 0 then EDEsp.Text  := RECParametros.Volume;
+
+        { Peso }
+        if CEPesoB.Tag = 0 then CEPesoB.Text := FormatFloat('#,0.000',Fields[03].AsFloat);
+        if CEPesoL.Tag = 0 then CEPesoL.Text := FormatFloat('#,0.000',Fields[04].AsFloat);
+
+        edvprod.Text       := FormatFloat('#,0.00' ,Fields[05].AsFloat);
+        edvdesc.Text       := FormatFloat('#,0.00' ,Fields[06].AsFloat);
+
+        edvbc.Text         := FormatFloat('#,0.00',Fields[07].AsFloat);
+        edvicms.Text       := FormatFloat('#,0.00',Fields[08].AsFloat);
+        edvcredicmssn.Text := FormatFloat('#,0.00',Fields[09].AsFloat);
+        edvicmsdeson.Text  := FormatFloat('#,0.00',Fields[10].AsFloat);
+
+        edvbcst.Text       := FormatFloat('#,0.00',Fields[11].AsFloat);
+        edvst.Text         := FormatFloat('#,0.00',Fields[12].AsFloat);
+
+        edvipi.Text        := FormatFloat('#,0.00',Fields[13].AsFloat);
+        edvpis.Text        := FormatFloat('#,0.00',Fields[14].AsFloat);
+        edvcofins.Text     := FormatFloat('#,0.00',Fields[15].AsFloat);
+        edvII.Text         := FormatFloat('#,0.00',Fields[16].AsFloat);
+        edvoutro.Text      := FormatFloat('#,0.00',Fields[17].AsFloat);
+        edvtottrib.Text    := FormatFloat('#,0.00',Fields[18].AsFloat);
+        CEVFrete.Value     := Fields[19].AsFloat;
+        CEVSeg.Value       := Fields[20].AsFloat;
+        EDvICMSUFDest.Text := FormatFloat('#,0.00',Fields[21].AsFloat);
+        edvnf.Text         := FormatFloat('#,0.00',Fields[22].AsFloat);
+        edvFCPUFDest.Text  := FormatFloat('#,0.00',Fields[23].AsFloat);
+
+        { NRT - NOVA REFORMA TRIBUTÁRIA }
+        EDNFE_IBSCBS_VBCIBSCBS.Text := FormatFloat('#,0.00',Fields[24].AsFloat);
+        EDNFE_CBS_VBCCBS.Text       := FormatFloat('#,0.00',Fields[25].AsFloat);
+        EDNFE_CBS_VCBS.Text         := FormatFloat('#,0.00',Fields[26].AsFloat);
+        EDNFE_IBSUF_VBCIBSUF.Text   := FormatFloat('#,0.00',Fields[27].AsFloat);
+        EDNFE_IBSUF_VIBSUF.Text     := FormatFloat('#,0.00',Fields[28].AsFloat);
+        EDNFE_VNFTOT.Text           := FormatFloat('#,0.00',Fields[29].AsFloat);
+
+        SQL.Clear;
+        SQL.Add('SELECT SUM(NFE_VDUP) FROM NFE_DUP');
+        Open;
+        if (oTextToValor(edvnf.Text) <> fields[0].AsFloat) and (cbdupl.Text = 'SIM') then
+        DUPLICATAS;
+      end;
+    end;
+
+    if ((LeftStr(cbcnat.Text,1) = '3') and (FrmPrincipal.ParametrosPAR_IEST.AsString = '1')) then
+    begin
+      siEST.Tag        := 1;
+      siEST.Hint       := 'Essa Nota Fiscal Efetuará Baixa no Estoque';
+      siEST.ImageIndex := 11;
+    end;
+
+    ATUALIZA_MENSAGENS;
+  end;
+end;
+
+procedure Tfrmven_nfe.CALCULA_MAO_OBRA;
+var
+  AITEMPED: Integer;
+  AVPRC_COM,
+  ATCDE,
+  APICMS: Double;
+begin
+  AITEMPED := 0;
+
+  { Excluindo itens 2 e 3 - MÃO DE OBRA + TECIDO }
+  with SQLSEdicao do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Add('DELETE FROM NFE_ITE');
+    SQL.Add('WHERE  NFE_REPR = ''M''');
+    ExecQuery;
+  end;
+  oRTransact(TSheild);
+
+  { CFOP }
+  with SQLConsulta do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Add('SELECT CFOP,CST_ICMS,IIF(TPNF = 1,CST_IPI_SAI,CST_IPI_ENT) AS CST_IPI,CST_PIS,PPIS,CST_COFINS,PCOFINS');
+    SQL.Add('FROM   TAB_NAT');
+    SQL.Add('WHERE  CFOP = ''' + LEFTSTR(CBCNAT.Text,4) + '''');
+    ExecQuery;
+  end;
+
+  nfe_001.First;
+  while not nfe_001.Eof do
+  begin
+    AITEMPED := AITEMPED + 1;
+
+    { ITEM - MÃO DE OBRA }
+    with SQLSEdicao do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Add('UPDATE NFE_ITE');
+      SQL.Add('SET    NFE_ITEMPED = ''' + INTTOSTR(AITEMPED) + '''');
+      SQL.Add('WHERE  ID          = ''' + NFE_001ID.AsString + '''');
+      ExecQuery;
+    end;
+
+    { % ICMS }
+    APICMS := IFThen((nfe_001NFE_CST.AsString <> '900') and (RECParametros.RegimeTributario = '1'),0,
+              IFThen(PEUF.Text = 'EX',RECParametros.PICMS,
+              IFThen((Pos(nfe_001NFE_ORIG.AsString,'123') > 0) and (PEUF.Text <> RECParametros.UnidadeFederada),4,tab_alqALQ_ICMS.AsFloat)));
+
+    { ITEM 2 - TINTA APLICADA }
+    AITEMPED  := AITEMPED + 1;
+    AVPRC_COM := nfe_001NFE_PREC.AsFloat * 0.20;
+    ATCDE     := nfe_001NFE_QCOM.AsFloat * AVPRC_COM;
+
+    { TINTAS DIVERSAS }
+    with SQLPKConsulta do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Add('SELECT IDCP,SKU,CEAN,NCM,PIPI,CEST,ORIG,PRO_STAV,');
+      SQL.Add('       DECP,DCCP,');
+      SQL.Add('       UCOM,PRO_PESO,PRO_PSCN,PRO_METR,PRO_REND');
+
+      SQL.Add('FROM   CAD_PRO');
+      SQL.Add('WHERE  SKU = ''919929''');
+      ExecQuery;
+    end;
+
+    with SQLSPKEdicao do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Add('INSERT INTO NFE_ITE');
+
+      SQL.Add('(ID,');
+      SQL.Add('NFE_ITEMPED,NFE_PREC   ,NFE_VUNCOM,NFE_VPROD,NFE_VNF ,NFE_REPR,');
+      SQL.Add('NFE_IPRO   ,NFE_CEAN   ,NFE_CPROD ,NFE_XPROD,NFE_COMP,NFE_STAV,');
+      SQL.Add('NFE_NCM    ,NFE_PIPI   ,NFE_CEST  ,NFE_ORIG ,');
+      SQL.Add('NFE_UCOM   ,NFE_UTRIB  ,');
+      SQL.Add('NFE_PESO   ,NFE_PSCN   ,NFE_METR ,NFE_REND,');
+      SQL.Add('NFE_QCOM   ,NFE_RCOM   ,');
+      SQL.Add('NFE_VDESC  ,NFE_VSEG   ,NFE_VFRETE,');
+      SQL.Add('NFE_NFCI   ,NFE_CENQ   ,');
+      SQL.Add('NFE_CFOP   ,NFE_INDTOT ,NFE_CST,NFE_PICMS,NFE_CSTIPI,NFE_CSTPIS,NFE_PPIS,NFE_CSTCOFINS,NFE_PCOFINS,');
+      SQL.Add('NFE_MODBC  ,NFE_MODBCST');
+      SQL.Add(')');
+
+      SQL.Add('VALUES');
+      SQL.Add('(0,');
+
+      { Itens }
+      SQL.Add('''' + INTTOSTR(AITEMPED)                      + ''',');
+      SQL.Add('''' + oSTRTRAN(FLOATTOSTR(AVPRC_COM),',','.') + ''',');
+      SQL.Add('''' + oSTRTRAN(FLOATTOSTR(AVPRC_COM),',','.') + ''',');
+      SQL.Add('''' + oSTRTRAN(FLOATTOSTR(ATCDE)    ,',','.') + ''',');
+      SQL.Add('''' + oSTRTRAN(FLOATTOSTR(ATCDE)    ,',','.') + ''',');
+      SQL.Add('''M'',');
+
+      { Produtos }
+      SQL.Add('''' + SQLPKConsulta.Current.ByName('IDCP').AsString + ''',');
+      SQL.Add('''' + SQLPKConsulta.Current.ByName('CEAN').AsString + ''',');
+      SQL.Add('''' + SQLPKConsulta.Current.ByName('SKU' ).AsString + ''',');
+      SQL.Add('''' + SQLPKConsulta.Current.ByName('DECP').AsString + ''',');
+      SQL.Add('''' + SQLPKConsulta.Current.ByName('DCCP').AsString + ''',');
+
+      SQL.Add('''' + SQLPKConsulta.Current.ByName('PRO_STAV').AsString + ''',');
+
+      { NCM }
+      SQL.Add('''' + SQLPKConsulta.Current.ByName('NCM').AsString                    + ''',');
+      SQL.Add('''' + oSTRTRAN(SQLPKConsulta.Current.ByName('PIPI').AsString,',','.') + ''',');
+
+      SQL.Add('''' + SQLPKConsulta.Current.ByName('CEST').AsString + ''',');
+      SQL.Add('''' + SQLPKConsulta.Current.ByName('ORIG').AsString + ''',');
+
+      { Unidades }
+      SQL.Add('''' + SQLPKConsulta.Current.ByName('UCOM').AsString + ''','); { Comercial  }
+      SQL.Add('''' + SQLPKConsulta.Current.ByName('UCOM').AsString + ''','); { Tributária }
+
+      SQL.Add('''' + oSTRTRAN(SQLPKConsulta.Current.ByName('PRO_PESO').AsString,',','.') + ''',');
+      SQL.Add('''' + oSTRTRAN(SQLPKConsulta.Current.ByName('PRO_PSCN').AsString,',','.') + ''',');
+      SQL.Add('''' + oSTRTRAN(SQLPKConsulta.Current.ByName('PRO_METR').AsString,',','.') + ''',');
+      SQL.Add('''' + oSTRTRAN(SQLPKConsulta.Current.ByName('PRO_REND').AsString,',','.') + ''',');
+
+      { NOTA FISCAL }
+      { Pedido }
+      SQL.Add('''' + oSTRTRAN(nfe_001NFE_QCOM.AsString  ,',','.') + ''',');
+      SQL.Add('''' + oSTRTRAN(nfe_001NFE_RCOM.AsString  ,',','.') + ''',');
+
+      SQL.Add('''' + oSTRTRAN(nfe_001NFE_VDESC.AsString ,',','.') + ''',');
+      SQL.Add('''' + oSTRTRAN(nfe_001NFE_VSEG.AsString  ,',','.') + ''',');
+      SQL.Add('''' + oSTRTRAN(nfe_001NFE_VFRETE.AsString,',','.') + ''',');
+
+      SQL.Add('''' + nfe_001NFE_NFCI.AsString + ''',');
+      SQL.Add('''' + nfe_001NFE_CENQ.AsString + ''',');
+
+      { CFOP }
+      SQL.Add('''' + SQLConsulta.Current.ByName('CFOP').AsString + ''',');
+      SQL.Add('''' + INTTOSTR(nfe_001NFE_INDTOT.AsInteger)       + ''',');
+
+      { CST }
+      SQL.Add('''00'',');
+      SQL.Add('''' + OSTRTRAN(FLOATTOSTR(APICMS),',','.') + ''',');
+
+      SQL.Add('''' + SQLConsulta.Current.ByName('CST_IPI').AsString                   + ''',');
+      SQL.Add('''' + SQLConsulta.Current.ByName('CST_PIS').AsString                   + ''',');
+      SQL.Add('''' + oSTRTRAN(SQLConsulta.Current.ByName('PPIS').AsString   ,',','.') + ''',');
+
+      SQL.Add('''' + SQLConsulta.Current.ByName('CST_COFINS').AsString                + ''',');
+      SQL.Add('''' + oSTRTRAN(SQLConsulta.Current.ByName('PCOFINS').AsString,',','.') + ''',');
+
+      { BASE CALCULO }
+      SQL.Add('''' + nfe_001NFE_MODBC.AsString   + ''',');
+      SQL.Add('''' + nfe_001NFE_MODBCST.AsString + '''' );
+      SQL.Add(')');
+
+      ExecQuery;
+    end;
+
+    { ITEM 3 - TECIDO BENEFICIADO }
+    AITEMPED  := AITEMPED + 1;
+    AVPRC_COM := nfe_001NFE_PREC.AsFloat * 0.80;
+    ATCDE     := nfe_001NFE_QCOM.AsFloat * AVPRC_COM;
+
+    with SQLSPKEdicao do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Add('INSERT INTO NFE_ITE');
+
+      SQL.Add('(ID,');
+      SQL.Add('NFE_ITEMPED,NFE_PREC   ,NFE_VUNCOM,NFE_VPROD,NFE_VNF ,NFE_REPR,');
+      SQL.Add('NFE_IPRO   ,NFE_CEAN   ,NFE_CPROD ,NFE_XPROD,NFE_COMP,NFE_STAV,');
+      SQL.Add('NFE_NCM    ,NFE_PIPI   ,NFE_CEST  ,NFE_ORIG ,');
+      SQL.Add('NFE_UCOM   ,NFE_UTRIB  ,');
+      SQL.Add('NFE_PESO   ,NFE_PSCN   ,NFE_METR ,NFE_REND,');
+      SQL.Add('NFE_QCOM   ,NFE_RCOM   ,');
+      SQL.Add('NFE_VDESC  ,NFE_VSEG   ,NFE_VFRETE,');
+      SQL.Add('NFE_NFCI   ,NFE_CENQ   ,');
+      SQL.Add('NFE_CFOP   ,NFE_INDTOT ,NFE_CST,NFE_PICMS,NFE_CSTIPI,NFE_CSTPIS,NFE_PPIS,NFE_CSTCOFINS,NFE_PCOFINS,');
+      SQL.Add('NFE_MODBC  ,NFE_MODBCST');
+      SQL.Add(')');
+
+      SQL.Add('VALUES');
+      SQL.Add('(0,');
+
+      { Itens }
+      SQL.Add('''' + INTTOSTR(AITEMPED)                      + ''',');
+      SQL.Add('''' + oSTRTRAN(FLOATTOSTR(AVPRC_COM),',','.') + ''',');
+      SQL.Add('''' + oSTRTRAN(FLOATTOSTR(AVPRC_COM),',','.') + ''',');
+      SQL.Add('''' + oSTRTRAN(FLOATTOSTR(ATCDE)    ,',','.') + ''',');
+      SQL.Add('''' + oSTRTRAN(FLOATTOSTR(ATCDE)    ,',','.') + ''',');
+      SQL.Add('''M'',');
+
+      { Produtos }
+      SQL.Add('''' + nfe_001NFE_IPRO.AsString  + ''',');
+      SQL.Add('''' + nfe_001NFE_CEAN.AsString  + ''',');
+      SQL.Add('''' + nfe_001NFE_CPROD.AsString + ''',');
+      SQL.Add('''' + nfe_001NFE_XPROD.AsString + ''',');
+      SQL.Add('''' + nfe_001NFE_COMP.AsString  + ''',');
+      SQL.Add('''' + nfe_001NFE_STAV.AsString  + ''',');
+
+      { NCM }
+      SQL.Add('''' + nfe_001NFE_NCM.AsString                    + ''',');
+      SQL.Add('''' + oSTRTRAN(nfe_001NFE_PIPI.AsString,',','.') + ''',');
+      SQL.Add('''' + nfe_001NFE_CEST.AsString                   + ''',');
+      SQL.Add('''' + nfe_001NFE_ORIG.AsString                   + ''',');
+
+      { Unidades }
+      SQL.Add('''' + nfe_001NFE_UCOM.AsString + ''','); { Comercial  }
+      SQL.Add('''' + nfe_001NFE_UCOM.AsString + ''','); { Tributária }
+
+      SQL.Add('''' + oSTRTRAN(nfe_001NFE_PESO.AsString,',','.') + ''',');
+      SQL.Add('''' + oSTRTRAN(nfe_001NFE_PSCN.AsString,',','.') + ''',');
+      SQL.Add('''' + oSTRTRAN(nfe_001NFE_METR.AsString,',','.') + ''',');
+      SQL.Add('''' + oSTRTRAN(nfe_001NFE_REND.AsString,',','.') + ''',');
+
+      { NOTA FISCAL }
+      { Pedido }
+      SQL.Add('''' + oSTRTRAN(nfe_001NFE_QCOM.AsString  ,',','.') + ''',');
+      SQL.Add('''' + oSTRTRAN(nfe_001NFE_RCOM.AsString  ,',','.') + ''',');
+
+      SQL.Add('''' + oSTRTRAN(nfe_001NFE_VDESC.AsString ,',','.') + ''',');
+      SQL.Add('''' + oSTRTRAN(nfe_001NFE_VSEG.AsString  ,',','.') + ''',');
+      SQL.Add('''' + oSTRTRAN(nfe_001NFE_VFRETE.AsString,',','.') + ''',');
+
+      SQL.Add('''' + nfe_001NFE_NFCI.AsString + ''',');
+      SQL.Add('''' + nfe_001NFE_CENQ.AsString + ''',');
+
+      { CFOP }
+      SQL.Add('''' + SQLConsulta.Current.ByName('CFOP').AsString + ''',');
+      SQL.Add('''' + INTTOSTR(nfe_001NFE_INDTOT.AsInteger)       + ''',');
+
+      { CST }
+      SQL.Add('''' + IFThen(IERegime.Text =  '1','00',SQLConsulta.Current.ByName('CST_ICMS').AsString) + ''',');
+      SQL.Add('''' + IFThen(IERegime.Text <> '1','00',OSTRTRAN(FLOATTOSTR(APICMS),',','.'))            + ''',');
+
+      SQL.Add('''' + SQLConsulta.Current.ByName('CST_IPI' ).AsString                  + ''',');
+      SQL.Add('''' + SQLConsulta.Current.ByName('CST_PIS').AsString                   + ''',');
+      SQL.Add('''' + oSTRTRAN(SQLConsulta.Current.ByName('PPIS').AsString   ,',','.') + ''',');
+
+      SQL.Add('''' + SQLConsulta.Current.ByName('CST_COFINS').AsString                + ''',');
+      SQL.Add('''' + oSTRTRAN(SQLConsulta.Current.ByName('PCOFINS').AsString,',','.') + ''',');
+
+      { BASE CALCULO }
+      SQL.Add('''' + nfe_001NFE_MODBC.AsString   + ''',');
+      SQL.Add('''' + nfe_001NFE_MODBCST.AsString + '''' );
+      SQL.Add(')');
+
+      ExecQuery;
+    end;
+
+    nfe_001.Next;
+  end;
+
+  { ITEM 1 - REMESSA }
+  { CFOP }
+  with SQLConsulta do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Add('SELECT CFOP,CST_ICMS,CST_ICMS,IIF(TPNF = 1,CST_IPI_SAI,CST_IPI_ENT) AS CST_IPI,CST_PIS,PPIS,CST_COFINS,PCOFINS');
+    SQL.Add('FROM   TAB_NAT');
+    SQL.Add('WHERE  CFOP = ''' + RIGHTSTR(CBCNAT.Text,4) + '''');
+    ExecQuery;
+  end;
+
+  with SQLSEdicao do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Add('UPDATE NFE_ITE');
+    SQL.Add('SET');
+
+    { CFOP }
+    SQL.Add('NFE_CFOP       = ''' + SQLConsulta.Current.ByName('CFOP').AsString + ''',');
+    SQL.Add('NFE_INDTOT     = ''' + INTTOSTR(nfe_001NFE_INDTOT.AsInteger)       + ''',');
+
+    { CST }
+    SQL.Add('NFE_CST        = ''' + SQLConsulta.Current.ByName('CST_ICMS').AsString + ''',');
+    SQL.Add('NFE_CSTIPI     = ''' + SQLConsulta.Current.ByName('CST_IPI' ).AsString + ''',');
+
+    SQL.Add('NFE_CSTPIS     = ''' + SQLConsulta.Current.ByName('CST_PIS').AsString                   + ''',');
+    SQL.Add('NFE_PPIS       = ''' + oSTRTRAN(SQLConsulta.Current.ByName('PPIS').AsString   ,',','.') + ''',');
+
+    SQL.Add('NFE_CSTCOFINS  = ''' + SQLConsulta.Current.ByName('CST_COFINS').AsString                + ''',');
+    SQL.Add('NFE_PCOFINS    = ''' + oSTRTRAN(SQLConsulta.Current.ByName('PCOFINS').AsString,',','.') + ''',');
+    SQL.Add('MAO_OBRA = 1');
+    
+    SQL.Add('WHERE NFE_REPR = ''R''');
+    ExecQuery;
+  end;
+
+  oRTransact(TSheild);
+  BCalc := True;
+end;
+
+procedure Tfrmven_nfe.dtsnfe_001DataChange(Sender: TObject; Field: TField);
+begin
+  if nfe_001.State = dsBrowse then
+  begin
+    DBGNFENFE_VDESC.Visible  := (nfe_001NFE_VDESC.AsFloat  > 0);
+    DBGNFENFE_PREDBC.Visible := (nfe_001NFE_PREDBC.AsFloat > 0);
+  end;  
+end;
+
+procedure Tfrmven_nfe.dbgcliKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  case key of
+    VK_RETURN: begin
+                 if cli_001.State in [dsInsert,dsEdit] then
+                 begin
+                   if DBGCLI.FocusedColumn >= 2 then
+                   begin
+                     cli_001.Next;
+                     if cli_001.Eof then
+                     cli_001.Append;
+                     DBGCLI.FocusedColumn := 0      ;
+                   end;
+                 end;
+               end;
+  end;               
+end;
+
+end.

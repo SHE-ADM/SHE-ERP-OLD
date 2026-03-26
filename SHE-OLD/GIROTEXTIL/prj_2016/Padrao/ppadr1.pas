@@ -106,7 +106,7 @@ var
 
 implementation
 
-uses uPrincipal, bDados, pctr_ped, pctr_oca;
+uses uPrincipal, bDados, pctr_ped;
 
 {$R *.dfm}
 

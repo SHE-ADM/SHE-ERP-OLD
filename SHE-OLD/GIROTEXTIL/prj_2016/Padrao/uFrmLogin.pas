@@ -127,6 +127,7 @@ end;
 
 procedure TFrmLogin.FormCreate(Sender: TObject);
 begin
+  if not IBTRA.InTransaction then
   IBTra.StartTransaction;
   with consulta do
   begin

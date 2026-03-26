@@ -2161,9 +2161,9 @@ object frmSobre: TfrmSobre
     object Label1: TLabel
       Left = 9
       Top = 9
-      Width = 256
+      Width = 155
       Height = 14
-      Caption = 'Vers'#227'o: REDU'#199#195'O BC PIS/COFINF GIROTEXTIL'
+      Caption = 'Vers'#227'o: IBS / CBS + CBENEF'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -12
@@ -2176,7 +2176,7 @@ object frmSobre: TfrmSobre
       Top = 25
       Width = 95
       Height = 14
-      Caption = 'Data:09/12/2025'
+      Caption = 'Data:24/03/2026'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -12
@@ -2426,7 +2426,7 @@ object frmSobre: TfrmSobre
       Height = 19
       Align = alClient
       Alignment = taCenter
-      Caption = 'Copyright '#169' 2021 S.H.E.I.L.D. '
+      Caption = 'Copyright '#169' 2026 S.H.E.I.L.D. '
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13

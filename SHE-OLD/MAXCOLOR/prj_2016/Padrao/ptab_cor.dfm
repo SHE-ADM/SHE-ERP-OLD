@@ -8,26 +8,6 @@ inherited frmtab_cor: Tfrmtab_cor
   inherited sbMSG: TStatusBar
     Width = 633
   end
-  inherited SpeedBar2: TSpeedBar
-    Width = 633
-    inherited siEVE: TSpeedItem [4]
-    end
-    inherited siPSQ: TSpeedItem [5]
-      Visible = False
-    end
-    inherited siREF: TSpeedItem [6]
-      Left = 2
-    end
-    inherited siSAIR: TSpeedItem [7]
-      Left = 442
-    end
-    inherited siREL: TSpeedItem
-      Left = 332
-    end
-    inherited siLIXO: TSpeedItem [9]
-      Left = 222
-    end
-  end
   inherited pnldir: TPanel
     Left = 633
   end
@@ -37,9 +17,9 @@ inherited frmtab_cor: Tfrmtab_cor
       Width = 633
     end
     inherited gbDET: TGroupBox
-      Width = 633
+      Width = 579
       inherited DBGConsulta: TdxDBGrid
-        Width = 580
+        Width = 575
         KeyField = 'ID'
         ShowSummaryFooter = True
         Filter.Active = True
@@ -96,6 +76,9 @@ inherited frmtab_cor: Tfrmtab_cor
         end
       end
     end
+  end
+  inherited SBMenuPrincipal: TSpeedBar
+    Width = 633
   end
   inherited Cadastro: TIBDataSet
     BeforeDelete = CadastroBeforeDelete
@@ -202,8 +185,12 @@ inherited frmtab_cor: Tfrmtab_cor
   inherited DTSCadastro: TDataSource
     Left = 320
   end
-  inherited imageOPC: TImageList
-    Left = 260
-    Top = 198
+  inherited ILMenuPrincipal: TImageList
+    Left = 104
+    Top = 360
+  end
+  inherited ILMenuEdicao: TImageList
+    Left = 136
+    Top = 360
   end
 end

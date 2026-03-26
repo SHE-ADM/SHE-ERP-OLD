@@ -827,8 +827,8 @@ aAlfabeto: Array[00..35,00..01] of String = (('A','0'),
   { Biblioteca de Procedures - Última Versão 21/09/2017 09:42 }
   Procedure oTreeDeleteItem(var Sender: TTreeView; ItemList: TStrings; Level: Integer); STDCall;
 
-  Procedure oState(AIBCustomDataSet: TIBCustomDataSet; ASpeedBar: TSpeedBar); STDCall;
-  Procedure oRefresh(AIBCustomDataSet: TIBCustomDataSet;ACommit: Boolean = True;AInsertValue: String = ''); STDCAll;
+  procedure oState(AIBCustomDataSet: TIBCustomDataSet; ASpeedBar: TSpeedBar); STDCall;
+  procedure oRefresh(AIBCustomDataSet: TIBCustomDataSet;ACommit: Boolean = True;AInsertValue: String = ''; ABMRecord: TBookMark = Nil); STDCAll;
   Procedure oAppend(AIBCustomDataSet: TIBCustomDataSet; AdxDBGrid: TdxDBGrid; ASpeedItem: TSpeedItem); STDCall;
   Procedure oEdit(AIBCustomDataSet: TIBCustomDataSet; AdxDBGrid: TdxDBGrid; ASpeedItem: TSpeedItem); STDCall;
   Procedure oDelete(AIBCustomDataSet: TIBCustomDataSet; AdxDBGrid: TdxDBGrid; ASpeedItem: TSpeedItem); STDCall;
@@ -871,6 +871,9 @@ var
   sExtensoTotal    : String;
   Delimitador      : Integer;
   ALockWindowUpdate: LongBool;
+
+  Aweek_start_date,
+  Aweek_end_date: TDate;
 
 implementation
 
@@ -1375,49 +1378,65 @@ end;
 
 { Propriedade SpeedBar de Edição }
 (**********************************************************************************)
-Procedure oState(AIBCustomDataSet: TIBCustomDataSet; ASpeedBar: TSpeedBar); STDCall;
+procedure oState(AIBCustomDataSet: TIBCustomDataSet; ASpeedBar: TSpeedBar); STDCall;
 (**********************************************************************************)
 var
   i: Word;
 begin
+  if (not ALockWindowUpdate) then
   if (ASpeedBar.Enabled) and (ASpeedBar.Visible) then
-      for i := 0 to ASpeedBar.ItemsCount(0) - 1 do
-          if ASpeedBar.Items(0,i).GroupIndex = 0 then
-             ASpeedBar.Items(0,i).Enabled := ((AIBCustomDataSet.State = dsBrowse)           and (ASpeedBar.Items(0,i).Tag = 0))  or
-                                             ((AIBCustomDataSet.State = dsBrowse)           and (not AIBCustomDataSet.Fields[0].IsNull) and (ASpeedBar.Items(0,i).Tag = 1)) or
-                                             ((AIBCustomDataSet.State in [dsInsert,dsEdit]) and (ASpeedBar.Items(0,i).Tag = 2));
+  begin
+    for i := 0 to ASpeedBar.ItemsCount(0)  -  1 do
+    if ASpeedBar.Items(0,i).GroupIndex =  0 then
+    if ASpeedBar.Items(0,i).Tag        <> 9 then { não mexe com quem tá quieto }
+    begin
+      ASpeedBar.Items(0,i).Enabled := ((AIBCustomDataSet.State = dsBrowse)           and (ASpeedBar.Items(0,i).Tag = 0)) or
+                                      ((AIBCustomDataSet.State = dsBrowse)           and (ASpeedBar.Items(0,i).Tag = 1)) or
+                                      ((AIBCustomDataSet.State in [dsInsert,dsEdit]) and (ASpeedBar.Items(0,i).Tag = 2));
+
+      if TAction(ASpeedBar.Items(0,i).Action) <> Nil then
+         TAction(ASpeedBar.Items(0,i).Action).Enabled := ASpeedBar.Items(0,i).Enabled;
+    end;
+  end;
 end;
 
-{ Atualiza Registros }
-(****************************************************************************************************************)
-procedure oRefresh(AIBCustomDataSet: TIBCustomDataSet;ACommit: Boolean = True;AInsertValue: String = ''); STDCall;
-(****************************************************************************************************************)
-var
-  BMRecord: TBookMark;
+{ Refresh Records }
+(********************************************************************************************************************************************)
+procedure oRefresh(AIBCustomDataSet: TIBCustomDataSet;ACommit: Boolean = True;AInsertValue: String = ''; ABMRecord: TBookMark = Nil); STDCall;
+(********************************************************************************************************************************************)
 begin
-  if not ALockWindowUpdate then
+  if (AIBCustomDataSet <> Nil) and (not ALockWindowUpdate) then
+  if not (AIBCustomDataSet.State in [dsInsert,dsEdit]) then
   begin
-    BMRecord := Nil;
+    if ABMRecord = Nil then
+    if AIBCustomDataSet.State  = dsBrowse then
     if AIBCustomDataSet.RecNo > 0 then
-       BMRecord := AIBCustomDataSet.GetBookmark;
+       ABMRecord := AIBCustomDataSet.GetBookmark;
 
     if ACommit then
-       oRTransact(AIBCustomDataSet.Transaction)
-    else
-       AIBCustomDataSet.Close;
+       oRTransact(AIBCustomDataSet.Transaction,ltRead_Only_Release_Commit) else
+       oRTransact(AIBCustomDataSet.Transaction,ltRead_Only_Release_Rollback);
 
     if AIBCustomdataSet.State = dsInactive then
-       AIBCustomDataSet.Open;
+       AIBCustomdataSet.Open;
 
-    if (BMRecord <> Nil) and (AIBCustomDataSet.RecNo > 0) then
+    if AIBCustomDataSet.RecNo = 0 then
     begin
-      if not oEmpty(AInsertValue) then
-         AIBCustomdataSet.Locate('Descricao',AInsertValue,[])
-      else
-         AIBCustomDataSet.GotoBookmark(BMRecord);
-         AIBCustomDataSet.FreeBookmark(BMRecord);
-    end else AIBCustomDataSet.Last;
-  end;  
+      AIBCustomDataSet.FreeBookmark(ABMRecord);
+      ABMRecord := Nil;
+    end;
+
+    if AInsertValue <> EmptyStr then
+       AIBCustomdataSet.Locate('Descricao',AInsertValue,[]) else
+    begin
+      if ABMRecord <> Nil then
+      begin
+        AIBCustomDataSet.GotoBookmark(ABMRecord);
+        AIBCustomDataSet.FreeBookmark(ABMRecord);
+      end else
+      AIBCustomDataSet.Last;
+    end;
+  end;
 end;
 
 { Append Registros }

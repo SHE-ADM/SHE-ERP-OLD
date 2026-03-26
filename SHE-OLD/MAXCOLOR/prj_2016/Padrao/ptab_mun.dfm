@@ -9,42 +9,18 @@ inherited frmtab_mun: Tfrmtab_mun
   inherited sbMSG: TStatusBar
     Width = 494
   end
-  inherited SpeedBar2: TSpeedBar
-    Width = 494
-    inherited siEVE: TSpeedItem [4]
-      Left = 162
-      Visible = False
-    end
-    inherited siPSQ: TSpeedItem [5]
-      Visible = False
-    end
-    inherited siREF: TSpeedItem [6]
-      Left = 2
-    end
-    inherited siSAIR: TSpeedItem [7]
-      Left = 112
-    end
-    inherited siLIXO: TSpeedItem [8]
-      Left = 102
-      Visible = False
-    end
-    inherited siREL: TSpeedItem [9]
-      Left = 262
-      Visible = False
-    end
-  end
   inherited pnldir: TPanel
     Left = 494
   end
   inherited pnldbg: TPanel
     Width = 494
     inherited pnlbot: TPanel
-      Width = 492
+      Width = 494
     end
     inherited gbDET: TGroupBox
-      Width = 492
-      inherited dbgConsulta: TdxDBGrid
-        Width = 439
+      Width = 440
+      inherited DBGConsulta: TdxDBGrid
+        Width = 436
         KeyField = 'ID'
         Filter.Active = True
         Filter.Criteria = {00000000}
@@ -73,25 +49,12 @@ inherited frmtab_mun: Tfrmtab_mun
           FieldName = 'MUN_DMUN'
         end
       end
-      inherited SpeedBar1: TSpeedBar
-        Enabled = False
-        inherited siSAV: TSpeedItem [4]
-        end
-        inherited siCAN: TSpeedItem [5]
-        end
-        inherited siINC: TSpeedItem [6]
-          Enabled = False
-        end
-        inherited siALT: TSpeedItem [7]
-          Enabled = False
-        end
-        inherited siDEL: TSpeedItem [8]
-          Enabled = False
-        end
-      end
     end
   end
-  inherited cadastro: TIBDataSet
+  inherited SBMenuPrincipal: TSpeedBar
+    Width = 494
+  end
+  inherited Cadastro: TIBDataSet
     DeleteSQL.Strings = (
       'delete from TAB_MUN'
       'where'
@@ -154,8 +117,10 @@ inherited frmtab_mun: Tfrmtab_mun
       Size = 30
     end
   end
-  inherited imageOPC: TImageList
-    Left = 228
-    Top = 166
+  inherited ILMenuPrincipal: TImageList
+    Top = 376
+  end
+  inherited ILMenuEdicao: TImageList
+    Top = 376
   end
 end

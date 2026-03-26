@@ -5,27 +5,6 @@ inherited frmtab_alq: Tfrmtab_alq
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 14
-  inherited SpeedBar2: TSpeedBar
-    inherited siEVE: TSpeedItem [4]
-    end
-    inherited siREF: TSpeedItem
-      Left = 2
-    end
-    inherited siSAIR: TSpeedItem
-      Left = 332
-    end
-    inherited siPSQ: TSpeedItem [7]
-      Tag = 1
-      Visible = False
-    end
-    inherited siREL: TSpeedItem
-      Left = 222
-    end
-    inherited siLIXO: TSpeedItem [9]
-      Left = 112
-      Visible = False
-    end
-  end
   inherited pnldbg: TPanel
     inherited gbDET: TGroupBox
       inherited DBGConsulta: TdxDBGrid
@@ -118,9 +97,5 @@ inherited frmtab_alq: Tfrmtab_alq
       Precision = 9
       Size = 2
     end
-  end
-  inherited imageOPC: TImageList
-    Left = 260
-    Top = 206
   end
 end

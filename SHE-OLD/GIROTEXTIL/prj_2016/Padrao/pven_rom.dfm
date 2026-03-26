@@ -1,13 +1,15 @@
 object frmven_rom: Tfrmven_rom
-  Left = 549
-  Top = 80
+  Left = 531
+  Top = 156
+  HelpContext = 95
   Align = alCustom
+  AlphaBlendValue = 0
   AutoSize = True
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Romaneios'
   ClientHeight = 683
-  ClientWidth = 1179
+  ClientWidth = 965
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -266,8 +268,8 @@ object frmven_rom: Tfrmven_rom
   object SpeedBar2: TSpeedBar
     Left = 0
     Top = 0
-    Width = 1179
-    Height = 99
+    Width = 965
+    Height = 89
     Cursor = crHandPoint
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -278,8 +280,8 @@ object frmven_rom: Tfrmven_rom
     Options = [sbAllowDrag, sbAllowResize, sbFlatBtns, sbTransparentBtns, sbStretchBitmap]
     BtnOffsetHorz = 1
     BtnOffsetVert = 1
-    BtnWidth = 115
-    BtnHeight = 95
+    BtnWidth = 105
+    BtnHeight = 85
     Images = imageOPC2
     BevelOuter = bvNone
     TabOrder = 0
@@ -296,23 +298,12 @@ object frmven_rom: Tfrmven_rom
     object SpeedbarSection8: TSpeedbarSection
       Caption = 'Utilitarios'
     end
-    object BSair: TSpeedItem
-      BtnCaption = '[Esc] Sair'
-      Caption = 'BSair'
-      Hint = '[Esc] - Fecha Janela'
-      ImageIndex = 3
-      Spacing = 1
-      Left = 346
-      Top = 1
-      Visible = True
-      OnClick = BSairClick
-      SectionName = 'Movimento'
-    end
     object BSal: TSpeedItem
-      BtnCaption = '[F10] Salvar'
+      BtnCaption = 'Salvar'
       Caption = 'Salvar'
       Enabled = False
-      Hint = '[F3] - Salvar Romaneio'
+      Cursor = crHandPoint
+      Hint = 'Salvar Romaneio'
       ImageIndex = 4
       Spacing = 1
       Left = 1
@@ -321,41 +312,56 @@ object frmven_rom: Tfrmven_rom
       OnClick = BSalClick
       SectionName = 'Movimento'
     end
-    object SIMNFe: TSpeedItem
-      BtnCaption = '[Ctrl+N] Nota Fiscal'
-      Hint = 'Emiss'#227'o de nota fiscal'
-      ImageIndex = 6
-      Spacing = 1
-      Left = 231
-      Top = 1
-      Visible = True
-      OnClick = SIMNFeClick
-      SectionName = 'Movimento'
-    end
     object siCLO: TSpeedItem
       BtnCaption = 'Importar'
+      Cursor = crHandPoint
       Hint = 'Importar separa'#231#245'es de outros pedidos'
       ImageIndex = 7
       Spacing = 1
-      Left = 116
+      Left = 106
       Top = 1
       Visible = True
       OnClick = siCLOClick
       SectionName = 'Movimento'
     end
+    object SIMNFe: TSpeedItem
+      BtnCaption = 'Nota Fiscal'
+      Cursor = crHandPoint
+      Hint = 'Emiss'#227'o de nota fiscal'
+      ImageIndex = 6
+      Spacing = 1
+      Left = 211
+      Top = 1
+      Visible = True
+      OnClick = SIMNFeClick
+      SectionName = 'Movimento'
+    end
+    object BSair: TSpeedItem
+      BtnCaption = '[Esc] Sair'
+      Caption = 'BSair'
+      Cursor = crHandPoint
+      Hint = '[Esc] - Fecha Janela'
+      ImageIndex = 3
+      Spacing = 1
+      Left = 316
+      Top = 1
+      Visible = True
+      OnClick = BSairClick
+      SectionName = 'Movimento'
+    end
   end
   object pnlconsulta: TPanel
     Left = 0
-    Top = 426
-    Width = 1179
-    Height = 257
+    Top = 334
+    Width = 965
+    Height = 349
     Align = alClient
     TabOrder = 1
     object SpeedBar4: TSpeedBar
       Left = 1
       Top = 1
       Width = 44
-      Height = 255
+      Height = 347
       Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -444,21 +450,21 @@ object frmven_rom: Tfrmven_rom
     object dbgrom: TdxDBGrid
       Left = 45
       Top = 1
-      Width = 1133
-      Height = 255
+      Width = 919
+      Height = 347
       Bands = <
         item
           Alignment = taRightJustify
         end>
       DefaultLayout = True
-      HeaderMinRowCount = 2
       HeaderPanelRowCount = 1
       KeyField = 'ID'
       ShowSummaryFooter = True
       SummaryGroups = <>
       SummarySeparator = ', '
       Align = alClient
-      Color = 12513272
+      BorderStyle = bsNone
+      Color = clBtnFace
       Ctl3D = True
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
@@ -489,7 +495,7 @@ object frmven_rom: Tfrmven_rom
       HighlightColor = 14789952
       HighlightTextColor = clWhite
       LookAndFeel = lfUltraFlat
-      OptionsBehavior = [edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEditing, edgoEnterShowEditor, edgoImmediateEditor, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
+      OptionsBehavior = [edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEnterShowEditor, edgoImmediateEditor, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
       OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
       OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
       OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoRowSelect, edgoUseBitmap]
@@ -500,7 +506,8 @@ object frmven_rom: Tfrmven_rom
       PreviewFont.Style = []
       ShowRowFooter = True
       object dbgromROM_ITEM: TdxDBGridMaskColumn
-        Width = 40
+        DisableEditor = True
+        Width = 35
         BandIndex = 0
         RowIndex = 0
         FieldName = 'ROM_ITEM'
@@ -511,6 +518,7 @@ object frmven_rom: Tfrmven_rom
       end
       object dbgromROM_CDET: TdxDBGridMaskColumn
         DisableEditor = True
+        Visible = False
         Width = 74
         BandIndex = 0
         RowIndex = 0
@@ -520,27 +528,27 @@ object frmven_rom: Tfrmven_rom
       object dbgromROM_CPRO: TdxDBGridMaskColumn
         CharCase = ecUpperCase
         DisableEditor = True
-        Width = 107
+        Width = 90
         BandIndex = 0
         RowIndex = 0
         FieldName = 'ROM_CPRO'
-      end
-      object dbgromROM_DCOR: TdxDBGridPickColumn
-        CharCase = ecUpperCase
-        DisableEditor = True
-        Width = 132
-        BandIndex = 0
-        RowIndex = 0
-        FieldName = 'ROM_DCOR'
       end
       object dbgromROM_DPRO: TdxDBGridMaskColumn
         Tag = 450
         CharCase = ecUpperCase
         DisableEditor = True
-        Width = 450
+        Width = 300
         BandIndex = 0
         RowIndex = 0
         FieldName = 'ROM_DPRO'
+      end
+      object dbgromROM_DCOR: TdxDBGridPickColumn
+        CharCase = ecUpperCase
+        DisableEditor = True
+        Width = 150
+        BandIndex = 0
+        RowIndex = 0
+        FieldName = 'ROM_DCOR'
       end
       object dbgromROM_DUNI: TdxDBGridPickColumn
         CharCase = ecUpperCase
@@ -605,26 +613,27 @@ object frmven_rom: Tfrmven_rom
   end
   object pnlpri: TPanel
     Left = 0
-    Top = 99
-    Width = 1179
-    Height = 327
+    Top = 89
+    Width = 965
+    Height = 245
     Align = alTop
+    BevelOuter = bvNone
     TabOrder = 2
     object Panel1: TPanel
-      Left = 1
-      Top = 1
-      Width = 740
-      Height = 325
+      Left = 0
+      Top = 0
+      Width = 705
+      Height = 245
       Align = alLeft
+      BevelOuter = bvNone
       TabOrder = 0
       object pnlped: TPanel
-        Left = 1
-        Top = 1
-        Width = 738
-        Height = 323
+        Left = 0
+        Top = 0
+        Width = 705
+        Height = 245
         Align = alClient
         BevelOuter = bvNone
-        Color = 12513272
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -632,20 +641,12 @@ object frmven_rom: Tfrmven_rom
         Font.Style = []
         ParentFont = False
         TabOrder = 0
-        object Shape4: TShape
-          Left = 2
-          Top = 80
-          Width = 103
-          Height = 18
-          Brush.Color = 14789952
-          Pen.Color = 11764252
-          Shape = stRoundRect
-        end
         object Label3: TLabel
-          Left = 14
-          Top = 109
+          Left = 40
+          Top = 49
           Width = 43
           Height = 14
+          Alignment = taRightJustify
           Caption = 'N'#250'mero'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
@@ -657,35 +658,12 @@ object frmven_rom: Tfrmven_rom
           ParentFont = False
           Transparent = True
         end
-        object Label4: TLabel
-          Left = 10
-          Top = 82
-          Width = 47
-          Height = 14
-          Caption = 'Detalhe'
-          Color = clBtnFace
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentColor = False
-          ParentFont = False
-          Transparent = True
-        end
-        object linha1: TShape
-          Left = 112
-          Top = 88
-          Width = 625
-          Height = 3
-          Brush.Color = 11106843
-          Pen.Color = 14789952
-        end
         object Label9: TLabel
-          Left = 14
-          Top = 131
+          Left = 29
+          Top = 137
           Width = 54
           Height = 14
+          Alignment = taRightJustify
           Caption = 'Vendedor'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
@@ -698,10 +676,11 @@ object frmven_rom: Tfrmven_rom
           Transparent = True
         end
         object Label10: TLabel
-          Left = 14
-          Top = 153
+          Left = 2
+          Top = 159
           Width = 81
           Height = 14
+          Alignment = taRightJustify
           Caption = 'Representante'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
@@ -714,11 +693,12 @@ object frmven_rom: Tfrmven_rom
           Transparent = True
         end
         object Label6: TLabel
-          Left = 14
-          Top = 198
-          Width = 83
+          Left = 59
+          Top = 71
+          Width = 24
           Height = 14
-          Caption = 'Tipo de Pedido'
+          Alignment = taRightJustify
+          Caption = 'Tipo'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -729,45 +709,13 @@ object frmven_rom: Tfrmven_rom
           ParentFont = False
           Transparent = True
         end
-        object linha3: TShape
-          Left = 112
-          Top = 247
-          Width = 625
-          Height = 3
-          Brush.Color = 11106843
-          Pen.Color = 14789952
-        end
-        object Shape7: TShape
-          Left = 2
-          Top = 239
-          Width = 103
-          Height = 18
-          Brush.Color = 14789952
-          Pen.Color = 11764252
-          Shape = stRoundRect
-        end
-        object Label16: TLabel
-          Left = 10
-          Top = 241
+        object Label13: TLabel
+          Left = 33
+          Top = 93
           Width = 50
           Height = 14
-          Caption = 'Sum'#225'rio'
-          Color = clBtnFace
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentColor = False
-          ParentFont = False
-          Transparent = True
-        end
-        object Label13: TLabel
-          Left = 14
-          Top = 221
-          Width = 96
-          Height = 14
-          Caption = 'Tipo de Cobran'#231'a'
+          Alignment = taRightJustify
+          Caption = 'Cobran'#231'a'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -779,11 +727,12 @@ object frmven_rom: Tfrmven_rom
           Transparent = True
         end
         object Label28: TLabel
-          Left = 14
-          Top = 175
-          Width = 117
+          Left = 54
+          Top = 115
+          Width = 29
           Height = 14
-          Caption = 'Forma de Pagamento'
+          Alignment = taRightJustify
+          Caption = 'Prazo'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -794,42 +743,9 @@ object frmven_rom: Tfrmven_rom
           ParentFont = False
           Transparent = True
         end
-        object linha2: TShape
-          Left = 112
-          Top = 10
-          Width = 625
-          Height = 3
-          Brush.Color = 11106843
-          Pen.Color = 14789952
-        end
-        object Shape3: TShape
-          Left = 2
-          Top = 0
-          Width = 103
-          Height = 18
-          Brush.Color = 14789952
-          Pen.Color = 11764252
-          Shape = stRoundRect
-        end
-        object Label7: TLabel
-          Left = 10
-          Top = 2
-          Width = 42
-          Height = 14
-          Caption = 'Cliente'
-          Color = clBtnFace
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentColor = False
-          ParentFont = False
-          Transparent = True
-        end
         object Label30: TLabel
-          Left = 260
-          Top = 109
+          Left = 223
+          Top = 49
           Width = 39
           Height = 14
           Caption = 'Cr'#233'dito'
@@ -841,165 +757,12 @@ object frmven_rom: Tfrmven_rom
           ParentFont = False
           Transparent = True
         end
-        object Shape9: TShape
-          Left = 271
-          Top = 268
-          Width = 150
-          Height = 23
-          Brush.Color = 16577773
-          Pen.Color = 14065456
-        end
-        object Label17: TLabel
-          Left = 274
-          Top = 271
-          Width = 143
-          Height = 17
-          Alignment = taCenter
-          AutoSize = False
-          Caption = 'Sub Total'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Transparent = True
-        end
-        object Shape10: TShape
-          Left = 420
-          Top = 268
-          Width = 150
-          Height = 23
-          Brush.Color = 16577773
-          Pen.Color = 14065456
-        end
-        object latdsc: TLabel
-          Left = 511
-          Top = 270
-          Width = 19
-          Height = 19
-          Cursor = crHandPoint
-          Alignment = taCenter
-          AutoSize = False
-          Caption = '%'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clRed
-          Font.Height = -16
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Transparent = True
-          OnClick = latdscClick
-        end
-        object Shape29: TShape
-          Left = 569
-          Top = 268
-          Width = 150
-          Height = 23
-          Brush.Color = 16577773
-          Pen.Color = 14065456
-        end
-        object Label24: TLabel
-          Left = 572
-          Top = 271
-          Width = 143
-          Height = 17
-          Alignment = taCenter
-          AutoSize = False
-          Caption = 'Total'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Transparent = True
-        end
-        object Shape24: TShape
-          Left = 271
-          Top = 290
-          Width = 150
-          Height = 30
-          Pen.Color = 14065456
-        end
-        object Shape11: TShape
-          Left = 420
-          Top = 290
-          Width = 150
-          Height = 30
-          Pen.Color = 14065456
-        end
-        object Shape12: TShape
-          Left = 569
-          Top = 290
-          Width = 150
-          Height = 30
-          Pen.Color = 14065456
-        end
-        object Label18: TLabel
-          Left = 423
-          Top = 270
-          Width = 87
-          Height = 19
-          Caption = 'Desconto ('
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Transparent = True
-        end
-        object Label29: TLabel
-          Left = 531
-          Top = 270
-          Width = 7
-          Height = 19
-          Caption = ')'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Transparent = True
-        end
-        object Shape6: TShape
-          Left = 122
-          Top = 268
-          Width = 150
-          Height = 23
-          Brush.Color = 16577773
-          Pen.Color = 14065456
-        end
-        object Label19: TLabel
-          Left = 125
-          Top = 271
-          Width = 143
-          Height = 17
-          Alignment = taCenter
-          AutoSize = False
-          Caption = 'Qtde / Pe'#231'a'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Transparent = True
-        end
-        object Shape8: TShape
-          Left = 122
-          Top = 290
-          Width = 150
-          Height = 30
-          Pen.Color = 14065456
-        end
         object Label14: TLabel
-          Left = 14
-          Top = 28
+          Left = 46
+          Top = 5
           Width = 37
           Height = 14
+          Alignment = taRightJustify
           Caption = 'C'#243'digo'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
@@ -1011,28 +774,13 @@ object frmven_rom: Tfrmven_rom
           ParentFont = False
           Transparent = True
         end
-        object Label8: TLabel
-          Left = 483
-          Top = 31
-          Width = 43
-          Height = 14
-          Caption = 'Fantasia'
-          Color = clBtnFace
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentColor = False
-          ParentFont = False
-          Transparent = True
-        end
         object Label12: TLabel
-          Left = 14
-          Top = 53
-          Width = 65
+          Left = 4
+          Top = 27
+          Width = 79
           Height = 14
-          Caption = 'Raz'#227'o Social'
+          Alignment = taRightJustify
+          Caption = 'Nome Fantasia'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1044,11 +792,11 @@ object frmven_rom: Tfrmven_rom
           Transparent = True
         end
         object Label20: TLabel
-          Left = 483
-          Top = 53
-          Width = 43
+          Left = 147
+          Top = 5
+          Width = 27
           Height = 14
-          Caption = 'C.N.P.J.'
+          Caption = 'CNPJ'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1060,8 +808,8 @@ object frmven_rom: Tfrmven_rom
           Transparent = True
         end
         object Label37: TLabel
-          Left = 381
-          Top = 198
+          Left = 325
+          Top = 137
           Width = 83
           Height = 14
           Caption = 'Transportadora'
@@ -1076,11 +824,11 @@ object frmven_rom: Tfrmven_rom
           Transparent = True
         end
         object Label2: TLabel
-          Left = 381
-          Top = 221
-          Width = 60
+          Left = 330
+          Top = 159
+          Width = 78
           Height = 14
-          Caption = 'Valor Frete'
+          Caption = 'Valor Frete R$'
           Color = clBtnFace
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1091,136 +839,10 @@ object frmven_rom: Tfrmven_rom
           ParentFont = False
           Transparent = True
         end
-        object Label1: TLabel
-          Left = 567
-          Top = 221
-          Width = 52
-          Height = 14
-          Caption = 'Container'
-          Color = clBtnFace
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentColor = False
-          ParentFont = False
-          Transparent = True
-        end
-        object edcdpd: TdxMaskEdit
-          Left = 136
-          Top = 105
-          Width = 56
-          Color = 16644596
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 26
-          Visible = False
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-          Text = '0'
-        end
-        object edfatu: TdxMaskEdit
-          Left = 112
-          Top = 27
-          Width = 55
-          Color = 16644596
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 37
-          Visible = False
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-        end
-        object edddsc: TdxMaskEdit
-          Left = 136
-          Top = 105
-          Width = 57
-          Color = 16644596
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          Style.Shadow = False
-          TabOrder = 36
-          Visible = False
-          OnKeyPress = edtsdeKeyPress
-          Alignment = taLeftJustify
-          IgnoreMaskBlank = False
-          StoredValues = 1
-        end
-        object cbprec: TdxPickEdit
-          Left = 192
-          Top = 171
-          Width = 177
-          Color = 16644596
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 35
-          Visible = False
-          CharCase = ecUpperCase
-          Text = 'ATACADO - NORMAL'
-          Items.Strings = (
-            'ATACADO - NORMAL'
-            'ATACADO - PROMO'#199#195'O'
-            'VAREJO - NORMAL'
-            'VAREJO - PROMO'#199#195'O'
-            'REPRESENTA'#199#195'O - NORMAL'
-            'REPRESENTA'#199#195'O - PROMO'#199#195'O')
-        end
-        object edtest: TdxMaskEdit
-          Left = 112
-          Top = 27
-          Width = 55
-          Color = 16644596
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 34
-          Visible = False
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-        end
-        object cbstfi: TdxPickEdit
-          Left = 136
-          Top = 194
-          Width = 233
+        object eddcad: TdxDateEdit
+          Left = 87
+          Top = 23
+          Width = 220
           Color = 16644596
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
@@ -1234,11 +856,163 @@ object frmven_rom: Tfrmven_rom
           Style.ButtonStyle = btsFlat
           TabOrder = 27
           Visible = False
+          Date = -700000.000000000000000000
+          UseEditMask = True
+          StoredValues = 4
+        end
+        object edctnr: TdxMaskEdit
+          Left = 403
+          Top = 155
+          Width = 80
+          Color = 16644596
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 17
+          Visible = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          StoredValues = 4
+        end
+        object edcdpd: TdxMaskEdit
+          Left = 87
+          Top = 45
+          Width = 56
+          Color = 16644596
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 20
+          Visible = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0'
+        end
+        object edfatu: TdxMaskEdit
+          Left = 87
+          Top = 1
+          Width = 50
+          Color = 16644596
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 31
+          Visible = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+        end
+        object edddsc: TdxMaskEdit
+          Left = 87
+          Top = 45
+          Width = 56
+          Color = 16644596
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          Style.Shadow = False
+          TabOrder = 30
+          Visible = False
+          OnKeyPress = edtsdeKeyPress
+          Alignment = taLeftJustify
+          IgnoreMaskBlank = False
+          StoredValues = 1
+        end
+        object cbprec: TdxPickEdit
+          Left = 136
+          Top = 111
+          Width = 170
+          Color = 16644596
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 29
+          Visible = False
+          CharCase = ecUpperCase
+          Text = 'ATACADO - NORMAL'
+          Items.Strings = (
+            'ATACADO - NORMAL'
+            'ATACADO - PROMO'#199#195'O'
+            'VAREJO - NORMAL'
+            'VAREJO - PROMO'#199#195'O'
+            'REPRESENTA'#199#195'O - NORMAL'
+            'REPRESENTA'#199#195'O - PROMO'#199#195'O')
+        end
+        object edtest: TdxMaskEdit
+          Left = 87
+          Top = 1
+          Width = 50
+          Color = 16644596
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 28
+          Visible = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+        end
+        object cbstfi: TdxPickEdit
+          Left = 87
+          Top = 133
+          Width = 219
+          Color = 16644596
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 21
+          Visible = False
           CharCase = ecUpperCase
         end
         object edcdro: TdxMaskEdit
-          Left = 136
-          Top = 105
+          Left = 87
+          Top = 45
           Width = 56
           Color = 16644596
           Enabled = False
@@ -1258,9 +1032,48 @@ object frmven_rom: Tfrmven_rom
           Text = '0'
         end
         object cbdven: TdxPickEdit
-          Left = 192
-          Top = 127
-          Width = 177
+          Left = 136
+          Top = 133
+          Width = 170
+          Color = 16644596
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 11
+          OnExit = cbdvenExit
+          CharCase = ecUpperCase
+          OnChange = cbdvenChange
+        end
+        object cbdrep: TdxPickEdit
+          Left = 136
+          Top = 155
+          Width = 170
+          Color = 16644596
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 13
+          OnExit = cbdrepExit
+          CharCase = ecUpperCase
+          OnChange = cbdrepChange
+        end
+        object cbstco: TdxPickEdit
+          Left = 87
+          Top = 89
+          Width = 219
           Color = 16644596
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
@@ -1273,72 +1086,13 @@ object frmven_rom: Tfrmven_rom
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
           TabOrder = 7
-          OnExit = cbdvenExit
-          CharCase = ecUpperCase
-          OnChange = cbdvenChange
-        end
-        object cbdrep: TdxPickEdit
-          Left = 192
-          Top = 149
-          Width = 177
-          Color = 16644596
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 9
-          OnExit = cbdrepExit
-          CharCase = ecUpperCase
-          OnChange = cbdrepChange
-        end
-        object cbstpd: TdxPickEdit
-          Left = 136
-          Top = 194
-          Width = 233
-          Color = 16644596
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 12
-          OnExit = cbstpdExit
-          CharCase = ecUpperCase
-          OnChange = cbstpdChange
-        end
-        object cbstco: TdxPickEdit
-          Left = 136
-          Top = 217
-          Width = 233
-          Color = 16644596
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 13
           CharCase = ecUpperCase
         end
         object pcobs: TdxPageControl
-          Left = 376
-          Top = 104
-          Width = 361
-          Height = 89
+          Left = 318
+          Top = 8
+          Width = 380
+          Height = 121
           ActivePage = tsobs
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1353,7 +1107,7 @@ object frmven_rom: Tfrmven_rom
           RaggedRight = False
           ScrollOpposite = False
           TabHeight = 0
-          TabOrder = 17
+          TabOrder = 16
           TabPosition = dxtpTop
           TabWidth = 0
           object tsobs: TdxTabSheet
@@ -1361,7 +1115,7 @@ object frmven_rom: Tfrmven_rom
             object edobse: TdxMemo
               Left = 0
               Top = 0
-              Width = 361
+              Width = 380
               Align = alClient
               Color = 16644596
               Enabled = False
@@ -1376,7 +1130,7 @@ object frmven_rom: Tfrmven_rom
               Style.ButtonStyle = btsFlat
               Style.Shadow = True
               TabOrder = 0
-              Height = 65
+              Height = 97
             end
           end
           object tsoco: TdxTabSheet
@@ -1384,7 +1138,7 @@ object frmven_rom: Tfrmven_rom
             object edobso: TdxMemo
               Left = 0
               Top = 0
-              Width = 361
+              Width = 390
               Align = alClient
               Color = clRed
               Font.Charset = DEFAULT_CHARSET
@@ -1403,9 +1157,50 @@ object frmven_rom: Tfrmven_rom
           end
         end
         object edcrep: TdxMaskEdit
+          Left = 87
+          Top = 155
+          Width = 50
+          Color = 16644596
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 12
+          Alignment = taRightJustify
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          Text = '0'
+          OnValidate = edcrepValidate
+          StoredValues = 1
+        end
+        object cbdpag: TdxPickEdit
           Left = 136
-          Top = 149
-          Width = 56
+          Top = 111
+          Width = 170
+          Color = 16644596
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 9
+          OnExit = cbdpagExit
+          CharCase = ecUpperCase
+          OnChange = cbdpagChange
+        end
+        object edcpag: TdxMaskEdit
+          Left = 87
+          Top = 111
+          Width = 50
           Color = 16644596
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1417,54 +1212,17 @@ object frmven_rom: Tfrmven_rom
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
           TabOrder = 8
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-          Text = '0'
-          OnValidate = edcrepValidate
-        end
-        object cbdpag: TdxPickEdit
-          Left = 192
-          Top = 171
-          Width = 177
-          Color = 16644596
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 11
-          OnExit = cbdpagExit
-          CharCase = ecUpperCase
-          OnChange = cbdpagChange
-        end
-        object edcpag: TdxMaskEdit
-          Left = 136
-          Top = 171
-          Width = 56
-          Color = 16644596
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 10
+          Alignment = taRightJustify
           CharCase = ecUpperCase
           IgnoreMaskBlank = False
           Text = '0'
           OnValidate = edcpagValidate
+          StoredValues = 1
         end
         object edcven: TdxMaskEdit
-          Left = 136
-          Top = 127
-          Width = 56
+          Left = 87
+          Top = 67
+          Width = 50
           Color = 16644596
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
@@ -1483,21 +1241,22 @@ object frmven_rom: Tfrmven_rom
           OnValidate = edcvenValidate
         end
         object cbcred: TdxPickEdit
-          Left = 313
-          Top = 105
-          Width = 56
+          Left = 266
+          Top = 45
+          Width = 40
           Color = 16644596
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
           Font.Name = 'Tahoma'
-          Font.Style = []
+          Font.Style = [fsBold]
           ParentFont = False
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
           TabOrder = 5
+          Alignment = taRightJustify
           Text = '1'
           Items.Strings = (
             '1'
@@ -1505,11 +1264,12 @@ object frmven_rom: Tfrmven_rom
             '3'
             '4'
             '5')
+          StoredValues = 1
         end
         object edqtsp: TdxMaskEdit
-          Left = 136
-          Top = 127
-          Width = 56
+          Left = 87
+          Top = 133
+          Width = 50
           Color = 16644596
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
@@ -1521,150 +1281,212 @@ object frmven_rom: Tfrmven_rom
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 6
+          TabOrder = 10
           Visible = False
+          Alignment = taRightJustify
           CharCase = ecUpperCase
           IgnoreMaskBlank = False
           Text = '0'
-        end
-        object edadsc: TdxMaskEdit
-          Left = 420
-          Top = 291
-          Width = 150
-          Color = clWhite
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsNone
-          Style.ButtonStyle = btsFlat
-          Style.Shadow = True
-          TabOrder = 20
-          Visible = False
-          Alignment = taCenter
-          IgnoreMaskBlank = False
-          Text = '0,00'
           StoredValues = 1
         end
-        object edcdsc: TdxMaskEdit
-          Left = 420
-          Top = 291
-          Width = 150
-          Color = clWhite
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsNone
-          Style.ButtonStyle = btsFlat
-          Style.Shadow = True
-          TabOrder = 21
-          Visible = False
-          Alignment = taCenter
-          IgnoreMaskBlank = False
-          Text = '0,00'
-          StoredValues = 1
-        end
-        object edtsde: TdxMaskEdit
-          Left = 271
-          Top = 291
-          Width = 150
-          Color = 14789952
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
-          Font.Height = -16
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsNone
-          Style.ButtonStyle = btsFlat
-          Style.Shadow = True
-          TabOrder = 22
-          OnKeyPress = edtsdeKeyPress
-          Alignment = taCenter
-          IgnoreMaskBlank = False
-          Text = '0,00'
-          StoredValues = 1
-        end
-        object edtcde: TdxMaskEdit
-          Left = 569
-          Top = 291
-          Width = 150
-          Color = 221
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
-          Font.Height = -16
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsNone
-          Style.ButtonStyle = btsFlat
-          Style.Shadow = True
-          TabOrder = 23
-          OnKeyPress = edtsdeKeyPress
-          Alignment = taCenter
-          IgnoreMaskBlank = False
-          Text = '0,00'
-          StoredValues = 1
-        end
-        object edpdsc: TdxMaskEdit
-          Left = 420
-          Top = 291
-          Width = 150
+        object dxPickEdit1: TdxPickEdit
+          Left = 87
+          Top = 23
+          Width = 143
           Color = 16644596
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -16
+          Font.Color = clWindowText
+          Font.Height = -12
           Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
+          Font.Style = []
           ParentFont = False
           Style.BorderColor = 14065456
-          Style.BorderStyle = xbsNone
+          Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          Style.Shadow = True
-          TabOrder = 24
-          Alignment = taCenter
-          IgnoreMaskBlank = False
-          Text = '0,00'
-          OnValidate = edpdscValidate
-          StoredValues = 1
+          TabOrder = 22
+          Visible = False
+          CharCase = ecUpperCase
+          Text = 'ATACADO - NORMAL'
+          Items.Strings = (
+            'ATACADO - NORMAL'
+            'ATACADO - PROMO'#199#195'O'
+            'VAREJO - NORMAL'
+            'VAREJO - PROMO'#199#195'O'
+            'REPRESENTA'#199#195'O - NORMAL'
+            'REPRESENTA'#199#195'O - PROMO'#199#195'O'
+            'COMPRA'
+            'CUSTO')
         end
-        object edqtrl: TdxMaskEdit
-          Left = 122
-          Top = 291
-          Width = 150
-          Color = 14789952
+        object edrcli: TdxMaskEdit
+          Left = 87
+          Top = 23
+          Width = 220
+          Color = 16644596
+          Enabled = False
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWhite
-          Font.Height = -16
+          Font.Color = clWindowText
+          Font.Height = -12
           Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
+          Font.Style = []
           ParentFont = False
           Style.BorderColor = 14065456
-          Style.BorderStyle = xbsNone
+          Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          Style.Shadow = True
+          TabOrder = 3
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+          OnValidate = edrcliValidate
+        end
+        object edqtpc: TdxMaskEdit
+          Left = 87
+          Top = 1
+          Width = 50
+          Color = 16644596
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 23
+          Visible = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+        end
+        object dxMaskEdit1: TdxMaskEdit
+          Left = 87
+          Top = 1
+          Width = 50
+          Color = 16644596
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 24
+          Visible = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+        end
+        object edcdcx: TdxMaskEdit
+          Left = 87
+          Top = 1
+          Width = 50
+          Color = 16644596
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
           TabOrder = 25
-          OnKeyPress = edtsdeKeyPress
-          Alignment = taCenter
+          Visible = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+        end
+        object edhrom: TdxMaskEdit
+          Left = 87
+          Top = 1
+          Width = 50
+          Color = 16644596
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 26
+          Visible = False
+          CharCase = ecUpperCase
+          IgnoreMaskBlank = False
+        end
+        object edcnpj: TdxMaskEdit
+          Left = 177
+          Top = 1
+          Width = 130
+          Color = 16644596
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          Style.Shadow = False
+          TabOrder = 0
+          AutoSize = False
+          EditMask = '99.999.999/9999-999;0; '
+          IgnoreMaskBlank = False
+          Height = 22
+          StoredValues = 4
+        end
+        object cbdtra: TdxImageEdit
+          Left = 411
+          Top = 133
+          Width = 286
+          Color = 16644596
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          Style.Shadow = False
+          TabOrder = 14
+          AutoSize = False
+          Descriptions.Strings = (
+            '')
+          ImageIndexes.Strings = (
+            '0')
+          Values.Strings = (
+            '')
+          Height = 22
+        end
+        object edccli: TdxMaskEdit
+          Left = 87
+          Top = 1
+          Width = 50
+          Color = 16644596
+          Enabled = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Style.BorderColor = 14065456
+          Style.BorderStyle = xbsSingle
+          Style.ButtonStyle = btsFlat
+          TabOrder = 1
+          Alignment = taRightJustify
+          CharCase = ecUpperCase
           IgnoreMaskBlank = False
           Text = '0'
-          StoredValues = 1
+          OnValidate = edccliValidate
+          StoredValues = 5
         end
         object eddero: TdxMaskEdit
-          Left = 136
-          Top = 105
-          Width = 56
+          Left = 87
+          Top = 45
+          Width = 100
           Color = 16644596
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
@@ -1681,10 +1503,10 @@ object frmven_rom: Tfrmven_rom
           IgnoreMaskBlank = False
           Text = '0'
         end
-        object dxPickEdit1: TdxPickEdit
-          Left = 112
-          Top = 49
-          Width = 143
+        object cbstpd: TdxPickEdit
+          Left = 87
+          Top = 67
+          Width = 219
           Color = 16644596
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
@@ -1696,208 +1518,16 @@ object frmven_rom: Tfrmven_rom
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 28
-          Visible = False
+          TabOrder = 6
+          OnExit = cbstpdExit
           CharCase = ecUpperCase
-          Text = 'ATACADO - NORMAL'
-          Items.Strings = (
-            'ATACADO - NORMAL'
-            'ATACADO - PROMO'#199#195'O'
-            'VAREJO - NORMAL'
-            'VAREJO - PROMO'#199#195'O'
-            'REPRESENTA'#199#195'O - NORMAL'
-            'REPRESENTA'#199#195'O - PROMO'#199#195'O'
-            'COMPRA'
-            'CUSTO')
-        end
-        object edrcli: TdxMaskEdit
-          Left = 112
-          Top = 49
-          Width = 343
-          Color = 16644596
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 2
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-          OnValidate = edrcliValidate
-        end
-        object edqtpc: TdxMaskEdit
-          Left = 112
-          Top = 27
-          Width = 55
-          Color = 16644596
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 29
-          Visible = False
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-        end
-        object dxMaskEdit1: TdxMaskEdit
-          Left = 112
-          Top = 27
-          Width = 55
-          Color = 16644596
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 30
-          Visible = False
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-        end
-        object edcdcx: TdxMaskEdit
-          Left = 112
-          Top = 27
-          Width = 53
-          Color = 16644596
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 31
-          Visible = False
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-        end
-        object edhrom: TdxMaskEdit
-          Left = 112
-          Top = 27
-          Width = 55
-          Color = 16644596
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 32
-          Visible = False
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-        end
-        object eddcad: TdxDateEdit
-          Left = 596
-          Top = 27
-          Width = 95
-          Color = 16644596
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 33
-          Visible = False
-          Date = -700000.000000000000000000
-          UseEditMask = True
-          StoredValues = 4
-        end
-        object eddcli: TdxMaskEdit
-          Left = 533
-          Top = 27
-          Width = 200
-          Color = 16644596
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 1
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-          OnValidate = eddcliValidate
-        end
-        object edcnpj: TdxMaskEdit
-          Left = 533
-          Top = 49
-          Width = 200
-          Color = 16644596
-          Enabled = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          Style.Shadow = False
-          TabOrder = 3
-          AutoSize = False
-          EditMask = '99.999.999/9999-999;0; '
-          IgnoreMaskBlank = False
-          Height = 22
-          StoredValues = 4
-        end
-        object cbdtra: TdxImageEdit
-          Left = 467
-          Top = 194
-          Width = 265
-          Color = 16644596
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          Style.Shadow = False
-          TabOrder = 14
-          AutoSize = False
-          Descriptions.Strings = (
-            '')
-          ImageIndexes.Strings = (
-            '0')
-          Values.Strings = (
-            '')
-          Height = 22
+          OnChange = cbstpdChange
         end
         object edvfrt: TdxMaskEdit
-          Left = 467
-          Top = 217
+          Left = 411
+          Top = 155
           Width = 80
-          Color = 16644596
+          Color = clInfoBk
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -12
@@ -1914,29 +1544,10 @@ object frmven_rom: Tfrmven_rom
           Text = '0,00'
           StoredValues = 5
         end
-        object edctnr: TdxMaskEdit
-          Left = 622
-          Top = 217
-          Width = 110
-          Color = 16644596
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          Style.BorderColor = 14065456
-          Style.BorderStyle = xbsSingle
-          Style.ButtonStyle = btsFlat
-          TabOrder = 16
-          CharCase = ecUpperCase
-          IgnoreMaskBlank = False
-          StoredValues = 4
-        end
-        object edccli: TdxMaskEdit
-          Left = 112
-          Top = 27
-          Width = 57
+        object eddcli: TdxMaskEdit
+          Left = 87
+          Top = 23
+          Width = 220
           Color = 16644596
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
@@ -1948,22 +1559,280 @@ object frmven_rom: Tfrmven_rom
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 0
+          TabOrder = 2
           CharCase = ecUpperCase
           IgnoreMaskBlank = False
-          OnValidate = edccliValidate
-          StoredValues = 4
+          OnValidate = eddcliValidate
+        end
+        object PNLSumario: TPanel
+          Left = 0
+          Top = 181
+          Width = 705
+          Height = 64
+          Align = alBottom
+          BevelOuter = bvNone
+          Color = clMedGray
+          TabOrder = 32
+          object Shape9: TShape
+            Left = 203
+            Top = 4
+            Width = 150
+            Height = 23
+            Brush.Color = 16577773
+            Pen.Color = 14065456
+          end
+          object Label17: TLabel
+            Left = 206
+            Top = 7
+            Width = 143
+            Height = 17
+            Alignment = taCenter
+            AutoSize = False
+            Caption = 'Sub Total'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -16
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = True
+          end
+          object Shape10: TShape
+            Left = 355
+            Top = 4
+            Width = 150
+            Height = 23
+            Brush.Color = 16577773
+            Pen.Color = 14065456
+          end
+          object latdsc: TLabel
+            Left = 462
+            Top = 7
+            Width = 19
+            Height = 19
+            Cursor = crHandPoint
+            Alignment = taCenter
+            AutoSize = False
+            Caption = '%'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clRed
+            Font.Height = -16
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = True
+            OnClick = latdscClick
+          end
+          object Shape29: TShape
+            Left = 507
+            Top = 4
+            Width = 150
+            Height = 23
+            Brush.Color = 16577773
+            Pen.Color = 14065456
+          end
+          object Label24: TLabel
+            Left = 510
+            Top = 7
+            Width = 143
+            Height = 17
+            Alignment = taCenter
+            AutoSize = False
+            Caption = 'Total'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -16
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = True
+          end
+          object Shape24: TShape
+            Left = 203
+            Top = 29
+            Width = 150
+            Height = 30
+            Pen.Color = 14065456
+          end
+          object Shape11: TShape
+            Left = 355
+            Top = 29
+            Width = 150
+            Height = 30
+            Pen.Color = 14065456
+          end
+          object Shape12: TShape
+            Left = 507
+            Top = 29
+            Width = 150
+            Height = 30
+            Pen.Color = 14065456
+          end
+          object Label18: TLabel
+            Left = 374
+            Top = 7
+            Width = 87
+            Height = 19
+            Caption = 'Desconto ('
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -16
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = True
+          end
+          object Label29: TLabel
+            Left = 482
+            Top = 7
+            Width = 7
+            Height = 19
+            Caption = ')'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -16
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = True
+          end
+          object Shape6: TShape
+            Left = 51
+            Top = 4
+            Width = 150
+            Height = 23
+            Brush.Color = 16577773
+            Pen.Color = 14065456
+          end
+          object Label19: TLabel
+            Left = 54
+            Top = 7
+            Width = 143
+            Height = 17
+            Alignment = taCenter
+            AutoSize = False
+            Caption = 'Qtde / Pe'#231'a'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -16
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Transparent = True
+          end
+          object Shape8: TShape
+            Left = 51
+            Top = 29
+            Width = 150
+            Height = 30
+            Pen.Color = 14065456
+          end
+          object edtsde: TdxMaskEdit
+            Left = 206
+            Top = 31
+            Width = 144
+            Color = 16644596
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -16
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Style.BorderColor = 14065456
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 0
+            OnKeyPress = edtsdeKeyPress
+            Alignment = taCenter
+            AutoSize = False
+            IgnoreMaskBlank = False
+            Text = '0,00'
+            Height = 27
+            StoredValues = 1
+          end
+          object edtcde: TdxMaskEdit
+            Left = 510
+            Top = 31
+            Width = 144
+            Color = 14065456
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWhite
+            Font.Height = -16
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Style.BorderColor = 14065456
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 1
+            OnKeyPress = edtsdeKeyPress
+            Alignment = taCenter
+            AutoSize = False
+            IgnoreMaskBlank = False
+            Text = '0,00'
+            Height = 27
+            StoredValues = 1
+          end
+          object edpdsc: TdxMaskEdit
+            Left = 358
+            Top = 31
+            Width = 144
+            Color = 16644596
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -16
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Style.BorderColor = 14065456
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 2
+            Alignment = taCenter
+            AutoSize = False
+            IgnoreMaskBlank = False
+            Text = '0,00'
+            OnValidate = edpdscValidate
+            Height = 27
+            StoredValues = 1
+          end
+          object edtqtrl: TdxMaskEdit
+            Left = 54
+            Top = 31
+            Width = 144
+            Color = 16644596
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clBlack
+            Font.Height = -16
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            Style.BorderColor = 14065456
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 3
+            OnKeyPress = edtsdeKeyPress
+            Alignment = taCenter
+            AutoSize = False
+            IgnoreMaskBlank = False
+            Text = '0'
+            Height = 27
+            StoredValues = 1
+          end
         end
       end
     end
     object pnlfoto: TPanel
-      Left = 741
-      Top = 1
-      Width = 437
-      Height = 325
+      Left = 705
+      Top = 0
+      Width = 260
+      Height = 245
       Align = alClient
       BevelOuter = bvNone
-      Color = 12513272
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -12
@@ -1974,10 +1843,9 @@ object frmven_rom: Tfrmven_rom
       object pro_foto: TImage
         Left = 0
         Top = 0
-        Width = 437
-        Height = 325
+        Width = 260
+        Height = 245
         Align = alClient
-        Center = True
         Stretch = True
       end
     end
@@ -9954,6 +9822,7 @@ object frmven_rom: Tfrmven_rom
   object consulta_s: TIBQuery
     Database = dmDADOS.bSHEILD
     Transaction = tSHEILD
+    BufferChunks = 2500
     Left = 824
     Top = 128
   end
@@ -11985,24 +11854,28 @@ object frmven_rom: Tfrmven_rom
   object consulta: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
+    BufferChunks = 2500
     Left = 856
     Top = 128
   end
   object aux: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
+    BufferChunks = 2500
     Left = 824
     Top = 160
   end
   object aux2: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
+    BufferChunks = 2500
     Left = 856
     Top = 160
   end
   object cad_pro: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
+    BufferChunks = 2500
     SQL.Strings = (
       'SELECT * FROM CAD_PRO')
     Left = 824
@@ -12454,6 +12327,7 @@ object frmven_rom: Tfrmven_rom
   object tab_pag: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
+    BufferChunks = 2500
     SQL.Strings = (
       'SELECT * FROM TAB_PAG')
     Left = 824
@@ -12523,6 +12397,7 @@ object frmven_rom: Tfrmven_rom
   object psq_cli: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
+    BufferChunks = 2500
     SQL.Strings = (
       
         'SELECT CAD_CLI.ID,CLI_FANT,CLI_RAZA,CLI_CNPJ,CLI_CPF,CLI_CRED,CL' +
@@ -12702,6 +12577,7 @@ object frmven_rom: Tfrmven_rom
   object cad_pro_est: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
+    BufferChunks = 2500
     SQL.Strings = (
       'SELECT EST_CPRO,EST_CDET,EST_CRED,COUNT(*) "EST_ITEM"'
       'FROM   cad_pro_est'
@@ -12730,6 +12606,7 @@ object frmven_rom: Tfrmven_rom
     end
   end
   object tSHEILD: TIBTransaction
+    AllowAutoStart = False
     DefaultDatabase = dmDADOS.bSHEILD
     DefaultAction = TACommitRetaining
     Params.Strings = (
@@ -12743,10 +12620,10 @@ object frmven_rom: Tfrmven_rom
   object rom_001: TIBDataSet
     Database = dmDADOS.bSHEILD
     Transaction = tSHEILD
-    ForcedRefresh = True
     AfterPost = rom_001AfterPost
     BeforePost = rom_001BeforePost
     OnNewRecord = rom_001NewRecord
+    BufferChunks = 2500
     DeleteSQL.Strings = (
       'delete from ROM_ITE'
       'where'
@@ -12754,71 +12631,233 @@ object frmven_rom: Tfrmven_rom
     InsertSQL.Strings = (
       'insert into ROM_ITE'
       
-        '  (ID, ROM_ABCD, ROM_APRC, ROM_APRO, ROM_CART, ROM_CBAR, ROM_CCA' +
-        'B, ROM_CCLF, '
+        '  (ARTIGO, CAT_ID, CAT_NO, CDET, CDEV, CDRO, CDSP,CEAN, CEST, CF' +
+        '_CEAN,'
       
-        '   ROM_CCO2, ROM_CCOR, ROM_CCST, ROM_CDET, ROM_CDNF, ROM_CDOC, R' +
-        'OM_CDPD, '
+        '   CF_ID, CF_NO, CF_SKU, CF_VPRC_COM, CF_VPRC_PAD, CF_VPRC_PAD_O' +
+        'RI, CMP_CPL, '
       
-        '   ROM_CDPR, ROM_CDRO, ROM_CFOR, ROM_CGRD, ROM_COMP, ROM_CPR2, R' +
-        'OM_CPRO, '
+        '   CMP_ID, CMP_PAD, COL_ID, COL_NO, CPAIS, CTNR, DECP, DEF_ID, D' +
+        'EF_NO, '
+      '   DESP, DGCP, DTCP, DTED, DTFK, DTPK, DTSP, DTST, EPE_QTDE,'
       
-        '   ROM_CSEP, ROM_CUST, ROM_DCO2, ROM_DCOR, ROM_DERO, ROM_DGRD, R' +
-        'OM_DPRO, '
+        '   EPE_QTRL, EST_QTDE, EST_QTRL, EXTIPI, FLAG, FPAIS, GRP_ID, GR' +
+        'P_NO, HOST, '
       
-        '   ROM_DSEP, ROM_DUNI, ROM_FLAG, ROM_FOTO, ROM_IPR2, ROM_IPRO, R' +
-        'OM_ITEM, '
+        '   ID, IDAK, IDCA, IDCP, IDED, IDEK, IDEP, IDEV, IDFK, IDPK, IDS' +
+        'K, IDSP, '
       
-        '   ROM_LDSC, ROM_METR, ROM_OBSE, ROM_PCO2, ROM_PCOM, ROM_PCOR, R' +
-        'OM_PEMB, '
+        '   IDST, INFADCAD, INFADST, IP, ITEM, MAPA, MGRAM, MMETRO, MPESO' +
+        ', MPSCN, '
       
-        '   ROM_PESO, ROM_PIPI, ROM_PPRO, ROM_PRCA, ROM_PREC, ROM_PRPA, R' +
-        'OM_PSCN, '
+        '   MREND, NCM, NFCI, PDSC, PIPI, PSBR, PSLQ, QTDE, QTRL, QTSP, R' +
+        'LSP,'
       
-        '   ROM_PSMR, ROM_QDIS, ROM_QTDE, ROM_QTPD, ROM_QTRL, ROM_QTSP, R' +
-        'OM_RCO2, '
+        '   ROM_ABCD, ROM_APRC, ROM_CART, ROM_CBAR, ROM_CCAB, ROM_CCO2, R' +
+        'OM_CCOR, '
       
-        '   ROM_RCOR, ROM_REND, ROM_RLDI, ROM_RLPD, ROM_RLSP, ROM_RPRC, R' +
-        'OM_RPRO, '
+        '   ROM_CDET, ROM_CDNF, ROM_CDOC, ROM_CDPD, ROM_CDPR, ROM_CDRO, R' +
+        'OM_CGRD, '
       
-        '   ROM_STFI, ROM_TOTA, ROM_TPRC, ROM_TSDE, ROM_UNIT, ROM_VBCIPI,' +
-        ' ROM_VDSC, '
-      '   ROM_VIPI, ROM_VPRC, ROM_VPRO)'
+        '   ROM_CPR2, ROM_CPRO, ROM_CSEP, ROM_CUST, ROM_DCO2, ROM_DCOR, R' +
+        'OM_DGRD, '
+      
+        '   ROM_DPRO, ROM_DSEP, ROM_DUNI, ROM_FLAG, ROM_FOTO, ROM_IPR2, R' +
+        'OM_IPRO, '
+      
+        '   ROM_ITEM, ROM_LDSC, ROM_METR, ROM_OBSE, ROM_PCO2, ROM_PCOM, R' +
+        'OM_PCOR, '
+      
+        '   ROM_PEMB, ROM_PESO, ROM_PIPI, ROM_PPRO, ROM_PRCA, ROM_PREC, R' +
+        'OM_PRPA, '
+      
+        '   ROM_PSBR, ROM_PSCN, ROM_PSLQ, ROM_PSMR, ROM_QDIS, ROM_QTDE, R' +
+        'OM_QTPD, '
+      
+        '   ROM_QTRL, ROM_QTSP, ROM_RCO2, ROM_RCOR, ROM_REND, ROM_RLDI, R' +
+        'OM_RLPD, '
+      
+        '   ROM_RLSP, ROM_RPRC, ROM_RPRO, ROM_STFI, ROM_TCDE, ROM_TOTA, R' +
+        'OM_TPRC, '
+      
+        '   ROM_TSDE, ROM_UNIT, ROM_VBCIPI, ROM_VDSC, ROM_VIPI, ROM_VPRC,' +
+        ' ROM_VPRO, '
+      
+        '   ROM_VST, SCT_ID, SCT_NO, SEG_ID, SEG_NO, SEQUENCIA, SGP_ID, S' +
+        'GP_NO, '
+      
+        '   SKU, TCDE, TSDE, UCOM, UCON, UPSBR, UPSLQ, UTRIB, VDSC, VIPI,' +
+        ' VPRC_COM, '
+      '   VPRC_PAD, VPRC_PAD_FIM, VPRC_PAD_INI, VST, VTSP, XPAIS)'
       'values'
+      '  (:ARTIGO, :CAT_ID, :CAT_NO, :CDET, :CDEV, :CDRO, :CDSP, :CEAN,'
       
-        '  (:ID, :ROM_ABCD, :ROM_APRC, :ROM_APRO, :ROM_CART, :ROM_CBAR, :' +
-        'ROM_CCAB, '
+        '   :CEST, :CF_CEAN, :CF_ID, :CF_NO, :CF_SKU, :CF_VPRC_COM, :CF_V' +
+        'PRC_PAD, '
       
-        '   :ROM_CCLF, :ROM_CCO2, :ROM_CCOR, :ROM_CCST, :ROM_CDET, :ROM_C' +
-        'DNF, :ROM_CDOC, '
+        '   :CF_VPRC_PAD_ORI, :CMP_CPL, :CMP_ID, :CMP_PAD, :COL_ID, :COL_' +
+        'NO, :CPAIS, '
+      '   :CTNR, :DECP, :DEF_ID, :DEF_NO, :DESP, :DGCP, :DTCP, :DTED,'
       
-        '   :ROM_CDPD, :ROM_CDPR, :ROM_CDRO, :ROM_CFOR, :ROM_CGRD, :ROM_C' +
-        'OMP, :ROM_CPR2, '
+        '   :DTFK, :DTPK, :DTSP, :DTST, :EPE_QTDE, :EPE_QTRL, :EST_QTDE, ' +
+        ':EST_QTRL, '
       
-        '   :ROM_CPRO, :ROM_CSEP, :ROM_CUST, :ROM_DCO2, :ROM_DCOR, :ROM_D' +
-        'ERO, :ROM_DGRD, '
+        '   :EXTIPI, :FLAG, :FPAIS, :GRP_ID, :GRP_NO, :HOST, :ID, :IDAK, ' +
+        ':IDCA, '
       
-        '   :ROM_DPRO, :ROM_DSEP, :ROM_DUNI, :ROM_FLAG, :ROM_FOTO, :ROM_I' +
-        'PR2, :ROM_IPRO, '
+        '   :IDCP, :IDED, :IDEK, :IDEP, :IDEV, :IDFK, :IDPK, :IDSK, :IDSP' +
+        ', :IDST, '
       
-        '   :ROM_ITEM, :ROM_LDSC, :ROM_METR, :ROM_OBSE, :ROM_PCO2, :ROM_P' +
-        'COM, :ROM_PCOR, '
+        '   :INFADCAD, :INFADST, :IP, :ITEM, :MAPA, :MGRAM, :MMETRO, :MPE' +
+        'SO, :MPSCN, '
       
-        '   :ROM_PEMB, :ROM_PESO, :ROM_PIPI, :ROM_PPRO, :ROM_PRCA, :ROM_P' +
-        'REC, :ROM_PRPA, '
+        '   :MREND, :NCM, :NFCI, :PDSC, :PIPI, :PSBR, :PSLQ, :QTDE, :QTRL' +
+        ', :QTSP, '
+      '   :RLSP, :ROM_ABCD, :ROM_APRC, :ROM_CART, :ROM_CBAR, :ROM_CCAB,'
       
-        '   :ROM_PSCN, :ROM_PSMR, :ROM_QDIS, :ROM_QTDE, :ROM_QTPD, :ROM_Q' +
-        'TRL, :ROM_QTSP, '
+        '   :ROM_CCO2, :ROM_CCOR, :ROM_CDET, :ROM_CDNF, :ROM_CDOC, :ROM_C' +
+        'DPD, :ROM_CDPR, '
       
-        '   :ROM_RCO2, :ROM_RCOR, :ROM_REND, :ROM_RLDI, :ROM_RLPD, :ROM_R' +
-        'LSP, :ROM_RPRC, '
+        '   :ROM_CDRO, :ROM_CGRD, :ROM_CPR2, :ROM_CPRO, :ROM_CSEP, :ROM_C' +
+        'UST, :ROM_DCO2, '
       
-        '   :ROM_RPRO, :ROM_STFI, :ROM_TOTA, :ROM_TPRC, :ROM_TSDE, :ROM_U' +
-        'NIT, :ROM_VBCIPI, '
-      '   :ROM_VDSC, :ROM_VIPI, :ROM_VPRC, :ROM_VPRO)')
+        '   :ROM_DCOR, :ROM_DGRD, :ROM_DPRO, :ROM_DSEP, :ROM_DUNI, :ROM_F' +
+        'LAG, :ROM_FOTO, '
+      
+        '   :ROM_IPR2, :ROM_IPRO, :ROM_ITEM, :ROM_LDSC, :ROM_METR, :ROM_O' +
+        'BSE, :ROM_PCO2, '
+      
+        '   :ROM_PCOM, :ROM_PCOR, :ROM_PEMB, :ROM_PESO, :ROM_PIPI, :ROM_P' +
+        'PRO, :ROM_PRCA, '
+      
+        '   :ROM_PREC, :ROM_PRPA, :ROM_PSBR, :ROM_PSCN, :ROM_PSLQ, :ROM_P' +
+        'SMR, :ROM_QDIS, '
+      
+        '   :ROM_QTDE, :ROM_QTPD, :ROM_QTRL, :ROM_QTSP, :ROM_RCO2, :ROM_R' +
+        'COR, :ROM_REND, '
+      
+        '   :ROM_RLDI, :ROM_RLPD, :ROM_RLSP, :ROM_RPRC, :ROM_RPRO, :ROM_S' +
+        'TFI, :ROM_TCDE, '
+      
+        '   :ROM_TOTA, :ROM_TPRC, :ROM_TSDE, :ROM_UNIT, :ROM_VBCIPI, :ROM' +
+        '_VDSC, '
+      
+        '   :ROM_VIPI, :ROM_VPRC, :ROM_VPRO, :ROM_VST, :SCT_ID, :SCT_NO, ' +
+        ':SEG_ID, '
+      
+        '   :SEG_NO, :SEQUENCIA, :SGP_ID, :SGP_NO, :SKU, :TCDE, :TSDE, :U' +
+        'COM, :UCON, '
+      
+        '   :UPSBR, :UPSLQ, :UTRIB, :VDSC, :VIPI, :VPRC_COM, :VPRC_PAD, :' +
+        'VPRC_PAD_FIM, '
+      '   :VPRC_PAD_INI, :VST, :VTSP, :XPAIS)')
     RefreshSQL.Strings = (
       'Select '
       '  ID,'
+      '  IDEP,'
+      '  IDCA,'
+      '  DTCA,'
+      '  IDED,'
+      '  DTED,'
+      '  IDST,'
+      '  DTST,'
+      '  CDST,'
+      '  REST,'
+      '  DEST,'
+      '  INFADST,'
+      '  IDPK,'
+      '  DTPK,'
+      '  IDFK,'
+      '  DTFK,'
+      '  CDRO,'
+      '  CDET,'
+      '  CTNR,'
+      '  MAPA,'
+      '  ITEM,'
+      '  IDCP,'
+      '  IDAK,'
+      '  IDSK,'
+      '  IDEK,'
+      '  ARTIGO,'
+      '  NCM,'
+      '  PIPI,'
+      '  EXTIPI,'
+      '  CEST,'
+      '  SKU,'
+      '  CEAN,'
+      '  DECP,'
+      '  DTCP,'
+      '  DGCP,'
+      '  CMP_ID,'
+      '  CMP_PAD,'
+      '  CMP_CPL,'
+      '  CF_ID,'
+      '  CF_NO,'
+      '  CF_SKU,'
+      '  CF_CEAN,'
+      '  CF_VPRC_PAD_ORI,'
+      '  CF_VPRC_PAD,'
+      '  CF_VPRC_COM,'
+      '  UCOM,'
+      '  UCON,'
+      '  UTRIB,'
+      '  UPSBR,'
+      '  UPSLQ,'
+      '  MPESO,'
+      '  MPSCN,'
+      '  MMETRO,'
+      '  MREND,'
+      '  MGRAM,'
+      '  EPE_QTDE,'
+      '  EPE_QTRL,'
+      '  EST_QTDE,'
+      '  EST_QTRL,'
+      '  QTDE,'
+      '  QTRL,'
+      '  PSBR,'
+      '  PSLQ,'
+      '  VPRC_PAD_INI,'
+      '  VPRC_PAD_FIM,'
+      '  VPRC_PAD,'
+      '  VPRC_COM,'
+      '  PDSC,'
+      '  VDSC,'
+      '  TSDE,'
+      '  TCDE,'
+      '  VIPI,'
+      '  VST,'
+      '  IDSP,'
+      '  CDSP,'
+      '  DESP,'
+      '  DTSP,'
+      '  QTSP,'
+      '  RLSP,'
+      '  VTSP,'
+      '  COL_ID,'
+      '  COL_NO,'
+      '  SEG_ID,'
+      '  SEG_NO,'
+      '  GRP_ID,'
+      '  GRP_NO,'
+      '  SGP_ID,'
+      '  SGP_NO,'
+      '  CAT_ID,'
+      '  CAT_NO,'
+      '  SCT_ID,'
+      '  SCT_NO,'
+      '  DEF_ID,'
+      '  DEF_NO,'
+      '  NFCI,'
+      '  CPAIS,'
+      '  XPAIS,'
+      '  FPAIS,'
+      '  INFADCAD,'
+      '  IDEV,'
+      '  CDEV,'
+      '  IP,'
+      '  HOST,'
+      '  SEQUENCIA,'
+      '  FLAG,'
       '  ROM_CCAB,'
       '  ROM_CDOC,'
       '  ROM_CDPR,'
@@ -12842,7 +12881,6 @@ object frmven_rom: Tfrmven_rom
       '  ROM_PCO2,'
       '  ROM_CGRD,'
       '  ROM_DGRD,'
-      '  ROM_DUNI,'
       '  ROM_QTDE,'
       '  ROM_QTRL,'
       '  ROM_QTSP,'
@@ -12886,97 +12924,17 @@ object frmven_rom: Tfrmven_rom
       '  ROM_LDSC,'
       '  ROM_TSDE,'
       '  ROM_OBSE,'
-      '  ROM_DERO,'
-      '  ROM_CCLF,'
-      '  ROM_CFOR,'
-      '  ROM_CCST,'
-      '  ROM_COMP,'
-      '  ROM_APRO'
+      '  ROM_DUNI,'
+      '  ROM_TCDE,'
+      '  ROM_VST,'
+      '  ROM_PSBR,'
+      '  ROM_PSLQ'
       'from ROM_ITE '
       'where'
       '  ID = :ID')
     SelectSQL.Strings = (
       'SELECT * FROM ROM_ITE'
       'ORDER BY ROM_ITEM')
-    ModifySQL.Strings = (
-      'update ROM_ITE'
-      'set'
-      '  ID = :ID,'
-      '  ROM_ABCD = :ROM_ABCD,'
-      '  ROM_APRC = :ROM_APRC,'
-      '  ROM_APRO = :ROM_APRO,'
-      '  ROM_CART = :ROM_CART,'
-      '  ROM_CBAR = :ROM_CBAR,'
-      '  ROM_CCAB = :ROM_CCAB,'
-      '  ROM_CCLF = :ROM_CCLF,'
-      '  ROM_CCO2 = :ROM_CCO2,'
-      '  ROM_CCOR = :ROM_CCOR,'
-      '  ROM_CCST = :ROM_CCST,'
-      '  ROM_CDET = :ROM_CDET,'
-      '  ROM_CDNF = :ROM_CDNF,'
-      '  ROM_CDOC = :ROM_CDOC,'
-      '  ROM_CDPD = :ROM_CDPD,'
-      '  ROM_CDPR = :ROM_CDPR,'
-      '  ROM_CDRO = :ROM_CDRO,'
-      '  ROM_CFOR = :ROM_CFOR,'
-      '  ROM_CGRD = :ROM_CGRD,'
-      '  ROM_COMP = :ROM_COMP,'
-      '  ROM_CPR2 = :ROM_CPR2,'
-      '  ROM_CPRO = :ROM_CPRO,'
-      '  ROM_CSEP = :ROM_CSEP,'
-      '  ROM_CUST = :ROM_CUST,'
-      '  ROM_DCO2 = :ROM_DCO2,'
-      '  ROM_DCOR = :ROM_DCOR,'
-      '  ROM_DERO = :ROM_DERO,'
-      '  ROM_DGRD = :ROM_DGRD,'
-      '  ROM_DPRO = :ROM_DPRO,'
-      '  ROM_DSEP = :ROM_DSEP,'
-      '  ROM_DUNI = :ROM_DUNI,'
-      '  ROM_FLAG = :ROM_FLAG,'
-      '  ROM_FOTO = :ROM_FOTO,'
-      '  ROM_IPR2 = :ROM_IPR2,'
-      '  ROM_IPRO = :ROM_IPRO,'
-      '  ROM_ITEM = :ROM_ITEM,'
-      '  ROM_LDSC = :ROM_LDSC,'
-      '  ROM_METR = :ROM_METR,'
-      '  ROM_OBSE = :ROM_OBSE,'
-      '  ROM_PCO2 = :ROM_PCO2,'
-      '  ROM_PCOM = :ROM_PCOM,'
-      '  ROM_PCOR = :ROM_PCOR,'
-      '  ROM_PEMB = :ROM_PEMB,'
-      '  ROM_PESO = :ROM_PESO,'
-      '  ROM_PIPI = :ROM_PIPI,'
-      '  ROM_PPRO = :ROM_PPRO,'
-      '  ROM_PRCA = :ROM_PRCA,'
-      '  ROM_PREC = :ROM_PREC,'
-      '  ROM_PRPA = :ROM_PRPA,'
-      '  ROM_PSCN = :ROM_PSCN,'
-      '  ROM_PSMR = :ROM_PSMR,'
-      '  ROM_QDIS = :ROM_QDIS,'
-      '  ROM_QTDE = :ROM_QTDE,'
-      '  ROM_QTPD = :ROM_QTPD,'
-      '  ROM_QTRL = :ROM_QTRL,'
-      '  ROM_QTSP = :ROM_QTSP,'
-      '  ROM_RCO2 = :ROM_RCO2,'
-      '  ROM_RCOR = :ROM_RCOR,'
-      '  ROM_REND = :ROM_REND,'
-      '  ROM_RLDI = :ROM_RLDI,'
-      '  ROM_RLPD = :ROM_RLPD,'
-      '  ROM_RLSP = :ROM_RLSP,'
-      '  ROM_RPRC = :ROM_RPRC,'
-      '  ROM_RPRO = :ROM_RPRO,'
-      '  ROM_STFI = :ROM_STFI,'
-      '  ROM_TOTA = :ROM_TOTA,'
-      '  ROM_TPRC = :ROM_TPRC,'
-      '  ROM_TSDE = :ROM_TSDE,'
-      '  ROM_UNIT = :ROM_UNIT,'
-      '  ROM_VBCIPI = :ROM_VBCIPI,'
-      '  ROM_VDSC = :ROM_VDSC,'
-      '  ROM_VIPI = :ROM_VIPI,'
-      '  ROM_VPRC = :ROM_VPRC,'
-      '  ROM_VPRO = :ROM_VPRO'
-      'where'
-      '  ID = :OLD_ID')
     Left = 824
     Top = 96
     object rom_001ID: TIntegerField
@@ -13054,7 +13012,7 @@ object frmven_rom: Tfrmven_rom
       Size = 3
     end
     object rom_001ROM_QTDE: TIBBCDField
-      DisplayLabel = 'Quantidade Venda'
+      DisplayLabel = 'Quantidade'
       FieldName = 'ROM_QTDE'
       Origin = '"ROM_ITE_001"."ROM_QTDE"'
       OnValidate = rom_001ROM_QTDEValidate
@@ -13063,7 +13021,7 @@ object frmven_rom: Tfrmven_rom
       Size = 4
     end
     object rom_001ROM_VDSC: TIBBCDField
-      DisplayLabel = 'Valor Desc (%)'
+      DisplayLabel = 'Desc. %'
       FieldName = 'ROM_VDSC'
       Origin = '"ROM_ITE_001"."ROM_VDSC"'
       OnValidate = rom_001ROM_VDSCValidate
@@ -13341,39 +13299,15 @@ object frmven_rom: Tfrmven_rom
       BlobType = ftMemo
       Size = 8
     end
-    object rom_001ROM_DERO: TIBStringField
-      FieldName = 'ROM_DERO'
-      Origin = '"ROM_ITE"."ROM_DERO"'
-    end
-    object rom_001ROM_CCLF: TIBStringField
-      FieldName = 'ROM_CCLF'
-      Origin = '"ROM_ITE"."ROM_CCLF"'
-      Size = 10
-    end
-    object rom_001ROM_CFOR: TIBStringField
-      FieldName = 'ROM_CFOR'
-      Origin = '"ROM_ITE"."ROM_CFOR"'
-    end
-    object rom_001ROM_CCST: TIBStringField
-      FieldName = 'ROM_CCST'
-      Origin = '"ROM_ITE"."ROM_CCST"'
-      FixedChar = True
-      Size = 1
-    end
-    object rom_001ROM_COMP: TIBStringField
-      FieldName = 'ROM_COMP'
-      Origin = '"ROM_ITE"."ROM_COMP"'
-      Size = 120
-    end
-    object rom_001ROM_APRO: TIBStringField
-      FieldName = 'ROM_APRO'
-      Origin = '"ROM_ITE"."ROM_APRO"'
-      Size = 500
+    object rom_001CTNR: TIBStringField
+      FieldName = 'CTNR'
+      Origin = '"ROM_ITE"."CTNR"'
     end
   end
   object rom_002: TIBQuery
     Database = dmDADOS.bSHEILD
     Transaction = tSHEILD
+    BufferChunks = 2500
     SQL.Strings = (
       
         'SELECT   ROM_CDRO,ROM_IPRO,ROM_IPR2,ROM_DCOR,ROM_PCOR,ROM_DCO2,R' +
@@ -13535,6 +13469,7 @@ object frmven_rom: Tfrmven_rom
   object psq_ite: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
+    BufferChunks = 2500
     SQL.Strings = (
       
         'SELECT PED_VEN_ITE.*,CAD_PRO.PRO_CART,PRO_CPRO,PRO_DPR2,PRO_DPR3' +
@@ -13631,10 +13566,12 @@ object frmven_rom: Tfrmven_rom
     object psq_iteROM_UNIT: TFloatField
       FieldName = 'ROM_UNIT'
       Origin = '"PED_VEN_ITE"."ROM_UNIT"'
+      DisplayFormat = '#,0.00###'
     end
     object psq_iteROM_PREC: TFloatField
       FieldName = 'ROM_PREC'
       Origin = '"PED_VEN_ITE"."ROM_PREC"'
+      DisplayFormat = '#,0.00###'
     end
     object psq_iteROM_VDSC: TIBBCDField
       FieldName = 'ROM_VDSC'

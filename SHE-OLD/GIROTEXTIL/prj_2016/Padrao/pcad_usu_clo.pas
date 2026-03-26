@@ -3,6 +3,7 @@ unit pcad_usu_clo;
 interface
 
 uses
+  oPrincipal,
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ComCtrls, Buttons, dxCntner, dxEditor, dxExEdtr, dxEdLib,
   StdCtrls, ExtCtrls, IBQuery, DB, IBCustomDataSet, IBStoredProc,
@@ -95,7 +96,7 @@ begin
   if cbodusu.Text = cbddusu.Text then
      raise exception.Create('Usuário origem não pode ser igual ao usuário destino !');
 
-  if yesno(handle,'Confirma clonagem ?') = mrno then
+  if oyesno(handle,'Confirma clonagem ?') = mrno then
      abort;
 
   try

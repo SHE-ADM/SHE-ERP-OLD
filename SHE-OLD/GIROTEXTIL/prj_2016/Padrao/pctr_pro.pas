@@ -111,7 +111,7 @@ var
 
 implementation
 
-uses uPrincipal, prelatorio_geral, pent_pro, peti_pro,
+uses uPrincipal, prelatorio_geral, pent_pro,
   ppesquisa;
 
 {$R *.dfm}

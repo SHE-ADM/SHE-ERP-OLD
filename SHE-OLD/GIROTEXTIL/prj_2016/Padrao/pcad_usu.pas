@@ -3,7 +3,7 @@ unit pcad_usu;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  oPrincipal, Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ppadr2, ImgList, IBStoredProc, IBDatabase,
   DB, IBCustomDataSet, IBQuery, dxCntner, dxTL, dxDBCtrl, dxDBGrid,
    ComCtrls, ExtCtrls, dxDBTLCl, dxGrClms, IBEvents, dxExEdtr,
@@ -38,8 +38,6 @@ type
     cadastroUSU_STAT: TStringField;
     dbgConsultaUSU_STAT: TdxDBGridColumn;
     dbgConsultaUSU_CUSU: TdxDBGridMaskColumn;
-    siCLONE: TSpeedItem;
-    siSEN: TSpeedItem;
     cadastroUSU_DESC: TSmallintField;
     dbgConsultaUSU_DESC: TdxDBGridMaskColumn;
     cadastroUSU_RELA: TIBStringField;
@@ -47,7 +45,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure siALTClick(Sender: TObject);
     procedure siDELClick(Sender: TObject);
-    procedure siLIXOClick(Sender: TObject);
     procedure cadastroCalcFields(DataSet: TDataSet);
     procedure dbgConsultaCustomDrawCell(Sender: TObject; ACanvas: TCanvas;
       ARect: TRect; ANode: TdxTreeListNode; AColumn: TdxTreeListColumn;
@@ -246,7 +243,7 @@ begin
 
     if cadastroUSU_STA.Value = '1' then
     begin
-      if yesno(handle,'Confirma a exclusão do usuário '+cadastroUSU_DUSU.AsString+' ?') = mrno then
+      if oyesno(handle,'Confirma a exclusão do usuário '+cadastroUSU_DUSU.AsString+' ?') = mrno then
          abort;
 
       SQL.Clear;
@@ -262,7 +259,7 @@ begin
     end
     else
     begin
-      if yesno(handle,'Enviar para a lixeira o usuário '+cadastroUSU_DUSU.AsString+' ?') = mrno then
+      if oyesno(handle,'Enviar para a lixeira o usuário '+cadastroUSU_DUSU.AsString+' ?') = mrno then
          abort;
 
       SQL.Clear;
@@ -274,34 +271,6 @@ begin
     end;
   end;
   ExecuteEvent;
-  if dbgconsulta.Tag = 1 then
-     siLIXO.Click;
-end;
-
-procedure Tfrmcad_usu.siLIXOClick(Sender: TObject);
-begin
-  with cadastro do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT   CAD_USU.*,PAR_SIS.PAR_FANT FROM CAD_USU');
-    SQL.Add('LEFT     OUTER JOIN PAR_SIS ON CAD_USU.USU_CDEP = PAR_SIS.ID');
-
-    if dbgconsulta.Tag = 0 then
-    begin
-      dbgconsulta.Tag   := 1;
-      dbgconsulta.Color := clBtnface;
-      SQL.Add('WHERE USU_STA = ''1''');
-    end
-    else
-    begin
-      dbgconsulta.Tag   := 0;
-      dbgconsulta.Color := clWhite;
-      SQL.Add('WHERE USU_STA = ''0''');
-    end;
-
-    SQL.Add('ORDER BY USU_DUSU');
-    Open;
-  end;
 end;
 
 procedure Tfrmcad_usu.cadastroCalcFields(DataSet: TDataSet);
@@ -355,7 +324,7 @@ end;
 
 procedure Tfrmcad_usu.siSENClick(Sender: TObject);
 begin
-  if yesno(handle,'Confirma mudança da senha atual para a senha padrão ?'+#13+
+  if oyesno(handle,'Confirma mudança da senha atual para a senha padrão ?'+#13+
                   'Usuário: '+cadastroUSU_DUSU.AsString) = mrno then
      abort;
 

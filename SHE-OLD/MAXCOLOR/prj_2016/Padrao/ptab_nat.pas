@@ -47,10 +47,10 @@ type
     cadastroNAT_CFOP: TIBStringField;
     dbgConsultaNAT_CFOP: TdxDBGridMaskColumn;
     procedure FormCreate(Sender: TObject);
-    procedure siINCClick(Sender: TObject);
-    procedure siALTClick(Sender: TObject);
-    procedure siDELClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure SIMEAppendClick(Sender: TObject);
+    procedure SIMEEditClick(Sender: TObject);
+    procedure SIMEDeleteClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -87,7 +87,7 @@ begin
   frmtab_nat := Nil;
 end;
 
-procedure Tfrmtab_nat.siINCClick(Sender: TObject);
+procedure Tfrmtab_nat.SIMEAppendClick(Sender: TObject);
 begin
   PCampo[0] := 'USU_NOVO';
   PCampo[1] := 'Tabelas';
@@ -107,7 +107,7 @@ begin
   end;
 end;
 
-procedure Tfrmtab_nat.siALTClick(Sender: TObject);
+procedure Tfrmtab_nat.SIMEEditClick(Sender: TObject);
 begin
   PCampo[0] := 'USU_EDIT';
   PCampo[1] := 'Tabelas';
@@ -127,7 +127,7 @@ begin
   end;
 end;
 
-procedure Tfrmtab_nat.siDELClick(Sender: TObject);
+procedure Tfrmtab_nat.SIMEDeleteClick(Sender: TObject);
 begin
   PCampo[0] := 'USU_DELE';
   PCampo[1] := 'Tabelas';
@@ -162,8 +162,6 @@ begin
     end;
   end;
   ExecuteEvent;
-  if dbgconsulta.Tag = 1 then
-     siLIXO.Click;
 end;
 
 end.

@@ -13,8 +13,6 @@ uses
 
 type
   Tfrmctr_rom = class(Tfrmpadr1)
-    siARO: TSpeedItem;
-    siCRO: TSpeedItem;
     rom_ite: TIBQuery;
     dtsrom_ite: TDataSource;
     Label23: TLabel;
@@ -87,9 +85,6 @@ type
     cadastroROM_OBSE: TMemoField;
     cadastroROM_STA: TIBStringField;
     cadastroROM_ADSC: TIBBCDField;
-    siBRO: TSpeedItem;
-    siDRO: TSpeedItem;
-    siGRO: TSpeedItem;
     rom_iteROM_CCAB: TIntegerField;
     rom_iteROM_CDPR: TIntegerField;
     rom_iteROM_CDPD: TIntegerField;
@@ -102,7 +97,6 @@ type
     rom_iteROM_QTRL: TIntegerField;
     rom_iteROM_RLSP: TIntegerField;
     rom_iteROM_RLPD: TIntegerField;
-    siNFE: TSpeedItem;
     dbgConsultaROM_CDNF: TdxDBGridMaskColumn;
     dbgConsultaROM_DNFS: TdxDBGridDateColumn;
     cadastroROM_CDRD: TIntegerField;
@@ -155,6 +149,8 @@ type
     dbgiteROM_DUNI: TdxDBGridMaskColumn;
     dbgConsultaROM_TOTA: TdxDBGridColumn;
     SQLConsulta: TIBSQL;
+    siCRO: TSpeedItem;
+    siNFE: TSpeedItem;
     procedure FormCreate(Sender: TObject);
     procedure dbgConsultaCustomDrawCell(Sender: TObject; ACanvas: TCanvas;
       ARect: TRect; ANode: TdxTreeListNode; AColumn: TdxTreeListColumn;
@@ -168,10 +164,8 @@ type
     procedure cadastroAfterOpen(DataSet: TDataSet);
     procedure cadastroCalcFields(DataSet: TDataSet);
     procedure siPSQClick(Sender: TObject);
-    procedure siEVEClick(Sender: TObject);
     procedure siCROClick(Sender: TObject);
     procedure dtsrom_iteDataChange(Sender: TObject; Field: TField);
-    procedure siAROClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure siNFEClick(Sender: TObject);
   private
@@ -186,10 +180,25 @@ var
 
 implementation
 
-uses uPrincipal, prelatorio_geral, ppesquisa, plog_eve, pven_nfe,
-     pctr_ped, pctr_rom_edi;
+uses uPrincipal, prelatorio_geral, ppesquisa, pven_nfe,
+     pctr_ped;
 
 {$R *.dfm}
+
+procedure Tfrmctr_rom.siRELClick(Sender: TObject);
+begin
+  frmrelatorio_geral := TFrmrelatorio_geral.Create(self);
+  try
+    frmrelatorio_geral.CDRO                 := cadastroID.AsString;
+    frmrelatorio_geral.CDNF                 := cadastroROM_CDNF.AsString;
+    frmrelatorio_geral.tsROM_CAB.TabVisible := true;
+    frmrelatorio_geral.pcMAIN.ActivePage    := frmrelatorio_geral.tsROM_CAB;
+    frmrelatorio_geral.ShowModal;
+  finally
+    freeAndNil(frmrelatorio_geral);
+    frmrelatorio_geral.Free;
+  end;
+end;
 
 procedure Tfrmctr_rom.FormCreate(Sender: TObject);
 begin
@@ -222,181 +231,6 @@ procedure Tfrmctr_rom.FormDestroy(Sender: TObject);
 begin
   inherited;
   frmctr_rom := Nil;
-end;
-
-procedure Tfrmctr_rom.abre_tabela;
-begin
-  with cadastro do
-  begin
-    DeleteSQL.Clear;
-    DeleteSQL.Add('delete from '+SLPrincipal.Values['rom_cab']);
-    DeleteSQL.Add('where');
-    DeleteSQL.Add('ID = :OLD_ID');
-
-    InsertSQL.Clear;
-    InsertSQL.Add('insert into '+SLPrincipal.Values['rom_cab']);
-    InsertSQL.Add('  (ID, ROM_ADSC, ROM_CCLI, ROM_CDBX, ROM_CDCX, ROM_CDNF, ROM_CDOC, ROM_CDPD,');
-    InsertSQL.Add('   ROM_CDPR, ROM_CDRD, ROM_CDRO, ROM_CDSC, ROM_CEXP, ROM_COMI, ROM_CONC,');
-    InsertSQL.Add('   ROM_CPAG, ROM_CREP, ROM_CTNR, ROM_CVEN, ROM_DBAI, ROM_DCAN, ROM_DDES,');
-    InsertSQL.Add('   ROM_DEMB, ROM_DERO, ROM_DEXP, ROM_DNFS, ROM_DPRD, ROM_DROM, ROM_HEXP,');
-    InsertSQL.Add('   ROM_HROM, ROM_OBSE, ROM_PDSC, ROM_QTPD, ROM_QTSP, ROM_QTVE, ROM_RLVE,');
-    InsertSQL.Add('   ROM_STA, ROM_STCO, ROM_STFI, ROM_STPD, ROM_TCDE, ROM_TDSC, ROM_TSDE)');
-    InsertSQL.Add('values');
-    InsertSQL.Add('  (:ID, :ROM_ADSC, :ROM_CCLI, :ROM_CDBX, :ROM_CDCX, :ROM_CDNF, :ROM_CDOC,');
-    InsertSQL.Add('   :ROM_CDPD, :ROM_CDPR, :ROM_CDRD, :ROM_CDRO, :ROM_CDSC, :ROM_CEXP, :ROM_COMI,');
-    InsertSQL.Add('   :ROM_CONC, :ROM_CPAG, :ROM_CREP, :ROM_CTNR, :ROM_CVEN, :ROM_DBAI, :ROM_DCAN,');
-    InsertSQL.Add('   :ROM_DDES, :ROM_DEMB, :ROM_DERO, :ROM_DEXP, :ROM_DNFS, :ROM_DPRD, :ROM_DROM,');
-    InsertSQL.Add('   :ROM_HEXP, :ROM_HROM, :ROM_OBSE, :ROM_PDSC, :ROM_QTPD, :ROM_QTSP, :ROM_QTVE,');
-    InsertSQL.Add('   :ROM_RLVE, :ROM_STA,  :ROM_STCO, :ROM_STFI, :ROM_STPD, :ROM_TCDE, :ROM_TDSC,');
-    InsertSQL.Add('   :ROM_TSDE)');
-
-    ModifySQL.Clear;
-    ModifySQL.Add('update '+SLPrincipal.Values['rom_cab']);
-    ModifySQL.Add('set');
-    ModifySQL.Add('  ID = :ID,');
-    ModifySQL.Add('  ROM_ADSC = :ROM_ADSC,');
-    ModifySQL.Add('  ROM_CCLI = :ROM_CCLI,');
-    ModifySQL.Add('  ROM_CDBX = :ROM_CDBX,');
-    ModifySQL.Add('  ROM_CDCX = :ROM_CDCX,');
-    ModifySQL.Add('  ROM_CDNF = :ROM_CDNF,');
-    ModifySQL.Add('  ROM_CDOC = :ROM_CDOC,');
-    ModifySQL.Add('  ROM_CDPD = :ROM_CDPD,');
-    ModifySQL.Add('  ROM_CDPR = :ROM_CDPR,');
-    ModifySQL.Add('  ROM_CDRD = :ROM_CDRD,');
-    ModifySQL.Add('  ROM_CDRO = :ROM_CDRO,');
-    ModifySQL.Add('  ROM_CDSC = :ROM_CDSC,');
-    ModifySQL.Add('  ROM_CEXP = :ROM_CEXP,');
-    ModifySQL.Add('  ROM_COMI = :ROM_COMI,');
-    ModifySQL.Add('  ROM_CONC = :ROM_CONC,');
-    ModifySQL.Add('  ROM_CPAG = :ROM_CPAG,');
-    ModifySQL.Add('  ROM_CREP = :ROM_CREP,');
-    ModifySQL.Add('  ROM_CTNR = :ROM_CTNR,');
-    ModifySQL.Add('  ROM_CVEN = :ROM_CVEN,');
-    ModifySQL.Add('  ROM_DBAI = :ROM_DBAI,');
-    ModifySQL.Add('  ROM_DCAN = :ROM_DCAN,');
-    ModifySQL.Add('  ROM_DDES = :ROM_DDES,');
-    ModifySQL.Add('  ROM_DEMB = :ROM_DEMB,');
-    ModifySQL.Add('  ROM_DERO = :ROM_DERO,');
-    ModifySQL.Add('  ROM_DEXP = :ROM_DEXP,');
-    ModifySQL.Add('  ROM_DNFS = :ROM_DNFS,');
-    ModifySQL.Add('  ROM_DPRD = :ROM_DPRD,');
-    ModifySQL.Add('  ROM_DROM = :ROM_DROM,');
-    ModifySQL.Add('  ROM_HEXP = :ROM_HEXP,');
-    ModifySQL.Add('  ROM_HROM = :ROM_HROM,');
-    ModifySQL.Add('  ROM_OBSE = :ROM_OBSE,');
-    ModifySQL.Add('  ROM_PDSC = :ROM_PDSC,');
-    ModifySQL.Add('  ROM_QTPD = :ROM_QTPD,');
-    ModifySQL.Add('  ROM_QTSP = :ROM_QTSP,');
-    ModifySQL.Add('  ROM_QTVE = :ROM_QTVE,');
-    ModifySQL.Add('  ROM_RLVE = :ROM_RLVE,');
-    ModifySQL.Add('  ROM_STA  = :ROM_STA, ');
-    ModifySQL.Add('  ROM_STCO = :ROM_STCO,');
-    ModifySQL.Add('  ROM_STFI = :ROM_STFI,');
-    ModifySQL.Add('  ROM_STPD = :ROM_STPD,');
-    ModifySQL.Add('  ROM_TCDE = :ROM_TCDE,');
-    ModifySQL.Add('  ROM_TDSC = :ROM_TDSC,');
-    ModifySQL.Add('  ROM_TSDE = :ROM_TSDE ');
-    ModifySQL.Add('where');
-    ModifySQL.Add('  ID = :OLD_ID');
-  end;
-end;
-
-procedure Tfrmctr_rom.dbgConsultaCustomDrawCell(Sender: TObject;
-  ACanvas: TCanvas; ARect: TRect; ANode: TdxTreeListNode;
-  AColumn: TdxTreeListColumn; ASelected, AFocused, ANewItemRow: Boolean;
-  var AText: String; var AColor: TColor; AFont: TFont;
-  var AAlignment: TAlignment; var ADone: Boolean);
-var
-  Value: Variant;
-begin
-  if not ASelected then
-  begin
-    AFont.Color := clBlack;
-    AColor      := $00BEEFF8;
-
-    Value := ANode.Values[0];
-    if not VarIsNull(Value) then
-    begin
-      if Value > 0 then
-      begin
-         AFont.Color := clwhite;
-         AColor      := $00C6C600;
-      end;
-    end;
-  end;
-end;
-
-procedure Tfrmctr_rom.cadastroBeforeEdit(DataSet: TDataSet);
-begin
-  {};
-end;
-
-procedure Tfrmctr_rom.cadastroBeforeInsert(DataSet: TDataSet);
-begin
-  {};
-end;
-
-procedure Tfrmctr_rom.dtscadastroDataChange(Sender: TObject;
-  Field: TField);
-begin
-  if Cadastro.State = dsBrowse then
-  begin
-    if cadastroROM_TDSC.AsString = '%' then
-    dbgConsultaROM_DESC.Caption := 'Desc (%)'
-    else if cadastroROM_TDSC.AsString = '$' then
-    dbgConsultaROM_DESC.Caption := 'Desc ($)';
-
-    siNFE.Enabled := (cadastroROM_STA.AsString  = '0') and (cadastroROM_CDNF.AsInteger = 0) and (cadastroROM_CDBX.AsInteger = 0);
-    siCRO.Enabled := (cadastroROM_STA.AsString  = '0') and (cadastroROM_CDNF.AsInteger = 0) and (cadastroROM_CDBX.AsInteger = 0);
-    siARO.Enabled := (cadastroROM_STA.AsString  = '0') and (cadastroROM_CDBX.AsInteger = 0);
-
-    if frmprincipal.cad_usuUSU_CUSU.AsInteger = 0 then
-    siNFE.Enabled := true;
-
-    sbMSG.Panels[1].Text := cadastroROM_CONC.AsString;
-    sbMSG.Panels[2].Text := cadastroROM_OBSE.AsString;
-  end;
-end;
-
-procedure Tfrmctr_rom.siRELClick(Sender: TObject);
-begin
-  frmrelatorio_geral := TFrmrelatorio_geral.Create(self);
-  try
-    frmrelatorio_geral.CDRO                 := cadastroID.AsString;
-    frmrelatorio_geral.CDNF                 := cadastroROM_CDNF.AsString;
-    frmrelatorio_geral.tsROM_CAB.TabVisible := true;
-    frmrelatorio_geral.pcMAIN.ActivePage    := frmrelatorio_geral.tsROM_CAB;
-    frmrelatorio_geral.ShowModal;
-  finally
-    freeAndNil(frmrelatorio_geral);
-    frmrelatorio_geral.Free;
-  end;
-end;
-
-procedure Tfrmctr_rom.cadastroAfterOpen(DataSet: TDataSet);
-begin
-  with rom_ite do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT   ROM_ITE.*,CAD_PRO.ID,CAD_PRO.PRO_CART,CAD_PRO.PRO_CPRO,CAD_PRO.PRO_CCOR,');
-    SQL.Add('         CAD_PRO.PRO_RCOR,CAD_PRO.PRO_DCOR,CAD_PRO.PRO_DUNI,');
-    SQL.Add('         CAD_PRO.PRO_CBAR,CAD_PRO.PRO_PPRO,CAD_PRO.PRO_CEMB,CAD_PRO.PRO_GRAD,');
-    SQL.Add('         CAD_PRO.PRO_PIPI,CAD_PRO.PRO_REPR,CAD_PRO.PRO_APRO,CAD_PRO_IMG.PRO_FOTO');
-    SQL.Add('FROM     CAD_PRO_IMG,CAD_PRO,'+SLPrincipal.Values['rom_ite']+' "ROM_ITE"');
-    SQL.Add('WHERE    ROM_ITE.ROM_CPRO     = CAD_PRO.ID');
-    SQL.Add('AND      CAD_PRO_IMG.PRO_CART = CAD_PRO.PRO_CART');
-    SQL.Add('AND      ROM_ITE.ROM_CCAB = :ID');
-    SQL.Add('ORDER BY ROM_ITE.ROM_ITEM');
-    Open;
-  end;
-end;
-
-procedure Tfrmctr_rom.cadastroCalcFields(DataSet: TDataSet);
-begin
-  cadastroROM_TOTA.Value := cadastroROM_TCDE.AsFloat*cadastroROM_CONC.AsInteger;
-  cadastroROM_DESC.Value := formatfloat('#,0.00########',cadastroROM_PDSC.AsFloat);
-  if cadastroROM_CDSC.AsFloat > 0 then
-  cadastroROM_DESC.Value := cadastroROM_DESC.AsString+'+'+formatfloat('#,0.00########',cadastroROM_CDSC.AsFloat);
 end;
 
 procedure Tfrmctr_rom.siPSQClick(Sender: TObject);
@@ -441,12 +275,12 @@ begin
              SelectSQL.Add('AND ROM_CDNF = '''+edtxt.Text+'''')
           else
              SelectSQL.Add('AND '+cField+' LIKE ''%'+edtxt.Text+'%''');
-        end;     
+        end;
 
         if (dxDT1.Date > 0) and (dxDT2.Date > 0) then
            SelectSQL.Add('AND '+cData+' BETWEEN '''+formatDateTime('mm/dd/yy',dxDT1.Date)+''' AND '''+formatDateTime('mm/dd/yy',dxDT2.Date)+'''');
 
-        SelectSQL.Add('ORDER BY '+cField);           
+        SelectSQL.Add('ORDER BY '+cField);
         Open;
       end;
       dbgconsulta.SetFocus;
@@ -455,25 +289,6 @@ begin
     freeAndNil(frmpesquisa);
     frmpesquisa.Free;
   end;
-end;
-
-procedure Tfrmctr_rom.siEVEClick(Sender: TObject);
-begin
-  frmlog_eve := tfrmlog_eve.create(self);
-  with frmlog_eve.cadastro do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT LOG_EVE.*,PAR_SIS.PAR_FANT,CAD_FUN.FUN_FOTO');
-    SQL.Add('FROM   LOG_EVE,PAR_SIS');
-    SQL.Add('LEFT   OUTER JOIN CAD_FUN ON LOG_EVE.EVE_CLOG = CAD_FUN.ID');
-    SQL.Add('WHERE  LOG_EVE.EVE_CDEP = PAR_SIS.ID');
-    SQL.Add('AND    LOG_EVE.EVE_FUNC = ''Vendas''');
-    if frmprincipal.cad_usuUSU_MENU.AsString = 'VEN' then
-    SQL.Add('AND    LOG_EVE.EVE_CLOG = '''+frmprincipal.cad_usuUSU_CUSU.AsString+'''');
-    SQL.Add('ORDER BY ID DESC');
-    Open;
-  end;
-  frmlog_eve.show;
 end;
 
 procedure Tfrmctr_rom.siCROClick(Sender: TObject);
@@ -645,40 +460,6 @@ begin
   end;
 end;
 
-procedure Tfrmctr_rom.dtsrom_iteDataChange(Sender: TObject; Field: TField);
-var
-  tam: word;
-begin
-  tam := dbgiteROM_DPRO.Tag;
-
-  if screen.Width >= 1360 then
-     tam := tam + 80;
-  
-  dbgiteROM_DPRO.Width := tam;
-end;
-
-procedure Tfrmctr_rom.siAROClick(Sender: TObject);
-begin
-  frmctr_rom_edi := tfrmctr_rom_edi.create(self);
-  frmctr_rom_edi.edccli.Text    := cadastroROM_CCLI.AsString;
-  frmctr_rom_edi.edccli.Hint    := cadastroCLI_FANT.AsString;
-  frmctr_rom_edi.edcven.Text    := cadastroROM_CVEN.AsString;
-  frmctr_rom_edi.edcrep.Text    := cadastroROM_CREP.AsString;
-  frmctr_rom_edi.edcpag.Text    := cadastroROM_CPAG.AsString;
-  frmctr_rom_edi.edcpag.Enabled := (cadastroROM_CDNF.AsInteger = 0);
-  frmctr_rom_edi.edcred.Text    := cadastroROM_CONC.AsString;
-  frmctr_rom_edi.cbstco.Text    := cadastroROM_STCO.AsString;
-  frmctr_rom_edi.cbstpd.Text    := cadastroROM_STPD.AsString;
-  frmctr_rom_edi.cbstfi.Text    := cadastroROM_STFI.AsString;
-  frmctr_rom_edi.edcdro.Text    := cadastroID.AsString;
-  frmctr_rom_edi.edobse.Text    := cadastroROM_OBSE.AsString;
-  frmctr_rom_edi.edctnr.Text    := cadastroROM_CTNR.AsString;
-  frmctr_rom_edi.ShowModal;
-
-  cadastro.Close;
-  cadastro.Open;
-end;
-
 procedure Tfrmctr_rom.siNFEClick(Sender: TObject);
 begin
   with consulta do
@@ -800,6 +581,177 @@ begin
     end else
     frmven_nfe.Show;
   end;
+end;
+
+procedure Tfrmctr_rom.abre_tabela;
+begin
+  with cadastro do
+  begin
+    DeleteSQL.Clear;
+    DeleteSQL.Add('delete from '+SLPrincipal.Values['rom_cab']);
+    DeleteSQL.Add('where');
+    DeleteSQL.Add('ID = :OLD_ID');
+
+    InsertSQL.Clear;
+    InsertSQL.Add('insert into '+SLPrincipal.Values['rom_cab']);
+    InsertSQL.Add('  (ID, ROM_ADSC, ROM_CCLI, ROM_CDBX, ROM_CDCX, ROM_CDNF, ROM_CDOC, ROM_CDPD,');
+    InsertSQL.Add('   ROM_CDPR, ROM_CDRD, ROM_CDRO, ROM_CDSC, ROM_CEXP, ROM_COMI, ROM_CONC,');
+    InsertSQL.Add('   ROM_CPAG, ROM_CREP, ROM_CTNR, ROM_CVEN, ROM_DBAI, ROM_DCAN, ROM_DDES,');
+    InsertSQL.Add('   ROM_DEMB, ROM_DERO, ROM_DEXP, ROM_DNFS, ROM_DPRD, ROM_DROM, ROM_HEXP,');
+    InsertSQL.Add('   ROM_HROM, ROM_OBSE, ROM_PDSC, ROM_QTPD, ROM_QTSP, ROM_QTVE, ROM_RLVE,');
+    InsertSQL.Add('   ROM_STA, ROM_STCO, ROM_STFI, ROM_STPD, ROM_TCDE, ROM_TDSC, ROM_TSDE)');
+    InsertSQL.Add('values');
+    InsertSQL.Add('  (:ID, :ROM_ADSC, :ROM_CCLI, :ROM_CDBX, :ROM_CDCX, :ROM_CDNF, :ROM_CDOC,');
+    InsertSQL.Add('   :ROM_CDPD, :ROM_CDPR, :ROM_CDRD, :ROM_CDRO, :ROM_CDSC, :ROM_CEXP, :ROM_COMI,');
+    InsertSQL.Add('   :ROM_CONC, :ROM_CPAG, :ROM_CREP, :ROM_CTNR, :ROM_CVEN, :ROM_DBAI, :ROM_DCAN,');
+    InsertSQL.Add('   :ROM_DDES, :ROM_DEMB, :ROM_DERO, :ROM_DEXP, :ROM_DNFS, :ROM_DPRD, :ROM_DROM,');
+    InsertSQL.Add('   :ROM_HEXP, :ROM_HROM, :ROM_OBSE, :ROM_PDSC, :ROM_QTPD, :ROM_QTSP, :ROM_QTVE,');
+    InsertSQL.Add('   :ROM_RLVE, :ROM_STA,  :ROM_STCO, :ROM_STFI, :ROM_STPD, :ROM_TCDE, :ROM_TDSC,');
+    InsertSQL.Add('   :ROM_TSDE)');
+
+    ModifySQL.Clear;
+    ModifySQL.Add('update '+SLPrincipal.Values['rom_cab']);
+    ModifySQL.Add('set');
+    ModifySQL.Add('  ID = :ID,');
+    ModifySQL.Add('  ROM_ADSC = :ROM_ADSC,');
+    ModifySQL.Add('  ROM_CCLI = :ROM_CCLI,');
+    ModifySQL.Add('  ROM_CDBX = :ROM_CDBX,');
+    ModifySQL.Add('  ROM_CDCX = :ROM_CDCX,');
+    ModifySQL.Add('  ROM_CDNF = :ROM_CDNF,');
+    ModifySQL.Add('  ROM_CDOC = :ROM_CDOC,');
+    ModifySQL.Add('  ROM_CDPD = :ROM_CDPD,');
+    ModifySQL.Add('  ROM_CDPR = :ROM_CDPR,');
+    ModifySQL.Add('  ROM_CDRD = :ROM_CDRD,');
+    ModifySQL.Add('  ROM_CDRO = :ROM_CDRO,');
+    ModifySQL.Add('  ROM_CDSC = :ROM_CDSC,');
+    ModifySQL.Add('  ROM_CEXP = :ROM_CEXP,');
+    ModifySQL.Add('  ROM_COMI = :ROM_COMI,');
+    ModifySQL.Add('  ROM_CONC = :ROM_CONC,');
+    ModifySQL.Add('  ROM_CPAG = :ROM_CPAG,');
+    ModifySQL.Add('  ROM_CREP = :ROM_CREP,');
+    ModifySQL.Add('  ROM_CTNR = :ROM_CTNR,');
+    ModifySQL.Add('  ROM_CVEN = :ROM_CVEN,');
+    ModifySQL.Add('  ROM_DBAI = :ROM_DBAI,');
+    ModifySQL.Add('  ROM_DCAN = :ROM_DCAN,');
+    ModifySQL.Add('  ROM_DDES = :ROM_DDES,');
+    ModifySQL.Add('  ROM_DEMB = :ROM_DEMB,');
+    ModifySQL.Add('  ROM_DERO = :ROM_DERO,');
+    ModifySQL.Add('  ROM_DEXP = :ROM_DEXP,');
+    ModifySQL.Add('  ROM_DNFS = :ROM_DNFS,');
+    ModifySQL.Add('  ROM_DPRD = :ROM_DPRD,');
+    ModifySQL.Add('  ROM_DROM = :ROM_DROM,');
+    ModifySQL.Add('  ROM_HEXP = :ROM_HEXP,');
+    ModifySQL.Add('  ROM_HROM = :ROM_HROM,');
+    ModifySQL.Add('  ROM_OBSE = :ROM_OBSE,');
+    ModifySQL.Add('  ROM_PDSC = :ROM_PDSC,');
+    ModifySQL.Add('  ROM_QTPD = :ROM_QTPD,');
+    ModifySQL.Add('  ROM_QTSP = :ROM_QTSP,');
+    ModifySQL.Add('  ROM_QTVE = :ROM_QTVE,');
+    ModifySQL.Add('  ROM_RLVE = :ROM_RLVE,');
+    ModifySQL.Add('  ROM_STA  = :ROM_STA, ');
+    ModifySQL.Add('  ROM_STCO = :ROM_STCO,');
+    ModifySQL.Add('  ROM_STFI = :ROM_STFI,');
+    ModifySQL.Add('  ROM_STPD = :ROM_STPD,');
+    ModifySQL.Add('  ROM_TCDE = :ROM_TCDE,');
+    ModifySQL.Add('  ROM_TDSC = :ROM_TDSC,');
+    ModifySQL.Add('  ROM_TSDE = :ROM_TSDE ');
+    ModifySQL.Add('where');
+    ModifySQL.Add('  ID = :OLD_ID');
+  end;
+end;
+
+procedure Tfrmctr_rom.dbgConsultaCustomDrawCell(Sender: TObject;
+  ACanvas: TCanvas; ARect: TRect; ANode: TdxTreeListNode;
+  AColumn: TdxTreeListColumn; ASelected, AFocused, ANewItemRow: Boolean;
+  var AText: String; var AColor: TColor; AFont: TFont;
+  var AAlignment: TAlignment; var ADone: Boolean);
+var
+  Value: Variant;
+begin
+  if not ASelected then
+  begin
+    AFont.Color := clBlack;
+    AColor      := $00BEEFF8;
+
+    Value := ANode.Values[0];
+    if not VarIsNull(Value) then
+    begin
+      if Value > 0 then
+      begin
+         AFont.Color := clwhite;
+         AColor      := $00C6C600;
+      end;
+    end;
+  end;
+end;
+
+procedure Tfrmctr_rom.cadastroBeforeEdit(DataSet: TDataSet);
+begin
+  {};
+end;
+
+procedure Tfrmctr_rom.cadastroBeforeInsert(DataSet: TDataSet);
+begin
+  {};
+end;
+
+procedure Tfrmctr_rom.dtscadastroDataChange(Sender: TObject;
+  Field: TField);
+begin
+  if Cadastro.State = dsBrowse then
+  begin
+    if cadastroROM_TDSC.AsString = '%' then
+    dbgConsultaROM_DESC.Caption := 'Desc (%)'
+    else if cadastroROM_TDSC.AsString = '$' then
+    dbgConsultaROM_DESC.Caption := 'Desc ($)';
+
+    siNFE.Enabled := (cadastroROM_STA.AsString  = '0') and (cadastroROM_CDNF.AsInteger = 0) and (cadastroROM_CDBX.AsInteger = 0);
+    siCRO.Enabled := (cadastroROM_STA.AsString  = '0') and (cadastroROM_CDNF.AsInteger = 0) and (cadastroROM_CDBX.AsInteger = 0);
+
+    if frmprincipal.cad_usuUSU_CUSU.AsInteger = 0 then
+    siNFE.Enabled := true;
+
+    sbMSG.Panels[1].Text := cadastroROM_CONC.AsString;
+    sbMSG.Panels[2].Text := cadastroROM_OBSE.AsString;
+  end;
+end;
+
+procedure Tfrmctr_rom.cadastroAfterOpen(DataSet: TDataSet);
+begin
+  with rom_ite do
+  begin
+    SQL.Clear;
+    SQL.Add('SELECT   ROM_ITE.*,CAD_PRO.ID,CAD_PRO.PRO_CART,CAD_PRO.PRO_CPRO,CAD_PRO.PRO_CCOR,');
+    SQL.Add('         CAD_PRO.PRO_RCOR,CAD_PRO.PRO_DCOR,CAD_PRO.PRO_DUNI,');
+    SQL.Add('         CAD_PRO.PRO_CBAR,CAD_PRO.PRO_PPRO,CAD_PRO.PRO_CEMB,CAD_PRO.PRO_GRAD,');
+    SQL.Add('         CAD_PRO.PRO_PIPI,CAD_PRO.PRO_REPR,CAD_PRO.PRO_APRO,CAD_PRO_IMG.PRO_FOTO');
+    SQL.Add('FROM     CAD_PRO_IMG,CAD_PRO,'+SLPrincipal.Values['rom_ite']+' "ROM_ITE"');
+    SQL.Add('WHERE    ROM_ITE.ROM_CPRO     = CAD_PRO.ID');
+    SQL.Add('AND      CAD_PRO_IMG.PRO_CART = CAD_PRO.PRO_CART');
+    SQL.Add('AND      ROM_ITE.ROM_CCAB = :ID');
+    SQL.Add('ORDER BY ROM_ITE.ROM_ITEM');
+    Open;
+  end;
+end;
+
+procedure Tfrmctr_rom.cadastroCalcFields(DataSet: TDataSet);
+begin
+  cadastroROM_TOTA.Value := cadastroROM_TCDE.AsFloat*cadastroROM_CONC.AsInteger;
+  cadastroROM_DESC.Value := formatfloat('#,0.00########',cadastroROM_PDSC.AsFloat);
+  if cadastroROM_CDSC.AsFloat > 0 then
+  cadastroROM_DESC.Value := cadastroROM_DESC.AsString+'+'+formatfloat('#,0.00########',cadastroROM_CDSC.AsFloat);
+end;
+
+procedure Tfrmctr_rom.dtsrom_iteDataChange(Sender: TObject; Field: TField);
+var
+  tam: word;
+begin
+  tam := dbgiteROM_DPRO.Tag;
+
+  if screen.Width >= 1360 then
+     tam := tam + 80;
+
+  dbgiteROM_DPRO.Width := tam;
 end;
 
 end.

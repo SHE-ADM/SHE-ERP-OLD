@@ -7,28 +7,6 @@ inherited frmcai_tsr: Tfrmcai_tsr
   inherited sbMSG: TStatusBar
     Width = 577
   end
-  inherited SpeedBar2: TSpeedBar
-    Width = 577
-    inherited siPSQ: TSpeedItem
-      Visible = False
-    end
-    inherited siREF: TSpeedItem
-      Left = 2
-    end
-    inherited siSAIR: TSpeedItem
-      Left = 112
-    end
-    inherited siLIXO: TSpeedItem
-      Visible = False
-    end
-    inherited siREL: TSpeedItem
-      Visible = False
-    end
-    inherited siEVE: TSpeedItem
-      Visible = False
-      OnClick = siEVEClick
-    end
-  end
   inherited pnldir: TPanel
     Left = 577
   end
@@ -38,9 +16,9 @@ inherited frmcai_tsr: Tfrmcai_tsr
       Width = 577
     end
     inherited gbDET: TGroupBox
-      Width = 577
+      Width = 523
       inherited DBGConsulta: TdxDBGrid
-        Width = 524
+        Width = 519
         KeyField = 'ID'
         Filter.Criteria = {00000000}
         object dbgConsultaID: TdxDBGridMaskColumn
@@ -69,6 +47,9 @@ inherited frmcai_tsr: Tfrmcai_tsr
         end
       end
     end
+  end
+  inherited SBMenuPrincipal: TSpeedBar
+    Width = 577
   end
   inherited Cadastro: TIBDataSet
     BeforePost = cadastroBeforePost
@@ -119,5 +100,11 @@ inherited frmcai_tsr: Tfrmcai_tsr
       Origin = '"CAI_SAR"."CAI_TIPO"'
       Size = 15
     end
+  end
+  inherited ILMenuPrincipal: TImageList
+    Top = 376
+  end
+  inherited ILMenuEdicao: TImageList
+    Top = 376
   end
 end

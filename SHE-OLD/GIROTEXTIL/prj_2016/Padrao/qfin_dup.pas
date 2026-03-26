@@ -205,7 +205,7 @@ var
 
 implementation
 
-uses pfin_dup, uPrincipal;
+uses uPrincipal, pfin_dup;
 
 {$R *.DFM}
 

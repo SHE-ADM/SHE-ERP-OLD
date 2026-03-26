@@ -17,11 +17,6 @@ const
 
 type
   Tfrmctr_nfe = class(Tfrmpadr1)
-    siCNF: TSpeedItem;
-    siCON: TSpeedItem;
-    siENV: TSpeedItem;
-    siVIS: TSpeedItem;
-    siTRI: TSpeedItem;
     cadastroID: TIntegerField;
     cadastroNFE_CDNF: TIntegerField;
     cadastroNFE_AAMM: TIBStringField;
@@ -190,7 +185,6 @@ type
     dxDBMemo1: TdxDBMemo;
     cadastroNFE_OBSE: TMemoField;
     dbgConsultaNFE_STA: TdxDBGridMaskColumn;
-    siCCE: TSpeedItem;
     aux: TIBQuery;
     dbgiteNFE_NCM: TdxDBGridMaskColumn;
     dbgiteNFE_CFOP: TdxDBGridMaskColumn;
@@ -292,6 +286,12 @@ type
     fin_rec_baiFIN_DERD: TIBStringField;
     fin_rec_baiFIN_DTST: TDateTimeField;
     Consulta_S: TIBQuery;
+    siCON: TSpeedItem;
+    siVIS: TSpeedItem;
+    siCCe: TSpeedItem;
+    siCNF: TSpeedItem;
+    siTRI: TSpeedItem;
+    SIEnv: TSpeedItem;
     procedure FormCreate(Sender: TObject);
     procedure dbgConsultaCustomDrawCell(Sender: TObject; ACanvas: TCanvas;
       ARect: TRect; ANode: TdxTreeListNode; AColumn: TdxTreeListColumn;
@@ -303,7 +303,6 @@ type
     procedure cadastroBeforeInsert(DataSet: TDataSet);
     procedure cadastroAfterPost(DataSet: TDataSet);
     procedure cadastroAfterOpen(DataSet: TDataSet);
-    procedure siEVEClick(Sender: TObject);
     procedure siENVClick(Sender: TObject);
     procedure siVISClick(Sender: TObject);
     procedure siCCEClick(Sender: TObject);
@@ -339,7 +338,7 @@ var
 implementation
 
 uses uPrincipal, pcad_cli, pcad_for, pven_npr, pemail, qnfe_ger,
-  plog_eve, pven_nfe, pnfe_cce, ppesquisa, prelatorio_geral;
+  pven_nfe, pnfe_cce, ppesquisa, prelatorio_geral;
 
 {$R *.dfm}
 {$I+}
@@ -368,6 +367,429 @@ procedure Tfrmctr_nfe.FormDestroy(Sender: TObject);
 begin
   inherited;
   frmctr_nfe := Nil;
+end;
+
+procedure Tfrmctr_nfe.siPSQClick(Sender: TObject);
+begin
+  frmpesquisa := Tfrmpesquisa.Create(self);
+  try
+    frmpesquisa.Tag          := 8;
+    if campo_pesquisa = '' then
+    frmpesquisa.cbCAMPO.Text := 'Nota Fiscal' else
+    frmpesquisa.cbCAMPO.Text := campo_pesquisa;
+    frmpesquisa.cbDATA.Text  := 'Emissão';
+    frmpesquisa.ShowModal;
+  finally
+    if frmpesquisa.editado then
+    with frmpesquisa do
+    begin
+      if (edTXT.Text = '') and (dxdt1.Date < 0) and (cField <> 'Todos') then
+         {nothing}
+      else
+      begin
+        if cField = 'NFE_CDPD' then
+        with consulta do
+        begin
+          SQL.Clear;
+          SQL.Add('SELECT ROM_CDNF FROM '+SLPrincipal.Values['ped_ven_cab']);
+          SQL.Add('WHERE  ROM_DERO = '''+edtxt.Text+'''');
+          Open;
+
+          edtxt.Text := inttostr(fields[0].AsInteger);
+          cField     := 'NFE_CDNF';
+        end;
+
+        with cadastro do
+        begin
+          Close;
+          SelectSQL.Clear;
+          SelectSQL.Add('SELECT * FROM '+SLPrincipal.Values['nfe_cab']);
+          SelectSQL.Add('WHERE    ID > 0');
+
+          if cField <> 'Todos' then
+          begin
+            if edtxt.Text <> '' then
+            begin
+              if cField = 'NFE_CDNF' then
+              SelectSQL.Add('AND '+cField+' = '''+edtxt.Text+'''')
+              else
+              SelectSQL.Add('AND '+cField+' LIKE ''%'+edtxt.Text+'%''');
+            end;
+
+            if (dxDT1.Date > 0) and (dxDT2.Date > 0) then
+               SelectSQL.Add('AND '+cData+' BETWEEN '''+formatDateTime('mm/dd/yy',dxDT1.Date)+''' AND '''+formatDateTime('mm/dd/yy',dxDT2.Date)+'''');
+
+            SelectSQL.Add('ORDER BY '+cfield+' DESC');
+          end else
+          SelectSQL.Add('ORDER BY ID DESC');
+          Open;
+        end;
+      end;
+      dbgconsulta.SetFocus;
+      campo_pesquisa := frmpesquisa.cbCAMPO.Text;
+    end;
+    freeAndNil(frmpesquisa);
+    frmpesquisa.Free;
+  end;
+end;
+
+procedure Tfrmctr_nfe.siCONClick(Sender: TObject);
+begin
+  if cadastroNFE_CHAV.AsString = '' then
+  raise exception.Create('Chave não acesso não gerada !'+#13+'Favor entrar em contato com o administrador do sistema.');
+
+  try
+    frmven_npr := TFrmven_npr.Create(Self);
+    frmven_npr.Caption    := 'Consulta NFe';
+    frmven_npr.edchv.Text := TRIM(cadastroNFE_CHAV.AsString);
+    frmven_npr.ShowModal;
+
+    if CadastroNFE_PROT.AsString <> frmven_npr.edpro.Text then
+    begin
+      cadastro.Edit;
+      cadastroNFE_PROT.Value := frmven_npr.edpro.Text;
+      cadastro.Post;
+    end;
+  finally
+    FreeAndNil(frmven_npr);
+    GERA_DANFE;
+  end;
+end;
+
+procedure Tfrmctr_nfe.siVISClick(Sender: TObject);
+var
+  NOME_ARQ: string;
+  NOME_FIL: string;
+begin
+  DecodeDate(cadastroNFE_DEMI.AsDateTime, Ano, Mes, Dia);
+
+  NOME_ARQ := 'C:\Sheild\NotaFiscal\PDF\'+oStrZero(cadastroNFE_CDNF.AsInteger,6)+'.PDF';
+  NOME_FIL := 'C:\Sheild\NotaFiscal\NFe\arquivos\procnfe\'+oStrZero(ano,4)+oStrZero(mes,2)+'\'+trim(cadastroNFE_CHAV.AsString)+'-procNFe.xml';
+
+  if not fileexists(NOME_FIL) then
+  raise exception.Create('Arquivo '+NOME_FIL+' não encontrado !'+#13+'Favor consultar a nota fiscal.');
+
+  if not fileexists(NOME_ARQ) then
+  begin
+    NOME_ARQ := 'C:\Sheild\NotaFiscal\PDF\'+cadastroNFE_CDNF.AsString+'.PDF';
+
+    if not fileexists(NOME_ARQ) then
+    raise exception.Create('Arquivo '+NOME_ARQ+' não encontrado !'+#13+'Favor consultar a nota fiscal.');
+  end;
+
+  ImprimeDanfe(PChar(NOME_FIL),PChar(NOME_ARQ),3,false);
+end;
+
+procedure Tfrmctr_nfe.siCCEClick(Sender: TObject);
+begin
+  try
+    frmnfe_cce := Tfrmnfe_cce.Create(Self);
+    frmnfe_cce.Caption     := 'Carta de Correção Eletrônica';
+    frmnfe_cce.edproc.Text := cadastroNFE_PROT.AsString;
+    frmnfe_cce.edchv.Text  := cadastroNFE_CHAV.AsString;
+    frmnfe_cce.edcdnf.Text := cadastroNFE_CDNF.AsString;
+    frmnfe_cce.edcdnf.Hint := cadastroNFE_CFAV.AsString;
+    frmnfe_cce.eddemi.Date := cadastroNFE_DSAI.AsDateTime;
+    frmnfe_cce.edhemi.Time := cadastroNFE_HRSE.AsDateTime;
+    frmnfe_cce.eddemi.Hint := oStrZero(yearof(cadastroNFE_DEMI.AsDateTime),4)+oStrZero(monthof(cadastroNFE_DEMI.AsDateTime),2);
+
+    frmnfe_cce.ShowModal;
+  finally
+    freeAndNil(frmnfe_cce);
+  end;
+end;
+
+procedure Tfrmctr_nfe.siCNFClick(Sender: TObject);
+var
+  Justificativa: string;
+  ClickedOK: Boolean;
+begin
+  if oYesNo(handle,'Cancelar Nota Fiscal '+cadastroNFE_CDNF.AsString+' ?') = mrno then
+  Abort;
+
+  try
+    Screen.Cursor := crAppStart;
+    sbMSG.Panels[1].Text := 'Aguarde...';
+    sbMSG.Refresh;
+
+    if cadastroNFE_CHAV.AsString <> '' then
+    begin
+      Justificativa := 'Mínimo de 15 palavras';
+      ClickedOK := InputQuery('Justificativa de cancelamento de NFe', 'Digite aqui a sua justificativa', justificativa);
+      if not ClickedOK then
+      abort;
+
+      if LENGTH(justificativa) < 15 then
+      raise exception.Create('Justificativa de cancelamento de NFe inválido !'+#13+'Inferior à 15 palavras.');
+
+      if cadastroNFE_PROT.AsString <> '' then
+      begin
+        frmven_npr     := Tfrmven_npr.Create(Self);
+        frmven_npr.Tag := 1;
+        frmven_npr.Caption         := 'Cancelamento de NFe';
+        frmven_npr.edconsulta.Text := NFeCancelamentoEvento(
+                                      cadastroNFE_CHAV.AsString,
+                                      cadastroNFE_PROT.AsString,
+                                      '0000121', // Número sequencial autoincremental único para identificação do Lote gerado pela aplicação
+                                      '1',       // número sequencial do evento. A aplicação deve gerar sequencialmente esse valor para cada evento de uma nfe (pg. 3 da NT 2011/006)
+                                      justificativa);
+        frmven_npr.edchv.Text      := TRIM(cadastroNFE_CHAV.AsString);
+        frmven_npr.edchv.Enabled   := false;
+
+        try
+          protocolo := TRIM(copy(frmven_npr.edconsulta.text,length(frmven_npr.edconsulta.text)-14,15));
+
+          frmven_npr.edpro.Text    := protocolo;
+          frmven_npr.edpro.Enabled := false;
+          frmven_npr.ShowModal;
+        finally
+          if (Pos('CT-e',frmven_npr.edconsulta.Text) > 0) or (Pos('MDF-e',frmven_npr.edconsulta.Text) > 0) then
+          Justificativa := '';
+
+          FreeAndNil(frmven_npr);
+        end;
+      end;
+    end;
+  finally
+    if not oEmpty(justificativa) then
+    CANCELA_CDNF;
+
+    Screen.Cursor := crDefault;
+    sbMSG.Panels[1].Text := '';
+    sbMSG.Refresh;
+  end;
+end;
+
+procedure Tfrmctr_nfe.siTRIClick(Sender: TObject);
+begin
+  if oYesNo(handle,'Emitir uma cópia exata de nota fiscal No.: '+CadastroNFE_CDNF.AsString+' ?') = mrno then
+  Abort;
+
+  try
+    with nfe_tra do
+    begin
+      SQL.Clear;
+      SQL.Add('SELECT * FROM '+SLPrincipal.Values['nfe_tra']);
+      SQL.Add('WHERE    NFE_CCAB = '''+CadastroID.AsString+'''');
+      Open;
+    end;
+
+    frmven_nfe := TFrmven_nfe.Create(Self);
+    frmven_nfe.Tag             := 1;
+    frmven_nfe.edcven.Text     := inttostr(CadastroNFE_CVEN.AsInteger);
+    frmven_nfe.eddven.Text     := CadastroNFE_DVEN.AsString;
+    frmven_nfe.edcrep.Text     := inttostr(CadastroNFE_CREP.AsInteger);
+    frmven_nfe.eddrep.Text     := CadastroNFE_DREP.AsString;
+    frmven_nfe.cbcnat.Text     := CadastroNFE_CNAT.AsString;
+    frmven_nfe.cbdtra.Text     := CadastroNFE_DTRA.AsString;
+    frmven_nfe.IEModFrete.Text := nfe_traNFE_MODFRETE.AsString;
+    frmven_nfe.edesp.Text      := nfe_traNFE_ESP.AsString;
+    frmven_nfe.edqvol.Text     := nfe_traNFE_QVOL.AsString;
+    frmven_nfe.edmarca.Text    := nfe_traNFE_MARCA.AsString;
+    frmven_nfe.ednvol.Text     := nfe_traNFE_NVOL.AsString;
+    frmven_nfe.CEPesoB.Text    := nfe_traNFE_PSBR.AsString;
+    frmven_nfe.CEPesoL.Text    := nfe_traNFE_PSLQ.AsString;
+
+    frmven_nfe.NewString       := CadastroNFE_CHAV.AsString;
+    frmven_nfe.NewNota         := CadastroNFE_CDNF.AsString;
+    frmven_nfe.NewData         := CadastroNFE_DEMI.AsString;
+    frmven_nfe.NewCST          := nfe_iteNFE_CST.AsString;
+    frmven_nfe.NewPICMS        := nfe_iteNFE_PICMS.AsString;
+    frmven_nfe.NewVBC          := CadastroNFE_VNF.AsString;
+    frmven_nfe.NewCSTIPI       := nfe_iteNFE_CSTIPI.AsString;
+    frmven_nfe.NewPIPI         := nfe_iteNFE_PIPI.AsString;
+    frmven_nfe.NewVBCIPI       := nfe_iteNFE_VBCIPI.AsString;
+    frmven_nfe.NewVBCPIS       := nfe_iteNFE_VBCPIS.AsString;
+    frmven_nfe.NewVBCCOFINS    := nfe_iteNFE_VBCOFINS.AsString;
+    frmven_nfe.NewNCM          := nfe_iteNFE_NCM.AsString;
+    frmven_nfe.NewORIG         := nfe_iteNFE_ORIG.AsString;
+
+    frmven_nfe.edesp.Tag   := 1;
+    frmven_nfe.edqvol.Tag  := 1;
+    frmven_nfe.edmarca.Tag := 1;
+    frmven_nfe.ednvol.Tag  := 1;
+    frmven_nfe.CEPesoB.Tag := 1;
+    frmven_nfe.CEPesoL.Tag := 1;
+
+    if CadastroNFE_CLFO.AsInteger = 0 then
+       frmven_nfe.PESQUISA_CLIENTE('I',CadastroNFE_CFAV.AsString,0) else
+    if CadastroNFE_CLFO.AsInteger = 1 then
+    begin
+      frmven_nfe.lacfav.Caption := 'Fornecedor';
+      frmven_nfe.PESQUISA_FORNECEDOR('I',CadastroNFE_CFAV.AsString,0);
+    end;
+
+    frmven_nfe.Tag := 1;
+
+    nfe_ite.DisableControls;
+    nfe_ite.First;
+    while not nfe_ite.Eof do
+    begin
+      frmven_nfe.nfe_001.Append;
+      frmven_nfe.PESQUISA_PRODUTO('Produto',nfe_iteNFE_CPROD.AsString);
+      frmven_nfe.nfe_001NFE_CEAN.Value   := nfe_iteNFE_CEAN.AsString;
+      frmven_nfe.nfe_001NFE_CPROD.Value  := nfe_iteNFE_CPROD.AsString;
+      frmven_nfe.nfe_001NFE_XPROD.Value  := nfe_iteNFE_XPROD.AsString;
+      frmven_nfe.nfe_001NFE_NCM.Value    := nfe_iteNFE_NCM.AsString;
+      frmven_nfe.nfe_001NFE_EXTIPI.Value := nfe_iteNFE_EXTIPI.AsString;
+      frmven_nfe.nfe_001NFE_ORIG.Value   := nfe_iteNFE_ORIG.AsString;
+      frmven_nfe.nfe_001NFE_CST.Value    := nfe_iteNFE_CST.AsString;
+      frmven_nfe.nfe_001NFE_UCOM.Value   := nfe_iteNFE_UCOM.AsString;
+      frmven_nfe.nfe_001NFE_PREC.Value   := nfe_iteNFE_VUNCOM.AsFloat;
+      frmven_nfe.nfe_001NFE_VUNCOM.Value := nfe_iteNFE_VUNCOM.AsFloat;
+      frmven_nfe.nfe_001NFE_QCOM.Value   := nfe_iteNFE_QCOM.AsFloat;
+      frmven_nfe.nfe_001NFE_RCOM.Value   := nfe_iteNFE_RCOM.AsInteger;
+      frmven_nfe.nfe_001.Post;
+      nfe_ite.Next;
+    end;
+  finally
+    nfe_ite.EnableControls;
+
+    if CadastroNFE_VFRETE.AsFloat > 0 then
+    begin
+      frmven_nfe.CEVFrete.Value := CadastroNFE_VFRETE.AsFloat;
+      frmven_nfe.CALCULA_FRETE;
+    end;
+
+    oRTransact(frmven_nfe.TSheild);
+    frmven_nfe.CALCULA_NF;
+    if (Screen.Width <= 1024) or (Screen.Width < 1280) then
+    begin
+      frmven_nfe.FormStyle := fsnormal;
+      frmven_nfe.Visible   := false;
+      frmven_nfe.ShowModal;
+    end else
+    frmven_nfe.Show;
+  end;
+end;
+
+procedure Tfrmctr_nfe.siENVClick(Sender: TObject);
+var
+  NOME_ARQ: string;
+  NOME_FIL: string;
+
+begin
+  DecodeDate(cadastroNFE_DEMI.AsDateTime, Ano, Mes, Dia);
+
+  NOME_ARQ := 'C:\Sheild\NotaFiscal\PDF\'+oStrZero(cadastroNFE_CDNF.AsInteger,6)+'.PDF';
+  NOME_FIL := 'C:\Sheild\NotaFiscal\NFe\arquivos\procnfe\'+oStrZero(ano,4)+oStrZero(mes,2)+'\'+trim(cadastroNFE_CHAV.AsString)+'-procNFe.xml';
+
+  if not fileexists(NOME_FIL) then
+     raise exception.Create('Arquivo '+NOME_FIL+' não encontrado !'+#13+'Favor consultar a nota fiscal.');
+
+  if not fileexists(NOME_ARQ) then
+     raise exception.Create('Arquivo '+NOME_ARQ+' não encontrado !'+#13+'Favor consultar a nota fiscal.');
+
+  frmemail := TFrmemail.Create(self);
+  try
+    with consulta do
+    begin
+      SQL.Clear;
+      SQL.Add('SELECT CLI_MAIL FROM CAD_CLI');
+      SQL.Add('WHERE  ID = '''+cadastroNFE_CFAV.AsString+'''');
+      Open;
+    end;
+
+    frmemail.cbemail.Text  := consulta.Fields[0].AsString;
+    frmemail.edtitulo.Text := frmprincipal.parametrosPAR_FANT.AsString+' - NF.: '+cadastroNFE_CDNF.AsString;
+    frmemail.Memo1.Lines.Add('Segue em anexo...') ;
+
+
+    frmemail.cbarqs.Items.Add(NOME_ARQ);
+    frmemail.cbarqs.Items.Add(NOME_FIL);
+
+    frmemail.ShowModal;
+  finally
+    freeAndNil(frmemail);
+    frmemail.Free;
+  end;
+end;
+
+procedure Tfrmctr_nfe.siRELClick(Sender: TObject);
+begin
+  frmrelatorio_geral := TFrmrelatorio_geral.Create(self);
+  try
+    frmrelatorio_geral.tsNFE_CAB.TabVisible   := true;
+    frmrelatorio_geral.pcMAIN.ActivePage      := frmrelatorio_geral.tsNFE_CAB;
+    frmrelatorio_geral.cbNFE_CAB_TNFE.Text    := 'VENDA';
+
+    with consulta do
+    begin
+      SQL.Clear;
+      SQL.Add('SELECT   PAR_FANT FROM PAR_SIS');
+      SQL.Add('ORDER BY PAR_FANT');
+      Open;
+
+      frmrelatorio_geral.cbNFE_CAB_DEMP.Text := frmprincipal.parametrosPAR_FANT.AsString;
+      while not eof do
+      begin
+        frmrelatorio_geral.cbNFE_CAB_DEMP.Values.Add(fields[0].AsString);
+        frmrelatorio_geral.cbNFE_CAB_DEMP.Descriptions.Add(fields[0].AsString);
+        next;
+      end;
+
+      SQL.Clear;
+      SQL.Add('SELECT   NFE_DFAV FROM '+SLPrincipal.Values['nfe_cab']+' "NFE_CAB"');
+      SQL.Add('GROUP BY NFE_DFAV');
+      SQL.Add('ORDER BY NFE_DFAV');
+      Open;
+
+      frmrelatorio_geral.cbNFE_CAB_DFAV.Items.Add('TODOS');
+      while not eof do
+      begin
+        frmrelatorio_geral.cbNFE_CAB_DFAV.Items.Add(fields[0].AsString);
+        next;
+      end;
+
+      SQL.Clear;
+      SQL.Add('SELECT   NFE_DVEN');
+      SQL.Add('FROM '+SLPrincipal.Values['nfe_cab']+' "NFE_CAB"');
+      SQL.Add('WHERE    NFE_DVEN <> '' ''');
+      SQL.Add('GROUP BY NFE_DVEN');
+      SQL.Add('ORDER BY NFE_DVEN');
+      Open;
+
+      frmrelatorio_geral.cbNFE_CAB_DVEN.Items.Add('TODOS');
+      while not eof do
+      begin
+        frmrelatorio_geral.cbNFE_CAB_DVEN.Items.Add(fields[0].AsString);
+        next;
+      end;
+
+      SQL.Clear;
+      SQL.Add('SELECT   NFE_DREP');
+      SQL.Add('FROM '+SLPrincipal.Values['nfe_cab']+' "NFE_CAB"');
+      SQL.Add('WHERE    NFE_DREP <> '' ''');
+      SQL.Add('GROUP BY NFE_DREP');
+      SQL.Add('ORDER BY NFE_DREP');
+      oPEN;
+
+      frmrelatorio_geral.cbNFE_CAB_DREP.Items.Add('TODOS');
+      while not eof do
+      begin
+        frmrelatorio_geral.cbNFE_CAB_DREP.Items.Add(fields[0].AsString);
+        next;
+      end;
+
+      SQL.Clear;
+      SQL.Add('SELECT   NFE_DTRA FROM '+SLPrincipal.Values['nfe_cab']+' "NFE_CAB"');
+      SQL.Add('GROUP BY NFE_DTRA');
+      SQL.Add('ORDER BY NFE_DTRA');
+      Open;
+
+      frmrelatorio_geral.cbNFE_CAB_DTRA.Items.Add('TODOS');
+      while not eof do
+      begin
+        frmrelatorio_geral.cbNFE_CAB_DTRA.Items.Add(fields[0].AsString);
+        next;
+      end;
+    end;
+
+    frmrelatorio_geral.ShowModal;
+  finally
+    freeAndNil(frmrelatorio_geral);
+    frmrelatorio_geral.Free;
+  end;
 end;
 
 function Tfrmctr_nfe.RETORNA_ID_PRODUTO: integer;
@@ -549,29 +971,6 @@ begin
   end;
 end;
 
-procedure Tfrmctr_nfe.siCONClick(Sender: TObject);
-begin
-  if cadastroNFE_CHAV.AsString = '' then
-  raise exception.Create('Chave não acesso não gerada !'+#13+'Favor entrar em contato com o administrador do sistema.');
-
-  try
-    frmven_npr := TFrmven_npr.Create(Self);
-    frmven_npr.Caption    := 'Consulta NFe';
-    frmven_npr.edchv.Text := TRIM(cadastroNFE_CHAV.AsString);
-    frmven_npr.ShowModal;
-
-    if CadastroNFE_PROT.AsString <> frmven_npr.edpro.Text then
-    begin
-      cadastro.Edit;
-      cadastroNFE_PROT.Value := frmven_npr.edpro.Text;
-      cadastro.Post;
-    end;
-  finally
-    FreeAndNil(frmven_npr);
-    GERA_DANFE;
-  end;
-end;
-
 procedure Tfrmctr_nfe.cadastroBeforeEdit(DataSet: TDataSet);
 begin
 //  PCampo := 'USU_NFS_NFSO';
@@ -680,260 +1079,6 @@ begin
   end;
 end;
 
-procedure Tfrmctr_nfe.siEVEClick(Sender: TObject);
-begin
-  frmlog_eve := tfrmlog_eve.create(self);
-  with frmlog_eve.cadastro do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT LOG_EVE.*,PAR_SIS.PAR_FANT,CAD_FUN.FUN_FOTO');
-    SQL.Add('FROM   LOG_EVE,PAR_SIS');
-    SQL.Add('LEFT   OUTER JOIN CAD_FUN ON LOG_EVE.EVE_CLOG = CAD_FUN.ID');
-    SQL.Add('WHERE  LOG_EVE.EVE_CDEP = PAR_SIS.ID');
-    SQL.Add('AND    LOG_EVE.EVE_FUNC = ''Nota Fiscal''');
-    SQL.Add('ORDER BY ID DESC');
-    Open;
-  end;
-  frmlog_eve.show;
-end;
-
-procedure Tfrmctr_nfe.siENVClick(Sender: TObject);
-var
-  NOME_ARQ: string;
-  NOME_FIL: string;
-
-begin
-  DecodeDate(cadastroNFE_DEMI.AsDateTime, Ano, Mes, Dia);
-
-  NOME_ARQ := 'C:\Sheild\NotaFiscal\PDF\'+oStrZero(cadastroNFE_CDNF.AsInteger,6)+'.PDF';
-  NOME_FIL := 'C:\Sheild\NotaFiscal\NFe\arquivos\procnfe\'+oStrZero(ano,4)+oStrZero(mes,2)+'\'+trim(cadastroNFE_CHAV.AsString)+'-procNFe.xml';
-
-  if not fileexists(NOME_FIL) then
-     raise exception.Create('Arquivo '+NOME_FIL+' não encontrado !'+#13+'Favor consultar a nota fiscal.');
-
-  if not fileexists(NOME_ARQ) then
-     raise exception.Create('Arquivo '+NOME_ARQ+' não encontrado !'+#13+'Favor consultar a nota fiscal.');
-
-  frmemail := TFrmemail.Create(self);
-  try
-    with consulta do
-    begin
-      SQL.Clear;
-      SQL.Add('SELECT CLI_MAIL FROM CAD_CLI');
-      SQL.Add('WHERE  ID = '''+cadastroNFE_CFAV.AsString+'''');
-      Open;
-    end;
-
-    frmemail.cbemail.Text  := consulta.Fields[0].AsString;
-    frmemail.edtitulo.Text := frmprincipal.parametrosPAR_FANT.AsString+' - NF.: '+cadastroNFE_CDNF.AsString;
-    frmemail.Memo1.Lines.Add('Segue em anexo...') ;
-
-
-    frmemail.cbarqs.Items.Add(NOME_ARQ);    
-    frmemail.cbarqs.Items.Add(NOME_FIL);
-
-    frmemail.ShowModal;
-  finally
-    freeAndNil(frmemail);
-    frmemail.Free;
-  end;
-end;
-
-procedure Tfrmctr_nfe.siVISClick(Sender: TObject);
-var
-  NOME_ARQ: string;
-  NOME_FIL: string;
-begin
-  DecodeDate(cadastroNFE_DEMI.AsDateTime, Ano, Mes, Dia);
-
-  NOME_ARQ := 'C:\Sheild\NotaFiscal\PDF\'+oStrZero(cadastroNFE_CDNF.AsInteger,6)+'.PDF';
-  NOME_FIL := 'C:\Sheild\NotaFiscal\NFe\arquivos\procnfe\'+oStrZero(ano,4)+oStrZero(mes,2)+'\'+trim(cadastroNFE_CHAV.AsString)+'-procNFe.xml';
-
-  if not fileexists(NOME_FIL) then
-  raise exception.Create('Arquivo '+NOME_FIL+' não encontrado !'+#13+'Favor consultar a nota fiscal.');
-
-  if not fileexists(NOME_ARQ) then
-  begin
-    NOME_ARQ := 'C:\Sheild\NotaFiscal\PDF\'+cadastroNFE_CDNF.AsString+'.PDF';
-
-    if not fileexists(NOME_ARQ) then
-    raise exception.Create('Arquivo '+NOME_ARQ+' não encontrado !'+#13+'Favor consultar a nota fiscal.');
-  end;
-
-  ImprimeDanfe(PChar(NOME_FIL),PChar(NOME_ARQ),3,false);
-end;
-
-procedure Tfrmctr_nfe.siCCEClick(Sender: TObject);
-begin
-  try
-    frmnfe_cce := Tfrmnfe_cce.Create(Self);
-    frmnfe_cce.Caption     := 'Carta de Correção Eletrônica';
-    frmnfe_cce.edproc.Text := cadastroNFE_PROT.AsString;
-    frmnfe_cce.edchv.Text  := cadastroNFE_CHAV.AsString;
-    frmnfe_cce.edcdnf.Text := cadastroNFE_CDNF.AsString;
-    frmnfe_cce.edcdnf.Hint := cadastroNFE_CFAV.AsString;
-    frmnfe_cce.eddemi.Date := cadastroNFE_DSAI.AsDateTime;
-    frmnfe_cce.edhemi.Time := cadastroNFE_HRSE.AsDateTime;
-    frmnfe_cce.eddemi.Hint := oStrZero(yearof(cadastroNFE_DEMI.AsDateTime),4)+oStrZero(monthof(cadastroNFE_DEMI.AsDateTime),2);
-
-    frmnfe_cce.ShowModal;
-  finally
-    freeAndNil(frmnfe_cce);
-  end;
-end;
-
-procedure Tfrmctr_nfe.siPSQClick(Sender: TObject);
-begin
-  frmpesquisa := Tfrmpesquisa.Create(self);
-  try
-    frmpesquisa.Tag          := 8;
-    if campo_pesquisa = '' then
-    frmpesquisa.cbCAMPO.Text := 'Nota Fiscal' else
-    frmpesquisa.cbCAMPO.Text := campo_pesquisa;
-    frmpesquisa.cbDATA.Text  := 'Emissão';
-    frmpesquisa.ShowModal;
-  finally
-    if frmpesquisa.editado then
-    with frmpesquisa do
-    begin
-      if (edTXT.Text = '') and (dxdt1.Date < 0) and (cField <> 'Todos') then
-         {nothing}
-      else
-      begin
-        if cField = 'NFE_CDPD' then
-        with consulta do
-        begin
-          SQL.Clear;
-          SQL.Add('SELECT ROM_CDNF FROM '+SLPrincipal.Values['ped_ven_cab']);
-          SQL.Add('WHERE  ROM_DERO = '''+edtxt.Text+'''');
-          Open;
-
-          edtxt.Text := inttostr(fields[0].AsInteger);
-          cField     := 'NFE_CDNF';
-        end;
-
-        with cadastro do
-        begin
-          Close;
-          SelectSQL.Clear;
-          SelectSQL.Add('SELECT * FROM '+SLPrincipal.Values['nfe_cab']);
-          SelectSQL.Add('WHERE    ID > 0');
-
-          if cField <> 'Todos' then
-          begin
-            if edtxt.Text <> '' then
-            begin
-              if cField = 'NFE_CDNF' then
-              SelectSQL.Add('AND '+cField+' = '''+edtxt.Text+'''')
-              else
-              SelectSQL.Add('AND '+cField+' LIKE ''%'+edtxt.Text+'%''');
-            end;
-
-            if (dxDT1.Date > 0) and (dxDT2.Date > 0) then
-               SelectSQL.Add('AND '+cData+' BETWEEN '''+formatDateTime('mm/dd/yy',dxDT1.Date)+''' AND '''+formatDateTime('mm/dd/yy',dxDT2.Date)+'''');
-
-            SelectSQL.Add('ORDER BY '+cfield+' DESC');
-          end else
-          SelectSQL.Add('ORDER BY ID DESC');
-          Open;
-        end;
-      end;
-      dbgconsulta.SetFocus;
-      campo_pesquisa := frmpesquisa.cbCAMPO.Text;
-    end;
-    freeAndNil(frmpesquisa);
-    frmpesquisa.Free;
-  end;
-
-end;
-
-procedure Tfrmctr_nfe.siRELClick(Sender: TObject);
-begin
-  frmrelatorio_geral := TFrmrelatorio_geral.Create(self);
-  try
-    frmrelatorio_geral.tsNFE_CAB.TabVisible   := true;
-    frmrelatorio_geral.pcMAIN.ActivePage      := frmrelatorio_geral.tsNFE_CAB;
-    frmrelatorio_geral.cbNFE_CAB_TNFE.Text    := 'VENDA';
-
-    with consulta do
-    begin
-      SQL.Clear;
-      SQL.Add('SELECT   PAR_FANT FROM PAR_SIS');
-      SQL.Add('ORDER BY PAR_FANT');
-      Open;
-
-      frmrelatorio_geral.cbNFE_CAB_DEMP.Text := frmprincipal.parametrosPAR_FANT.AsString;
-      while not eof do
-      begin
-        frmrelatorio_geral.cbNFE_CAB_DEMP.Values.Add(fields[0].AsString);
-        frmrelatorio_geral.cbNFE_CAB_DEMP.Descriptions.Add(fields[0].AsString);
-        next;
-      end;
-
-      SQL.Clear;
-      SQL.Add('SELECT   NFE_DFAV FROM '+SLPrincipal.Values['nfe_cab']+' "NFE_CAB"');
-      SQL.Add('GROUP BY NFE_DFAV');
-      SQL.Add('ORDER BY NFE_DFAV');
-      Open;
-
-      frmrelatorio_geral.cbNFE_CAB_DFAV.Items.Add('TODOS');
-      while not eof do
-      begin
-        frmrelatorio_geral.cbNFE_CAB_DFAV.Items.Add(fields[0].AsString);
-        next;
-      end;
-
-      SQL.Clear;
-      SQL.Add('SELECT   NFE_DVEN');
-      SQL.Add('FROM '+SLPrincipal.Values['nfe_cab']+' "NFE_CAB"');
-      SQL.Add('WHERE    NFE_DVEN <> '' ''');
-      SQL.Add('GROUP BY NFE_DVEN');
-      SQL.Add('ORDER BY NFE_DVEN');
-      Open;
-
-      frmrelatorio_geral.cbNFE_CAB_DVEN.Items.Add('TODOS');
-      while not eof do
-      begin
-        frmrelatorio_geral.cbNFE_CAB_DVEN.Items.Add(fields[0].AsString);
-        next;
-      end;
-
-      SQL.Clear;
-      SQL.Add('SELECT   NFE_DREP');
-      SQL.Add('FROM '+SLPrincipal.Values['nfe_cab']+' "NFE_CAB"');
-      SQL.Add('WHERE    NFE_DREP <> '' ''');
-      SQL.Add('GROUP BY NFE_DREP');
-      SQL.Add('ORDER BY NFE_DREP');
-      oPEN;
-
-      frmrelatorio_geral.cbNFE_CAB_DREP.Items.Add('TODOS');
-      while not eof do
-      begin
-        frmrelatorio_geral.cbNFE_CAB_DREP.Items.Add(fields[0].AsString);
-        next;
-      end;
-
-      SQL.Clear;
-      SQL.Add('SELECT   NFE_DTRA FROM '+SLPrincipal.Values['nfe_cab']+' "NFE_CAB"');
-      SQL.Add('GROUP BY NFE_DTRA');
-      SQL.Add('ORDER BY NFE_DTRA');
-      Open;
-
-      frmrelatorio_geral.cbNFE_CAB_DTRA.Items.Add('TODOS');
-      while not eof do
-      begin
-        frmrelatorio_geral.cbNFE_CAB_DTRA.Items.Add(fields[0].AsString);
-        next;
-      end;
-    end;
-
-    frmrelatorio_geral.ShowModal;
-  finally
-    freeAndNil(frmrelatorio_geral);
-    frmrelatorio_geral.Free;
-  end;
-end;
-
 procedure Tfrmctr_nfe.BAIXA_ESTOQUE;
 var
   ID: integer;
@@ -994,171 +1139,6 @@ begin
       ibSP.ExecProc;
     end;
     nfe_ite.Next;
-  end;
-end;
-
-procedure Tfrmctr_nfe.siTRIClick(Sender: TObject);
-begin
-  if oYesNo(handle,'Emitir uma cópia exata de nota fiscal No.: '+CadastroNFE_CDNF.AsString+' ?') = mrno then
-  Abort;
-
-  try
-    with nfe_tra do
-    begin
-      SQL.Clear;
-      SQL.Add('SELECT * FROM '+SLPrincipal.Values['nfe_tra']);
-      SQL.Add('WHERE    NFE_CCAB = '''+CadastroID.AsString+'''');
-      Open;
-    end;
-
-    frmven_nfe := TFrmven_nfe.Create(Self);
-    frmven_nfe.Tag             := 1;
-    frmven_nfe.siEST.Enabled   := False;
-    frmven_nfe.edcven.Text     := inttostr(CadastroNFE_CVEN.AsInteger);
-    frmven_nfe.eddven.Text     := CadastroNFE_DVEN.AsString;
-    frmven_nfe.edcrep.Text     := inttostr(CadastroNFE_CREP.AsInteger);
-    frmven_nfe.eddrep.Text     := CadastroNFE_DREP.AsString;
-    frmven_nfe.cbcnat.Text     := CadastroNFE_CNAT.AsString;
-    frmven_nfe.cbdtra.Text     := CadastroNFE_DTRA.AsString;
-    frmven_nfe.IEModFrete.Text := nfe_traNFE_MODFRETE.AsString;
-    frmven_nfe.edesp.Text      := nfe_traNFE_ESP.AsString;
-    frmven_nfe.edqvol.Text     := nfe_traNFE_QVOL.AsString;
-    frmven_nfe.edmarca.Text    := nfe_traNFE_MARCA.AsString;
-    frmven_nfe.ednvol.Text     := nfe_traNFE_NVOL.AsString;
-    frmven_nfe.CEPesoB.Text    := nfe_traNFE_PSBR.AsString;
-    frmven_nfe.CEPesoL.Text    := nfe_traNFE_PSLQ.AsString;
-
-    frmven_nfe.NewString       := CadastroNFE_CHAV.AsString;
-    frmven_nfe.NewNota         := CadastroNFE_CDNF.AsString;
-    frmven_nfe.NewData         := CadastroNFE_DEMI.AsString;
-    frmven_nfe.NewCST          := nfe_iteNFE_CST.AsString;
-    frmven_nfe.NewPICMS        := nfe_iteNFE_PICMS.AsString;
-    frmven_nfe.NewVBC          := CadastroNFE_VNF.AsString;
-    frmven_nfe.NewCSTIPI       := nfe_iteNFE_CSTIPI.AsString;
-    frmven_nfe.NewPIPI         := nfe_iteNFE_PIPI.AsString;
-    frmven_nfe.NewVBCIPI       := nfe_iteNFE_VBCIPI.AsString;
-    frmven_nfe.NewVBCPIS       := nfe_iteNFE_VBCPIS.AsString;
-    frmven_nfe.NewVBCCOFINS    := nfe_iteNFE_VBCOFINS.AsString;
-    frmven_nfe.NewNCM          := nfe_iteNFE_NCM.AsString;
-    frmven_nfe.NewORIG         := nfe_iteNFE_ORIG.AsString;
-
-    frmven_nfe.edesp.Tag   := 1;
-    frmven_nfe.edqvol.Tag  := 1;
-    frmven_nfe.edmarca.Tag := 1;
-    frmven_nfe.ednvol.Tag  := 1;
-    frmven_nfe.CEPesoB.Tag := 1;
-    frmven_nfe.CEPesoL.Tag := 1;
-
-    if CadastroNFE_CLFO.AsInteger = 0 then
-       frmven_nfe.PESQUISA_CLIENTE('I',CadastroNFE_CFAV.AsString,0) else
-    if CadastroNFE_CLFO.AsInteger = 1 then
-    begin
-      frmven_nfe.lacfav.Caption := 'Fornecedor';
-      frmven_nfe.PESQUISA_FORNECEDOR('I',CadastroNFE_CFAV.AsString,0);
-    end;
-
-    frmven_nfe.Tag := 1;
-
-    nfe_ite.DisableControls;
-    nfe_ite.First;
-    while not nfe_ite.Eof do
-    begin
-      frmven_nfe.nfe_001.Append;
-      frmven_nfe.PESQUISA_PRODUTO('Produto',nfe_iteNFE_CPROD.AsString);
-      frmven_nfe.nfe_001NFE_CEAN.Value   := nfe_iteNFE_CEAN.AsString;
-      frmven_nfe.nfe_001NFE_CPROD.Value  := nfe_iteNFE_CPROD.AsString;
-      frmven_nfe.nfe_001NFE_XPROD.Value  := nfe_iteNFE_XPROD.AsString;
-      frmven_nfe.nfe_001NFE_NCM.Value    := nfe_iteNFE_NCM.AsString;
-      frmven_nfe.nfe_001NFE_EXTIPI.Value := nfe_iteNFE_EXTIPI.AsString;
-      frmven_nfe.nfe_001NFE_ORIG.Value   := nfe_iteNFE_ORIG.AsString;
-      frmven_nfe.nfe_001NFE_CST.Value    := nfe_iteNFE_CST.AsString;
-      frmven_nfe.nfe_001NFE_UCOM.Value   := nfe_iteNFE_UCOM.AsString;
-      frmven_nfe.nfe_001NFE_PREC.Value   := nfe_iteNFE_VUNCOM.AsFloat;
-      frmven_nfe.nfe_001NFE_VUNCOM.Value := nfe_iteNFE_VUNCOM.AsFloat;
-      frmven_nfe.nfe_001NFE_QCOM.Value   := nfe_iteNFE_QCOM.AsFloat;
-      frmven_nfe.nfe_001NFE_RCOM.Value   := nfe_iteNFE_RCOM.AsInteger;
-      frmven_nfe.nfe_001.Post;
-      nfe_ite.Next;
-    end;
-  finally
-    nfe_ite.EnableControls;
-
-    if CadastroNFE_VFRETE.AsFloat > 0 then
-    begin
-      frmven_nfe.CEVFrete.Value := CadastroNFE_VFRETE.AsFloat;
-      frmven_nfe.CALCULA_FRETE;
-    end;
-
-    oRTransact(frmven_nfe.TSheild);
-    frmven_nfe.CALCULA_NF;
-    if (Screen.Width <= 1024) or (Screen.Width < 1280) then
-    begin
-      frmven_nfe.FormStyle := fsnormal;
-      frmven_nfe.Visible   := false;
-      frmven_nfe.ShowModal;
-    end else
-    frmven_nfe.Show;
-  end;
-end;
-
-procedure Tfrmctr_nfe.siCNFClick(Sender: TObject);
-var
-  Justificativa: string;
-  ClickedOK: Boolean;
-begin
-  if oYesNo(handle,'Cancelar Nota Fiscal '+cadastroNFE_CDNF.AsString+' ?') = mrno then
-  Abort;
-
-  try
-    Screen.Cursor := crAppStart;
-    sbMSG.Panels[1].Text := 'Aguarde...';
-    sbMSG.Refresh;
-
-    if cadastroNFE_CHAV.AsString <> '' then
-    begin
-      Justificativa := 'Mínimo de 15 palavras';
-      ClickedOK := InputQuery('Justificativa de cancelamento de NFe', 'Digite aqui a sua justificativa', justificativa);
-      if not ClickedOK then
-      abort;
-
-      if LENGTH(justificativa) < 15 then
-      raise exception.Create('Justificativa de cancelamento de NFe inválido !'+#13+'Inferior à 15 palavras.');
-
-      if cadastroNFE_PROT.AsString <> '' then
-      begin
-        frmven_npr     := Tfrmven_npr.Create(Self);
-        frmven_npr.Tag := 1;
-        frmven_npr.Caption         := 'Cancelamento de NFe';
-        frmven_npr.edconsulta.Text := NFeCancelamentoEvento(
-                                      cadastroNFE_CHAV.AsString,
-                                      cadastroNFE_PROT.AsString,
-                                      '0000121', // Número sequencial autoincremental único para identificação do Lote gerado pela aplicação
-                                      '1',       // número sequencial do evento. A aplicação deve gerar sequencialmente esse valor para cada evento de uma nfe (pg. 3 da NT 2011/006)
-                                      justificativa);
-        frmven_npr.edchv.Text      := TRIM(cadastroNFE_CHAV.AsString);
-        frmven_npr.edchv.Enabled   := false;
-
-        try
-          protocolo := TRIM(copy(frmven_npr.edconsulta.text,length(frmven_npr.edconsulta.text)-14,15));
-
-          frmven_npr.edpro.Text    := protocolo;
-          frmven_npr.edpro.Enabled := false;
-          frmven_npr.ShowModal;
-        finally
-          if (Pos('CT-e',frmven_npr.edconsulta.Text) > 0) or (Pos('MDF-e',frmven_npr.edconsulta.Text) > 0) then
-          Justificativa := '';
-
-          FreeAndNil(frmven_npr);
-        end;
-      end;
-    end;
-  finally
-    if not oEmpty(justificativa) then
-    CANCELA_CDNF;
-
-    Screen.Cursor := crDefault;
-    sbMSG.Panels[1].Text := '';
-    sbMSG.Refresh;
   end;
 end;
 

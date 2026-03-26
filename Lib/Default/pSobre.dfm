@@ -2468,9 +2468,9 @@ object FrmSobre: TFrmSobre
     object LANVersao: TLabel
       Left = 100
       Top = 4
-      Width = 110
+      Width = 109
       Height = 17
-      Caption = 'SHE-ERP-OLD-PRO'
+      Caption = 'SHE-ERP-OLD-PRG'
       Color = clInfoBk
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -2485,7 +2485,7 @@ object FrmSobre: TFrmSobre
       Top = 20
       Width = 101
       Height = 17
-      Caption = '24/03/2026 06:56'
+      Caption = '26/03/2026 08:05'
       Color = clInfoBk
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -2584,11 +2584,9 @@ object FrmSobre: TFrmSobre
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold, fsItalic]
       Lines.Strings = (
-        'Produtos: inclus'#227'o da situa'#231#227'o FORA DE LINHA em:'
-        '1) Planejamento de compras'
-        '2) Visualiza'#231#227'o e edi'#231#227'o de produtos'
-        'Estoque: devolu'#231#227'o integral de produtos'
-        'Boletos: atualiza'#231#227'o para emiss'#227'o de baixados')
+        'Programa'#231#245'es'
+        '- Tabela de pre'#231'os'
+        '- Duplicidade na gera'#231#227'o dos pedidos')
       ParentFont = False
       TabOrder = 0
     end

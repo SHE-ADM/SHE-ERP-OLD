@@ -10,19 +10,22 @@ inherited frmctr_rom_edi: Tfrmctr_rom_edi
   TextHeight = 14
   inherited pnlcadastro: TPanel
     Width = 680
-    Height = 229
+    Height = 343
     inherited PaintBox: TPaintBox
       Width = 680
-      Height = 229
+      Height = 278
+    end
+    inherited SBMenuPrincipal: TSpeedBar
+      Width = 680
+      TabOrder = 1
     end
     object pnlped: TPanel
       Left = 0
-      Top = 0
+      Top = 65
       Width = 680
-      Height = 229
+      Height = 278
       Align = alClient
       BevelOuter = bvNone
-      Color = 15319668
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -713,17 +716,6 @@ inherited frmctr_rom_edi: Tfrmctr_rom_edi
   inherited sbMSG: TStatusBar
     Top = 343
     Width = 680
-  end
-  inherited SpeedBar2: TSpeedBar
-    Width = 680
-  end
-  inherited imageOPC: TImageList
-    Left = 36
-    Top = 6
-  end
-  inherited imageITEM: TImageList
-    Left = 4
-    Top = 6
   end
   object aux: TIBQuery
     Database = dmDADOS.ibDB

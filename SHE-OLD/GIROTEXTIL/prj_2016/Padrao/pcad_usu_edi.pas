@@ -161,7 +161,7 @@ begin
     cad_usu_adm.first;
     while not cad_usu_adm.eof do
     begin
-      TreeAddItem(tvUSU, GetFieldList, cad_usu_adm.getBookmark, false);
+      oTreeAddItem(tvUSU, GetFieldList, cad_usu_adm.getBookmark, false);
       cad_usu_adm.next;
     end;
 
@@ -401,9 +401,6 @@ var
 begin
   if cad_usu_adm.State in [dsEdit,dsInsert] then
      cad_usu_adm.Post;
-
-  if (Campo_Obrigatorio(PnlCadastro)) then
-     Abort;
 
   if cbmenu.Text = '' then
   begin

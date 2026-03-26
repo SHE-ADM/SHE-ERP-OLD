@@ -68,8 +68,6 @@ type
     cadastroCLI_CIDC: TIBStringField;
     cadastroCLI_ESTC: TIBStringField;
     cadastroNFE_LOGR: TStringField;
-    siDUP: TSpeedItem;
-    siVNF: TSpeedItem;
     cadastroNFE_CHAV: TIBStringField;
     cadastroTLOG: TStringField;
     cadastroLOGR: TStringField;

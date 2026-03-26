@@ -13,21 +13,11 @@ uses
 
 type
   Tfrmven_rom = class(TForm)
-    imageOPC: TImageList;
-    SpeedBar2: TSpeedBar;
-    SpeedbarSection5: TSpeedbarSection;
-    SpeedbarSection6: TSpeedbarSection;
-    SpeedbarSection7: TSpeedbarSection;
-    SpeedbarSection8: TSpeedbarSection;
-    BSair: TSpeedItem;
-    BSal: TSpeedItem;
-    imageOPC2: TImageList;
     IBTra: TIBTransaction;
     ibSP: TIBStoredProc;
     dtsrom_001: TDataSource;
     consulta_s: TIBQuery;
     pnlconsulta: TPanel;
-    imageOPC3: TImageList;
     consulta: TIBQuery;
     aux: TIBQuery;
     aux2: TIBQuery;
@@ -49,18 +39,7 @@ type
     tab_pagPAG_PARC: TSmallintField;
     pnlpri: TPanel;
     psq_cli: TIBQuery;
-    SIMNFe: TSpeedItem;
     cad_pro_est: TIBQuery;
-    SpeedBar4: TSpeedBar;
-    SpeedbarSection17: TSpeedbarSection;
-    SpeedbarSection18: TSpeedbarSection;
-    SpeedbarSection19: TSpeedbarSection;
-    SpeedbarSection20: TSpeedbarSection;
-    siDEL: TSpeedItem;
-    siSAV: TSpeedItem;
-    siCAN: TSpeedItem;
-    siALT: TSpeedItem;
-    SpeedItem1: TSpeedItem;
     tSHEILD: TIBTransaction;
     dbgrom: TdxDBGrid;
     dbgromROM_CPRO: TdxDBGridMaskColumn;
@@ -166,7 +145,6 @@ type
     rom_001ROM_PCO2: TIBStringField;
     rom_001ROM_ABCD: TIBStringField;
     rom_002: TIBQuery;
-    siCLO: TSpeedItem;
     pTRA: TIBTransaction;
     pSP: TIBStoredProc;
     pEVE: TIBEvents;
@@ -417,10 +395,17 @@ type
     edpdsc: TdxMaskEdit;
     edtqtrl: TdxMaskEdit;
     rom_001CTNR: TIBStringField;
+    ILMenuPrincipal: TImageList;
+    SBMenuPrincipal: TSpeedBar;
+    SSMenuPrincipal: TSpeedbarSection;
+    SISalva: TSpeedItem;
+    siVAL: TSpeedItem;
+    SpeedItem3: TSpeedItem;
+    siSAIR: TSpeedItem;
+    SINFE: TSpeedItem;
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure BSairClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure edtsdeKeyPress(Sender: TObject; var Key: Char);
     procedure siINCClick(Sender: TObject);
@@ -447,7 +432,6 @@ type
     procedure dtsrom_001DataChange(Sender: TObject; Field: TField);
     procedure rom_001ROM_VDSCValidate(Sender: TField);
     procedure rom_001ROM_QTDEValidate(Sender: TField);
-    procedure BSalClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure FormShow(Sender: TObject);
     procedure edpdscValidate(Sender: TObject; var ErrorText: String;
@@ -461,16 +445,14 @@ type
     procedure cbdvenExit(Sender: TObject);
     procedure cbdrepExit(Sender: TObject);
     procedure cbstpdExit(Sender: TObject);
-    procedure siDELClick(Sender: TObject);
-    procedure dbgromKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
-    procedure siCLOClick(Sender: TObject);
     procedure rom_001BeforePost(DataSet: TDataSet);
     procedure FormDestroy(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormPaint(Sender: TObject);
     procedure FormResize(Sender: TObject);
-    procedure SIMNFeClick(Sender: TObject);
+    procedure SISalvaClick(Sender: TObject);
+    procedure SINFEClick(Sender: TObject);
+    procedure siSAIRClick(Sender: TObject);
   private
     { Private declarations }
     procedure ABRE_TABELA;
@@ -623,7 +605,7 @@ begin
     end;
   finally
     tag := 0;
-    BSal.Enabled := false;
+    SISalva.Enabled := false;
   end;
 end;
 
@@ -688,7 +670,7 @@ begin
         Tag := 0;
 
         TOTAL;
-        BSal.Enabled := true;
+        SISalva.Enabled := true;
       end;
     end;
   finally
@@ -793,7 +775,7 @@ begin
                       not (activeControl is TComboBox)    and
                       not (activeControl is TMemo)) then
                       selectNext (activecontrol, false, true);
-       121      : if BSal.Enabled then BSal.Click;
+       121      : if SISalva.Enabled then SISalva.Click;
   end;
 end;
 
@@ -1512,7 +1494,7 @@ begin
 
     pTRA.Commit;
 
-    BSal.Enabled := false;
+    SISalva.Enabled := false;
     frmprincipal.Log_Eve('Vendas','Pedidos',edcdro.Hint,eddero.Text,eddero.Text,LOWERCASE(eddcli.Text),'','');
   finally
     with rom_001 do
@@ -1618,7 +1600,7 @@ begin
     end;
   finally
     tag := 0;
-    BSal.Enabled := true;
+    SISalva.Enabled := true;
   end;
 end;
 
@@ -1688,7 +1670,7 @@ begin
     end;
   finally
     tag := 0;
-    BSal.Enabled := true;
+    SISalva.Enabled := true;
   end;
 end;
 
@@ -1742,7 +1724,7 @@ begin
     end;
   finally
     tag := 0;
-    BSal.Enabled := true;
+    SISalva.Enabled := true;
   end;
 end;
 
@@ -1833,7 +1815,7 @@ begin
       edobso.Lines.Text := TRIM(psq_cliCLI_OBSO.AsString);
       edobso.Update;
 
-      BSal.Enabled := true;
+      SISalva.Enabled := true;
 
       if edobso.Text <> '' then
       begin
@@ -1882,7 +1864,7 @@ begin
     end;
   finally
     tag := 0;
-    BSal.Enabled := true;
+    SISalva.Enabled := true;
   end;
 end;
 
@@ -1927,11 +1909,6 @@ begin
   end;
 end;
 
-procedure Tfrmven_rom.BSairClick(Sender: TObject);
-begin
-  close;
-end;
-
 procedure Tfrmven_rom.edtsdeKeyPress(Sender: TObject; var Key: Char);
 begin
   key := #0;
@@ -1966,7 +1943,7 @@ begin
   if tag = 0 then
   begin
     if (rom_001ROM_DPRO.AsString <> '') then
-        BSal.Enabled := true;
+        SISalva.Enabled := true;
 
     wRec := rom_001.GetBookmark;
 
@@ -2021,7 +1998,7 @@ begin
     end;
   end;
 
-  BSal.Enabled:= true;
+  SISalva.Enabled:= true;
 end;
 
 procedure Tfrmven_rom.edderoKeyPress(Sender: TObject; var Key: Char);
@@ -2044,7 +2021,7 @@ end;
 procedure Tfrmven_rom.cbdvenChange(Sender: TObject);
 begin
   if tag = 0 then
-     BSal.Enabled := true;
+     SISalva.Enabled := true;
 end;
 
 procedure Tfrmven_rom.cbdvenExit(Sender: TObject);
@@ -2079,7 +2056,7 @@ end;
 procedure Tfrmven_rom.cbdrepChange(Sender: TObject);
 begin
   if tag = 0 then
-     BSal.Enabled := true;
+     SISalva.Enabled := true;
 end;
 
 procedure Tfrmven_rom.cbdrepExit(Sender: TObject);
@@ -2130,7 +2107,7 @@ end;
 procedure Tfrmven_rom.cbdpagChange(Sender: TObject);
 begin
   if tag = 0 then
-     BSal.Enabled := true;
+     SISalva.Enabled := true;
 end;
 
 procedure Tfrmven_rom.edccliValidate(Sender: TObject;
@@ -2209,18 +2186,6 @@ begin
   rom_001ROM_VIPI.Value := roundto((rom_001ROM_TOTA.AsFloat * rom_001ROM_PIPI.AsFloat) /100,-2);
 end;
 
-procedure Tfrmven_rom.BSalClick(Sender: TObject);
-begin
-  try
-    SALVA;
-  finally
-    if BSal.Enabled then
-       abort;
-  end;
-
-  Close;
-end;
-
 procedure Tfrmven_rom.FormCloseQuery(Sender: TObject;
   var CanClose: Boolean);
 begin
@@ -2233,18 +2198,18 @@ begin
   end;
 
   rom_001.First;
-  if (BSal.Enabled) and (rom_001ROM_DPRO.AsString <> '') then
+  if (SISalva.Enabled) and (rom_001ROM_DPRO.AsString <> '') then
   begin
     case messageBox(handle,PChar('Existem alterações pendentes. Deseja salvar antes de fechar '),
                            PChar(caption),MB_ICONQUESTION+MB_YESNOCANCEL) of
          mrCancel: Abort;
          mrYes   : Begin
-                     if BSal.Enabled then
+                     if SISalva.Enabled then
                      begin
                        try
                          SALVA;
                        finally
-                         if BSal.Enabled then
+                         if SISalva.Enabled then
                             abort;
                        end;
                      end;
@@ -2279,7 +2244,7 @@ end;
 procedure Tfrmven_rom.cbstpdChange(Sender: TObject);
 begin
   if tag = 0 then
-     BSal.Enabled := true;
+     SISalva.Enabled := true;
 end;
 
 procedure Tfrmven_rom.cbstpdExit(Sender: TObject);
@@ -2288,7 +2253,7 @@ begin
   try
     PESQUISA_TIPO;
     TOTAL;
-    BSal.Enabled := true;
+    SISalva.Enabled := true;
   finally
     Ctrl          := ActiveControl;
     ActiveControl := nil;
@@ -2309,93 +2274,33 @@ begin
   latdsc.Update;
 end;
 
-procedure Tfrmven_rom.siDELClick(Sender: TObject);
-var
-  wRec: TBookMark;
-begin
-  wRec := rom_001.GetBookmark;
-  
-  if rom_001ID.IsNull then
-     abort;
-
-  if oYesNo(handle,'Excluir Item ?') =   mrNo then
-     abort;
-
-  try
-    BSal.Enabled := true;
-
-    with consulta_S do
-    begin
-      SQL.Clear;
-      SQL.Add('UPDATE ROM_ITE');
-      SQL.Add('SET    ROM_FLAG = ''1''');
-      SQL.Add('WHERE  ROM_ITEM = '''+rom_001ROM_ITEM.Asstring+'''');
-      ExecSQL;
-      tSHEILD.CommitRetaining;
-    end;
-  finally
-    rom_001.Close;
-    rom_001.Open;
-
-    TOTAL;
-
-    if (wRec = Nil) or (rom_001.Fields[0].IsNull) then rom_001.last
-       else rom_001.GotoBookmark(wRec);
-    rom_001.FreeBookmark(wRec);
-  end;
-end;
-
-procedure Tfrmven_rom.dbgromKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-  case key of
-    VK_DELETE: if rom_001.State = dsBrowse then            siDEL.Click;
-    VK_ESCAPE: if rom_001.State = dsBrowse then close else siCAN.Click;
-  end;
-end;
-
-procedure Tfrmven_rom.siCLOClick(Sender: TObject);
-begin
-  FRMIMPORTA_GERAL := TFRMIMPORTA_GERAL.Create(Self);
-
-  frmimporta_geral.cbTIPO.Enabled := false;
-  frmimporta_geral.cbTIPO.Text    := 'PEDIDO DE VENDA';
-  frmimporta_geral.cbFANT.Text    := frmprincipal.parametrosPAR_FANT.AsString;
-  frmimporta_geral.ShowModal;
-
-  try
-    if frmimporta_geral.editado then
-    begin
-      if cbcred.Text <> frmimporta_geral.imp_cabROM_CONC.AsString then
-      raise exception.Create('Diferença de créditos entre os pedidos.'+#13+'Verifique !');
-
-      edobse.Text := 'REFERENCIA: '+frmimporta_geral.cbTIPO.Text+' No '+frmimporta_geral.edTXT.Text;
-
-      if (frmprincipal.parametrosPAR_TIPO.AsString = '0') and (edqtsp.Text = '1') then
-      ITE_COMSEPARACAO(frmimporta_geral.imp_cabROM_CDPD.AsString,frmimporta_geral.imp_cabROM_DERO.AsString) else
-      ITE_SEMSEPARACAO(frmimporta_geral.imp_cabROM_CDPD.AsString,frmimporta_geral.imp_cabROM_DERO.AsString);
-    end;
-  finally
-    freeandNil(frmimporta_geral);
-    frmimporta_geral.Free;
-  end;
-end;
-
 procedure Tfrmven_rom.rom_001BeforePost(DataSet: TDataSet);
 begin
   if rom_001ROM_DPRO.AsString = '' then
   rom_001ROM_DPRO.Value := 'DESCRIÇÂO '+cbcred.Text+' NÃO CADASTRADO ! OBRIGATÓRIO CADASTRAR DESCRIÇÃO '+cbcred.Text;
 end;
 
-procedure Tfrmven_rom.SIMNFeClick(Sender: TObject);
+procedure Tfrmven_rom.SISalvaClick(Sender: TObject);
 begin
   try
     SALVA;
   finally
-    if BSal.Enabled then
+    if SISalva.Enabled then
+       abort;
+  end;
+
+  Close;
+end;
+
+procedure Tfrmven_rom.SINFEClick(Sender: TObject);
+begin
+  try
+    SALVA;
+  finally
+    if SISalva.Enabled then
     Abort;
   end;
-  SIMNFe.Enabled := False;
+  SINFE.Enabled := False;
 
   with consulta do
   begin
@@ -2519,6 +2424,11 @@ begin
   end;
 
   frmven_rom.Close;
+end;
+
+procedure Tfrmven_rom.siSAIRClick(Sender: TObject);
+begin
+  Close;
 end;
 
 end.

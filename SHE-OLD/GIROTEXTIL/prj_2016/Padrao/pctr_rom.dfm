@@ -1,6 +1,6 @@
 inherited frmctr_rom: Tfrmctr_rom
-  Left = 8
-  Top = 17
+  Left = 415
+  Top = 93
   Caption = 'Controle de Romaneios'
   ClientHeight = 689
   ClientWidth = 1276
@@ -35,7 +35,6 @@ inherited frmctr_rom: Tfrmctr_rom
     inherited siEVE: TSpeedItem [4]
       ImageIndex = 10
       Left = 222
-      OnClick = siEVEClick
     end
     inherited siPSQ: TSpeedItem [5]
       Hint = 'Pesquisa Avan'#231'ada'
@@ -137,7 +136,7 @@ inherited frmctr_rom: Tfrmctr_rom
       object pcITE: TdxPageControl
         Left = 0
         Top = 0
-        Width = 915
+        Width = 1275
         Height = 268
         ActivePage = tsITE
         Align = alClient
@@ -156,7 +155,7 @@ inherited frmctr_rom: Tfrmctr_rom
           object dbgite: TdxDBGrid
             Left = 0
             Top = 0
-            Width = 915
+            Width = 1275
             Height = 244
             Bands = <
               item
@@ -169,7 +168,7 @@ inherited frmctr_rom: Tfrmctr_rom
             SummaryGroups = <>
             SummarySeparator = ', '
             Align = alClient
-            Color = 12513272
+            Color = clHighlightText
             Ctl3D = True
             ParentCtl3D = False
             TabOrder = 0
@@ -267,76 +266,6 @@ inherited frmctr_rom: Tfrmctr_rom
             end
           end
         end
-        object tsOBS: TdxTabSheet
-          Caption = 'Observa'#231#245'es'
-          object dxDBMemo1: TdxDBMemo
-            Left = 0
-            Top = 0
-            Width = 718
-            Align = alClient
-            Color = 12513272
-            Style.BorderStyle = xbsFlat
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 0
-            DataField = 'ROM_OBSE'
-            DataSource = DTSCadastro
-            ReadOnly = True
-            Height = 242
-            StoredValues = 64
-          end
-        end
-      end
-      object pnlfoto: TPanel
-        Left = 915
-        Top = 0
-        Width = 360
-        Height = 268
-        Align = alRight
-        BevelOuter = bvNone
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 1
-        object pcIMG: TdxPageControl
-          Left = 0
-          Top = 0
-          Width = 360
-          Height = 268
-          ActivePage = tsFOTO
-          Align = alClient
-          HideButtons = False
-          HotTrack = False
-          MultiLine = False
-          OwnerDraw = False
-          RaggedRight = False
-          ScrollOpposite = False
-          TabHeight = 0
-          TabOrder = 0
-          TabPosition = dxtpTop
-          TabWidth = 0
-          object tsFOTO: TdxTabSheet
-            Caption = 'Imagem do Produto'
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clBlack
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            object writefoto: TImage
-              Left = 0
-              Top = 0
-              Width = 360
-              Height = 244
-              Align = alClient
-              Stretch = True
-              OnClick = writefotoClick
-            end
-          end
-        end
       end
     end
     inherited gbDET: TGroupBox
@@ -349,7 +278,7 @@ inherited frmctr_rom: Tfrmctr_rom
         HeaderMinRowCount = 2
         KeyField = 'ID'
         ShowSummaryFooter = True
-        Color = 12513272
+        Color = clHighlightText
         Filter.Active = True
         Filter.Criteria = {00000000}
         OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoInvertSelect, edgoPreview, edgoUseBitmap]
@@ -11672,7 +11601,6 @@ inherited frmctr_rom: Tfrmctr_rom
     Database = dmDADOS.ibDB
     Transaction = IBTra
     AutoCalcFields = False
-    AfterScroll = rom_iteAfterScroll
     DataSource = DTSCadastro
     SQL.Strings = (
       

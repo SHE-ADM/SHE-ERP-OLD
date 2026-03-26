@@ -1792,8 +1792,7 @@ end;
 
 procedure Tfrment_pro.siIMPClick(Sender: TObject);
 begin
-  Application.CreateForm (Tfrmimporta_geral, frmimporta_geral);
-
+  FRMIMPORTA_GERAL := TFRMIMPORTA_GERAL.Create(Self);
   frmimporta_geral.cbFANT.Text := frmprincipal.parametrosPAR_FANT.AsString;
   frmimporta_geral.ShowModal;
 

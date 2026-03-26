@@ -7,59 +7,25 @@ inherited frmcad_fun: Tfrmcad_fun
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 14
-  inherited sbMSG: TStatusBar
-    Top = 644
+  inherited SBMenuPrincipal: TSpeedBar
     Width = 1014
-  end
-  inherited SpeedBar9: TSpeedBar
-    Width = 1014
-    Height = 109
-    BtnWidth = 105
-    BtnHeight = 105
-    inherited siPSQ: TSpeedItem
-      Visible = False
-    end
-    inherited siREF: TSpeedItem
-      Left = 2
-    end
-    inherited siSAIR: TSpeedItem
-      Left = 212
-    end
-    inherited siPRN: TSpeedItem [7]
-      Left = 107
-    end
-    inherited siEVE: TSpeedItem [8]
-      Left = 107
-      Visible = False
-      OnClick = siEVEClick
-    end
-    inherited siLIXO: TSpeedItem [9]
-      Left = 317
-      Visible = False
-      OnClick = siLIXOClick
-    end
   end
   inherited pnldir: TPanel
     Left = 1014
-    Top = 109
-    Height = 535
+    Height = 579
   end
   inherited pnlpri: TPanel
-    Top = 109
     Width = 1014
-    Height = 535
+    Height = 579
     inherited pnldbg: TPanel
       Width = 1014
-      Height = 311
+      Height = 355
       inherited gbDET: TGroupBox
-        Width = 1014
-        Height = 311
-        inherited SpeedBar1: TSpeedBar
-          Height = 293
-        end
+        Width = 960
+        Height = 355
         inherited DBGConsulta: TdxDBGrid
-          Width = 961
-          Height = 293
+          Width = 956
+          Height = 334
           KeyField = 'ID'
           ShowSummaryFooter = True
           Filter.Active = True
@@ -114,9 +80,15 @@ inherited frmcad_fun: Tfrmcad_fun
           end
         end
       end
+      inherited GBMenuEdicao: TGroupBox
+        Height = 355
+        inherited SBMenuEdicao: TSpeedBar
+          Height = 334
+        end
+      end
     end
     inherited pnlbot: TPanel
-      Top = 311
+      Top = 355
       Width = 1014
       Height = 224
       Visible = True
@@ -461,6 +433,10 @@ inherited frmcad_fun: Tfrmcad_fun
         end
       end
     end
+  end
+  inherited sbMSG: TStatusBar
+    Top = 644
+    Width = 1014
   end
   inherited DTSCadastro: TDataSource
     OnDataChange = dtscadastroDataChange
@@ -1194,9 +1170,5 @@ inherited frmcad_fun: Tfrmcad_fun
       FieldName = 'FUN_NORD'
       Origin = '"CAD_FUN"."FUN_NORD"'
     end
-  end
-  inherited imageOPC: TImageList
-    Left = 268
-    Top = 270
   end
 end

@@ -10,16 +10,20 @@ inherited frmcai_fec: Tfrmcai_fec
   TextHeight = 14
   inherited pnlcadastro: TPanel
     Width = 933
-    Height = 272
+    Height = 386
     inherited PaintBox: TPaintBox
       Width = 933
-      Height = 272
+      Height = 321
+    end
+    inherited SBMenuPrincipal: TSpeedBar
+      Width = 933
+      TabOrder = 1
     end
     object GroupBox1: TGroupBox
       Left = 0
-      Top = 0
+      Top = 65
       Width = 933
-      Height = 272
+      Height = 321
       Align = alClient
       Caption = 'Rela'#231#227'o de Caixas em Aberto'
       TabOrder = 0
@@ -27,7 +31,7 @@ inherited frmcai_fec: Tfrmcai_fec
         Left = 2
         Top = 15
         Width = 929
-        Height = 255
+        Height = 304
         Bands = <
           item
           end>
@@ -145,8 +149,8 @@ inherited frmcai_fec: Tfrmcai_fec
     Top = 386
     Width = 933
   end
-  inherited SpeedBar2: TSpeedBar
-    Width = 933
+  inherited ILMenuPrincipal: TImageList
+    Left = 248
   end
   object cadastro: TIBQuery
     Database = dmDADOS.ibDB

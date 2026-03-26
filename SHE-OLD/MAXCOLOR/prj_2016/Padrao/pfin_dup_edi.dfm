@@ -10,16 +10,20 @@ inherited frmfin_dup_edi: Tfrmfin_dup_edi
   TextHeight = 14
   inherited pnlcadastro: TPanel
     Width = 485
-    Height = 518
+    Height = 632
     inherited PaintBox: TPaintBox
       Left = 49
-      Top = 289
+      Top = 354
       Width = 436
-      Height = 229
+      Height = 278
+    end
+    inherited SBMenuPrincipal: TSpeedBar
+      Width = 485
+      TabOrder = 3
     end
     object Panel1: TPanel
       Left = 0
-      Top = 0
+      Top = 65
       Width = 485
       Height = 289
       Align = alTop
@@ -572,9 +576,9 @@ inherited frmfin_dup_edi: Tfrmfin_dup_edi
     end
     object dbgdup: TdxDBGrid
       Left = 49
-      Top = 289
+      Top = 354
       Width = 436
-      Height = 229
+      Height = 278
       Bands = <
         item
         end>
@@ -674,9 +678,9 @@ inherited frmfin_dup_edi: Tfrmfin_dup_edi
     end
     object SpeedBar1: TSpeedBar
       Left = 0
-      Top = 289
+      Top = 354
       Width = 49
-      Height = 229
+      Height = 278
       Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -690,7 +694,6 @@ inherited frmfin_dup_edi: Tfrmfin_dup_edi
       BtnOffsetVert = 2
       BtnWidth = 45
       BtnHeight = 45
-      Images = imageITEM
       BevelOuter = bvNone
       TabOrder = 2
       InternalVer = 1
@@ -769,9 +772,6 @@ inherited frmfin_dup_edi: Tfrmfin_dup_edi
     Top = 632
     Width = 485
   end
-  inherited SpeedBar2: TSpeedBar
-    Width = 485
-  end
   inherited Consulta: TIBQuery
     Left = 352
   end
@@ -781,6 +781,9 @@ inherited frmfin_dup_edi: Tfrmfin_dup_edi
   end
   inherited ibSP: TIBStoredProc
     Left = 416
+  end
+  inherited ILMenuPrincipal: TImageList
+    Top = 24
   end
   object cadastro: TIBDataSet
     Database = dmDADOS.ibDB

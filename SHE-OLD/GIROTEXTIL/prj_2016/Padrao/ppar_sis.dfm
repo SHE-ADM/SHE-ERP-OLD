@@ -7,32 +7,17 @@ inherited frmpar_sis: Tfrmpar_sis
   Visible = False
   PixelsPerInch = 96
   TextHeight = 14
-  inherited sbMSG: TStatusBar
-    Top = 566
-  end
-  inherited SpeedBar9: TSpeedBar
-    inherited siPRN: TSpeedItem [7]
-    end
-    inherited siEVE: TSpeedItem [8]
-    end
-    inherited siLIXO: TSpeedItem [9]
-      Enabled = False
-    end
-  end
   inherited pnldir: TPanel
-    Height = 452
+    Height = 501
   end
   inherited pnlpri: TPanel
-    Height = 452
+    Height = 501
     inherited pnldbg: TPanel
-      Height = 451
+      Height = 500
       inherited gbDET: TGroupBox
-        Height = 451
-        inherited SpeedBar1: TSpeedBar
-          Height = 433
-        end
+        Height = 500
         inherited DBGConsulta: TdxDBGrid
-          Height = 433
+          Height = 479
           KeyField = 'ID'
           ShowSummaryFooter = True
           Filter.Criteria = {00000000}
@@ -66,10 +51,19 @@ inherited frmpar_sis: Tfrmpar_sis
           end
         end
       end
+      inherited GBMenuEdicao: TGroupBox
+        Height = 500
+        inherited SBMenuEdicao: TSpeedBar
+          Height = 479
+        end
+      end
     end
     inherited pnlbot: TPanel
-      Top = 451
+      Top = 500
     end
+  end
+  inherited sbMSG: TStatusBar
+    Top = 566
   end
   inherited Cadastro: TIBQuery
     OnCalcFields = cadastroCalcFields
@@ -608,9 +602,5 @@ inherited frmpar_sis: Tfrmpar_sis
       Origin = '"PAR_SIS"."PAR_SWHASSINATURA"'
       Size = 344
     end
-  end
-  inherited imageOPC: TImageList
-    Left = 268
-    Top = 206
   end
 end

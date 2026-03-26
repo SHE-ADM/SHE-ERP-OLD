@@ -52,15 +52,14 @@ type
     cadastroCAI_CDBX: TIntegerField;
     cadastroCAI_BCON: TIntegerField;
     cadastroCAI_DCON: TIBStringField;
-    procedure siINCClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure siALTClick(Sender: TObject);
     procedure siPSQClick(Sender: TObject);
     procedure dtscadastroDataChange(Sender: TObject; Field: TField);
+    procedure SIMEAppendClick(Sender: TObject);
+    procedure SIMEEditClick(Sender: TObject);
   private
     { Private declarations }
-    procedure AjustaForm;
   public
     { Public declarations }
   end;
@@ -73,81 +72,6 @@ implementation
 uses uPrincipal, pcai_sar_edi, ppesquisa;
 
 {$R *.dfm}
-
-procedure Tfrmcai_sar.AjustaForm;
-begin
-  screen.Cursor:=crHourGlass;
-  screen.Cursor:=crDefault;
-
-  Self.top    := 0;
-  Self.left   := 0;
-  Self.Height := frmprincipal.pnCustomize.Height-4;
-
-  if (Screen.Width > 1024)      and (Screen.Width <= 1280) then
-     Width := 1030
-  else if (Screen.Width > 1280) and (Screen.Width <= 1360) then
-     Width := 1108
-  else if Screen.Width > 1360 then
-    Width  := 1114;
-
-  if (Screen.Width <= 1024) or (Screen.Width < 1280) then
-  begin
-    Left    := 7;
-    Top     := 50;
-    Width   := Screen.Width-15;
-
-    if frmprincipal.pnbot.Visible then
-       Top := frmprincipal.ToolBar1.Height+53;
-
-    if Top <= 50 then
-       Height := frmprincipal.pnCustomize.Height+3
-    else
-       Height := frmprincipal.pnCustomize.Height+4;
-  end;
-end;
-
-procedure Tfrmcai_sar.siINCClick(Sender: TObject);
-begin
-  PCampo[0] := 'USU_NOVO';
-  PCampo[1] := 'Financeiro';
-  PCampo[2] := 'Caixa';
-  PCampo[3] := 'Sangria \ Reforço';
-  inherited;
-
-  with consulta do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT ID,CAI_DECX,CAI_DABR,CAI_HABR,CAI_DFEC,CAI_HFEC FROM CAI_LAF');
-    SQL.Add('WHERE  CAI_DABR = '''+formatDateTime('mm/dd/yy',strtodate(SLPrincipal.Values['data_sistema']))+'''');
-    SQL.Add('AND    CAI_CDEP = '''+frmprincipal.parametrosID.AsString+'''');
-    Open;
-
-    if fields[0].IsNull then
-    raise exception.Create('Caixa não aberto !');
-
-    if not fields[4].IsNull then
-    raise exception.Create('Caixa já fechado !');
-  end;
-
-  frmcai_sar_edi := Tfrmcai_sar_edi.Create(self);
-
-  frmcai_sar_edi.cai_mov.Close;
-  frmcai_sar_edi.cai_mov.Params[0].Value := cadastroID.AsInteger;
-  frmcai_sar_edi.cai_mov.Open;
-  
-  try
-    frmcai_sar_edi.edcdcx.Text := consulta.Fields[0].AsString;
-    frmcai_sar_edi.Tag         := frmcai_sar.Tag;
-    frmcai_sar_edi.ShowModal;
-  finally
-    ExecuteEvent;
-    freeAndNil(frmcai_sar_edi);
-    frmcai_sar_edi.Free;
-
-    sbMSG.Panels[0].Text := 'Consulta';
-    sbMSG.Update;
-  end;
-end;
 
 procedure Tfrmcai_sar.FormCreate(Sender: TObject);
 begin
@@ -171,7 +95,6 @@ begin
   end;
 
   inherited;
-  Ajustaform;
 end;
 
 procedure Tfrmcai_sar.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -181,37 +104,6 @@ begin
   begin
     frmcai_sar.Release;
     frmcai_sar := nil;
-  end;
-end;
-
-procedure Tfrmcai_sar.siALTClick(Sender: TObject);
-begin
-  PCampo[0] := 'USU_EDIT';
-  PCampo[1] := 'Financeiro';
-  PCampo[2] := 'Caixa';
-  PCampo[3] := 'Sangria \ Reforço';
-  inherited;
-
-  frmcai_sar_edi := Tfrmcai_sar_edi.Create(self);
-
-  frmcai_sar_edi.cai_mov.Close;
-  frmcai_sar_edi.cai_mov.Params[0].Value := cadastroID.AsInteger;
-  frmcai_sar_edi.cai_mov.Open;
-
-  try
-    frmcai_sar_edi.edcdcx.Text := cadastroCAI_CCAB.AsString;
-    frmcai_sar_edi.edcdbx.Text := cadastroCAI_CDBX.AsString;
-    frmcai_sar_edi.edid.Text   := cadastroID.AsString;
-    frmcai_sar_edi.Tag         := frmcai_sar.Tag;
-    frmcai_sar_edi.ShowModal;
-  finally
-    ExecuteEvent;
-
-    freeAndNil(frmcai_sar_edi);
-    frmcai_sar_edi.Free;
-
-    sbMSG.Panels[0].Text := 'Consulta';
-    sbMSG.Update;
   end;
 end;
 
@@ -255,6 +147,80 @@ begin
     end;
     freeAndNil(frmpesquisa);
     frmpesquisa.Free;
+  end;
+end;
+
+procedure Tfrmcai_sar.SIMEAppendClick(Sender: TObject);
+begin
+  PCampo[0] := 'USU_NOVO';
+  PCampo[1] := 'Financeiro';
+  PCampo[2] := 'Caixa';
+  PCampo[3] := 'Sangria \ Reforço';
+  inherited;
+
+  with consulta do
+  begin
+    SQL.Clear;
+    SQL.Add('SELECT ID,CAI_DECX,CAI_DABR,CAI_HABR,CAI_DFEC,CAI_HFEC FROM CAI_LAF');
+    SQL.Add('WHERE  CAI_DABR = '''+formatDateTime('mm/dd/yy',strtodate(SLPrincipal.Values['data_sistema']))+'''');
+    SQL.Add('AND    CAI_CDEP = '''+frmprincipal.parametrosID.AsString+'''');
+    Open;
+
+    if fields[0].IsNull then
+    raise exception.Create('Caixa não aberto !');
+
+    if not fields[4].IsNull then
+    raise exception.Create('Caixa já fechado !');
+  end;
+
+  frmcai_sar_edi := Tfrmcai_sar_edi.Create(self);
+
+  frmcai_sar_edi.cai_mov.Close;
+  frmcai_sar_edi.cai_mov.Params[0].Value := cadastroID.AsInteger;
+  frmcai_sar_edi.cai_mov.Open;
+
+  try
+    frmcai_sar_edi.edcdcx.Text := consulta.Fields[0].AsString;
+    frmcai_sar_edi.Tag         := frmcai_sar.Tag;
+    frmcai_sar_edi.ShowModal;
+  finally
+    ExecuteEvent;
+    freeAndNil(frmcai_sar_edi);
+    frmcai_sar_edi.Free;
+
+    sbMSG.Panels[0].Text := 'Consulta';
+    sbMSG.Update;
+  end;
+end;
+
+procedure Tfrmcai_sar.SIMEEditClick(Sender: TObject);
+begin
+  PCampo[0] := 'USU_EDIT';
+  PCampo[1] := 'Financeiro';
+  PCampo[2] := 'Caixa';
+  PCampo[3] := 'Sangria \ Reforço';
+  inherited;
+
+  frmcai_sar_edi := Tfrmcai_sar_edi.Create(self);
+
+  frmcai_sar_edi.cai_mov.Close;
+  frmcai_sar_edi.cai_mov.Params[0].Value := cadastroID.AsInteger;
+  frmcai_sar_edi.cai_mov.Open;
+
+  try
+    frmcai_sar_edi.edcdcx.Text := cadastroCAI_CCAB.AsString;
+    frmcai_sar_edi.edcdbx.Text := cadastroCAI_CDBX.AsString;
+    frmcai_sar_edi.edid.Text   := cadastroID.AsString;
+    frmcai_sar_edi.Tag         := frmcai_sar.Tag;
+    frmcai_sar_edi.ShowModal;
+  finally
+    ExecuteEvent;
+
+    freeAndNil(frmcai_sar_edi);
+    frmcai_sar_edi.Free;
+
+    sbMSG.Panels[0].Text := 'Consulta';
+    sbMSG.Update;
   end;
 end;
 

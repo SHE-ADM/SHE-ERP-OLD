@@ -11,21 +11,12 @@ uses
 
 type
   Tfrmpesquisa = class(TForm)
-    imageOPC: TImageList;
     Shape21: TShape;
     Label11: TLabel;
     edTXT: TdxMaskEdit;
     Label5: TLabel;
     StatusBar1: TStatusBar;
     Label2: TLabel;
-    SpeedBar2: TSpeedBar;
-    SpeedbarSection5: TSpeedbarSection;
-    SpeedbarSection6: TSpeedbarSection;
-    SpeedbarSection7: TSpeedbarSection;
-    SpeedbarSection8: TSpeedbarSection;
-    siSAIR: TSpeedItem;
-    siVAL: TSpeedItem;
-    siCAN: TSpeedItem;
     Label1: TLabel;
     Shape3: TShape;
     Label3: TLabel;
@@ -37,6 +28,13 @@ type
     cbCAMPO: TdxPickEdit;
     linha2: TShape;
     Shape1: TShape;
+    ILMenuPrincipal: TImageList;
+    SBMenuPrincipal: TSpeedBar;
+    SSMenuPrincipal: TSpeedbarSection;
+    siSAV: TSpeedItem;
+    siVAL: TSpeedItem;
+    siCAN: TSpeedItem;
+    siSAIR: TSpeedItem;
     procedure siSAIRClick(Sender: TObject);
     procedure siVALClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;

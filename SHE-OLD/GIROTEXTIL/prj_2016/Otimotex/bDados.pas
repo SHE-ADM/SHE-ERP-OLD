@@ -129,17 +129,18 @@ type
     FBProdutosPRO_INS7: TBlobField;
     FBProdutosPRO_INS8: TBlobField;
     FBProdutosPRO_QEST: TIBBCDField;
-    FBProdutosPRO_REST: TIntegerField;
+    FBProdutosPRO_REST: TLargeintField;
     FBProdutosPRO_QRES: TIBBCDField;
-    FBProdutosPRO_RRES: TIntegerField;
+    FBProdutosPRO_RRES: TLargeintField;
     FBProdutosPRO_QSEP: TIBBCDField;
-    FBProdutosPRO_RSEP: TIntegerField;
-    FBProdutosPRO_QCOM: TIBBCDField;
-    FBProdutosPRO_RCOM: TIntegerField;
+    FBProdutosPRO_RSEP: TLargeintField;
     FBProdutosPRO_QPRG: TIBBCDField;
-    FBProdutosPRO_RPRG: TIntegerField;
+    FBProdutosPRO_RPRG: TLargeintField;
+    FBProdutosPRO_QCOM: TIBBCDField;
+    FBProdutosPRO_QPRD: TIBBCDField;
+    FBProdutosPRO_RCOM: TLargeintField;
     FBProdutosPRO_QDEF: TIBBCDField;
-    FBProdutosPRO_RDEF: TIntegerField;
+    FBProdutosPRO_RDEF: TLargeintField;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
@@ -200,8 +201,8 @@ begin
     Try
       with FBProdutos do
       begin
+        Close;
         SQL.Clear;
-        UnPrepare;
         SQL.Add('SELECT CAD_PRO.ID          ,CAD_PRO.PRO_CBAR    ,CAD_PRO.PRO_CFOR    ,CAD_PRO.PRO_CART,CAD_PRO.PRO_CPRO,');
         SQL.Add('       CAD_PRO.PRO_CCOR    ,CAD_PRO.PRO_PCOR    ,CAD_PRO.PRO_DCOR    ,CAD_PRO.PRO_DUNI    ,CAD_PRO.PRO_GRAD,CAD_PRO.PRO_COMP,');
         SQL.Add('       CAD_PRO.PRO_DPRO    ,CAD_PRO.PRO_DPR2    ,CAD_PRO.PRO_DPR3    ,CAD_PRO.PRO_DPR4    ,CAD_PRO.PRO_DPR5,');
@@ -219,30 +220,25 @@ begin
         SQL.Add('       CAD_PRO_IMG.PRO_INS1,CAD_PRO_IMG.PRO_INS2,CAD_PRO_IMG.PRO_INS3,CAD_PRO_IMG.PRO_INS4,');
         SQL.Add('       CAD_PRO_IMG.PRO_INS5,CAD_PRO_IMG.PRO_INS6,CAD_PRO_IMG.PRO_INS7,CAD_PRO_IMG.PRO_INS8,');
 
-        { Estoque por Peças }
-        if RECParametros.EstoquePecas then
-        begin
-          SQL.Add('     (SELECT SUM(EST_CRED-EST_DEBI) FROM '+SLPrincipal.Values['cad_pro_est']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL AND EST_CRED > 0 AND EST_FLAG = ''E'') AS PRO_QEST,');
-          SQL.Add('     (SELECT COUNT(*)               FROM '+SLPrincipal.Values['cad_pro_est']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL AND EST_CRED > 0 AND EST_FLAG = ''E'') AS PRO_REST,');
-        end else
-        { Estoque Normal }
-        begin
-          SQL.Add('     (SELECT SUM(EST_CRED-EST_DEBI) FROM '+SLPrincipal.Values['cad_pro_est']+' WHERE EST_CPRO = CAD_PRO.ID) AS PRO_QEST,');
-          SQL.Add('     (SELECT COUNT(*)               FROM '+SLPrincipal.Values['cad_pro_est']+' WHERE EST_CPRO = CAD_PRO.ID) AS PRO_REST,');
-        end;
-        SQL.Add('       (SELECT SUM(EST_CRED-EST_DEBI) FROM '+SLPrincipal.Values['cad_pro_res']+' WHERE EST_CPRO = CAD_PRO.ID) AS PRO_QRES,');
-        SQL.Add('       (SELECT COUNT(*)               FROM '+SLPrincipal.Values['cad_pro_res']+' WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RRES,');
-        SQL.Add('       (SELECT SUM(EST_CRED-EST_DEBI) FROM '+SLPrincipal.Values['cad_pro_sep']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_FLAG = ''R'') AS PRO_QSEP,');
-        SQL.Add('       (SELECT COUNT(*)               FROM '+SLPrincipal.Values['cad_pro_sep']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_FLAG = ''R'') AS PRO_RSEP,');
-        SQL.Add('       (SELECT SUM(EST_CRED-EST_DEBI) FROM '+SLPrincipal.Values['cad_pro_prg']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_QPRG,');
-        SQL.Add('       (SELECT COUNT(*)               FROM '+SLPrincipal.Values['cad_pro_prg']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_RPRG,');
-        SQL.Add('       (SELECT SUM(EST_CRED)          FROM '+SLPrincipal.Values['cad_pro_prc']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_QCOM,');
-        SQL.Add('       (SELECT COUNT(*)               FROM '+SLPrincipal.Values['cad_pro_prc']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_RCOM,');
-        SQL.Add('       (SELECT SUM(EST_CRED-EST_DEBI) FROM '+SLPrincipal.Values['cad_pro_def']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_QDEF,');
-        SQL.Add('       (SELECT COUNT(*)               FROM '+SLPrincipal.Values['cad_pro_def']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_RDEF ');
+        SQL.Add('         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST     WHERE EST_CPRO = CAD_PRO.ID) AS PRO_QEST,');
+        SQL.Add('         (SELECT COUNT(*)               FROM CAD_PRO_EST     WHERE EST_CPRO = CAD_PRO.ID) AS PRO_REST,');
+        SQL.Add('         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES     WHERE EST_CPRO = CAD_PRO.ID) AS PRO_QRES,');
+        SQL.Add('         (SELECT COUNT(*)               FROM CAD_PRO_RES     WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RRES,');
+        SQL.Add('         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP     WHERE EST_CPRO = CAD_PRO.ID AND EST_FLAG = ''R'') AS PRO_QSEP,');
+        SQL.Add('         (SELECT COUNT(*)               FROM CAD_PRO_SEP     WHERE EST_CPRO = CAD_PRO.ID AND EST_FLAG = ''R'') AS PRO_RSEP,');
 
-        SQL.Add('FROM   CAD_PRO,CAD_PRO_IMG');
-        SQL.Add('WHERE  CAD_PRO.PRO_CART = CAD_PRO_IMG.PRO_CART');
+        SQL.Add('         (SELECT SUM(EST_CRED-EST_DEBI) FROM '+SLPrincipal.Values['cad_pro_prg']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_QPRG,');
+        SQL.Add('         (SELECT COUNT(*)               FROM '+SLPrincipal.Values['cad_pro_prg']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_RPRG,');
+        SQL.Add('         (SELECT SUM(EST_CRED)          FROM '+SLPrincipal.Values['cad_pro_prc']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_QCOM,');
+        SQL.Add('         (SELECT SUM(EST_DEBI)          FROM '+SLPrincipal.Values['cad_pro_prc']+' WHERE EST_CPRO = CAD_PRO.ID) AS PRO_QPRD,');
+        SQL.Add('         (SELECT COUNT(*)               FROM '+SLPrincipal.Values['cad_pro_prc']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_RCOM,');
+        SQL.Add('         (SELECT SUM(EST_CRED-EST_DEBI) FROM '+SLPrincipal.Values['cad_pro_def']+' WHERE EST_CPRO = CAD_PRO.ID) AS PRO_QDEF,');
+        SQL.Add('         (SELECT COUNT(*)               FROM '+SLPrincipal.Values['cad_pro_def']+' WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RDEF ');
+
+        SQL.Add('FROM     CAD_PRO,CAD_PRO_IMG');
+        SQL.Add('WHERE    CAD_PRO.PRO_CART = CAD_PRO_IMG.PRO_CART');
+        SQL.Add('AND      CAD_PRO.PRO_STAV <> ''I''');
+
         if Campo <> 'Todos' then
         begin
           if (CField = 'CAD_PRO.ID') or (CField = 'CAD_PRO.PRO_CBAR') or (CField = 'CAD_PRO.PRO_CART') or
@@ -295,12 +291,6 @@ procedure TdmDADOS.DataModuleCreate(Sender: TObject);
 var
   IP: string;
 begin
-  RECParametros.PathPrincipal   := 'C:\Sheild';
-  RECParametros.PathDocumentos  := RECParametros.PathPrincipal +'\Documentos\';
-  RECParametros.PathImagens     := RECParametros.PathPrincipal +'\Imagens\';
-  RECParametros.PathNotaFiscal  := RECParametros.PathPrincipal +'\NotaFiscal\';
-  RECParametros.PathCupomFiscal := RECParametros.PathPrincipal +'\CupomFiscal\';
-
   {IP_FIXO OTIMOTEX    = '200.232.176.73';}
   {IP_FIXO DONA AMELIA = '177.68.148.249';}
   {IP_FiXO TRIMS21     = '201.27.148.155';}
@@ -309,7 +299,7 @@ begin
   }
 
  //IP  := '192.168.0.200:'; // trims21
- IP  := '192.168.2.113:'; // expresso
+// IP  := '192.168.2.113:'; // expresso
 // IP  := '10.15.7.60:';    // abc
 //   IP  := '10.15.7.60:';
    LAN := 'REDE LOCAL';

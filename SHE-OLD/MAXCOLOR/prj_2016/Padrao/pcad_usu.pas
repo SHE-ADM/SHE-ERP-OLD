@@ -38,8 +38,6 @@ type
     cadastroUSU_STAT: TStringField;
     dbgConsultaUSU_STAT: TdxDBGridColumn;
     dbgConsultaUSU_CUSU: TdxDBGridMaskColumn;
-    siCLONE: TSpeedItem;
-    siSEN: TSpeedItem;
     cadastroUSU_DESC: TSmallintField;
     dbgConsultaUSU_DESC: TdxDBGridMaskColumn;
     cadastroUSU_RELA: TIBStringField;
@@ -47,7 +45,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure siALTClick(Sender: TObject);
     procedure siDELClick(Sender: TObject);
-    procedure siLIXOClick(Sender: TObject);
     procedure cadastroCalcFields(DataSet: TDataSet);
     procedure dbgConsultaCustomDrawCell(Sender: TObject; ACanvas: TCanvas;
       ARect: TRect; ANode: TdxTreeListNode; AColumn: TdxTreeListColumn;
@@ -274,34 +271,6 @@ begin
     end;
   end;
   ExecuteEvent;
-  if dbgconsulta.Tag = 1 then
-     siLIXO.Click;
-end;
-
-procedure Tfrmcad_usu.siLIXOClick(Sender: TObject);
-begin
-  with cadastro do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT   CAD_USU.*,PAR_SIS.PAR_FANT FROM CAD_USU');
-    SQL.Add('LEFT     OUTER JOIN PAR_SIS ON CAD_USU.USU_CDEP = PAR_SIS.ID');
-
-    if dbgconsulta.Tag = 0 then
-    begin
-      dbgconsulta.Tag   := 1;
-      dbgconsulta.Color := clBtnface;
-      SQL.Add('WHERE USU_STA = ''1''');
-    end
-    else
-    begin
-      dbgconsulta.Tag   := 0;
-      dbgconsulta.Color := clWhite;
-      SQL.Add('WHERE USU_STA = ''0''');
-    end;
-
-    SQL.Add('ORDER BY USU_DUSU');
-    Open;
-  end;
 end;
 
 procedure Tfrmcad_usu.cadastroCalcFields(DataSet: TDataSet);

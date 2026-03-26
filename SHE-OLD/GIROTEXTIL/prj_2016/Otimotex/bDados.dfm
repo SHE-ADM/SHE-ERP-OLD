@@ -4,10 +4,10 @@ object dmDADOS: TdmDADOS
   OnDestroy = DataModuleDestroy
   Left = 366
   Top = 143
-  Height = 592
+  Height = 588
   Width = 937
   object ibDB: TIBDatabase
-    DatabaseName = 'C:\Sheild\FBird\Girotextil.FDB'
+    DatabaseName = 'C:\Sheild\FBird\Maxcolor.FDB'
     Params.Strings = (
       'user_name=sysdba'
       'password=ri1903'
@@ -230,41 +230,44 @@ object dmDADOS: TdmDADOS
         '         CAD_PRO_IMG.PRO_INS5,CAD_PRO_IMG.PRO_INS6,CAD_PRO_IMG.P' +
         'RO_INS7,CAD_PRO_IMG.PRO_INS8,'
       
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM cad_pro_est_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID)                      AS PRO_QEST,'
+        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QEST,'
       
-        '         (SELECT COUNT(*)               FROM cad_pro_est_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID)                      AS PRO_REST,'
+        '         (SELECT COUNT(*)               FROM CAD_PRO_EST     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID) AS PRO_REST,'
       
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM cad_pro_res_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID)                      AS PRO_QRES,'
+        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES,'
       
-        '         (SELECT COUNT(*)               FROM cad_pro_res_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID)                      AS PRO_RRES,'
+        '         (SELECT COUNT(*)               FROM CAD_PRO_RES     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RRES,'
       
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM cad_pro_sep_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID AND EST_FLAG = '#39'R'#39')   AS PRO_QSEP,'
+        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP,'
       
-        '         (SELECT COUNT(*)               FROM cad_pro_sep_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID AND EST_FLAG = '#39'R'#39')   AS PRO_RSEP,'
+        '         (SELECT COUNT(*)               FROM CAD_PRO_SEP     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP,'
       
-        '         (SELECT SUM(EST_CRED)          FROM cad_pro_prc_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_QCOM,'
-      
-        '         (SELECT COUNT(*)               FROM cad_pro_prc_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_RCOM,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM cad_pro_prg_004 WHE' +
+        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM cad_pro_PRG     WHE' +
         'RE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_QPRG,'
       
-        '         (SELECT COUNT(*)               FROM cad_pro_prg_004 WHE' +
+        '         (SELECT COUNT(*)               FROM cad_pro_PRG     WHE' +
         'RE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_RPRG,'
       
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM cad_pro_def_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_QDEF,'
+        '         (SELECT SUM(EST_CRED)          FROM cad_pro_PRC     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_QCOM,'
       
-        '         (SELECT COUNT(*)               FROM cad_pro_def_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_RDEF '
+        '         (SELECT SUM(EST_DEBI)          FROM cad_pro_PRC     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QPRD,'
+      
+        '         (SELECT COUNT(*)               FROM cad_pro_PRC     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_RCOM,'
+      
+        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM cad_pro_DEF     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QDEF,'
+      
+        '         (SELECT COUNT(*)               FROM cad_pro_DEF     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RDEF'
       '         FROM     CAD_PRO,CAD_PRO_IMG'
       '         WHERE    CAD_PRO.PRO_CART = CAD_PRO_IMG.PRO_CART'
       '         AND      CAD_PRO.ID = 0'
@@ -773,7 +776,7 @@ object dmDADOS: TdmDADOS
       Precision = 18
       Size = 4
     end
-    object FBProdutosPRO_REST: TIntegerField
+    object FBProdutosPRO_REST: TLargeintField
       FieldName = 'PRO_REST'
       ProviderFlags = []
     end
@@ -783,7 +786,7 @@ object dmDADOS: TdmDADOS
       Precision = 18
       Size = 4
     end
-    object FBProdutosPRO_RRES: TIntegerField
+    object FBProdutosPRO_RRES: TLargeintField
       FieldName = 'PRO_RRES'
       ProviderFlags = []
     end
@@ -793,18 +796,8 @@ object dmDADOS: TdmDADOS
       Precision = 18
       Size = 4
     end
-    object FBProdutosPRO_RSEP: TIntegerField
+    object FBProdutosPRO_RSEP: TLargeintField
       FieldName = 'PRO_RSEP'
-      ProviderFlags = []
-    end
-    object FBProdutosPRO_QCOM: TIBBCDField
-      FieldName = 'PRO_QCOM'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object FBProdutosPRO_RCOM: TIntegerField
-      FieldName = 'PRO_RCOM'
       ProviderFlags = []
     end
     object FBProdutosPRO_QPRG: TIBBCDField
@@ -813,8 +806,24 @@ object dmDADOS: TdmDADOS
       Precision = 18
       Size = 4
     end
-    object FBProdutosPRO_RPRG: TIntegerField
+    object FBProdutosPRO_RPRG: TLargeintField
       FieldName = 'PRO_RPRG'
+      ProviderFlags = []
+    end
+    object FBProdutosPRO_QCOM: TIBBCDField
+      FieldName = 'PRO_QCOM'
+      ProviderFlags = []
+      Precision = 18
+      Size = 4
+    end
+    object FBProdutosPRO_QPRD: TIBBCDField
+      FieldName = 'PRO_QPRD'
+      ProviderFlags = []
+      Precision = 18
+      Size = 4
+    end
+    object FBProdutosPRO_RCOM: TLargeintField
+      FieldName = 'PRO_RCOM'
       ProviderFlags = []
     end
     object FBProdutosPRO_QDEF: TIBBCDField
@@ -823,7 +832,7 @@ object dmDADOS: TdmDADOS
       Precision = 18
       Size = 4
     end
-    object FBProdutosPRO_RDEF: TIntegerField
+    object FBProdutosPRO_RDEF: TLargeintField
       FieldName = 'PRO_RDEF'
       ProviderFlags = []
     end

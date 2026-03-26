@@ -9,37 +9,15 @@ inherited frmtab_clf: Tfrmtab_clf
     Top = 589
     Width = 602
   end
-  inherited SpeedBar2: TSpeedBar
-    Width = 602
-    inherited siEVE: TSpeedItem [4]
-    end
-    inherited siPSQ: TSpeedItem [5]
-      Visible = False
-    end
-    inherited siREF: TSpeedItem [6]
-      Left = 2
-    end
-    inherited siSAIR: TSpeedItem [7]
-      Left = 222
-    end
-    inherited siLIXO: TSpeedItem [8]
-      Left = 202
-      Visible = False
-    end
-    inherited siREL: TSpeedItem [9]
-      Left = 292
-      Visible = False
-    end
-  end
   inherited pnldir: TPanel
     Left = 602
-    Height = 475
+    Height = 524
   end
   inherited pnldbg: TPanel
     Width = 602
-    Height = 475
+    Height = 524
     inherited pnlbot: TPanel
-      Top = 233
+      Top = 282
       Width = 602
       Height = 242
       Visible = True
@@ -100,11 +78,11 @@ inherited frmtab_clf: Tfrmtab_clf
       end
     end
     inherited gbDET: TGroupBox
-      Width = 602
-      Height = 233
+      Width = 548
+      Height = 282
       inherited DBGConsulta: TdxDBGrid
-        Width = 549
-        Height = 215
+        Width = 544
+        Height = 261
         KeyField = 'ID'
         ShowSummaryFooter = True
         Filter.Criteria = {00000000}
@@ -150,10 +128,16 @@ inherited frmtab_clf: Tfrmtab_clf
           FieldName = 'CLF_UF'
         end
       end
-      inherited SpeedBar1: TSpeedBar
-        Height = 215
+    end
+    inherited GBMenuEdicao: TGroupBox
+      Height = 282
+      inherited SBMenuEdicao: TSpeedBar
+        Height = 261
       end
     end
+  end
+  inherited SBMenuPrincipal: TSpeedBar
+    Width = 602
   end
   inherited Cadastro: TIBDataSet
     OnNewRecord = cadastroNewRecord
@@ -230,10 +214,6 @@ inherited frmtab_clf: Tfrmtab_clf
       Size = 2
     end
   end
-  inherited imageOPC: TImageList
-    Left = 268
-    Top = 206
-  end
   inherited pEVE: TIBEvents
     Top = 72
   end
@@ -242,6 +222,12 @@ inherited frmtab_clf: Tfrmtab_clf
   end
   inherited pTRA: TIBTransaction
     Left = 352
+  end
+  inherited ILMenuPrincipal: TImageList
+    Top = 400
+  end
+  inherited ILMenuEdicao: TImageList
+    Top = 400
   end
   object cad_pro: TIBQuery
     Database = dmDADOS.ibDB

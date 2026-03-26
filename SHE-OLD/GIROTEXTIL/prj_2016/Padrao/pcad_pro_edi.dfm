@@ -1,27 +1,28 @@
 inherited frmcad_pro_edi: Tfrmcad_pro_edi
-  Left = 497
-  Top = 36
-  ClientHeight = 656
-  ClientWidth = 1064
+  Left = 445
+  Top = 22
+  ActiveControl = edcart
+  ClientHeight = 643
+  ClientWidth = 954
   OldCreateOrder = True
   Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 14
   inherited pnlcadastro: TPanel
-    Width = 1064
-    Height = 523
+    Width = 954
+    Height = 624
     inherited PaintBox: TPaintBox
-      Width = 1064
-      Height = 124
+      Width = 954
+      Height = 160
     end
-    object Label1: TLabel
+    object Label1: TLabel [1]
       Tag = 1
-      Left = 8
-      Top = 7
-      Width = 64
+      Left = 10
+      Top = 77
+      Width = 39
       Height = 14
       Hint = 'Referencia'
-      Caption = 'Referencia'
+      Caption = 'Artigo'
       Color = clBtnFace
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -32,10 +33,10 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       ParentFont = False
       Transparent = True
     end
-    object Label7: TLabel
-      Left = 8
-      Top = 32
-      Width = 57
+    object Label7: TLabel [2]
+      Left = 10
+      Top = 101
+      Width = 51
       Height = 14
       Caption = 'Descri'#231#227'o'
       Color = clBtnFace
@@ -43,15 +44,15 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       Font.Color = clWindowText
       Font.Height = -12
       Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
+      Font.Style = []
       ParentColor = False
       ParentFont = False
       Transparent = True
     end
-    object ladfor: TLabel
-      Left = 378
-      Top = 55
-      Width = 68
+    object ladfor: TLabel [3]
+      Left = 10
+      Top = 149
+      Width = 62
       Height = 14
       Caption = 'Fornecedor'
       Color = clBtnFace
@@ -59,14 +60,14 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       Font.Color = clWindowText
       Font.Height = -12
       Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
+      Font.Style = []
       ParentColor = False
       ParentFont = False
       Transparent = True
     end
-    object Label6: TLabel
-      Left = 8
-      Top = 79
+    object Label6: TLabel [4]
+      Left = 445
+      Top = 173
       Width = 33
       Height = 14
       Caption = 'Grupo'
@@ -80,9 +81,9 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       ParentFont = False
       Transparent = True
     end
-    object Label18: TLabel
-      Left = 8
-      Top = 55
+    object Label18: TLabel [5]
+      Left = 445
+      Top = 149
       Width = 42
       Height = 14
       Caption = 'Cole'#231#227'o'
@@ -96,12 +97,12 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       ParentFont = False
       Transparent = True
     end
-    object Label33: TLabel
-      Left = 474
-      Top = 7
-      Width = 123
+    object Label33: TLabel [6]
+      Left = 10
+      Top = 173
+      Width = 57
       Height = 14
-      Caption = 'Referencia Fornecedor'
+      Caption = 'Refer'#234'ncia'
       Color = clBtnFace
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -112,88 +113,12 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       ParentFont = False
       Transparent = True
     end
-    object sbtab_grp: TSpeedButton
-      Left = 279
-      Top = 75
-      Width = 21
-      Height = 21
-      Cursor = crHandPoint
-      Hint = 'Abre Tabela de Cores'
-      Flat = True
-      Glyph.Data = {
-        36030000424D3603000000000000360000002800000010000000100000000100
-        18000000000000030000130B0000130B00000000000000000000FFFFFFF9F9F9
-        E4E4E4C1C1C1A6A6A69898989DA0A19FA2A4999999B2B2B2D1D1D1F0F0F0FFFF
-        FFFFFFFFFFFFFFFFFFFFF9F9F9C7C7C7A2A2A2B0B0B0CCCCCCE0E2E2E9EFF2E9
-        F1F3D4D5D5B2B2B29D9D9DA2A2A2EEEEEEFFFFFFFFFFFFFFFFFFC6C6C6939393
-        AEAEAEC4C4C4C5C5C5BEBFBFC2C5C6BCBFC0B5B6B8BCBCBCB1B1B18F8F8FA6A6
-        A6E9E9E9FFFFFFFFFFFF8282828F8F8FA7A7A7BFC2C3D4DADBE6ECEDE6ECEEE4
-        EAECDDE3E5C9CCCDADADAD989898808080B6B6B6FFFFFFFFFFFF818181B8BABA
-        DBE1E1CCD3CEB3B399BBBBA2BBBBA2BBBBA2B7B8A2C2C6BED4DBD8D2D6D77A7A
-        7AA6A6A6FFFFFFFFFFFF9D9E9FD4DADBD1D5B9E6E6B4FFFFCCFFFFCCFFFFCCFF
-        FFD3FCFCD7EDEDC7D3D5AEC4CAC2A8ABAB949494FFFFFFFFFFFFB6B8B8D2D1CE
-        CFC8A5F6F5BDFFF3CEFFF9C6FFFFBDFFFFC2FFFFC9FEFEC1F5F5AF858677D8DD
-        DFA0A0A0FFFFFFFFFFFFB7B9B9D9D8D5D0BCA6E2D6B8F0DACEFFF4BEFFFFA9FF
-        FFA9FEFEAAEBEBB2D8CEB39B9B96D8DDDFA0A0A0FFFFFFFFFFFFE0E1E1D8DEDF
-        D3D8D9C4B7ACDAC3AED4C2B0D4C2B0D4C2B0D4C2B0D9C3ADD3C7BCE1E7E9CDCD
-        CDF5F5F5FFFFFFFFFFFFFBFBFBE3E4E4D4D8D9D1D6D8D6D5D2D9D3CCD9D3CCD9
-        D3CCD9D3CCD6D3D1CDD0D1B6B7B8BCB6B6FAF7F7FFFFFFFFFFFFFFFFFFFAFAFA
-        EAEAEADCDEDED3D5D5CDCFCFCDCFCFCBCDCDC8C9CABBB8B8C1BEBEBEBDBD8767
-        63C6A7A5FAF7F7FFFFFFFFFFFFFFFFFFFEFEFEFCFCFCF5F5F5EFEFEFEFEFEFEF
-        EFEFEDECECD1BABAA97A7A756B6BB76D2EA45737CBB1B0FDFCFCFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDEBAB2DD9C39FDAE
-        27EE8D2DA65027C19F9AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFCF9F9DFBAB3E29D30FBAA27E8882A954122FFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDDB4
-        A0DC9736E389209B4122FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFBF6F5E1C3B6CD9785D5B1AE}
-      ParentShowHint = False
-      ShowHint = True
-    end
-    object sbtab_col: TSpeedButton
-      Left = 279
-      Top = 51
-      Width = 21
-      Height = 21
-      Cursor = crHandPoint
-      Hint = 'Abre Tabela de Cores'
-      Flat = True
-      Glyph.Data = {
-        36030000424D3603000000000000360000002800000010000000100000000100
-        18000000000000030000130B0000130B00000000000000000000FFFFFFF9F9F9
-        E4E4E4C1C1C1A6A6A69898989DA0A19FA2A4999999B2B2B2D1D1D1F0F0F0FFFF
-        FFFFFFFFFFFFFFFFFFFFF9F9F9C7C7C7A2A2A2B0B0B0CCCCCCE0E2E2E9EFF2E9
-        F1F3D4D5D5B2B2B29D9D9DA2A2A2EEEEEEFFFFFFFFFFFFFFFFFFC6C6C6939393
-        AEAEAEC4C4C4C5C5C5BEBFBFC2C5C6BCBFC0B5B6B8BCBCBCB1B1B18F8F8FA6A6
-        A6E9E9E9FFFFFFFFFFFF8282828F8F8FA7A7A7BFC2C3D4DADBE6ECEDE6ECEEE4
-        EAECDDE3E5C9CCCDADADAD989898808080B6B6B6FFFFFFFFFFFF818181B8BABA
-        DBE1E1CCD3CEB3B399BBBBA2BBBBA2BBBBA2B7B8A2C2C6BED4DBD8D2D6D77A7A
-        7AA6A6A6FFFFFFFFFFFF9D9E9FD4DADBD1D5B9E6E6B4FFFFCCFFFFCCFFFFCCFF
-        FFD3FCFCD7EDEDC7D3D5AEC4CAC2A8ABAB949494FFFFFFFFFFFFB6B8B8D2D1CE
-        CFC8A5F6F5BDFFF3CEFFF9C6FFFFBDFFFFC2FFFFC9FEFEC1F5F5AF858677D8DD
-        DFA0A0A0FFFFFFFFFFFFB7B9B9D9D8D5D0BCA6E2D6B8F0DACEFFF4BEFFFFA9FF
-        FFA9FEFEAAEBEBB2D8CEB39B9B96D8DDDFA0A0A0FFFFFFFFFFFFE0E1E1D8DEDF
-        D3D8D9C4B7ACDAC3AED4C2B0D4C2B0D4C2B0D4C2B0D9C3ADD3C7BCE1E7E9CDCD
-        CDF5F5F5FFFFFFFFFFFFFBFBFBE3E4E4D4D8D9D1D6D8D6D5D2D9D3CCD9D3CCD9
-        D3CCD9D3CCD6D3D1CDD0D1B6B7B8BCB6B6FAF7F7FFFFFFFFFFFFFFFFFFFAFAFA
-        EAEAEADCDEDED3D5D5CDCFCFCDCFCFCBCDCDC8C9CABBB8B8C1BEBEBEBDBD8767
-        63C6A7A5FAF7F7FFFFFFFFFFFFFFFFFFFEFEFEFCFCFCF5F5F5EFEFEFEFEFEFEF
-        EFEFEDECECD1BABAA97A7A756B6BB76D2EA45737CBB1B0FDFCFCFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDEBAB2DD9C39FDAE
-        27EE8D2DA65027C19F9AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFCF9F9DFBAB3E29D30FBAA27E8882A954122FFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDDB4
-        A0DC9736E389209B4122FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFBF6F5E1C3B6CD9785D5B1AE}
-      ParentShowHint = False
-      ShowHint = True
-    end
-    object Label10: TLabel
-      Left = 378
-      Top = 79
-      Width = 39
+    object Label10: TLabel [7]
+      Left = 10
+      Top = 197
+      Width = 27
       Height = 14
-      Caption = 'N.C.M.'
+      Caption = 'NCM'
       Color = clBtnFace
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -204,9 +129,9 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       ParentFont = False
       Transparent = True
     end
-    object Label37: TLabel
-      Left = 378
-      Top = 103
+    object Label37: TLabel [8]
+      Left = 505
+      Top = 77
       Width = 41
       Height = 14
       Caption = 'Status'
@@ -220,9 +145,9 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       ParentFont = False
       Transparent = True
     end
-    object Label45: TLabel
-      Left = 8
-      Top = 103
+    object Label45: TLabel [9]
+      Left = 445
+      Top = 197
       Width = 51
       Height = 14
       Caption = 'Categoria'
@@ -236,48 +161,30 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       ParentFont = False
       Transparent = True
     end
-    object sbtab_cat: TSpeedButton
-      Left = 279
-      Top = 99
-      Width = 21
-      Height = 21
-      Cursor = crHandPoint
-      Hint = 'Abre Tabela de Cores'
-      Flat = True
-      Glyph.Data = {
-        36030000424D3603000000000000360000002800000010000000100000000100
-        18000000000000030000130B0000130B00000000000000000000FFFFFFF9F9F9
-        E4E4E4C1C1C1A6A6A69898989DA0A19FA2A4999999B2B2B2D1D1D1F0F0F0FFFF
-        FFFFFFFFFFFFFFFFFFFFF9F9F9C7C7C7A2A2A2B0B0B0CCCCCCE0E2E2E9EFF2E9
-        F1F3D4D5D5B2B2B29D9D9DA2A2A2EEEEEEFFFFFFFFFFFFFFFFFFC6C6C6939393
-        AEAEAEC4C4C4C5C5C5BEBFBFC2C5C6BCBFC0B5B6B8BCBCBCB1B1B18F8F8FA6A6
-        A6E9E9E9FFFFFFFFFFFF8282828F8F8FA7A7A7BFC2C3D4DADBE6ECEDE6ECEEE4
-        EAECDDE3E5C9CCCDADADAD989898808080B6B6B6FFFFFFFFFFFF818181B8BABA
-        DBE1E1CCD3CEB3B399BBBBA2BBBBA2BBBBA2B7B8A2C2C6BED4DBD8D2D6D77A7A
-        7AA6A6A6FFFFFFFFFFFF9D9E9FD4DADBD1D5B9E6E6B4FFFFCCFFFFCCFFFFCCFF
-        FFD3FCFCD7EDEDC7D3D5AEC4CAC2A8ABAB949494FFFFFFFFFFFFB6B8B8D2D1CE
-        CFC8A5F6F5BDFFF3CEFFF9C6FFFFBDFFFFC2FFFFC9FEFEC1F5F5AF858677D8DD
-        DFA0A0A0FFFFFFFFFFFFB7B9B9D9D8D5D0BCA6E2D6B8F0DACEFFF4BEFFFFA9FF
-        FFA9FEFEAAEBEBB2D8CEB39B9B96D8DDDFA0A0A0FFFFFFFFFFFFE0E1E1D8DEDF
-        D3D8D9C4B7ACDAC3AED4C2B0D4C2B0D4C2B0D4C2B0D9C3ADD3C7BCE1E7E9CDCD
-        CDF5F5F5FFFFFFFFFFFFFBFBFBE3E4E4D4D8D9D1D6D8D6D5D2D9D3CCD9D3CCD9
-        D3CCD9D3CCD6D3D1CDD0D1B6B7B8BCB6B6FAF7F7FFFFFFFFFFFFFFFFFFFAFAFA
-        EAEAEADCDEDED3D5D5CDCFCFCDCFCFCBCDCDC8C9CABBB8B8C1BEBEBEBDBD8767
-        63C6A7A5FAF7F7FFFFFFFFFFFFFFFFFFFEFEFEFCFCFCF5F5F5EFEFEFEFEFEFEF
-        EFEFEDECECD1BABAA97A7A756B6BB76D2EA45737CBB1B0FDFCFCFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDEBAB2DD9C39FDAE
-        27EE8D2DA65027C19F9AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFCF9F9DFBAB3E29D30FBAA27E8882A954122FFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDDB4
-        A0DC9736E389209B4122FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFBF6F5E1C3B6CD9785D5B1AE}
-      ParentShowHint = False
-      ShowHint = True
+    object Label12: TLabel [10]
+      Left = 10
+      Top = 125
+      Width = 64
+      Height = 14
+      Caption = 'Composi'#231#227'o'
+      Color = clBtnFace
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      Transparent = True
+    end
+    inherited SBMenuPrincipal: TSpeedBar
+      Width = 954
+      TabOrder = 14
     end
     object edid: TdxEdit
       Tag = 1
       Left = 80
-      Top = 3
+      Top = 72
       Width = 110
       Hint = 'Referencia'
       Enabled = False
@@ -297,8 +204,8 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       StoredValues = 2
     end
     object eddcad: TdxMaskEdit
-      Left = 601
-      Top = 2
+      Left = 595
+      Top = 72
       Width = 110
       Hint = 'C'#243'digo'
       Color = clWhite
@@ -320,9 +227,9 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       StoredValues = 6
     end
     object edcfor: TdxMaskEdit
-      Left = 603
-      Top = 2
-      Width = 110
+      Left = 85
+      Top = 168
+      Width = 150
       Hint = 'C'#243'digo'
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -334,7 +241,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       Style.BorderStyle = xbsNone
       Style.ButtonStyle = btsFlat
       Style.Shadow = True
-      TabOrder = 0
+      TabOrder = 5
       CharCase = ecUpperCase
       IgnoreMaskBlank = False
       MaxLength = 20
@@ -342,9 +249,9 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     end
     object edcomp: TdxEdit
       Tag = 1
-      Left = 80
-      Top = 27
-      Width = 473
+      Left = 85
+      Top = 120
+      Width = 620
       Hint = 'Composi'#231#227'o'
       Enabled = False
       Font.Charset = DEFAULT_CHARSET
@@ -356,15 +263,15 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       Style.BorderStyle = xbsNone
       Style.ButtonStyle = btsFlat
       Style.Shadow = True
-      TabOrder = 9
+      TabOrder = 3
       CharCase = ecUpperCase
       MaxLength = 120
       StoredValues = 2
     end
     object eddpro: TdxEdit
-      Left = 80
-      Top = 27
-      Width = 633
+      Left = 85
+      Top = 96
+      Width = 620
       Hint = 'Descri'#231#227'o'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -382,9 +289,9 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       StoredValues = 2
     end
     object cbdcol: TdxImageEdit
-      Left = 80
-      Top = 50
-      Width = 250
+      Left = 505
+      Top = 144
+      Width = 200
       Hint = 'Cole'#231#227'o'
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -397,7 +304,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       Style.BorderStyle = xbsNone
       Style.ButtonStyle = btsSimple
       Style.Shadow = True
-      TabOrder = 3
+      TabOrder = 7
       AutoSize = False
       Descriptions.Strings = (
         '')
@@ -408,9 +315,9 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       Height = 24
     end
     object cbdgrp: TdxImageEdit
-      Left = 80
-      Top = 74
-      Width = 250
+      Left = 505
+      Top = 168
+      Width = 200
       Hint = 'Grupo'
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -423,7 +330,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       Style.BorderStyle = xbsNone
       Style.ButtonStyle = btsSimple
       Style.Shadow = True
-      TabOrder = 5
+      TabOrder = 8
       AutoSize = False
       Descriptions.Strings = (
         '')
@@ -434,10 +341,10 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       Height = 24
     end
     object GroupBox6: TGroupBox
-      Left = 776
-      Top = 1
+      Left = 720
+      Top = 65
       Width = 225
-      Height = 120
+      Height = 152
       Caption = 'C'#243'digo de Barras'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -466,17 +373,17 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     end
     object pnlpri: TPanel
       Left = 0
-      Top = 124
-      Width = 1064
+      Top = 225
+      Width = 954
       Height = 399
       Align = alBottom
       TabOrder = 11
-      object pcMAIN: TdxPageControl
+      object PCPrincipal: TdxPageControl
         Left = 345
         Top = 1
-        Width = 718
+        Width = 608
         Height = 397
-        ActivePage = tscom
+        ActivePage = TSMedidas
         Align = alClient
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -494,1103 +401,281 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
         TabOrder = 1
         TabPosition = dxtpTop
         TabWidth = 0
-        object tscom: TdxTabSheet
-          Caption = 'Complemento'
-          object GroupBox4: TGroupBox
+        object TSMedidas: TdxTabSheet
+          Caption = 'Medidas'
+          object Bevel2: TBevel
             Left = 0
             Top = 0
-            Width = 718
-            Height = 121
-            Align = alTop
-            Caption = 'Pre'#231'os'
-            TabOrder = 0
-            object pcprc: TdxPageControl
-              Left = 2
-              Top = 16
-              Width = 714
-              Height = 103
-              ActivePage = tsata
-              Align = alClient
-              HideButtons = False
-              HotTrack = False
-              MultiLine = False
-              OwnerDraw = False
-              RaggedRight = False
-              ScrollOpposite = False
-              TabHeight = 0
-              TabOrder = 0
-              TabPosition = dxtpTop
-              TabWidth = 0
-              object tsata: TdxTabSheet
-                Caption = 'Atacado'
-                object Bevel11: TBevel
-                  Left = 0
-                  Top = 0
-                  Width = 714
-                  Height = 79
-                  Align = alClient
-                end
-                object Label17: TLabel
-                  Tag = 1
-                  Left = 8
-                  Top = 9
-                  Width = 72
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Pre'#231'o Normal'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Label19: TLabel
-                  Tag = 1
-                  Left = 8
-                  Top = 33
-                  Width = 89
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Pre'#231'o Promo'#231#227'o'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Label16: TLabel
-                  Tag = 1
-                  Left = 8
-                  Top = 57
-                  Width = 78
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Desconto (%)'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Label47: TLabel
-                  Tag = 1
-                  Left = 240
-                  Top = 9
-                  Width = 73
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Reajuste (%)'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Label48: TLabel
-                  Tag = 1
-                  Left = 240
-                  Top = 33
-                  Width = 74
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Pre'#231'o a Prazo'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object edprec: TdxMaskEdit
-                  Left = 136
-                  Top = 4
-                  Width = 80
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 0
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edprecValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-                object edppro: TdxMaskEdit
-                  Left = 136
-                  Top = 28
-                  Width = 80
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 1
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edpproValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-                object edpdsc: TdxMaskEdit
-                  Left = 136
-                  Top = 52
-                  Width = 49
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 2
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edpdscValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-                object edpper: TdxMaskEdit
-                  Left = 368
-                  Top = 4
-                  Width = 49
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 3
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edpperValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-                object edpprz: TdxMaskEdit
-                  Left = 368
-                  Top = 28
-                  Width = 80
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 4
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edpprzValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-              end
-              object tsvar: TdxTabSheet
-                Caption = 'Varejo'
-                object Bevel12: TBevel
-                  Left = 0
-                  Top = 0
-                  Width = 604
-                  Height = 79
-                  Align = alClient
-                end
-                object Label22: TLabel
-                  Tag = 1
-                  Left = 8
-                  Top = 9
-                  Width = 72
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Pre'#231'o Normal'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Label23: TLabel
-                  Tag = 1
-                  Left = 8
-                  Top = 33
-                  Width = 89
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Pre'#231'o Promo'#231#227'o'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Label20: TLabel
-                  Tag = 1
-                  Left = 8
-                  Top = 57
-                  Width = 78
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Desconto (%)'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Label49: TLabel
-                  Tag = 1
-                  Left = 240
-                  Top = 9
-                  Width = 73
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Reajuste (%)'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Label52: TLabel
-                  Tag = 1
-                  Left = 240
-                  Top = 33
-                  Width = 74
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Pre'#231'o a Prazo'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object edvprc: TdxMaskEdit
-                  Left = 136
-                  Top = 4
-                  Width = 80
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 0
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edvprcValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-                object edvpro: TdxMaskEdit
-                  Left = 136
-                  Top = 28
-                  Width = 80
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 1
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edvproValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-                object edvdsc: TdxMaskEdit
-                  Left = 136
-                  Top = 52
-                  Width = 49
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 2
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edvdscValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-                object edvper: TdxMaskEdit
-                  Left = 368
-                  Top = 4
-                  Width = 49
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 3
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edvperValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-                object edvprz: TdxMaskEdit
-                  Left = 368
-                  Top = 28
-                  Width = 80
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 4
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edvprzValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-              end
-              object tsrep: TdxTabSheet
-                Caption = 'Representa'#231#227'o'
-                object Label42: TLabel
-                  Tag = 1
-                  Left = 8
-                  Top = 9
-                  Width = 72
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Pre'#231'o Normal'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Label43: TLabel
-                  Tag = 1
-                  Left = 8
-                  Top = 33
-                  Width = 89
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Pre'#231'o Promo'#231#227'o'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Label44: TLabel
-                  Tag = 1
-                  Left = 8
-                  Top = 57
-                  Width = 78
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Desconto (%)'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Bevel15: TBevel
-                  Left = 0
-                  Top = 0
-                  Width = 604
-                  Height = 79
-                  Align = alClient
-                end
-                object Label53: TLabel
-                  Tag = 1
-                  Left = 240
-                  Top = 9
-                  Width = 73
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Reajuste (%)'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Label54: TLabel
-                  Tag = 1
-                  Left = 240
-                  Top = 33
-                  Width = 74
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Pre'#231'o a Prazo'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object edrprc: TdxMaskEdit
-                  Left = 136
-                  Top = 4
-                  Width = 80
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 0
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edrprcValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-                object edrpro: TdxMaskEdit
-                  Left = 136
-                  Top = 28
-                  Width = 80
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 1
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edrproValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-                object edrdsc: TdxMaskEdit
-                  Left = 136
-                  Top = 52
-                  Width = 49
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 2
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edrdscValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-                object edrper: TdxMaskEdit
-                  Left = 368
-                  Top = 4
-                  Width = 49
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 3
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edrperValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-                object edrprz: TdxMaskEdit
-                  Left = 368
-                  Top = 28
-                  Width = 80
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 4
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edrprzValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-              end
-              object tssite: TdxTabSheet
-                Caption = 'Site'
-                object Label34: TLabel
-                  Tag = 1
-                  Left = 8
-                  Top = 9
-                  Width = 72
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Pre'#231'o Normal'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Label55: TLabel
-                  Tag = 1
-                  Left = 8
-                  Top = 33
-                  Width = 89
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Pre'#231'o Promo'#231#227'o'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Label56: TLabel
-                  Tag = 1
-                  Left = 8
-                  Top = 57
-                  Width = 78
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Desconto (%)'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Label57: TLabel
-                  Tag = 1
-                  Left = 240
-                  Top = 9
-                  Width = 73
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Reajuste (%)'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Label58: TLabel
-                  Tag = 1
-                  Left = 240
-                  Top = 33
-                  Width = 74
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Pre'#231'o a Prazo'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Bevel17: TBevel
-                  Left = 0
-                  Top = 0
-                  Width = 604
-                  Height = 79
-                  Align = alClient
-                end
-                object edsprc: TdxMaskEdit
-                  Left = 136
-                  Top = 4
-                  Width = 80
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 0
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edsprcValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-                object edspro: TdxMaskEdit
-                  Left = 136
-                  Top = 28
-                  Width = 80
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 1
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edsproValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-                object edsdsc: TdxMaskEdit
-                  Left = 136
-                  Top = 52
-                  Width = 49
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 2
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edsdscValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-                object edsper: TdxMaskEdit
-                  Left = 368
-                  Top = 4
-                  Width = 49
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 3
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edsperValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-                object edsprz: TdxMaskEdit
-                  Left = 368
-                  Top = 28
-                  Width = 80
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 4
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edsprzValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-              end
-              object tsout: TdxTabSheet
-                Caption = 'Outros'
-                object Bevel13: TBevel
-                  Left = 0
-                  Top = 0
-                  Width = 604
-                  Height = 79
-                  Align = alClient
-                end
-                object Label2: TLabel
-                  Tag = 1
-                  Left = 8
-                  Top = 9
-                  Width = 99
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Pre'#231'o de Compras'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Label13: TLabel
-                  Tag = 1
-                  Left = 8
-                  Top = 33
-                  Width = 84
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Pre'#231'o de Custo'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Label66: TLabel
-                  Tag = 1
-                  Left = 8
-                  Top = 57
-                  Width = 86
-                  Height = 14
-                  Hint = 'Referencia'
-                  Caption = 'Custo Libera'#231#227'o'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object edcust: TdxMaskEdit
-                  Left = 136
-                  Top = 28
-                  Width = 80
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 0
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edcustValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-                object edpcom: TdxMaskEdit
-                  Left = 136
-                  Top = 4
-                  Width = 80
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 1
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edpcomValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-                object edclib: TdxMaskEdit
-                  Left = 136
-                  Top = 52
-                  Width = 80
-                  Hint = 'C'#243'digo'
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 2
-                  Alignment = taRightJustify
-                  AutoSize = False
-                  CharCase = ecUpperCase
-                  IgnoreMaskBlank = False
-                  MaxLength = 20
-                  Text = '0,00'
-                  OnValidate = edclibValidate
-                  Height = 24
-                  StoredValues = 7
-                end
-              end
-            end
+            Width = 608
+            Height = 373
+            Align = alClient
           end
-          object pcobs: TdxPageControl
+          object Label15: TLabel
+            Left = 54
+            Top = 37
+            Width = 62
+            Height = 14
+            Caption = 'Peso M'#233'dio'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object Label8: TLabel
+            Left = 50
+            Top = 133
+            Width = 66
+            Height = 14
+            Caption = 'Rendimento'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object Label11: TLabel
+            Left = 44
+            Top = 181
+            Width = 72
+            Height = 14
+            Caption = 'Largura Total'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object lametr: TLabel
+            Left = 61
+            Top = 85
+            Width = 55
+            Height = 14
+            Caption = 'Metragem'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object Label9: TLabel
+            Left = 45
+            Top = 61
+            Width = 71
+            Height = 14
+            Caption = 'Peso Canudo'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object Label21: TLabel
+            Left = 60
+            Top = 109
+            Width = 56
+            Height = 14
+            Caption = 'Gramatura'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object Label24: TLabel
+            Left = 55
+            Top = 157
+            Width = 61
+            Height = 14
+            Caption = 'Largura '#218'til'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object Label4: TLabel
+            Left = 5
+            Top = 13
+            Width = 111
+            Height = 14
+            Caption = 'Unidade Comercial'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object edpeso: TdxEdit
+            Left = 122
+            Top = 32
+            Width = 60
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 1
+            Text = '0,00'
+            Alignment = taRightJustify
+            CharCase = ecUpperCase
+            StoredValues = 1
+          end
+          object edrend: TdxEdit
+            Left = 122
+            Top = 128
+            Width = 60
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 5
+            Text = '0,00'
+            Alignment = taRightJustify
+            CharCase = ecUpperCase
+            OnValidate = edrendValidate
+            StoredValues = 1
+          end
+          object edlarg: TdxEdit
+            Left = 122
+            Top = 176
+            Width = 60
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 7
+            Text = '0,00'
+            Alignment = taRightJustify
+            CharCase = ecUpperCase
+            OnValidate = edlargValidate
+            StoredValues = 1
+          end
+          object edmetr: TdxEdit
+            Left = 122
+            Top = 80
+            Width = 60
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 3
+            Text = '0,00'
+            Alignment = taRightJustify
+            CharCase = ecUpperCase
+            OnValidate = edmetrValidate
+            StoredValues = 1
+          end
+          object edpscn: TdxEdit
+            Left = 122
+            Top = 56
+            Width = 60
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 2
+            Text = '0,00'
+            Alignment = taRightJustify
+            CharCase = ecUpperCase
+            OnValidate = edpscnValidate
+            StoredValues = 1
+          end
+          object edgram: TdxEdit
+            Left = 122
+            Top = 104
+            Width = 60
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 4
+            Text = '0,00'
+            Alignment = taRightJustify
+            CharCase = ecUpperCase
+            OnValidate = edgramValidate
+            StoredValues = 1
+          end
+          object edutil: TdxEdit
+            Left = 122
+            Top = 152
+            Width = 60
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 6
+            Text = '0,00'
+            Alignment = taRightJustify
+            CharCase = ecUpperCase
+            OnValidate = edutilValidate
+            StoredValues = 1
+          end
+          object cbduni: TdxImageEdit
+            Left = 122
+            Top = 8
+            Width = 120
+            Hint = 'Unidade'
+            Color = clInfoBk
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderColor = 14065456
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 0
+            AutoSize = False
+            Descriptions.Strings = (
+              '')
+            ImageIndexes.Strings = (
+              '0')
+            Values.Strings = (
+              '')
+            Height = 24
+          end
+        end
+        object TSPrecos: TdxTabSheet
+          Caption = 'Pre'#231'os'
+          object pcprc: TdxPageControl
             Left = 0
-            Top = 217
-            Width = 718
-            Height = 156
-            ActivePage = tsobs
+            Top = 0
+            Width = 608
+            Height = 373
+            ActivePage = tsata
             Align = alClient
             HideButtons = False
             HotTrack = False
@@ -1599,7 +684,1935 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
             RaggedRight = False
             ScrollOpposite = False
             TabHeight = 0
+            TabOrder = 0
+            TabPosition = dxtpTop
+            TabWidth = 0
+            object tsata: TdxTabSheet
+              Caption = 'Atacado'
+              object Bevel11: TBevel
+                Left = 0
+                Top = 0
+                Width = 608
+                Height = 349
+                Align = alClient
+              end
+              object Label17: TLabel
+                Tag = 1
+                Left = 10
+                Top = 9
+                Width = 72
+                Height = 14
+                Hint = 'Referencia'
+                Caption = 'Pre'#231'o Normal'
+                Color = clBtnFace
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
+              object Label19: TLabel
+                Tag = 1
+                Left = 10
+                Top = 33
+                Width = 89
+                Height = 14
+                Hint = 'Referencia'
+                Caption = 'Pre'#231'o Promo'#231#227'o'
+                Color = clBtnFace
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
+              object Label16: TLabel
+                Tag = 1
+                Left = 220
+                Top = 33
+                Width = 78
+                Height = 14
+                Hint = 'Referencia'
+                Caption = 'Desconto (%)'
+                Color = clBtnFace
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
+              object Label47: TLabel
+                Tag = 1
+                Left = 220
+                Top = 9
+                Width = 73
+                Height = 14
+                Hint = 'Referencia'
+                Caption = 'Reajuste (%)'
+                Color = clBtnFace
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
+              object Label48: TLabel
+                Tag = 1
+                Left = 10
+                Top = 57
+                Width = 74
+                Height = 14
+                Hint = 'Referencia'
+                Caption = 'Pre'#231'o a Prazo'
+                Color = clBtnFace
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
+              object edprec: TdxMaskEdit
+                Left = 115
+                Top = 4
+                Width = 80
+                Hint = 'C'#243'digo'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsFlat
+                Style.Shadow = True
+                TabOrder = 0
+                Alignment = taRightJustify
+                AutoSize = False
+                CharCase = ecUpperCase
+                IgnoreMaskBlank = False
+                MaxLength = 20
+                Text = '0,00'
+                OnValidate = edprecValidate
+                Height = 24
+                StoredValues = 7
+              end
+              object edppro: TdxMaskEdit
+                Left = 115
+                Top = 28
+                Width = 80
+                Hint = 'C'#243'digo'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsFlat
+                Style.Shadow = True
+                TabOrder = 1
+                Alignment = taRightJustify
+                AutoSize = False
+                CharCase = ecUpperCase
+                IgnoreMaskBlank = False
+                MaxLength = 20
+                Text = '0,00'
+                OnValidate = edpproValidate
+                Height = 24
+                StoredValues = 7
+              end
+              object edpdsc: TdxMaskEdit
+                Left = 310
+                Top = 28
+                Width = 49
+                Hint = 'C'#243'digo'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsFlat
+                Style.Shadow = True
+                TabOrder = 4
+                Alignment = taRightJustify
+                AutoSize = False
+                CharCase = ecUpperCase
+                IgnoreMaskBlank = False
+                MaxLength = 20
+                Text = '0,00'
+                OnValidate = edpdscValidate
+                Height = 24
+                StoredValues = 7
+              end
+              object edpper: TdxMaskEdit
+                Left = 310
+                Top = 4
+                Width = 49
+                Hint = 'C'#243'digo'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsFlat
+                Style.Shadow = True
+                TabOrder = 3
+                Alignment = taRightJustify
+                AutoSize = False
+                CharCase = ecUpperCase
+                IgnoreMaskBlank = False
+                MaxLength = 20
+                Text = '0,00'
+                OnValidate = edpperValidate
+                Height = 24
+                StoredValues = 7
+              end
+              object edpprz: TdxMaskEdit
+                Left = 115
+                Top = 52
+                Width = 80
+                Hint = 'C'#243'digo'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsFlat
+                Style.Shadow = True
+                TabOrder = 2
+                Alignment = taRightJustify
+                AutoSize = False
+                CharCase = ecUpperCase
+                IgnoreMaskBlank = False
+                MaxLength = 20
+                Text = '0,00'
+                OnValidate = edpprzValidate
+                Height = 24
+                StoredValues = 7
+              end
+            end
+            object tsvar: TdxTabSheet
+              Caption = 'Varejo'
+              object Bevel12: TBevel
+                Left = 0
+                Top = 0
+                Width = 604
+                Height = 79
+                Align = alClient
+              end
+              object Label22: TLabel
+                Tag = 1
+                Left = 10
+                Top = 9
+                Width = 72
+                Height = 14
+                Hint = 'Referencia'
+                Caption = 'Pre'#231'o Normal'
+                Color = clBtnFace
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
+              object Label23: TLabel
+                Tag = 1
+                Left = 10
+                Top = 33
+                Width = 89
+                Height = 14
+                Hint = 'Referencia'
+                Caption = 'Pre'#231'o Promo'#231#227'o'
+                Color = clBtnFace
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
+              object Label20: TLabel
+                Tag = 1
+                Left = 220
+                Top = 33
+                Width = 78
+                Height = 14
+                Hint = 'Referencia'
+                Caption = 'Desconto (%)'
+                Color = clBtnFace
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
+              object Label49: TLabel
+                Tag = 1
+                Left = 220
+                Top = 9
+                Width = 73
+                Height = 14
+                Hint = 'Referencia'
+                Caption = 'Reajuste (%)'
+                Color = clBtnFace
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
+              object Label52: TLabel
+                Tag = 1
+                Left = 10
+                Top = 57
+                Width = 74
+                Height = 14
+                Hint = 'Referencia'
+                Caption = 'Pre'#231'o a Prazo'
+                Color = clBtnFace
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
+              object edvprc: TdxMaskEdit
+                Left = 115
+                Top = 4
+                Width = 80
+                Hint = 'C'#243'digo'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsFlat
+                Style.Shadow = True
+                TabOrder = 0
+                Alignment = taRightJustify
+                AutoSize = False
+                CharCase = ecUpperCase
+                IgnoreMaskBlank = False
+                MaxLength = 20
+                Text = '0,00'
+                OnValidate = edvprcValidate
+                Height = 24
+                StoredValues = 7
+              end
+              object edvpro: TdxMaskEdit
+                Left = 115
+                Top = 28
+                Width = 80
+                Hint = 'C'#243'digo'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsFlat
+                Style.Shadow = True
+                TabOrder = 1
+                Alignment = taRightJustify
+                AutoSize = False
+                CharCase = ecUpperCase
+                IgnoreMaskBlank = False
+                MaxLength = 20
+                Text = '0,00'
+                OnValidate = edvproValidate
+                Height = 24
+                StoredValues = 7
+              end
+              object edvdsc: TdxMaskEdit
+                Left = 310
+                Top = 28
+                Width = 49
+                Hint = 'C'#243'digo'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsFlat
+                Style.Shadow = True
+                TabOrder = 4
+                Alignment = taRightJustify
+                AutoSize = False
+                CharCase = ecUpperCase
+                IgnoreMaskBlank = False
+                MaxLength = 20
+                Text = '0,00'
+                OnValidate = edvdscValidate
+                Height = 24
+                StoredValues = 7
+              end
+              object edvper: TdxMaskEdit
+                Left = 310
+                Top = 4
+                Width = 49
+                Hint = 'C'#243'digo'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsFlat
+                Style.Shadow = True
+                TabOrder = 3
+                Alignment = taRightJustify
+                AutoSize = False
+                CharCase = ecUpperCase
+                IgnoreMaskBlank = False
+                MaxLength = 20
+                Text = '0,00'
+                OnValidate = edvperValidate
+                Height = 24
+                StoredValues = 7
+              end
+              object edvprz: TdxMaskEdit
+                Left = 115
+                Top = 52
+                Width = 80
+                Hint = 'C'#243'digo'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsFlat
+                Style.Shadow = True
+                TabOrder = 2
+                Alignment = taRightJustify
+                AutoSize = False
+                CharCase = ecUpperCase
+                IgnoreMaskBlank = False
+                MaxLength = 20
+                Text = '0,00'
+                OnValidate = edvprzValidate
+                Height = 24
+                StoredValues = 7
+              end
+            end
+            object tsrep: TdxTabSheet
+              Caption = 'Representa'#231#227'o'
+              object Bevel15: TBevel
+                Left = 0
+                Top = 0
+                Width = 604
+                Height = 79
+                Align = alClient
+              end
+              object Label42: TLabel
+                Tag = 1
+                Left = 10
+                Top = 9
+                Width = 72
+                Height = 14
+                Hint = 'Referencia'
+                Caption = 'Pre'#231'o Normal'
+                Color = clBtnFace
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
+              object Label43: TLabel
+                Tag = 1
+                Left = 10
+                Top = 33
+                Width = 89
+                Height = 14
+                Hint = 'Referencia'
+                Caption = 'Pre'#231'o Promo'#231#227'o'
+                Color = clBtnFace
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
+              object Label44: TLabel
+                Tag = 1
+                Left = 220
+                Top = 33
+                Width = 78
+                Height = 14
+                Hint = 'Referencia'
+                Caption = 'Desconto (%)'
+                Color = clBtnFace
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
+              object Label53: TLabel
+                Tag = 1
+                Left = 220
+                Top = 9
+                Width = 73
+                Height = 14
+                Hint = 'Referencia'
+                Caption = 'Reajuste (%)'
+                Color = clBtnFace
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
+              object Label54: TLabel
+                Tag = 1
+                Left = 10
+                Top = 57
+                Width = 74
+                Height = 14
+                Hint = 'Referencia'
+                Caption = 'Pre'#231'o a Prazo'
+                Color = clBtnFace
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
+              object edrprc: TdxMaskEdit
+                Left = 115
+                Top = 4
+                Width = 80
+                Hint = 'C'#243'digo'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsFlat
+                Style.Shadow = True
+                TabOrder = 0
+                Alignment = taRightJustify
+                AutoSize = False
+                CharCase = ecUpperCase
+                IgnoreMaskBlank = False
+                MaxLength = 20
+                Text = '0,00'
+                OnValidate = edrprcValidate
+                Height = 24
+                StoredValues = 7
+              end
+              object edrpro: TdxMaskEdit
+                Left = 115
+                Top = 28
+                Width = 80
+                Hint = 'C'#243'digo'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsFlat
+                Style.Shadow = True
+                TabOrder = 1
+                Alignment = taRightJustify
+                AutoSize = False
+                CharCase = ecUpperCase
+                IgnoreMaskBlank = False
+                MaxLength = 20
+                Text = '0,00'
+                OnValidate = edrproValidate
+                Height = 24
+                StoredValues = 7
+              end
+              object edrdsc: TdxMaskEdit
+                Left = 310
+                Top = 28
+                Width = 49
+                Hint = 'C'#243'digo'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsFlat
+                Style.Shadow = True
+                TabOrder = 4
+                Alignment = taRightJustify
+                AutoSize = False
+                CharCase = ecUpperCase
+                IgnoreMaskBlank = False
+                MaxLength = 20
+                Text = '0,00'
+                OnValidate = edrdscValidate
+                Height = 24
+                StoredValues = 7
+              end
+              object edrper: TdxMaskEdit
+                Left = 310
+                Top = 4
+                Width = 49
+                Hint = 'C'#243'digo'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsFlat
+                Style.Shadow = True
+                TabOrder = 3
+                Alignment = taRightJustify
+                AutoSize = False
+                CharCase = ecUpperCase
+                IgnoreMaskBlank = False
+                MaxLength = 20
+                Text = '0,00'
+                OnValidate = edrperValidate
+                Height = 24
+                StoredValues = 7
+              end
+              object edrprz: TdxMaskEdit
+                Left = 115
+                Top = 52
+                Width = 80
+                Hint = 'C'#243'digo'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsFlat
+                Style.Shadow = True
+                TabOrder = 2
+                Alignment = taRightJustify
+                AutoSize = False
+                CharCase = ecUpperCase
+                IgnoreMaskBlank = False
+                MaxLength = 20
+                Text = '0,00'
+                OnValidate = edrprzValidate
+                Height = 24
+                StoredValues = 7
+              end
+            end
+            object tsout: TdxTabSheet
+              Caption = 'Outros'
+              object Bevel13: TBevel
+                Left = 0
+                Top = 0
+                Width = 604
+                Height = 79
+                Align = alClient
+              end
+              object Label2: TLabel
+                Tag = 1
+                Left = 10
+                Top = 9
+                Width = 99
+                Height = 14
+                Hint = 'Referencia'
+                Caption = 'Pre'#231'o de Compras'
+                Color = clBtnFace
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
+              object Label13: TLabel
+                Tag = 1
+                Left = 10
+                Top = 33
+                Width = 84
+                Height = 14
+                Hint = 'Referencia'
+                Caption = 'Pre'#231'o de Custo'
+                Color = clBtnFace
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
+              object Label66: TLabel
+                Tag = 1
+                Left = 10
+                Top = 57
+                Width = 86
+                Height = 14
+                Hint = 'Referencia'
+                Caption = 'Custo Libera'#231#227'o'
+                Color = clBtnFace
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentColor = False
+                ParentFont = False
+                Transparent = True
+              end
+              object edcust: TdxMaskEdit
+                Left = 115
+                Top = 28
+                Width = 80
+                Hint = 'C'#243'digo'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsFlat
+                Style.Shadow = True
+                TabOrder = 1
+                Alignment = taRightJustify
+                AutoSize = False
+                CharCase = ecUpperCase
+                IgnoreMaskBlank = False
+                MaxLength = 20
+                Text = '0,00'
+                OnValidate = edcustValidate
+                Height = 24
+                StoredValues = 7
+              end
+              object edpcom: TdxMaskEdit
+                Left = 115
+                Top = 4
+                Width = 80
+                Hint = 'C'#243'digo'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsFlat
+                Style.Shadow = True
+                TabOrder = 0
+                Alignment = taRightJustify
+                AutoSize = False
+                CharCase = ecUpperCase
+                IgnoreMaskBlank = False
+                MaxLength = 20
+                Text = '0,00'
+                OnValidate = edpcomValidate
+                Height = 24
+                StoredValues = 7
+              end
+              object edclib: TdxMaskEdit
+                Left = 115
+                Top = 52
+                Width = 80
+                Hint = 'C'#243'digo'
+                Color = clWhite
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                ParentFont = False
+                Style.BorderStyle = xbsNone
+                Style.ButtonStyle = btsFlat
+                Style.Shadow = True
+                TabOrder = 2
+                Alignment = taRightJustify
+                AutoSize = False
+                CharCase = ecUpperCase
+                IgnoreMaskBlank = False
+                MaxLength = 20
+                Text = '0,00'
+                OnValidate = edclibValidate
+                Height = 24
+                StoredValues = 7
+              end
+            end
+          end
+        end
+        object TSGrade: TdxTabSheet
+          Caption = 'Grade'
+          object SpeedBar4: TSpeedBar
+            Left = 0
+            Top = 0
+            Width = 43
+            Height = 373
+            Cursor = crHandPoint
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            BoundLines = [blTop, blBottom, blLeft, blRight]
+            Align = alLeft
+            Options = [sbAllowDrag, sbFlatBtns, sbGrayedBtns]
+            BtnOffsetHorz = 2
+            BtnOffsetVert = 2
+            BtnWidth = 40
+            BtnHeight = 40
+            BevelOuter = bvNone
+            TabOrder = 0
+            InternalVer = 1
+            object SpeedbarSection13: TSpeedbarSection
+              Caption = 'Movimento'
+            end
+            object SpeedbarSection14: TSpeedbarSection
+              Caption = 'Edicao'
+            end
+            object SpeedbarSection15: TSpeedbarSection
+              Caption = 'Confirmacao'
+            end
+            object SpeedbarSection16: TSpeedbarSection
+              Caption = 'Utilitarios'
+            end
+            object tecI: TSpeedItem
+              Caption = 'Incluir'
+              Hint = '[Ins] - Inclui'
+              ImageIndex = 2
+              Spacing = 1
+              Left = 2
+              Top = 2
+              Visible = True
+              SectionName = 'Movimento'
+            end
+            object tecA: TSpeedItem
+              Caption = 'Alterar'
+              Enabled = False
+              Hint = '[Enter] - Altera'
+              ImageIndex = 0
+              Spacing = 1
+              Left = 2
+              Top = 42
+              Visible = True
+              SectionName = 'Movimento'
+            end
+            object tecE: TSpeedItem
+              Caption = 'Excluir'
+              Enabled = False
+              Hint = '[Del] - Exclui'
+              ImageIndex = 3
+              Spacing = 1
+              Left = 2
+              Top = 82
+              Visible = True
+              SectionName = 'Movimento'
+            end
+            object tecS: TSpeedItem
+              Caption = 'Salvar'
+              Enabled = False
+              Hint = '[Ctrl+S] - Salva'
+              ImageIndex = 1
+              Spacing = 1
+              Left = 2
+              Top = 122
+              Visible = True
+              SectionName = 'Movimento'
+            end
+            object tecC: TSpeedItem
+              Caption = 'Cancelar'
+              Enabled = False
+              Hint = '[Esc] - Cancela'
+              ImageIndex = 4
+              Spacing = 1
+              Left = 2
+              Top = 162
+              Visible = True
+              SectionName = 'Movimento'
+            end
+          end
+          object dbgtec: TdxDBGrid
+            Left = 43
+            Top = 0
+            Width = 565
+            Height = 373
+            Bands = <
+              item
+              end>
+            DefaultLayout = True
+            HeaderMinRowCount = 2
+            HeaderPanelRowCount = 1
+            KeyField = 'ID'
+            ShowSummaryFooter = True
+            SummaryGroups = <>
+            SummarySeparator = ', '
+            Align = alClient
+            BorderStyle = bsNone
+            Color = clWhite
+            Ctl3D = True
+            ParentCtl3D = False
             TabOrder = 1
+            OnKeyDown = dbgtecKeyDown
+            AutoSearchColor = 9395
+            AutoSearchTextColor = clWhite
+            DataSource = dtscad_pro_grd
+            Filter.Criteria = {00000000}
+            GridLineColor = clSilver
+            LookAndFeel = lfUltraFlat
+            OptionsBehavior = [edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEditing, edgoEnterShowEditor, edgoImmediateEditor, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
+            OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
+            OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
+            OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoPreview, edgoUseBitmap]
+            object dbgtecGRD_CPRO: TdxDBGridMaskColumn
+              Color = clBtnFace
+              DisableEditor = True
+              Width = 100
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'GRD_CPRO'
+              SummaryFooterType = cstCount
+              SummaryFooterField = 'ID'
+              SummaryFooterFormat = '0'
+            end
+            object dbgtecGRD_DCOR: TdxDBGridPickColumn
+              CharCase = ecUpperCase
+              Width = 180
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'GRD_DCOR'
+            end
+            object dbgtecGRD_PCOR: TdxDBGridMaskColumn
+              Width = 70
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'GRD_PCOR'
+            end
+            object dbgtecGRD_PREC: TdxDBGridMaskColumn
+              HeaderAlignment = taRightJustify
+              Width = 55
+              BandIndex = 0
+              RowIndex = 0
+              OnValidate = dbgtecGRD_PRECValidate
+              FieldName = 'GRD_PREC'
+            end
+            object dbgtecGRD_PPRO: TdxDBGridMaskColumn
+              HeaderAlignment = taRightJustify
+              Width = 60
+              BandIndex = 0
+              RowIndex = 0
+              OnValidate = dbgtecGRD_PPROValidate
+              FieldName = 'GRD_PPRO'
+            end
+            object dbgtecGRD_VPRC: TdxDBGridMaskColumn
+              HeaderAlignment = taRightJustify
+              Width = 50
+              BandIndex = 0
+              RowIndex = 0
+              OnValidate = dbgtecGRD_VPRCValidate
+              FieldName = 'GRD_VPRC'
+            end
+            object dbgtecGRD_RPRC: TdxDBGridMaskColumn
+              HeaderAlignment = taRightJustify
+              Width = 90
+              BandIndex = 0
+              RowIndex = 0
+              OnValidate = dbgtecGRD_RPRCValidate
+              FieldName = 'GRD_RPRC'
+            end
+            object dbgtecGRD_STAV: TdxDBGridPickColumn
+              Width = 100
+              BandIndex = 0
+              RowIndex = 0
+              FieldName = 'GRD_STAV'
+              Items.Strings = (
+                'ATIVO'
+                'INATIVO'
+                'PR'#201'-CADASTRO')
+            end
+          end
+        end
+        object TSComposicao: TdxTabSheet
+          Caption = 'Composi'#231#227'o'
+          object Panel1: TPanel
+            Left = 0
+            Top = 0
+            Width = 608
+            Height = 373
+            Align = alClient
+            TabOrder = 0
+            object dbgcom: TdxDBGrid
+              Left = 45
+              Top = 1
+              Width = 562
+              Height = 371
+              Bands = <
+                item
+                end>
+              DefaultLayout = True
+              HeaderPanelRowCount = 1
+              KeyField = 'ID'
+              ShowSummaryFooter = True
+              SummaryGroups = <>
+              SummarySeparator = ', '
+              Align = alClient
+              Color = clWhite
+              Ctl3D = True
+              ParentCtl3D = False
+              TabOrder = 0
+              OnKeyDown = dbgcomKeyDown
+              AutoSearchColor = 9395
+              AutoSearchTextColor = clWhite
+              DataSource = dtscad_pro_com
+              Filter.Criteria = {00000000}
+              GridLineColor = clSilver
+              LookAndFeel = lfUltraFlat
+              OptionsBehavior = [edgoAutoSort, edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEditing, edgoEnterShowEditor, edgoImmediateEditor, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
+              OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
+              OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
+              OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoPreview, edgoUseBitmap]
+              object dbgcomCOM_COMP: TdxDBGridMaskColumn
+                CharCase = ecUpperCase
+                Width = 210
+                BandIndex = 0
+                RowIndex = 0
+                FieldName = 'COM_COMP'
+                SummaryFooterType = cstCount
+                SummaryFooterField = 'ID'
+                SummaryFooterFormat = 'Itens 0'
+              end
+              object dbgcomCOM_BASE: TdxDBGridMaskColumn
+                Width = 210
+                BandIndex = 0
+                RowIndex = 0
+                FieldName = 'COM_BASE'
+              end
+              object dbgcomCOM_QTDE: TdxDBGridMaskColumn
+                HeaderAlignment = taRightJustify
+                Width = 82
+                BandIndex = 0
+                RowIndex = 0
+                FieldName = 'COM_QTDE'
+                SummaryFooterType = cstSum
+                SummaryFooterField = 'COM_QTDE'
+                SummaryFooterFormat = '0.00'
+              end
+            end
+            object SpeedBar1: TSpeedBar
+              Left = 1
+              Top = 1
+              Width = 44
+              Height = 371
+              Cursor = crHandPoint
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              BoundLines = [blTop, blBottom, blLeft, blRight]
+              Align = alLeft
+              Options = [sbAllowDrag, sbFlatBtns, sbGrayedBtns]
+              BtnOffsetHorz = 2
+              BtnOffsetVert = 2
+              BtnWidth = 40
+              BtnHeight = 40
+              BevelOuter = bvNone
+              TabOrder = 1
+              InternalVer = 1
+              object SpeedbarSection1: TSpeedbarSection
+                Caption = 'Movimento'
+              end
+              object SpeedbarSection2: TSpeedbarSection
+                Caption = 'Edicao'
+              end
+              object SpeedbarSection3: TSpeedbarSection
+                Caption = 'Confirmacao'
+              end
+              object SpeedbarSection4: TSpeedbarSection
+                Caption = 'Utilitarios'
+              end
+              object siINC: TSpeedItem
+                Caption = 'Incluir'
+                Hint = '[Ins] - Inclui'
+                ImageIndex = 2
+                Spacing = 1
+                Left = 2
+                Top = 2
+                Visible = True
+                OnClick = siINCClick
+                SectionName = 'Movimento'
+              end
+              object siALT: TSpeedItem
+                Caption = 'Alterar'
+                Hint = '[Enter] - Altera'
+                ImageIndex = 0
+                Spacing = 1
+                Left = 2
+                Top = 42
+                Visible = True
+                OnClick = siALTClick
+                SectionName = 'Movimento'
+              end
+              object siDEL: TSpeedItem
+                Caption = 'Excluir'
+                Hint = '[Del] - Exclui'
+                ImageIndex = 3
+                Spacing = 1
+                Left = 2
+                Top = 82
+                Visible = True
+                OnClick = siDELClick
+                SectionName = 'Movimento'
+              end
+              object siS: TSpeedItem
+                Caption = 'Salvar'
+                Enabled = False
+                Hint = '[Ctrl+S] - Salva'
+                ImageIndex = 1
+                Spacing = 1
+                Left = 2
+                Top = 122
+                Visible = True
+                OnClick = siSClick
+                SectionName = 'Movimento'
+              end
+              object siC: TSpeedItem
+                Caption = 'Cancelar'
+                Enabled = False
+                Hint = '[Esc] - Cancela'
+                ImageIndex = 4
+                Spacing = 1
+                Left = 2
+                Top = 162
+                Visible = True
+                OnClick = siCANClick
+                SectionName = 'Movimento'
+              end
+            end
+          end
+        end
+        object TSIMG_ILA: TdxTabSheet
+          Caption = 'Instru'#231#227'o de Lavagem'
+          object Bevel1: TBevel
+            Left = 0
+            Top = 0
+            Width = 608
+            Height = 373
+            Align = alClient
+          end
+          object Bevel10: TBevel
+            Left = 8
+            Top = 259
+            Width = 40
+            Height = 40
+            Style = bsRaised
+          end
+          object Bevel9: TBevel
+            Left = 8
+            Top = 217
+            Width = 40
+            Height = 40
+            Style = bsRaised
+          end
+          object Bevel8: TBevel
+            Left = 8
+            Top = 173
+            Width = 40
+            Height = 40
+            Style = bsRaised
+          end
+          object Bevel7: TBevel
+            Left = 8
+            Top = 131
+            Width = 40
+            Height = 40
+            Style = bsRaised
+          end
+          object Bevel6: TBevel
+            Left = 8
+            Top = 89
+            Width = 40
+            Height = 40
+            Style = bsRaised
+          end
+          object Bevel5: TBevel
+            Left = 8
+            Top = 47
+            Width = 40
+            Height = 40
+            Style = bsRaised
+          end
+          object Bevel4: TBevel
+            Left = 8
+            Top = 5
+            Width = 40
+            Height = 40
+            Style = bsRaised
+          end
+          object img1: TImage
+            Tag = 1
+            Left = 10
+            Top = 8
+            Width = 35
+            Height = 35
+            Cursor = crHandPoint
+            Stretch = True
+            OnClick = img1Click
+          end
+          object img3: TImage
+            Tag = 3
+            Left = 10
+            Top = 92
+            Width = 35
+            Height = 35
+            Cursor = crHandPoint
+            Stretch = True
+            OnClick = img1Click
+          end
+          object img4: TImage
+            Tag = 4
+            Left = 10
+            Top = 134
+            Width = 35
+            Height = 35
+            Cursor = crHandPoint
+            Stretch = True
+            OnClick = img1Click
+          end
+          object img5: TImage
+            Tag = 5
+            Left = 10
+            Top = 176
+            Width = 35
+            Height = 35
+            Cursor = crHandPoint
+            Stretch = True
+            OnClick = img1Click
+          end
+          object img6: TImage
+            Tag = 6
+            Left = 10
+            Top = 220
+            Width = 35
+            Height = 35
+            Cursor = crHandPoint
+            Stretch = True
+            OnClick = img1Click
+          end
+          object img7: TImage
+            Tag = 7
+            Left = 10
+            Top = 262
+            Width = 35
+            Height = 35
+            Cursor = crHandPoint
+            Stretch = True
+            OnClick = img1Click
+          end
+          object img2: TImage
+            Tag = 2
+            Left = 10
+            Top = 50
+            Width = 35
+            Height = 35
+            Cursor = crHandPoint
+            Stretch = True
+            OnClick = img1Click
+          end
+          object Bevel16: TBevel
+            Left = 8
+            Top = 301
+            Width = 40
+            Height = 40
+            Style = bsRaised
+          end
+          object img8: TImage
+            Tag = 8
+            Left = 10
+            Top = 304
+            Width = 35
+            Height = 35
+            Cursor = crHandPoint
+            Stretch = True
+            OnClick = img1Click
+          end
+          object Label25: TLabel
+            Left = 56
+            Top = 18
+            Width = 12
+            Height = 14
+            Caption = '1)'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object Label59: TLabel
+            Left = 56
+            Top = 60
+            Width = 12
+            Height = 14
+            Caption = '2)'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object Label60: TLabel
+            Left = 56
+            Top = 102
+            Width = 12
+            Height = 14
+            Caption = '3)'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object Label61: TLabel
+            Left = 56
+            Top = 144
+            Width = 12
+            Height = 14
+            Caption = '4)'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object Label62: TLabel
+            Left = 56
+            Top = 186
+            Width = 12
+            Height = 14
+            Caption = '5)'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object Label63: TLabel
+            Left = 56
+            Top = 230
+            Width = 12
+            Height = 14
+            Caption = '6)'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object Label64: TLabel
+            Left = 56
+            Top = 272
+            Width = 12
+            Height = 14
+            Caption = '7)'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object Label65: TLabel
+            Left = 56
+            Top = 314
+            Width = 12
+            Height = 14
+            Caption = '8)'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object edons1: TdxEdit
+            Tag = 1
+            Left = 72
+            Top = 13
+            Width = 529
+            Hint = 'Referencia'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 0
+            MaxLength = 120
+            StoredValues = 2
+          end
+          object edons2: TdxEdit
+            Tag = 1
+            Left = 71
+            Top = 55
+            Width = 529
+            Hint = 'Referencia'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 1
+            MaxLength = 120
+            StoredValues = 2
+          end
+          object edons3: TdxEdit
+            Tag = 1
+            Left = 71
+            Top = 97
+            Width = 529
+            Hint = 'Referencia'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 2
+            MaxLength = 120
+            StoredValues = 2
+          end
+          object edons4: TdxEdit
+            Tag = 1
+            Left = 71
+            Top = 139
+            Width = 529
+            Hint = 'Referencia'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 3
+            MaxLength = 120
+            StoredValues = 2
+          end
+          object edons5: TdxEdit
+            Tag = 1
+            Left = 71
+            Top = 181
+            Width = 529
+            Hint = 'Referencia'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 4
+            MaxLength = 120
+            StoredValues = 2
+          end
+          object edons6: TdxEdit
+            Tag = 1
+            Left = 71
+            Top = 225
+            Width = 529
+            Hint = 'Referencia'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 5
+            MaxLength = 120
+            StoredValues = 2
+          end
+          object edons7: TdxEdit
+            Tag = 1
+            Left = 71
+            Top = 267
+            Width = 529
+            Hint = 'Referencia'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 6
+            MaxLength = 120
+            StoredValues = 2
+          end
+          object edons8: TdxEdit
+            Tag = 1
+            Left = 71
+            Top = 309
+            Width = 529
+            Hint = 'Referencia'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 7
+            MaxLength = 120
+            StoredValues = 2
+          end
+        end
+        object TSFiscal: TdxTabSheet
+          Caption = 'Classifica'#231#245'es Fiscais'
+          object Bevel3: TBevel
+            Left = 0
+            Top = 0
+            Width = 608
+            Height = 373
+            Align = alClient
+          end
+          object Label26: TLabel
+            Left = 10
+            Top = 61
+            Width = 34
+            Height = 14
+            Caption = 'C.S.T.'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object Label31: TLabel
+            Left = 10
+            Top = 86
+            Width = 53
+            Height = 14
+            Caption = 'I.P.I. (%)'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object Label30: TLabel
+            Left = 8
+            Top = 35
+            Width = 39
+            Height = 14
+            Caption = 'Origem'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object Label46: TLabel
+            Left = 10
+            Top = 11
+            Width = 52
+            Height = 14
+            Caption = 'Finalidade'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object cbccst: TdxImageEdit
+            Left = 80
+            Top = 56
+            Width = 500
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderColor = clGray
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsSimple
+            Style.Shadow = True
+            TabOrder = 2
+            Text = '1'
+            OnExit = cbccstExit
+            AutoSize = False
+            Descriptions.Strings = (
+              'Nacional'
+              'Estrangeira - Importa'#231#227'o Direta'
+              'Estrangeira - Adiquirida no Mercado Interno')
+            ImageIndexes.Strings = (
+              '0'
+              '1'
+              '2')
+            Values.Strings = (
+              '0'
+              '1'
+              '2')
+            Height = 25
+          end
+          object edpipi: TdxEdit
+            Left = 80
+            Top = 81
+            Width = 60
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 3
+            Text = '0'
+            Alignment = taRightJustify
+            CharCase = ecUpperCase
+            OnValidate = edpipiValidate
+            StoredValues = 1
+          end
+          object cbdori: TdxImageEdit
+            Left = 80
+            Top = 32
+            Width = 500
+            Hint = 'Origem'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderColor = clGray
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsSimple
+            Style.Shadow = True
+            TabOrder = 1
+            AutoSize = False
+            Descriptions.Strings = (
+              '')
+            ImageIndexes.Strings = (
+              '0')
+            Values.Strings = (
+              '')
+            Height = 24
+          end
+          object cbrepr: TdxImageEdit
+            Left = 80
+            Top = 8
+            Width = 150
+            Hint = 'Finalidade'
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderColor = clGray
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsSimple
+            Style.Shadow = True
+            TabOrder = 0
+            Text = 'REVENDA'
+            Alignment = taLeftJustify
+            AutoSize = False
+            Descriptions.Strings = (
+              'PRODU'#199#195'O'
+              'REVENDA')
+            ImageIndexes.Strings = (
+              '0'
+              '1')
+            Values.Strings = (
+              'P'
+              'R')
+            Height = 24
+            StoredValues = 1
+          end
+        end
+        object TSINFADCAD: TdxTabSheet
+          Caption = 'Informa'#231#245'es Adicionais'
+          object Bevel17: TBevel
+            Left = 0
+            Top = 0
+            Width = 608
+            Height = 144
+            Align = alClient
+          end
+          object Label29: TLabel
+            Left = 10
+            Top = 13
+            Width = 69
+            Height = 14
+            Caption = 'Acabamento'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object Label3: TLabel
+            Left = 10
+            Top = 37
+            Width = 56
+            Height = 14
+            Caption = 'Densidade'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object Label5: TLabel
+            Left = 10
+            Top = 61
+            Width = 68
+            Height = 14
+            Caption = 'T'#237'tulo do Fio'
+            Color = clBtnFace
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentColor = False
+            ParentFont = False
+            Transparent = True
+          end
+          object cbstal: TdxImageEdit
+            Left = 96
+            Top = 8
+            Width = 250
+            Color = clWhite
+            Style.BorderColor = 14065456
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsFlat
+            Style.Shadow = True
+            TabOrder = 0
+            AutoSize = False
+            Descriptions.Strings = (
+              'ABERTO'
+              'FECHADO')
+            ImageIndexes.Strings = (
+              '0'
+              '1')
+            Values.Strings = (
+              'A'
+              'F')
+            Height = 24
+          end
+          object cbdens: TdxPickEdit
+            Left = 96
+            Top = 32
+            Width = 250
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderColor = clGray
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsSimple
+            Style.Shadow = True
+            TabOrder = 1
+            OnExit = cbcclfExit
+            CharCase = ecUpperCase
+          end
+          object cbtitf: TdxPickEdit
+            Left = 96
+            Top = 56
+            Width = 250
+            Color = clWhite
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ParentFont = False
+            Style.BorderColor = clGray
+            Style.BorderStyle = xbsNone
+            Style.ButtonStyle = btsSimple
+            Style.Shadow = True
+            TabOrder = 2
+            OnExit = cbcclfExit
+            CharCase = ecUpperCase
+          end
+          object pcobs: TdxPageControl
+            Left = 0
+            Top = 144
+            Width = 608
+            Height = 229
+            ActivePage = tsobs
+            Align = alBottom
+            HideButtons = False
+            HotTrack = False
+            MultiLine = False
+            OwnerDraw = False
+            RaggedRight = False
+            ScrollOpposite = False
+            TabHeight = 0
+            TabOrder = 3
             TabPosition = dxtpTop
             TabWidth = 0
             object tsobs: TdxTabSheet
@@ -1607,13 +2620,13 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
               object edobse: TdxMemo
                 Left = 0
                 Top = 0
-                Width = 718
+                Width = 608
                 Align = alClient
                 Style.BorderStyle = xbsFlat
                 Style.ButtonStyle = btsFlat
                 Style.Shadow = True
                 TabOrder = 0
-                Height = 132
+                Height = 205
               end
             end
             object tsdadi: TdxTabSheet
@@ -1781,7 +2794,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
                 Style.ButtonStyle = btsFlat
                 Style.Shadow = True
                 TabOrder = 0
-                Height = 132
+                Height = 115
               end
             end
             object tsobsf: TdxTabSheet
@@ -1798,2274 +2811,6 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
                 Height = 132
               end
             end
-          end
-          object pcCON: TdxPageControl
-            Left = 0
-            Top = 121
-            Width = 718
-            Height = 96
-            ActivePage = tsCON
-            Align = alTop
-            HideButtons = False
-            HotTrack = False
-            MultiLine = False
-            OwnerDraw = False
-            RaggedRight = False
-            ScrollOpposite = False
-            TabHeight = 0
-            TabOrder = 2
-            TabPosition = dxtpTop
-            TabWidth = 0
-            object tsCON: TdxTabSheet
-              Caption = 'Cont'#225'bil'
-              object rgcont: TPanel
-                Left = 0
-                Top = 0
-                Width = 718
-                Height = 72
-                Align = alClient
-                BevelOuter = bvLowered
-                TabOrder = 0
-                object Label26: TLabel
-                  Left = 8
-                  Top = 13
-                  Width = 34
-                  Height = 14
-                  Caption = 'C.S.T.'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object Label31: TLabel
-                  Left = 8
-                  Top = 38
-                  Width = 53
-                  Height = 14
-                  Caption = 'I.P.I. (%)'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  Transparent = True
-                end
-                object cbccst: TdxImageEdit
-                  Left = 134
-                  Top = 8
-                  Width = 282
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderColor = clGray
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsSimple
-                  Style.Shadow = True
-                  TabOrder = 0
-                  Text = '1'
-                  OnExit = cbccstExit
-                  AutoSize = False
-                  Descriptions.Strings = (
-                    'Nacional'
-                    'Estrangeira - Importa'#231#227'o Direta'
-                    'Estrangeira - Adiquirida no Mercado Interno')
-                  ImageIndexes.Strings = (
-                    '0'
-                    '1'
-                    '2')
-                  Values.Strings = (
-                    '0'
-                    '1'
-                    '2')
-                  Height = 25
-                end
-                object edpipi: TdxEdit
-                  Left = 134
-                  Top = 33
-                  Width = 71
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 1
-                  Text = '0'
-                  Alignment = taRightJustify
-                  CharCase = ecUpperCase
-                  OnValidate = edpipiValidate
-                  StoredValues = 1
-                end
-              end
-            end
-          end
-        end
-        object tstec: TdxTabSheet
-          Caption = 'Inform'#231#245'es T'#233'cnicas'
-          object Bevel3: TBevel
-            Left = 0
-            Top = 0
-            Width = 718
-            Height = 373
-            Align = alClient
-          end
-          object Label15: TLabel
-            Left = 184
-            Top = 181
-            Width = 26
-            Height = 14
-            Caption = 'Peso'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label14: TLabel
-            Left = 8
-            Top = 59
-            Width = 62
-            Height = 14
-            Caption = 'Embalagem'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label8: TLabel
-            Left = 184
-            Top = 253
-            Width = 66
-            Height = 14
-            Caption = 'Rendimento'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label11: TLabel
-            Left = 184
-            Top = 229
-            Width = 40
-            Height = 14
-            Caption = 'Largura'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object lametr: TLabel
-            Left = 8
-            Top = 181
-            Width = 32
-            Height = 14
-            Caption = 'Metro'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label9: TLabel
-            Left = 184
-            Top = 205
-            Width = 57
-            Height = 14
-            Caption = 'Ps Canudo'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label12: TLabel
-            Left = 8
-            Top = 205
-            Width = 48
-            Height = 14
-            Caption = 'Ps M'#233'dio'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label21: TLabel
-            Left = 8
-            Top = 229
-            Width = 56
-            Height = 14
-            Caption = 'Gramatura'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label24: TLabel
-            Left = 8
-            Top = 253
-            Width = 17
-            Height = 14
-            Caption = 'Util'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label27: TLabel
-            Left = 8
-            Top = 277
-            Width = 36
-            Height = 14
-            Caption = 'Elast C'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label28: TLabel
-            Left = 184
-            Top = 277
-            Width = 35
-            Height = 14
-            Caption = 'Elast L'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label29: TLabel
-            Left = 8
-            Top = 85
-            Width = 69
-            Height = 14
-            Caption = 'Acabamento'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label30: TLabel
-            Left = 8
-            Top = 11
-            Width = 43
-            Height = 14
-            Caption = 'Origem'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = [fsBold]
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label39: TLabel
-            Left = 184
-            Top = 157
-            Width = 89
-            Height = 14
-            Caption = 'Volume Unidade'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label40: TLabel
-            Left = 8
-            Top = 301
-            Width = 71
-            Height = 14
-            Caption = 'Volume Saco'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label41: TLabel
-            Left = 184
-            Top = 301
-            Width = 75
-            Height = 14
-            Caption = 'Volume Fardo'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label4: TLabel
-            Left = 8
-            Top = 157
-            Width = 49
-            Height = 14
-            Caption = 'Unidade'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = [fsBold]
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label46: TLabel
-            Left = 8
-            Top = 35
-            Width = 60
-            Height = 14
-            Caption = 'Finalidade'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = [fsBold]
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label50: TLabel
-            Left = 8
-            Top = 325
-            Width = 187
-            Height = 14
-            Caption = 'C.F.O.P. Padr'#227'o Dentro do Estado'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label51: TLabel
-            Left = 8
-            Top = 349
-            Width = 172
-            Height = 14
-            Caption = 'C.F.O.P. Padr'#227'o Fora do Estado'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label3: TLabel
-            Left = 8
-            Top = 109
-            Width = 56
-            Height = 14
-            Caption = 'Densidade'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object Label5: TLabel
-            Left = 8
-            Top = 133
-            Width = 68
-            Height = 14
-            Caption = 'T'#237'tulo do Fio'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object edpeso: TdxEdit
-            Left = 272
-            Top = 176
-            Width = 58
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 7
-            Text = '0,00'
-            Alignment = taRightJustify
-            CharCase = ecUpperCase
-            OnValidate = edvocxValidate
-            StoredValues = 1
-          end
-          object cbdemb: TdxImageEdit
-            Left = 80
-            Top = 56
-            Width = 250
-            Color = clWhite
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Style.BorderColor = clGray
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsSimple
-            Style.Shadow = True
-            TabOrder = 2
-            AutoSize = False
-            Descriptions.Strings = (
-              '')
-            ImageIndexes.Strings = (
-              '0')
-            Values.Strings = (
-              '')
-            Height = 24
-          end
-          object edrend: TdxEdit
-            Left = 272
-            Top = 248
-            Width = 58
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 13
-            Text = '0,00'
-            Alignment = taRightJustify
-            CharCase = ecUpperCase
-            OnValidate = edrendValidate
-            StoredValues = 1
-          end
-          object edlarg: TdxEdit
-            Left = 272
-            Top = 224
-            Width = 60
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 11
-            Text = '0,00'
-            Alignment = taRightJustify
-            CharCase = ecUpperCase
-            OnValidate = edlargValidate
-            StoredValues = 1
-          end
-          object edmetr: TdxEdit
-            Left = 80
-            Top = 176
-            Width = 60
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 6
-            Text = '0,00'
-            Alignment = taRightJustify
-            CharCase = ecUpperCase
-            OnValidate = edmetrValidate
-            StoredValues = 1
-          end
-          object edpscn: TdxEdit
-            Left = 272
-            Top = 200
-            Width = 58
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 9
-            Text = '0,00'
-            Alignment = taRightJustify
-            CharCase = ecUpperCase
-            OnValidate = edpscnValidate
-            StoredValues = 1
-          end
-          object edpsmr: TdxEdit
-            Left = 80
-            Top = 200
-            Width = 60
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 8
-            Text = '0,00'
-            Alignment = taRightJustify
-            CharCase = ecUpperCase
-            OnValidate = edpsmrValidate
-            StoredValues = 1
-          end
-          object edgram: TdxEdit
-            Left = 80
-            Top = 224
-            Width = 58
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 10
-            Text = '0,00'
-            Alignment = taRightJustify
-            CharCase = ecUpperCase
-            OnValidate = edgramValidate
-            StoredValues = 1
-          end
-          object edutil: TdxEdit
-            Left = 80
-            Top = 248
-            Width = 60
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 12
-            Text = '0,00'
-            Alignment = taRightJustify
-            CharCase = ecUpperCase
-            OnValidate = edutilValidate
-            StoredValues = 1
-          end
-          object edelac: TdxEdit
-            Left = 80
-            Top = 272
-            Width = 60
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 14
-            Text = '0,00'
-            Alignment = taRightJustify
-            CharCase = ecUpperCase
-            OnValidate = edelacValidate
-            StoredValues = 1
-          end
-          object edelas: TdxEdit
-            Left = 272
-            Top = 272
-            Width = 58
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 15
-            Text = '0,00'
-            Alignment = taRightJustify
-            CharCase = ecUpperCase
-            OnValidate = edelasValidate
-            StoredValues = 1
-          end
-          object cbstal: TdxImageEdit
-            Left = 80
-            Top = 80
-            Width = 250
-            Color = clWhite
-            Style.BorderColor = 14065456
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 3
-            AutoSize = False
-            Descriptions.Strings = (
-              'ABERTO'
-              'FECHADO')
-            ImageIndexes.Strings = (
-              '0'
-              '1')
-            Values.Strings = (
-              'A'
-              'F')
-            Height = 24
-          end
-          object cbdori: TdxImageEdit
-            Left = 80
-            Top = 8
-            Width = 250
-            Hint = 'Origem'
-            Color = clWhite
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Style.BorderColor = clGray
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsSimple
-            Style.Shadow = True
-            TabOrder = 0
-            AutoSize = False
-            Descriptions.Strings = (
-              '')
-            ImageIndexes.Strings = (
-              '0')
-            Values.Strings = (
-              '')
-            Height = 24
-          end
-          object edvocx: TdxEdit
-            Left = 272
-            Top = 152
-            Width = 58
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 5
-            Text = '0,00'
-            Alignment = taRightJustify
-            CharCase = ecUpperCase
-            OnValidate = edvocxValidate
-            StoredValues = 1
-          end
-          object edvosc: TdxEdit
-            Left = 80
-            Top = 296
-            Width = 60
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 16
-            Text = '0,00'
-            Alignment = taRightJustify
-            CharCase = ecUpperCase
-            OnValidate = edvoscValidate
-            StoredValues = 1
-          end
-          object edvofd: TdxEdit
-            Left = 272
-            Top = 296
-            Width = 58
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 17
-            Text = '0,00'
-            Alignment = taRightJustify
-            CharCase = ecUpperCase
-            OnValidate = edvofdValidate
-            StoredValues = 1
-          end
-          object cbduni: TdxImageEdit
-            Left = 80
-            Top = 152
-            Width = 60
-            Hint = 'Unidade'
-            Color = clWhite
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Style.BorderColor = 14065456
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 4
-            AutoSize = False
-            Descriptions.Strings = (
-              '')
-            ImageIndexes.Strings = (
-              '0')
-            Values.Strings = (
-              '')
-            Height = 24
-          end
-          object cbrepr: TdxImageEdit
-            Left = 80
-            Top = 32
-            Width = 250
-            Hint = 'Finalidade'
-            Color = clWhite
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Style.BorderColor = clGray
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsSimple
-            Style.Shadow = True
-            TabOrder = 1
-            Text = 'REVENDA'
-            AutoSize = False
-            Descriptions.Strings = (
-              'PRODU'#199#195'O'
-              'REVENDA')
-            ImageIndexes.Strings = (
-              '0'
-              '1')
-            Values.Strings = (
-              'P'
-              'R')
-            Height = 24
-          end
-          object edcna1: TdxEdit
-            Left = 272
-            Top = 320
-            Width = 58
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 18
-            AutoSize = False
-            CharCase = ecUpperCase
-            MaxLength = 20
-            Height = 24
-            StoredValues = 2
-          end
-          object edcna2: TdxEdit
-            Left = 272
-            Top = 344
-            Width = 58
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 19
-            AutoSize = False
-            CharCase = ecUpperCase
-            MaxLength = 20
-            Height = 24
-            StoredValues = 2
-          end
-          object cbdens: TdxPickEdit
-            Left = 80
-            Top = 104
-            Width = 250
-            Color = clWhite
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Style.BorderColor = clGray
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsSimple
-            Style.Shadow = True
-            TabOrder = 20
-            OnExit = cbcclfExit
-            CharCase = ecUpperCase
-          end
-          object cbtitf: TdxPickEdit
-            Left = 80
-            Top = 128
-            Width = 250
-            Color = clWhite
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Style.BorderColor = clGray
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsSimple
-            Style.Shadow = True
-            TabOrder = 21
-            OnExit = cbcclfExit
-            CharCase = ecUpperCase
-          end
-        end
-        object tsggrd: TdxTabSheet
-          Caption = 'Grade'
-          OnShow = tsggrdShow
-          object pcgrd: TdxPageControl
-            Left = 0
-            Top = 0
-            Width = 718
-            Height = 373
-            ActivePage = tsgavi
-            Align = alClient
-            HideButtons = False
-            HotTrack = False
-            MultiLine = False
-            OwnerDraw = False
-            RaggedRight = False
-            ScrollOpposite = False
-            TabHeight = 0
-            TabOrder = 0
-            TabPosition = dxtpTop
-            TabWidth = 0
-            object tsgavi: TdxTabSheet
-              Caption = 'Grade'
-              object dbgavi: TdxDBGrid
-                Left = 44
-                Top = 0
-                Width = 674
-                Height = 349
-                Bands = <
-                  item
-                  end>
-                DefaultLayout = True
-                HeaderMinRowCount = 2
-                HeaderPanelRowCount = 1
-                KeyField = 'ID'
-                ShowSummaryFooter = True
-                SummaryGroups = <>
-                SummarySeparator = ', '
-                Align = alClient
-                Color = clWhite
-                Ctl3D = True
-                ParentCtl3D = False
-                TabOrder = 0
-                OnKeyDown = dbgaviKeyDown
-                AutoSearchColor = 9395
-                AutoSearchTextColor = clWhite
-                DataSource = dtscad_pro_grd
-                Filter.Criteria = {00000000}
-                GridLineColor = clSilver
-                LookAndFeel = lfUltraFlat
-                OptionsBehavior = [edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEditing, edgoEnterShowEditor, edgoImmediateEditor, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
-                OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
-                OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
-                OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoPreview, edgoUseBitmap]
-                OnCustomDrawCell = dbgaviCustomDrawCell
-                object dbgaviGRD_CPRO: TdxDBGridMaskColumn
-                  Color = clBtnFace
-                  DisableEditor = True
-                  Width = 100
-                  BandIndex = 0
-                  RowIndex = 0
-                  FieldName = 'GRD_CPRO'
-                  SummaryFooterType = cstCount
-                  SummaryFooterField = 'ID'
-                  SummaryFooterFormat = '0'
-                end
-                object dbgaviGRD_DCOR: TdxDBGridPickColumn
-                  CharCase = ecUpperCase
-                  Width = 200
-                  BandIndex = 0
-                  RowIndex = 0
-                  OnValidate = dbgaviGRD_DCORValidate
-                  FieldName = 'GRD_DCOR'
-                end
-                object dbgaviGRD_CCLF: TdxDBGridMaskColumn
-                  Width = 63
-                  BandIndex = 0
-                  RowIndex = 0
-                  FieldName = 'GRD_CCLF'
-                end
-                object dbgaviGRD_PREC: TdxDBGridMaskColumn
-                  HeaderAlignment = taRightJustify
-                  Width = 60
-                  BandIndex = 0
-                  RowIndex = 0
-                  OnValidate = dbgaviGRD_PRECValidate
-                  FieldName = 'GRD_PREC'
-                end
-                object dbgaviGRD_PPRO: TdxDBGridMaskColumn
-                  HeaderAlignment = taRightJustify
-                  Width = 60
-                  BandIndex = 0
-                  RowIndex = 0
-                  OnValidate = dbgaviGRD_PPROValidate
-                  FieldName = 'GRD_PPRO'
-                end
-                object dbgaviGRD_PDSC: TdxDBGridMaskColumn
-                  HeaderAlignment = taRightJustify
-                  Width = 60
-                  BandIndex = 0
-                  RowIndex = 0
-                  FieldName = 'GRD_PDSC'
-                end
-                object dbgaviGRD_VPRC: TdxDBGridMaskColumn
-                  HeaderAlignment = taRightJustify
-                  Width = 60
-                  BandIndex = 0
-                  RowIndex = 0
-                  OnValidate = dbgaviGRD_VPRCValidate
-                  FieldName = 'GRD_VPRC'
-                end
-                object dbgaviGRD_RPRC: TdxDBGridMaskColumn
-                  HeaderAlignment = taRightJustify
-                  Width = 90
-                  BandIndex = 0
-                  RowIndex = 0
-                  OnValidate = dbgaviGRD_RPRCValidate
-                  FieldName = 'GRD_RPRC'
-                end
-                object dbgaviGRD_SPRC: TdxDBGridMaskColumn
-                  HeaderAlignment = taRightJustify
-                  Width = 60
-                  BandIndex = 0
-                  RowIndex = 0
-                  OnValidate = dbgaviGRD_SPRCValidate
-                  FieldName = 'GRD_SPRC'
-                end
-                object dbgaviGRD_STAV: TdxDBGridPickColumn
-                  Width = 100
-                  BandIndex = 0
-                  RowIndex = 0
-                  FieldName = 'GRD_STAV'
-                  Items.Strings = (
-                    'ATIVO'
-                    'INATIVO'
-                    'PR'#201'-CADASTRO')
-                end
-              end
-              object SpeedBar3: TSpeedBar
-                Left = 0
-                Top = 0
-                Width = 44
-                Height = 349
-                Cursor = crHandPoint
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clWindowText
-                Font.Height = -11
-                Font.Name = 'Tahoma'
-                Font.Style = []
-                BoundLines = [blTop, blBottom, blLeft, blRight]
-                Align = alLeft
-                Options = [sbAllowDrag, sbFlatBtns, sbGrayedBtns]
-                BtnOffsetHorz = 2
-                BtnOffsetVert = 2
-                BtnWidth = 40
-                BtnHeight = 40
-                Images = imageITEM
-                BevelOuter = bvNone
-                TabOrder = 1
-                InternalVer = 1
-                object SpeedbarSection9: TSpeedbarSection
-                  Caption = 'Movimento'
-                end
-                object SpeedbarSection10: TSpeedbarSection
-                  Caption = 'Edicao'
-                end
-                object SpeedbarSection11: TSpeedbarSection
-                  Caption = 'Confirmacao'
-                end
-                object SpeedbarSection12: TSpeedbarSection
-                  Caption = 'Utilitarios'
-                end
-                object aviI: TSpeedItem
-                  Caption = 'Incluir'
-                  Hint = '[Ins] - Inclui'
-                  ImageIndex = 2
-                  Spacing = 1
-                  Left = 2
-                  Top = 2
-                  Visible = True
-                  OnClick = aviIClick
-                  SectionName = 'Movimento'
-                end
-                object aviA: TSpeedItem
-                  Caption = 'Alterar'
-                  Enabled = False
-                  Hint = '[Enter] - Altera'
-                  ImageIndex = 0
-                  Spacing = 1
-                  Left = 2
-                  Top = 42
-                  Visible = True
-                  OnClick = aviAClick
-                  SectionName = 'Movimento'
-                end
-                object aviE: TSpeedItem
-                  Caption = 'Excluir'
-                  Enabled = False
-                  Hint = '[Del] - Exclui'
-                  ImageIndex = 3
-                  Spacing = 1
-                  Left = 2
-                  Top = 82
-                  Visible = True
-                  OnClick = aviEClick
-                  SectionName = 'Movimento'
-                end
-                object aviS: TSpeedItem
-                  Caption = 'Salvar'
-                  Enabled = False
-                  Hint = '[Ctrl+S] - Salva'
-                  ImageIndex = 1
-                  Spacing = 1
-                  Left = 2
-                  Top = 122
-                  Visible = True
-                  OnClick = aviSClick
-                  SectionName = 'Movimento'
-                end
-                object aviC: TSpeedItem
-                  Caption = 'Cancelar'
-                  Enabled = False
-                  Hint = '[Esc] - Cancela'
-                  ImageIndex = 4
-                  Spacing = 1
-                  Left = 2
-                  Top = 162
-                  Visible = True
-                  OnClick = aviCClick
-                  SectionName = 'Movimento'
-                end
-              end
-            end
-            object tsgtec: TdxTabSheet
-              Caption = 'Grade'
-              object dbgtec: TdxDBGrid
-                Left = 44
-                Top = 0
-                Width = 564
-                Height = 349
-                Bands = <
-                  item
-                  end>
-                DefaultLayout = True
-                HeaderMinRowCount = 2
-                HeaderPanelRowCount = 1
-                KeyField = 'ID'
-                ShowSummaryFooter = True
-                SummaryGroups = <>
-                SummarySeparator = ', '
-                Align = alClient
-                Color = clWhite
-                Ctl3D = True
-                ParentCtl3D = False
-                TabOrder = 0
-                OnKeyDown = dbgtecKeyDown
-                AutoSearchColor = 9395
-                AutoSearchTextColor = clWhite
-                DataSource = dtscad_pro_grd
-                Filter.Criteria = {00000000}
-                GridLineColor = clSilver
-                LookAndFeel = lfUltraFlat
-                OptionsBehavior = [edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEditing, edgoEnterShowEditor, edgoImmediateEditor, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
-                OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
-                OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
-                OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoPreview, edgoUseBitmap]
-                OnCustomDrawCell = dbgaviCustomDrawCell
-                object dbgtecGRD_CPRO: TdxDBGridMaskColumn
-                  Color = clBtnFace
-                  DisableEditor = True
-                  Width = 100
-                  BandIndex = 0
-                  RowIndex = 0
-                  FieldName = 'GRD_CPRO'
-                  SummaryFooterType = cstCount
-                  SummaryFooterField = 'ID'
-                  SummaryFooterFormat = '0'
-                end
-                object dbgtecGRD_DCOR: TdxDBGridPickColumn
-                  CharCase = ecUpperCase
-                  Width = 200
-                  BandIndex = 0
-                  RowIndex = 0
-                  FieldName = 'GRD_DCOR'
-                end
-                object dbgtecGRD_PCOR: TdxDBGridMaskColumn
-                  Width = 80
-                  BandIndex = 0
-                  RowIndex = 0
-                  FieldName = 'GRD_PCOR'
-                end
-                object dbgtecGRD_PREC: TdxDBGridMaskColumn
-                  HeaderAlignment = taRightJustify
-                  Width = 60
-                  BandIndex = 0
-                  RowIndex = 0
-                  OnValidate = dbgtecGRD_PRECValidate
-                  FieldName = 'GRD_PREC'
-                end
-                object dbgtecGRD_PPRO: TdxDBGridMaskColumn
-                  HeaderAlignment = taRightJustify
-                  Width = 60
-                  BandIndex = 0
-                  RowIndex = 0
-                  OnValidate = dbgtecGRD_PPROValidate
-                  FieldName = 'GRD_PPRO'
-                end
-                object dbgtecGRD_PDSC: TdxDBGridMaskColumn
-                  HeaderAlignment = taRightJustify
-                  Width = 60
-                  BandIndex = 0
-                  RowIndex = 0
-                  FieldName = 'GRD_PDSC'
-                end
-                object dbgtecGRD_VPRC: TdxDBGridMaskColumn
-                  HeaderAlignment = taRightJustify
-                  Width = 60
-                  BandIndex = 0
-                  RowIndex = 0
-                  OnValidate = dbgtecGRD_VPRCValidate
-                  FieldName = 'GRD_VPRC'
-                end
-                object dbgtecGRD_RPRC: TdxDBGridMaskColumn
-                  HeaderAlignment = taRightJustify
-                  Width = 90
-                  BandIndex = 0
-                  RowIndex = 0
-                  OnValidate = dbgtecGRD_RPRCValidate
-                  FieldName = 'GRD_RPRC'
-                end
-                object dbgtecGRD_SPRC: TdxDBGridMaskColumn
-                  HeaderAlignment = taRightJustify
-                  Width = 60
-                  BandIndex = 0
-                  RowIndex = 0
-                  OnValidate = dbgtecGRD_SPRCValidate
-                  FieldName = 'GRD_SPRC'
-                end
-                object dbgtecGRD_STAV: TdxDBGridPickColumn
-                  Width = 100
-                  BandIndex = 0
-                  RowIndex = 0
-                  FieldName = 'GRD_STAV'
-                  Items.Strings = (
-                    'ATIVO'
-                    'INATIVO'
-                    'PR'#201'-CADASTRO')
-                end
-              end
-              object SpeedBar4: TSpeedBar
-                Left = 0
-                Top = 0
-                Width = 44
-                Height = 349
-                Cursor = crHandPoint
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clWindowText
-                Font.Height = -11
-                Font.Name = 'Tahoma'
-                Font.Style = []
-                BoundLines = [blTop, blBottom, blLeft, blRight]
-                Align = alLeft
-                Options = [sbAllowDrag, sbFlatBtns, sbGrayedBtns]
-                BtnOffsetHorz = 2
-                BtnOffsetVert = 2
-                BtnWidth = 40
-                BtnHeight = 40
-                Images = imageITEM
-                BevelOuter = bvNone
-                TabOrder = 1
-                InternalVer = 1
-                object SpeedbarSection13: TSpeedbarSection
-                  Caption = 'Movimento'
-                end
-                object SpeedbarSection14: TSpeedbarSection
-                  Caption = 'Edicao'
-                end
-                object SpeedbarSection15: TSpeedbarSection
-                  Caption = 'Confirmacao'
-                end
-                object SpeedbarSection16: TSpeedbarSection
-                  Caption = 'Utilitarios'
-                end
-                object tecI: TSpeedItem
-                  Caption = 'Incluir'
-                  Hint = '[Ins] - Inclui'
-                  ImageIndex = 2
-                  Spacing = 1
-                  Left = 2
-                  Top = 2
-                  Visible = True
-                  OnClick = aviIClick
-                  SectionName = 'Movimento'
-                end
-                object tecA: TSpeedItem
-                  Caption = 'Alterar'
-                  Enabled = False
-                  Hint = '[Enter] - Altera'
-                  ImageIndex = 0
-                  Spacing = 1
-                  Left = 2
-                  Top = 42
-                  Visible = True
-                  OnClick = aviAClick
-                  SectionName = 'Movimento'
-                end
-                object tecE: TSpeedItem
-                  Caption = 'Excluir'
-                  Enabled = False
-                  Hint = '[Del] - Exclui'
-                  ImageIndex = 3
-                  Spacing = 1
-                  Left = 2
-                  Top = 82
-                  Visible = True
-                  OnClick = aviEClick
-                  SectionName = 'Movimento'
-                end
-                object tecS: TSpeedItem
-                  Caption = 'Salvar'
-                  Enabled = False
-                  Hint = '[Ctrl+S] - Salva'
-                  ImageIndex = 1
-                  Spacing = 1
-                  Left = 2
-                  Top = 122
-                  Visible = True
-                  OnClick = aviSClick
-                  SectionName = 'Movimento'
-                end
-                object tecC: TSpeedItem
-                  Caption = 'Cancelar'
-                  Enabled = False
-                  Hint = '[Esc] - Cancela'
-                  ImageIndex = 4
-                  Spacing = 1
-                  Left = 2
-                  Top = 162
-                  Visible = True
-                  OnClick = aviCClick
-                  SectionName = 'Movimento'
-                end
-              end
-            end
-            object tsgcon: TdxTabSheet
-              Caption = 'Grade'
-              object Panel2: TPanel
-                Left = 0
-                Top = 81
-                Width = 608
-                Height = 268
-                Align = alClient
-                TabOrder = 0
-                object dbgcon: TdxDBGrid
-                  Left = 45
-                  Top = 1
-                  Width = 562
-                  Height = 266
-                  Bands = <
-                    item
-                    end>
-                  DefaultLayout = True
-                  HeaderMinRowCount = 2
-                  HeaderPanelRowCount = 1
-                  KeyField = 'ID'
-                  ShowSummaryFooter = True
-                  SummaryGroups = <>
-                  SummarySeparator = ', '
-                  Align = alClient
-                  Color = clWhite
-                  Ctl3D = True
-                  ParentCtl3D = False
-                  TabOrder = 0
-                  OnKeyDown = dbgconKeyDown
-                  AutoSearchColor = 9395
-                  AutoSearchTextColor = clWhite
-                  DataSource = dtscad_pro_grd
-                  Filter.Criteria = {00000000}
-                  GridLineColor = clSilver
-                  LookAndFeel = lfUltraFlat
-                  OptionsBehavior = [edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEditing, edgoEnterShowEditor, edgoImmediateEditor, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
-                  OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
-                  OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
-                  OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoPreview, edgoUseBitmap]
-                  OnCustomDrawCell = dbgaviCustomDrawCell
-                  object dbgconGRD_CPRO: TdxDBGridMaskColumn
-                    Color = clBtnFace
-                    DisableEditor = True
-                    Width = 100
-                    BandIndex = 0
-                    RowIndex = 0
-                    FieldName = 'GRD_CPRO'
-                    SummaryFooterType = cstCount
-                    SummaryFooterField = 'ID'
-                    SummaryFooterFormat = '0'
-                  end
-                  object dbgconGRD_DCOR: TdxDBGridPickColumn
-                    CharCase = ecUpperCase
-                    Width = 180
-                    BandIndex = 0
-                    RowIndex = 0
-                    FieldName = 'GRD_DCOR'
-                  end
-                  object dbgconGRD_CGRD: TdxDBGridPickColumn
-                    Width = 40
-                    BandIndex = 0
-                    RowIndex = 0
-                    FieldName = 'GRD_CGRD'
-                  end
-                  object dbgconGRD_PREC: TdxDBGridMaskColumn
-                    HeaderAlignment = taRightJustify
-                    Width = 60
-                    BandIndex = 0
-                    RowIndex = 0
-                    OnValidate = dbgconGRD_PRECValidate
-                    FieldName = 'GRD_PREC'
-                  end
-                  object dbgconGRD_PPRO: TdxDBGridMaskColumn
-                    HeaderAlignment = taRightJustify
-                    Width = 60
-                    BandIndex = 0
-                    RowIndex = 0
-                    OnValidate = dbgconGRD_PPROValidate
-                    FieldName = 'GRD_PPRO'
-                  end
-                  object dbgconGRD_PDSC: TdxDBGridMaskColumn
-                    HeaderAlignment = taRightJustify
-                    Width = 60
-                    BandIndex = 0
-                    RowIndex = 0
-                    FieldName = 'GRD_PDSC'
-                  end
-                  object dbgconGRD_VPRC: TdxDBGridMaskColumn
-                    HeaderAlignment = taRightJustify
-                    Width = 60
-                    BandIndex = 0
-                    RowIndex = 0
-                    OnValidate = dbgconGRD_VPRCValidate
-                    FieldName = 'GRD_VPRC'
-                  end
-                  object dbgconGRD_RPRC: TdxDBGridMaskColumn
-                    HeaderAlignment = taRightJustify
-                    Width = 90
-                    BandIndex = 0
-                    RowIndex = 0
-                    OnValidate = dbgconGRD_RPRCValidate
-                    FieldName = 'GRD_RPRC'
-                  end
-                  object dbgconGRD_SPRC: TdxDBGridMaskColumn
-                    HeaderAlignment = taRightJustify
-                    Width = 60
-                    BandIndex = 0
-                    RowIndex = 0
-                    OnValidate = dbgconGRD_SPRCValidate
-                    FieldName = 'GRD_SPRC'
-                  end
-                  object dbgconGRD_STAV: TdxDBGridPickColumn
-                    Width = 100
-                    BandIndex = 0
-                    RowIndex = 0
-                    FieldName = 'GRD_STAV'
-                  end
-                end
-                object SpeedBar5: TSpeedBar
-                  Left = 1
-                  Top = 1
-                  Width = 44
-                  Height = 266
-                  Cursor = crHandPoint
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -11
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  BoundLines = [blTop, blBottom, blLeft, blRight]
-                  Align = alLeft
-                  Options = [sbAllowDrag, sbFlatBtns, sbGrayedBtns]
-                  BtnOffsetHorz = 2
-                  BtnOffsetVert = 2
-                  BtnWidth = 40
-                  BtnHeight = 40
-                  Images = imageITEM
-                  BevelOuter = bvNone
-                  TabOrder = 1
-                  InternalVer = 1
-                  object SpeedbarSection17: TSpeedbarSection
-                    Caption = 'Movimento'
-                  end
-                  object SpeedbarSection18: TSpeedbarSection
-                    Caption = 'Edicao'
-                  end
-                  object SpeedbarSection19: TSpeedbarSection
-                    Caption = 'Confirmacao'
-                  end
-                  object SpeedbarSection20: TSpeedbarSection
-                    Caption = 'Utilitarios'
-                  end
-                  object conI: TSpeedItem
-                    Caption = 'Incluir'
-                    Hint = '[Ins] - Inclui'
-                    ImageIndex = 2
-                    Spacing = 1
-                    Left = 2
-                    Top = 2
-                    Visible = True
-                    OnClick = aviIClick
-                    SectionName = 'Movimento'
-                  end
-                  object conA: TSpeedItem
-                    Caption = 'Alterar'
-                    Enabled = False
-                    Hint = '[Enter] - Altera'
-                    ImageIndex = 0
-                    Spacing = 1
-                    Left = 2
-                    Top = 42
-                    Visible = True
-                    OnClick = aviAClick
-                    SectionName = 'Movimento'
-                  end
-                  object conE: TSpeedItem
-                    Caption = 'Excluir'
-                    Enabled = False
-                    Hint = '[Del] - Exclui'
-                    ImageIndex = 3
-                    Spacing = 1
-                    Left = 2
-                    Top = 82
-                    Visible = True
-                    OnClick = aviEClick
-                    SectionName = 'Movimento'
-                  end
-                  object conS: TSpeedItem
-                    Caption = 'Salvar'
-                    Enabled = False
-                    Hint = '[Ctrl+S] - Salva'
-                    ImageIndex = 1
-                    Spacing = 1
-                    Left = 2
-                    Top = 122
-                    Visible = True
-                    OnClick = aviSClick
-                    SectionName = 'Movimento'
-                  end
-                  object conC: TSpeedItem
-                    Caption = 'Cancelar'
-                    Enabled = False
-                    Hint = '[Esc] - Cancela'
-                    ImageIndex = 4
-                    Spacing = 1
-                    Left = 2
-                    Top = 162
-                    Visible = True
-                    OnClick = aviCClick
-                    SectionName = 'Movimento'
-                  end
-                end
-              end
-              object GroupBox1: TGroupBox
-                Left = 0
-                Top = 0
-                Width = 608
-                Height = 81
-                Align = alTop
-                Caption = 'Inclus'#227'o'
-                TabOrder = 1
-                object Label67: TLabel
-                  Tag = 1
-                  Left = 8
-                  Top = 23
-                  Width = 65
-                  Height = 14
-                  Hint = 'Apenas n'#250'meros'
-                  Caption = 'Grade Inicial'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  ParentShowHint = False
-                  ShowHint = True
-                  Transparent = True
-                end
-                object Label68: TLabel
-                  Tag = 1
-                  Left = 176
-                  Top = 23
-                  Width = 23
-                  Height = 14
-                  Hint = 'Apenas n'#250'meros'
-                  Caption = 'Final'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  ParentShowHint = False
-                  ShowHint = True
-                  Transparent = True
-                end
-                object Label69: TLabel
-                  Tag = 1
-                  Left = 8
-                  Top = 47
-                  Width = 18
-                  Height = 14
-                  Hint = 'Apenas n'#250'meros'
-                  Caption = 'Cor'
-                  Color = clBtnFace
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentColor = False
-                  ParentFont = False
-                  ParentShowHint = False
-                  ShowHint = True
-                  Transparent = True
-                end
-                object edgini: TdxEdit
-                  Tag = 1
-                  Left = 80
-                  Top = 18
-                  Width = 49
-                  Hint = 'Apenas n'#250'meros'
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  ParentShowHint = False
-                  ShowHint = True
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 0
-                  Text = '0'
-                  Alignment = taRightJustify
-                  CharCase = ecUpperCase
-                  MaxLength = 120
-                  OnValidate = edginiValidate
-                  StoredValues = 3
-                end
-                object edgfim: TdxEdit
-                  Tag = 1
-                  Left = 208
-                  Top = 18
-                  Width = 49
-                  Hint = 'Apenas n'#250'meros'
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  ParentShowHint = False
-                  ShowHint = True
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 1
-                  Text = '0'
-                  Alignment = taRightJustify
-                  CharCase = ecUpperCase
-                  MaxLength = 120
-                  OnValidate = edgfimValidate
-                  StoredValues = 3
-                end
-                object cbdcor: TdxPickEdit
-                  Left = 80
-                  Top = 43
-                  Width = 177
-                  Color = clWhite
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -12
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  Style.BorderColor = clWhite
-                  Style.BorderStyle = xbsNone
-                  Style.ButtonStyle = btsFlat
-                  Style.Shadow = True
-                  TabOrder = 2
-                  CharCase = ecUpperCase
-                end
-                object btnok: TButton
-                  Left = 280
-                  Top = 32
-                  Width = 75
-                  Height = 25
-                  Caption = 'OK'
-                  TabOrder = 3
-                  OnClick = btnokClick
-                end
-              end
-            end
-          end
-        end
-        object tscomp: TdxTabSheet
-          Caption = 'Composi'#231#227'o'
-          object Panel1: TPanel
-            Left = 0
-            Top = 0
-            Width = 718
-            Height = 373
-            Align = alClient
-            TabOrder = 0
-            object dbgcom: TdxDBGrid
-              Left = 45
-              Top = 1
-              Width = 672
-              Height = 371
-              Bands = <
-                item
-                end>
-              DefaultLayout = True
-              HeaderPanelRowCount = 1
-              KeyField = 'ID'
-              ShowSummaryFooter = True
-              SummaryGroups = <>
-              SummarySeparator = ', '
-              Align = alClient
-              Color = clWhite
-              Ctl3D = True
-              ParentCtl3D = False
-              TabOrder = 0
-              OnKeyDown = dbgcomKeyDown
-              AutoSearchColor = 9395
-              AutoSearchTextColor = clWhite
-              DataSource = dtscad_pro_com
-              Filter.Criteria = {00000000}
-              GridLineColor = clSilver
-              LookAndFeel = lfUltraFlat
-              OptionsBehavior = [edgoAutoSort, edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEditing, edgoEnterShowEditor, edgoImmediateEditor, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
-              OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
-              OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
-              OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoPreview, edgoUseBitmap]
-              object dbgcomCOM_COMP: TdxDBGridMaskColumn
-                CharCase = ecUpperCase
-                Width = 210
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'COM_COMP'
-                SummaryFooterType = cstCount
-                SummaryFooterField = 'ID'
-                SummaryFooterFormat = 'Itens 0'
-              end
-              object dbgcomCOM_BASE: TdxDBGridMaskColumn
-                Width = 210
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'COM_BASE'
-              end
-              object dbgcomCOM_QTDE: TdxDBGridMaskColumn
-                HeaderAlignment = taRightJustify
-                Width = 82
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'COM_QTDE'
-                SummaryFooterType = cstSum
-                SummaryFooterField = 'COM_QTDE'
-                SummaryFooterFormat = '0.00'
-              end
-            end
-            object SpeedBar1: TSpeedBar
-              Left = 1
-              Top = 1
-              Width = 44
-              Height = 371
-              Cursor = crHandPoint
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              BoundLines = [blTop, blBottom, blLeft, blRight]
-              Align = alLeft
-              Options = [sbAllowDrag, sbFlatBtns, sbGrayedBtns]
-              BtnOffsetHorz = 2
-              BtnOffsetVert = 2
-              BtnWidth = 40
-              BtnHeight = 40
-              Images = imageITEM
-              BevelOuter = bvNone
-              TabOrder = 1
-              InternalVer = 1
-              object SpeedbarSection1: TSpeedbarSection
-                Caption = 'Movimento'
-              end
-              object SpeedbarSection2: TSpeedbarSection
-                Caption = 'Edicao'
-              end
-              object SpeedbarSection3: TSpeedbarSection
-                Caption = 'Confirmacao'
-              end
-              object SpeedbarSection4: TSpeedbarSection
-                Caption = 'Utilitarios'
-              end
-              object siINC: TSpeedItem
-                Caption = 'Incluir'
-                Hint = '[Ins] - Inclui'
-                ImageIndex = 2
-                Spacing = 1
-                Left = 2
-                Top = 2
-                Visible = True
-                OnClick = siINCClick
-                SectionName = 'Movimento'
-              end
-              object siALT: TSpeedItem
-                Caption = 'Alterar'
-                Hint = '[Enter] - Altera'
-                ImageIndex = 0
-                Spacing = 1
-                Left = 2
-                Top = 42
-                Visible = True
-                OnClick = siALTClick
-                SectionName = 'Movimento'
-              end
-              object siDEL: TSpeedItem
-                Caption = 'Excluir'
-                Hint = '[Del] - Exclui'
-                ImageIndex = 3
-                Spacing = 1
-                Left = 2
-                Top = 82
-                Visible = True
-                OnClick = siDELClick
-                SectionName = 'Movimento'
-              end
-              object siS: TSpeedItem
-                Caption = 'Salvar'
-                Enabled = False
-                Hint = '[Ctrl+S] - Salva'
-                ImageIndex = 1
-                Spacing = 1
-                Left = 2
-                Top = 122
-                Visible = True
-                OnClick = siSClick
-                SectionName = 'Movimento'
-              end
-              object siC: TSpeedItem
-                Caption = 'Cancelar'
-                Enabled = False
-                Hint = '[Esc] - Cancela'
-                ImageIndex = 4
-                Spacing = 1
-                Left = 2
-                Top = 162
-                Visible = True
-                OnClick = siCANClick
-                SectionName = 'Movimento'
-              end
-            end
-          end
-        end
-        object tslav: TdxTabSheet
-          Caption = 'Instru'#231#227'o de Lavagem'
-          object BILA_BMP: TBevel
-            Left = 0
-            Top = 0
-            Width = 718
-            Height = 373
-            Align = alClient
-          end
-          object BILA_BMP7: TBevel
-            Left = 6
-            Top = 253
-            Width = 40
-            Height = 40
-            Style = bsRaised
-          end
-          object BILA_BMP6: TBevel
-            Left = 6
-            Top = 212
-            Width = 40
-            Height = 40
-            Style = bsRaised
-          end
-          object BILA_BMP5: TBevel
-            Left = 6
-            Top = 171
-            Width = 40
-            Height = 40
-            Style = bsRaised
-          end
-          object BILA_BMP4: TBevel
-            Left = 6
-            Top = 130
-            Width = 40
-            Height = 40
-            Style = bsRaised
-          end
-          object BILA_BMP3: TBevel
-            Left = 6
-            Top = 89
-            Width = 40
-            Height = 40
-            Style = bsRaised
-          end
-          object BILA_BMP2: TBevel
-            Left = 6
-            Top = 48
-            Width = 40
-            Height = 40
-            Style = bsRaised
-          end
-          object BILA_BMP1: TBevel
-            Left = 6
-            Top = 7
-            Width = 40
-            Height = 40
-            Style = bsRaised
-          end
-          object ILA_BMP1: TImage
-            Left = 8
-            Top = 10
-            Width = 35
-            Height = 35
-            Cursor = crHandPoint
-            HelpContext = 1
-            ParentShowHint = False
-            ShowHint = True
-            Stretch = True
-            OnClick = ILA_BMP1Click
-          end
-          object ILA_BMP3: TImage
-            Left = 8
-            Top = 92
-            Width = 35
-            Height = 35
-            Cursor = crHandPoint
-            HelpContext = 3
-            ParentShowHint = False
-            ShowHint = True
-            Stretch = True
-            OnClick = ILA_BMP1Click
-          end
-          object ILA_BMP4: TImage
-            Left = 8
-            Top = 133
-            Width = 35
-            Height = 35
-            Cursor = crHandPoint
-            HelpContext = 4
-            ParentShowHint = False
-            ShowHint = True
-            Stretch = True
-            OnClick = ILA_BMP1Click
-          end
-          object ILA_BMP5: TImage
-            Left = 8
-            Top = 174
-            Width = 35
-            Height = 35
-            Cursor = crHandPoint
-            HelpContext = 5
-            ParentShowHint = False
-            ShowHint = True
-            Stretch = True
-            OnClick = ILA_BMP1Click
-          end
-          object ILA_BMP6: TImage
-            Left = 8
-            Top = 215
-            Width = 35
-            Height = 35
-            Cursor = crHandPoint
-            HelpContext = 6
-            ParentShowHint = False
-            ShowHint = True
-            Stretch = True
-            OnClick = ILA_BMP1Click
-          end
-          object ILA_BMP7: TImage
-            Left = 8
-            Top = 256
-            Width = 35
-            Height = 35
-            Cursor = crHandPoint
-            HelpContext = 7
-            ParentShowHint = False
-            ShowHint = True
-            Stretch = True
-            OnClick = ILA_BMP1Click
-          end
-          object ILA_BMP2: TImage
-            Left = 8
-            Top = 51
-            Width = 35
-            Height = 35
-            Cursor = crHandPoint
-            HelpContext = 2
-            ParentShowHint = False
-            ShowHint = True
-            Stretch = True
-            OnClick = ILA_BMP1Click
-          end
-          object BILA_BMP8: TBevel
-            Left = 6
-            Top = 294
-            Width = 40
-            Height = 40
-            Style = bsRaised
-          end
-          object ILA_BMP8: TImage
-            Left = 8
-            Top = 297
-            Width = 35
-            Height = 35
-            Cursor = crHandPoint
-            HelpContext = 8
-            ParentShowHint = False
-            ShowHint = True
-            Stretch = True
-            OnClick = ILA_BMP1Click
-          end
-          object LAILA_BMP1: TLabel
-            Left = 50
-            Top = 25
-            Width = 12
-            Height = 14
-            Caption = '1)'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object LAILA_BMP2: TLabel
-            Left = 50
-            Top = 66
-            Width = 12
-            Height = 14
-            Caption = '2)'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object LAILA_BMP3: TLabel
-            Left = 50
-            Top = 107
-            Width = 12
-            Height = 14
-            Caption = '3)'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object LAILA_BMP4: TLabel
-            Left = 50
-            Top = 148
-            Width = 12
-            Height = 14
-            Caption = '4)'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object LAILA_BMP5: TLabel
-            Left = 50
-            Top = 188
-            Width = 12
-            Height = 14
-            Caption = '5)'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object LAILA_BMP6: TLabel
-            Left = 50
-            Top = 229
-            Width = 12
-            Height = 14
-            Caption = '6)'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object LAILA_BMP7: TLabel
-            Left = 50
-            Top = 271
-            Width = 12
-            Height = 14
-            Caption = '7)'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object LAILA_BMP8: TLabel
-            Left = 50
-            Top = 312
-            Width = 12
-            Height = 14
-            Caption = '8)'
-            Color = clBtnFace
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentColor = False
-            ParentFont = False
-            Transparent = True
-          end
-          object EDILA_INS1: TdxEdit
-            Tag = 1
-            Left = 66
-            Top = 20
-            Width = 650
-            Hint = 'Referencia'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 0
-            MaxLength = 120
-            StoredValues = 2
-          end
-          object EDILA_INS2: TdxEdit
-            Tag = 1
-            Left = 65
-            Top = 61
-            Width = 650
-            Hint = 'Referencia'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 1
-            MaxLength = 120
-            StoredValues = 2
-          end
-          object EDILA_INS3: TdxEdit
-            Tag = 1
-            Left = 65
-            Top = 102
-            Width = 650
-            Hint = 'Referencia'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 2
-            MaxLength = 120
-            StoredValues = 2
-          end
-          object EDILA_INS4: TdxEdit
-            Tag = 1
-            Left = 65
-            Top = 143
-            Width = 650
-            Hint = 'Referencia'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 3
-            MaxLength = 120
-            StoredValues = 2
-          end
-          object EDILA_INS5: TdxEdit
-            Tag = 1
-            Left = 65
-            Top = 183
-            Width = 650
-            Hint = 'Referencia'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 4
-            MaxLength = 120
-            StoredValues = 2
-          end
-          object EDILA_INS6: TdxEdit
-            Tag = 1
-            Left = 65
-            Top = 224
-            Width = 650
-            Hint = 'Referencia'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 5
-            MaxLength = 120
-            StoredValues = 2
-          end
-          object EDILA_INS7: TdxEdit
-            Tag = 1
-            Left = 65
-            Top = 266
-            Width = 650
-            Hint = 'Referencia'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 6
-            MaxLength = 120
-            StoredValues = 2
-          end
-          object EDILA_INS8: TdxEdit
-            Tag = 1
-            Left = 65
-            Top = 307
-            Width = 650
-            Hint = 'Referencia'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -12
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            Style.BorderStyle = xbsNone
-            Style.ButtonStyle = btsFlat
-            Style.Shadow = True
-            TabOrder = 7
-            MaxLength = 120
-            StoredValues = 2
           end
         end
       end
@@ -4461,9 +3206,9 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       end
     end
     object cbstav: TdxImageEdit
-      Left = 463
-      Top = 98
-      Width = 250
+      Left = 555
+      Top = 72
+      Width = 150
       Color = 14065456
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
@@ -4475,7 +3220,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       Style.BorderStyle = xbsNone
       Style.ButtonStyle = btsFlat
       Style.Shadow = True
-      TabOrder = 8
+      TabOrder = 0
       Text = 'ATIVO'
       OnExit = cbstavExit
       AutoSize = False
@@ -4494,10 +3239,11 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       Height = 24
     end
     object edcart: TdxEdit
-      Left = 80
-      Top = 2
-      Width = 110
+      Left = 85
+      Top = 72
+      Width = 150
       Hint = 'Referencia'
+      Color = clInfoBk
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -12
@@ -4508,15 +3254,15 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       Style.ButtonStyle = btsFlat
       Style.Shadow = True
       TabOrder = 1
+      OnExit = edcartExit
       CharCase = ecUpperCase
       MaxLength = 120
-      OnValidate = edcartValidate
       StoredValues = 2
     end
     object cbdcat: TdxImageEdit
-      Left = 80
-      Top = 98
-      Width = 250
+      Left = 505
+      Top = 192
+      Width = 200
       Hint = 'Grupo'
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
@@ -4529,7 +3275,7 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       Style.BorderStyle = xbsNone
       Style.ButtonStyle = btsSimple
       Style.Shadow = True
-      TabOrder = 7
+      TabOrder = 9
       OnExit = cbdcatExit
       AutoSize = False
       Descriptions.Strings = (
@@ -4541,10 +3287,10 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       Height = 24
     end
     object cbcclf: TdxPickEdit
-      Left = 463
-      Top = 74
-      Width = 250
-      Color = clWhite
+      Left = 85
+      Top = 192
+      Width = 150
+      Color = clInfoBk
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -12
@@ -4560,9 +3306,9 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
       CharCase = ecUpperCase
     end
     object cbdfor: TdxPickEdit
-      Left = 463
-      Top = 50
-      Width = 250
+      Left = 85
+      Top = 144
+      Width = 300
       Color = clWhite
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -4580,25 +3326,8 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     end
   end
   inherited sbMSG: TStatusBar
-    Top = 637
-    Width = 1064
-  end
-  inherited SpeedBar2: TSpeedBar
-    Width = 1064
-    inherited siCAN: TSpeedItem [5]
-    end
-    inherited siVAL: TSpeedItem [6]
-    end
-    inherited siSAV: TSpeedItem [7]
-    end
-  end
-  inherited imageOPC: TImageList
-    Left = 436
-    Top = 46
-  end
-  inherited imageITEM: TImageList
-    Left = 436
-    Top = 6
+    Top = 624
+    Width = 954
   end
   object OpenPictureDialogEdit: TOpenPictureDialog
     Filter = 'JPEG Image File (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.jpeg'
@@ -4620,7 +3349,6 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     AfterPost = cad_pro_comAfterPost
     BeforeCancel = cad_pro_comBeforeCancel
     OnNewRecord = cad_pro_comNewRecord
-    BufferChunks = 2500
     DeleteSQL.Strings = (
       'delete from CAD_PRO_COM'
       'where'
@@ -4695,13 +3423,11 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
   object aux: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
-    BufferChunks = 2500
     Left = 696
   end
   object consulta_S: TIBQuery
     Database = dmDADOS.bSHEILD
     Transaction = tSHEILD
-    BufferChunks = 2500
     Left = 696
     Top = 32
   end
@@ -4715,7 +3441,6 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     BeforeCancel = cad_pro_grdBeforeCancel
     BeforePost = cad_pro_grdBeforePost
     OnNewRecord = cad_pro_grdNewRecord
-    BufferChunks = 2500
     DeleteSQL.Strings = (
       'delete from CAD_PRO_GRD'
       'where'
@@ -5241,7 +3966,6 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
   object cad_pro: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
-    BufferChunks = 2500
     SQL.Strings = (
       'SELECT * FROM CAD_PRO'
       'WHERE ID = 0')
@@ -5702,7 +4426,6 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
   object cad_pro_img: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
-    BufferChunks = 2500
     SQL.Strings = (
       'SELECT * FROM CAD_PRO_IMG'
       'WHERE ID = 0')
@@ -5865,54 +4588,52 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
     object cad_pro_imgPRO_ONS1: TIBStringField
       FieldName = 'PRO_ONS1'
       Origin = '"CAD_PRO_IMG"."PRO_ONS1"'
-      Size = 120
+      Size = 60
     end
     object cad_pro_imgPRO_ONS2: TIBStringField
       FieldName = 'PRO_ONS2'
       Origin = '"CAD_PRO_IMG"."PRO_ONS2"'
-      Size = 120
+      Size = 60
     end
     object cad_pro_imgPRO_ONS3: TIBStringField
       FieldName = 'PRO_ONS3'
       Origin = '"CAD_PRO_IMG"."PRO_ONS3"'
-      Size = 120
+      Size = 60
     end
     object cad_pro_imgPRO_ONS4: TIBStringField
       FieldName = 'PRO_ONS4'
       Origin = '"CAD_PRO_IMG"."PRO_ONS4"'
-      Size = 120
+      Size = 60
     end
     object cad_pro_imgPRO_ONS5: TIBStringField
       FieldName = 'PRO_ONS5'
       Origin = '"CAD_PRO_IMG"."PRO_ONS5"'
-      Size = 120
+      Size = 60
     end
     object cad_pro_imgPRO_ONS6: TIBStringField
       FieldName = 'PRO_ONS6'
       Origin = '"CAD_PRO_IMG"."PRO_ONS6"'
-      Size = 120
+      Size = 60
     end
     object cad_pro_imgPRO_ONS7: TIBStringField
       FieldName = 'PRO_ONS7'
       Origin = '"CAD_PRO_IMG"."PRO_ONS7"'
-      Size = 120
+      Size = 60
     end
     object cad_pro_imgPRO_ONS8: TIBStringField
       FieldName = 'PRO_ONS8'
       Origin = '"CAD_PRO_IMG"."PRO_ONS8"'
-      Size = 120
+      Size = 60
     end
   end
   object aux2: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
-    BufferChunks = 2500
     Left = 728
   end
   object ped_ven_ite: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
-    BufferChunks = 2500
     SQL.Strings = (
       'SELECT   PRO_CART FROM PED_VEN_ITE,CAD_PRO'
       'WHERE    CAD_PRO.ID = ROM_CPRO'
@@ -5981,7 +4702,6 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
   object tab_clf: TIBDataSet
     Database = dmDADOS.ibDB
     Transaction = IBTra
-    BufferChunks = 2500
     DeleteSQL.Strings = (
       'delete from TAB_CLF'
       'where'
@@ -6054,7 +4774,6 @@ inherited frmcad_pro_edi: Tfrmcad_pro_edi
   object cad_pro_ori: TIBDataSet
     Database = dmDADOS.ibDB
     Transaction = IBTra
-    BufferChunks = 2500
     DeleteSQL.Strings = (
       'delete from CAD_PRO_ORI'
       'where'

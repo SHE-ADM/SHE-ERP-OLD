@@ -21,7 +21,6 @@ type
     cep_logBAI_NO: TIBStringField;
     cep_logLOC_NO: TIBStringField;
     cep_logLOG_UF: TIBStringField;
-    siCON: TSpeedItem;
     Panel1: TPanel;
     pcmain: TdxPageControl;
     tscon: TdxTabSheet;
@@ -442,7 +441,6 @@ type
     procedure cbstavKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure cad_tra_banTRA_DESCValidate(Sender: TField);
-    procedure siCONClick(Sender: TObject);
   private
     { Private declarations }
     procedure NOVO_TRANSPORTADOR;
@@ -459,7 +457,7 @@ var
 
 implementation
 
-uses bDados, pcad_tra, uPrincipal, unLocaliza_Cep, ptab_mun, psintegra;
+uses bDados, pcad_tra, uPrincipal, unLocaliza_Cep, ptab_mun;
 
 {$R *.dfm}
 procedure Tfrmcad_tra_edi.FormCreate(Sender: TObject);
@@ -1773,85 +1771,6 @@ begin
 
     cad_tra_banTRA_BANC.Value := fields[0].AsString;
   end
-end;
-
-procedure Tfrmcad_tra_edi.siCONClick(Sender: TObject);
-function RETORNA_LOGR(endereco: string) : string;
-var
-  i: word;
-begin
-  for i := 1 to length(endereco) do
-  begin
-    if copy(endereco,i,1) = ' ' then
-    break;
-  end;
-
-  if copy(endereco,1,1) = 'R' then
-  edtlog.Text := 'RUA' else
-  if copy(endereco,1,1) = 'A' then
-  edtlog.Text := 'AVENIDA' else
-  if copy(endereco,1,2) = 'AL' then
-  edtlog.Text := 'ALAMEDA' else
-  if copy(endereco,1,1) = 'P' then
-  edtlog.Text := 'PRAÇA' else
-  if copy(endereco,1,2) = 'PQ' then
-  edtlog.Text := 'PARQUE' else
-  if copy(endereco,1,2) = 'PÇ' then
-  edtlog.Text := 'PRAÇA' else
-  if copy(endereco,1,2) = 'RO' then
-  edtlog.Text := 'RODOVIA' else
-  if copy(endereco,1,1) = 'T' then
-  edtlog.Text := 'TRAVESSA';
-
-  if edtlog.Text = '' then
-  edtlog.Text := TRIM(copy(endereco,1,i));
-
-  result := TRIM(copy(endereco,i+1,Length(endereco)));
-end;
-
-begin
-  frmsintegra := tfrmsintegra.create(self);
-  frmsintegra.EditCNPJ.Text := trim(edcnpj.Text);
-  try
-    frmsintegra.ShowModal;
-  finally
-    if (frmsintegra.EditUF.Text <> '') and (copy(frmsintegra.EditUF.Text,1,1) <> '*') then
-    begin
-      edcnpj.Text := frmsintegra.EditCNPJ.Text;
-      EdRaza.Text := frmsintegra.EditRazaoSocial.Text;
-      edlogr.Text := RETORNA_LOGR(frmsintegra.EditEndereco.Text);
-      EdComp.Text := frmsintegra.EditComplemento.Text;
-      edbai.Text  := frmsintegra.EditBairro.Text;
-      edcid.Text  := frmsintegra.EditCidade.Text;
-      eduf.Text   := frmsintegra.EditUF.Text;
-      ednume.Text := frmsintegra.EditNumero.Text;
-      edcep.Text  := copy(frmsintegra.EditCEP.Text,1,5)+copy(frmsintegra.EditCEP.Text,7,3);
-      edobse.Text := frmsintegra.ListCNAE2.Items.Text;
-
-      edddd.Text  := frmsintegra.EditDDD.Text;
-      edtel1.Text := frmsintegra.EditFone.Text;
-      eddd2.Text  := frmsintegra.EditDDD2.Text;
-      edtel2.Text := frmsintegra.EditFone2.Text;
-      edInsc.Text := frmsintegra.EDIE.Text;
-
-      if copy(frmsintegra.EditEmail.Text,1,1) <> '*' then
-      edmail.Text := LOWERCASE(frmsintegra.EditEmail.Text);
-
-      if copy(frmsintegra.EditFantasia.Text,1,1) <> '*' then
-      edfant.Text := frmsintegra.EditFantasia.Text;
-
-      with consulta do
-      begin
-        SQL.Clear;
-        SQL.Add('SELECT MUN_CMUN FROM TAB_MUN');
-        SQL.Add('WHERE  MUN_DMUN = '''+edcid.Text+'''');
-        Open;
-        edcmun.Text := fields[0].AsString;
-      end;
-    end;
-    freeAndNil(frmsintegra);
-    frmsintegra.Free;
-  end;
 end;
 
 end.

@@ -16,39 +16,32 @@ type
     Consulta: TIBQuery;
     Cadastro: TIBDataSet;
     DTSCadastro: TDataSource;
-    SpeedBar2: TSpeedBar;
-    SpeedbarSection5: TSpeedbarSection;
-    SpeedbarSection6: TSpeedbarSection;
-    SpeedbarSection7: TSpeedbarSection;
-    SpeedbarSection8: TSpeedbarSection;
-    siPSQ: TSpeedItem;
-    siREF: TSpeedItem;
-    siSAIR: TSpeedItem;
-    siLIXO: TSpeedItem;
-    siREL: TSpeedItem;
     IBTra: TIBTransaction;
     ibSP: TIBStoredProc;
     pnldir: TPanel;
     pnldbg: TPanel;
     pnlbot: TPanel;
-    imageITEM: TImageList;
-    imageOPC: TImageList;
-    siEVE: TSpeedItem;
     pEVE: TIBEvents;
     pSP: TIBStoredProc;
     pTRA: TIBTransaction;
     gbDET: TGroupBox;
     DBGConsulta: TdxDBGrid;
-    SpeedBar1: TSpeedBar;
-    SpeedbarSection1: TSpeedbarSection;
-    SpeedbarSection2: TSpeedbarSection;
-    SpeedbarSection3: TSpeedbarSection;
-    SpeedbarSection4: TSpeedbarSection;
-    siINC: TSpeedItem;
-    siALT: TSpeedItem;
-    siDEL: TSpeedItem;
-    siSAV: TSpeedItem;
-    siCAN: TSpeedItem;
+    ILMenuPrincipal: TImageList;
+    ILMenuEdicao: TImageList;
+    SBMenuPrincipal: TSpeedBar;
+    SSMenuPrincipal: TSpeedbarSection;
+    siREF: TSpeedItem;
+    siPSQ: TSpeedItem;
+    siREL: TSpeedItem;
+    siSAIR: TSpeedItem;
+    GBMenuEdicao: TGroupBox;
+    SBMenuEdicao: TSpeedBar;
+    SSMenuEdicao: TSpeedbarSection;
+    SIMEAppend: TSpeedItem;
+    SIMEEdit: TSpeedItem;
+    SIMEDelete: TSpeedItem;
+    SIMEPost: TSpeedItem;
+    SIMECancel: TSpeedItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -58,15 +51,10 @@ type
     procedure DBGConsultaBackgroundDrawEvent(Sender: TObject;
       ACanvas: TCanvas; ARect: TRect);
     procedure CadastroAfterPost(DataSet: TDataSet);
-    procedure siINCClick(Sender: TObject);
-    procedure siALTClick(Sender: TObject);
-    procedure siSAVClick(Sender: TObject);
-    procedure siCANClick(Sender: TObject);
     procedure CadastroBeforeEdit(DataSet: TDataSet);
     procedure siSAIRClick(Sender: TObject);
     procedure DBGConsultaKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure siDELClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure DBGConsultaDblClick(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
@@ -81,22 +69,21 @@ type
     procedure DTSCadastroStateChange(Sender: TObject);
     procedure pEVEEventAlert(Sender: TObject; EventName: String;
       EventCount: Integer; var CancelAlerts: Boolean);
+    procedure SIMEAppendClick(Sender: TObject);
+    procedure SIMEEditClick(Sender: TObject);
+    procedure SIMEDeleteClick(Sender: TObject);
+    procedure SIMEPostClick(Sender: TObject);
+    procedure SIMECancelClick(Sender: TObject);
     procedure CadastroBeforeCancel(DataSet: TDataSet);
-    procedure CadastroAfterCancel(DataSet: TDataSet);
-    procedure CadastroAfterEdit(DataSet: TDataSet);
-    procedure CadastroAfterInsert(DataSet: TDataSet);
-    procedure CadastroAfterOpen(DataSet: TDataSet);
   private
     { Private declarations }
     FrmStyle   : TFormStyle;
     FrmPosition: TPosition;
-    procedure DTSRefresh(ACommit: Boolean = True);
   public
     { Public declarations }
     Editado: Boolean;
     Campo_Pesquisa,
     cEvent : String;
-    wRecord: TBookMark;
 
     procedure ExecuteEvent;
   end;
@@ -278,20 +265,19 @@ end;
 
 procedure Tfrmpadr1.siREFClick(Sender: TObject);
 begin
-  if Cadastro.State = dsBrowse then
-  DTSRefresh;
+  oRefresh(Cadastro);
 end;
 
 procedure Tfrmpadr1.siPSQClick(Sender: TObject);
 begin
-  if (not SpeedBar2.Enabled) or (not SpeedBar2.Visible) or (not SIPsq.Enabled) or (not SIPsq.Visible) then
+  if (not SBMenuPrincipal.Enabled) or (not SBMenuPrincipal.Visible) or (not SIPsq.Enabled) or (not SIPsq.Visible) then
   Abort;
   ActiveControl := Nil;
 end;
 
 procedure Tfrmpadr1.siRELClick(Sender: TObject);
 begin
-  if (not SpeedBar2.Enabled) or (not SpeedBar2.Visible) or (not SIRel.Enabled) or (not SIRel.Visible) then
+  if (not SBMenuPrincipal.Enabled) or (not SBMenuPrincipal.Visible) or (not SIRel.Enabled) or (not SIRel.Visible) then
   Abort;
   ActiveControl := Nil;
 end;
@@ -301,43 +287,32 @@ begin
   Close;
 end;
 
-procedure Tfrmpadr1.siINCClick(Sender: TObject);
+procedure Tfrmpadr1.SIMEAppendClick(Sender: TObject);
 begin
-  DBGConsulta.SetFocus;
-  if ((SpeedBar1.Visible) and (SpeedBar1.Enabled) and
-      (siINC.Visible)     and (siINC.Enabled) and
-      (Cadastro.State = dsBrowse)) then
+  if Cadastro.State = dsBrowse then
   Cadastro.Append;
 end;
 
-procedure Tfrmpadr1.siALTClick(Sender: TObject);
+procedure Tfrmpadr1.SIMEEditClick(Sender: TObject);
 begin
-  DBGConsulta.SetFocus;
-  if ((SpeedBar1.Visible)             and (SpeedBar1.Enabled) and
-      (siALT.Visible)                 and (siALT.Enabled) and
-      (not Cadastro.Fields[0].IsNull) and (Cadastro.State = dsBrowse)) then
+  if (Cadastro.State = dsBrowse) and (Cadastro.RecNo > 0) then
   Cadastro.Edit;
 end;
 
-procedure Tfrmpadr1.siDELClick(Sender: TObject);
+procedure Tfrmpadr1.SIMEDeleteClick(Sender: TObject);
 begin
-  DBGConsulta.SetFocus;
-  if ((not SpeedBar1.Visible)     or (not SpeedBar1.Enabled) or
-      (not siDEL.Visible)         or (not siDEL.Enabled) or
-      (Cadastro.Fields[0].IsNull) or (Cadastro.State in [dsInsert,dsEdit])) then
-  Abort;
+  if (Cadastro.State = dsBrowse) and (Cadastro.RecNo > 0) then
+  Cadastro.Delete;
 end;
 
-procedure Tfrmpadr1.siSAVClick(Sender: TObject);
+procedure Tfrmpadr1.SIMEPostClick(Sender: TObject);
 begin
-  DBGConsulta.SetFocus;
-  if cadastro.State in [dsEdit,dsInsert] then
-  cadastro.Post;
+  if Cadastro.State in [dsInsert,dsEdit] then
+  Cadastro.Post;
 end;
 
-procedure Tfrmpadr1.siCANClick(Sender: TObject);
+procedure Tfrmpadr1.SIMECancelClick(Sender: TObject);
 begin
-  DBGConsulta.SetFocus;
   if Cadastro.State in [dsInsert,dsEdit] then
   Cadastro.Cancel;
 end;
@@ -350,6 +325,8 @@ end;
 
 procedure Tfrmpadr1.CadastroBeforeInsert(DataSet: TDataSet);
 begin
+  Cadastro.Fields[0].Tag := Cadastro.RecNo;
+
   if not frmprincipal.ACESSO(frmprincipal.cad_usuUSU_CUSU.AsString,PCampo[0],PCampo[1],PCampo[2],PCampo[3],false) then
   Databaseerror('ACESSO NEGADO !'+#13+'Contate o admnistrador do sistema.');
 end;
@@ -377,24 +354,24 @@ procedure Tfrmpadr1.DBGConsultaKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   case key of
-       vk_return   : siALT.Click;
-       VK_escape   : if siSAV.Enabled then
-                     siCAN.Click else
+       vk_return   : SIMEEdit.Click;
+       VK_escape   : if SIMEPost.Enabled then
+                     SIMECancel.Click else
                      siSAIR.Click;
-       VK_delete   : if not siSAV.Enabled then siDEL.Click;
-       VK_insert   : if not siSAV.Enabled then siINC.Click;
+       VK_delete   : if not SIMEPost.Enabled then SIMEDelete.Click;
+       VK_insert   : if not SIMEPost.Enabled then SIMEAppend.Click;
   end;
 end;
 
 procedure Tfrmpadr1.DBGConsultaDblClick(Sender: TObject);
 begin
   if cadastro.State = dsBrowse then
-  siALT.Click;
+  SIMEEdit.Click;
 end;
 
 procedure Tfrmpadr1.DTSCadastroStateChange(Sender: TObject);
 begin
-  oState(Cadastro,SpeedBar1);
+  oState(Cadastro,SBMenuEdicao);
   if Cadastro.State = dsBrowse then
   begin
     DBGConsulta.OptionsBehavior := ([edgoAutoSearch,edgoAutoSort,edgoCaseInsensitive,edgoCollapsedReload,edgoDragCollapse,edgoDragExpand,edgoDragScroll,edgoEnterShowEditor,edgoImmediateEditor,edgoSeekDetail,edgoShowHourGlass,edgoTabThrough,edgoVertThrough]);
@@ -411,7 +388,7 @@ end;
 procedure Tfrmpadr1.pEVEEventAlert(Sender: TObject; EventName: String;
   EventCount: Integer; var CancelAlerts: Boolean);
 begin
-  DTSRefresh;
+  oRefresh(Cadastro);
 end;
 
 procedure Tfrmpadr1.ExecuteEvent;
@@ -440,83 +417,26 @@ begin
   end;
 end;
 
-procedure TFrmPadr1.DTSRefresh(ACommit: Boolean = True);
-begin
-  if Cadastro.Fields[0].IsNull then
-  WRecord := Nil else
-  WRecord := Cadastro.GetBookmark;
-
-  oRTransact(IBTra);
-  Cadastro.Open;
-  if WRecord <> Nil then
-  begin
-    Cadastro.GotoBookmark(WRecord);
-    Cadastro.FreeBookmark(WRecord);
-  end else Cadastro.Last;
-  WRecord := Nil;
-end;
-
-procedure Tfrmpadr1.CadastroBeforeCancel(DataSet: TDataSet);
-begin
-  siINC.Enabled := true;
-  siALT.Enabled := true;
-  siDEL.Enabled := true;
-  siSAV.Enabled := false;
-  siCAN.Enabled := false;
-
-  DBGConsulta.SetFocus;
-  if Cadastro.RecNo = 0 then
-  begin
-    Cadastro.Close;
-    Cadastro.Open;
-    ABORT;
-  end;
-end;
-
-procedure Tfrmpadr1.CadastroAfterCancel(DataSet: TDataSet);
-begin
-  siINC.Enabled := true;
-  siALT.Enabled := true;
-  siDEL.Enabled := true;
-  siSAV.Enabled := false;
-  siCAN.Enabled := false;
-end;
-
 procedure Tfrmpadr1.CadastroAfterDelete(DataSet: TDataSet);
 begin
   ExecuteEvent;
 end;
 
-procedure Tfrmpadr1.CadastroAfterEdit(DataSet: TDataSet);
-begin
-  siINC.Enabled := false;
-  siALT.Enabled := false;
-  siDEL.Enabled := false;
-  siSAV.Enabled := true;
-  siCAN.Enabled := true;
-end;
-
-procedure Tfrmpadr1.CadastroAfterInsert(DataSet: TDataSet);
-begin
-  siINC.Enabled := false;
-  siALT.Enabled := false;
-  siDEL.Enabled := false;
-  siSAV.Enabled := true;
-  siCAN.Enabled := true;
-end;
-
-procedure Tfrmpadr1.CadastroAfterOpen(DataSet: TDataSet);
-begin
-  siINC.Enabled := true;
-  siALT.Enabled := true;
-  siDEL.Enabled := true;
-  siSAV.Enabled := false;
-  siCAN.Enabled := false;
-end;
-
 procedure Tfrmpadr1.CadastroAfterPost(DataSet: TDataSet);
 begin
+  if tag = 0 then
   ExecuteEvent;
+end;
+
+procedure Tfrmpadr1.CadastroBeforeCancel(DataSet: TDataSet);
+begin
+  if Cadastro.Fields[0].Tag = 0 then
+  begin
+    Cadastro.Close;
+    Cadastro.Open;
+
+    ABORT;
+  end;
 end;
 
 end.

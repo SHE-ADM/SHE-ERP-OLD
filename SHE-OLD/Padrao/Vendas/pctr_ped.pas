@@ -1017,16 +1017,16 @@ begin
   LATAB_PRC_ACIMA_MIN.Caption := FormatFloat('R$ #,0.00',FKCadastroVPRC_PAD_INI.AsCurrency);
   LATAB_PRC_ACIMA_MAX.Caption := FormatFloat('R$ #,0.00',FKCadastroVPRC_PAD_FIM.AsCurrency);
   if (FKCadastroVPRC_COM.AsFloat <> FKCadastroVPRC_PAD_INI.AsCurrency) or (FKCadastroVPRC_COM.AsFloat <> FKCadastroVPRC_PAD_FIM.AsCurrency) or (FKCadastroVPRC_PAD_INI.AsCurrency <> FKCadastroVPRC_PAD_FIM.AsCurrency) then
-      PNLTAB_PRC.Height := 22 else
-      PNLTAB_PRC.Height := 0;
+  PNLTAB_PRC.Height := 22 else
+  PNLTAB_PRC.Height := 0;
 
   { Conteúdo }
   if Pos('COM',FKCadastroUCON.AsString) > 0 then
   begin
-    PNLTAB_PRC.Caption := 'Contém '+FKCadastroUCON.AsString+'  ';
+    PNLTAB_PRC.Caption := 'Conteúdo '+FKCadastroUCON.AsString+'  ';
     PNLTAB_PRC.Height  := 22;
   end else
-    PNLTAB_PRC.Caption := EmptyStr;
+  PNLTAB_PRC.Caption := EmptyStr;
 
   { Fit Colunas }
   DBGITPED.ApplyBestFit(DBGITPEDSKU    );
@@ -1073,32 +1073,40 @@ procedure Tfrmctr_ped.DBGITPEDCustomDrawCell(Sender: TObject;
 begin
   if not ASelected then
   begin
-    if (ANode.Values[DBGITPEDQTSP.Index] > 0) and ((AColumn = DBGITPEDQTSP) or (AColumn = DBGITPEDRLSP) or (AColumn = DBGITPEDVTSP) or (AColumn = DBGITPEDDESP) or (AColumn = DBGITPEDDTSP)) then
-        if ANode.Values[DBGITPEDQTSP.Index] <> ANode.Values[DBGITPEDQTDE.Index] then
-        begin
-          AColor      := clInfobk;   //$0080FFFF;
-          AFont.Color := clBlack;
-        end else
-        begin
-          AColor      := clBlack;   //$0080FFFF;
-          AFont.Color := clWhite;
-        end;
-
-    if AColumn = DBGITPEDITEM then
+    if ANode.Values[DBGITPEDTCDE.Index] = 0 then
     begin
-      AColor      := clGray;
-      AFont.Color := clWhite;
-    end;
+      AColor      := clInfoBk;
+      AFont.Color := clWindowText;
+    end else
+    begin
+      if (ANode.Values[DBGITPEDQTSP.Index] > 0) and ((AColumn = DBGITPEDQTSP) or (AColumn = DBGITPEDRLSP) or (AColumn = DBGITPEDVTSP) or (AColumn = DBGITPEDDESP) or (AColumn = DBGITPEDDTSP)) then
+      if (ANode.Values[DBGITPEDQTSP.Index] <> ANode.Values[DBGITPEDQTDE.Index]) then
+      begin
+        AColor      := clInfobk;   //$0080FFFF;
+        AFont.Color := clBlack;
+      end else
+      begin
+        AColor      := clBlack;   //$0080FFFF;
+        AFont.Color := clWhite;
+      end;
 
-    if ((AColumn = DBGITPEDPIPI) or (AColumn = DBGITPEDVIPI)) and (ANode.Values[DBGITPEDPIPI.Index] > 0) then
-    AFont.Style := [fsBold];
+      if AColumn = DBGITPEDITEM then
+      begin
+        AColor      := clGray;
+        AFont.Color := clWhite;
+      end;
 
-    if ((AColumn = DBGITPEDPCOM) or (AColumn = DBGITPEDVCOM)) and (ANode.Values[DBGITPEDPCOM.Index] > 0) then
-    AFont.Style := [fsBold];
+      if ((AColumn = DBGITPEDPIPI) or (AColumn = DBGITPEDVIPI)) and (ANode.Values[DBGITPEDPIPI.Index] > 0) then
+      AFont.Style := [fsBold];
+
+      if ((AColumn = DBGITPEDPCOM) or (AColumn = DBGITPEDVCOM)) and (ANode.Values[DBGITPEDPCOM.Index] > 0) then
+      AFont.Style := [fsBold];
+    END;
   end;
 
+  if (ANode.Values[DBGITPEDTCDE.Index] > 0) then
   if (AColumn = DBGITPEDQTDE) or (AColumn = DBGITPEDQTRL) or (AColumn = DBGITPEDVPRC_COM) or (AColumn = DBGITPEDTCDE) then
-  if ANode.Values[DBGITPEDVPRC_COM.Index] < ANode.Values[DBGITPEDVPRC_PAD_INI.Index] then
+  if (ANode.Values[DBGITPEDVPRC_COM.Index] < ANode.Values[DBGITPEDVPRC_PAD_INI.Index]) then
   begin
     AFont.Style := [fsBold];
     AFont.Color := clWhite;

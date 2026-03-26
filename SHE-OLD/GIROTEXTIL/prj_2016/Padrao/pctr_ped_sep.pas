@@ -746,6 +746,7 @@ begin
             ibSP.ParamByName('dmap').Value := '';
             ibSP.ParamByName('ctnr').Value := 0;
             ibSP.ParamByName('lote').Value := '';
+            ibSP.ParamByName('UNIT').Value := 0;
             ibSP.ExecProc;
           end;
           rom_ite.Next;

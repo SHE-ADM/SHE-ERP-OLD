@@ -8,143 +8,84 @@
   resources were bound to the produced executable.
 */
 
-#define TeeConst_TeeMsg_DefaultFontName 64368
-#define TeeConst_TeeMsg_CheckPointerSize 64369
-#define TeeConst_TeeMsg_FunctionPeriod 64370
-#define TeeConst_TeeMsg_PieOther 64371
-#define TeeConst_TeeMsg_ValuesX 64372
-#define TeeConst_TeeMsg_ValuesY 64373
-#define TeeConst_TeeMsg_ValuesPie 64374
-#define TeeConst_TeeMsg_ValuesBar 64375
-#define TeeConst_TeeMsg_ValuesAngle 64376
-#define TeeConst_TeeMsg_PieSample3 64384
-#define TeeConst_TeeMsg_PieSample4 64385
-#define TeeConst_TeeMsg_PieSample5 64386
-#define TeeConst_TeeMsg_PieSample6 64387
-#define TeeConst_TeeMsg_PieSample7 64388
-#define TeeConst_TeeMsg_PieSample8 64389
-#define TeeConst_TeeMsg_GalleryStandard 64390
-#define TeeConst_TeeMsg_GalleryFunctions 64391
-#define TeeConst_TeeMsg_DefaultFontSize 64392
-#define TeeConst_TeeMsg_FunctionAdd 64393
-#define TeeConst_TeeMsg_FunctionSubtract 64394
-#define TeeConst_TeeMsg_FunctionMultiply 64395
-#define TeeConst_TeeMsg_FunctionDivide 64396
-#define TeeConst_TeeMsg_FunctionHigh 64397
-#define TeeConst_TeeMsg_FunctionLow 64398
-#define TeeConst_TeeMsg_FunctionAverage 64399
-#define TeeConst_TeeMsg_DefPercentFormat 64400
-#define TeeConst_TeeMsg_DefValueFormat 64401
-#define TeeConst_TeeMsg_AxisTitle 64402
-#define TeeConst_TeeMsg_AxisLabels 64403
-#define TeeConst_TeeMsg_RefreshInterval 64404
-#define TeeConst_TeeMsg_SeriesParentNoSelf 64405
-#define TeeConst_TeeMsg_GalleryLine 64406
-#define TeeConst_TeeMsg_GalleryPoint 64407
-#define TeeConst_TeeMsg_GalleryArea 64408
-#define TeeConst_TeeMsg_GalleryBar 64409
-#define TeeConst_TeeMsg_GalleryHorizBar 64410
-#define TeeConst_TeeMsg_GalleryPie 64411
-#define TeeConst_TeeMsg_GalleryFastLine 64412
-#define TeeConst_TeeMsg_Rotation 64413
-#define TeeConst_TeeMsg_PieSample1 64414
-#define TeeConst_TeeMsg_PieSample2 64415
-#define TeeConst_TeeMsg_SeriesInvDataSource 64416
-#define TeeConst_TeeMsg_FillSample 64417
-#define TeeConst_TeeMsg_Angle 64418
-#define TeeConst_TeeMsg_AxisLogDateTime 64419
-#define TeeConst_TeeMsg_AxisLogNotPositive 64420
-#define TeeConst_TeeMsg_AxisLabelSep 64421
-#define TeeConst_TeeMsg_AxisIncrementNeg 64422
-#define TeeConst_TeeMsg_AxisMinMax 64423
-#define TeeConst_TeeMsg_AxisMaxMin 64424
-#define TeeConst_TeeMsg_AxisLogBase 64425
-#define TeeConst_TeeMsg_MaxPointsPerPage 64426
-#define TeeConst_TeeMsg_3dPercent 64427
-#define TeeConst_TeeMsg_CircularSeries 64428
-#define TeeConst_TeeMsg_BarWidthPercent 64429
-#define TeeConst_TeeMsg_BarOffsetPercent 64430
-#define TeeConst_TeeMsg_DefaultPercentOf 64431
-#define pnglang_EPNGIHDRNotFirstText 64432
-#define pnglang_EPNGSizeExceedsText 64433
-#define pnglang_EPNGUnknownPalEntryText 64434
-#define pnglang_EPNGUnknownCriticalChunkText 64435
-#define pnglang_EPNGUnknownCompressionText 64436
-#define pnglang_EPNGUnknownInterlaceText 64437
-#define pnglang_EPNGCannotAssignChunkText 64438
-#define pnglang_EPNGUnexpectedEndText 64439
-#define pnglang_EPNGNoImageDataText 64440
-#define pnglang_EPNGOutMemoryText 64441
-#define pnglang_EPNGHeaderNotPresentText 64442
-#define pnglang_EInvalidNewSize 64443
-#define TeeConst_TeeMsg_LegendTopPos 64444
-#define TeeConst_TeeMsg_LegendFirstValue 64445
-#define TeeConst_TeeMsg_LegendColorWidth 64446
-#define TeeConst_TeeMsg_SeriesSetDataSource 64447
-#define SOAPConst_SInvalidHourOffset 64448
-#define SOAPConst_SInvalidDay 64449
-#define SOAPConst_SInvalidMonth 64450
-#define SOAPConst_SInvalidDuration 64451
-#define SOAPConst_SInvalidTimeOffset 64452
-#define SOAPConst_SInvalidHexValue 64453
-#define xdom_SOddSizeInvalid 64454
-#define xdom_SNegativeSizeInvalid 64455
-#define xdom_SCapacityLessSize 64456
-#define xdom_STargetNil 64457
-#define pnglang_EPngInvalidCRCText 64458
-#define pnglang_EPNGInvalidIHDRText 64459
-#define pnglang_EPNGMissingMultipleIDATText 64460
-#define pnglang_EPNGZLIBErrorText 64461
-#define pnglang_EPNGInvalidPaletteText 64462
-#define pnglang_EPNGInvalidFileHeaderText 64463
-#define XMLConst_SLine 64464
-#define dxStatusBar_cxSTextPanelStyle 64465
-#define dxStatusBar_cxSContainerPanelStyle 64466
-#define dxStatusBar_cxSKeyboardStatePanelStyle 64467
-#define dxStatusBar_cxSStateIndicatorPanelStyle 64468
-#define dxStatusBar_cxSCantDeleteAncestor 64469
-#define ZLibConst_sInvalidStreamOp 64470
-#define ZLibConst_sError 64471
-#define SOAPConst_SNoRTTI 64472
-#define SOAPConst_SNoRTTIParam 64473
-#define SOAPConst_SInvalidDateString 64474
-#define SOAPConst_SInvalidTimeString 64475
-#define SOAPConst_SInvalidHour 64476
-#define SOAPConst_SInvalidMinute 64477
-#define SOAPConst_SInvalidSecond 64478
-#define SOAPConst_SInvalidMillisecond 64479
-#define XMLConst_SINVALID_ACCESS_ERR 64480
-#define XMLConst_SBadTransformArgs 64481
-#define XMLConst_SErrorWritingFile 64482
-#define XMLConst_SUnhandledXercesErr 64483
-#define XMLConst_SDOMError 64484
-#define XMLConst_SNotActive 64485
-#define XMLConst_SNodeNotFound 64486
-#define XMLConst_SMissingNode 64487
-#define XMLConst_SNoAttributes 64488
-#define XMLConst_SInvalidNodeType 64489
-#define XMLConst_SMismatchedRegItems 64490
-#define XMLConst_SNotSingleTextNode 64491
-#define XMLConst_SNoDOMParseOptions 64492
-#define XMLConst_SNodeReadOnly 64493
-#define XMLConst_SNoRefresh 64494
-#define XMLConst_SMissingFileName 64495
-#define XMLConst_SErrorDownloadingURL 64496
-#define XMLConst_SUrlMonDllMissing 64497
-#define XMLConst_SINDEX_SIZE_ERR 64498
-#define XMLConst_SDOMSTRING_SIZE_ERR 64499
-#define XMLConst_SHIERARCHY_REQUEST_ERR 64500
-#define XMLConst_SWRONG_DOCUMENT_ERR 64501
-#define XMLConst_SINVALID_CHARACTER_ERR 64502
-#define XMLConst_SNO_DATA_ALLOWED_ERR 64503
-#define XMLConst_SNO_MODIFICATION_ALLOWED_ERR 64504
-#define XMLConst_SNOT_FOUND_ERR 64505
-#define XMLConst_SNOT_SUPPORTED_ERR 64506
-#define XMLConst_SINUSE_ATTRIBUTE_ERR 64507
-#define XMLConst_SINVALID_STATE_ERR 64508
-#define XMLConst_SSYNTAX_ERR 64509
-#define XMLConst_SINVALID_MODIFICATION_ERR 64510
-#define XMLConst_SNAMESPACE_ERR 64511
+#define TeeConst_TeeMsg_FunctionMultiply 64432
+#define TeeConst_TeeMsg_FunctionDivide 64433
+#define TeeConst_TeeMsg_FunctionHigh 64434
+#define TeeConst_TeeMsg_FunctionLow 64435
+#define TeeConst_TeeMsg_FunctionAverage 64436
+#define TeeConst_TeeMsg_DefaultFontName 64437
+#define TeeConst_TeeMsg_CheckPointerSize 64438
+#define TeeConst_TeeMsg_FunctionPeriod 64439
+#define TeeConst_TeeMsg_PieOther 64440
+#define TeeConst_TeeMsg_ValuesX 64441
+#define TeeConst_TeeMsg_ValuesY 64442
+#define TeeConst_TeeMsg_ValuesPie 64443
+#define TeeConst_TeeMsg_ValuesBar 64444
+#define TeeConst_TeeMsg_ValuesAngle 64445
+#define TeeConst_TeeMsg_GalleryPie 64448
+#define TeeConst_TeeMsg_GalleryFastLine 64449
+#define TeeConst_TeeMsg_Rotation 64450
+#define TeeConst_TeeMsg_PieSample1 64451
+#define TeeConst_TeeMsg_PieSample2 64452
+#define TeeConst_TeeMsg_PieSample3 64453
+#define TeeConst_TeeMsg_PieSample4 64454
+#define TeeConst_TeeMsg_PieSample5 64455
+#define TeeConst_TeeMsg_PieSample6 64456
+#define TeeConst_TeeMsg_PieSample7 64457
+#define TeeConst_TeeMsg_PieSample8 64458
+#define TeeConst_TeeMsg_GalleryStandard 64459
+#define TeeConst_TeeMsg_GalleryFunctions 64460
+#define TeeConst_TeeMsg_DefaultFontSize 64461
+#define TeeConst_TeeMsg_FunctionAdd 64462
+#define TeeConst_TeeMsg_FunctionSubtract 64463
+#define TeeConst_TeeMsg_3dPercent 64464
+#define TeeConst_TeeMsg_CircularSeries 64465
+#define TeeConst_TeeMsg_BarWidthPercent 64466
+#define TeeConst_TeeMsg_BarOffsetPercent 64467
+#define TeeConst_TeeMsg_DefaultPercentOf 64468
+#define TeeConst_TeeMsg_DefPercentFormat 64469
+#define TeeConst_TeeMsg_DefValueFormat 64470
+#define TeeConst_TeeMsg_AxisTitle 64471
+#define TeeConst_TeeMsg_AxisLabels 64472
+#define TeeConst_TeeMsg_RefreshInterval 64473
+#define TeeConst_TeeMsg_SeriesParentNoSelf 64474
+#define TeeConst_TeeMsg_GalleryLine 64475
+#define TeeConst_TeeMsg_GalleryPoint 64476
+#define TeeConst_TeeMsg_GalleryArea 64477
+#define TeeConst_TeeMsg_GalleryBar 64478
+#define TeeConst_TeeMsg_GalleryHorizBar 64479
+#define dxStatusBar_cxSCantDeleteAncestor 64480
+#define TeeConst_TeeMsg_LegendTopPos 64481
+#define TeeConst_TeeMsg_LegendFirstValue 64482
+#define TeeConst_TeeMsg_LegendColorWidth 64483
+#define TeeConst_TeeMsg_SeriesSetDataSource 64484
+#define TeeConst_TeeMsg_SeriesInvDataSource 64485
+#define TeeConst_TeeMsg_FillSample 64486
+#define TeeConst_TeeMsg_Angle 64487
+#define TeeConst_TeeMsg_AxisLogDateTime 64488
+#define TeeConst_TeeMsg_AxisLogNotPositive 64489
+#define TeeConst_TeeMsg_AxisLabelSep 64490
+#define TeeConst_TeeMsg_AxisIncrementNeg 64491
+#define TeeConst_TeeMsg_AxisMinMax 64492
+#define TeeConst_TeeMsg_AxisMaxMin 64493
+#define TeeConst_TeeMsg_AxisLogBase 64494
+#define TeeConst_TeeMsg_MaxPointsPerPage 64495
+#define XMLConst_SNotActive 64496
+#define XMLConst_SNodeNotFound 64497
+#define XMLConst_SMissingNode 64498
+#define XMLConst_SNoAttributes 64499
+#define XMLConst_SInvalidNodeType 64500
+#define XMLConst_SMismatchedRegItems 64501
+#define XMLConst_SNotSingleTextNode 64502
+#define XMLConst_SNoDOMParseOptions 64503
+#define XMLConst_SNodeReadOnly 64504
+#define XMLConst_SNoRefresh 64505
+#define XMLConst_SMissingFileName 64506
+#define XMLConst_SLine 64507
+#define dxStatusBar_cxSTextPanelStyle 64508
+#define dxStatusBar_cxSContainerPanelStyle 64509
+#define dxStatusBar_cxSKeyboardStatePanelStyle 64510
+#define dxStatusBar_cxSStateIndicatorPanelStyle 64511
 #define IdResourceStrings_RSStackETOOMANYREFS 64512
 #define IdResourceStrings_RSStackETIMEDOUT 64513
 #define IdResourceStrings_RSStackECONNREFUSED 64514
@@ -1171,6 +1112,11 @@
 #define SysConst_SEndOfFile 65535
 STRINGTABLE
 BEGIN
+	TeeConst_TeeMsg_FunctionMultiply,	"Multiply"
+	TeeConst_TeeMsg_FunctionDivide,	"Divide"
+	TeeConst_TeeMsg_FunctionHigh,	"High"
+	TeeConst_TeeMsg_FunctionLow,	"Low"
+	TeeConst_TeeMsg_FunctionAverage,	"Average"
 	TeeConst_TeeMsg_DefaultFontName,	"Arial"
 	TeeConst_TeeMsg_CheckPointerSize,	"Pointer size must be greater than zero"
 	TeeConst_TeeMsg_FunctionPeriod,	"Function Period should be >= 0"
@@ -1180,6 +1126,11 @@ BEGIN
 	TeeConst_TeeMsg_ValuesPie,	"Pie"
 	TeeConst_TeeMsg_ValuesBar,	"Bar"
 	TeeConst_TeeMsg_ValuesAngle,	"Angle"
+	TeeConst_TeeMsg_GalleryPie,	"Pie"
+	TeeConst_TeeMsg_GalleryFastLine,	"Fast Line"
+	TeeConst_TeeMsg_Rotation,	"Rotation"
+	TeeConst_TeeMsg_PieSample1,	"Cars"
+	TeeConst_TeeMsg_PieSample2,	"Phones"
 	TeeConst_TeeMsg_PieSample3,	"Tables"
 	TeeConst_TeeMsg_PieSample4,	"Monitors"
 	TeeConst_TeeMsg_PieSample5,	"Lamps"
@@ -1191,11 +1142,11 @@ BEGIN
 	TeeConst_TeeMsg_DefaultFontSize,	"8"
 	TeeConst_TeeMsg_FunctionAdd,	"Add"
 	TeeConst_TeeMsg_FunctionSubtract,	"Subtract"
-	TeeConst_TeeMsg_FunctionMultiply,	"Multiply"
-	TeeConst_TeeMsg_FunctionDivide,	"Divide"
-	TeeConst_TeeMsg_FunctionHigh,	"High"
-	TeeConst_TeeMsg_FunctionLow,	"Low"
-	TeeConst_TeeMsg_FunctionAverage,	"Average"
+	TeeConst_TeeMsg_3dPercent,	"3D effect percent must be between %d and %d"
+	TeeConst_TeeMsg_CircularSeries,	"Circular Series dependences are not allowed"
+	TeeConst_TeeMsg_BarWidthPercent,	"Bar Width Percent must be between 1 and 100"
+	TeeConst_TeeMsg_BarOffsetPercent,	"Bar Offset Percent must be between -100% and 100%"
+	TeeConst_TeeMsg_DefaultPercentOf,	"%s of %s"
 	TeeConst_TeeMsg_DefPercentFormat,	"##0.## %"
 	TeeConst_TeeMsg_DefValueFormat,	"#,##0.###"
 	TeeConst_TeeMsg_AxisTitle,	"Axis Title"
@@ -1207,11 +1158,11 @@ BEGIN
 	TeeConst_TeeMsg_GalleryArea,	"Area"
 	TeeConst_TeeMsg_GalleryBar,	"Bar"
 	TeeConst_TeeMsg_GalleryHorizBar,	"Horiz. Bar"
-	TeeConst_TeeMsg_GalleryPie,	"Pie"
-	TeeConst_TeeMsg_GalleryFastLine,	"Fast Line"
-	TeeConst_TeeMsg_Rotation,	"Rotation"
-	TeeConst_TeeMsg_PieSample1,	"Cars"
-	TeeConst_TeeMsg_PieSample2,	"Phones"
+	dxStatusBar_cxSCantDeleteAncestor,	"Selection contains a component introduced in an ancestor form which cannot be deleted"
+	TeeConst_TeeMsg_LegendTopPos,	"Top Legend Position must be between 0 and 100 %"
+	TeeConst_TeeMsg_LegendFirstValue,	"First Legend Value must be > 0"
+	TeeConst_TeeMsg_LegendColorWidth,	"Legend Color Width must be between 0 and 100 %"
+	TeeConst_TeeMsg_SeriesSetDataSource,	"No ParentChart to validate DataSource"
 	TeeConst_TeeMsg_SeriesInvDataSource,	"No valid DataSource: %s"
 	TeeConst_TeeMsg_FillSample,	"FillSampleValues NumValues must be > 0"
 	TeeConst_TeeMsg_Angle,	"%s Angle must be between 0 and 359 degrees"
@@ -1223,64 +1174,6 @@ BEGIN
 	TeeConst_TeeMsg_AxisMaxMin,	"Axis Maximum Value must be >= Minimum"
 	TeeConst_TeeMsg_AxisLogBase,	"Axis Logarithmic Base should be >= 2"
 	TeeConst_TeeMsg_MaxPointsPerPage,	"MaxPointsPerPage must be >= 0"
-	TeeConst_TeeMsg_3dPercent,	"3D effect percent must be between %d and %d"
-	TeeConst_TeeMsg_CircularSeries,	"Circular Series dependences are not allowed"
-	TeeConst_TeeMsg_BarWidthPercent,	"Bar Width Percent must be between 1 and 100"
-	TeeConst_TeeMsg_BarOffsetPercent,	"Bar Offset Percent must be between -100% and 100%"
-	TeeConst_TeeMsg_DefaultPercentOf,	"%s of %s"
-	pnglang_EPNGIHDRNotFirstText,	"This \"Portable Network Graphics\" image is not supported or it might be invalid.\r\n(IHDR chunk is not the first)"
-	pnglang_EPNGSizeExceedsText,	"This \"Portable Network Graphics\" image is not supported because either it's width or height exceeds the maximum size, which is 65535 pixels length."
-	pnglang_EPNGUnknownPalEntryText,	"There is no such palette entry."
-	pnglang_EPNGUnknownCriticalChunkText,	"This \"Portable Network Graphics\" image contains an unknown critical part which could not be decoded."
-	pnglang_EPNGUnknownCompressionText,	"This \"Portable Network Graphics\" image is encoded with an unknown compression scheme which could not be decoded."
-	pnglang_EPNGUnknownInterlaceText,	"This \"Portable Network Graphics\" image uses an unknown interlace scheme which could not be decoded."
-	pnglang_EPNGCannotAssignChunkText,	"The chunks must be compatible to be assigned."
-	pnglang_EPNGUnexpectedEndText,	"This \"Portable Network Graphics\" image is invalid because the decoder found an unexpected end of the file."
-	pnglang_EPNGNoImageDataText,	"This \"Portable Network Graphics\" image contains no data."
-	pnglang_EPNGOutMemoryText,	"Some operation could not be performed because the system is out of resources. Close some windows and try again."
-	pnglang_EPNGHeaderNotPresentText,	"This operation is not valid because the current image contains no valid header."
-	pnglang_EInvalidNewSize,	"The new size provided for image resizing is invalid."
-	TeeConst_TeeMsg_LegendTopPos,	"Top Legend Position must be between 0 and 100 %"
-	TeeConst_TeeMsg_LegendFirstValue,	"First Legend Value must be > 0"
-	TeeConst_TeeMsg_LegendColorWidth,	"Legend Color Width must be between 0 and 100 %"
-	TeeConst_TeeMsg_SeriesSetDataSource,	"No ParentChart to validate DataSource"
-	SOAPConst_SInvalidHourOffset,	"Invalid hour offset: %d"
-	SOAPConst_SInvalidDay,	"Invalid day: %d"
-	SOAPConst_SInvalidMonth,	"Invalid month: %d"
-	SOAPConst_SInvalidDuration,	"Invalid duration string: %s"
-	SOAPConst_SInvalidTimeOffset,	"Hour Offset portion of time invalid"
-	SOAPConst_SInvalidHexValue,	"%s is not a valid hex string"
-	xdom_SOddSizeInvalid,	"Odd size not valid for WideString"
-	xdom_SNegativeSizeInvalid,	"Negative stream size invalid"
-	xdom_SCapacityLessSize,	"Capacity cannot be less than size"
-	xdom_STargetNil,	"Must have a target stream"
-	pnglang_EPngInvalidCRCText,	"This \"Portable Network Graphics\" image is not valid because it contains invalid pieces of data (crc error)"
-	pnglang_EPNGInvalidIHDRText,	"The \"Portable Network Graphics\" image could not be loaded because one of its main piece of data (ihdr) might be corrupted"
-	pnglang_EPNGMissingMultipleIDATText,	"This \"Portable Network Graphics\" image is invalid because it has missing image parts."
-	pnglang_EPNGZLIBErrorText,	"Could not decompress the image because it contains invalid compressed data.\r\n Description: "
-	pnglang_EPNGInvalidPaletteText,	"The \"Portable Network Graphics\" image contains an invalid palette."
-	pnglang_EPNGInvalidFileHeaderText,	"The file being readed is not a valid \"Portable Network Graphics\" image because it contains an invalid header. This file may be corruped, try obtaining it again."
-	XMLConst_SLine,	"Line"
-	dxStatusBar_cxSTextPanelStyle,	"Text Panel"
-	dxStatusBar_cxSContainerPanelStyle,	"Container Panel"
-	dxStatusBar_cxSKeyboardStatePanelStyle,	"Keyboard State Panel"
-	dxStatusBar_cxSStateIndicatorPanelStyle,	"State Indicator Panel"
-	dxStatusBar_cxSCantDeleteAncestor,	"Selection contains a component introduced in an ancestor form which cannot be deleted"
-	ZLibConst_sInvalidStreamOp,	"Invalid stream operation"
-	ZLibConst_sError,	"Error"
-	SOAPConst_SNoRTTI,	"Interface %s has no RTTI"
-	SOAPConst_SNoRTTIParam,	"Parameter %s on Method %s of Interface %s has no RTTI"
-	SOAPConst_SInvalidDateString,	"Invalid date string: %s"
-	SOAPConst_SInvalidTimeString,	"Invalid time string: %s"
-	SOAPConst_SInvalidHour,	"Invalid hour: %d"
-	SOAPConst_SInvalidMinute,	"Invalid minute: %d"
-	SOAPConst_SInvalidSecond,	"Invalid second: %d"
-	SOAPConst_SInvalidMillisecond,	"Invalid millisecond: %d"
-	XMLConst_SINVALID_ACCESS_ERR,	"Invalid access"
-	XMLConst_SBadTransformArgs,	"TransformNode most be called using a document node (not a document element) for the source and the stylesheet."
-	XMLConst_SErrorWritingFile,	"Error creating file \"%s\""
-	XMLConst_SUnhandledXercesErr,	"Unhandled Xerces DOM error (no message available): %d"
-	XMLConst_SDOMError,	"DOM Error: "
 	XMLConst_SNotActive,	"No active document"
 	XMLConst_SNodeNotFound,	"Node \"%s\" not found"
 	XMLConst_SMissingNode,	"IDOMNode required"
@@ -1292,22 +1185,11 @@ BEGIN
 	XMLConst_SNodeReadOnly,	"Node is readonly"
 	XMLConst_SNoRefresh,	"Refresh is only supported if the FileName or XML properties are set"
 	XMLConst_SMissingFileName,	"FileName cannot be blank"
-	XMLConst_SErrorDownloadingURL,	"Error downloading URL: %s"
-	XMLConst_SUrlMonDllMissing,	"Unable to load %s"
-	XMLConst_SINDEX_SIZE_ERR,	"Invalid string offset"
-	XMLConst_SDOMSTRING_SIZE_ERR,	"Invalid DOMString size"
-	XMLConst_SHIERARCHY_REQUEST_ERR,	"Cannot insert child node"
-	XMLConst_SWRONG_DOCUMENT_ERR,	"Node is owned by a different document"
-	XMLConst_SINVALID_CHARACTER_ERR,	"Invalid character in name"
-	XMLConst_SNO_DATA_ALLOWED_ERR,	"No data allowed"
-	XMLConst_SNO_MODIFICATION_ALLOWED_ERR,	"No modification allowed (readonly data)"
-	XMLConst_SNOT_FOUND_ERR,	"Node not found"
-	XMLConst_SNOT_SUPPORTED_ERR,	"Not supported"
-	XMLConst_SINUSE_ATTRIBUTE_ERR,	"Attribute already associated with another element"
-	XMLConst_SINVALID_STATE_ERR,	"Invalid state"
-	XMLConst_SSYNTAX_ERR,	"Invalid syntax"
-	XMLConst_SINVALID_MODIFICATION_ERR,	"Invalid modification"
-	XMLConst_SNAMESPACE_ERR,	"Invalid namespace request"
+	XMLConst_SLine,	"Line"
+	dxStatusBar_cxSTextPanelStyle,	"Text Panel"
+	dxStatusBar_cxSContainerPanelStyle,	"Container Panel"
+	dxStatusBar_cxSKeyboardStatePanelStyle,	"Keyboard State Panel"
+	dxStatusBar_cxSStateIndicatorPanelStyle,	"State Indicator Panel"
 	IdResourceStrings_RSStackETOOMANYREFS,	"Too many references, cannot splice."
 	IdResourceStrings_RSStackETIMEDOUT,	"Connection timed out."
 	IdResourceStrings_RSStackECONNREFUSED,	"Connection refused."

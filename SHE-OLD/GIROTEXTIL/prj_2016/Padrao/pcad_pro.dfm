@@ -1,40 +1,33 @@
 inherited frmcad_pro: Tfrmcad_pro
-  Left = 286
-  Top = 50
+  Left = 385
+  Top = 52
   Caption = 'Cadastro de Produtos'
-  ClientHeight = 694
+  ClientHeight = 681
   ClientWidth = 1226
   OldCreateOrder = True
   ShowHint = True
   PixelsPerInch = 96
   TextHeight = 14
-  inherited sbMSG: TStatusBar
-    Top = 675
-    Width = 1226
-  end
-  inherited SpeedBar9: TSpeedBar
+  inherited SBMenuPrincipal: TSpeedBar
     Width = 1226
   end
   inherited pnldir: TPanel
     Left = 1225
     Width = 1
-    Height = 561
+    Height = 597
   end
   inherited pnlpri: TPanel
     Width = 1225
-    Height = 561
+    Height = 597
     inherited pnldbg: TPanel
       Width = 1225
-      Height = 300
+      Height = 336
       inherited gbDET: TGroupBox
-        Width = 1225
-        Height = 300
-        inherited SpeedBar1: TSpeedBar
-          Height = 282
-        end
+        Width = 845
+        Height = 336
         inherited DBGConsulta: TdxDBGrid
-          Width = 1172
-          Height = 282
+          Width = 841
+          Height = 315
           KeyField = 'ID'
           ShowGroupPanel = True
           ShowSummaryFooter = True
@@ -86,7 +79,8 @@ inherited frmcad_pro: Tfrmcad_pro
           ShowRowFooter = True
           OnCustomDrawCell = dbgConsultaCustomDrawCell
           object dbgConsultaPRO_CART: TdxDBGridMaskColumn
-            Width = 60
+            MinWidth = 70
+            Width = 70
             BandIndex = 0
             RowIndex = 0
             FieldName = 'PRO_CART'
@@ -96,36 +90,43 @@ inherited frmcad_pro: Tfrmcad_pro
             SummaryGroupName = 'dbgConsultaSummaryGroup1'
           end
           object dbgConsultaPRO_CPRO: TdxDBGridMaskColumn
-            Width = 90
+            MinWidth = 100
+            Width = 100
             BandIndex = 0
             RowIndex = 0
             FieldName = 'PRO_CPRO'
             DisableFilter = True
           end
+          object DBGConsultaPRO_CCLF: TdxDBGridMaskColumn
+            Width = 100
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'PRO_CCLF'
+          end
           object dbgConsultaPRO_DPRO: TdxDBGridMaskColumn
-            Width = 200
+            MinWidth = 250
+            Width = 250
             BandIndex = 0
             RowIndex = 0
             FieldName = 'PRO_DPRO'
             SummaryGroupName = 'dbgConsultaSummaryGroup1'
           end
           object dbgConsultaPRO_DCOR: TdxDBGridMaskColumn
-            Width = 120
+            Width = 130
             BandIndex = 0
             RowIndex = 0
             FieldName = 'PRO_DCOR'
           end
-          object dbgConsultaPRO_DUNI: TdxDBGridMaskColumn
-            Width = 26
+          object dbgConsultaFOR_FANT: TdxDBGridMaskColumn
+            MinWidth = 150
+            Width = 150
             BandIndex = 0
             RowIndex = 0
-            FieldName = 'PRO_DUNI'
-            DisableFilter = True
-            SummaryGroupName = 'dbgConsultaSummaryGroup1'
+            FieldName = 'FOR_FANT'
           end
           object dbgConsultaPRO_PREC: TdxDBGridMaskColumn
             HeaderAlignment = taRightJustify
-            Width = 67
+            Width = 70
             BandIndex = 0
             RowIndex = 0
             FieldName = 'PRO_PREC'
@@ -134,64 +135,30 @@ inherited frmcad_pro: Tfrmcad_pro
             SummaryFooterFormat = '#,0.00'
             DisableFilter = True
           end
+          object dbgConsultaPRO_DUNI: TdxDBGridMaskColumn
+            Width = 50
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'PRO_DUNI'
+            DisableFilter = True
+            SummaryGroupName = 'dbgConsultaSummaryGroup1'
+          end
           object dbgConsultaPRO_DGRP: TdxDBGridMaskColumn
-            Width = 173
+            Width = 250
             BandIndex = 0
             RowIndex = 0
             FieldName = 'PRO_DGRP'
             SummaryGroupName = 'dbgConsultaSummaryGroup1'
           end
-          object dbgConsultaFOR_FANT: TdxDBGridMaskColumn
-            Width = 120
-            BandIndex = 0
-            RowIndex = 0
-            FieldName = 'FOR_FANT'
-          end
-          object dbgConsultaPRO_DCAD: TdxDBGridDateColumn
-            Width = 74
-            BandIndex = 0
-            RowIndex = 0
-            FieldName = 'PRO_DCAD'
-          end
-          object dbgConsultaPRO_DENT: TdxDBGridDateColumn
-            Width = 74
-            BandIndex = 0
-            RowIndex = 0
-            FieldName = 'PRO_DENT'
-          end
-          object dbgConsultaPRO_DULT: TdxDBGridDateColumn
-            Width = 74
-            BandIndex = 0
-            RowIndex = 0
-            FieldName = 'PRO_DULT'
-          end
-          object dbgConsultaPRO_DALT: TdxDBGridDateColumn
-            Width = 74
-            BandIndex = 0
-            RowIndex = 0
-            FieldName = 'PRO_DALT'
-          end
           object dbgConsultaPRO_DCAT: TdxDBGridMaskColumn
-            Width = 77
+            Width = 250
             BandIndex = 0
             RowIndex = 0
             FieldName = 'PRO_DCAT'
           end
-          object dbgConsultaPRO_DCOL: TdxDBGridMaskColumn
-            Width = 112
-            BandIndex = 0
-            RowIndex = 0
-            FieldName = 'PRO_DCOL'
-          end
-          object dbgConsultaPRO_DUSU: TdxDBGridMaskColumn
-            Width = 66
-            BandIndex = 0
-            RowIndex = 0
-            FieldName = 'PRO_DUSU'
-          end
           object dbgConsultaPRO_GRAD: TdxDBGridMaskColumn
             Visible = False
-            Width = 57
+            Width = 58
             BandIndex = 0
             RowIndex = 0
             FieldName = 'PRO_GRAD'
@@ -202,26 +169,87 @@ inherited frmcad_pro: Tfrmcad_pro
             RowIndex = 0
             FieldName = 'STAV'
           end
-          object dbgConsultaID: TdxDBGridMaskColumn
-            Visible = False
+          object dbgConsultaPRO_DCAD: TdxDBGridDateColumn
             Width = 74
             BandIndex = 0
             RowIndex = 0
-            FieldName = 'ID'
-            DisableFilter = True
+            FieldName = 'PRO_DCAD'
+          end
+          object dbgConsultaPRO_DALT: TdxDBGridDateColumn
+            Width = 74
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'PRO_DALT'
+          end
+          object dbgConsultaPRO_DENT: TdxDBGridDateColumn
+            Width = 74
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'PRO_DENT'
+          end
+          object dbgConsultaPRO_DPRG: TdxDBGridDateColumn
+            Width = 95
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'PRO_DPRG'
+          end
+          object dbgConsultaPRO_DULT: TdxDBGridDateColumn
+            Width = 74
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'PRO_DULT'
+          end
+          object dbgConsultaPRO_DUSU: TdxDBGridMaskColumn
+            Width = 120
+            BandIndex = 0
+            RowIndex = 0
+            FieldName = 'PRO_DUSU'
+          end
+        end
+      end
+      inherited GBMenuEdicao: TGroupBox
+        Height = 336
+        TabOrder = 2
+        inherited SBMenuEdicao: TSpeedBar
+          Height = 315
+        end
+      end
+      object pnlfoto: TPanel
+        Left = 899
+        Top = 0
+        Width = 326
+        Height = 336
+        Align = alRight
+        TabOrder = 1
+        object GroupBox2: TGroupBox
+          Left = 1
+          Top = 1
+          Width = 324
+          Height = 334
+          Align = alClient
+          Caption = 'Imagem do Produto'
+          TabOrder = 0
+          object imag: TImage
+            Left = 2
+            Top = 16
+            Width = 320
+            Height = 316
+            Align = alClient
+            Stretch = True
+            OnClick = imagClick
           end
         end
       end
     end
     inherited pnlbot: TPanel
-      Top = 300
+      Top = 336
       Width = 1225
       Height = 261
       Visible = True
       object GroupBox1: TGroupBox
         Left = 0
         Top = 0
-        Width = 975
+        Width = 1225
         Height = 261
         Align = alClient
         Caption = 'Estoque'
@@ -229,9 +257,9 @@ inherited frmcad_pro: Tfrmcad_pro
         object pcEST: TdxPageControl
           Left = 2
           Top = 16
-          Width = 971
+          Width = 1221
           Height = 243
-          ActivePage = TSEST
+          ActivePage = tsGER
           Align = alClient
           HideButtons = False
           HotTrack = False
@@ -243,12 +271,12 @@ inherited frmcad_pro: Tfrmcad_pro
           TabOrder = 0
           TabPosition = dxtpTop
           TabWidth = 0
-          object TSEST: TdxTabSheet
-            Caption = 'Estoque'
+          object tsGER: TdxTabSheet
+            Caption = 'Sum'#225'rio'
             object DBGEstoque: TdxDBGrid
               Left = 0
               Top = 0
-              Width = 971
+              Width = 1221
               Height = 219
               Bands = <
                 item
@@ -328,6 +356,15 @@ inherited frmcad_pro: Tfrmcad_pro
                 FieldName = 'C_QDIS'
                 DisableFilter = True
               end
+              object DBGEstoqueC_RDIS: TdxDBGridColumn
+                Color = 12910532
+                HeaderAlignment = taRightJustify
+                Width = 40
+                BandIndex = 0
+                RowIndex = 0
+                FieldName = 'C_RDIS'
+                DisableFilter = True
+              end
               object DBGEstoqueC_QDEF: TdxDBGridColumn
                 Color = 5197823
                 Font.Charset = ANSI_CHARSET
@@ -342,12 +379,34 @@ inherited frmcad_pro: Tfrmcad_pro
                 FieldName = 'C_QDEF'
                 DisableFilter = True
               end
+              object DBGEstoqueC_RDEF: TdxDBGridColumn
+                Color = 5197823
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWhite
+                Font.Height = -12
+                Font.Name = 'Tahoma'
+                Font.Style = []
+                HeaderAlignment = taRightJustify
+                Width = 40
+                BandIndex = 0
+                RowIndex = 0
+                FieldName = 'C_RDEF'
+                DisableFilter = True
+              end
               object DBGEstoqueC_QEST: TdxDBGridColumn
                 HeaderAlignment = taRightJustify
                 Width = 80
                 BandIndex = 0
                 RowIndex = 0
                 FieldName = 'C_QEST'
+                DisableFilter = True
+              end
+              object DBGEstoqueC_REST: TdxDBGridColumn
+                HeaderAlignment = taRightJustify
+                Width = 40
+                BandIndex = 0
+                RowIndex = 0
+                FieldName = 'C_REST'
                 DisableFilter = True
               end
               object DBGEstoqueC_QRES: TdxDBGridColumn
@@ -359,6 +418,15 @@ inherited frmcad_pro: Tfrmcad_pro
                 FieldName = 'C_QRES'
                 DisableFilter = True
               end
+              object DBGEstoqueC_RRES: TdxDBGridColumn
+                Color = 12713983
+                HeaderAlignment = taRightJustify
+                Width = 40
+                BandIndex = 0
+                RowIndex = 0
+                FieldName = 'C_RRES'
+                DisableFilter = True
+              end
               object DBGEstoqueC_QSEP: TdxDBGridColumn
                 Color = 12713983
                 HeaderAlignment = taRightJustify
@@ -366,6 +434,47 @@ inherited frmcad_pro: Tfrmcad_pro
                 BandIndex = 0
                 RowIndex = 0
                 FieldName = 'C_QSEP'
+                DisableFilter = True
+              end
+              object DBGEstoqueC_RSEP: TdxDBGridColumn
+                Color = 12713983
+                HeaderAlignment = taRightJustify
+                Width = 40
+                BandIndex = 0
+                RowIndex = 0
+                FieldName = 'C_RSEP'
+                DisableFilter = True
+              end
+              object DBGEstoqueC_QCOM: TdxDBGridColumn
+                HeaderAlignment = taRightJustify
+                Width = 85
+                BandIndex = 0
+                RowIndex = 0
+                FieldName = 'C_QCOM'
+                DisableFilter = True
+              end
+              object DBGEstoqueC_RCOM: TdxDBGridColumn
+                HeaderAlignment = taRightJustify
+                Width = 40
+                BandIndex = 0
+                RowIndex = 0
+                FieldName = 'C_RCOM'
+                DisableFilter = True
+              end
+              object DBGEstoqueC_QPRG: TdxDBGridColumn
+                HeaderAlignment = taRightJustify
+                Width = 85
+                BandIndex = 0
+                RowIndex = 0
+                FieldName = 'C_QPRG'
+                DisableFilter = True
+              end
+              object DBGEstoqueC_RPRG: TdxDBGridColumn
+                HeaderAlignment = taRightJustify
+                Width = 40
+                BandIndex = 0
+                RowIndex = 0
+                FieldName = 'C_RPRG'
                 DisableFilter = True
               end
               object DBGEstoqueC_QSLD: TdxDBGridColumn
@@ -377,6 +486,15 @@ inherited frmcad_pro: Tfrmcad_pro
                 FieldName = 'C_QSLD'
                 DisableFilter = True
               end
+              object DBGEstoqueC_RSLD: TdxDBGridColumn
+                Color = 12910532
+                HeaderAlignment = taRightJustify
+                Width = 40
+                BandIndex = 0
+                RowIndex = 0
+                FieldName = 'C_RSLD'
+                DisableFilter = True
+              end
               object DBGEstoquePRO_STAV: TdxDBGridMaskColumn
                 Visible = False
                 BandIndex = 0
@@ -385,350 +503,861 @@ inherited frmcad_pro: Tfrmcad_pro
               end
             end
           end
-          object TSRES: TdxTabSheet
-            Caption = 'Reservados'
-            object dbgres: TdxDBGrid
+          object tsMOV: TdxTabSheet
+            Caption = 'Movimenta'#231#245'es'
+            object pcMOV: TdxPageControl
               Left = 0
               Top = 0
-              Width = 971
+              Width = 1221
               Height = 219
-              Bands = <
-                item
-                end>
-              DefaultLayout = True
-              HeaderPanelRowCount = 1
-              KeyField = 'ID'
-              ShowSummaryFooter = True
-              SummaryGroups = <>
-              SummarySeparator = ', '
+              ActivePage = dxTabSheet1
               Align = alClient
-              Color = 13158600
-              Ctl3D = True
-              ParentCtl3D = False
+              HideButtons = False
+              HotTrack = False
+              MultiLine = False
+              OwnerDraw = False
+              RaggedRight = False
+              ScrollOpposite = False
+              TabHeight = 0
               TabOrder = 0
-              AutoSearchColor = 9395
-              AutoSearchTextColor = clWhite
-              DataSource = dtscad_pro_res
-              Filter.Active = True
-              Filter.Criteria = {00000000}
-              GridLineColor = clSilver
-              HideSelectionColor = 14789952
-              HighlightColor = 14789952
-              LookAndFeel = lfUltraFlat
-              OptionsBehavior = [edgoAutoSearch, edgoAutoSort, edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEnterShowEditor, edgoImmediateEditor, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
-              OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
-              OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
-              OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoPreview, edgoRowSelect, edgoUseBitmap]
-              ShowRowFooter = True
-              object dbgresPRO_CPRO: TdxDBGridMaskColumn
-                Width = 120
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'PRO_CPRO'
-                SummaryFooterType = cstCount
-                SummaryFooterField = 'ID'
-                SummaryFooterFormat = '0'
+              TabPosition = dxtpTop
+              TabWidth = 0
+              object dxTabSheet1: TdxTabSheet
+                Caption = 'Reservados'
+                object dbgres: TdxDBGrid
+                  Left = 0
+                  Top = 0
+                  Width = 1221
+                  Height = 195
+                  Bands = <
+                    item
+                    end>
+                  DefaultLayout = True
+                  HeaderPanelRowCount = 1
+                  KeyField = 'ID'
+                  ShowSummaryFooter = True
+                  SummaryGroups = <>
+                  SummarySeparator = ', '
+                  Align = alClient
+                  Color = 13158600
+                  Ctl3D = True
+                  ParentCtl3D = False
+                  TabOrder = 0
+                  AutoSearchColor = 9395
+                  AutoSearchTextColor = clWhite
+                  DataSource = dtscad_pro_res
+                  Filter.Active = True
+                  Filter.Criteria = {00000000}
+                  GridLineColor = clSilver
+                  HideSelectionColor = 14789952
+                  HighlightColor = 14789952
+                  LookAndFeel = lfUltraFlat
+                  OptionsBehavior = [edgoAutoSearch, edgoAutoSort, edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEnterShowEditor, edgoImmediateEditor, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
+                  OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
+                  OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
+                  OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoPreview, edgoRowSelect, edgoUseBitmap]
+                  ShowRowFooter = True
+                  object dbgresPRO_CPRO: TdxDBGridMaskColumn
+                    Width = 120
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'PRO_CPRO'
+                    SummaryFooterType = cstCount
+                    SummaryFooterField = 'ID'
+                    SummaryFooterFormat = '0'
+                  end
+                  object dbgresPRO_DCOR: TdxDBGridMaskColumn
+                    Width = 200
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'PRO_DCOR'
+                  end
+                  object dbgresEST_CRED: TdxDBGridMaskColumn
+                    Color = 7397120
+                    HeaderAlignment = taRightJustify
+                    Width = 80
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_CRED'
+                    SummaryFooterType = cstSum
+                    SummaryFooterField = 'EST_CRED'
+                    SummaryFooterFormat = '#,0.00'
+                    DisableFilter = True
+                  end
+                  object dbgresROM_DERO: TdxDBGridMaskColumn
+                    Color = 15658734
+                    Width = 70
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'ROM_DERO'
+                  end
+                  object dbgresEST_DROM: TdxDBGridDateColumn
+                    Color = 15658734
+                    Width = 74
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DROM'
+                    DisableFilter = True
+                  end
+                  object dbgresEST_DUSU: TdxDBGridMaskColumn
+                    Color = 15658734
+                    Width = 150
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DUSU'
+                  end
+                  object dbgresEST_DFAV: TdxDBGridMaskColumn
+                    Color = 15658734
+                    Width = 300
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DFAV'
+                  end
+                end
               end
-              object dbgresPRO_DCOR: TdxDBGridMaskColumn
-                Width = 200
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'PRO_DCOR'
+              object tsSEP: TdxTabSheet
+                Caption = 'Separados'
+                TabVisible = False
+                object dbgsep: TdxDBGrid
+                  Left = 0
+                  Top = 0
+                  Width = 1221
+                  Height = 195
+                  Bands = <
+                    item
+                    end>
+                  DefaultLayout = True
+                  HeaderPanelRowCount = 1
+                  KeyField = 'ID'
+                  ShowSummaryFooter = True
+                  SummaryGroups = <>
+                  SummarySeparator = ', '
+                  Align = alClient
+                  Color = 13158600
+                  Ctl3D = True
+                  ParentCtl3D = False
+                  TabOrder = 0
+                  AutoSearchColor = 9395
+                  AutoSearchTextColor = clWhite
+                  DataSource = dtscad_pro_sep
+                  Filter.Active = True
+                  Filter.Criteria = {00000000}
+                  GridLineColor = clSilver
+                  HideSelectionColor = 14789952
+                  HighlightColor = 14789952
+                  LookAndFeel = lfUltraFlat
+                  OptionsBehavior = [edgoAutoSearch, edgoAutoSort, edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEnterShowEditor, edgoImmediateEditor, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
+                  OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
+                  OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
+                  OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoPreview, edgoRowSelect, edgoUseBitmap]
+                  ShowRowFooter = True
+                  object dbgsepPRO_CPRO: TdxDBGridMaskColumn
+                    Width = 120
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'PRO_CPRO'
+                    SummaryFooterType = cstCount
+                    SummaryFooterField = 'ID'
+                    SummaryFooterFormat = '0'
+                    DisableFilter = True
+                  end
+                  object dbgsepPRO_DCOR: TdxDBGridMaskColumn
+                    Width = 200
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'PRO_DCOR'
+                  end
+                  object dbgsepEST_CRED: TdxDBGridMaskColumn
+                    HeaderAlignment = taRightJustify
+                    Width = 80
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_CRED'
+                    SummaryFooterType = cstSum
+                    SummaryFooterField = 'EST_CRED'
+                    SummaryFooterFormat = '#,0.00'
+                    DisableFilter = True
+                  end
+                  object dbgsepEST_CDET: TdxDBGridMaskColumn
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_CDET'
+                    DisableFilter = True
+                  end
+                  object dbgsepEST_DSEP: TdxDBGridMaskColumn
+                    Width = 80
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DSEP'
+                  end
+                  object dbgsepROM_DERO: TdxDBGridMaskColumn
+                    Width = 70
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'ROM_DERO'
+                    DisableFilter = True
+                  end
+                  object dbgsepEST_DROM: TdxDBGridDateColumn
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DROM'
+                    DisableFilter = True
+                  end
+                  object dbgsepEST_DCAD: TdxDBGridDateColumn
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DCAD'
+                    DisableFilter = True
+                  end
+                  object dbgsepEST_DUSU: TdxDBGridMaskColumn
+                    Width = 100
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DUSU'
+                  end
+                  object dbgsepEST_DFAV: TdxDBGridMaskColumn
+                    Width = 250
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DFAV'
+                  end
+                end
               end
-              object dbgresEST_CRED: TdxDBGridMaskColumn
-                Color = 7397120
-                HeaderAlignment = taRightJustify
-                Width = 80
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_CRED'
-                SummaryFooterType = cstSum
-                SummaryFooterField = 'EST_CRED'
-                SummaryFooterFormat = '#,0.00'
-                DisableFilter = True
+              object tsENT: TdxTabSheet
+                Caption = 'Entradas'
+                object dbgent: TdxDBGrid
+                  Left = 0
+                  Top = 0
+                  Width = 1221
+                  Height = 195
+                  Bands = <
+                    item
+                    end>
+                  DefaultLayout = True
+                  HeaderPanelRowCount = 1
+                  KeyField = 'ID'
+                  ShowSummaryFooter = True
+                  SummaryGroups = <>
+                  SummarySeparator = ', '
+                  Align = alClient
+                  Color = 12171705
+                  Ctl3D = True
+                  ParentCtl3D = False
+                  TabOrder = 0
+                  AutoSearchColor = 9395
+                  AutoSearchTextColor = clWhite
+                  DataSource = dtscad_pro_ent
+                  Filter.Active = True
+                  Filter.Criteria = {00000000}
+                  GridLineColor = clSilver
+                  HideSelectionColor = 14789952
+                  HighlightColor = 14789952
+                  LookAndFeel = lfUltraFlat
+                  OptionsBehavior = [edgoAutoSearch, edgoAutoSort, edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEnterShowEditor, edgoImmediateEditor, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
+                  OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
+                  OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
+                  OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoPreview, edgoRowSelect, edgoUseBitmap]
+                  ShowRowFooter = True
+                  object dbgentPRO_CPRO: TdxDBGridMaskColumn
+                    Color = 13158600
+                    Width = 120
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'PRO_CPRO'
+                    SummaryFooterType = cstCount
+                    SummaryFooterField = 'ID'
+                    SummaryFooterFormat = '0'
+                  end
+                  object dbgentPRO_DCOR: TdxDBGridMaskColumn
+                    Color = 13158600
+                    Width = 200
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'PRO_DCOR'
+                  end
+                  object dbgentEST_CRED: TdxDBGridMaskColumn
+                    Color = 7397120
+                    HeaderAlignment = taRightJustify
+                    Width = 80
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_CRED'
+                    SummaryFooterType = cstSum
+                    SummaryFooterField = 'EST_CRED'
+                    SummaryFooterFormat = '#,0.00'
+                    DisableFilter = True
+                  end
+                  object dbgentEST_CDET: TdxDBGridMaskColumn
+                    Color = 7397120
+                    Width = 80
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_CDET'
+                    DisableFilter = True
+                  end
+                  object dbgentEST_DSEP: TdxDBGridMaskColumn
+                    Color = 7397120
+                    Width = 150
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DSEP'
+                  end
+                  object dbgentEST_CDRO: TdxDBGridMaskColumn
+                    Color = 15658734
+                    Width = 80
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_CDRO'
+                  end
+                  object dbgentEST_DCAD: TdxDBGridDateColumn
+                    Color = 15658734
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DCAD'
+                    DisableFilter = True
+                  end
+                  object dbgentEST_DUSU: TdxDBGridMaskColumn
+                    Color = 15658734
+                    Width = 150
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DUSU'
+                  end
+                  object dbgentEST_DMAP: TdxDBGridMaskColumn
+                    Color = 15658734
+                    Width = 120
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DMAP'
+                  end
+                  object dbgentEST_CTNR: TdxDBGridMaskColumn
+                    Color = 15658734
+                    Width = 100
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_CTNR'
+                  end
+                  object dbgentEST_LOTE: TdxDBGridMaskColumn
+                    Color = 15658734
+                    Width = 80
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_LOTE'
+                  end
+                end
               end
-              object dbgresROM_DERO: TdxDBGridMaskColumn
-                Color = 15658734
-                Width = 70
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'ROM_DERO'
+              object tsSAI: TdxTabSheet
+                Caption = 'Sa'#237'das'
+                object dbgsai: TdxDBGrid
+                  Left = 0
+                  Top = 0
+                  Width = 1221
+                  Height = 195
+                  Bands = <
+                    item
+                    end>
+                  DefaultLayout = True
+                  HeaderPanelRowCount = 1
+                  KeyField = 'ID'
+                  ShowSummaryFooter = True
+                  SummaryGroups = <>
+                  SummarySeparator = ', '
+                  Align = alClient
+                  Color = 12171705
+                  Ctl3D = True
+                  ParentCtl3D = False
+                  TabOrder = 0
+                  AutoSearchColor = 9395
+                  AutoSearchTextColor = clWhite
+                  DataSource = dtscad_pro_sai
+                  Filter.Active = True
+                  Filter.Criteria = {00000000}
+                  GridLineColor = clSilver
+                  HideSelectionColor = 14789952
+                  HighlightColor = 14789952
+                  LookAndFeel = lfUltraFlat
+                  OptionsBehavior = [edgoAutoSearch, edgoAutoSort, edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEnterShowEditor, edgoImmediateEditor, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
+                  OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
+                  OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
+                  OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoPreview, edgoRowSelect, edgoUseBitmap]
+                  ShowRowFooter = True
+                  object dbgsaiPRO_CPRO: TdxDBGridMaskColumn
+                    Color = 13158600
+                    Width = 120
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'PRO_CPRO'
+                    SummaryFooterType = cstCount
+                    SummaryFooterField = 'ID'
+                    SummaryFooterFormat = '0'
+                  end
+                  object dbgsaiPRO_DCOR: TdxDBGridMaskColumn
+                    Color = 13158600
+                    Width = 200
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'PRO_DCOR'
+                  end
+                  object dbgsaiEST_DEBI: TdxDBGridMaskColumn
+                    Color = 7397120
+                    DisableEditor = True
+                    HeaderAlignment = taRightJustify
+                    Width = 80
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DEBI'
+                    SummaryFooterType = cstSum
+                    SummaryFooterField = 'EST_DEBI'
+                    SummaryFooterFormat = '#,0.00'
+                    DisableFilter = True
+                  end
+                  object dbgsaiEST_CDET: TdxDBGridMaskColumn
+                    Color = 7397120
+                    DisableEditor = True
+                    Width = 80
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_CDET'
+                    DisableFilter = True
+                  end
+                  object dbgsaiEST_DSEP: TdxDBGridMaskColumn
+                    Color = 7397120
+                    Width = 150
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DSEP'
+                  end
+                  object dbgsaiEST_DOCU: TdxDBGridMaskColumn
+                    Color = 15658734
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DOCU'
+                  end
+                  object dbgsaiEST_DATA: TdxDBGridColumn
+                    Color = 15658734
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DATA'
+                    DisableFilter = True
+                  end
+                  object dbgsaiEST_DUSU: TdxDBGridMaskColumn
+                    Color = 15658734
+                    Width = 150
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DUSU'
+                  end
+                  object dbgsaiEST_DFAV: TdxDBGridMaskColumn
+                    Color = 15658734
+                    Width = 250
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DFAV'
+                  end
+                  object dbgsaiEST_DMAP: TdxDBGridMaskColumn
+                    Color = 15658734
+                    Width = 120
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DMAP'
+                  end
+                  object dbgsaiEST_CTNR: TdxDBGridMaskColumn
+                    Color = 15658734
+                    Width = 100
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_CTNR'
+                  end
+                  object dbgsaiEST_LOTE: TdxDBGridMaskColumn
+                    Color = 15658734
+                    Width = 80
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_LOTE'
+                  end
+                end
               end
-              object dbgresEST_DROM: TdxDBGridDateColumn
-                Color = 15658734
-                Width = 74
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_DROM'
-                DisableFilter = True
-              end
-              object dbgresEST_DUSU: TdxDBGridMaskColumn
-                Color = 15658734
-                Width = 150
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_DUSU'
-              end
-              object dbgresEST_DFAV: TdxDBGridMaskColumn
-                Color = 15658734
-                Width = 300
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_DFAV'
+              object tsDEF: TdxTabSheet
+                Caption = 'Defeitos'
+                object dbgdef: TdxDBGrid
+                  Left = 0
+                  Top = 0
+                  Width = 1221
+                  Height = 195
+                  Bands = <
+                    item
+                    end>
+                  DefaultLayout = True
+                  HeaderPanelRowCount = 1
+                  KeyField = 'ID'
+                  ShowSummaryFooter = True
+                  SummaryGroups = <>
+                  SummarySeparator = ', '
+                  Align = alClient
+                  Color = clRed
+                  Ctl3D = True
+                  ParentCtl3D = False
+                  TabOrder = 0
+                  AutoSearchColor = 9395
+                  AutoSearchTextColor = clWhite
+                  DataSource = dtscad_pro_def
+                  Filter.Active = True
+                  Filter.Criteria = {00000000}
+                  GridLineColor = clSilver
+                  HideSelectionColor = 14789952
+                  HighlightColor = 14789952
+                  LookAndFeel = lfUltraFlat
+                  OptionsBehavior = [edgoAutoSearch, edgoAutoSort, edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEnterShowEditor, edgoImmediateEditor, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
+                  OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
+                  OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
+                  OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoPreview, edgoRowSelect, edgoUseBitmap]
+                  ShowRowFooter = True
+                  object dbgdefPRO_CPRO: TdxDBGridMaskColumn
+                    Font.Charset = ANSI_CHARSET
+                    Font.Color = clWhite
+                    Font.Height = -12
+                    Font.Name = 'Tahoma'
+                    Font.Style = []
+                    Width = 120
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'PRO_CPRO'
+                    SummaryFooterType = cstCount
+                    SummaryFooterField = 'ID'
+                    SummaryFooterFormat = '0'
+                  end
+                  object dbgdefPRO_DCOR: TdxDBGridMaskColumn
+                    Font.Charset = ANSI_CHARSET
+                    Font.Color = clWhite
+                    Font.Height = -12
+                    Font.Name = 'Tahoma'
+                    Font.Style = []
+                    Width = 200
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'PRO_DCOR'
+                  end
+                  object dbgdefEST_CRED: TdxDBGridMaskColumn
+                    Font.Charset = ANSI_CHARSET
+                    Font.Color = clWhite
+                    Font.Height = -12
+                    Font.Name = 'Tahoma'
+                    Font.Style = []
+                    HeaderAlignment = taRightJustify
+                    Width = 80
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_CRED'
+                    SummaryFooterType = cstSum
+                    SummaryFooterField = 'EST_CRED'
+                    SummaryFooterFormat = '#,0.00'
+                    DisableFilter = True
+                  end
+                  object dbgdefEST_CDET: TdxDBGridMaskColumn
+                    Font.Charset = ANSI_CHARSET
+                    Font.Color = clWhite
+                    Font.Height = -12
+                    Font.Name = 'Tahoma'
+                    Font.Style = []
+                    Width = 74
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_CDET'
+                    DisableFilter = True
+                  end
+                  object dbgdefEST_DUSU: TdxDBGridMaskColumn
+                    Font.Charset = ANSI_CHARSET
+                    Font.Color = clWhite
+                    Font.Height = -12
+                    Font.Name = 'Tahoma'
+                    Font.Style = []
+                    Width = 120
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DUSU'
+                  end
+                  object dbgdefPRO_TIPO: TdxDBGridMaskColumn
+                    Width = 262
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'PRO_TIPO'
+                  end
+                  object dbgdefEST_DMAP: TdxDBGridMaskColumn
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DMAP'
+                  end
+                  object dbgdefEST_CTNR: TdxDBGridMaskColumn
+                    Width = 100
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_CTNR'
+                  end
+                  object dbgdefEST_LOTE: TdxDBGridMaskColumn
+                    Width = 100
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_LOTE'
+                  end
+                end
               end
             end
           end
-          object TSENT: TdxTabSheet
-            Caption = 'Entradas'
-            object dbgent: TdxDBGrid
+          object tsPRGS: TdxTabSheet
+            Caption = 'Programa'#231#245'es'
+            object pcprg: TdxPageControl
               Left = 0
               Top = 0
-              Width = 971
+              Width = 1221
               Height = 219
-              Bands = <
-                item
-                end>
-              DefaultLayout = True
-              HeaderPanelRowCount = 1
-              KeyField = 'ID'
-              ShowSummaryFooter = True
-              SummaryGroups = <>
-              SummarySeparator = ', '
+              ActivePage = tsprc
               Align = alClient
-              Color = 12171705
-              Ctl3D = True
-              ParentCtl3D = False
+              HideButtons = False
+              HotTrack = False
+              MultiLine = False
+              OwnerDraw = False
+              RaggedRight = False
+              ScrollOpposite = False
+              TabHeight = 0
               TabOrder = 0
-              AutoSearchColor = 9395
-              AutoSearchTextColor = clWhite
-              DataSource = dtscad_pro_ent
-              Filter.Active = True
-              Filter.Criteria = {00000000}
-              GridLineColor = clSilver
-              HideSelectionColor = 14789952
-              HighlightColor = 14789952
-              LookAndFeel = lfUltraFlat
-              OptionsBehavior = [edgoAutoSearch, edgoAutoSort, edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEnterShowEditor, edgoImmediateEditor, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
-              OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
-              OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
-              OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoPreview, edgoRowSelect, edgoUseBitmap]
-              ShowRowFooter = True
-              object dbgentPRO_CPRO: TdxDBGridMaskColumn
-                Color = 13158600
-                Width = 120
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'PRO_CPRO'
-                SummaryFooterType = cstCount
-                SummaryFooterField = 'ID'
-                SummaryFooterFormat = '0'
+              TabPosition = dxtpTop
+              TabWidth = 0
+              object tsprc: TdxTabSheet
+                Caption = 'Compras'
+                object dbgprc: TdxDBGrid
+                  Left = 0
+                  Top = 0
+                  Width = 1221
+                  Height = 176
+                  Bands = <
+                    item
+                    end>
+                  DefaultLayout = True
+                  HeaderMinRowCount = 2
+                  HeaderPanelRowCount = 1
+                  KeyField = 'ID'
+                  ShowSummaryFooter = True
+                  SummaryGroups = <>
+                  SummarySeparator = ', '
+                  Align = alClient
+                  Color = 14211288
+                  Ctl3D = True
+                  ParentCtl3D = False
+                  TabOrder = 0
+                  AutoSearchColor = 9395
+                  AutoSearchTextColor = clWhite
+                  DataSource = dtscad_pro_prc
+                  Filter.Active = True
+                  Filter.Criteria = {00000000}
+                  GridLineColor = clSilver
+                  HideSelectionColor = 14789952
+                  HighlightColor = 14789952
+                  LookAndFeel = lfUltraFlat
+                  OptionsBehavior = [edgoAutoSearch, edgoAutoSort, edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEnterShowEditor, edgoImmediateEditor, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
+                  OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
+                  OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
+                  OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoPreview, edgoRowSelect, edgoUseBitmap]
+                  ShowRowFooter = True
+                  object dbgprcPRO_CPRO: TdxDBGridMaskColumn
+                    Width = 120
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'PRO_CPRO'
+                    SummaryFooterType = cstCount
+                    SummaryFooterField = 'ID'
+                    SummaryFooterFormat = '0'
+                  end
+                  object dbgprcROM_DCOR: TdxDBGridMaskColumn
+                    Width = 200
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'ROM_DCOR'
+                  end
+                  object dbgprcROM_QTDE: TdxDBGridMaskColumn
+                    Color = 7397120
+                    HeaderAlignment = taRightJustify
+                    Width = 80
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'ROM_QTDE'
+                    SummaryFooterType = cstSum
+                    SummaryFooterField = 'ROM_QTDE'
+                    SummaryFooterFormat = '#,0.00'
+                    DisableFilter = True
+                  end
+                  object dbgprcROM_QTPD: TdxDBGridMaskColumn
+                    Color = 7397120
+                    HeaderAlignment = taRightJustify
+                    Width = 80
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'ROM_QTPD'
+                    SummaryFooterType = cstSum
+                    SummaryFooterField = 'ROM_QTPD'
+                    SummaryFooterFormat = '#,0.00'
+                    DisableFilter = True
+                  end
+                  object dbgprcROM_DERO: TdxDBGridMaskColumn
+                    Width = 70
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'ROM_DERO'
+                  end
+                  object dbgprcFUN_APEL: TdxDBGridMaskColumn
+                    Width = 96
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'FUN_APEL'
+                  end
+                  object dbgprcROM_DROM: TdxDBGridDateColumn
+                    Color = clWhite
+                    Width = 91
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'ROM_DROM'
+                  end
+                  object dbgprcROM_DDES: TdxDBGridDateColumn
+                    Width = 98
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'ROM_DDES'
+                  end
+                  object dbgprcROM_RDES: TdxDBGridDateColumn
+                    Width = 98
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'ROM_RDES'
+                  end
+                  object dbgprcROM_DEXP: TdxDBGridDateColumn
+                    Color = 12513272
+                    Width = 74
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'ROM_DEXP'
+                  end
+                  object dbgprcROM_DBAI: TdxDBGridDateColumn
+                    Width = 74
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'ROM_DBAI'
+                  end
+                  object dbgprcROM_STFI: TdxDBGridMaskColumn
+                    Color = clWhite
+                    Width = 90
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'ROM_STFI'
+                  end
+                  object dbgprcROM_CTNR: TdxDBGridMaskColumn
+                    Width = 100
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'ROM_CTNR'
+                  end
+                  object dbgprcROM_CDPD: TdxDBGridMaskColumn
+                    Visible = False
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'ROM_CDPD'
+                  end
+                end
+                object sbPRC: TStatusBar
+                  Left = 0
+                  Top = 176
+                  Width = 1221
+                  Height = 19
+                  Panels = <
+                    item
+                      Width = 50
+                    end>
+                end
               end
-              object dbgentPRO_DCOR: TdxDBGridMaskColumn
-                Color = 13158600
-                Width = 200
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'PRO_DCOR'
-              end
-              object dbgentEST_CRED: TdxDBGridMaskColumn
-                Color = 7397120
-                HeaderAlignment = taRightJustify
-                Width = 80
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_CRED'
-                SummaryFooterType = cstSum
-                SummaryFooterField = 'EST_CRED'
-                SummaryFooterFormat = '#,0.00'
-                DisableFilter = True
-              end
-              object dbgentEST_CDET: TdxDBGridMaskColumn
-                Color = 7397120
-                Width = 80
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_CDET'
-                DisableFilter = True
-              end
-              object dbgentEST_DSEP: TdxDBGridMaskColumn
-                Color = 7397120
-                Width = 150
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_DSEP'
-              end
-              object dbgentEST_CDRO: TdxDBGridMaskColumn
-                Color = 15658734
-                Width = 80
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_CDRO'
-              end
-              object dbgentEST_DCAD: TdxDBGridDateColumn
-                Color = 15658734
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_DCAD'
-                DisableFilter = True
-              end
-              object dbgentEST_DUSU: TdxDBGridMaskColumn
-                Color = 15658734
-                Width = 150
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_DUSU'
-              end
-              object dbgentEST_DMAP: TdxDBGridMaskColumn
-                Color = 15658734
-                Width = 120
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_DMAP'
-              end
-              object dbgentEST_CTNR: TdxDBGridMaskColumn
-                Color = 15658734
-                Width = 100
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_CTNR'
-              end
-              object dbgentEST_LOTE: TdxDBGridMaskColumn
-                Color = 15658734
-                Width = 80
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_LOTE'
-              end
-            end
-          end
-          object TSSAI: TdxTabSheet
-            Caption = 'Sa'#237'das'
-            object dbgsai: TdxDBGrid
-              Left = 0
-              Top = 0
-              Width = 971
-              Height = 219
-              Bands = <
-                item
-                end>
-              DefaultLayout = True
-              HeaderPanelRowCount = 1
-              KeyField = 'ID'
-              ShowSummaryFooter = True
-              SummaryGroups = <>
-              SummarySeparator = ', '
-              Align = alClient
-              Color = 12171705
-              Ctl3D = True
-              ParentCtl3D = False
-              TabOrder = 0
-              AutoSearchColor = 9395
-              AutoSearchTextColor = clWhite
-              DataSource = dtscad_pro_sai
-              Filter.Active = True
-              Filter.Criteria = {00000000}
-              GridLineColor = clSilver
-              HideSelectionColor = 14789952
-              HighlightColor = 14789952
-              LookAndFeel = lfUltraFlat
-              OptionsBehavior = [edgoAutoSearch, edgoAutoSort, edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEnterShowEditor, edgoImmediateEditor, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
-              OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
-              OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
-              OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoPreview, edgoRowSelect, edgoUseBitmap]
-              ShowRowFooter = True
-              object dbgsaiPRO_CPRO: TdxDBGridMaskColumn
-                Color = 13158600
-                Width = 120
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'PRO_CPRO'
-                SummaryFooterType = cstCount
-                SummaryFooterField = 'ID'
-                SummaryFooterFormat = '0'
-              end
-              object dbgsaiPRO_DCOR: TdxDBGridMaskColumn
-                Color = 13158600
-                Width = 200
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'PRO_DCOR'
-              end
-              object dbgsaiEST_DEBI: TdxDBGridMaskColumn
-                Color = 7397120
-                DisableEditor = True
-                HeaderAlignment = taRightJustify
-                Width = 80
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_DEBI'
-                SummaryFooterType = cstSum
-                SummaryFooterField = 'EST_DEBI'
-                SummaryFooterFormat = '#,0.00'
-                DisableFilter = True
-              end
-              object dbgsaiEST_CDET: TdxDBGridMaskColumn
-                Color = 7397120
-                DisableEditor = True
-                Width = 80
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_CDET'
-                DisableFilter = True
-              end
-              object dbgsaiEST_DSEP: TdxDBGridMaskColumn
-                Color = 7397120
-                Width = 150
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_DSEP'
-              end
-              object dbgsaiEST_DOCU: TdxDBGridMaskColumn
-                Color = 15658734
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_DOCU'
-              end
-              object dbgsaiEST_DATA: TdxDBGridColumn
-                Color = 15658734
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_DATA'
-                DisableFilter = True
-              end
-              object dbgsaiEST_DUSU: TdxDBGridMaskColumn
-                Color = 15658734
-                Width = 150
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_DUSU'
-              end
-              object dbgsaiEST_DFAV: TdxDBGridMaskColumn
-                Color = 15658734
-                Width = 250
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_DFAV'
-              end
-              object dbgsaiEST_DMAP: TdxDBGridMaskColumn
-                Color = 15658734
-                Width = 120
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_DMAP'
-              end
-              object dbgsaiEST_CTNR: TdxDBGridMaskColumn
-                Color = 15658734
-                Width = 100
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_CTNR'
-              end
-              object dbgsaiEST_LOTE: TdxDBGridMaskColumn
-                Color = 15658734
-                Width = 80
-                BandIndex = 0
-                RowIndex = 0
-                FieldName = 'EST_LOTE'
+              object tsprg: TdxTabSheet
+                Caption = 'Vendas'
+                object dxDBGrid2: TdxDBGrid
+                  Left = 0
+                  Top = 0
+                  Width = 1221
+                  Height = 195
+                  Bands = <
+                    item
+                    end>
+                  DefaultLayout = True
+                  HeaderPanelRowCount = 1
+                  KeyField = 'ID'
+                  ShowSummaryFooter = True
+                  SummaryGroups = <>
+                  SummarySeparator = ', '
+                  Align = alClient
+                  Color = 14211288
+                  Ctl3D = True
+                  ParentCtl3D = False
+                  TabOrder = 0
+                  AutoSearchColor = 9395
+                  AutoSearchTextColor = clWhite
+                  DataSource = dtscad_pro_prg
+                  Filter.Active = True
+                  Filter.Criteria = {00000000}
+                  GridLineColor = clSilver
+                  HideSelectionColor = 14789952
+                  HighlightColor = 14789952
+                  LookAndFeel = lfUltraFlat
+                  OptionsBehavior = [edgoAutoSearch, edgoAutoSort, edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEnterShowEditor, edgoImmediateEditor, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
+                  OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
+                  OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
+                  OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoPreview, edgoRowSelect, edgoUseBitmap]
+                  ShowRowFooter = True
+                  object dxDBGrid2PRO_CPRO: TdxDBGridMaskColumn
+                    Width = 120
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'PRO_CPRO'
+                    SummaryFooterType = cstCount
+                    SummaryFooterField = 'ID'
+                    SummaryFooterFormat = '0'
+                  end
+                  object dxDBGrid2PRO_DCOR: TdxDBGridMaskColumn
+                    Width = 200
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'PRO_DCOR'
+                  end
+                  object dxDBGrid2EST_CRED: TdxDBGridMaskColumn
+                    Color = 7397120
+                    HeaderAlignment = taRightJustify
+                    Width = 80
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_CRED'
+                    SummaryFooterType = cstSum
+                    SummaryFooterField = 'EST_CRED'
+                    SummaryFooterFormat = '#,0.00'
+                    DisableFilter = True
+                  end
+                  object dxDBGrid2ROM_DERO: TdxDBGridMaskColumn
+                    Width = 70
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'ROM_DERO'
+                  end
+                  object dxDBGrid2EST_DCAD: TdxDBGridDateColumn
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DCAD'
+                  end
+                  object dxDBGrid2EST_DUSU: TdxDBGridMaskColumn
+                    Width = 150
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DUSU'
+                  end
+                  object dxDBGrid2EST_DFAV: TdxDBGridMaskColumn
+                    Width = 300
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'EST_DFAV'
+                  end
+                end
               end
             end
           end
@@ -737,7 +1366,7 @@ inherited frmcad_pro: Tfrmcad_pro
             object dbgtab: TdxDBGrid
               Left = 0
               Top = 0
-              Width = 971
+              Width = 1221
               Height = 219
               Bands = <
                 item
@@ -816,50 +1445,39 @@ inherited frmcad_pro: Tfrmcad_pro
           end
         end
       end
-      object GroupBox2: TGroupBox
-        Left = 975
-        Top = 0
-        Width = 250
-        Height = 261
-        Align = alRight
-        Caption = 'Imagem do Produto'
-        TabOrder = 1
-        object imag: TImage
-          Left = 2
-          Top = 16
-          Width = 246
-          Height = 243
-          Align = alClient
-          Stretch = True
-          OnClick = imagClick
-        end
-      end
     end
   end
+  inherited sbMSG: TStatusBar
+    Top = 662
+    Width = 1226
+  end
   inherited Consulta: TIBQuery
-    BufferChunks = 2500
     Left = 872
   end
   inherited DTSCadastro: TDataSource
     OnDataChange = dtscadastroDataChange
-    Top = 208
+    Left = 672
+    Top = 392
   end
   inherited Cadastro: TIBQuery
+    AfterScroll = CadastroAfterScroll
+    BeforeOpen = CadastroBeforeOpen
     OnCalcFields = cadastroCalcFields
-    BufferChunks = 2500
     SQL.Strings = (
-      'SELECT CAD_PRO.ID,CAD_PRO.PRO_CART,PRO_CPRO,PRO_DPRO,PRO_FOTO,'
+      
+        'SELECT CAD_PRO.ID,CAD_PRO.PRO_CART,PRO_CPRO,PRO_CCLF,PRO_DPRO,PR' +
+        'O_FOTO,'
       
         '       PRO_CBAR,PRO_DCOR,PRO_PCOR,PRO_DGRP,PRO_DCAT,PRO_DCOL,PRO' +
-        '_STA,PRO_OBSE,PRO_CUST,PRO_PCOM,PRO_PREC,'
+        '_STA,PRO_OBSE,PRO_CUST,PRO_PCOM,PRO_PREC,PRO_PPRZ,PRO_PPRO,'
       
         '       PRO_CDFO,PRO_DUNI,PRO_GRAD,PRO_DCAD,PRO_DPRG,PRO_DENT,PRO' +
         '_DULT,PRO_REPR,PRO_STAV,PRO_DALT,PRO_DUSU,FOR_FANT'
       'FROM   CAD_PRO,CAD_PRO_IMG,CAD_FOR'
       'WHERE  CAD_PRO.PRO_CART = CAD_PRO_IMG.PRO_CART'
-      'AND    CAD_PRO.PRO_CDFO = CAD_FOR.ID'
-      '')
-    Top = 208
+      'AND    CAD_PRO.PRO_CDFO = CAD_FOR.ID')
+    Left = 672
+    Top = 360
     object cadastroID: TIntegerField
       DisplayLabel = 'Sequencia'
       FieldName = 'ID'
@@ -890,7 +1508,7 @@ inherited frmcad_pro: Tfrmcad_pro
       Size = 8
     end
     object cadastroPRO_DCOR: TIBStringField
-      DisplayLabel = 'Cor'
+      DisplayLabel = 'Grade'
       FieldName = 'PRO_DCOR'
       Origin = '"CAD_PRO"."PRO_DCOR"'
       Size = 30
@@ -930,24 +1548,28 @@ inherited frmcad_pro: Tfrmcad_pro
       Size = 3
     end
     object cadastroPRO_DCAD: TDateField
-      DisplayLabel = 'Cria'#231#227'o'
+      DisplayLabel = 'Cadastro'
       FieldName = 'PRO_DCAD'
       Origin = '"CAD_PRO"."PRO_DCAD"'
+      DisplayFormat = 'dd.mm.yy'
     end
     object cadastroPRO_DPRG: TDateField
-      DisplayLabel = #218'ltima Programa'#231#227'o'
+      DisplayLabel = 'Programa'#231#227'o'
       FieldName = 'PRO_DPRG'
       Origin = '"CAD_PRO"."PRO_DPRG"'
+      DisplayFormat = 'dd.mm.yy'
     end
     object cadastroPRO_DENT: TDateField
-      DisplayLabel = 'Estoque'
+      DisplayLabel = 'Entrada'
       FieldName = 'PRO_DENT'
       Origin = '"CAD_PRO"."PRO_DENT"'
+      DisplayFormat = 'dd.mm.yy'
     end
     object cadastroPRO_DULT: TDateField
       DisplayLabel = 'Venda'
       FieldName = 'PRO_DULT'
       Origin = '"CAD_PRO"."PRO_DULT"'
+      DisplayFormat = 'dd.mm.yy'
     end
     object cadastroPRO_CDFO: TIntegerField
       FieldName = 'PRO_CDFO'
@@ -977,7 +1599,7 @@ inherited frmcad_pro: Tfrmcad_pro
       Size = 1
     end
     object cadastroPRO_STAV: TIBStringField
-      DisplayLabel = 'Status'
+      DisplayLabel = 'Situa'#231#227'o'
       FieldName = 'PRO_STAV'
       Origin = '"CAD_PRO"."PRO_STAV"'
       FixedChar = True
@@ -999,9 +1621,10 @@ inherited frmcad_pro: Tfrmcad_pro
       DisplayLabel = 'Altera'#231#227'o'
       FieldName = 'PRO_DALT'
       Origin = '"CAD_PRO"."PRO_DALT"'
+      DisplayFormat = 'dd.mm.yy'
     end
     object cadastroPRO_PREC: TFloatField
-      DisplayLabel = 'Pre'#231'o Venda'
+      DisplayLabel = 'Pre'#231'o R$'
       FieldName = 'PRO_PREC'
       Origin = '"CAD_PRO"."PRO_PREC"'
     end
@@ -1021,13 +1644,35 @@ inherited frmcad_pro: Tfrmcad_pro
       Origin = '"CAD_FOR"."FOR_FANT"'
       Size = 40
     end
+    object CadastroPRO_CCLF: TIBStringField
+      DisplayLabel = 'NCM'
+      FieldName = 'PRO_CCLF'
+      Origin = '"CAD_PRO"."PRO_CCLF"'
+      Size = 10
+    end
+    object CadastroPRO_PPRZ: TFloatField
+      FieldName = 'PRO_PPRZ'
+      Origin = '"CAD_PRO"."PRO_PPRZ"'
+    end
+    object CadastroPRO_PPRO: TFloatField
+      FieldName = 'PRO_PPRO'
+      Origin = '"CAD_PRO"."PRO_PPRO"'
+    end
+  end
+  inherited IBTra: TIBTransaction
+    Left = 744
+    Top = 288
+  end
+  inherited ibSP: TIBStoredProc
+    Left = 800
+    Top = 224
   end
   object ImageOPC2: TImageList
     Height = 36
     ShareImages = True
     Width = 36
-    Left = 444
-    Top = 206
+    Left = 252
+    Top = 278
     Bitmap = {
       494C010105000900040024002400FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000900000006C000000010020000000000000F3
@@ -3050,8 +3695,9 @@ inherited frmcad_pro: Tfrmcad_pro
   object dtscad_pro_est: TDataSource
     AutoEdit = False
     DataSet = cad_pro_est
-    Left = 96
-    Top = 304
+    OnDataChange = dtscad_pro_estDataChange
+    Left = 704
+    Top = 392
   end
   object tSHEILD: TIBTransaction
     DefaultDatabase = dmDADOS.bSHEILD
@@ -3066,7 +3712,6 @@ inherited frmcad_pro: Tfrmcad_pro
   object cad_pro_res: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
-    BufferChunks = 2500
     DataSource = DTSCadastro
     SQL.Strings = (
       
@@ -3078,8 +3723,8 @@ inherited frmcad_pro: Tfrmcad_pro
       'AND      PED_VEN_CAB.ID = EST_CDPD'
       'AND      PRO_CART       = :PRO_CART'
       'ORDER BY PRO_DCOR')
-    Left = 128
-    Top = 272
+    Left = 736
+    Top = 360
     ParamData = <
       item
         DataType = ftString
@@ -3170,13 +3815,12 @@ inherited frmcad_pro: Tfrmcad_pro
   object dtscad_pro_res: TDataSource
     DataSet = cad_pro_res
     OnDataChange = dtscad_pro_resDataChange
-    Left = 128
-    Top = 304
+    Left = 736
+    Top = 392
   end
   object cad_pro_ent: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
-    BufferChunks = 2500
     DataSource = DTSCadastro
     SQL.Strings = (
       
@@ -3187,10 +3831,11 @@ inherited frmcad_pro: Tfrmcad_pro
       'WHERE    CAD_PRO.ID       = EST_CPRO'
       'AND      CAD_PRO.PRO_CART = :PRO_CART'
       'AND      EST_FLAG = '#39'E'#39
+      'AND      EST_CDPD IS NULL'
       'ORDER BY PRO_DCOR'
       '')
-    Left = 192
-    Top = 272
+    Left = 800
+    Top = 360
     ParamData = <
       item
         DataType = ftString
@@ -3275,14 +3920,13 @@ inherited frmcad_pro: Tfrmcad_pro
   object dtscad_pro_ent: TDataSource
     DataSet = cad_pro_ent
     OnDataChange = dtscad_pro_entDataChange
-    Left = 192
-    Top = 304
+    Left = 800
+    Top = 392
   end
   object cad_pro_sai: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
     OnCalcFields = cad_pro_saiCalcFields
-    BufferChunks = 2500
     DataSource = DTSCadastro
     SQL.Strings = (
       
@@ -3292,17 +3936,25 @@ inherited frmcad_pro: Tfrmcad_pro
       'FROM   CAD_PRO,cad_pro_est "CAD_PRO_EST"'
       'WHERE  CAD_PRO.ID       = EST_CPRO'
       'AND    PRO_CART         = :PRO_CART'
-      'AND    EST_FLAG <>  '#39'E'#39
+      'AND    EST_FLAG = '#39'V'#39
+      'OR     CAD_PRO.ID = EST_CPRO'
+      'AND    CAD_PRO.PRO_CART = :PRO_CART'
+      'AND    EST_FLAG = '#39'S'#39
       'ORDER BY PRO_DCOR,EST_DROM DESC'
       '')
-    Left = 224
-    Top = 272
+    Left = 832
+    Top = 360
     ParamData = <
       item
         DataType = ftString
         Name = 'PRO_CART'
         ParamType = ptUnknown
         Size = 21
+      end
+      item
+        DataType = ftString
+        Name = 'PRO_CART'
+        ParamType = ptUnknown
       end>
     object cad_pro_saiID: TIntegerField
       FieldName = 'ID'
@@ -3418,27 +4070,373 @@ inherited frmcad_pro: Tfrmcad_pro
   object dtscad_pro_sai: TDataSource
     DataSet = cad_pro_sai
     OnDataChange = dtscad_pro_saiDataChange
-    Left = 224
-    Top = 304
+    Left = 832
+    Top = 392
+  end
+  object cad_pro_prc: TIBQuery
+    Database = dmDADOS.ibDB
+    Transaction = IBTra
+    DataSource = DTSCadastro
+    SQL.Strings = (
+      
+        'SELECT   PED_COM_ITE.ID,PED_COM_ITE.ROM_CDPD,PED_COM_ITE.ROM_DEX' +
+        'P,PED_COM_ITE.ROM_DBAI,PED_COM_ITE.ROM_DDES,PED_COM_ITE.ROM_RDES' +
+        ',FUN_APEL,ROM_DERO,PED_COM_ITE.ROM_DROM,ROM_STFI,CAD_PRO.PRO_CPR' +
+        'O,PED_COM_ITE.ROM_DCOR,PED_COM_ITE.ROM_PCOR,PED_COM_ITE.ROM_DPRO' +
+        ',PED_COM_ITE.ROM_QTDE,PED_COM_ITE.ROM_QTPD,PED_COM_ITE.ROM_OBSE,' +
+        'PED_COM_ITE.ROM_CTNR'
+      
+        'FROM     CAD_FUN,CAD_PRO,ped_com_ite "PED_COM_ITE" ,ped_com_cab ' +
+        '"PED_COM_CAB"'
+      'WHERE    PED_COM_CAB.ROM_STA  = '#39'0'#39
+      'AND      CAD_FUN.ID           = ROM_CCOM'
+      'AND      PED_COM_CAB.ID       = ROM_CCAB'
+      'AND      PED_COM_ITE.ROM_CPRO = CAD_PRO.ID'
+      'AND      PRO_CART             = :PRO_CART'
+      'ORDER BY ROM_DCOR')
+    Left = 864
+    Top = 360
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'PRO_CART'
+        ParamType = ptUnknown
+        Size = 21
+      end>
+    object cad_pro_prcID: TIntegerField
+      FieldName = 'ID'
+      Origin = '"PED_COM_ITE"."ID"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object cad_pro_prcROM_DEXP: TDateField
+      DisplayLabel = 'Previs'#227'o Chegada'
+      FieldName = 'ROM_DEXP'
+      Origin = '"PED_COM_CAB"."ROM_DEXP"'
+    end
+    object cad_pro_prcFUN_APEL: TIBStringField
+      DisplayLabel = 'Respons'#225'vel'
+      FieldName = 'FUN_APEL'
+      Origin = '"CAD_FUN"."FUN_APEL"'
+      Size = 30
+    end
+    object cad_pro_prcROM_DERO: TIBStringField
+      DisplayLabel = 'Pedido'
+      FieldName = 'ROM_DERO'
+      Origin = '"PED_COM_CAB"."ROM_DERO"'
+    end
+    object cad_pro_prcROM_DROM: TDateField
+      DisplayLabel = 'Lan'#231'amento'
+      FieldName = 'ROM_DROM'
+      Origin = '"PED_COM_CAB"."ROM_DROM"'
+    end
+    object cad_pro_prcROM_STFI: TIBStringField
+      DisplayLabel = 'Situa'#231#227'o'
+      FieldName = 'ROM_STFI'
+      Origin = '"PED_COM_CAB"."ROM_STFI"'
+    end
+    object cad_pro_prcPRO_CPRO: TIBStringField
+      DisplayLabel = 'Produto'
+      FieldName = 'PRO_CPRO'
+      Origin = '"CAD_PRO"."PRO_CPRO"'
+    end
+    object cad_pro_prcROM_DCOR: TIBStringField
+      DisplayLabel = 'Cor'
+      FieldName = 'ROM_DCOR'
+      Origin = '"PED_COM_ITE"."ROM_DCOR"'
+      Size = 30
+    end
+    object cad_pro_prcROM_PCOR: TIBStringField
+      DisplayLabel = 'Pantone'
+      FieldName = 'ROM_PCOR'
+      Origin = '"PED_COM_ITE"."ROM_PCOR"'
+      Size = 30
+    end
+    object cad_pro_prcROM_DPRO: TIBStringField
+      FieldName = 'ROM_DPRO'
+      Origin = '"PED_COM_ITE"."ROM_DPRO"'
+      Size = 120
+    end
+    object cad_pro_prcROM_QTDE: TIBBCDField
+      DisplayLabel = 'Quantidade Pedido'
+      FieldName = 'ROM_QTDE'
+      Origin = '"PED_COM_ITE"."ROM_QTDE"'
+      DisplayFormat = '#,0.00'
+      Precision = 18
+      Size = 4
+    end
+    object cad_pro_prcROM_DBAI: TDateField
+      DisplayLabel = 'Chegada Real'
+      FieldName = 'ROM_DBAI'
+      Origin = '"PED_COM_ITE"."ROM_DBAI"'
+    end
+    object cad_pro_prcROM_QTPD: TIBBCDField
+      DisplayLabel = 'Quantidade Recebida'
+      FieldName = 'ROM_QTPD'
+      Origin = '"PED_COM_ITE"."ROM_QTPD"'
+      DisplayFormat = '#,0.00'
+      Precision = 18
+      Size = 4
+    end
+    object cad_pro_prcROM_DDES: TDateField
+      DisplayLabel = 'Previs'#227'o Desembarque'
+      FieldName = 'ROM_DDES'
+      Origin = '"PED_COM_ITE"."ROM_DDES"'
+    end
+    object cad_pro_prcROM_RDES: TDateField
+      DisplayLabel = 'Desembarque Real'
+      FieldName = 'ROM_RDES'
+      Origin = '"PED_COM_ITE"."ROM_RDES"'
+    end
+    object cad_pro_prcROM_OBSE: TMemoField
+      FieldName = 'ROM_OBSE'
+      Origin = '"PED_COM_CAB"."ROM_OBSE"'
+      ProviderFlags = [pfInUpdate]
+      BlobType = ftMemo
+      Size = 8
+    end
+    object cad_pro_prcROM_CDPD: TIntegerField
+      FieldName = 'ROM_CDPD'
+      Origin = '"PED_COM_ITE"."ROM_CDPD"'
+    end
+    object cad_pro_prcROM_CTNR: TIBStringField
+      DisplayLabel = 'Container No'
+      FieldName = 'ROM_CTNR'
+      Origin = '"PED_COM_ITE"."ROM_CTNR"'
+    end
+  end
+  object dtscad_pro_prc: TDataSource
+    DataSet = cad_pro_prc
+    Left = 864
+    Top = 392
+  end
+  object cad_pro_def: TIBQuery
+    Database = dmDADOS.ibDB
+    Transaction = IBTra
+    DataSource = DTSCadastro
+    SQL.Strings = (
+      ''
+      ''
+      ''
+      
+        'SELECT   CAD_PRO_DEF.ID,CAD_PRO_DEF.EST_DUSU,CAD_PRO.PRO_CPRO,CA' +
+        'D_PRO.PRO_DCOR,CAD_PRO_DEF.EST_CDET,CAD_PRO_DEF.EST_CRED,CAD_PRO' +
+        '_DEF.EST_DMAP,CAD_PRO_DEF.EST_CTNR,CAD_PRO_ENC.PRO_TIPO,EST_DSEP' +
+        ',EST_LOTE'
+      'FROM     CAD_PRO,CAD_PRO_DEF'
+      
+        'LEFT     OUTER JOIN CAD_PRO_ENC ON CAD_PRO_ENC.ID = CAD_PRO_DEF.' +
+        'EST_CDRO'
+      'WHERE    CAD_PRO.ID = CAD_PRO_DEF.EST_CPRO'
+      'AND      CAD_PRO.PRO_CART = :PRO_CART'
+      'ORDER BY CAD_PRO_DEF.EST_DUSU')
+    Left = 896
+    Top = 360
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'PRO_CART'
+        ParamType = ptUnknown
+        Size = 21
+      end>
+    object cad_pro_defID: TIntegerField
+      FieldName = 'ID'
+      Origin = '"CAD_PRO_DEF"."ID"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object cad_pro_defEST_DUSU: TIBStringField
+      DisplayLabel = 'Respons'#225'vel'
+      FieldName = 'EST_DUSU'
+      Origin = '"CAD_PRO_DEF"."EST_DUSU"'
+      Size = 40
+    end
+    object cad_pro_defPRO_CPRO: TIBStringField
+      DisplayLabel = 'Produto'
+      FieldName = 'PRO_CPRO'
+      Origin = '"CAD_PRO"."PRO_CPRO"'
+    end
+    object cad_pro_defPRO_DCOR: TIBStringField
+      DisplayLabel = 'Cor'
+      FieldName = 'PRO_DCOR'
+      Origin = '"CAD_PRO"."PRO_DCOR"'
+      Size = 30
+    end
+    object cad_pro_defEST_CRED: TIBBCDField
+      DisplayLabel = 'Quantidade'
+      FieldName = 'EST_CRED'
+      Origin = '"CAD_PRO_DEF"."EST_CRED"'
+      DisplayFormat = '#,0.00'
+      Precision = 18
+      Size = 4
+    end
+    object cad_pro_defEST_CDET: TIBStringField
+      DisplayLabel = 'Etiqueta No'
+      FieldName = 'EST_CDET'
+      Origin = '"CAD_PRO_DEF"."EST_CDET"'
+      Size = 10
+    end
+    object cad_pro_defPRO_TIPO: TIBStringField
+      DisplayLabel = 'Tipo'
+      FieldName = 'PRO_TIPO'
+      Origin = '"CAD_PRO_ENC"."PRO_TIPO"'
+      Size = 40
+    end
+    object cad_pro_defEST_DSEP: TIBStringField
+      DisplayLabel = 'Separador'
+      FieldName = 'EST_DSEP'
+      Origin = '"CAD_PRO_DEF"."EST_DSEP"'
+      Size = 15
+    end
+    object cad_pro_defEST_DMAP: TIBStringField
+      DisplayLabel = 'Local de Estoque'
+      FieldName = 'EST_DMAP'
+      Origin = '"CAD_PRO_DEF"."EST_DMAP"'
+    end
+    object cad_pro_defEST_CTNR: TIBStringField
+      DisplayLabel = 'Container No'
+      FieldName = 'EST_CTNR'
+      Origin = '"CAD_PRO_DEF"."EST_CTNR"'
+    end
+    object cad_pro_defEST_LOTE: TIBStringField
+      DisplayLabel = 'Lote No'
+      FieldName = 'EST_LOTE'
+      Origin = '"CAD_PRO_DEF"."EST_LOTE"'
+    end
+  end
+  object dtscad_pro_def: TDataSource
+    DataSet = cad_pro_def
+    Left = 896
+    Top = 392
+  end
+  object cad_pro_prg: TIBQuery
+    Database = dmDADOS.ibDB
+    Transaction = IBTra
+    DataSource = DTSCadastro
+    SQL.Strings = (
+      
+        'SELECT   CAD_PRO_PRG.ID,EST_DUSU,PRO_CPRO,PRO_DCOR,EST_CRED,EST_' +
+        'DEBI,EST_CDET,EST_CDRO,EST_DCAD,EST_HCAD,EST_DMAP,EST_CTNR,ROM_D' +
+        'ERO,EST_DFAV,EST_LOTE'
+      'FROM     CAD_PRO,CAD_PRO_PRG,PED_PRG_CAB'
+      'WHERE    CAD_PRO.ID       = EST_CPRO'
+      'AND      PED_PRG_CAB.ID   = EST_CDRO'
+      'AND      CAD_PRO.PRO_CART = :PRO_CART'
+      'ORDER BY PRO_DCOR')
+    Left = 928
+    Top = 360
+    ParamData = <
+      item
+        DataType = ftString
+        Name = 'PRO_CART'
+        ParamType = ptUnknown
+        Size = 21
+      end>
+    object cad_pro_prgID: TIntegerField
+      FieldName = 'ID'
+      Origin = '"CAD_PRO_PRG"."ID"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object cad_pro_prgEST_DUSU: TIBStringField
+      DisplayLabel = 'Vendedor'
+      FieldName = 'EST_DUSU'
+      Origin = '"CAD_PRO_PRG"."EST_DUSU"'
+      Size = 40
+    end
+    object cad_pro_prgEST_DFAV: TIBStringField
+      DisplayLabel = 'Cliente'
+      FieldName = 'EST_DFAV'
+      Origin = '"CAD_PRO_PRG"."EST_DFAV"'
+      Size = 40
+    end
+    object cad_pro_prgEST_CRED: TIBBCDField
+      DisplayLabel = 'Quantidade'
+      FieldName = 'EST_CRED'
+      Origin = '"CAD_PRO_PRG"."EST_CRED"'
+      DisplayFormat = '#,0.00'
+      Precision = 18
+      Size = 4
+    end
+    object cad_pro_prgEST_DEBI: TIBBCDField
+      DisplayLabel = 'Venda'
+      FieldName = 'EST_DEBI'
+      Origin = '"CAD_PRO_PRG"."EST_DEBI"'
+      DisplayFormat = '#,0.00'
+      Precision = 18
+      Size = 4
+    end
+    object cad_pro_prgEST_CDET: TIBStringField
+      DisplayLabel = 'Etiqueta No'
+      FieldName = 'EST_CDET'
+      Origin = '"CAD_PRO_PRG"."EST_CDET"'
+      Size = 10
+    end
+    object cad_pro_prgEST_CDRO: TIntegerField
+      FieldName = 'EST_CDRO'
+      Origin = '"CAD_PRO_PRG"."EST_CDRO"'
+    end
+    object cad_pro_prgEST_DCAD: TDateField
+      DisplayLabel = 'Data'
+      FieldName = 'EST_DCAD'
+      Origin = '"CAD_PRO_PRG"."EST_DCAD"'
+    end
+    object cad_pro_prgEST_HCAD: TTimeField
+      DisplayLabel = 'Hora'
+      FieldName = 'EST_HCAD'
+      Origin = '"CAD_PRO_PRG"."EST_HCAD"'
+    end
+    object cad_pro_prgPRO_DCOR: TIBStringField
+      DisplayLabel = 'Cor'
+      FieldName = 'PRO_DCOR'
+      Origin = '"CAD_PRO"."PRO_DCOR"'
+      Size = 30
+    end
+    object cad_pro_prgPRO_CPRO: TIBStringField
+      DisplayLabel = 'Produto'
+      FieldName = 'PRO_CPRO'
+      Origin = '"CAD_PRO"."PRO_CPRO"'
+    end
+    object cad_pro_prgROM_DERO: TIBStringField
+      DisplayLabel = 'Pedido'
+      FieldName = 'ROM_DERO'
+      Origin = '"PED_PRG_CAB"."ROM_DERO"'
+    end
+    object cad_pro_prgEST_DMAP: TIBStringField
+      FieldName = 'EST_DMAP'
+      Origin = '"CAD_PRO_PRG"."EST_DMAP"'
+    end
+    object cad_pro_prgEST_CTNR: TIBStringField
+      FieldName = 'EST_CTNR'
+      Origin = '"CAD_PRO_PRG"."EST_CTNR"'
+    end
+    object cad_pro_prgEST_LOTE: TIBStringField
+      DisplayLabel = 'Lote No'
+      FieldName = 'EST_LOTE'
+      Origin = '"CAD_PRO_PRG"."EST_LOTE"'
+    end
+  end
+  object dtscad_pro_prg: TDataSource
+    DataSet = cad_pro_prg
+    Left = 928
+    Top = 392
   end
   object aux: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
-    BufferChunks = 2500
     Left = 872
     Top = 240
   end
   object cad_pro_tab: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
-    BufferChunks = 2500
     DataSource = DTSCadastro
     SQL.Strings = (
       'SELECT * FROM CAD_PRO_TAB'
       'WHERE PRO_CART = :PRO_CART'
       'ORDER BY ID DESC')
-    Left = 256
-    Top = 272
+    Left = 960
+    Top = 360
     ParamData = <
       item
         DataType = ftString
@@ -3516,7 +4514,6 @@ inherited frmcad_pro: Tfrmcad_pro
   object cad_pro_sep: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
-    BufferChunks = 2500
     DataSource = DTSCadastro
     SQL.Strings = (
       
@@ -3528,8 +4525,8 @@ inherited frmcad_pro: Tfrmcad_pro
       'AND      PED_VEN_CAB.ID = EST_CDPD'
       'AND      PRO_CART       = :PRO_CART'
       'ORDER BY PRO_DCOR')
-    Left = 160
-    Top = 272
+    Left = 768
+    Top = 360
     ParamData = <
       item
         DataType = ftString
@@ -3620,14 +4617,14 @@ inherited frmcad_pro: Tfrmcad_pro
   end
   object dtscad_pro_sep: TDataSource
     DataSet = cad_pro_sep
-    Left = 160
-    Top = 304
+    OnDataChange = dtscad_pro_sepDataChange
+    Left = 768
+    Top = 392
   end
   object cad_pro_est: TIBQuery
     Database = dmDADOS.ibDB
     Transaction = IBTra
     OnCalcFields = cad_pro_estCalcFields
-    BufferChunks = 2500
     DataSource = DTSCadastro
     SQL.Strings = (
       
@@ -3637,195 +4634,43 @@ inherited frmcad_pro: Tfrmcad_pro
         '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST     WHE' +
         'RE EST_CPRO = CAD_PRO.ID) AS PRO_QEST,'
       
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_EST     WHERE EST_CPRO = CAD_PRO.ID) AS PRO_REST,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST_002 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QEST2,'
-      
-        '         (SELECT CAST(CAST(COUNT(*) AS INTEGER) AS INTEGER)     ' +
-        '          FROM CAD_PRO_EST_002 WHERE EST_CPRO = CAD_PRO.ID) AS P' +
-        'RO_REST2,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST_003 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QEST3,'
-      
-        '         (SELECT CAST(CAST(COUNT(*) AS INTEGER) AS INTEGER)     ' +
-        '          FROM CAD_PRO_EST_003 WHERE EST_CPRO = CAD_PRO.ID) AS P' +
-        'RO_REST3,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QEST4,'
-      
-        '         (SELECT CAST(CAST(COUNT(*) AS INTEGER) AS INTEGER)     ' +
-        '          FROM CAD_PRO_EST_004 WHERE EST_CPRO = CAD_PRO.ID) AS P' +
-        'RO_REST4,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST_005 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QEST5,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_EST_005 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_REST5,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST_006 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QEST6,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_EST_006 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_REST6,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST_007 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QEST7,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_EST_007 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_REST7,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST_008 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QEST8,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_EST_008 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_REST8,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST_009 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QEST9,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_EST_009 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_REST9,'
+        '         (SELECT COUNT(*)               FROM CAD_PRO_EST     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID) AS PRO_REST,'
       
         '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES     WHE' +
         'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES,'
       
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_RES     WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RRES,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES_002 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES2,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_RES_002 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RRES2,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES_003 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES3,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_RES_003 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RRES3,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES4,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_RES_004 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RRES4,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES_005 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES5,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_RES_005 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RRES5,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES_006 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES6,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_RES_006 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RRES6,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES_007 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES7,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_RES_007 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RRES7,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES_008 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES8,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_RES_008 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RRES8,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES_009 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QRES9,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_RES_009 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RRES9,'
+        '         (SELECT COUNT(*)               FROM CAD_PRO_RES     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RRES,'
       
         '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP     WHE' +
         'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP,'
       
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_SEP     WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP,'
+        '         (SELECT COUNT(*)               FROM CAD_PRO_SEP     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP,'
       
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP_002 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP2,'
+        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_PRG     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QPRG,'
       
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_SEP_002 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP2,'
+        '         (SELECT COUNT(*)               FROM CAD_PRO_PRG     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RPRG,'
       
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP_003 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP3,'
+        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_PRC     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QCOM,'
       
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_SEP_003 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP3,'
+        '         (SELECT COUNT(*)               FROM CAD_PRO_PRC     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RCOM,'
       
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP4,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_SEP_004 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP4,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP_005 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP5,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_SEP_005 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP5,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP_006 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP6,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_SEP_006 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP6,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP_007 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP7,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_SEP_007 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP7,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP_008 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP8,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_SEP_008 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP8,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP_009 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QSEP9,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM CA' +
-        'D_PRO_SEP_009 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RSEP9,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM cad_pro_prg_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_QPRG,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM ca' +
-        'd_pro_prg_004 WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) ' +
-        'AS PRO_RPRG,'
-      
-        '         (SELECT SUM(EST_CRED)          FROM cad_pro_prc_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_QCOM,'
-      
-        '         (SELECT SUM(EST_DEBI)          FROM cad_pro_prc_004 WHE' +
-        'RE EST_CPRO = CAD_PRO.ID) AS PRO_QPRD,'
-      
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM ca' +
-        'd_pro_prc_004 WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) ' +
-        'AS PRO_RCOM,'
-      
-        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM cad_pro_def_004 WHE' +
+        '         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_DEF     WHE' +
         'RE EST_CPRO = CAD_PRO.ID) AS PRO_QDEF,'
       
-        '         (SELECT CAST(COUNT(*) AS INTEGER)               FROM ca' +
-        'd_pro_def_004 WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RDEF'
+        '         (SELECT COUNT(*)               FROM CAD_PRO_DEF     WHE' +
+        'RE EST_CPRO = CAD_PRO.ID) AS PRO_RDEF'
       'FROM     CAD_PRO'
       'WHERE    PRO_CART = :PRO_CART'
       'ORDER BY PRO_DCOR')
-    Left = 96
-    Top = 272
+    Left = 704
+    Top = 360
     ParamData = <
       item
         DataType = ftString
@@ -3885,88 +4730,8 @@ inherited frmcad_pro: Tfrmcad_pro
       Precision = 18
       Size = 4
     end
-    object cad_pro_estPRO_REST: TIntegerField
+    object cad_pro_estPRO_REST: TLargeintField
       FieldName = 'PRO_REST'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QEST2: TIBBCDField
-      FieldName = 'PRO_QEST2'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_REST2: TIntegerField
-      FieldName = 'PRO_REST2'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QEST3: TIBBCDField
-      FieldName = 'PRO_QEST3'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_REST3: TIntegerField
-      FieldName = 'PRO_REST3'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QEST4: TIBBCDField
-      FieldName = 'PRO_QEST4'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_REST4: TIntegerField
-      FieldName = 'PRO_REST4'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QEST5: TIBBCDField
-      FieldName = 'PRO_QEST5'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_REST5: TIntegerField
-      FieldName = 'PRO_REST5'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QEST6: TIBBCDField
-      FieldName = 'PRO_QEST6'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_REST6: TIntegerField
-      FieldName = 'PRO_REST6'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QEST7: TIBBCDField
-      FieldName = 'PRO_QEST7'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_REST7: TIntegerField
-      FieldName = 'PRO_REST7'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QEST8: TIBBCDField
-      FieldName = 'PRO_QEST8'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_REST8: TIntegerField
-      FieldName = 'PRO_REST8'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QEST9: TIBBCDField
-      FieldName = 'PRO_QEST9'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_REST9: TIntegerField
-      FieldName = 'PRO_REST9'
       ProviderFlags = []
     end
     object cad_pro_estPRO_QRES: TIBBCDField
@@ -3975,88 +4740,8 @@ inherited frmcad_pro: Tfrmcad_pro
       Precision = 18
       Size = 4
     end
-    object cad_pro_estPRO_RRES: TIntegerField
+    object cad_pro_estPRO_RRES: TLargeintField
       FieldName = 'PRO_RRES'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QRES2: TIBBCDField
-      FieldName = 'PRO_QRES2'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_RRES2: TIntegerField
-      FieldName = 'PRO_RRES2'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QRES3: TIBBCDField
-      FieldName = 'PRO_QRES3'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_RRES3: TIntegerField
-      FieldName = 'PRO_RRES3'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QRES4: TIBBCDField
-      FieldName = 'PRO_QRES4'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_RRES4: TIntegerField
-      FieldName = 'PRO_RRES4'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QRES5: TIBBCDField
-      FieldName = 'PRO_QRES5'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_RRES5: TIntegerField
-      FieldName = 'PRO_RRES5'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QRES6: TIBBCDField
-      FieldName = 'PRO_QRES6'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_RRES6: TIntegerField
-      FieldName = 'PRO_RRES6'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QRES7: TIBBCDField
-      FieldName = 'PRO_QRES7'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_RRES7: TIntegerField
-      FieldName = 'PRO_RRES7'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QRES8: TIBBCDField
-      FieldName = 'PRO_QRES8'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_RRES8: TIntegerField
-      FieldName = 'PRO_RRES8'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QRES9: TIBBCDField
-      FieldName = 'PRO_QRES9'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_RRES9: TIntegerField
-      FieldName = 'PRO_RRES9'
       ProviderFlags = []
     end
     object cad_pro_estPRO_QSEP: TIBBCDField
@@ -4065,88 +4750,8 @@ inherited frmcad_pro: Tfrmcad_pro
       Precision = 18
       Size = 4
     end
-    object cad_pro_estPRO_RSEP: TIntegerField
+    object cad_pro_estPRO_RSEP: TLargeintField
       FieldName = 'PRO_RSEP'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QSEP2: TIBBCDField
-      FieldName = 'PRO_QSEP2'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_RSEP2: TIntegerField
-      FieldName = 'PRO_RSEP2'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QSEP3: TIBBCDField
-      FieldName = 'PRO_QSEP3'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_RSEP3: TIntegerField
-      FieldName = 'PRO_RSEP3'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QSEP4: TIBBCDField
-      FieldName = 'PRO_QSEP4'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_RSEP4: TIntegerField
-      FieldName = 'PRO_RSEP4'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QSEP5: TIBBCDField
-      FieldName = 'PRO_QSEP5'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_RSEP5: TIntegerField
-      FieldName = 'PRO_RSEP5'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QSEP6: TIBBCDField
-      FieldName = 'PRO_QSEP6'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_RSEP6: TIntegerField
-      FieldName = 'PRO_RSEP6'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QSEP7: TIBBCDField
-      FieldName = 'PRO_QSEP7'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_RSEP7: TIntegerField
-      FieldName = 'PRO_RSEP7'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QSEP8: TIBBCDField
-      FieldName = 'PRO_QSEP8'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_RSEP8: TIntegerField
-      FieldName = 'PRO_RSEP8'
-      ProviderFlags = []
-    end
-    object cad_pro_estPRO_QSEP9: TIBBCDField
-      FieldName = 'PRO_QSEP9'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_RSEP9: TIntegerField
-      FieldName = 'PRO_RSEP9'
       ProviderFlags = []
     end
     object cad_pro_estPRO_QPRG: TIBBCDField
@@ -4155,7 +4760,7 @@ inherited frmcad_pro: Tfrmcad_pro
       Precision = 18
       Size = 4
     end
-    object cad_pro_estPRO_RPRG: TIntegerField
+    object cad_pro_estPRO_RPRG: TLargeintField
       FieldName = 'PRO_RPRG'
       ProviderFlags = []
     end
@@ -4165,13 +4770,7 @@ inherited frmcad_pro: Tfrmcad_pro
       Precision = 18
       Size = 4
     end
-    object cad_pro_estPRO_QPRD: TIBBCDField
-      FieldName = 'PRO_QPRD'
-      ProviderFlags = []
-      Precision = 18
-      Size = 4
-    end
-    object cad_pro_estPRO_RCOM: TIntegerField
+    object cad_pro_estPRO_RCOM: TLargeintField
       FieldName = 'PRO_RCOM'
       ProviderFlags = []
     end
@@ -4181,7 +4780,7 @@ inherited frmcad_pro: Tfrmcad_pro
       Precision = 18
       Size = 4
     end
-    object cad_pro_estPRO_RDEF: TIntegerField
+    object cad_pro_estPRO_RDEF: TLargeintField
       FieldName = 'PRO_RDEF'
       ProviderFlags = []
     end
@@ -4308,11 +4907,5 @@ inherited frmcad_pro: Tfrmcad_pro
       Size = 120
       Calculated = True
     end
-  end
-  object SQLEdicao: TIBSQL
-    Database = dmDADOS.ibDB
-    Transaction = IBTra
-    Left = 592
-    Top = 218
   end
 end

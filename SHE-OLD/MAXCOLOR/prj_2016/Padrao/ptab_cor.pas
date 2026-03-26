@@ -57,7 +57,6 @@ uses uPrincipal, pcad_pro_edi;
 
 procedure Tfrmtab_cor.FormCreate(Sender: TObject);
 begin
-  siLIXO.Enabled := frmprincipal.ACESSO(frmprincipal.cad_usuUSU_CUSU.AsString,'USU_NOVO','Tabelas','Cores','Permissões Gerais',false);
   siREL.Enabled  := frmprincipal.ACESSO(frmprincipal.cad_usuUSU_CUSU.AsString,'USU_PRIN','Tabelas','Cores','Permissões Gerais',false);
 
   cEvent := 'TAB_COR';

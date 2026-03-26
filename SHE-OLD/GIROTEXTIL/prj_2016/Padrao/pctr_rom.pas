@@ -20,7 +20,6 @@ type
     Label23: TLabel;
     pcITE: TdxPageControl;
     tsITE: TdxTabSheet;
-    tsOBS: TdxTabSheet;
     dbgite: TdxDBGrid;
     cadastroID: TIntegerField;
     cadastroROM_STPD: TIBStringField;
@@ -87,7 +86,6 @@ type
     cadastroROM_CDSC: TIBBCDField;
     cadastroROM_OBSE: TMemoField;
     cadastroROM_STA: TIBStringField;
-    dxDBMemo1: TdxDBMemo;
     cadastroROM_ADSC: TIBBCDField;
     siBRO: TSpeedItem;
     siDRO: TSpeedItem;
@@ -155,10 +153,6 @@ type
     dbgConsultaROM_DTRA: TdxDBGridMaskColumn;
     rom_iteROM_DUNI: TIBStringField;
     dbgiteROM_DUNI: TdxDBGridMaskColumn;
-    pnlfoto: TPanel;
-    pcIMG: TdxPageControl;
-    tsFOTO: TdxTabSheet;
-    writefoto: TImage;
     dbgConsultaROM_TOTA: TdxDBGridColumn;
     SQLConsulta: TIBSQL;
     procedure FormCreate(Sender: TObject);
@@ -167,7 +161,6 @@ type
       ASelected, AFocused, ANewItemRow: Boolean; var AText: String;
       var AColor: TColor; AFont: TFont; var AAlignment: TAlignment;
       var ADone: Boolean);
-    procedure rom_iteAfterScroll(DataSet: TDataSet);
     procedure cadastroBeforeEdit(DataSet: TDataSet);
     procedure cadastroBeforeInsert(DataSet: TDataSet);
     procedure dtscadastroDataChange(Sender: TObject; Field: TField);
@@ -175,17 +168,14 @@ type
     procedure cadastroAfterOpen(DataSet: TDataSet);
     procedure cadastroCalcFields(DataSet: TDataSet);
     procedure siPSQClick(Sender: TObject);
-    procedure siEVEClick(Sender: TObject);
     procedure siCROClick(Sender: TObject);
     procedure dtsrom_iteDataChange(Sender: TObject; Field: TField);
     procedure siAROClick(Sender: TObject);
-    procedure writefotoClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure siNFEClick(Sender: TObject);
   private
     { Private declarations }
      procedure abre_tabela;
-     procedure carregaFoto(tam: Integer; valor: TBlobField; tab: TIbQuery; par: TIbDataSet);
   public
     { Public declarations }
   end;
@@ -195,8 +185,8 @@ var
 
 implementation
 
-uses uPrincipal, prelatorio_geral, ppesquisa, plog_eve, pven_nfe,
-     pctr_ped, pctr_rom_edi, pcad_pro_img;
+uses uPrincipal, prelatorio_geral, ppesquisa, pven_nfe,
+     pctr_ped, pctr_rom_edi;
 
 {$R *.dfm}
 
@@ -310,29 +300,6 @@ begin
   end;
 end;
 
-procedure Tfrmctr_rom.carregaFoto(tam: Integer; valor: TBlobField; tab: TIbQuery; par: TIbDataSet );
-var
-  BlobStream : TStream;
-  JPEGImage : TJPEGImage;
-begin
-  if tam = 0 then
-  begin
-    valor      := frmprincipal.parametrosPAR_FOT2;
-    BlobStream := par.CreateBlobStream(valor,bmRead);
-  end
-  else
-     BlobStream := tab.CreateBlobStream(valor,bmRead);
-
-  JPEGImage  := TJPEGImage.Create;
-  try
-    JPEGImage.LoadFromStream(BlobStream);
-    writefoto.Picture.Assign(JPEGImage);
-  finally
-    BlobStream.Free;
-    JPEGImage.Free;
-  end;
-end;
-
 procedure Tfrmctr_rom.dbgConsultaCustomDrawCell(Sender: TObject;
   ACanvas: TCanvas; ARect: TRect; ANode: TdxTreeListNode;
   AColumn: TdxTreeListColumn; ASelected, AFocused, ANewItemRow: Boolean;
@@ -358,12 +325,6 @@ begin
   end;
 end;
 
-procedure Tfrmctr_rom.rom_iteAfterScroll(DataSet: TDataSet);
-begin
-  if (cadastro.State = dsBrowse) and (pnlfoto.Visible) then
-  carregaFoto(rom_itePRO_FOTO.BlobSize,rom_itePRO_FOTO,rom_ite,frmprincipal.parametros);
-end;
-
 procedure Tfrmctr_rom.cadastroBeforeEdit(DataSet: TDataSet);
 begin
   {};
@@ -377,20 +338,23 @@ end;
 procedure Tfrmctr_rom.dtscadastroDataChange(Sender: TObject;
   Field: TField);
 begin
-  if cadastroROM_TDSC.AsString = '%' then
-  dbgConsultaROM_DESC.Caption := 'Desc (%)'
-  else if cadastroROM_TDSC.AsString = '$' then
-  dbgConsultaROM_DESC.Caption := 'Desc ($)';
+  if Cadastro.State = dsBrowse then
+  begin
+    if cadastroROM_TDSC.AsString = '%' then
+    dbgConsultaROM_DESC.Caption := 'Desc (%)'
+    else if cadastroROM_TDSC.AsString = '$' then
+    dbgConsultaROM_DESC.Caption := 'Desc ($)';
 
-  siNFE.Enabled := (cadastroROM_STA.AsString  = '0') and (cadastroROM_CDNF.AsInteger = 0) and (cadastroROM_CDBX.AsInteger = 0);
-  siCRO.Enabled := (cadastroROM_STA.AsString  = '0') and (cadastroROM_CDNF.AsInteger = 0) and (cadastroROM_CDBX.AsInteger = 0);
-  siARO.Enabled := (cadastroROM_STA.AsString  = '0') and (cadastroROM_CDBX.AsInteger = 0);
+    siNFE.Enabled := (cadastroROM_STA.AsString  = '0') and (cadastroROM_CDNF.AsInteger = 0) and (cadastroROM_CDBX.AsInteger = 0);
+    siCRO.Enabled := (cadastroROM_STA.AsString  = '0') and (cadastroROM_CDNF.AsInteger = 0) and (cadastroROM_CDBX.AsInteger = 0);
+    siARO.Enabled := (cadastroROM_STA.AsString  = '0') and (cadastroROM_CDBX.AsInteger = 0);
 
-  if frmprincipal.cad_usuUSU_CUSU.AsInteger = 0 then
-  siNFE.Enabled := true;
+    if frmprincipal.cad_usuUSU_CUSU.AsInteger = 0 then
+    siNFE.Enabled := true;
 
-  sbMSG.Panels[1].Text := cadastroROM_CONC.AsString;
-  sbMSG.Panels[2].Text := cadastroROM_OBSE.AsString;
+    sbMSG.Panels[1].Text := cadastroROM_CONC.AsString;
+    sbMSG.Panels[2].Text := cadastroROM_OBSE.AsString;
+  end;
 end;
 
 procedure Tfrmctr_rom.siRELClick(Sender: TObject);
@@ -492,25 +456,6 @@ begin
   end;
 end;
 
-procedure Tfrmctr_rom.siEVEClick(Sender: TObject);
-begin
-  frmlog_eve := tfrmlog_eve.create(self);
-  with frmlog_eve.cadastro do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT LOG_EVE.*,PAR_SIS.PAR_FANT,CAD_FUN.FUN_FOTO');
-    SQL.Add('FROM   LOG_EVE,PAR_SIS');
-    SQL.Add('LEFT   OUTER JOIN CAD_FUN ON LOG_EVE.EVE_CLOG = CAD_FUN.ID');
-    SQL.Add('WHERE  LOG_EVE.EVE_CDEP = PAR_SIS.ID');
-    SQL.Add('AND    LOG_EVE.EVE_FUNC = ''Vendas''');
-    if frmprincipal.cad_usuUSU_MENU.AsString = 'VEN' then
-    SQL.Add('AND    LOG_EVE.EVE_CLOG = '''+frmprincipal.cad_usuUSU_CUSU.AsString+'''');
-    SQL.Add('ORDER BY ID DESC');
-    Open;
-  end;
-  frmlog_eve.show;
-end;
-
 procedure Tfrmctr_rom.siCROClick(Sender: TObject);
 var
   BRet: boolean;
@@ -593,6 +538,7 @@ begin
               ibSP.ParamByName('dmap').Value := '';
               ibSP.ParamByName('lote').Value := '';
               ibSP.ParamByName('ctnr').Value := '';
+              ibSP.ParamByName('UNIT').Value := 0;
 
               if rom_iteROM_CDET.AsString <> '' then
               begin
@@ -713,19 +659,6 @@ begin
   cadastro.Open;
 end;
 
-procedure Tfrmctr_rom.writefotoClick(Sender: TObject);
-begin
-  frmcad_pro_img := tfrmcad_pro_img.create(self);
-  try
-    frmcad_pro_img.carregaFoto(rom_itePRO_FOTO.BlobSize,rom_itePRO_FOTO,rom_ite,frmprincipal.parametros);
-    frmcad_pro_img.Caption := rom_iteROM_DPRO.AsString;
-    frmcad_pro_img.showmodal;
-  finally
-    FreeAndNil(frmcad_pro_img);
-    frmcad_pro_img.free;
-  end;
-end;
-
 procedure Tfrmctr_rom.siNFEClick(Sender: TObject);
 begin
   with consulta do
@@ -760,21 +693,26 @@ begin
     frmven_nfe.PESQUISA_CLIENTE('I',CadastroROM_CCLI.AsString,0);
     frmven_nfe.Tag := 1;
 
+    if (frmven_nfe.edctra.Text <> '0') and (frmven_nfe.cbdtra.Text = EmptyStr) then
+    frmven_nfe.PESQUISA_TRANSPORTADORA(frmven_nfe.edctra.Text,'C');
+
+    if (frmven_nfe.edctra.Text = '0') and (frmven_nfe.cbdtra.Text = EmptyStr) then
+    frmven_nfe.PESQUISA_TRANSPORTADORA('CLIENTE RETIRA','F');
+
     with SQLConsulta do
     begin
       Close;
       SQL.Clear;
-      SQL.Add('SELECT   FK.ID AS IDCP,FK.PRO_CPRO AS CPROD,PK.ROM_DPRO||'' ''||COALESCE(PK.ROM_DCOR,'''') AS XPROD,PK.ROM_DUNI AS UCOM,');
-      SQL.Add('         FK.PRO_CBAR AS CEAN,FK.PRO_CCLF AS NCM,FK.PRO_PIPI AS TRIBIPI,FK.PRO_CCST AS ORIG,');
-      SQL.Add('         FK.PRO_PESO AS PESO,FK.PRO_PSCN AS PSCN,FK.PRO_METR AS METR,FK.PRO_REND AS REND,');
-      SQL.Add('         FK.PRO_COMP AS COMPBASE,LEFT(FK.PRO_STAV,1) AS DECAST,');
-      SQL.Add('         0 AS UQVOL,NULL AS UESP,');
-      SQL.Add('         PK.ROM_PREC,PK.ROM_UNIT AS VUNCOM,PK.ROM_NFCI,');
-      SQL.Add('         SUM(PK.ROM_QTDE) AS ROM_QTDE,SUM(PK.ROM_QTRL) AS ROM_QTRL');
+      SQL.Add('SELECT   FK.ID AS IDCP,FK.PRO_CPRO AS CPROD,FK.PRO_CBAR AS CEAN,');
+      SQL.Add('         FK.PRO_CCLF AS NCM,FK.PRO_PIPI AS PIPI,');
+      SQL.Add('         PK.ROM_DPRO || '' '' || COALESCE(PK.ROM_DCOR,'''')  AS XPROD,FK.PRO_COMP AS COMP,');
+      SQL.Add('         FK.PRO_PESO AS PESO,FK.PRO_PSCN AS PSCN,FK.PRO_METR AS METR ,FK.PRO_REND AS REND,');
+      SQL.Add('         PK.ROM_DUNI AS UCOM,PK.ROM_QTDE AS QTDE,PK.ROM_QTRL AS QTRL ,PK.ROM_PREC,PK.ROM_UNIT AS VUNCOM,');
+      SQL.Add('         FK.PRO_CCST AS ORIG,PK.ROM_NFCI AS NFCI,LEFT(FK.PRO_STAV,1) AS REST');
+
       SQL.Add('FROM   '+SLPrincipal.Values['rom_ite']+' AS PK');
       SQL.Add('JOIN     CAD_PRO AS FK ON (FK.ID = PK.ROM_CPRO)');
-      SQL.Add('WHERE    ROM_CCAB = '''+CadastroId.AsString+'''');
-      SQL.Add('GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19');
+      SQL.Add('WHERE    ROM_CCAB = ''' + CadastroId.AsString + '''');
       ExecQuery;
     end;
     while not SQLConsulta.Eof do
@@ -786,34 +724,32 @@ begin
       frmven_nfe.nfe_001NFE_UCOM.Value      := SQLConsulta.Current.ByName('UCOM').AsString;
       frmven_nfe.nfe_001NFE_CEAN.Value      := SQLConsulta.Current.ByName('CEAN').AsString;
       frmven_nfe.nfe_001NFE_NCM.Value       := SQLConsulta.Current.ByName('NCM').AsString;
-      frmven_nfe.nfe_001NFE_PIPI.Value      := SQLConsulta.Current.ByName('TRIBIPI').AsFloat;
+      frmven_nfe.nfe_001NFE_PIPI.Value      := SQLConsulta.Current.ByName('PIPI').Value;
       frmven_nfe.nfe_001NFE_ORIG.Value      := SQLConsulta.Current.ByName('ORIG').AsString;
-      frmven_nfe.nfe_001NFE_PESO.Value      := SQLConsulta.Current.ByName('PESO').AsFloat;
-      frmven_nfe.nfe_001NFE_PSCN.Value      := SQLConsulta.Current.ByName('PSCN').AsFloat;
-      frmven_nfe.nfe_001NFE_METR.Value      := SQLConsulta.Current.ByName('METR').AsFloat;
-      frmven_nfe.nfe_001NFE_REND.Value      := SQLConsulta.Current.ByName('REND').AsFloat;
+      frmven_nfe.nfe_001NFE_PESO.Value      := SQLConsulta.Current.ByName('PESO').Value;
+      frmven_nfe.nfe_001NFE_PSCN.Value      := SQLConsulta.Current.ByName('PSCN').Value;
+      frmven_nfe.nfe_001NFE_METR.Value      := SQLConsulta.Current.ByName('METR').Value;
+      frmven_nfe.nfe_001NFE_REND.Value      := SQLConsulta.Current.ByName('REND').Value;
       frmven_nfe.nfe_001NFE_VUNCOM.Value    := SQLConsulta.Current.ByName('VUNCOM').Value;
       frmven_nfe.nfe_001NFE_PREC.Value      := SQLConsulta.Current.ByName('VUNCOM').Value;
-      frmven_nfe.nfe_001NFE_QCOM.Value      := SQLConsulta.Current.ByName('ROM_QTDE').AsFloat;
-      frmven_nfe.nfe_001NFE_RCOM.Value      := SQLConsulta.Current.ByName('ROM_QTRL').AsInteger;
-      frmven_nfe.nfe_001NFE_STAV.Value      := SQLConsulta.Current.ByName('DECAST').AsString;
-      frmven_nfe.nfe_001NFE_COMP.Value      := SQLConsulta.Current.ByName('COMPBASE').AsString;
-      frmven_nfe.nfe_001NFE_INFADPROD.Value := SQLConsulta.Current.ByName('COMPBASE').AsString;
-      frmven_nfe.nfe_001NFE_NFCI.Value      := SQLConsulta.Current.ByName('ROM_NFCI').AsString;
+      frmven_nfe.nfe_001NFE_QCOM.Value      := SQLConsulta.Current.ByName('QTDE').Value;
+      frmven_nfe.nfe_001NFE_RCOM.Value      := SQLConsulta.Current.ByName('QTRL').AsInteger;
+      frmven_nfe.nfe_001NFE_STAV.Value      := SQLConsulta.Current.ByName('REST').AsString;
+      frmven_nfe.nfe_001NFE_COMP.Value      := SQLConsulta.Current.ByName('COMP').AsString;
+      frmven_nfe.nfe_001NFE_INFADPROD.Value := SQLConsulta.Current.ByName('COMP').AsString;
+      frmven_nfe.nfe_001NFE_NFCI.Value      := SQLConsulta.Current.ByName('NFCI').AsString;
 
       if not oEmpty(frmven_nfe.nfe_001NFE_INFADPROD.AsString) then
-         frmven_nfe.nfe_001NFE_INFADPROD.Value := 'COMPOSICAO: '+frmven_nfe.nfe_001NFE_INFADPROD.AsString;
+         frmven_nfe.nfe_001NFE_INFADPROD.Value := 'COMPOSICAO: ' + frmven_nfe.nfe_001NFE_INFADPROD.AsString;
 
-      if ((SQLConsulta.Current.ByName('UQVOL').AsFloat > 0) and (not oEmpty(SQLConsulta.Current.ByName('UESP').AsString))) then
-           frmven_nfe.nfe_001NFE_INFADPROD.Value := frmven_nfe.nfe_001NFE_INFADPROD.AsString+#13+'CONTEUDO: '+SQLConsulta.Current.ByName('UQVOL').AsString+' '+SQLConsulta.Current.ByName('UESP').AsString
-      else
-           if Pos(LeftStr(frmven_nfe.nfe_001NFE_UCOM.AsString,1),'KMY') = 0 then
-              if  frmven_nfe.nfe_001NFE_METR.AsFloat > 0 then
-                  frmven_nfe.nfe_001NFE_INFADPROD.Value := frmven_nfe.nfe_001NFE_INFADPROD.AsString+#13+'CONTEUDO: '+FormatFloat('0.00M',frmven_nfe.nfe_001NFE_METR.AsFloat);
+      if Pos(LeftStr(frmven_nfe.nfe_001NFE_UCOM.AsString,1),'KMY') = 0 then
+         if  frmven_nfe.nfe_001NFE_METR.AsFloat > 0 then
+             frmven_nfe.nfe_001NFE_INFADPROD.Value := frmven_nfe.nfe_001NFE_INFADPROD.AsString + #13 + 'CONTEUDO: ' + FormatFloat('0.00M',frmven_nfe.nfe_001NFE_METR.AsFloat);
 
       frmven_nfe.nfe_001NFE_INFADPROD.Value := Trim(frmven_nfe.nfe_001NFE_INFADPROD.AsString);
       frmven_nfe.nfe_001NFE_REPR.Value      := 'R';//FBird.FBCAD_PROPRO_REPR.AsString;
       frmven_nfe.nfe_001.Post;
+
       SQLConsulta.Next;
     end;
   finally

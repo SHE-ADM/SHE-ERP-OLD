@@ -363,10 +363,7 @@ type
     CadastroPRO_PPRO: TFloatField;
     DBGConsultaPRO_CCLF: TdxDBGridMaskColumn;
     procedure FormCreate(Sender: TObject);
-    procedure siDELClick(Sender: TObject);
     procedure dbgConsultaDblClick(Sender: TObject);
-    procedure siINCClick(Sender: TObject);
-    procedure siALTClick(Sender: TObject);
     procedure dtscadastroDataChange(Sender: TObject; Field: TField);
     procedure dbgConsultaCustomDrawCell(Sender: TObject; ACanvas: TCanvas;
       ARect: TRect; ANode: TdxTreeListNode; AColumn: TdxTreeListColumn;
@@ -393,6 +390,9 @@ type
       var ADone: Boolean);
     procedure CadastroBeforeOpen(DataSet: TDataSet);
     procedure CadastroAfterScroll(DataSet: TDataSet);
+    procedure SIMEAppendClick(Sender: TObject);
+    procedure SIMEEditClick(Sender: TObject);
+    procedure SIMEDeleteClick(Sender: TObject);
   private
     { Private declarations }
     procedure carregaFoto(tam: Integer; valor: TBlobField; tab: TIbQuery; par: TIbDataSet);
@@ -617,41 +617,7 @@ begin
   end;
 end;
 
-procedure Tfrmcad_pro.carregaFoto(tam: Integer; valor: TBlobField; tab: TIbQuery; par: TIbDataSet );
-var
-  BlobStream : TStream;
-  JPEGImage : TJPEGImage;
-begin
-  if tam = 0 then
-  begin
-    valor      := frmprincipal.parametrosPAR_FOT2;
-    BlobStream := par.CreateBlobStream(valor,bmRead);
-  end
-  else
-     BlobStream := tab.CreateBlobStream(valor,bmRead);
-
-  JPEGImage  := TJPEGImage.Create;
-  try
-    try
-      JPEGImage.LoadFromStream(BlobStream);
-    except
-      ;
-    end;
-    imag.Picture.Assign(JPEGImage);
-  finally
-    BlobStream.Free;
-    JPEGImage.Free;
-  end;
-end;
-
-procedure Tfrmcad_pro.dbgConsultaDblClick(Sender: TObject);
-begin
-  if cadastroPRO_STA.AsString <> '0' then
-  raise exception.Create('Produto Enviado para a Lixeira !');
-  inherited;
-end;
-
-procedure Tfrmcad_pro.siINCClick(Sender: TObject);
+procedure Tfrmcad_pro.SIMEAppendClick(Sender: TObject);
 begin
   PCampo[0] := 'USU_NOVO';
   PCampo[1] := 'Produtos';
@@ -686,7 +652,6 @@ begin
         SQL.Add('ORDER BY PRO_CPRO');
         Open;
       end;
-      wRecord := nil;
       ExecuteEvent;
     end;
 
@@ -694,16 +659,12 @@ begin
   end;
 end;
 
-procedure Tfrmcad_pro.siALTClick(Sender: TObject);
+procedure Tfrmcad_pro.SIMEEditClick(Sender: TObject);
 begin
   sbMSG.Panels[0].Text := 'Alteração';
   sbMSG.Update;
 
-  wRecord := cadastro.GetBookmark;
-
   if cadastro.Fields[0].IsNull then abort;
-
-  if not SpeedBar1.Visible then exit;
 
   FRMCAD_PRO_EDI := TFRMCAD_PRO_EDI.Create(Self);
   try
@@ -717,7 +678,7 @@ begin
   end;
 end;
 
-procedure Tfrmcad_pro.siDELClick(Sender: TObject);
+procedure Tfrmcad_pro.SIMEDeleteClick(Sender: TObject);
 begin
   PCampo[0] := 'USU_DELE';
   PCampo[1] := 'Produtos';
@@ -753,8 +714,42 @@ begin
   end;
 
   IBTra.CommitRetaining;
-  wRecord := nil;
   ExecuteEvent;
+end;
+
+
+procedure Tfrmcad_pro.carregaFoto(tam: Integer; valor: TBlobField; tab: TIbQuery; par: TIbDataSet );
+var
+  BlobStream : TStream;
+  JPEGImage : TJPEGImage;
+begin
+  if tam = 0 then
+  begin
+    valor      := frmprincipal.parametrosPAR_FOT2;
+    BlobStream := par.CreateBlobStream(valor,bmRead);
+  end
+  else
+     BlobStream := tab.CreateBlobStream(valor,bmRead);
+
+  JPEGImage  := TJPEGImage.Create;
+  try
+    try
+      JPEGImage.LoadFromStream(BlobStream);
+    except
+      ;
+    end;
+    imag.Picture.Assign(JPEGImage);
+  finally
+    BlobStream.Free;
+    JPEGImage.Free;
+  end;
+end;
+
+procedure Tfrmcad_pro.dbgConsultaDblClick(Sender: TObject);
+begin
+  if cadastroPRO_STA.AsString <> '0' then
+  raise exception.Create('Produto Enviado para a Lixeira !');
+  inherited;
 end;
 
 procedure Tfrmcad_pro.dbgConsultaCustomDrawCell(Sender: TObject;

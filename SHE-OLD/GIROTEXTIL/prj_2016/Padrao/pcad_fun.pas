@@ -3,6 +3,7 @@ unit pcad_fun;
 interface
 
 uses
+  oPrincipal,
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ppadr2, IBStoredProc, IBDatabase, ImgList,
   DB, IBCustomDataSet, IBQuery, dxCntner, dxTL, dxDBCtrl, dxDBGrid, jpeg,
@@ -197,12 +198,10 @@ type
     cadastroFUN_NORD: TSmallintField;
     procedure siINCClick(Sender: TObject);
     procedure siALTClick(Sender: TObject);
-    procedure siLIXOClick(Sender: TObject);
     procedure siDELClick(Sender: TObject);
     procedure dtscadastroDataChange(Sender: TObject; Field: TField);
     procedure FormCreate(Sender: TObject);
     procedure dbgConsultaDblClick(Sender: TObject);
-    procedure siEVEClick(Sender: TObject);
     procedure siPRNClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
   private
@@ -219,7 +218,7 @@ var
 
 implementation
 
-uses uPrincipal, pcad_fun_edi, pcad_usu_edi, plog_eve,
+uses uPrincipal, pcad_fun_edi, pcad_usu_edi,
   prelatorio_geral;
 
 {$R *.dfm}
@@ -312,32 +311,6 @@ begin
   end;
 end;
 
-procedure Tfrmcad_fun.siLIXOClick(Sender: TObject);
-begin
-  with cadastro do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT CAD_FUN.*,PAR_SIS.PAR_FANT');
-    SQL.Add('FROM   CAD_FUN,PAR_SIS');
-    SQL.Add('WHERE  CAD_FUN.FUN_CEMP = PAR_SIS.ID');
-
-    if dbgconsulta.Tag = 0 then
-    begin
-      dbgconsulta.Tag   := 1;
-      dbgconsulta.Color := clBtnface;
-      SQL.Add('AND FUN_STA = ''1''');
-    end
-    else
-    begin
-      dbgconsulta.Tag   := 0;
-      dbgconsulta.Color := clWhite;
-      SQL.Add('AND FUN_STA = ''0''');
-    end;
-    SQL.Add('ORDER BY FUN_APEL');
-    Open;
-  end;
-end;
-
 procedure Tfrmcad_fun.siDELClick(Sender: TObject);
 begin
   PCampo[0] := 'USU_DELE';
@@ -427,7 +400,7 @@ begin
 
     if cadastroFUN_STA.Value = '1' then
     begin
-      if yesno(handle,'Confirma a exclusão do funcionário '+cadastroFUN_APEL.AsString+' ?') = mrno then
+      if oyesno(handle,'Confirma a exclusão do funcionário '+cadastroFUN_APEL.AsString+' ?') = mrno then
          abort;
 
       SQL.Clear;
@@ -438,7 +411,7 @@ begin
     end
     else
     begin
-      if yesno(handle,'Enviar para a lixeira o funcionário '+cadastroFUN_APEL.AsString+' ?') = mrno then
+      if oyesno(handle,'Enviar para a lixeira o funcionário '+cadastroFUN_APEL.AsString+' ?') = mrno then
          abort;
 
       SQL.Clear;
@@ -452,9 +425,6 @@ begin
 
   IBTra.CommitRetaining;
   ExecuteEvent;
-
-  if dbgconsulta.Tag = 1 then
-  siLIXO.Click;
 end;
 
 procedure Tfrmcad_fun.dtscadastroDataChange(Sender: TObject;
@@ -480,23 +450,6 @@ begin
   end
   else
     inherited;
-end;
-
-procedure Tfrmcad_fun.siEVEClick(Sender: TObject);
-begin
-  frmlog_eve := tfrmlog_eve.create(self);
-  with frmlog_eve.cadastro do
-  begin
-    SQL.Clear;
-    SQL.Add('SELECT LOG_EVE.*,PAR_SIS.PAR_FANT,CAD_FUN.FUN_FOTO');
-    SQL.Add('FROM   LOG_EVE,PAR_SIS');
-    SQL.Add('LEFT   OUTER JOIN CAD_FUN ON LOG_EVE.EVE_CLOG = CAD_FUN.ID');
-    SQL.Add('WHERE  LOG_EVE.EVE_CDEP = PAR_SIS.ID');
-    SQL.Add('AND    LOG_EVE.EVE_FUNC = ''Funcionários''');
-    SQL.Add('ORDER BY ID DESC');
-    Open;
-  end;
-  frmlog_eve.show;
 end;
 
 procedure Tfrmcad_fun.siPRNClick(Sender: TObject);

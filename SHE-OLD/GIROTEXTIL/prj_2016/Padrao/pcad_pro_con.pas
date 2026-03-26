@@ -65,6 +65,50 @@ type
     DBGConsultaPRO_CART: TdxDBGridMaskColumn;
     ILMenu: TImageList;
     ILEdicao: TImageList;
+    CadastroC_DCST: TStringField;
+    CadastroC_STAV: TStringField;
+    CadastroC_QEST: TFloatField;
+    CadastroC_REST: TIntegerField;
+    CadastroC_QRES: TFloatField;
+    CadastroC_RRES: TIntegerField;
+    CadastroC_QSEP: TFloatField;
+    CadastroC_RSEP: TIntegerField;
+    CadastroC_QDIS: TFloatField;
+    CadastroC_RDIS: TIntegerField;
+    CadastroC_QDEF: TFloatField;
+    CadastroC_RDEF: TIntegerField;
+    CadastroC_QCOM: TFloatField;
+    CadastroC_RCOM: TIntegerField;
+    CadastroC_QPRG: TFloatField;
+    CadastroC_RPRG: TIntegerField;
+    CadastroC_QSLD: TFloatField;
+    CadastroC_RSLD: TIntegerField;
+    DBGConsultaC_QDIS: TdxDBGridColumn;
+    Consulta: TIBQuery;
+    DBGConsultaPRO_DPRO: TdxDBGridMaskColumn;
+    DBGConsultaPRO_DUNI: TdxDBGridMaskColumn;
+    PNLInfoAdicional: TPanel;
+    GBInfoAdicional: TGroupBox;
+    DBInfoAdicional: TdxDBMemo;
+    GBLavagem: TGroupBox;
+    Bevel4: TBevel;
+    Bevel2: TBevel;
+    Bevel3: TBevel;
+    Bevel5: TBevel;
+    Bevel6: TBevel;
+    Bevel7: TBevel;
+    Bevel8: TBevel;
+    DBImage1: TDBImage;
+    DBImage2: TDBImage;
+    DBImage3: TDBImage;
+    DBImage4: TDBImage;
+    DBImage5: TDBImage;
+    DBImage6: TDBImage;
+    DBImage7: TDBImage;
+    DBGConsultaPRO_PREC: TdxDBGridMaskColumn;
+    DBGConsultaPRO_VPRC: TdxDBGridMaskColumn;
+    DBGConsultaPRO_RPRC: TdxDBGridMaskColumn;
+    DBText6: TDBText;
     CadastroID: TIntegerField;
     CadastroPRO_CBAR: TIBStringField;
     CadastroPRO_CFOR: TIBStringField;
@@ -142,112 +186,19 @@ type
     CadastroPRO_INS6: TBlobField;
     CadastroPRO_INS7: TBlobField;
     CadastroPRO_INS8: TBlobField;
-    CadastroC_DCST: TStringField;
-    CadastroC_STAV: TStringField;
-    CadastroC_QEST: TFloatField;
-    CadastroC_REST: TIntegerField;
-    CadastroC_QRES: TFloatField;
-    CadastroC_RRES: TIntegerField;
-    CadastroC_QSEP: TFloatField;
-    CadastroC_RSEP: TIntegerField;
-    CadastroC_QDIS: TFloatField;
-    CadastroC_RDIS: TIntegerField;
-    CadastroC_QDEF: TFloatField;
-    CadastroC_RDEF: TIntegerField;
-    CadastroC_QCOM: TFloatField;
-    CadastroC_RCOM: TIntegerField;
-    CadastroC_QPRG: TFloatField;
-    CadastroC_RPRG: TIntegerField;
-    CadastroC_QSLD: TFloatField;
-    CadastroC_RSLD: TIntegerField;
-    DBGConsultaC_QDIS: TdxDBGridColumn;
-    DBGConsultaC_RDIS: TdxDBGridColumn;
-    Consulta: TIBQuery;
-    DBGConsultaPRO_DPRO: TdxDBGridMaskColumn;
-    DBGConsultaPRO_DUNI: TdxDBGridMaskColumn;
-    PNLInfoAdicional: TPanel;
-    GBInfoAdicional: TGroupBox;
-    DBInfoAdicional: TdxDBMemo;
-    GBLavagem: TGroupBox;
-    Bevel4: TBevel;
-    Bevel2: TBevel;
-    Bevel3: TBevel;
-    Bevel5: TBevel;
-    Bevel6: TBevel;
-    Bevel7: TBevel;
-    Bevel8: TBevel;
-    DBImage1: TDBImage;
-    DBImage2: TDBImage;
-    DBImage3: TDBImage;
-    DBImage4: TDBImage;
-    DBImage5: TDBImage;
-    DBImage6: TDBImage;
-    DBImage7: TDBImage;
-    DBGConsultaPRO_PREC: TdxDBGridMaskColumn;
-    DBGConsultaPRO_VPRC: TdxDBGridMaskColumn;
-    DBGConsultaPRO_RPRC: TdxDBGridMaskColumn;
-    DBText6: TDBText;
     CadastroPRO_QEST: TIBBCDField;
-    CadastroPRO_REST: TIntegerField;
+    CadastroPRO_REST: TLargeintField;
     CadastroPRO_QRES: TIBBCDField;
-    CadastroPRO_RRES: TIntegerField;
+    CadastroPRO_RRES: TLargeintField;
     CadastroPRO_QSEP: TIBBCDField;
-    CadastroPRO_RSEP: TIntegerField;
-    CadastroPRO_QCOM: TIBBCDField;
-    CadastroPRO_RCOM: TIntegerField;
+    CadastroPRO_RSEP: TLargeintField;
     CadastroPRO_QPRG: TIBBCDField;
-    CadastroPRO_RPRG: TIntegerField;
-    CadastroPRO_QDEF: TIBBCDField;
-    CadastroPRO_RDEF: TIntegerField;
-    CadastroPRO_QEST2: TIBBCDField;
-    CadastroPRO_REST2: TIntegerField;
-    CadastroPRO_QEST3: TIBBCDField;
-    CadastroPRO_REST3: TIntegerField;
-    CadastroPRO_QEST4: TIBBCDField;
-    CadastroPRO_REST4: TIntegerField;
-    CadastroPRO_QEST5: TIBBCDField;
-    CadastroPRO_REST5: TIntegerField;
-    CadastroPRO_QEST6: TIBBCDField;
-    CadastroPRO_REST6: TIntegerField;
-    CadastroPRO_QEST7: TIBBCDField;
-    CadastroPRO_REST7: TIntegerField;
-    CadastroPRO_QEST8: TIBBCDField;
-    CadastroPRO_REST8: TIntegerField;
-    CadastroPRO_QEST9: TIBBCDField;
-    CadastroPRO_REST9: TIntegerField;
-    CadastroPRO_QRES2: TIBBCDField;
-    CadastroPRO_RRES2: TIntegerField;
-    CadastroPRO_QRES3: TIBBCDField;
-    CadastroPRO_RRES3: TIntegerField;
-    CadastroPRO_QRES4: TIBBCDField;
-    CadastroPRO_RRES4: TIntegerField;
-    CadastroPRO_QRES5: TIBBCDField;
-    CadastroPRO_RRES5: TIntegerField;
-    CadastroPRO_QRES6: TIBBCDField;
-    CadastroPRO_RRES6: TIntegerField;
-    CadastroPRO_QRES7: TIBBCDField;
-    CadastroPRO_RRES7: TIntegerField;
-    CadastroPRO_QRES8: TIBBCDField;
-    CadastroPRO_RRES8: TIntegerField;
-    CadastroPRO_QRES9: TIBBCDField;
-    CadastroPRO_RRES9: TIntegerField;
-    CadastroPRO_QSEP2: TIBBCDField;
-    CadastroPRO_RSEP2: TIntegerField;
-    CadastroPRO_QSEP3: TIBBCDField;
-    CadastroPRO_RSEP3: TIntegerField;
-    CadastroPRO_QSEP4: TIBBCDField;
-    CadastroPRO_RSEP4: TIntegerField;
-    CadastroPRO_QSEP5: TIBBCDField;
-    CadastroPRO_RSEP5: TIntegerField;
-    CadastroPRO_QSEP6: TIBBCDField;
-    CadastroPRO_RSEP6: TIntegerField;
-    CadastroPRO_QSEP7: TIBBCDField;
-    CadastroPRO_RSEP7: TIntegerField;
-    CadastroPRO_QSEP8: TIBBCDField;
-    CadastroPRO_RSEP8: TIntegerField;
-    CadastroPRO_QSEP9: TIBBCDField;
-    CadastroPRO_RSEP9: TIntegerField;
+    CadastroPRO_RPRG: TLargeintField;
+    CadastroPRO_QCOM: TIBBCDField;
     CadastroPRO_QPRD: TIBBCDField;
+    CadastroPRO_RCOM: TLargeintField;
+    CadastroPRO_QDEF: TIBBCDField;
+    CadastroPRO_RDEF: TLargeintField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -279,7 +230,7 @@ var
 implementation
 
 uses uPrincipal, bDados, 
-  ppesquisa, pven_ped, pven_oca, pent_pro, pven_nfe;
+  ppesquisa, pven_ped, pven_nfe;
 
 {$R *.dfm}
 
@@ -383,7 +334,8 @@ begin
       begin
         oCTransact(TCadastro);
         oOTransact(TCadastro);
-        
+
+        Close;
         SQL.Clear;
         SQL.Add('SELECT CAD_PRO.ID          ,CAD_PRO.PRO_CBAR    ,CAD_PRO.PRO_CFOR    ,CAD_PRO.PRO_CART,CAD_PRO.PRO_CPRO,');
         SQL.Add('       CAD_PRO.PRO_CCOR    ,CAD_PRO.PRO_PCOR    ,CAD_PRO.PRO_DCOR    ,CAD_PRO.PRO_DUNI    ,CAD_PRO.PRO_GRAD,CAD_PRO.PRO_COMP,');
@@ -402,32 +354,24 @@ begin
         SQL.Add('       CAD_PRO_IMG.PRO_INS1,CAD_PRO_IMG.PRO_INS2,CAD_PRO_IMG.PRO_INS3,CAD_PRO_IMG.PRO_INS4,');
         SQL.Add('       CAD_PRO_IMG.PRO_INS5,CAD_PRO_IMG.PRO_INS6,CAD_PRO_IMG.PRO_INS7,CAD_PRO_IMG.PRO_INS8,');
 
-        { Estoque por Peças }
-        if FrmPrincipal.ParametrosPAR_PECA.AsString = '1' then
-        begin
-          SQL.Add('     (SELECT SUM(EST_CRED-EST_DEBI) FROM '+SLPrincipal.Values['cad_pro_est']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL AND EST_CRED > 0 AND EST_FLAG = ''E'') AS PRO_QEST,');
-          SQL.Add('     (SELECT COUNT(*)               FROM '+SLPrincipal.Values['cad_pro_est']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL AND EST_CRED > 0 AND EST_FLAG = ''E'') AS PRO_REST,');
-        end else
-        { Estoque Normal }
-        begin
-          SQL.Add('     (SELECT SUM(EST_CRED-EST_DEBI) FROM '+SLPrincipal.Values['cad_pro_est']+' WHERE EST_CPRO = CAD_PRO.ID) AS PRO_QEST,');
-          SQL.Add('     (SELECT COUNT(*)               FROM '+SLPrincipal.Values['cad_pro_est']+' WHERE EST_CPRO = CAD_PRO.ID) AS PRO_REST,');
-        end;
+        SQL.Add('         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_EST     WHERE EST_CPRO = CAD_PRO.ID) AS PRO_QEST,');
+        SQL.Add('         (SELECT COUNT(*)               FROM CAD_PRO_EST     WHERE EST_CPRO = CAD_PRO.ID) AS PRO_REST,');
+        SQL.Add('         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES     WHERE EST_CPRO = CAD_PRO.ID) AS PRO_QRES,');
+        SQL.Add('         (SELECT COUNT(*)               FROM CAD_PRO_RES     WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RRES,');
+        SQL.Add('         (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP     WHERE EST_CPRO = CAD_PRO.ID AND EST_FLAG = ''R'') AS PRO_QSEP,');
+        SQL.Add('         (SELECT COUNT(*)               FROM CAD_PRO_SEP     WHERE EST_CPRO = CAD_PRO.ID AND EST_FLAG = ''R'') AS PRO_RSEP,');
 
-        SQL.Add('       (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_RES WHERE EST_CPRO = CAD_PRO.ID) AS PRO_QRES,');
-        SQL.Add('       (SELECT COUNT(*)               FROM CAD_PRO_RES WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RRES,');
-        SQL.Add('       (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_SEP WHERE EST_CPRO = CAD_PRO.ID AND EST_FLAG = ''R'') AS PRO_QSEP,');
-        SQL.Add('       (SELECT COUNT(*)               FROM CAD_PRO_SEP WHERE EST_CPRO = CAD_PRO.ID AND EST_FLAG = ''R'') AS PRO_RSEP,');
-        SQL.Add('       (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_PRG WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_QPRG,');
-        SQL.Add('       (SELECT COUNT(*)               FROM CAD_PRO_PRG WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_RPRG,');
-        SQL.Add('       (SELECT SUM(EST_CRED)          FROM CAD_PRO_PRC WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_QCOM,');
-        SQL.Add('       (SELECT COUNT(*)               FROM CAD_PRO_PRC WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_RCOM,');
-        SQL.Add('       (SELECT SUM(EST_CRED-EST_DEBI) FROM CAD_PRO_DEF WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_QDEF,');
-        SQL.Add('       (SELECT COUNT(*)               FROM CAD_PRO_DEF WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_RDEF ');
+        SQL.Add('         (SELECT SUM(EST_CRED-EST_DEBI) FROM '+SLPrincipal.Values['cad_pro_prg']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_QPRG,');
+        SQL.Add('         (SELECT COUNT(*)               FROM '+SLPrincipal.Values['cad_pro_prg']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_RPRG,');
+        SQL.Add('         (SELECT SUM(EST_CRED)          FROM '+SLPrincipal.Values['cad_pro_prc']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_QCOM,');
+        SQL.Add('         (SELECT SUM(EST_DEBI)          FROM '+SLPrincipal.Values['cad_pro_prc']+' WHERE EST_CPRO = CAD_PRO.ID) AS PRO_QPRD,');
+        SQL.Add('         (SELECT COUNT(*)               FROM '+SLPrincipal.Values['cad_pro_prc']+' WHERE EST_CPRO = CAD_PRO.ID AND EST_CDPD IS NULL) AS PRO_RCOM,');
+        SQL.Add('         (SELECT SUM(EST_CRED-EST_DEBI) FROM '+SLPrincipal.Values['cad_pro_def']+' WHERE EST_CPRO = CAD_PRO.ID) AS PRO_QDEF,');
+        SQL.Add('         (SELECT COUNT(*)               FROM '+SLPrincipal.Values['cad_pro_def']+' WHERE EST_CPRO = CAD_PRO.ID) AS PRO_RDEF ');
 
-        SQL.Add('FROM   CAD_PRO,CAD_PRO_IMG');
-        SQL.Add('WHERE  CAD_PRO.PRO_CART = CAD_PRO_IMG.PRO_CART');
-        SQL.Add('AND    CAD_PRO.PRO_STAV = ''A''');
+        SQL.Add('FROM     CAD_PRO,CAD_PRO_IMG');
+        SQL.Add('WHERE    CAD_PRO.PRO_CART = CAD_PRO_IMG.PRO_CART');
+        SQL.Add('AND      CAD_PRO.PRO_STAV <> ''I''');
 
         if cbcampo.text <> 'Todos' then
         begin
@@ -456,211 +400,12 @@ end;
 
 procedure Tfrmcad_pro_con.DBGConsultaDblClick(Sender: TObject);
 begin
-  if Assigned(frmven_oca) then
-  begin
-    if cadastroPRO_STAV.AsString = 'I' then
-    begin
-      messageBox(handle,'Produto inativo !',PChar(self.Caption),MB_ICONERROR+MB_OK);
-      Abort;
-    end;
-
-    if cadastroPRO_STAV.AsString = 'P' then
-    begin
-      messageBox(handle,'Produto em desenvolvimento !',PChar(self.Caption),MB_ICONERROR+MB_OK);
-      Abort;
-    end;
-
-    if cadastroPRO_STA.AsString <> '0' then
-    begin
-      messageBox(handle,'Produto enviado para a lixeira !',PChar(self.Caption),MB_ICONERROR+MB_OK);
-      Abort;
-    end;
-
-    if ((frmprincipal.parametrosPAR_TIPO.AsString = '0') and (frmven_oca.edqtsp.Text = '1')) or
-       ((frmprincipal.parametrosPAR_TIPO.AsString = '4') and (frmven_oca.edqtsp.Text = '1')) then
-    begin
-      if copy(cadastroPRO_DUNI.AsString,1,1) = 'M' then
-      begin
-        if cadastroPRO_METR.AsFloat <= 0 then
-        begin
-          messageBox(handle,'Produto sem metragem cadastrada !',PChar(self.Caption),MB_ICONERROR+MB_OK);
-          Abort;
-        end;
-      end
-      else if copy(cadastroPRO_DUNI.AsString,1,1) = 'K' then
-      begin
-        if cadastroPRO_PESO.AsFloat <= 0 then
-        begin
-          messageBox(handle,'Produto sem peso da peça cadastrada !',PChar(self.Caption),MB_ICONERROR+MB_OK);
-          Abort;
-        end;
-
-        if cadastroPRO_PSCN.AsFloat <= 0 then
-        begin
-          messageBox(handle,'Produto sem peso do canudo cadastrado !',PChar(self.Caption),MB_ICONERROR+MB_OK);
-          Abort;
-        end;
-      end;
-    end;
-
-    if frmven_oca.rom_001.State = dsBrowse then
-    begin
-      if (frmven_oca.edQTPC.Text = 'PC') or (frmven_oca.cbstpd.Text = 'DEVOLUÇÃO') then
-         frmven_oca.rom_001.Append
-      else
-      begin
-        frmven_oca.rom_001.First;
-        if frmven_oca.rom_001.Locate('ROM_CPRO',cadastroPRO_CPRO.AsString,[]) then
-        frmven_oca.rom_001.Edit
-        else
-        frmven_oca.rom_001.Append;
-      end;
-    end;
-
-    frmven_oca.rom_001ROM_PRCA.Value := cadastroPRO_PREC.AsFloat;
-    frmven_oca.rom_001ROM_PRPA.Value := cadastroPRO_PPRO.AsFloat;
-    frmven_oca.rom_001ROM_VPRC.Value := cadastroPRO_VPRC.AsFloat;
-    frmven_oca.rom_001ROM_VPRO.Value := cadastroPRO_VPRO.AsFloat;
-    frmven_oca.rom_001ROM_RPRC.Value := cadastroPRO_RPRC.AsFloat;
-    frmven_oca.rom_001ROM_RPRO.Value := cadastroPRO_RPRO.AsFloat;
-    frmven_oca.rom_001ROM_PCOM.Value := cadastroPRO_PCOM.AsFloat;
-    frmven_oca.rom_001ROM_CUST.Value := cadastroPRO_CUST.AsFloat;
-    frmven_oca.rom_001ROM_TPRC.Value := TRIM(frmven_oca.cbprec.Text);
-
-    frmven_oca.aux.SQL.Clear;
-    frmven_oca.aux.SQL.Add('SELECT CLI_PDSC,CLI_VDSC FROM CAD_CLI_DSC');
-    frmven_oca.aux.SQL.Add('WHERE  CLI_CCLI = '''+frmven_oca.edccli.Text+'''');
-    frmven_oca.aux.SQL.Add('AND    CLI_CPRO = '''+cadastroPRO_CPRO.AsString+'''');
-    frmven_oca.aux.Open;
-
-    if frmven_oca.aux.Fields[0].AsFloat > 0 then
-    frmven_oca.rom_001ROM_VDSC.Value := frmven_oca.aux.fields[0].AsFloat
-    else if frmven_oca.aux.Fields[1].AsFloat > 0 then
-    frmven_oca.rom_001ROM_UNIT.Value := frmven_oca.aux.Fields[1].AsFloat;
-    frmven_oca.rom_001ROM_DPRO.Value := cadastroPRO_DPRO.AsString;
-
-    if frmven_oca.rom_001ROM_PREC.AsFloat = 0 then
-    frmven_oca.rom_001ROM_PREC.Value := frmven_oca.rom_001ROM_UNIT.AsFloat;
-
-    if (oTextToValor(frmven_oca.edpacr.Text) > 0) and (frmven_oca.rom_001ROM_PREC.AsFloat > 0) then
-    begin
-      frmven_oca.rom_001ROM_PREC.Value := frmven_oca.rom_001ROM_PREC.AsFloat + ((frmven_oca.rom_001ROM_PREC.AsFloat * oTextToValor(frmven_oca.edpacr.Text)/100));
-      frmven_oca.rom_001ROM_UNIT.Value := frmven_oca.rom_001ROM_PREC.AsFloat;
-    end;
-
-    frmven_oca.rom_001ROM_IPRO.Value := cadastroID.AsInteger;
-    frmven_oca.rom_001ROM_IPR2.Value := cadastroID.AsInteger;
-    frmven_oca.rom_001ROM_CART.Value := cadastroPRO_CART.AsString;
-    frmven_oca.rom_001ROM_CPRO.Value := cadastroPRO_CPRO.AsString;
-    frmven_oca.rom_001ROM_CPR2.Value := cadastroPRO_CPRO.AsString;
-    frmven_oca.rom_001ROM_CCOR.Value := cadastroPRO_CCOR.AsInteger;
-    frmven_oca.rom_001ROM_CCO2.Value := cadastroPRO_CCOR.AsInteger;
-    frmven_oca.rom_001ROM_DCOR.Value := cadastroPRO_DCOR.AsString;
-    frmven_oca.rom_001ROM_DCO2.Value := cadastroPRO_DCOR.AsString;
-    frmven_oca.rom_001ROM_DUNI.Value := cadastroPRO_DUNI.AsString;
-    frmven_oca.rom_001ROM_FOTO.Value := cadastroPRO_FOTO.Value;
-    frmven_oca.rom_001ROM_CBAR.Value := cadastroPRO_CBAR.AsString;
-    frmven_oca.rom_001ROM_PPRO.Value := cadastroPRO_PPRO.AsFloat;
-    frmven_oca.rom_001ROM_METR.Value := cadastroPRO_METR.AsFloat;
-    frmven_oca.rom_001ROM_PESO.Value := cadastroPRO_PESO.AsFloat;
-    frmven_oca.rom_001ROM_REND.Value := cadastroPRO_REND.AsFloat;
-    frmven_oca.rom_001ROM_PSCN.Value := cadastroPRO_PSCN.AsFloat;
-    frmven_oca.rom_001ROM_PSMR.Value := cadastroPRO_PSMR.AsFloat;
-    frmven_oca.rom_001ROM_PIPI.Value := cadastroPRO_PIPI.AsFloat;
-    frmven_oca.rom_001ROM_QDIS.Value := cadastroC_QDIS.AsFloat;
-    frmven_oca.rom_001ROM_RLDI.Value := cadastroC_RDIS.AsInteger;
-    frmven_oca.rom_001ROM_APRC.Value := cadastroPRO_APRC.AsString;
-    frmven_oca.rom_001ROM_LDSC.Value := cadastroPRO_LDSC.AsFloat;
-    frmven_oca.rom_001ROM_QTRL.Value := 1;
-
-    if (copy(frmven_oca.rom_001ROM_DUNI.AsString,1,1) = 'P') or (copy(frmven_oca.rom_001ROM_DUNI.AsString,1,1) = 'C') then
-    frmven_oca.rom_001ROM_QTRL.Value := trunc(frmven_oca.rom_001ROM_QTDE.AsFloat);
-
-    if frmprincipal.parametrosPAR_FANT.AsString = 'LEBIANCO' then
-    begin
-      if frmven_oca.rom_001ROM_QTRL.AsInteger = 0 then
-      frmven_oca.rom_001ROM_QTRL.Value := 1;
-
-      if copy(frmven_oca.rom_001ROM_DUNI.AsString,1,1) = 'K' then
-      frmven_oca.rom_001ROM_QTDE.Value := roundto(frmven_oca.rom_001ROM_QTRL.AsFloat*(frmven_oca.rom_001ROM_PESO.AsFloat+frmven_oca.rom_001ROM_PSCN.AsFloat),-2)
-      else if (copy(frmven_oca.rom_001ROM_DUNI.AsString,1,1) = 'M') then
-      frmven_oca.rom_001ROM_QTDE.Value := roundto(frmven_oca.rom_001ROM_QTRL.AsFloat*frmven_oca.rom_001ROM_METR.AsFloat,-2);
-    end;
-
-    if not oEmpty(cadastroPRO_GRAD.AsString) then
-    with Consulta do
-    begin
-      Consulta.SQL.Clear;
-      Consulta.SQL.Add('SELECT GRD_CGRD,GRD_DGRD FROM TAB_GRD');
-      Consulta.SQL.Add('WHERE  GRD_CGRD = '''+cadastroPRO_GRAD.AsString+'''');
-      Consulta.Open;
-
-      frmven_oca.rom_001ROM_CGRD.Value := Consulta.Fields[0].AsString;
-      frmven_oca.rom_001ROM_DGRD.Value := Consulta.Fields[1].AsString;
-    end;
-
-    if frmven_oca.rom_001.State = dsInsert then
-    frmven_oca.CARREGAFOTO(frmven_oca.rom_001ROM_FOTO.BlobSize,frmven_oca.rom_001ROM_FOTO,frmven_oca.rom_001);
-
-    Close;
-  end
-  else if Assigned(frmven_ped) then
-  begin
-  end
-  else if Assigned(frment_pro) then
-  begin
-    if cadastroPRO_STAV.AsString = 'I' then
-    begin
-      messageBox(handle,'Produto inativo !',PChar(self.Caption),MB_ICONERROR+MB_OK);
-      Abort;
-    end;
-
-    if cadastroPRO_STA.AsString <> '0' then
-    begin
-      messageBox(handle,'Produto enviado para a lixeira !',PChar(self.Caption),MB_ICONERROR+MB_OK);
-      Abort;
-    end;
-
-    if frment_pro.rom_001.State = dsBrowse then
-       frment_pro.rom_001.Append;
-
-    frment_pro.rom_001PRO_IPRO.Value := cadastroID.Value;
-    frment_pro.rom_001PRO_IPR2.Value := cadastroID.Value;
-    frment_pro.rom_001PRO_CART.Value := cadastroPRO_CART.Value;
-    frment_pro.rom_001PRO_CPRO.Value := cadastroPRO_CPRO.Value;
-    frment_pro.rom_001PRO_CPR2.Value := cadastroPRO_CPRO.Value;
-    frment_pro.rom_001PRO_CCOR.Value := cadastroPRO_CCOR.Value;
-    frment_pro.rom_001PRO_DCOR.Value := cadastroPRO_DCOR.Value;
-    frment_pro.rom_001PRO_CCO2.Value := cadastroPRO_CCOR.Value;
-    frment_pro.rom_001PRO_DCO2.Value := cadastroPRO_DCOR.Value;
-    frment_pro.rom_001PRO_DPRO.Value := cadastroPRO_DPRO.Value;
-    frment_pro.rom_001PRO_DUNI.Value := cadastroPRO_DUNI.Value;
-    frment_pro.rom_001PRO_FOTO.Value := cadastroPRO_FOTO.Value;
-    frment_pro.rom_001PRO_CBAR.Value := cadastroPRO_CBAR.Value;
-    frment_pro.rom_001PRO_QDIS.Value := cadastroC_QDIS.Value;
-    frment_pro.rom_001PRO_RDIS.Value := cadastroC_RDIS.Value;
-
-    frment_pro.edTXT.Text            := cadastroPRO_CPRO.AsString;
-    frment_pro.dbgrom.FocusedColumn  := 7;
-    frment_pro.carregaFoto(frment_pro.rom_001PRO_FOTO.BlobSize,frment_pro.rom_001PRO_FOTO,frment_pro.rom_001);
-
-    try
-      frment_pro.rom_001PRO_QTDE.Value := oTextToValor(frment_pro.edQTDE.Text);
-      if copy(frment_pro.cboper.Text,1,5) = 'ZERAR' then
-      frment_pro.rom_001PRO_QTDE.Value := abs(cadastroC_QDIS.AsFloat);
-      frment_pro.rom_001.Post;
-      frment_pro.rom_001.Last;
-    finally
-      if (frmprincipal.parametrosPAR_TIPO.AsString = '0') or (frmprincipal.parametrosPAR_TIPO.AsString = '4') then
-         frment_pro.edQTDE.SetFocus else frment_pro.edTXT.SetFocus;
-    end;
-
-    Close;
-  end
-  else if Assigned(frmven_nfe) then
+  Editado := True;
+  
+  if Assigned(frmven_nfe) then
   begin
     if frmven_nfe.nfe_001.State = dsBrowse then
-       frmven_nfe.nfe_001.Append;
+    frmven_nfe.nfe_001.Append;
 
     frmven_nfe.nfe_001NFE_IPRO.value      := cadastroID.AsInteger;
     frmven_nfe.nfe_001NFE_CPROD.value     := cadastroPRO_CPRO.AsString;
@@ -703,7 +448,8 @@ begin
 
     frmven_nfe.dbgnfe.FocusedColumn := 4;
     close;
-  end;
+  end else
+  Close;
 end;
 
 procedure Tfrmcad_pro_con.DTSCadastroDataChange(Sender: TObject;
@@ -712,7 +458,6 @@ begin
   inherited;
   DBGConsultaPRO_VPRC.Visible := (not oEmpty(CadastroPRO_VPRC.AsFloat));
   DBGConsultaPRO_RPRC.Visible := (not oEmpty(CadastroPRO_RPRC.AsFloat));
-  DBGConsultaC_RDIS.Visible   := (not oEmpty(CadastroC_RDIS.AsInteger));
   DBGConsultaPRO_DCOR.Visible := (not oEmpty(CadastroPRO_DCOR.AsString));
   DBGConsultaPRO_DPRO.Width   := DBGConsultaPRO_DPRO.Tag + IFThen(DBGConsultaPRO_DCOR.Visible,0,DBGConsultaPRO_DCOR.Width);
   if Screen.Height > 768 then
@@ -727,61 +472,9 @@ end;
 
 procedure Tfrmcad_pro_con.CadastroCalcFields(DataSet: TDataSet);
 begin
-  if frmprincipal.parametrosPAR_ESEG.AsString <> '1' then
-  begin
-    case frmprincipal.parametrosID.AsInteger of
-    1: begin
-         CadastroC_QEST.Value := CadastroPRO_QEST.AsFloat;
-         CadastroC_QRES.Value := CadastroPRO_QRES.AsFloat;
-         CadastroC_QSEP.Value := CadastroPRO_QSEP.AsFloat;
-       end;
-    2: begin
-         CadastroC_QEST.Value := CadastroPRO_QEST2.AsFloat;
-         CadastroC_QRES.Value := CadastroPRO_QRES2.AsFloat;
-         CadastroC_QSEP.Value := CadastroPRO_QSEP2.AsFloat;
-       end;
-    3: begin
-         CadastroC_QEST.Value := CadastroPRO_QEST3.AsFloat;
-         CadastroC_QRES.Value := CadastroPRO_QRES3.AsFloat;
-         CadastroC_QSEP.Value := CadastroPRO_QSEP3.AsFloat;
-       end;
-    4: begin
-         CadastroC_QEST.Value := CadastroPRO_QEST4.AsFloat;
-         CadastroC_QRES.Value := CadastroPRO_QRES4.AsFloat;
-         CadastroC_QSEP.Value := CadastroPRO_QSEP4.AsFloat;
-       end;
-    5: begin
-         CadastroC_QEST.Value := CadastroPRO_QEST5.AsFloat;
-         CadastroC_QRES.Value := CadastroPRO_QRES5.AsFloat;
-         CadastroC_QSEP.Value := CadastroPRO_QSEP5.AsFloat;
-       end;
-    6: begin
-         CadastroC_QEST.Value := CadastroPRO_QEST6.AsFloat;
-         CadastroC_QRES.Value := CadastroPRO_QRES6.AsFloat;
-         CadastroC_QSEP.Value := CadastroPRO_QSEP6.AsFloat;
-       end;
-    7: begin
-         CadastroC_QEST.Value := CadastroPRO_QEST7.AsFloat;
-         CadastroC_QRES.Value := CadastroPRO_QRES7.AsFloat;
-         CadastroC_QSEP.Value := CadastroPRO_QSEP7.AsFloat;
-       end;
-    8: begin
-         CadastroC_QEST.Value := CadastroPRO_QEST8.AsFloat;
-         CadastroC_QRES.Value := CadastroPRO_QRES8.AsFloat;
-         CadastroC_QSEP.Value := CadastroPRO_QSEP8.AsFloat;
-       end;
-    9: begin
-         CadastroC_QEST.Value := CadastroPRO_QEST9.AsFloat;
-         CadastroC_QRES.Value := CadastroPRO_QRES9.AsFloat;
-         CadastroC_QSEP.Value := CadastroPRO_QSEP9.AsFloat;
-       end;
-    end;
-  end else
-  begin
-    CadastroC_QEST.Value := CadastroPRO_QEST.AsFloat + CadastroPRO_QEST2.AsFloat + CadastroPRO_QEST3.AsFloat + CadastroPRO_QEST4.AsFloat + CadastroPRO_QEST5.AsFloat + CadastroPRO_QEST6.AsFloat + CadastroPRO_QEST7.AsFloat + CadastroPRO_QEST8.AsFloat + CadastroPRO_QEST9.AsFloat;
-    CadastroC_QRES.Value := CadastroPRO_QRES.AsFloat + CadastroPRO_QRES2.AsFloat + CadastroPRO_QRES3.AsFloat + CadastroPRO_QRES4.AsFloat + CadastroPRO_QRES5.AsFloat + CadastroPRO_QRES6.AsFloat + CadastroPRO_QRES7.AsFloat + CadastroPRO_QRES8.AsFloat + CadastroPRO_QRES9.AsFloat;
-    CadastroC_QSEP.Value := CadastroPRO_QSEP.AsFloat + CadastroPRO_QSEP2.AsFloat + CadastroPRO_QSEP3.AsFloat + CadastroPRO_QSEP4.AsFloat + CadastroPRO_QSEP5.AsFloat + CadastroPRO_QSEP6.AsFloat + CadastroPRO_QSEP7.AsFloat + CadastroPRO_QSEP8.AsFloat + CadastroPRO_QSEP9.AsFloat;
-  end;
+  CadastroC_QEST.Value := CadastroPRO_QEST.AsFloat;
+  CadastroC_QRES.Value := CadastroPRO_QRES.AsFloat;
+  CadastroC_QSEP.Value := CadastroPRO_QSEP.AsFloat;
 
   CadastroC_QDEF.Value := CadastroPRO_QDEF.AsFloat;
   CadastroC_QEST.Value := CadastroC_QEST.AsFloat + CadastroC_QSEP.AsFloat;

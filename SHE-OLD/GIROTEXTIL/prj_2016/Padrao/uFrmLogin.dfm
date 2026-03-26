@@ -1,6 +1,7 @@
 object FrmLogin: TFrmLogin
   Left = 331
   Top = 210
+  ActiveControl = eddlog
   BorderIcons = []
   BorderStyle = bsSingle
   ClientHeight = 277
@@ -756,17 +757,17 @@ object FrmLogin: TFrmLogin
       Top = 16
       Width = 349
       Height = 49
-      Color = 14789952
+      Color = clHighlight
       TabOrder = 3
       object Label5: TLabel
-        Left = 4
-        Top = 12
-        Width = 203
+        Left = 8
+        Top = 7
+        Width = 73
         Height = 34
-        Caption = 'Login de Acesso'
+        Caption = 'Login'
         Color = clBlack
         Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
+        Font.Color = clHighlightText
         Font.Height = -29
         Font.Name = 'Cambria'
         Font.Style = [fsBold, fsItalic]
