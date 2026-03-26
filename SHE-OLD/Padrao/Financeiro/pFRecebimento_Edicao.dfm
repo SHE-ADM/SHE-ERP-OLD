@@ -4,8 +4,9 @@ inherited FrmFRecebimento_Edicao: TFrmFRecebimento_Edicao
   Caption = 'Manuten'#231#227'o de T'#237'tulos'
   ClientHeight = 623
   ClientWidth = 554
-  FormStyle = fsNormal
+  FormStyle = fsStayOnTop
   Position = poDesigned
+  Visible = False
   PixelsPerInch = 96
   TextHeight = 14
   inherited SBRodape: TdxStatusBar

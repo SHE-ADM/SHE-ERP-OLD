@@ -77,15 +77,6 @@ type
     FKCadastroIMG_ID: TLargeintField;
     FKCadastroIMG_PAD: TBlobField;
     FKCadastroSTFI: TIBStringField;
-    PNLTAB_PRC: TPanel;
-    LALPRC_TAB_ABAIXO: TLabel;
-    LALPRC_TAB_ACIMA_MIN: TLabel;
-    LALPRC_TAB_ACIMA_MAX: TLabel;
-    LAPRC_TAB_ACIMA_MIN: TLabel;
-    LAPRC_TAB_ACIMA_MAX: TLabel;
-    PNLTAB_PRC_ABAIXO: TPanel;
-    PNLTAB_PRC_ACIMA_MIN: TPanel;
-    PNLTAB_PRC_ACIMA_MAX: TPanel;
     PNLINFADCAD: TPanel;
     DBINFADCAD: TdxDBMemo;
     FKCadastroCTNR: TIBStringField;
@@ -295,6 +286,15 @@ type
     DBILA_BMP6: TDBImage;
     DBILA_BMP7: TDBImage;
     DBILA_BMP8: TDBImage;
+    PNLTAB_PRC: TPanel;
+    LALTAB_PRC_ABAIXO: TLabel;
+    LALTAB_PRC_ACIMA_MIN: TLabel;
+    LALTAB_PRC_ACIMA_MAX: TLabel;
+    LATAB_PRC_ACIMA_MIN: TLabel;
+    LATAB_PRC_ACIMA_MAX: TLabel;
+    PNLTAB_PRC_ABAIXO: TPanel;
+    PNLTAB_PRC_ACIMA_MIN: TPanel;
+    PNLTAB_PRC_ACIMA_MAX: TPanel;
     procedure FormCreate(Sender: TObject);
     procedure siAROClick(Sender: TObject);
     procedure dtscadastroDataChange(Sender: TObject; Field: TField);
@@ -545,19 +545,19 @@ end;
 procedure Tfrmctr_prg.DTSFKCadastroDataChange(Sender: TObject; Field: TField);
 begin
   { Tabela de Preços }
-  LAPRC_TAB_ACIMA_MIN.Caption := FormatFloat('R$ #,0.00',FKCadastroVPRC_PAD_INI.AsFloat);
-  LAPRC_TAB_ACIMA_MAX.Caption := FormatFloat('R$ #,0.00',FKCadastroVPRC_PAD_FIM.AsFloat);
-  if (FKCadastroVPRC_COM.AsFloat <> FKCadastroVPRC_PAD_INI.AsFloat) or (FKCadastroVPRC_COM.AsFloat <> FKCadastroVPRC_PAD_FIM.AsFloat) or (FKCadastroVPRC_PAD_INI.AsFloat <> FKCadastroVPRC_PAD_FIM.AsFloat) then
-      PNLTAB_PRC.Height := 22 else
-      PNLTAB_PRC.Height := 0;
+  LATAB_PRC_ACIMA_MIN.Caption := FormatFloat('R$ #,0.00',FKCadastroVPRC_PAD_INI.AsCurrency);
+  LATAB_PRC_ACIMA_MAX.Caption := FormatFloat('R$ #,0.00',FKCadastroVPRC_PAD_FIM.AsCurrency);
+  if (FKCadastroVPRC_COM.AsFloat <> FKCadastroVPRC_PAD_INI.AsCurrency) or (FKCadastroVPRC_COM.AsFloat <> FKCadastroVPRC_PAD_FIM.AsCurrency) or (FKCadastroVPRC_PAD_INI.AsCurrency <> FKCadastroVPRC_PAD_FIM.AsCurrency) then
+  PNLTAB_PRC.Height := 22 else
+  PNLTAB_PRC.Height := 0;
 
   { Conteúdo }
   if Pos('COM',FKCadastroUCON.AsString) > 0 then
   begin
-    PNLTAB_PRC.Caption := 'Contém '+FKCadastroUCON.AsString+'  ';
+    PNLTAB_PRC.Caption := 'Conteúdo '+FKCadastroUCON.AsString+'  ';
     PNLTAB_PRC.Height  := 22;
   end else
-    PNLTAB_PRC.Caption := EmptyStr;
+  PNLTAB_PRC.Caption := EmptyStr;
 
   { Fit Colunas }
   DBGFKCadastro.ApplyBestFit(DBGFKCadastroSKU);
@@ -620,39 +620,47 @@ procedure Tfrmctr_prg.DBGFKCadastroCustomDrawCell(Sender: TObject;
 begin
   if not ASelected then
   begin
-    if AColumn = DBGFKCadastroTCDE then
+    if ANode.Values[DBGFKCadastroTCDE.Index] = 0 then
     begin
-      AFont.Color := clWhite;
-      AColor      := $00E1AD40;
-    end;
-
-    if ANode.Values[DBGFKCadastroSTFI.Index] <> Null then
-    if POS('FIN',ANode.Values[DBGFKCadastroSTFI.Index]) > 0 then
-    begin
+      AColor      := clInfoBk;
       AFont.Color := clWindowText;
-      AColor      := $00C4FFC4;
-    end;
+    end else
+    begin
+      if AColumn = DBGFKCadastroTCDE then
+      begin
+        AFont.Color := clWhite;
+        AColor      := $00E1AD40;
+      end;
+
+      if ANode.Values[DBGFKCadastroSTFI.Index] <> Null then
+      if POS('FIN',ANode.Values[DBGFKCadastroSTFI.Index]) > 0 then
+      begin
+        AFont.Color := clWindowText;
+        AColor      := $00C4FFC4;
+      end;
+    end;  
   end;
 
-  if AColumn = DBGFKCadastroVPRC_COM then
-     if ANode.Values[DBGFKCadastroVPRC_COM.Index] < ANode.Values[DBGFKCadastroVPRC_PAD_INI.Index] then
-     begin
-       AFont.Style := [fsBold];
-       AFont.Color := clWhite;
-       AColor      := $000024B3;
-     end else
-     if ANode.Values[DBGFKCadastroVPRC_COM.Index] > ANode.Values[DBGFKCadastroVPRC_PAD_FIM.Index] then
-     begin
-       AFont.Style := [fsBold];
-       AFont.Color := clWhite;
-       AColor      := $00E1AD40
-     end else
-     if ANode.Values[DBGFKCadastroVPRC_COM.Index] > ANode.Values[DBGFKCadastroVPRC_PAD_INI.Index] then
-     begin
-       AFont.Style := [fsBold];
-       AFont.Color := clBlack;
-       AColor      := $00C4FFC4;
-     end;
+  if (ANode.Values[DBGFKCadastroTCDE.Index] > 0) then
+  if (AColumn = DBGFKCadastroQTDE) or (AColumn = DBGFKCadastroQTRL) or (AColumn = DBGFKCadastroVPRC_COM) or (AColumn = DBGFKCadastroTCDE) then
+  if (ANode.Values[DBGFKCadastroVPRC_COM.Index] < ANode.Values[DBGFKCadastroVPRC_PAD_INI.Index]) then
+  begin
+    AFont.Style := [fsBold];
+    AFont.Color := clWhite;
+    AColor      := $000024B3;
+  end else
+  if ANode.Values[DBGFKCadastroVPRC_COM.Index] >= ANode.Values[DBGFKCadastroVPRC_PAD_FIM.Index] then
+  begin
+    AFont.Style := [fsBold];
+    AFont.Color := clWhite;
+    AColor      := $00E1AD40
+  end else
+  if ANode.Values[DBGFKCadastroVPRC_COM.Index] > ANode.Values[DBGFKCadastroVPRC_PAD_INI.Index] then
+  begin
+    AFont.Style := [fsBold];
+    AFont.Color := clBlack;
+    AColor      := $00C4FFC4;
+  end;
 end;
 
 function Tfrmctr_prg.RETORNA_STFI: string;
@@ -1045,6 +1053,17 @@ begin
                        'Gerar Parcial ?') = mrNo then
       Abort;
 
+      { VER DUPLICIDADE }
+      with SQLConsulta do
+      begin
+        Close;
+        SQL.Clear;
+        SQL.Add('SELECT TCDE FROM ' + oREPZero('PED_VEN_CAB','_',RECParametros.EP_ID,3));
+        SQL.Add('WHERE  CDPP = '''  + CadastroID.AsString + '''');
+        ExecQuery;
+      end;
+
+      if SQLConsulta.Current.Vars[0].AsCurrency <> CadastroTCDE.AsCurrency then
       oDoCommitWait(TEdicao,_DoCommitWait); { Principal }
     end;
 

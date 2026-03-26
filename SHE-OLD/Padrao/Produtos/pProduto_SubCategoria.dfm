@@ -1029,8 +1029,8 @@ inherited FrmProduto_SubCategoria: TFrmProduto_SubCategoria
     OnDataChange = DTSCadastroDataChange
   end
   inherited ILMenu: TImageList
-    Left = 432
-    Top = 328
+    Left = 368
+    Top = 336
     Bitmap = {
       494C01010F001300040024002400FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000090000000B400000001002000000000000095

@@ -1,7 +1,7 @@
 object FrmVEN_PED: TFrmVEN_PED
   Tag = 1
-  Left = 719
-  Top = 23
+  Left = 311
+  Top = 28
   HelpType = htKeyword
   HelpKeyword = '1'
   HelpContext = 95

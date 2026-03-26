@@ -173,6 +173,7 @@ procedure Tfrmcad_for.ACTPesquisaExecute(Sender: TObject);
 begin
   inherited;
 
+  if not REC_SHE_DEF.FInitialize then
   try
     FrmPesquisa_OLD := TFrmPesquisa_OLD.Create(Self);
     FrmPesquisa_OLD.Tag := 1;

@@ -189,7 +189,6 @@ type
     CETotal: TdxCurrencyEdit;
     edcpag: TdxMaskEdit;
     edstpd: TdxMaskEdit;
-    PNLInfAdProd: TPanel;
     EdicaoROM_PTABI: TFloatField;
     EdicaoROM_PTABF: TFloatField;
     Shape13: TShape;
@@ -246,8 +245,6 @@ type
     EdicaoROM_PLUN: TIBBCDField;
     EdicaoROM_PSBR: TIBBCDField;
     EdicaoROM_PSLQ: TIBBCDField;
-    PECTNR: TdxPickEdit;
-    lactnr: TLabel;
     IEMFRT: TdxImageEdit;
     Label1: TLabel;
     ladtra: TLabel;
@@ -375,6 +372,18 @@ type
     Label5: TLabel;
     Shape16: TShape;
     dxCurrencyEdit1: TdxCurrencyEdit;
+    PNLTAB_PRC: TPanel;
+    LALTAB_PRC_ABAIXO: TLabel;
+    LALTAB_PRC_ACIMA_MIN: TLabel;
+    LALTAB_PRC_ACIMA_MAX: TLabel;
+    LATAB_PRC_ACIMA_MIN: TLabel;
+    LATAB_PRC_ACIMA_MAX: TLabel;
+    PNLTAB_PRC_ABAIXO: TPanel;
+    PNLTAB_PRC_ACIMA_MIN: TPanel;
+    PNLTAB_PRC_ACIMA_MAX: TPanel;
+    PECTNR: TdxPickEdit;
+    lactnr: TLabel;
+    Label4: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
@@ -1318,6 +1327,14 @@ end;
 procedure Tfrmven_prg.DTSEdicaoDataChange(Sender: TObject; Field: TField);
 begin
   if Tag = 0 then _DTSEdicao;
+
+  if Edicao.State = dsBrowse then
+  begin
+    DBGEdicao.ApplyBestFit(DBGEdicaoROM_CPRO);
+    DBGEdicao.ApplyBestFit(DBGEdicaoROM_DCOR);
+    DBGEdicao.ApplyBestFit(DBGEdicaoROM_DUNI);
+    DBGEdicao.ApplyBestFit(DBGEdicaoROM_STFI);
+  end;  
 end;
 
 procedure Tfrmven_prg.DTSEdicaoStateChange(Sender: TObject);
@@ -1333,44 +1350,57 @@ procedure Tfrmven_prg.DBGEdicaoCustomDrawCell(Sender: TObject;
 begin
   if not ASelected then
   begin
-    if (AColumn = DBGEdicaoROM_QDIS) or (AColumn = DBGEdicaoROM_PIPI) or (AColumn = DBGEdicaoROM_VIPI) then
+    if ANode.Values[DBGEdicaoROM_TOTA.Index] = 0 then
     begin
-      AFont.Color := clBlack;
-      if oTextToValor(ANode.Values[DBGEdicaoROM_QDIS.Index]) <= 0 then
+      AColor      := clInfoBk;
+      AFont.Color := clWindowText;
+    end else
+    begin
+      if (AColumn = DBGEdicaoROM_QDIS) or (AColumn = DBGEdicaoROM_PIPI) or (AColumn = DBGEdicaoROM_VIPI) then
       begin
-        AFont.Color := $000024B3;
-        AFont.Style := [fsBold];
+        AFont.Color := clBlack;
+        if oTextToValor(ANode.Values[DBGEdicaoROM_QDIS.Index]) <= 0 then
+        begin
+          AFont.Color := $000024B3;
+          AFont.Style := [fsBold];
+        end;
+        AColor := $00E9E9E9;
       end;
-      AColor := $00E9E9E9;
-    end;
 
-    if (AColumn = DBGEdicaoROM_TOTA) or (AColumn = DBGEdicaoROM_PIPI) or (AColumn = DBGEdicaoROM_VIPI) then
-    begin
-      AFont.Color := clWhite;
-      AColor      := $00E1AD40;
-    end;
+      if (AColumn = DBGEdicaoROM_TOTA) or (AColumn = DBGEdicaoROM_PIPI) or (AColumn = DBGEdicaoROM_VIPI) then
+      begin
+        AFont.Color := clWhite;
+        AColor      := $00E1AD40;
+      end;
 
-    if ((oTextToValor(ANode.Values[DBGEdicaoROM_UNIT.Index]) = 0) and (Edicao.State <> dsInsert)) then
-    begin
-      AFont.Color := clWhite;
-      AColor      := $000024B3;
-    end;
+      if ((oTextToValor(ANode.Values[DBGEdicaoROM_UNIT.Index]) = 0) and (Edicao.State <> dsInsert)) then
+      begin
+        AFont.Color := clWhite;
+        AColor      := $000024B3;
+      end;
+    end;  
   end;
 
-  if (AColumn = DBGEdicaoROM_UNIT) and
-     (not oEmpty(StrToFloat(oTextToValor(ANode.Values[DBGEdicaoROM_UNIT.Index])))) and (not oEmpty(StrToFloat(oTextToValor(ANode.Values[DBGEdicaoROM_PTABI.Index])))) and
-     (StrToFloat(oTextToValor(ANode.Values[DBGEdicaoROM_UNIT.Index])) <> StrToFloat(oTextToValor(ANode.Values[DBGEdicaoROM_PTABI.Index]))) then
-     if StrToFloat(oTextToValor(ANode.Values[DBGEdicaoROM_UNIT.Index])) < StrToFloat(oTextToValor(ANode.Values[DBGEdicaoROM_PTABI.Index])) then
-     begin
-       AFont.Style := [fsBold];
-       AFont.Color := clBlack;
-       AColor      := $0080FFFF;
-     end else
-     begin
-       AFont.Style := [fsBold];
-       AFont.Color := clWhite;
-       AColor      := $000024B3;
-     end;
+  if (ANode.Values[DBGEdicaoROM_TOTA.Index] > 0) then
+  if (AColumn = DBGEdicaoROM_QTDE) or (AColumn = DBGEdicaoROM_QTRL) or (AColumn = DBGEdicaoROM_UNIT) or (AColumn = DBGEdicaoROM_TSDE) or (AColumn = DBGEdicaoROM_TOTA) then
+  if (ANode.Values[DBGEdicaoROM_UNIT.Index] < ANode.Values[DBGEdicaoROM_PTABI.Index]) then
+  begin
+    AFont.Style := [fsBold];
+    AFont.Color := clWhite;
+    AColor      := $000024B3;
+  end else
+  if ANode.Values[DBGEdicaoROM_UNIT.Index] >= ANode.Values[DBGEdicaoROM_PTABF.Index] then
+  begin
+    AFont.Style := [fsBold];
+    AFont.Color := clWhite;
+    AColor      := $00E1AD40
+  end else
+  if ANode.Values[DBGEdicaoROM_UNIT.Index] > ANode.Values[DBGEdicaoROM_PTABI.Index] then
+  begin
+    AFont.Style := [fsBold];
+    AFont.Color := clBlack;
+    AColor      := $00C4FFC4;
+  end;
 end;
 
 procedure Tfrmven_prg.DBGEdicaoDblClick(Sender: TObject);
@@ -2010,13 +2040,20 @@ begin
     DBGEdicaoROM_PIPI.Tag     := IFThen(DBGEdicaoROM_PIPI.Visible,1,0);
   end;
 
-  PNLInfAdProd.Caption := IFThen(oEmpty(EdicaoROM_QVOL.AsFloat),'','Conteúdo: '+FormatFloat('#,0.00 '+EdicaoROM_ESP.AsString+'.   ',EdicaoROM_QVOL.AsFloat));
-  if (not oEmpty(EdicaoROM_UNIT.AsFloat)) and (not oEmpty(EdicaoROM_PTABI.AsCurrency)) and (EdicaoROM_UNIT.AsFloat <> EdicaoROM_PTABI.AsCurrency) then
-  PNLInfAdProd.Caption := PNLInfAdProd.Caption + IFThen(EdicaoROM_UNIT.AsFloat < EdicaoROM_PTABI.AsCurrency,'Preço de Venda ABAIXO da Tabela ! ','Preço de Venda ACIMA da Tabela ! ') +
-                          FormatFloat(' Variante Menor ( R$ #,0.00 )  - ',EdicaoROM_PTABI.AsCurrency)+
-                          FormatFloat(' Variante Maior ( R$ #,0.00 ).'   ,EdicaoROM_PTABF.AsCurrency);
-  if Edicao.State = dsBrowse then
-  PNLInfAdProd.Visible := (not oEmpty(PNLInfAdProd.Caption));
+  { Tabela de Preços }
+  LATAB_PRC_ACIMA_MIN.Caption := FormatFloat('R$ #,0.00',EdicaoROM_PTABI.AsCurrency);
+  LATAB_PRC_ACIMA_MAX.Caption := FormatFloat('R$ #,0.00',EdicaoROM_PTABF.AsCurrency);
+  if (EdicaoROM_UNIT.AsFloat <> EdicaoROM_PTABI.AsCurrency) or (EdicaoROM_UNIT.AsFloat <> EdicaoROM_PTABF.AsCurrency) or (EdicaoROM_PTABI.AsCurrency <> EdicaoROM_PTABF.AsCurrency) then
+  PNLTAB_PRC.Height := 22 else
+  PNLTAB_PRC.Height := 0;
+
+  { Conteúdo }
+  if Pos('COM',EdicaoROM_UCON.AsString) > 0 then
+  begin
+    PNLTAB_PRC.Caption := 'Conteúdo '+EdicaoROM_UCON.AsString+'  ';
+    PNLTAB_PRC.Height  := 22;
+  end else
+  PNLTAB_PRC.Caption := EmptyStr;
 end;
 
 procedure Tfrmven_prg.LATDescClick(Sender: TObject);

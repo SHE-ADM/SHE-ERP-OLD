@@ -2,8 +2,8 @@ object FBird: TFBird
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Left = 849
-  Top = 299
+  Left = 365
+  Top = 191
   Height = 578
   Width = 1117
   object DBERP: TIBDatabase
@@ -14,6 +14,7 @@ object FBird: TFBird
       'lc_ctype=WIN1252')
     LoginPrompt = False
     AfterConnect = DBERPAfterConnect
+    AfterDisconnect = DBERPAfterDisconnect
     BeforeDisconnect = DBERPBeforeDisconnect
     Left = 40
     Top = 8
@@ -38,7 +39,7 @@ object FBird: TFBird
       'nowait')
     AutoStopAction = saRollback
     Left = 352
-    Top = 56
+    Top = 80
   end
   object DBEvent: TIBEvents
     AutoRegister = False
@@ -87,7 +88,7 @@ object FBird: TFBird
     Database = DBEDI
     Transaction = TFBEEdicao
     Left = 352
-    Top = 104
+    Top = 128
   end
   object DTSFBBAI_FINANCEIRO: TDataSource
     AutoEdit = False
@@ -1338,6 +1339,7 @@ object FBird: TFBird
       'password=ri1903'
       'lc_ctype=WIN1252')
     LoginPrompt = False
+    AfterDisconnect = DBB2BAfterDisconnect
     Left = 488
     Top = 8
   end
@@ -1886,8 +1888,8 @@ object FBird: TFBird
     Transaction = TFBConsulta
     SQL.Strings = (
       
-        'SELECT   PK.LG_ID,FK.DESCRICAO,FK.REFERENCIA,FK.REGRA,FK.CONTROL' +
-        'E,'
+        'SELECT   FK.ID,PK.LG_ID,FK.DESCRICAO,FK.REFERENCIA,FK.REGRA,FK.C' +
+        'ONTROLE,'
       
         '         FK.INCLUI,FK.ALTERA,FK.EXCLUI,FK.SALVA,FK.VALIDA,FK.CAN' +
         'CELA,'
@@ -1895,7 +1897,7 @@ object FBird: TFBird
       '         PK.IS_DESCONTO,PK.PM_DESCONTO,'
       '         PK.IS_ACRESCIMO,PK.PM_ACRESCIMO,'
       '         PK.IS_CREDITO,PK.PM_CREDITO,'
-      '         PK.IS_BLOQUEIO,PK.ADM'
+      '         PK.IS_BLOQUEIO,FK.ADM'
       ''
       'FROM     TAB_USER     AS PK'
       'JOIN     TAB_USER_ADM AS FK ON (FK.LG_ID = PK.LG_ID)'
@@ -1903,7 +1905,7 @@ object FBird: TFBird
       'WHERE    PK.LG_ID = :LG_ID'
       'ORDER BY PK.LG_ID,FK.DESCRICAO,FK.REFERENCIA,FK.REGRA')
     Left = 168
-    Top = 224
+    Top = 280
     ParamData = <
       item
         DataType = ftUnknown
@@ -1915,7 +1917,7 @@ object FBird: TFBird
     AutoEdit = False
     DataSet = CDSFBTAB_USER_ADM
     Left = 168
-    Top = 272
+    Top = 328
   end
   object CDSFBTAB_USER_ADM: TClientDataSet
     Aggregates = <>
@@ -1924,78 +1926,105 @@ object FBird: TFBird
     ProviderName = 'DSPFBTAB_USER_ADM'
     ReadOnly = True
     Left = 168
-    Top = 320
+    Top = 376
+    object CDSFBTAB_USER_ADMID: TLargeintField
+      FieldName = 'ID'
+      Origin = '"TAB_USER_ADM"."ID"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
     object CDSFBTAB_USER_ADMLG_ID: TSmallintField
       FieldName = 'LG_ID'
+      Origin = '"TAB_USER"."LG_ID"'
     end
     object CDSFBTAB_USER_ADMDESCRICAO: TStringField
       FieldName = 'DESCRICAO'
+      Origin = '"TAB_USER_ADM"."DESCRICAO"'
       Size = 60
     end
     object CDSFBTAB_USER_ADMREFERENCIA: TStringField
       FieldName = 'REFERENCIA'
+      Origin = '"TAB_USER_ADM"."REFERENCIA"'
       Size = 60
     end
     object CDSFBTAB_USER_ADMREGRA: TStringField
       FieldName = 'REGRA'
+      Origin = '"TAB_USER_ADM"."REGRA"'
       Size = 120
     end
     object CDSFBTAB_USER_ADMCONTROLE: TSmallintField
       FieldName = 'CONTROLE'
+      Origin = '"TAB_USER_ADM"."CONTROLE"'
     end
     object CDSFBTAB_USER_ADMINCLUI: TSmallintField
       FieldName = 'INCLUI'
+      Origin = '"TAB_USER_ADM"."INCLUI"'
     end
     object CDSFBTAB_USER_ADMALTERA: TSmallintField
       FieldName = 'ALTERA'
+      Origin = '"TAB_USER_ADM"."ALTERA"'
     end
     object CDSFBTAB_USER_ADMEXCLUI: TSmallintField
       FieldName = 'EXCLUI'
+      Origin = '"TAB_USER_ADM"."EXCLUI"'
     end
     object CDSFBTAB_USER_ADMSALVA: TSmallintField
       FieldName = 'SALVA'
+      Origin = '"TAB_USER_ADM"."SALVA"'
     end
     object CDSFBTAB_USER_ADMVALIDA: TSmallintField
       FieldName = 'VALIDA'
+      Origin = '"TAB_USER_ADM"."VALIDA"'
     end
     object CDSFBTAB_USER_ADMCANCELA: TSmallintField
       FieldName = 'CANCELA'
+      Origin = '"TAB_USER_ADM"."CANCELA"'
     end
     object CDSFBTAB_USER_ADMVISUALIZA: TSmallintField
       FieldName = 'VISUALIZA'
+      Origin = '"TAB_USER_ADM"."VISUALIZA"'
     end
     object CDSFBTAB_USER_ADMIMPRIME: TSmallintField
       FieldName = 'IMPRIME'
+      Origin = '"TAB_USER_ADM"."IMPRIME"'
     end
     object CDSFBTAB_USER_ADMIS_DESCONTO: TSmallintField
       FieldName = 'IS_DESCONTO'
+      Origin = '"TAB_USER"."IS_DESCONTO"'
     end
     object CDSFBTAB_USER_ADMPM_DESCONTO: TBCDField
       FieldName = 'PM_DESCONTO'
+      Origin = '"TAB_USER"."PM_DESCONTO"'
       Precision = 9
       Size = 2
     end
     object CDSFBTAB_USER_ADMIS_ACRESCIMO: TSmallintField
       FieldName = 'IS_ACRESCIMO'
+      Origin = '"TAB_USER"."IS_ACRESCIMO"'
     end
     object CDSFBTAB_USER_ADMPM_ACRESCIMO: TBCDField
       FieldName = 'PM_ACRESCIMO'
+      Origin = '"TAB_USER"."PM_ACRESCIMO"'
       Precision = 9
       Size = 2
     end
     object CDSFBTAB_USER_ADMIS_CREDITO: TSmallintField
       FieldName = 'IS_CREDITO'
+      Origin = '"TAB_USER"."IS_CREDITO"'
     end
     object CDSFBTAB_USER_ADMPM_CREDITO: TBCDField
       FieldName = 'PM_CREDITO'
+      Origin = '"TAB_USER"."PM_CREDITO"'
       Precision = 9
       Size = 2
     end
     object CDSFBTAB_USER_ADMIS_BLOQUEIO: TSmallintField
       FieldName = 'IS_BLOQUEIO'
+      Origin = '"TAB_USER"."IS_BLOQUEIO"'
     end
     object CDSFBTAB_USER_ADMADM: TSmallintField
       FieldName = 'ADM'
+      Origin = '"TAB_USER"."ADM"'
     end
   end
   object DSPFBTAB_USER_ADM: TDataSetProvider
@@ -2004,7 +2033,7 @@ object FBird: TFBird
     Options = [poReadOnly]
     UpdateMode = upWhereKeyOnly
     Left = 168
-    Top = 368
+    Top = 424
   end
   object DB_EDI: TIBDatabase
     DatabaseName = 'C:\Sheild\FBird\SHE-EDI.FDB'
@@ -2031,7 +2060,7 @@ object FBird: TFBird
     Database = DBERP
     Transaction = TFBEdicao
     Left = 168
-    Top = 168
+    Top = 224
   end
   object TFBEvent: TIBTransaction
     AllowAutoStart = False
@@ -2277,9 +2306,15 @@ object FBird: TFBird
     Top = 376
   end
   object SQLFBFKEdicao: TIBSQL
+    Database = DBERP
+    Transaction = TFBEdicao
+    Left = 168
+    Top = 168
+  end
+  object SQLFBFKEEdicao: TIBSQL
     Database = DBEDI
     Transaction = TFBEEdicao
     Left = 352
-    Top = 160
+    Top = 184
   end
 end

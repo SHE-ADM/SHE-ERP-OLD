@@ -539,7 +539,7 @@ object FrmDefaultEdicaoGrid: TFrmDefaultEdicaoGrid
   object ILMenu: TImageList
     Height = 36
     Width = 36
-    Left = 416
+    Left = 288
     Top = 368
     Bitmap = {
       494C010109000E00040024002400FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600

@@ -33,7 +33,7 @@ inherited frmctr_prg: Tfrmctr_prg
         Left = 2
         Top = 19
         Width = 1593
-        Height = 390
+        Height = 368
         Bands = <
           item
           end>
@@ -71,11 +71,12 @@ inherited frmctr_prg: Tfrmctr_prg
         HeaderFont.Height = -13
         HeaderFont.Name = 'Segoe UI'
         HeaderFont.Style = [fsItalic]
+        HideFocusRect = True
         LookAndFeel = lfUltraFlat
         OptionsBehavior = [edgoAutoSearch, edgoAutoSort, edgoCaseInsensitive, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEnterShowEditor, edgoExtMultiSelect, edgoImmediateEditor, edgoMouseScroll, edgoMultiSelect, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
         OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
         OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
-        OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoIndicator, edgoPreview, edgoUseBitmap]
+        OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHideFocusRect, edgoHotTrack, edgoPreview, edgoUseBitmap]
         PreviewFont.Charset = DEFAULT_CHARSET
         PreviewFont.Color = clBlue
         PreviewFont.Height = -13
@@ -246,9 +247,9 @@ inherited frmctr_prg: Tfrmctr_prg
       end
       object PNLTAB_PRC: TPanel
         Left = 2
-        Top = 409
+        Top = 387
         Width = 1593
-        Height = 0
+        Height = 22
         Align = alBottom
         Alignment = taRightJustify
         Color = clGray
@@ -259,7 +260,7 @@ inherited frmctr_prg: Tfrmctr_prg
         Font.Style = [fsBold]
         ParentFont = False
         TabOrder = 1
-        object LALPRC_TAB_ABAIXO: TLabel
+        object LALTAB_PRC_ABAIXO: TLabel
           Left = 30
           Top = 6
           Width = 118
@@ -272,7 +273,7 @@ inherited frmctr_prg: Tfrmctr_prg
           Font.Style = []
           ParentFont = False
         end
-        object LALPRC_TAB_ACIMA_MIN: TLabel
+        object LALTAB_PRC_ACIMA_MIN: TLabel
           Left = 214
           Top = 6
           Width = 163
@@ -285,7 +286,7 @@ inherited frmctr_prg: Tfrmctr_prg
           Font.Style = []
           ParentFont = False
         end
-        object LALPRC_TAB_ACIMA_MAX: TLabel
+        object LALTAB_PRC_ACIMA_MAX: TLabel
           Left = 502
           Top = 6
           Width = 210
@@ -298,7 +299,7 @@ inherited frmctr_prg: Tfrmctr_prg
           Font.Style = []
           ParentFont = False
         end
-        object LAPRC_TAB_ACIMA_MIN: TLabel
+        object LATAB_PRC_ACIMA_MIN: TLabel
           Left = 387
           Top = 4
           Width = 43
@@ -311,7 +312,7 @@ inherited frmctr_prg: Tfrmctr_prg
           Font.Style = [fsBold, fsItalic]
           ParentFont = False
         end
-        object LAPRC_TAB_ACIMA_MAX: TLabel
+        object LATAB_PRC_ACIMA_MAX: TLabel
           Left = 724
           Top = 4
           Width = 43

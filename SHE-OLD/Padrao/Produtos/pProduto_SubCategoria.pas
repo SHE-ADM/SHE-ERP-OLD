@@ -522,6 +522,7 @@ begin
      oException(Nil,'Sub Categoria não Informada !');
 
   try
+    ALockWindowUpdate := True;
     oOTransact(TEdicao);
     try
       with SQLEdicao do
@@ -576,10 +577,13 @@ begin
       end;
     end;
   finally
+    ALockWindowUpdate := False;
+
     PNLConsultaProc.Height  := 0;
     PNLConsultaProc.Visible := False;
   end;
 
+  oRefresh(Cadastro);
   oAviso(Self.Handle,'Atualização Geral da Tabela de Preços Aplicada com Sucesso !');
 end;
 

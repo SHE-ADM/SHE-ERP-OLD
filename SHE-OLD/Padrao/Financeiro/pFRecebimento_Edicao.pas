@@ -162,7 +162,7 @@ begin
 
       Close;
       SQL.Clear;
-      SQL.Add('SELECT FIN_TIPO FROM '+REC_SHE_DEF.FB_TB_PK+' WHERE NOT FEMPTY(FIN_TIPO) GROUP BY 1 ORDER BY 1');
+      SQL.Add('SELECT DESCRICAO FROM TAB_TPO_FIN WHERE CDST = 30 ORDER BY 1');
       ExecQuery;
       while not eof do
       begin
@@ -258,10 +258,10 @@ procedure TFrmFRecebimento_Edicao.ACTSalvaExecute(Sender: TObject);
 begin
   inherited;
   if oYesNo(handle,'Confirma Edição ?') = mrNo then
-     Abort;
+  Abort;
 
-  if (DEFatura.Date <= 0) then
-      oException(DEFatura,'Data de fatura não informada ou inválida !');
+  if DEFatura.Date <= 0 then
+  oException(DEFatura,'Data de fatura não informada ou inválida !');
 
   { Verifica se houve alteração da data de fatura }
   if DEFatura.Tag = 1 then
@@ -337,7 +337,7 @@ begin
         SQL.Clear;
         SQL.Add('UPDATE '+SLPrincipal.Values['fin_rec_ban_bai']);
         SQL.Add('SET    API_ST   = ''BAIXADO'',');
-        SQL.Add('       API_MT   = API_MT || ''. ' + RECUsuarios.Login + ' - ' + FormatDateTime('dd/mm/yy hh:mm',Now) + ''',');
+        SQL.Add('       API_MT   = LEFT(API_MT || ''. ' + RECUsuarios.Login + ' - ' + FormatDateTime('dd/mm/yy hh:mm',Now) + ''',120),');
         SQL.Add('       FIN_OBSE = ''' + EMINFADCAD.Text + '''');
 
         SQL.Add('WHERE  FIN_CCLI = ''' + CECliente.Text + '''');
@@ -451,7 +451,7 @@ begin
         end;
       end;
     end;
-    
+
     oCTransact(TEdicao);
     oAviso(Handle,'Título Atualizado com Sucesso !');
   except
@@ -464,6 +464,7 @@ begin
     end;
   end;
 
+  ACTExecEvent.Execute;
   Close;
 end;
 

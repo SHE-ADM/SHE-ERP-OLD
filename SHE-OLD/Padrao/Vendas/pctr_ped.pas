@@ -606,20 +606,6 @@ begin
   { ACCESS MANAGER }
   REC_SHE_DEF.FB_Event := 'PED_PDV_ADM'; { Eventos }
 
-  { SET GRANT DEVOLUÇÕES }
-  REC_SHE_DEF.GDescricao  := 'Pedidos';
-  REC_SHE_DEF.GReferencia := 'Devoluções';
-  REC_SHE_DEF.GRegra      := 'Permissões Gerais';
-  oUSER(REC_SHE_DEF);
-  ACTMPDevolucao.Enabled := REC_SHE_DEF.GAppend;
-
-  { SET GRANT ABATIMENTOS }
-  REC_SHE_DEF.GDescricao  := 'Pedidos';
-  REC_SHE_DEF.GReferencia := 'Abatimentos';
-  REC_SHE_DEF.GRegra      := 'Permissões Gerais';
-  oUSER(REC_SHE_DEF);
-  ACTMPAbatimento.Enabled := REC_SHE_DEF.GAppend;
-
   { SET GRANT ROMANEIOS }
   REC_SHE_DEF.GDescricao  := 'Pedidos';
   REC_SHE_DEF.GReferencia := 'Romaneios';
@@ -634,6 +620,20 @@ begin
   oUSER(REC_SHE_DEF);
   ACTMPFinanceiroAppend.Enabled := (REC_SHE_DEF.GAppend) or (REC_SHE_DEF.GEdit) or (RECUsuarios.Grupo = 'FIN');
   ACTMPFinanceiroDelete.Enabled := (REC_SHE_DEF.GAppend) or (REC_SHE_DEF.GEdit) or (RECUsuarios.Grupo = 'FIN');
+
+  { SET GRANT DEVOLUÇÕES }
+  REC_SHE_DEF.GDescricao  := 'Pedidos';
+  REC_SHE_DEF.GReferencia := 'Vendas';
+  REC_SHE_DEF.GRegra      := 'Devoluções';
+  oUSER(REC_SHE_DEF);
+  ACTMPDevolucao.Enabled  := REC_SHE_DEF.GAppend;
+
+  { SET GRANT ABATIMENTOS }
+  REC_SHE_DEF.GDescricao  := 'Pedidos';
+  REC_SHE_DEF.GReferencia := 'Vendas';
+  REC_SHE_DEF.GRegra      := 'Abatimentos';
+  oUSER(REC_SHE_DEF);
+  ACTMPAbatimento.Enabled := REC_SHE_DEF.GAppend;
 
   { GRANT USER }
   REC_SHE_DEF.GDescricao  := 'Pedidos';
@@ -913,29 +913,19 @@ procedure Tfrmctr_ped.dtscadastroDataChange(Sender: TObject;
 var
   PosCount: Word;
 begin
-{  if CadastroREST.AsString = 'C' then
+  if REC_SHE_DEF.GEdit then
+  ACTMPEdit.Enabled := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0);
+
+  if REC_SHE_DEF.GCancel then
+  SICancela.Enabled := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0) and (CadastroCDNF.AsInteger = 0);
+
+  if REC_SHE_DEF.GControl then
   begin
-    SIAltera.ImageIndex := 19;
-    SIAltera.BtnCaption := 'Recuperar';
-    SIAltera.Hint       := 'Recuperar Cancelados';
-  end else
-  begin
-    SIAltera.ImageIndex := 1;
-    SIAltera.BtnCaption := 'Cancelar';
-    SIAltera.Hint       := 'Cancelar Pedidos';
-  end;}
-
-  SIAltera.Enabled     := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0);
-  SICancela.Enabled    := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0) and (CadastroCDNF.AsInteger = 0);
-
-  SIDevolucao.Enabled  := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C');
-  SIAbatimento.Enabled := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C');
-
-  SIRomaneio.Enabled   := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0) and (CadastroCDNF.AsInteger   = 0) and (CadastroCDRO.AsInteger = 0) and (Pos(LeftStr(CadastroD_DEST.AsString,3),'BLQ') = 0);
-
-  SIFinaliza.Enabled   := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0) and (((CadastroCDNF.AsInteger > 0) and (LeftStr(CadastroRECO.AsString,1) = 'B')) or (LeftStr(CadastroRECO.AsString,1) <> 'B'));
-  SIEstorno.Enabled    := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger > 0);
-
+    SIRomaneio.Enabled := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0) and (CadastroCDNF.AsInteger   = 0) and (CadastroCDRO.AsInteger = 0) and (Pos(LeftStr(CadastroD_DEST.AsString,3),'BLQ') = 0);
+    SIFinaliza.Enabled := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger = 0) and (((CadastroCDNF.AsInteger > 0) and (LeftStr(CadastroRECO.AsString,1) = 'B')) or (LeftStr(CadastroRECO.AsString,1) <> 'B'));
+    SIEstorno.Enabled  := (CadastroID.AsInteger > 0) and (CadastroREST.AsString <> 'C') and (CadastroCDBX.AsInteger > 0);
+  end;
+  
   { Admin }
   if RECUsuarios.ID = 0 then
   SIRomaneio.Enabled := True;
@@ -1027,16 +1017,16 @@ begin
   LATAB_PRC_ACIMA_MIN.Caption := FormatFloat('R$ #,0.00',FKCadastroVPRC_PAD_INI.AsCurrency);
   LATAB_PRC_ACIMA_MAX.Caption := FormatFloat('R$ #,0.00',FKCadastroVPRC_PAD_FIM.AsCurrency);
   if (FKCadastroVPRC_COM.AsFloat <> FKCadastroVPRC_PAD_INI.AsCurrency) or (FKCadastroVPRC_COM.AsFloat <> FKCadastroVPRC_PAD_FIM.AsCurrency) or (FKCadastroVPRC_PAD_INI.AsCurrency <> FKCadastroVPRC_PAD_FIM.AsCurrency) then
-      PNLTAB_PRC.Height := 22 else
-      PNLTAB_PRC.Height := 0;
+  PNLTAB_PRC.Height := 22 else
+  PNLTAB_PRC.Height := 0;
 
   { Conteúdo }
   if Pos('COM',FKCadastroUCON.AsString) > 0 then
   begin
-    PNLTAB_PRC.Caption := 'Contém '+FKCadastroUCON.AsString+'  ';
+    PNLTAB_PRC.Caption := 'Conteúdo '+FKCadastroUCON.AsString+'  ';
     PNLTAB_PRC.Height  := 22;
   end else
-    PNLTAB_PRC.Caption := EmptyStr;
+  PNLTAB_PRC.Caption := EmptyStr;
 
   { Fit Colunas }
   DBGITPED.ApplyBestFit(DBGITPEDSKU    );
@@ -1083,32 +1073,40 @@ procedure Tfrmctr_ped.DBGITPEDCustomDrawCell(Sender: TObject;
 begin
   if not ASelected then
   begin
-    if (ANode.Values[DBGITPEDQTSP.Index] > 0) and ((AColumn = DBGITPEDQTSP) or (AColumn = DBGITPEDRLSP) or (AColumn = DBGITPEDVTSP) or (AColumn = DBGITPEDDESP) or (AColumn = DBGITPEDDTSP)) then
-        if ANode.Values[DBGITPEDQTSP.Index] <> ANode.Values[DBGITPEDQTDE.Index] then
-        begin
-          AColor      := clInfobk;   //$0080FFFF;
-          AFont.Color := clBlack;
-        end else
-        begin
-          AColor      := clBlack;   //$0080FFFF;
-          AFont.Color := clWhite;
-        end;
-
-    if AColumn = DBGITPEDITEM then
+    if ANode.Values[DBGITPEDTCDE.Index] = 0 then
     begin
-      AColor      := clGray;
-      AFont.Color := clWhite;
-    end;
+      AColor      := clInfoBk;
+      AFont.Color := clWindowText;
+    end else
+    begin
+      if (ANode.Values[DBGITPEDQTSP.Index] > 0) and ((AColumn = DBGITPEDQTSP) or (AColumn = DBGITPEDRLSP) or (AColumn = DBGITPEDVTSP) or (AColumn = DBGITPEDDESP) or (AColumn = DBGITPEDDTSP)) then
+      if (ANode.Values[DBGITPEDQTSP.Index] <> ANode.Values[DBGITPEDQTDE.Index]) then
+      begin
+        AColor      := clInfobk;   //$0080FFFF;
+        AFont.Color := clBlack;
+      end else
+      begin
+        AColor      := clBlack;   //$0080FFFF;
+        AFont.Color := clWhite;
+      end;
 
-    if ((AColumn = DBGITPEDPIPI) or (AColumn = DBGITPEDVIPI)) and (ANode.Values[DBGITPEDPIPI.Index] > 0) then
-    AFont.Style := [fsBold];
+      if AColumn = DBGITPEDITEM then
+      begin
+        AColor      := clGray;
+        AFont.Color := clWhite;
+      end;
 
-    if ((AColumn = DBGITPEDPCOM) or (AColumn = DBGITPEDVCOM)) and (ANode.Values[DBGITPEDPCOM.Index] > 0) then
-    AFont.Style := [fsBold];
+      if ((AColumn = DBGITPEDPIPI) or (AColumn = DBGITPEDVIPI)) and (ANode.Values[DBGITPEDPIPI.Index] > 0) then
+      AFont.Style := [fsBold];
+
+      if ((AColumn = DBGITPEDPCOM) or (AColumn = DBGITPEDVCOM)) and (ANode.Values[DBGITPEDPCOM.Index] > 0) then
+      AFont.Style := [fsBold];
+    END;
   end;
 
+  if (ANode.Values[DBGITPEDTCDE.Index] > 0) then
   if (AColumn = DBGITPEDQTDE) or (AColumn = DBGITPEDQTRL) or (AColumn = DBGITPEDVPRC_COM) or (AColumn = DBGITPEDTCDE) then
-  if ANode.Values[DBGITPEDVPRC_COM.Index] < ANode.Values[DBGITPEDVPRC_PAD_INI.Index] then
+  if (ANode.Values[DBGITPEDVPRC_COM.Index] < ANode.Values[DBGITPEDVPRC_PAD_INI.Index]) then
   begin
     AFont.Style := [fsBold];
     AFont.Color := clWhite;

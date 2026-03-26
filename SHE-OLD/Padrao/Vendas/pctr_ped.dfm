@@ -215,7 +215,7 @@ inherited frmctr_ped: Tfrmctr_ped
             Left = 0
             Top = 0
             Width = 1614
-            Height = 332
+            Height = 310
             Bands = <
               item
                 Caption = 'Produtos'
@@ -284,6 +284,7 @@ inherited frmctr_ped: Tfrmctr_ped
             HeaderFont.Height = -13
             HeaderFont.Name = 'Segoe UI'
             HeaderFont.Style = [fsItalic]
+            HideFocusRect = True
             HideSelectionColor = 14789952
             HighlightColor = 14789952
             IndentDesc = 500
@@ -291,7 +292,7 @@ inherited frmctr_ped: Tfrmctr_ped
             OptionsBehavior = [edgoAutoSearch, edgoAutoSort, edgoCaseInsensitive, edgoCellMultiSelect, edgoCollapsedReload, edgoDragCollapse, edgoDragExpand, edgoDragScroll, edgoEnterShowEditor, edgoImmediateEditor, edgoMultiSelect, edgoSeekDetail, edgoShowHourGlass, edgoTabThrough, edgoVertThrough]
             OptionsCustomize = [edgoBandMoving, edgoBandSizing, edgoColumnMoving, edgoColumnSizing, edgoNotHideColumn]
             OptionsDB = [edgoCancelOnExit, edgoCanNavigation, edgoConfirmDelete, edgoLoadAllRecords, edgoSyncSelection, edgoUseBookmarks]
-            OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHotTrack, edgoUseBitmap]
+            OptionsView = [edgoAutoCalcPreviewLines, edgoBandHeaderWidth, edgoHideFocusRect, edgoHotTrack, edgoUseBitmap]
             PreviewFont.Charset = ANSI_CHARSET
             PreviewFont.Color = 12290078
             PreviewFont.Height = -12
@@ -730,9 +731,9 @@ inherited frmctr_ped: Tfrmctr_ped
           end
           object PNLTAB_PRC: TPanel
             Left = 0
-            Top = 332
+            Top = 310
             Width = 1614
-            Height = 0
+            Height = 22
             Align = alBottom
             Alignment = taRightJustify
             Color = clGray
@@ -2534,7 +2535,7 @@ inherited frmctr_ped: Tfrmctr_ped
           Left = 0
           Top = 0
           Width = 850
-          Height = 520
+          Height = 140
           Cursor = crHandPoint
           Color = clBtnFace
           Font.Charset = ANSI_CHARSET
@@ -2557,7 +2558,7 @@ inherited frmctr_ped: Tfrmctr_ped
           object DBGResumoDiario: TdxDBGrid
             Left = 0
             Top = 0
-            Width = 846
+            Width = 21
             Height = 494
             Cursor = crHandPoint
             Bands = <
@@ -2812,7 +2813,7 @@ inherited frmctr_ped: Tfrmctr_ped
           Left = 0
           Top = 0
           Width = 850
-          Height = 520
+          Height = 140
           Cursor = crHandPoint
           Font.Charset = ANSI_CHARSET
           Font.Color = clBlack
@@ -2833,7 +2834,7 @@ inherited frmctr_ped: Tfrmctr_ped
           object DBGResumoMensal: TdxDBGrid
             Left = 0
             Top = 0
-            Width = 846
+            Width = 0
             Height = 494
             Cursor = crHandPoint
             Bands = <
