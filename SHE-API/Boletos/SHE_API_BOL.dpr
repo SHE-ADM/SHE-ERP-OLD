@@ -6,20 +6,18 @@ uses
   FastMM4,
   uJSON in '..\..\Lib\Default\uJSON.pas',
   superobject in '..\..\Lib\Default\superobject.pas',
-
   DSiWin32 in '..\..\Lib\Default\DSiWin32.pas',
   hkHints in '..\..\Lib\Default\HkHints.pas',
-
   Forms,
   SysUtils,
-  
   pSplash in '..\..\Lib\Default\pSplash.pas' {FrmSplash},
   pSobre in '..\..\Lib\Default\pSobre.pas' {FrmSobre},
   oPrincipal in '..\..\Lib\Default\oPrincipal.pas',
   bPrincipal in '..\..\Lib\Data Modulo\bPrincipal.pas' {FBird: TDataModule},
   uPrincipal in 'uPrincipal.pas' {FrmSHE_API_BOL},
   StrInt in '..\..\Lib\Default\StrInt.pas',
-  StrIntImp in '..\..\Lib\Default\StrIntImp.pas';
+  StrIntImp in '..\..\Lib\Default\StrIntImp.pas',
+  oIBXRetryTransaction in '..\..\Lib\Default\oIBXRetryTransaction.pas';
 
 {$R *.res}
 

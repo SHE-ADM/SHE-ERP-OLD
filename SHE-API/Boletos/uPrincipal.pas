@@ -369,7 +369,7 @@ begin
 
       { API }
       repeat
-        _BoletosAPI;
+       // _BoletosAPI;
         inc(i);
       until
         (API_URL = 'false') or
@@ -377,7 +377,10 @@ begin
 
     finally oCDatabase(DBErp);
 
-      { OCX }
+      oODatabase(DBErp); _BoletosOCX('');
+      oCDatabase(DBErp);
+
+      { OCX
       try     oODatabase(DBErp); _BoletosOCX('SALVO');
       finally oCDatabase(DBErp);
 
@@ -417,7 +420,7 @@ begin
       end;
       end;
       end;
-      end;
+      end; }
     end;
   end;
 end;
@@ -745,6 +748,7 @@ begin
         SQL.Add('AND PK.API_ST = ''' + ANossaSituacao + '''');
         SQL.Add('AND PK.DEST   = ''BAIXADO''');
       end else
+      if ANossaSituacao <> EmptyStr then
       SQL.Add('AND PK.DEST LIKE ''' + IFThen(Pos(ANossaSituacao,'ABERTOVENCIDO') > 0,'PENDENTE',ANossaSituacao) + '%''');
 
       if ANossaSituacao = 'ABERTO' then
@@ -753,7 +757,7 @@ begin
       if ANossaSituacao = 'VENCIDO' then
       SQL.Add('AND PK.DTVC > CURRENT_DATE + 4');
 
-      // SQL.Add('AND TITULO = ''227471''');
+       SQL.Add('AND TITULO = ''230892-C''');
 
       // Atualizar motivos em branco sem alterar o nosso status (ERP_ST)
       // SQL.Add('AND FEMPTY(PK.API_MT)');

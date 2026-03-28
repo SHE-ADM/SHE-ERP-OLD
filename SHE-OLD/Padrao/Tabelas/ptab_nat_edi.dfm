@@ -4,15 +4,15 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
   ActiveControl = edcnat
   AlphaBlendValue = 0
   ClientHeight = 476
-  ClientWidth = 568
+  ClientWidth = 574
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 14
   inherited PNLCadastro: TPanel
-    Width = 568
+    Width = 574
     Height = 392
     inherited PaintBox: TPaintBox
-      Width = 568
+      Width = 574
       Height = 182
     end
     object Label36: TLabel
@@ -238,7 +238,7 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
     object PCPrincipal: TdxPageControl
       Left = 0
       Top = 182
-      Width = 568
+      Width = 574
       Height = 210
       ActivePage = TSApuracao
       Align = alBottom
@@ -263,7 +263,7 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
         object Bevel1: TBevel
           Left = 0
           Top = 0
-          Width = 568
+          Width = 574
           Height = 186
           Align = alClient
         end
@@ -927,12 +927,12 @@ inherited frmtab_nat_edi: Tfrmtab_nat_edi
   end
   inherited sbMSG: TStatusBar
     Top = 457
-    Width = 568
+    Width = 574
   end
   inherited PNLMenu: TPanel
-    Width = 568
+    Width = 574
     inherited SpeedBar2: TSpeedBar
-      Width = 568
+      Width = 574
       inherited siVAL: TSpeedItem [4]
       end
       inherited siSAIR: TSpeedItem [5]

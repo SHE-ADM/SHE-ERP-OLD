@@ -43,7 +43,6 @@ type
     dbgConsultaNAT_CSTC: TdxDBGridMaskColumn;
     dbgConsultaNAT_CCST: TdxDBGridMaskColumn;
     dbgConsultaNAT_CSTS: TdxDBGridMaskColumn;
-    dbgConsultaNAT_CSTA: TdxDBGridMaskColumn;
     cadastroNAT_INDT: TIBStringField;
     cadastroNAT_CFOP: TIBStringField;
     dbgConsultaNAT_CFOP: TdxDBGridMaskColumn;
@@ -61,6 +60,11 @@ type
     procedure FormCreate(Sender: TObject);
     procedure ACTMEAppendExecute(Sender: TObject);
     procedure ACTMEEditExecute(Sender: TObject);
+    procedure DBGConsultaCustomDrawCell(Sender: TObject; ACanvas: TCanvas;
+      ARect: TRect; ANode: TdxTreeListNode; AColumn: TdxTreeListColumn;
+      ASelected, AFocused, ANewItemRow: Boolean; var AText: String;
+      var AColor: TColor; AFont: TFont; var AAlignment: TAlignment;
+      var ADone: Boolean);
   private
     { Private declarations }
   public
@@ -88,7 +92,7 @@ begin
   REC_SHE_DEF.FB_Event := 'FIS_CFOP'; { Eventos }
 
   { GRANT USER }
-  REC_SHE_DEF.GDescricao  := 'Fiscal';
+  REC_SHE_DEF.GDescricao  := 'Tabelas';
   REC_SHE_DEF.GReferencia := 'CFOP';
   REC_SHE_DEF.GRegra      := 'Permissões Gerais';
   REC_SHE_DEF.GAdmin      := False;
@@ -123,6 +127,28 @@ begin
   frmtab_nat_edi := TFrmtab_nat_edi.Create(Nil,CadastroID.AsInteger);
   try frmtab_nat_edi.ShowModal;
   finally FreeAndNil(frmtab_nat_edi);
+  end;
+end;
+
+procedure Tfrmtab_nat.DBGConsultaCustomDrawCell(Sender: TObject;
+  ACanvas: TCanvas; ARect: TRect; ANode: TdxTreeListNode;
+  AColumn: TdxTreeListColumn; ASelected, AFocused, ANewItemRow: Boolean;
+  var AText: String; var AColor: TColor; AFont: TFont;
+  var AAlignment: TAlignment; var ADone: Boolean);
+begin
+  inherited;
+
+  if ANode.Selected then
+  begin
+    AColor      := $00750000;//$00400000;
+    AFont.Color := clHighlightText;
+  end;
+
+  if ASelected then
+  begin
+    AColor      := clHighlight; //$00E1AD40;
+    AFont.Color := clHighlightText;
+    AFont.Style := [];
   end;
 end;
 

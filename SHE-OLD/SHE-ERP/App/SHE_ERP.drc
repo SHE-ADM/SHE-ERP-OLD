@@ -213,8 +213,8 @@
 #define XMLConst_SDuplicateRegistration 64525
 #define XMLConst_SNoMatchingDOMVendor 64526
 #define XMLConst_SNoDOMNodeEx 64527
-#define QR5Const_sqrSetZoomHint 64528
-#define QR5Const_sqrExportingProgress 64529
+#define OleConst_SNotLicensed 64528
+#define OleConst_sNoRunningObject 64529
 #define dxGrFCmn_dxSFilterOperatorEqual 64530
 #define dxGrFCmn_dxSFilterOperatorNotEqual 64531
 #define dxGrFCmn_dxSFilterOperatorGreater 64532
@@ -229,214 +229,214 @@
 #define dxGrFCmn_dxSFilterBoxCustomCaption 64541
 #define dxGrFCmn_dxSFilterBoxBlanksCaption 64542
 #define dxGrFCmn_dxSFilterBoxNonBlanksCaption 64543
-#define QR5Const_SqrGotoPage 64544
-#define QR5Const_sqrSearchResults 64545
-#define QR5Const_sqrThumbNails 64546
-#define QR5Const_sqrSearchText 64547
-#define QR5Const_sqrFindCaption 64548
-#define QR5Const_sqrClosePreview 64549
-#define QR5Const_sqrPageSelect 64550
-#define QR5Const_sqrGoPage 64551
-#define QR5Const_sqrMatchCase 64552
-#define QR5Const_sqrSearchButtonCaption 64553
-#define QR5Const_sqrSearchDialogCaption 64554
-#define QR5Const_sqrPreviewWindowCaption 64555
-#define QR5Const_sqrExitButtonCaption 64556
-#define QR5Const_sqrSearchNoResult 64557
-#define QR5Const_sqrCancelButtonHint 64558
-#define QR5Const_sqrCopyButtonHint 64559
-#define QR5Const_SqrExpBldNumeric 64560
-#define QR5Const_SqrExpBldLogical 64561
-#define QR5Const_SqrExpBldText 64562
-#define QR5Const_SqrExpBldValue 64563
-#define QR5Const_SqrExpBldEnterParam 64564
-#define QR5Const_SqrExpBldError 64565
-#define QR5Const_SqrExpBldNoError 64566
-#define QR5Const_SqrMissingArgument 64567
-#define QR5Const_SqrConversionError 64568
-#define QR5Const_SqrDivisionByZero 64569
-#define QR5Const_SqrInvalidFormatnumeric 64570
-#define QR5Const_SqrSQRTInvalid 64571
-#define QR5Const_SqrInvalidNot 64572
-#define QR5Const_SqrRTFExportFilter 64573
-#define QR5Const_SqrRTFFile 64574
-#define QR5Const_SqrWritingXLS 64575
-#define QR5Const_SqrExpIllegalCharInNumeric 64576
-#define QR5Const_SqrExpMissing 64577
-#define QR5Const_SqrExpUnknownFunction 64578
-#define QR5Const_SqrExpError 64579
-#define QR5Const_SqrExpRecursive 64580
-#define QR5Const_SqrExpTooManyArgs 64581
-#define QR5Const_SqrExpWrongArguments 64582
-#define QR5Const_SqrExpUnknownType 64583
-#define QR5Const_SqrTrue 64584
-#define QR5Const_SqrFalse 64585
-#define QR5Const_SqrEvalNotPrepared 64586
-#define QR5Const_SqrName 64587
-#define QR5Const_SqrLoopBandType 64588
-#define QR5Const_SqrLoopBandName 64589
-#define QR5Const_SqrExcel 64590
-#define QR5Const_SqrExcelFile 64591
-#define QR5Const_SqrNoCircular 64592
-#define QR5Const_SqrUpperDesc 64593
-#define QR5Const_SqrLowerDesc 64594
-#define QR5Const_SqrPrettyDesc 64595
-#define QR5Const_SqrFormatNumericDesc 64596
-#define QR5Const_SqrExpCannotOperator 64597
-#define QR5Const_SqrExpAdd 64598
-#define QR5Const_SqrExpSubtract 64599
-#define QR5Const_SqrExpMultiply 64600
-#define QR5Const_SqrExpDivide 64601
-#define QR5Const_SqrExpBoolean 64602
-#define QR5Const_SqrExpString 64603
-#define QR5Const_SqrExpNumeric 64604
-#define QR5Const_SqrExpDivideByZero 64605
-#define QR5Const_SqrExpOperatorNotCompatible 64606
-#define QR5Const_SqrExpUnknownFieldType 64607
-#define QR5Const_SqrIfDesc 64608
-#define QR5Const_SqrStrDesc 64609
-#define QR5Const_SqrTimeDesc 64610
-#define QR5Const_SqrDateDesc 64611
-#define QR5Const_SqrSumDesc 64612
-#define QR5Const_SqrCopyDesc 64613
-#define QR5Const_SqrDivDesc 64614
-#define QR5Const_SqrCountDesc 64615
-#define QR5Const_SqrMaxDesc 64616
-#define QR5Const_SqrMinDesc 64617
-#define QR5Const_SqrAverageDesc 64618
-#define QR5Const_SqrBoolDesc 64619
-#define QR5Const_SqrIntDesc 64620
-#define QR5Const_SqrFracDesc 64621
-#define QR5Const_SqrSqrtDesc 64622
-#define QR5Const_SqrTypeofDesc 64623
-#define QR5Const_SqrPrint 64624
-#define QR5Const_SqrExpression 64625
-#define QR5Const_SqrTime 64626
-#define QR5Const_SqrDate 64627
-#define QR5Const_SqrDateTime 64628
-#define QR5Const_SqrPageNum 64629
-#define QR5Const_SqrReportTitle 64630
-#define QR5Const_SqrDetailCount 64631
-#define QR5Const_SqrDetailNo 64632
-#define QR5Const_SqrQuSoft 64633
-#define QR5Const_SqrAbstractFilterDescription 64634
-#define QR5Const_SqrAbstractFilterName 64635
-#define QR5Const_SqrNone 64636
-#define QR5Const_SqrFileNotExist 64637
-#define QR5Const_SqrCompleted 64638
-#define QR5Const_SqrQRFile 64639
-#define QR5Const_SqrWildBandName 64640
-#define QR5Const_SqrCancel 64641
-#define QR5Const_SqrZoomToFit 64642
-#define QR5Const_SqrZoom100 64643
-#define QR5Const_SqrZoomToWidth 64644
-#define QR5Const_SqrFirstPage 64645
-#define QR5Const_SqrPrevPage 64646
-#define QR5Const_SqrNextPage 64647
-#define QR5Const_SqrLastPage 64648
-#define QR5Const_SqrPrinterSetup 64649
-#define QR5Const_SqrSaveReport 64650
-#define QR5Const_SqrLoadReport 64651
-#define QR5Const_SqrPage 64652
-#define QR5Const_SqrOf 64653
-#define QR5Const_SqrIllegalNewPage 64654
-#define QR5Const_SqrQRPrinterNotReady 64655
-#define QR5Const_SqrSubDetail 64656
-#define QR5Const_SqrColumnHeader 64657
-#define QR5Const_SqrOverlay 64658
-#define QR5Const_SqrChild 64659
-#define QR5Const_SqrWild 64660
-#define QR5Const_SqrTitleBandName 64661
-#define QR5Const_SqrPageHeaderBandName 64662
-#define QR5Const_SqrDetailBandName 64663
-#define QR5Const_SqrPageFooterBandName 64664
-#define QR5Const_SqrSummaryBandName 64665
-#define QR5Const_SqrGroupHeaderBandName 64666
-#define QR5Const_SqrGroupFooterBandName 64667
-#define QR5Const_SqrSubDetailBandName 64668
-#define QR5Const_SqrColumnHeaderBandName 64669
-#define QR5Const_SqrOverlayBandName 64670
-#define QR5Const_SqrChildBandName 64671
-#define QR5Const_SqrPaperSize61 64672
-#define QR5Const_SqrPaperSize62 64673
-#define QR5Const_SqrPaperSize63 64674
-#define QR5Const_SqrPaperSize64 64675
-#define QR5Const_SqrPaperSize65 64676
-#define QR5Const_SqrPaperSize66 64677
-#define QR5Const_SqrPaperSize67 64678
-#define QR5Const_SqrPaperSize68 64679
-#define QR5Const_SqrPaperSize69 64680
-#define QR5Const_SqrTitle 64681
-#define QR5Const_SqrPageHeader 64682
-#define QR5Const_SqrDetail 64683
-#define QR5Const_SqrPageFooter 64684
-#define QR5Const_SqrSummary 64685
-#define QR5Const_SqrGroupHeader 64686
-#define QR5Const_SqrGroupFooter 64687
-#define QR5Const_SqrPaperSize45 64688
-#define QR5Const_SqrPaperSize46 64689
-#define QR5Const_SqrPaperSize47 64690
-#define QR5Const_SqrPaperSize48 64691
-#define QR5Const_SqrPaperSize49 64692
-#define QR5Const_SqrPaperSize50 64693
-#define QR5Const_SqrPaperSize51 64694
-#define QR5Const_SqrPaperSize52 64695
-#define QR5Const_SqrPaperSize53 64696
-#define QR5Const_SqrPaperSize54 64697
-#define QR5Const_SqrPaperSize55 64698
-#define QR5Const_SqrPaperSize56 64699
-#define QR5Const_SqrPaperSize57 64700
-#define QR5Const_SqrPaperSize58 64701
-#define QR5Const_SqrPaperSize59 64702
-#define QR5Const_SqrPaperSize60 64703
-#define QR5Const_SqrPaperSize29 64704
-#define QR5Const_SqrPaperSize30 64705
-#define QR5Const_SqrPaperSize31 64706
-#define QR5Const_SqrPaperSize32 64707
-#define QR5Const_SqrPaperSize33 64708
-#define QR5Const_SqrPaperSize34 64709
-#define QR5Const_SqrPaperSize35 64710
-#define QR5Const_SqrPaperSize36 64711
-#define QR5Const_SqrPaperSize37 64712
-#define QR5Const_SqrPaperSize38 64713
-#define QR5Const_SqrPaperSize39 64714
-#define QR5Const_SqrPaperSize40 64715
-#define QR5Const_SqrPaperSize41 64716
-#define QR5Const_SqrPaperSize42 64717
-#define QR5Const_SqrPaperSize43 64718
-#define QR5Const_SqrPaperSize44 64719
-#define QR5Const_SqrPaperSize13 64720
-#define QR5Const_SqrPaperSize14 64721
-#define QR5Const_SqrPaperSize15 64722
-#define QR5Const_SqrPaperSize16 64723
-#define QR5Const_SqrPaperSize17 64724
-#define QR5Const_SqrPaperSize18 64725
-#define QR5Const_SqrPaperSize19 64726
-#define QR5Const_SqrPaperSize20 64727
-#define QR5Const_SqrPaperSize21 64728
-#define QR5Const_SqrPaperSize22 64729
-#define QR5Const_SqrPaperSize23 64730
-#define QR5Const_SqrPaperSize24 64731
-#define QR5Const_SqrPaperSize25 64732
-#define QR5Const_SqrPaperSize26 64733
-#define QR5Const_SqrPaperSize27 64734
-#define QR5Const_SqrPaperSize28 64735
-#define OleConst_SInvalidLicense 64736
-#define OleConst_SNotLicensed 64737
-#define OleConst_sNoRunningObject 64738
-#define QR5Const_SqrPaperSize0 64739
-#define QR5Const_SqrPaperSize1 64740
-#define QR5Const_SqrPaperSize2 64741
-#define QR5Const_SqrPaperSize3 64742
-#define QR5Const_SqrPaperSize4 64743
-#define QR5Const_SqrPaperSize5 64744
-#define QR5Const_SqrPaperSize6 64745
-#define QR5Const_SqrPaperSize7 64746
-#define QR5Const_SqrPaperSize8 64747
-#define QR5Const_SqrPaperSize9 64748
-#define QR5Const_SqrPaperSize10 64749
-#define QR5Const_SqrPaperSize11 64750
-#define QR5Const_SqrPaperSize12 64751
+#define QR5Const_sqrClosePreview 64544
+#define QR5Const_sqrPageSelect 64545
+#define QR5Const_sqrGoPage 64546
+#define QR5Const_sqrMatchCase 64547
+#define QR5Const_sqrSearchButtonCaption 64548
+#define QR5Const_sqrSearchDialogCaption 64549
+#define QR5Const_sqrPreviewWindowCaption 64550
+#define QR5Const_sqrExitButtonCaption 64551
+#define QR5Const_sqrSearchNoResult 64552
+#define QR5Const_sqrCancelButtonHint 64553
+#define QR5Const_sqrCopyButtonHint 64554
+#define QR5Const_sqrSetZoomHint 64555
+#define QR5Const_sqrExportingProgress 64556
+#define OleConst_SCannotActivate 64557
+#define OleConst_SNoWindowHandle 64558
+#define OleConst_SInvalidLicense 64559
+#define QR5Const_SqrExpBldError 64560
+#define QR5Const_SqrExpBldNoError 64561
+#define QR5Const_SqrMissingArgument 64562
+#define QR5Const_SqrConversionError 64563
+#define QR5Const_SqrDivisionByZero 64564
+#define QR5Const_SqrInvalidFormatnumeric 64565
+#define QR5Const_SqrSQRTInvalid 64566
+#define QR5Const_SqrInvalidNot 64567
+#define QR5Const_SqrRTFExportFilter 64568
+#define QR5Const_SqrRTFFile 64569
+#define QR5Const_SqrWritingXLS 64570
+#define QR5Const_SqrGotoPage 64571
+#define QR5Const_sqrSearchResults 64572
+#define QR5Const_sqrThumbNails 64573
+#define QR5Const_sqrSearchText 64574
+#define QR5Const_sqrFindCaption 64575
+#define QR5Const_SqrExpTooManyArgs 64576
+#define QR5Const_SqrExpWrongArguments 64577
+#define QR5Const_SqrExpUnknownType 64578
+#define QR5Const_SqrTrue 64579
+#define QR5Const_SqrFalse 64580
+#define QR5Const_SqrEvalNotPrepared 64581
+#define QR5Const_SqrName 64582
+#define QR5Const_SqrLoopBandType 64583
+#define QR5Const_SqrLoopBandName 64584
+#define QR5Const_SqrExcel 64585
+#define QR5Const_SqrExcelFile 64586
+#define QR5Const_SqrExpBldNumeric 64587
+#define QR5Const_SqrExpBldLogical 64588
+#define QR5Const_SqrExpBldText 64589
+#define QR5Const_SqrExpBldValue 64590
+#define QR5Const_SqrExpBldEnterParam 64591
+#define QR5Const_SqrExpCannotOperator 64592
+#define QR5Const_SqrExpAdd 64593
+#define QR5Const_SqrExpSubtract 64594
+#define QR5Const_SqrExpMultiply 64595
+#define QR5Const_SqrExpDivide 64596
+#define QR5Const_SqrExpBoolean 64597
+#define QR5Const_SqrExpString 64598
+#define QR5Const_SqrExpNumeric 64599
+#define QR5Const_SqrExpDivideByZero 64600
+#define QR5Const_SqrExpOperatorNotCompatible 64601
+#define QR5Const_SqrExpUnknownFieldType 64602
+#define QR5Const_SqrExpIllegalCharInNumeric 64603
+#define QR5Const_SqrExpMissing 64604
+#define QR5Const_SqrExpUnknownFunction 64605
+#define QR5Const_SqrExpError 64606
+#define QR5Const_SqrExpRecursive 64607
+#define QR5Const_SqrCopyDesc 64608
+#define QR5Const_SqrDivDesc 64609
+#define QR5Const_SqrCountDesc 64610
+#define QR5Const_SqrMaxDesc 64611
+#define QR5Const_SqrMinDesc 64612
+#define QR5Const_SqrAverageDesc 64613
+#define QR5Const_SqrBoolDesc 64614
+#define QR5Const_SqrIntDesc 64615
+#define QR5Const_SqrFracDesc 64616
+#define QR5Const_SqrSqrtDesc 64617
+#define QR5Const_SqrTypeofDesc 64618
+#define QR5Const_SqrNoCircular 64619
+#define QR5Const_SqrUpperDesc 64620
+#define QR5Const_SqrLowerDesc 64621
+#define QR5Const_SqrPrettyDesc 64622
+#define QR5Const_SqrFormatNumericDesc 64623
+#define QR5Const_SqrPageNum 64624
+#define QR5Const_SqrReportTitle 64625
+#define QR5Const_SqrDetailCount 64626
+#define QR5Const_SqrDetailNo 64627
+#define QR5Const_SqrQuSoft 64628
+#define QR5Const_SqrAbstractFilterDescription 64629
+#define QR5Const_SqrAbstractFilterName 64630
+#define QR5Const_SqrNone 64631
+#define QR5Const_SqrFileNotExist 64632
+#define QR5Const_SqrCompleted 64633
+#define QR5Const_SqrQRFile 64634
+#define QR5Const_SqrIfDesc 64635
+#define QR5Const_SqrStrDesc 64636
+#define QR5Const_SqrTimeDesc 64637
+#define QR5Const_SqrDateDesc 64638
+#define QR5Const_SqrSumDesc 64639
+#define QR5Const_SqrFirstPage 64640
+#define QR5Const_SqrPrevPage 64641
+#define QR5Const_SqrNextPage 64642
+#define QR5Const_SqrLastPage 64643
+#define QR5Const_SqrPrinterSetup 64644
+#define QR5Const_SqrSaveReport 64645
+#define QR5Const_SqrLoadReport 64646
+#define QR5Const_SqrPage 64647
+#define QR5Const_SqrOf 64648
+#define QR5Const_SqrIllegalNewPage 64649
+#define QR5Const_SqrQRPrinterNotReady 64650
+#define QR5Const_SqrPrint 64651
+#define QR5Const_SqrExpression 64652
+#define QR5Const_SqrTime 64653
+#define QR5Const_SqrDate 64654
+#define QR5Const_SqrDateTime 64655
+#define QR5Const_SqrTitleBandName 64656
+#define QR5Const_SqrPageHeaderBandName 64657
+#define QR5Const_SqrDetailBandName 64658
+#define QR5Const_SqrPageFooterBandName 64659
+#define QR5Const_SqrSummaryBandName 64660
+#define QR5Const_SqrGroupHeaderBandName 64661
+#define QR5Const_SqrGroupFooterBandName 64662
+#define QR5Const_SqrSubDetailBandName 64663
+#define QR5Const_SqrColumnHeaderBandName 64664
+#define QR5Const_SqrOverlayBandName 64665
+#define QR5Const_SqrChildBandName 64666
+#define QR5Const_SqrWildBandName 64667
+#define QR5Const_SqrCancel 64668
+#define QR5Const_SqrZoomToFit 64669
+#define QR5Const_SqrZoom100 64670
+#define QR5Const_SqrZoomToWidth 64671
+#define QR5Const_SqrPaperSize66 64672
+#define QR5Const_SqrPaperSize67 64673
+#define QR5Const_SqrPaperSize68 64674
+#define QR5Const_SqrPaperSize69 64675
+#define QR5Const_SqrTitle 64676
+#define QR5Const_SqrPageHeader 64677
+#define QR5Const_SqrDetail 64678
+#define QR5Const_SqrPageFooter 64679
+#define QR5Const_SqrSummary 64680
+#define QR5Const_SqrGroupHeader 64681
+#define QR5Const_SqrGroupFooter 64682
+#define QR5Const_SqrSubDetail 64683
+#define QR5Const_SqrColumnHeader 64684
+#define QR5Const_SqrOverlay 64685
+#define QR5Const_SqrChild 64686
+#define QR5Const_SqrWild 64687
+#define QR5Const_SqrPaperSize50 64688
+#define QR5Const_SqrPaperSize51 64689
+#define QR5Const_SqrPaperSize52 64690
+#define QR5Const_SqrPaperSize53 64691
+#define QR5Const_SqrPaperSize54 64692
+#define QR5Const_SqrPaperSize55 64693
+#define QR5Const_SqrPaperSize56 64694
+#define QR5Const_SqrPaperSize57 64695
+#define QR5Const_SqrPaperSize58 64696
+#define QR5Const_SqrPaperSize59 64697
+#define QR5Const_SqrPaperSize60 64698
+#define QR5Const_SqrPaperSize61 64699
+#define QR5Const_SqrPaperSize62 64700
+#define QR5Const_SqrPaperSize63 64701
+#define QR5Const_SqrPaperSize64 64702
+#define QR5Const_SqrPaperSize65 64703
+#define QR5Const_SqrPaperSize34 64704
+#define QR5Const_SqrPaperSize35 64705
+#define QR5Const_SqrPaperSize36 64706
+#define QR5Const_SqrPaperSize37 64707
+#define QR5Const_SqrPaperSize38 64708
+#define QR5Const_SqrPaperSize39 64709
+#define QR5Const_SqrPaperSize40 64710
+#define QR5Const_SqrPaperSize41 64711
+#define QR5Const_SqrPaperSize42 64712
+#define QR5Const_SqrPaperSize43 64713
+#define QR5Const_SqrPaperSize44 64714
+#define QR5Const_SqrPaperSize45 64715
+#define QR5Const_SqrPaperSize46 64716
+#define QR5Const_SqrPaperSize47 64717
+#define QR5Const_SqrPaperSize48 64718
+#define QR5Const_SqrPaperSize49 64719
+#define QR5Const_SqrPaperSize18 64720
+#define QR5Const_SqrPaperSize19 64721
+#define QR5Const_SqrPaperSize20 64722
+#define QR5Const_SqrPaperSize21 64723
+#define QR5Const_SqrPaperSize22 64724
+#define QR5Const_SqrPaperSize23 64725
+#define QR5Const_SqrPaperSize24 64726
+#define QR5Const_SqrPaperSize25 64727
+#define QR5Const_SqrPaperSize26 64728
+#define QR5Const_SqrPaperSize27 64729
+#define QR5Const_SqrPaperSize28 64730
+#define QR5Const_SqrPaperSize29 64731
+#define QR5Const_SqrPaperSize30 64732
+#define QR5Const_SqrPaperSize31 64733
+#define QR5Const_SqrPaperSize32 64734
+#define QR5Const_SqrPaperSize33 64735
+#define QR5Const_SqrPaperSize2 64736
+#define QR5Const_SqrPaperSize3 64737
+#define QR5Const_SqrPaperSize4 64738
+#define QR5Const_SqrPaperSize5 64739
+#define QR5Const_SqrPaperSize6 64740
+#define QR5Const_SqrPaperSize7 64741
+#define QR5Const_SqrPaperSize8 64742
+#define QR5Const_SqrPaperSize9 64743
+#define QR5Const_SqrPaperSize10 64744
+#define QR5Const_SqrPaperSize11 64745
+#define QR5Const_SqrPaperSize12 64746
+#define QR5Const_SqrPaperSize13 64747
+#define QR5Const_SqrPaperSize14 64748
+#define QR5Const_SqrPaperSize15 64749
+#define QR5Const_SqrPaperSize16 64750
+#define QR5Const_SqrPaperSize17 64751
 #define dxBarStrs_dxSBAR_MENUSSHOWRECENTITEMS 64752
 #define dxBarStrs_dxSBAR_SHOWFULLMENUSAFTERDELAY 64753
 #define dxBarStrs_dxSBAR_RESETUSAGEDATA 64754
@@ -451,8 +451,8 @@
 #define dxBarStrs_dxSBAR_MENUANIM4 64763
 #define dxBarStrs_dxSBAR_MENUANIM5 64764
 #define rxSpeedbar_SAutoSpeedbarMode 64765
-#define OleConst_SCannotActivate 64766
-#define OleConst_SNoWindowHandle 64767
+#define QR5Const_SqrPaperSize0 64766
+#define QR5Const_SqrPaperSize1 64767
 #define dxBarStrs_dxSBAR_CUSTOMIZE 64768
 #define dxBarStrs_dxSBAR_ADDREMOVEBUTTONS 64769
 #define dxBarStrs_dxSBAR_MOREBUTTONS 64770
@@ -1428,8 +1428,8 @@ BEGIN
 	XMLConst_SDuplicateRegistration,	"\"%s\" DOMImplementation already registered"
 	XMLConst_SNoMatchingDOMVendor,	"No matching DOM Vendor: \"%s\""
 	XMLConst_SNoDOMNodeEx,	"Selected DOM Vendor does not support this property or method"
-	QR5Const_sqrSetZoomHint,	"Set Display Zoom"
-	QR5Const_sqrExportingProgress,	"Export Progress"
+	OleConst_SNotLicensed,	"License information for %s not found. You cannot use this control in design mode"
+	OleConst_sNoRunningObject,	"Unable to retrieve a pointer to a running object registered with OLE for %s/%s"
 	dxGrFCmn_dxSFilterOperatorEqual,	"equals"
 	dxGrFCmn_dxSFilterOperatorNotEqual,	"does not equal"
 	dxGrFCmn_dxSFilterOperatorGreater,	"is greater than"
@@ -1444,11 +1444,6 @@ BEGIN
 	dxGrFCmn_dxSFilterBoxCustomCaption,	"(Custom...)"
 	dxGrFCmn_dxSFilterBoxBlanksCaption,	"(Blanks)"
 	dxGrFCmn_dxSFilterBoxNonBlanksCaption,	"(NonBlanks)"
-	QR5Const_SqrGotoPage,	"Select a page from 1 to %d"
-	QR5Const_sqrSearchResults,	"Search Results"
-	QR5Const_sqrThumbNails,	"ThumbNails"
-	QR5Const_sqrSearchText,	"Search Text"
-	QR5Const_sqrFindCaption,	"Search for Text"
 	QR5Const_sqrClosePreview,	"Close Preview"
 	QR5Const_sqrPageSelect,	"Select a Page"
 	QR5Const_sqrGoPage,	"Enter page number"
@@ -1460,11 +1455,11 @@ BEGIN
 	QR5Const_sqrSearchNoResult,	"No matching text"
 	QR5Const_sqrCancelButtonHint,	"Cancel the report"
 	QR5Const_sqrCopyButtonHint,	"Copy page to clipboard"
-	QR5Const_SqrExpBldNumeric,	"Argument %d - numeric value"
-	QR5Const_SqrExpBldLogical,	"Argument %d - logical value"
-	QR5Const_SqrExpBldText,	"Argument %d - text Value"
-	QR5Const_SqrExpBldValue,	"Argument %d - value"
-	QR5Const_SqrExpBldEnterParam,	"Enter %d. parameter for %s"
+	QR5Const_sqrSetZoomHint,	"Set Display Zoom"
+	QR5Const_sqrExportingProgress,	"Export Progress"
+	OleConst_SCannotActivate,	"OLE control activation failed"
+	OleConst_SNoWindowHandle,	"Could not obtain OLE control window handle"
+	OleConst_SInvalidLicense,	"License information for %s is invalid"
 	QR5Const_SqrExpBldError,	"ERROR: "
 	QR5Const_SqrExpBldNoError,	"There are no errors. The result is : "
 	QR5Const_SqrMissingArgument,	"Missing argument for %s"
@@ -1476,11 +1471,11 @@ BEGIN
 	QR5Const_SqrRTFExportFilter,	"RTF Export filter"
 	QR5Const_SqrRTFFile,	"RTF File"
 	QR5Const_SqrWritingXLS,	"Writing XLS file..."
-	QR5Const_SqrExpIllegalCharInNumeric,	"Illegal character in numeric contant \"%s\""
-	QR5Const_SqrExpMissing,	"Missing %s"
-	QR5Const_SqrExpUnknownFunction,	"Unknown function : %s"
-	QR5Const_SqrExpError,	"Error in expression : %s"
-	QR5Const_SqrExpRecursive,	"Recursive calls not allowed"
+	QR5Const_SqrGotoPage,	"Select a page from 1 to %d"
+	QR5Const_sqrSearchResults,	"Search Results"
+	QR5Const_sqrThumbNails,	"ThumbNails"
+	QR5Const_sqrSearchText,	"Search Text"
+	QR5Const_sqrFindCaption,	"Search for Text"
 	QR5Const_SqrExpTooManyArgs,	"Too many arguments"
 	QR5Const_SqrExpWrongArguments,	"Wrong arguments for %s"
 	QR5Const_SqrExpUnknownType,	"Unknown type"
@@ -1492,11 +1487,11 @@ BEGIN
 	QR5Const_SqrLoopBandName,	"Loop Band"
 	QR5Const_SqrExcel,	"Excel spreadsheet"
 	QR5Const_SqrExcelFile,	"Excel file format"
-	QR5Const_SqrNoCircular,	"Circular linking not allowed"
-	QR5Const_SqrUpperDesc,	"Converts a string to upper case letters"
-	QR5Const_SqrLowerDesc,	"Converts a string to lower case letters"
-	QR5Const_SqrPrettyDesc,	"Makes the first character upper case and the rest lower case"
-	QR5Const_SqrFormatNumericDesc,	"Formats numeric <N> using the mask in <F>"
+	QR5Const_SqrExpBldNumeric,	"Argument %d - numeric value"
+	QR5Const_SqrExpBldLogical,	"Argument %d - logical value"
+	QR5Const_SqrExpBldText,	"Argument %d - text Value"
+	QR5Const_SqrExpBldValue,	"Argument %d - value"
+	QR5Const_SqrExpBldEnterParam,	"Enter %d. parameter for %s"
 	QR5Const_SqrExpCannotOperator,	"Cannot %s %s expressions"
 	QR5Const_SqrExpAdd,	"add"
 	QR5Const_SqrExpSubtract,	"subtract"
@@ -1508,11 +1503,11 @@ BEGIN
 	QR5Const_SqrExpDivideByZero,	"Cannot divide by 0"
 	QR5Const_SqrExpOperatorNotCompatible,	"Operator %s is not compatible with %s expressions"
 	QR5Const_SqrExpUnknownFieldType,	"Field %s is of unknown type"
-	QR5Const_SqrIfDesc,	"Returns <X> or <Y> depending on the boolean expression <Exp>"
-	QR5Const_SqrStrDesc,	"Convert a numeric <X> to a string"
-	QR5Const_SqrTimeDesc,	"Return current time as a string"
-	QR5Const_SqrDateDesc,	"Return current date as a string"
-	QR5Const_SqrSumDesc,	"Sums the numeric <X>"
+	QR5Const_SqrExpIllegalCharInNumeric,	"Illegal character in numeric contant \"%s\""
+	QR5Const_SqrExpMissing,	"Missing %s"
+	QR5Const_SqrExpUnknownFunction,	"Unknown function : %s"
+	QR5Const_SqrExpError,	"Error in expression : %s"
+	QR5Const_SqrExpRecursive,	"Recursive calls not allowed"
 	QR5Const_SqrCopyDesc,	"Returns a substring of string X"
 	QR5Const_SqrDivDesc,	"Integer division of <X> by <Y>"
 	QR5Const_SqrCountDesc,	"Increments for each iteration"
@@ -1524,11 +1519,11 @@ BEGIN
 	QR5Const_SqrFracDesc,	"Returns the fractional part of <X>"
 	QR5Const_SqrSqrtDesc,	"Returns square root of <X>"
 	QR5Const_SqrTypeofDesc,	"Returns the data type of <Exp>"
-	QR5Const_SqrPrint,	"Print"
-	QR5Const_SqrExpression,	"Expression"
-	QR5Const_SqrTime,	"Time"
-	QR5Const_SqrDate,	"Date"
-	QR5Const_SqrDateTime,	"Date/Time"
+	QR5Const_SqrNoCircular,	"Circular linking not allowed"
+	QR5Const_SqrUpperDesc,	"Converts a string to upper case letters"
+	QR5Const_SqrLowerDesc,	"Converts a string to lower case letters"
+	QR5Const_SqrPrettyDesc,	"Makes the first character upper case and the rest lower case"
+	QR5Const_SqrFormatNumericDesc,	"Formats numeric <N> using the mask in <F>"
 	QR5Const_SqrPageNum,	"Page#"
 	QR5Const_SqrReportTitle,	"Report title"
 	QR5Const_SqrDetailCount,	"Detail count"
@@ -1540,11 +1535,11 @@ BEGIN
 	QR5Const_SqrFileNotExist,	"File does not exist"
 	QR5Const_SqrCompleted,	" Completed"
 	QR5Const_SqrQRFile,	"QuickReport file"
-	QR5Const_SqrWildBandName,	"WildBand"
-	QR5Const_SqrCancel,	"Cancel"
-	QR5Const_SqrZoomToFit,	"Zoom to fit"
-	QR5Const_SqrZoom100,	"100% Size"
-	QR5Const_SqrZoomToWidth,	"Zoom to width"
+	QR5Const_SqrIfDesc,	"Returns <X> or <Y> depending on the boolean expression <Exp>"
+	QR5Const_SqrStrDesc,	"Convert a numeric <X> to a string"
+	QR5Const_SqrTimeDesc,	"Return current time as a string"
+	QR5Const_SqrDateDesc,	"Return current date as a string"
+	QR5Const_SqrSumDesc,	"Sums the numeric <X>"
 	QR5Const_SqrFirstPage,	"First page"
 	QR5Const_SqrPrevPage,	"Previous page"
 	QR5Const_SqrNextPage,	"Next page"
@@ -1556,11 +1551,11 @@ BEGIN
 	QR5Const_SqrOf,	"of"
 	QR5Const_SqrIllegalNewPage,	"Illegal call to NewPage"
 	QR5Const_SqrQRPrinterNotReady,	"QRPrinter not ready"
-	QR5Const_SqrSubDetail,	"Sub Detail"
-	QR5Const_SqrColumnHeader,	"Column Header"
-	QR5Const_SqrOverlay,	"Overlay"
-	QR5Const_SqrChild,	"Child"
-	QR5Const_SqrWild,	"Wild"
+	QR5Const_SqrPrint,	"Print"
+	QR5Const_SqrExpression,	"Expression"
+	QR5Const_SqrTime,	"Time"
+	QR5Const_SqrDate,	"Date"
+	QR5Const_SqrDateTime,	"Date/Time"
 	QR5Const_SqrTitleBandName,	"TitleBand"
 	QR5Const_SqrPageHeaderBandName,	"PageHeaderBand"
 	QR5Const_SqrDetailBandName,	"DetailBand"
@@ -1572,11 +1567,11 @@ BEGIN
 	QR5Const_SqrColumnHeaderBandName,	"ColumnHeaderBand"
 	QR5Const_SqrOverlayBandName,	"OverlayBand"
 	QR5Const_SqrChildBandName,	"ChildBand"
-	QR5Const_SqrPaperSize61,	"A5 Transverse 210 x 148 mm"
-	QR5Const_SqrPaperSize62,	"B5 (JIS) Transverse 257 x 182 mm"
-	QR5Const_SqrPaperSize63,	"A3 Extra 322 x 445 mm"
-	QR5Const_SqrPaperSize64,	"A5 Extra 174 x 235 mm"
-	QR5Const_SqrPaperSize65,	"B5 (ISO) Extra 201 x 276 mm"
+	QR5Const_SqrWildBandName,	"WildBand"
+	QR5Const_SqrCancel,	"Cancel"
+	QR5Const_SqrZoomToFit,	"Zoom to fit"
+	QR5Const_SqrZoom100,	"100% Size"
+	QR5Const_SqrZoomToWidth,	"Zoom to width"
 	QR5Const_SqrPaperSize66,	"A2 420 x 594 mm"
 	QR5Const_SqrPaperSize67,	"A3 Transverse 420 z 297 mm"
 	QR5Const_SqrPaperSize68,	"A3 Extra Transverse 445 z 322 mm"
@@ -1588,11 +1583,11 @@ BEGIN
 	QR5Const_SqrSummary,	"Summary"
 	QR5Const_SqrGroupHeader,	"Group Header"
 	QR5Const_SqrGroupFooter,	"Group Footer"
-	QR5Const_SqrPaperSize45,	"10 x 11 in"
-	QR5Const_SqrPaperSize46,	"15 x 11 in"
-	QR5Const_SqrPaperSize47,	"Envelope Invite 220 x 220 mm"
-	QR5Const_SqrPaperSize48,	"RESERVED--DO NOT USE"
-	QR5Const_SqrPaperSize49,	"RESERVED--DO NOT USE"
+	QR5Const_SqrSubDetail,	"Sub Detail"
+	QR5Const_SqrColumnHeader,	"Column Header"
+	QR5Const_SqrOverlay,	"Overlay"
+	QR5Const_SqrChild,	"Child"
+	QR5Const_SqrWild,	"Wild"
 	QR5Const_SqrPaperSize50,	"Letter Extra 9 1/2 x 12 in"
 	QR5Const_SqrPaperSize51,	"Legal Extra 9 1/2 x 15 in"
 	QR5Const_SqrPaperSize52,	"Tabloid Extra 11.69 x 18 in"
@@ -1604,11 +1599,11 @@ BEGIN
 	QR5Const_SqrPaperSize58,	"SuperBSuperBA3 305 x 487 mm"
 	QR5Const_SqrPaperSize59,	"Letter Plus 8.5 x 12.69 in"
 	QR5Const_SqrPaperSize60,	"A4 Plus 210 x 330 mm"
-	QR5Const_SqrPaperSize29,	"Envelope C3 324 x 458 mm"
-	QR5Const_SqrPaperSize30,	"Envelope C4 229 x 324 mm"
-	QR5Const_SqrPaperSize31,	"Envelope C6 114 x 162 mm"
-	QR5Const_SqrPaperSize32,	"Envelope C65 114 x 229 mm"
-	QR5Const_SqrPaperSize33,	"Envelope B4 (JIS) 250 x 353 mm"
+	QR5Const_SqrPaperSize61,	"A5 Transverse 210 x 148 mm"
+	QR5Const_SqrPaperSize62,	"B5 (JIS) Transverse 257 x 182 mm"
+	QR5Const_SqrPaperSize63,	"A3 Extra 322 x 445 mm"
+	QR5Const_SqrPaperSize64,	"A5 Extra 174 x 235 mm"
+	QR5Const_SqrPaperSize65,	"B5 (ISO) Extra 201 x 276 mm"
 	QR5Const_SqrPaperSize34,	"Envelope B5 (JIS) 176 x 250 mm"
 	QR5Const_SqrPaperSize35,	"Envelope B6 176 x 125 mm"
 	QR5Const_SqrPaperSize36,	"Envelope 110 x 230 mm"
@@ -1620,11 +1615,11 @@ BEGIN
 	QR5Const_SqrPaperSize42,	"B4 (ISO) 250 x 353 mm"
 	QR5Const_SqrPaperSize43,	"Japanese Postcard 100 x 148 mm"
 	QR5Const_SqrPaperSize44,	"9 x 11 in"
-	QR5Const_SqrPaperSize13,	"B5 182 x 257 mm"
-	QR5Const_SqrPaperSize14,	"Folio 8 1/2 x 13 in"
-	QR5Const_SqrPaperSize15,	"Quarto 215 x 275 mm"
-	QR5Const_SqrPaperSize16,	"10 x 14 in"
-	QR5Const_SqrPaperSize17,	"11 x 17 in"
+	QR5Const_SqrPaperSize45,	"10 x 11 in"
+	QR5Const_SqrPaperSize46,	"15 x 11 in"
+	QR5Const_SqrPaperSize47,	"Envelope Invite 220 x 220 mm"
+	QR5Const_SqrPaperSize48,	"RESERVED--DO NOT USE"
+	QR5Const_SqrPaperSize49,	"RESERVED--DO NOT USE"
 	QR5Const_SqrPaperSize18,	"Note 8 1/2 x 11 in"
 	QR5Const_SqrPaperSize19,	"Envelope #9 3 7/8 x 8 7/8"
 	QR5Const_SqrPaperSize20,	"Envelope #10 4 1/8 x 9 1/2"
@@ -1636,11 +1631,11 @@ BEGIN
 	QR5Const_SqrPaperSize26,	"E sheet 34 x 44 in"
 	QR5Const_SqrPaperSize27,	"Envelope DL 110 x 220 mm"
 	QR5Const_SqrPaperSize28,	"Envelope C5 162 x 229 mm"
-	OleConst_SInvalidLicense,	"License information for %s is invalid"
-	OleConst_SNotLicensed,	"License information for %s not found. You cannot use this control in design mode"
-	OleConst_sNoRunningObject,	"Unable to retrieve a pointer to a running object registered with OLE for %s/%s"
-	QR5Const_SqrPaperSize0,	"Default size"
-	QR5Const_SqrPaperSize1,	"Letter 8 1/2 x 11 in"
+	QR5Const_SqrPaperSize29,	"Envelope C3 324 x 458 mm"
+	QR5Const_SqrPaperSize30,	"Envelope C4 229 x 324 mm"
+	QR5Const_SqrPaperSize31,	"Envelope C6 114 x 162 mm"
+	QR5Const_SqrPaperSize32,	"Envelope C65 114 x 229 mm"
+	QR5Const_SqrPaperSize33,	"Envelope B4 (JIS) 250 x 353 mm"
 	QR5Const_SqrPaperSize2,	"Letter Small 8 1/2 x 11 in"
 	QR5Const_SqrPaperSize3,	"Tabloid 11 x 17 in"
 	QR5Const_SqrPaperSize4,	"Ledger 17 x 11 in"
@@ -1652,6 +1647,11 @@ BEGIN
 	QR5Const_SqrPaperSize10,	"A4 Small 210 x 297 mm"
 	QR5Const_SqrPaperSize11,	"A5 148 x 210 mm"
 	QR5Const_SqrPaperSize12,	"B4 250 x 354 mm"
+	QR5Const_SqrPaperSize13,	"B5 182 x 257 mm"
+	QR5Const_SqrPaperSize14,	"Folio 8 1/2 x 13 in"
+	QR5Const_SqrPaperSize15,	"Quarto 215 x 275 mm"
+	QR5Const_SqrPaperSize16,	"10 x 14 in"
+	QR5Const_SqrPaperSize17,	"11 x 17 in"
 	dxBarStrs_dxSBAR_MENUSSHOWRECENTITEMS,	"Me&nus show recently used commands first"
 	dxBarStrs_dxSBAR_SHOWFULLMENUSAFTERDELAY,	"Show f&ull menus after a short delay"
 	dxBarStrs_dxSBAR_RESETUSAGEDATA,	"&Reset my usage data"
@@ -1666,8 +1666,8 @@ BEGIN
 	dxBarStrs_dxSBAR_MENUANIM4,	"Slide"
 	dxBarStrs_dxSBAR_MENUANIM5,	"Fade"
 	rxSpeedbar_SAutoSpeedbarMode,	"Cannot set this property value while Position is bpAuto"
-	OleConst_SCannotActivate,	"OLE control activation failed"
-	OleConst_SNoWindowHandle,	"Could not obtain OLE control window handle"
+	QR5Const_SqrPaperSize0,	"Default size"
+	QR5Const_SqrPaperSize1,	"Letter 8 1/2 x 11 in"
 	dxBarStrs_dxSBAR_CUSTOMIZE,	"&Customize..."
 	dxBarStrs_dxSBAR_ADDREMOVEBUTTONS,	"&Add or Remove Buttons"
 	dxBarStrs_dxSBAR_MOREBUTTONS,	"More Buttons"

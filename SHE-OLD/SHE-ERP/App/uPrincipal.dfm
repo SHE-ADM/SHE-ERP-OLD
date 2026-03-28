@@ -8813,13 +8813,13 @@ object FrmPrincipal: TFrmPrincipal
     end
     object ACTTAB_CFOP: TAction
       Category = 'Tabelas'
-      Caption = 'CFOP'
+      Caption = 'CFOP ( Natureza de Opera'#231#245'es )'
       Hint = 'Natureza de Opera'#231#245'es'
       OnExecute = ACTTAB_CFOPExecute
     end
     object ACTTAB_PRZ: TAction
       Category = 'Tabelas'
-      Caption = 'Prazos'
+      Caption = 'Prazos de Vencimentos'
       Hint = 'Prazos de Vencimentos'
       OnExecute = ACTTAB_PRZExecute
     end
