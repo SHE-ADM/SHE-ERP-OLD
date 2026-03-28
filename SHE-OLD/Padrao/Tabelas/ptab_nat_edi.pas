@@ -100,7 +100,7 @@ begin
   REC_SHE_DEF.FB_Event := 'FIS_CFOP'; { Eventos }
 
   { GRANT USER }
-  REC_SHE_DEF.GDescricao  := 'Fiscal';
+  REC_SHE_DEF.GDescricao  := 'Tabelas';
   REC_SHE_DEF.GReferencia := 'CFOP';
   REC_SHE_DEF.GRegra      := 'Permissões Gerais';
   REC_SHE_DEF.GAdmin      := False;
