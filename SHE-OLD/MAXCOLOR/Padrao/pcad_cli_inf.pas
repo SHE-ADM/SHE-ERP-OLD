@@ -539,7 +539,7 @@ var
 
 implementation
 
-uses uprincipal,  ppesquisa, uFrmLogin,
+uses uprincipal,  ppesquisa, pLogin,
   prelatorio_geral;
 
 {$R *.dfm}

@@ -607,8 +607,8 @@ begin
 
   { Localizando Componente no Form }
   IEConsultaWhere         := FindComponent(Format('IEC%dConsultaWhere',[TdxImageEdit(Sender).Tag])) as TdxImageEdit;
-  IEConsultaWhere.Text    := IFThen((Pos(UpperCase(IEConsultaCaption),'IDIDCPPEDIDOROMANEIO') > 0),'=',
-                             IFThen((Pos(UpperCase(IEConsultaCaption),'ARTIGOSKU'           ) > 0),'Início','Ambos'));
+  IEConsultaWhere.Text    := IFThen((Pos(UpperCase(IEConsultaCaption),'IDIDCPPEDIDOROMANEIO' ) > 0),'=',
+                             IFThen((Pos(UpperCase(IEConsultaCaption),'ARTIGOSKUPRODUTOGRADE') > 0),'Início','Ambos'));
   IEConsultaWhere.Enabled := not (IEConsultaCaption = 'Selecionar tipo de consulta');
 
   _Tabelas(TdxImageEdit(Sender).Tag);
@@ -885,9 +885,9 @@ begin
   if ((REC_SHE_REL.Tipo <> EmptyStr) and (REC_SHE_REL.Tipo <> 'TODOS')) or ((IEStatus.Text <> EmptyStr) and (IEStatus.Text <> 'TODOS')) then
   begin
     REC_SHE_REL.Titulo := REC_SHE_REL.Titulo + ' [ ';
-    REC_SHE_REL.Titulo := REC_SHE_REL.Titulo + IFThen((REC_SHE_REL.Tipo    <> EmptyStr) and (REC_SHE_REL.Tipo <> 'TODOS') and (IEStatus.Text <> EmptyStr) and (IEStatus.Text <> 'TODOS'),REC_SHE_REL.Tipo+' + '+REC_SHE_REL.Situacao,
-                                                   IFThen(REC_SHE_REL.Tipo <> 'TODOS',REC_SHE_REL.Tipo,
-                                                   IFThen(IEStatus.Text    <> 'TODOS',REC_SHE_REL.Situacao,'')));
+    REC_SHE_REL.Titulo := REC_SHE_REL.Titulo + IFThen((REC_SHE_REL.Tipo <> EmptyStr) and (REC_SHE_REL.Tipo <> 'TODOS') and (IEStatus.Text <> EmptyStr) and (IEStatus.Text <> 'TODOS'),REC_SHE_REL.Tipo+' + '+REC_SHE_REL.Situacao,
+                                               IFThen(REC_SHE_REL.Tipo  <> 'TODOS',REC_SHE_REL.Tipo,
+                                               IFThen(IEStatus.Text     <> 'TODOS',REC_SHE_REL.Situacao,'')));
     REC_SHE_REL.Titulo := REC_SHE_REL.Titulo + ' ]';
   end;
 
@@ -900,7 +900,7 @@ begin
   AExeRelatorio := FindComponent(IENome.Text) as TAction;
 
   if AExeRelatorio <> Nil then
-     AExeRelatorio.Execute;
+  AExeRelatorio.Execute;
 end;
 
 procedure TFrmRelatorios.ACTExeEmpresasExecute(Sender: TObject);

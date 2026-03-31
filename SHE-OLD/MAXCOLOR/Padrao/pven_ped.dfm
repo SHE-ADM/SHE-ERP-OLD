@@ -1,11 +1,11 @@
 object frmven_ped: Tfrmven_ped
-  Left = 394
-  Top = 197
+  Left = 415
+  Top = 141
   ActiveControl = eddcli
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Pedidos'
-  ClientHeight = 661
+  ClientHeight = 643
   ClientWidth = 1086
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
@@ -431,7 +431,7 @@ object frmven_ped: Tfrmven_ped
         end
         object Label6: TLabel
           Left = 51
-          Top = 175
+          Top = 127
           Width = 37
           Height = 14
           Alignment = taRightJustify
@@ -560,7 +560,7 @@ object frmven_ped: Tfrmven_ped
         end
         object Label28: TLabel
           Left = 59
-          Top = 127
+          Top = 175
           Width = 29
           Height = 14
           Alignment = taRightJustify
@@ -721,7 +721,7 @@ object frmven_ped: Tfrmven_ped
         end
         object edcpag: TdxMaskEdit
           Left = 96
-          Top = 123
+          Top = 171
           Width = 55
           Color = 16644596
           Enabled = False
@@ -734,7 +734,7 @@ object frmven_ped: Tfrmven_ped
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 9
+          TabOrder = 16
           Visible = False
           CharCase = ecUpperCase
           IgnoreMaskBlank = False
@@ -756,7 +756,7 @@ object frmven_ped: Tfrmven_ped
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 7
+          TabOrder = 15
           Visible = False
           CharCase = ecUpperCase
           IgnoreMaskBlank = False
@@ -778,7 +778,7 @@ object frmven_ped: Tfrmven_ped
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 5
+          TabOrder = 14
           Visible = False
           CharCase = ecUpperCase
           IgnoreMaskBlank = False
@@ -1039,7 +1039,7 @@ object frmven_ped: Tfrmven_ped
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 3
+          TabOrder = 13
           Visible = False
           CharCase = ecUpperCase
           IgnoreMaskBlank = False
@@ -1265,7 +1265,7 @@ object frmven_ped: Tfrmven_ped
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 16
+          TabOrder = 5
           OnExit = eddcadExit
           Date = -700000.000000000000000000
           UseEditMask = True
@@ -1304,14 +1304,14 @@ object frmven_ped: Tfrmven_ped
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 8
+          TabOrder = 7
           OnExit = cbdrepExit
           CharCase = ecUpperCase
           OnChange = cbdrepChange
         end
         object cbstpd: TdxPickEdit
           Left = 95
-          Top = 171
+          Top = 123
           Width = 225
           Color = 16644596
           Font.Charset = DEFAULT_CHARSET
@@ -1323,7 +1323,7 @@ object frmven_ped: Tfrmven_ped
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 12
+          TabOrder = 8
           OnExit = cbstpdExit
           CharCase = ecUpperCase
           OnChange = cbstpdChange
@@ -1343,7 +1343,7 @@ object frmven_ped: Tfrmven_ped
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 11
+          TabOrder = 9
           OnExit = cbstcoExit
           CharCase = ecUpperCase
           OnChange = cbstcoChange
@@ -1578,7 +1578,7 @@ object frmven_ped: Tfrmven_ped
         end
         object cbdpag: TdxPickEdit
           Left = 95
-          Top = 123
+          Top = 171
           Width = 225
           Color = 16644596
           Font.Charset = DEFAULT_CHARSET
@@ -1609,7 +1609,7 @@ object frmven_ped: Tfrmven_ped
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 15
+          TabOrder = 4
           Text = '0'
           OnChange = cbcredChange
           Items.Strings = (
@@ -1683,7 +1683,7 @@ object frmven_ped: Tfrmven_ped
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
           Style.Shadow = False
-          TabOrder = 2
+          TabOrder = 1
           AutoSize = False
           EditMask = '99.999.999/9999-999;0; '
           IgnoreMaskBlank = False
@@ -1705,7 +1705,7 @@ object frmven_ped: Tfrmven_ped
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 4
+          TabOrder = 3
           CharCase = ecUpperCase
           IgnoreMaskBlank = False
           Text = '0'
@@ -1765,7 +1765,7 @@ object frmven_ped: Tfrmven_ped
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 14
+          TabOrder = 12
           Alignment = taRightJustify
           CharCase = ecUpperCase
           IgnoreMaskBlank = False
@@ -1782,7 +1782,7 @@ object frmven_ped: Tfrmven_ped
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
           Style.Shadow = False
-          TabOrder = 13
+          TabOrder = 11
           AutoSize = False
           Descriptions.Strings = (
             '')
@@ -1806,7 +1806,7 @@ object frmven_ped: Tfrmven_ped
           Style.BorderColor = 14065456
           Style.BorderStyle = xbsSingle
           Style.ButtonStyle = btsFlat
-          TabOrder = 1
+          TabOrder = 2
           CharCase = ecUpperCase
           IgnoreMaskBlank = False
           OnValidate = eddcliValidate
@@ -1844,7 +1844,7 @@ object frmven_ped: Tfrmven_ped
     Left = 0
     Top = 370
     Width = 54
-    Height = 291
+    Height = 273
     Align = alLeft
     Caption = ' Edi'#231#227'o '
     Font.Charset = ANSI_CHARSET
@@ -1858,7 +1858,7 @@ object frmven_ped: Tfrmven_ped
       Left = 2
       Top = 19
       Width = 50
-      Height = 270
+      Height = 252
       Cursor = crHandPoint
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
@@ -1956,7 +1956,7 @@ object frmven_ped: Tfrmven_ped
     Left = 54
     Top = 370
     Width = 1032
-    Height = 291
+    Height = 273
     Align = alClient
     Caption = '  Consulta  '
     Font.Charset = ANSI_CHARSET
@@ -1970,7 +1970,7 @@ object frmven_ped: Tfrmven_ped
       Left = 2
       Top = 19
       Width = 1028
-      Height = 270
+      Height = 252
       Bands = <
         item
           Alignment = taRightJustify

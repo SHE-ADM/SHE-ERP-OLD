@@ -86,10 +86,10 @@ type
     RelatorioN_QTDE: TIBStringField;
     RelatorioD_QTDE: TIBStringField;
     RelatorioUCON: TIBStringField;
-    RelatorioREND: TIBBCDField;
-    RelatorioGRAMA: TIBBCDField;
-    RelatorioLARGU: TIBBCDField;
-    RelatorioLARGT: TIBBCDField;
+    RelatorioMREND: TIBBCDField;
+    RelatorioMGRAMA: TIBBCDField;
+    RelatorioMLGRU: TIBBCDField;
+    RelatorioMLGRT: TIBBCDField;
     RelatorioILA_BMP1: TBlobField;
     RelatorioILA_BMP2: TBlobField;
     RelatorioILA_BMP3: TBlobField;
@@ -98,7 +98,6 @@ type
     RelatorioILA_BMP6: TBlobField;
     RelatorioILA_BMP7: TBlobField;
     RelatorioILA_BMP8: TBlobField;
-    RelatorioINFADCAD: TIBStringField;
     procedure WinControlFormCreate(Sender: TObject);
     procedure WinControlFormDestroy(Sender: TObject);
     procedure QRBDetalheBeforePrint(Sender: TQRCustomBand;
@@ -182,15 +181,14 @@ procedure TqrpEST_ETQ_PAD.WinControlFormCreate(Sender: TObject);
             SQLWhereB := 'AND PK.CDET BETWEEN '''+RECRelatorios.PEC1CodigoText+''' AND '''+RECRelatorios.PEC2CodigoText+'''';
 
             { Temporário }
-            if RECRelatorios.IEC1ConsultaField  = 'CDRO' then
-               RECRelatorios.IEC1ConsultaField := 'PK.CDRO';
+            if RECRelatorios.IEC1ConsultaField = 'CDRO' then
+            RECRelatorios.IEC1ConsultaField := 'PK.CDRO';
 
-            if RECRelatorios.IEC3ConsultaField  = 'PRO_CART' then
-               RECRelatorios.IEC3ConsultaField := 'PK.ARTIGO' else
-            if RECRelatorios.IEC3ConsultaField  = 'PRO_CPRO' then
-               RECRelatorios.IEC3ConsultaField := 'PK.SKU' else
-            if RECRelatorios.IEC3ConsultaField  = 'PRO_DPSQ' then
-               RECRelatorios.IEC3ConsultaField := 'PK.DECP';
+            if Pos('ARTIGO',RECRelatorios.IEC3ConsultaField) > 0 then
+            RECRelatorios.IEC3ConsultaField := 'PK.ARTIGO' else
+
+            if Pos('SKU',RECRelatorios.IEC3ConsultaField) > 0 then
+            RECRelatorios.IEC3ConsultaField := 'PK.SKU';
 
             { Filtros Consultas }
             if (RECRelatorios.PEC1ConsultaText <> 'TODOS') then
@@ -219,19 +217,23 @@ procedure TqrpEST_ETQ_PAD.WinControlFormCreate(Sender: TObject);
               Close;
               SQL.Clear;
 
-              SQL.Add('SELECT  PK.CDRO,PK.CDET,PK.LOTE,PK.CDRO || ''_'' || IIF(NOT FEMPTY(PK.CTNR),PK.CTNR,LPad(Extract(Day FROM PK.DTRO),2,0) || ''-'' || LPad(Extract(Month FROM PK.DTRO),2,0) || ''-'' || RIGHT(LPad(Extract(Year FROM PK.DTRO),4,0),2)) AS D_DERO,');
-              SQL.Add('        PK.SKU ,PK.CEAN,TRIM(PK.DECP    || '' '' || COALESCE(PK.DGCP,'''')) AS D_DECP,PK.CMP_PAD,');
-              SQL.Add('        PK.N_QTDE,PK.D_QTDE,PK.UCON,PK.REND,PK.GRAMA,PK.LARGU,PK.LARGT,');
-              SQL.Add('        IL.ILA_BMP1,IL.ILA_BMP2,IL.ILA_BMP3,IL.ILA_BMP4,IL.ILA_BMP5,IL.ILA_BMP6,IL.ILA_BMP7,IL.ILA_BMP8,');
-              SQL.Add('        PK.INFADCAD');
+              SQL.Add('SELECT PK.CDRO,PK.CDET,PK.LOTE,PK.CDRO || ''_'' || IIF(NOT FEMPTY(PK.CTNR),PK.CTNR,LPad(Extract(Day FROM PK.DTRO),2,0) || ''-'' || LPad(Extract(Month FROM PK.DTRO),2,0) || ''-'' || RIGHT(LPad(Extract(Year FROM PK.DTRO),4,0),2)) AS D_DERO,');
+              SQL.Add('       PK.SKU ,CP.CEAN,TRIM(PK.DECP    || '' '' || COALESCE(PK.DGCP,'''')) AS D_DECP,CP.CMP_PAD,');
+              SQL.Add('       TRIM(CAST(FFMTINT(PK.QTDE)      || '' '' || COALESCE(PK.UCOM,'''')  AS VARCHAR(30))) AS N_QTDE,');
+              SQL.Add('       TRIM(REPLACE(REPLACE(CAST(CAST(PK.QTDE AS NUMERIC(12,2)) || '' '' || COALESCE(CP.UCOM,'''') AS VARCHAR(30)),''.'','',''),'',00'','''')) AS D_QTDE,');
+              SQL.Add('       CP.UCON,CP.MREND,CP.MGRAMA,CP.MLGRU,CP.MLGRT,');
+              SQL.Add('       IL.ILA_BMP1,IL.ILA_BMP2,IL.ILA_BMP3,IL.ILA_BMP4,IL.ILA_BMP5,IL.ILA_BMP6,IL.ILA_BMP7,IL.ILA_BMP8');
 
-              SQL.Add('FROM ' +IFThen(RECRelatorios.Tipo = 'ANTECIPADO','VW_CAD_PRO_EST_RFK','VW_CAD_PRO_EST')+' AS PK');
-              SQL.Add('LEFT    JOIN VW_CAD_PRO_ILA AS IL ON (IL.ID = PK.IDAK)');
-              SQL.Add('WHERE   PK.REOP = ''E''');
+
+              SQL.Add('FROM ' + IFThen(RECRelatorios.Tipo = 'ANTECIPADO','CAD_PRO_ENI','CAD_PRO_EST') + ' AS PK');
+              SQL.Add('JOIN     CAD_PRO             AS CP ON (CP.CP_ID = PK.CP_ID)');
+              SQL.Add('LEFT     JOIN VW_CAD_PRO_ILA AS IL ON (IL.ID    = PK.IDAK )');
+
+              SQL.Add('WHERE PK.REOP = ''E''');
 
               { Visualizar apenas etiquetas que ainda não foram separadas }
               if (RECRElatorios.Status <> 'TODOS') and (RECRelatorios.Tipo <> 'ANTECIPADO') then
-                  SQL.Add('AND PK.IDPK = 0'); {SQL.Add('AND PK.CDSP > 0'); }
+              SQL.Add('AND PK.IDPK = 0'); {SQL.Add('AND PK.CDSP > 0'); }
 
               { Where conforme filtro selecionado }
               SQL.Add(SQLWhereB);

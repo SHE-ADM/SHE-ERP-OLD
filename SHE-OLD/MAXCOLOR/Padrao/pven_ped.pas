@@ -737,7 +737,7 @@ var
 implementation
 
 uses p_funcoes, uPrincipal, pcad_pro_con, pcad_cli,
-  qven_ped, uFrmLogin, pctr_ped, pven_des, pimporta_geral, pcad_cli_inf, 
+  qven_ped, pLogin, pctr_ped, pven_des, pimporta_geral, pcad_cli_inf, 
   pctr_ped_fin, pcad_pro_img;
 
 {$R *.dfm}

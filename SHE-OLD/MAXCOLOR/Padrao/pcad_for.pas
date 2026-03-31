@@ -160,7 +160,7 @@ begin
 
   frmcad_for_edi := Tfrmcad_for_edi.Create(self);
   try
-    frmcad_for_edi.Tag := frmcad_for.Tag;
+    frmcad_for_edi.Tag := 0;
     frmcad_for_edi.ShowModal;
   finally
     ExecuteEvent;
@@ -179,7 +179,7 @@ begin
 
   FRMCAD_FOR_EDI := TFRMCAD_FOR_EDI.Create(Self);
   try
-    frmcad_for_edi.Tag := frmcad_for.Tag;
+    frmcad_for_edi.Tag := 1;
     frmcad_for_edi.ShowModal;
   finally
     if frmcad_for_edi.editado then

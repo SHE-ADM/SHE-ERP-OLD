@@ -18,11 +18,9 @@ uses
   psenha in '..\padrao\psenha.pas' {frmsenha},
   ptab_cor in '..\padrao\ptab_cor.pas' {frmtab_cor},
   ptab_pag in '..\padrao\ptab_pag.pas' {frmtab_pag},
-  uFrmLogin in '..\padrao\uFrmLogin.pas' {FrmLogin},
   pven_npr in '..\padrao\pven_npr.pas' {frmven_npr},
   ppar_pri in '..\padrao\ppar_pri.pas' {frmpar_pri},
   ptab_mun in '..\padrao\ptab_mun.pas' {frmtab_mun},
-  pSplash in '..\padrao\pSplash.pas' {frmSplash},
   pSobre in '..\padrao\pSobre.pas' {frmSobre},
   pcad_for in '..\padrao\pcad_for.pas' {frmcad_for},
   pcad_for_edi in '..\padrao\pcad_for_edi.pas' {frmcad_for_edi},
@@ -96,7 +94,9 @@ uses
   qpag_com_ana in '..\Padrao\qpag_com_ana.pas' {qrppag_com_ana: TQuickRep},
   qcad_fun_eti in '..\Padrao\qcad_fun_eti.pas' {qrpcad_fun_eti: TQuickRep},
   StrInt in '..\..\..\Lib\Default\StrInt.pas',
-  StrIntImp in '..\..\..\Lib\Default\StrIntImp.pas';
+  StrIntImp in '..\..\..\Lib\Default\StrIntImp.pas',
+  pLogin in '..\Padrao\pLogin.pas' {FrmLogin},
+  pSplash in '..\..\..\Lib\Default\pSplash.pas' {FrmSplash};
 
 {$R *.res}
 

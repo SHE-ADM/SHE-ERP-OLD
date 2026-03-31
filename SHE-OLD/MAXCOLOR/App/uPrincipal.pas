@@ -880,7 +880,7 @@ var
 
 implementation
 
-uses uFrmLogin, pcad_cli, ppar_pri, pSobre,
+uses pLogin, pcad_cli, ppar_pri, pSobre,
   pcad_pro, pcad_rep, pcad_tra, pcad_for, ptab_cor, 
   ptab_nat, ptab_pag, ptab_mun,
   psenha,
@@ -1402,7 +1402,7 @@ begin
     frmlogin.Tag := 2;
     frmlogin.ShowModal;
   finally
-    if frmlogin.editado then
+    if frmlogin.RECLogin.Selected then
     begin
       SLPrincipal.Values['autorizacao'] := frmlogin.cad_usuUSU_DUSU.AsString;
 //    BRet        := ((frmlogin.cad_usuUSU_NIVE.AsString = 'SUPERVISOR') or (frmlogin.cad_usuUSU_NIVE.AsString = 'GERENTE') or (frmlogin.cad_usuUSU_NIVE.AsString = 'ADMINISTRADOR'));
@@ -1500,7 +1500,7 @@ begin
   tag := 1;
   SetLength(PCampo,4);
 
-  if frmlogin.editado then
+  if frmlogin.RECLogin.Selected then
   begin
     oOTransact(IBTra);
 
@@ -1508,27 +1508,36 @@ begin
     cad_usu.ParamByName('USU_CUSU').AsString := frmlogin.cad_usuUSU_CUSU.AsString;
     cad_usu.Open;
 
-    frmlogin.cad_usu.Edit;
-    frmlogin.cad_usuUSU_DULT.Value := now;
-    frmlogin.cad_usu.Post;
+    WITH CONSULTA DO
+    BEGIN
+      Close;
+      SQL.Clear;
+      SQL.Add('UPDATE CAD_USU');
+      SQL.Add('SET    USU_DULT = ''' + FormatDateTime('mm/dd/yy hh:mm',Now) + '''');
+      SQL.Add('WHERE  ID       = ''' + Frmlogin.CAD_USUID.AsString          + '''');
+      ExecSQL;
+    end;
 
-    frmlogin.IBTra.Commit;
+    frmlogin.TCadastro.Commit;
   end;
 end;
 
 procedure TFrmPrincipal.FormShow(Sender: TObject);
 begin
-  if SLPrincipal = nil then
-  Exit;
+  if (SLPrincipal = nil) or (CAD_USU.RecNo = 0) then
+  Application.Terminate else
 
-  with par_pri do
   begin
-    SQL.Clear;
-    SQL.Add('SELECT * FROM '+SLPrincipal.Values['par_pri']);
-    SQL.Add('WHERE PRI_IP = '''+IP.LocalIP+'''');
-    Open;
-  end;
-  tag := 0;
+    with par_pri do
+    begin
+      SQL.Clear;
+      SQL.Add('SELECT * FROM '+SLPrincipal.Values['par_pri']);
+      SQL.Add('WHERE PRI_IP = '''+IP.LocalIP+'''');
+      Open;
+    end;
+
+    Tag := 0;
+  end;  
 end;
 
 procedure TFrmPrincipal.FormCloseQuery(Sender: TObject;
@@ -1742,17 +1751,15 @@ end;
 procedure TFrmPrincipal.cad_usuAfterOpen(DataSet: TDataSet);
 begin
   RECUsuarios.Id           := FrmPrincipal.cad_usuUSU_CUSU.AsString;
-  RECUsuarios.Intervalo    := FrmPrincipal.cad_usuUSU_DIAS.AsInteger;
-  RECUsuarios.Desconto     := FrmPrincipal.cad_usuUSU_DESC.AsInteger;
   RECUsuarios.Login        := FrmPrincipal.cad_usuUSU_DUSU.AsString;
-  RECUsuarios.C_Login      := '( '+oStrZero(FrmPrincipal.cad_usuUSU_CUSU.AsInteger,5)+' ) '+FrmPrincipal.cad_usuUSU_dUSU.AsString;
   RECUsuarios.Nome         := FrmPrincipal.cad_usuUSU_Nome.AsString;
-  RECUsuarios.Menu         := FrmPrincipal.cad_usuUSU_Menu.AsString;
+  RECUsuarios.Grupo        := FrmPrincipal.cad_usuUSU_Menu.AsString;
   RECUsuarios.DTAcesso     := dATE;
-  RECUsuarios.PRNCurrent   := '';
 
+  oRegister_Export_Usuario;
+  
   if Assigned(frmlogin) then
-  PAR_DEMP := frmlogin.cbpes.Text;
+  PAR_DEMP := FrmLogin.RECLogin.DEEP;
 
   Parametros.Close;
   Parametros.Params[0].Value := PAR_DEMP;
@@ -2084,7 +2091,7 @@ begin
   with par_pri do
   begin
     SQL.Clear;
-    SQL.Add('SELECT * FROM '+SLPrincipal.Values['par_pri']);
+    SQL.Add('SELECT * FROM par_pri');
     SQL.Add('WHERE PRI_IP = '''+IP.LocalIP+'''');
     Open;
   end;
@@ -2179,7 +2186,6 @@ begin
 
 
   RECParametros.DTServidor := RECUsuarios.DTAcesso;
-  RECParametros.DTLimite   := IncDay(RECUsuarios.DtAcesso,StrToInt(FormatFloat('-0',RECUsuarios.Intervalo)));
   RECParametros.DTMes1     := StartOfTheMonth(RECUsuarios.DtAcesso);
   RECParametros.DTMes2     := EndOfTheMonth(RECUsuarios.DtAcesso);
   RECParametros.DTSemana1  := StartOfTheWeek(RECUsuarios.DtAcesso);
@@ -2219,7 +2225,7 @@ begin
     try
       frmlogin.ShowModal;
     finally
-      if frmlogin.editado then
+      if Frmlogin.RECLogin.Selected then
       begin
         cad_usu.Close;
         cad_usu.ParamByName('USU_CUSU').AsString := frmlogin.cad_usuUSU_CUSU.AsString;

@@ -693,7 +693,7 @@ object FrmRelatorios_OLD: TFrmRelatorios_OLD
               CalColors.TitleTextColor = clBlack
               CalColors.MonthBackColor = 16644596
               CalColors.TrailingTextColor = clBlack
-              Date = 27838.406886099540000000
+              Date = 27838.322348055550000000
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Height = -15
@@ -737,7 +737,7 @@ object FrmRelatorios_OLD: TFrmRelatorios_OLD
               CalColors.TitleTextColor = clBlack
               CalColors.MonthBackColor = 16644596
               CalColors.TrailingTextColor = clBlack
-              Date = 27838.406886099540000000
+              Date = 27838.322348055550000000
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Height = -15

@@ -682,8 +682,8 @@ begin
 
   { Localizando Componente no Form }
   IEConsultaWhere         := FindComponent(Format('IEC%dConsultaWhere',[TdxImageEdit(Sender).Tag])) as TdxImageEdit;
-  IEConsultaWhere.Text    := IFThen((Pos(UpperCase(IEConsultaCaption),'IDIDCPPEDIDOROMANEIO') > 0),'=',
-                             IFThen((Pos(UpperCase(IEConsultaCaption),'ARTIGOSKU'           ) > 0),'Início','Ambos'));
+  IEConsultaWhere.Text    := IFThen((Pos(UpperCase(IEConsultaCaption),'IDIDCPPEDIDOROMANEIO' ) > 0),'=',
+                             IFThen((Pos(UpperCase(IEConsultaCaption),'ARTIGOSKUPRODUTOGRADE') > 0),'Início','Ambos'));
   IEConsultaWhere.Enabled := not (IEConsultaCaption = 'Selecionar tipo de consulta');
 
   _Tabelas(TdxImageEdit(Sender).Tag);
@@ -878,6 +878,8 @@ begin
 end;
 
 procedure TFrmRelatorios_OLD._Relatorios;
+var
+  BRet: Boolean;
 begin
   ActiveControl := Nil;
 
@@ -898,6 +900,23 @@ begin
   { Rodapés }
   RECRelatorios.RodapeRelatorio := EmptyStr;
   RECRelatorios.RodapeFiltros   := EmptyStr;
+
+  if RECRelatorios.Perfil = 1 then
+  begin
+    BRet := False;
+    
+    if ((PEC1Codigo.Enabled  ) and (PEC1Codigo.Text   <> 'TODOS')) or
+       ((PEC2Codigo.Enabled  ) and (PEC2Codigo.Text   <> 'TODOS')) or
+       ((PEC1Consulta.Enabled) and (PEC1Consulta.Text <> 'TODOS')) or
+       ((PEC2Consulta.Enabled) and (PEC2Consulta.Text <> 'TODOS')) or
+       ((PEC3Consulta.Enabled) and (PEC3Consulta.Text <> 'TODOS')) or
+       ((PEC4Consulta.Enabled) and (PEC4Consulta.Text <> 'TODOS')) then
+    BRet := True;
+  end else
+  BRet := True;
+
+  if not BRet then
+  oException(Nil,'Nenhum filtro selecionado para a emissão do relatório !');
 
   ExecRelat := FindComponent(IENome.Text) as TAction;
   if ExecRelat <> Nil then
@@ -1169,7 +1188,7 @@ begin
            RECRelatorios.PEC2CodigoField   := 'Itens.EST_CDET';
            RECRelatorios.PEC2CodigoCaption := 'Etiqueta Final';
 
-           _FillParams('estoque_pcp','','',['etiqueta_estoque','categorias','PSQ_artigo_produto_descrição']);
+           _FillParams('estoque_pcp','','',['etiqueta_estoque','categorias','artigo_sku']);
 
            IETipo.Descriptions.Add('TODOS');
            IETipo.Values.Add('TODOS');

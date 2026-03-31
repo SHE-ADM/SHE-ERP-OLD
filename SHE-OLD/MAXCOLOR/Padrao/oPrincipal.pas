@@ -7,10 +7,14 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, StrUtils, Math, MidasLib, Classes, Graphics, Controls, Forms, Dialogs,
   ComCtrls, ToolWin, Grids, DBGrids, ExtCtrls, Db, DBTables, DBClient, StdCtrls, dxEdLib, Registry,
-  DBCtrls, Buttons, Menus, Mask, RXLookup, RxToolEdit, IBCustomDataSet, IBTable, dxEditor, dxsbar, dxBar,
-  IBdatabase, IBQuery, RxSpeedBar, ActnList,imglist,MaskUtils, TypInfo, Jpeg, quickrpt, IBSQL,
-  ShellApi, RXDBCtrl, dxDBELib, DateUtils, dxExEdtr, dxCntner, dxTL, dxDBCtrl, dxDBGrid,dxPageControl,
-  dxDockControl,dxDockPanel, StrIntImp, StrInt;
+  DBCtrls, Buttons, Menus, Mask,   IBCustomDataSet, IBTable, dxEditor, dxsbar, dxBar,
+  IBdatabase, IBEvents, IBQuery, RxSpeedBar, ActnList,imglist,MaskUtils, TypInfo, Jpeg, quickrpt, IBSQL,
+  ShellApi, RXDBCtrl, dxDBELib, DateUtils, dxExEdtr, dxCntner, dxTL, dxDBCtrl, dxDBGrid,dxPageControl, RXCtrls,
+  dxDockControl,dxDockPanel, IBStoredProc,
+  QRCtrls,QRPDFFilt, QRExport, WinSpool,
+  ActiveX, ComObj, ShlObj, Printers,
+  XMLDom, XMLIntf, MSXMLDom, XMLDoc, XMLXForm, OleCtrls,
+  StrInt, StrIntImp, IDGlobal, Clipbrd;
 
 type
   aNFe = Array of Array of shortstring;
@@ -152,36 +156,179 @@ Type TRECParametros = record
     HOST,
     REL_PAD: String[60];
 
+    LOG_ID    : Variant;
+    LOG_TIPO  : String[36];
+    LOG_NO    : String[76];
 
+    LOG_NU    : String[15];
+    LOG_NU_CPL: String[40];
+    LOG_CEP   : String[8];
+
+    LOG_BAI_NO,
+    LOG_LOC_NO: String[72];
+    LOG_LOC_CMUN: String[7];
+
+    LOG_UF_NU : Variant;
+    LOG_UF_NO : String[60];
+    LOG_UF    : String[2];
+
+    NFE_API: Boolean;
+    NFE_API_TOKEN: String[40];
+    NFE_TIMEZONE: String[6];
+
+    NFE_API_SEFAZ,              { Situação de Disponibilidade }
+    NFE_API_CSTAT: ShortString; { Situação de Processamento }
+
+    NFE_VER_PROC: String[10];
+    NFE_VER_PROC_EDT: TDate;
+
+    NFE_CRT,
+    NFE_MODELO,
+    NFE_SERIE,
+    NFE_CFOP_IDFIN: Variant;
+    NFE_CFOP_REFIN,
+    NFE_CFOPDUF,
+    NFE_CFOPFUF: String[10];
+    NFE_CFOP_DEFIN: String[60];
+
+    NFE_MODFRETE: Variant;
+    NFE_MODFRETE_REF: String[10];
+    NFE_MODFRETE_DESC,
+    NFE_ESPECIE: String[60];
+
+    NFE_ICMS: Word;
+    NFE_CREDITO_ICMS: Double;
+    NFE_REDUCAO_PISCOFINS: Boolean;
+
+    NFE_CABECALHO,
+    NFE_CANHOTO,
+    NFE_FONT_SIZE_ITEM,
+    NFE_FONT_SIZE_INFADCAD,
+    NFE_TIPO_DESCONTO: Variant;
+    NFE_FORMAT_QTDE,
+    NFE_FORMAT_VUNIT: String[15];
+    NFE_TOTAL_PISCOFINS,
+    NFE_TOTAL_CFOP: Variant;
+
+    NFE_ENV_EMAIL_AUTO: Variant;
+    NFE_CAD_PRO_DI: Boolean;
+    NFE_LOGO: String[60];
+
+    { PASTHS NOTAS FISCAIS }
+    NFE_PATH,                      { Principal                   }
+    NFE_PATH_XML,                  { Arquivos XML Compartilhados }
+    NFE_PATH_XML_PROCNFE,          { Arquivos XML Gerados        }
+    NFE_PATH_DANFE,                { PDF Nota Fiscal             }
+    NFE_PATH_CCE,                  { PDF Carta de Correção       }
+    NFE_PATH_DATA_PACKET,          { Pacotes Principais          }
+    NFE_PATH_DATA_PACKET_CCE,      { Pacotes Carta de Correção   }
+    NFE_PATH_DATA_PACKET_FORM_SEG, { Pacotes de Formulários      }
+    NFE_PATH_DATA_PACKET_FS,       { Pacotes Gerais              }
+    NFE_PATH_SCHEMAS,              { Schemas Nota Fiscal         }
+    NFE_PATH_LOGO: ShortString;    { Arquivo de Imagem           }
+
+    { SISTEMA }
+    SHE_CNPJ: String[14];
+    SHE_RESPONSAVEL: String[40];
+    SHE_EMAIL: String[40];
+    SHE_TEL_NU: String[11];
+
+    { LICENCIAMENTOS }
+    SHE_LIC_VENCIMENTO: TDate;
+    SHE_LIC_VENCIDO,
+    SHE_LIC_AVISAR,
+    SHE_LIC_SUSPENSO: Boolean;
+
+    { WEB }
+    SHE_FTP_USER,
+    SHE_FTP_TOKEN,
+    SHE_FTP_LINK: String[60];
+
+    { PATHS }
+    SHE_PATH_DESKTOP,
+    SHE_PATH_DOCUMENTS: String; { Desktop }
+
+    SHE_PATH,     { Local }
+    SHE_PATH_LAN, { Rede Interna }
+    SHE_PATH_WAN, { Rede Externa }
+    SHE_PATH_FTP, { FTP }
+
+    SHE_PATH_APP, { Aplicativos }
+    SHE_PATH_FBD, { Base de Dados }
+
+    SHE_PATH_CLT, { Coletores }
+    SHE_PATH_DOC, { Documentos }
+    SHE_PATH_IMG, { Imagens }
+    SHE_PATH_BKP, { Backup }
+    SHE_PATH_TMP: ShortString; { Arquivos Temporários }
 End;
 
 Type TRECUsuarios = record
-     Id,
-     IDFL,
-     IDGrant: Variant;
-     Intervalo,
-     Desconto,
-     Resumo: Word;
-     Login,
-     LoginGrant,
-     C_Login: String[40];
-     Menu: String[3];
-     Banco,
-     Banco_Ambiente: String[30];
-     Cargo,
-     GrantTexto,
-     Nome,
-     RELPadrao,
-     DEFL,
-     Tipo,
-     Email,
-     PRNCurrent: String[60];
+     ID,
+     IDEP: Variant;
      DTAcesso: TDate;
-     TodasEmpresas,
-     Selected,
+     DEEP: String[60];
+
+     Login: String[30];
+     Nome : String[60];
+
+     Cargo,
+     Departamento: String[60];
+     
+     Grupo: String[3];
      Comprador,
-     AbrirCaixa,
-     FecharCaixa: Boolean;
+     Caixa: Boolean;
+
+     PED_DESCONTO,
+     PED_TOTALIZADOR,
+     PED_RELATORIOS: Boolean;
+     PED_DESCONTO_LIMITE: Double;
+     PED_GRID_FOCUSED: Word;
+
+     FIN_LIMITE_CREDITO: Boolean;
+     FIN_LIMITE_CREDITO_VMAX: Double;
+
+     API_BOLETO: Boolean;
+     API_BANCO,
+     API_AMBIENTE: String[30];
+
+     API_B2B,
+     API_B2C,
+     API_MKP: Boolean;
+
+     EMAIL,
+     EMAIL_NOME,
+     EMAIL_SMTP: String[60];
+
+     EMAIL_PORTA,
+     EMAIL_SSL  : String[5];
+     EMAIL_TOKEN: String[15];
+
+     NUDDD,
+     NUDDDCEL: String[2];
+
+     NUTEL,
+     NUCEL: String[9];
+
+     { PERMISSÕES DE EVENTOS }
+     IS_EVENT,     { Temporário }
+
+    IS_EVE_CAD,          { Cadastros    }
+    IS_EVE_PRO,          { Produtos     }
+    IS_EVE_EST,          { Estoque      }
+    IS_EVE_EXP,          { Expedição    }
+    IS_EVE_PDC,          { Compras      }
+    IS_EVE_PDP,          { Programações }
+    IS_EVE_PDV,          { Vendas       }
+    IS_EVE_RDV,          { Romaneios    }
+    IS_EVE_FIS,          { Fiscal       }
+    IS_EVE_FIN,          { Financeiro   }
+    IS_EVE_ADM: Boolean; { Admin        }
+
+     Relatorio,
+     CurrentPrinter: String[60];
+
+     Selected: Boolean;
 End;
 
 Type TRECDefault = record
@@ -545,7 +692,26 @@ End;
 TPTRProdutos = ^TRECProdutos;
 
 Const
+  WM_AFTER_CREATE    = WM_USER + 1; // custom message
+  WM_SHOW            = WM_USER + 2; // custom message
+  WM_AFTER_SHOW      = WM_USER + 3; // custom message
+  WM_AFTER_ACTIVATE  = WM_USER + 4; // custom message
+  WM_THREADMSG1 = WM_USER + 1;
+
+  KEY_WOW64_64KEY = $0100;
+  KEY_WOW64_32KEY = $00200;
+
   dllNFe = 'C:\Sheild\NotaFiscal\NFe.dll';
+
+  olMailItem   = 0;
+  olTo         = 1;
+  olCC         = 2;
+  olBCC        = 3;
+  olImportanceLow = 0;
+  olImportanceNormal = 1;
+  olImportanceHigh = 2;
+  olFormatPlain = 1;
+  olFormatHTML  = 2;
 
   aSequenciaL: Array [1..12] of String = ('A','B','C','D','E','F','G',
                                           'H','I','J','K','L');
@@ -945,6 +1111,12 @@ function ConsultaGtin(chave : shortstring) : shortstring; stdcall; External dllN
 
   procedure oIRECDefault(var ARECDefault: TRECDefault); STDCall;
   procedure oFRECDefault(var ARECDefault: TRECDefault); STDCall;
+
+  procedure oRegister_Export; STDCall;
+  procedure oRegister_Export_Usuario; STDCall;
+  procedure oRegister_Import_Usuario(var ARECUSuarios: TRECUsuarios); STDCall;
+  procedure oRegister_DEL_Email; STDCall;
+  procedure oRegister_UPD_SizeFont(ACount: Word); STDCall;
 
 var
   RECUsuarios      : TRECUsuarios;
@@ -4130,6 +4302,337 @@ begin
   if AIMG_PAD.ClassType = TImage then
      result := TImage(AIMG_PAD).Hint else
      result := EmptyStr;
+end;
+
+{ Exporta Register de parâmetros }
+(**********************************)
+procedure oRegister_Export; STDCall;
+(**********************************)
+var
+  RegEdit: TRegistry;
+        lParam: Integer;
+        Buf : Array[0..10] of Char;
+        //aResult : cardinal;
+begin
+  RegEdit := TRegistry.Create(KEY_WRITE OR KEY_WOW64_64KEY);
+  RegEdit.Access  := KEY_WRITE;
+  RegEdit.RootKey := HKEY_CURRENT_USER;
+
+  Buf    := 'Environment';
+  lParam := Integer(@Buf[0]);
+
+  try
+    { NFe }
+    if not RegEdit.KeyExists('NFe\') then
+       oAviso(Application.Handle,'Regitry de Parâmetros para exportação não encontrado !' + #13 +
+                                 'Chave: NFe' + #13 +
+                                 'Favor entrar em contato com o administrador do sistema.');
+
+    if not RegEdit.OpenKey('NFe\',False) then
+           oAviso(Application.Handle,'Falha ao tentar acessar o seu dispositivo !' + #13 +
+                                     'Chave: NFe' + #13 +
+                                     'Favor entrar em contato com o administrador do sistema.') else
+
+       try
+         RegEdit.WriteString('CNPJ'                 ,RECParametros.CNPJ);
+         RegEdit.WriteString('DanfeCanhoto'         ,RECParametros.NFE_CANHOTO);
+         RegEdit.WriteString('DanfeRepCabecalho'    ,RECParametros.NFE_CABECALHO);
+         RegEdit.WriteString('DanfeTpDesc'          ,RECParametros.NFE_TIPO_DESCONTO);
+         RegEdit.WriteString('FormatoItemQtd'       ,RECParametros.NFE_FORMAT_QTDE );
+         RegEdit.WriteString('FormatoItemUnt'       ,RECParametros.NFE_FORMAT_VUNIT);
+         RegEdit.WriteString('IE'                   ,RECParametros.IE);
+         RegEdit.WriteString('Modelo'               ,RECParametros.NFE_MODELO);
+         RegEdit.WriteString('NoSerieCertificado'   ,RECParametros.NFE_API_TOKEN);
+         RegEdit.WriteString('Serie'                ,RECParametros.NFE_SERIE);
+         RegEdit.WriteString('SizeDescItem'         ,RECParametros.NFE_FONT_SIZE_ITEM);
+         RegEdit.WriteString('SizeFontObs'          ,RECParametros.NFE_FONT_SIZE_INFADCAD);
+         RegEdit.WriteString('TimeZone'             ,RECParametros.NFE_TIMEZONE);
+         RegEdit.WriteString('TotalizadorPisCofins' ,RECParametros.NFE_TOTAL_PISCOFINS);
+         RegEdit.WriteString('TotalizarCfop'        ,RECParametros.NFE_TOTAL_CFOP);
+         RegEdit.WriteString('UnidadeFederada'      ,RECParametros.LOG_UF);
+         RegEdit.WriteString('UnidadeFederadaCodigo',RECParametros.LOG_UF_NU);
+         RegEdit.WriteString('VerProc'              ,RECParametros.NFE_VER_PROC);
+
+         RegEdit.WriteString('PathPrincipal',RECParametros.SHE_PATH + '\' + RECParametros.NFE_PATH);
+         RegEdit.WriteString('DanfeLogo',RECParametros.NFE_LOGO);
+         RegEdit.WriteString('CCeLogo',RECParametros.NFE_LOGO);
+
+         RegEdit.WriteString('DataPacket'       ,RECParametros.SHE_PATH + '\' + RECParametros.NFE_PATH_DATA_PACKET          + '\NfeDtPkt.xtr'   );
+         RegEdit.WriteString('DataPacketCCe'    ,RECParametros.SHE_PATH + '\' + RECParametros.NFE_PATH_DATA_PACKET_CCE      + '\CCeDtPkt.xtr'   );
+         RegEdit.WriteString('DataPacketFormSeg',RECParametros.SHE_PATH + '\' + RECParametros.NFE_PATH_DATA_PACKET_FORM_SEG + '\NfeDtPkt-FS.xtr');
+         RegEdit.WriteString('DataPacketFS'     ,RECParametros.SHE_PATH + '\' + RECParametros.NFE_PATH_DATA_PACKET_FS       + '\NfeDtPkt-FS.xtr');
+
+         RegEdit.WriteString('Schemas',RECParametros.SHE_PATH + '\' + RECParametros.NFE_PATH_SCHEMAS + '\');
+       finally
+         RegEdit.CloseKey;
+       end;
+
+    { NFe\Path
+    if not RegEdit.KeyExists('NFe\Path\') then
+       try
+         REGEdit.CreateKey('NFe\Path\');
+         RegEdit.OpenKey  ('NFe\Path\',False);
+         RegEdit.WriteString('Path','C:\Sheild');
+       finally
+         RegEdit.CloseKey;
+       end;
+    }
+
+    { NFeApp }
+    if RegEdit.KeyExists('NFe\NFeApp\') then
+    begin
+      if not RegEdit.OpenKey('NFe\NFeApp\',False) then
+             oAviso(Application.Handle,'Falha ao tentar abrir as configurações da NFe !'+#13+
+                                       'Chave: NFeApp'+#13+
+                                       'Favor entrar em contato com o administrador do sistema.') else
+      try
+        RegEdit.WriteString('CodMunicipio',RECParametros.LOG_LOC_CMUN);
+        RegEdit.WriteString('Municipio'   ,RECParametros.LOG_LOC_NO);
+        RegEdit.WriteString('IE'          ,RECParametros.IE);
+      finally
+        RegEdit.CloseKey;
+      end;
+    end;
+
+    { RespTec }
+    if not RegEdit.KeyExists('NFe\RespTec\') then
+       oAviso(Application.Handle,'Regitry de Parâmetros para exportação não encontrado !'+#13+
+                                 'Chave: RespTec'+#13+
+                                 'Favor entrar em contato com o administrador do sistema.') else
+
+       if not RegEdit.OpenKey('NFe\RespTec\',False) then
+              oAviso(Application.Handle,'Falha ao tentar abrir as configurações da NFe !'+#13+
+                                        'Chave: RespTec'+#13+
+                                        'Favor entrar em contato com o administrador do sistema.') else
+       try
+         RegEdit.WriteString('CNPJ'    ,RECParametros.SHE_CNPJ);
+         RegEdit.WriteString('CSRT'    ,'');
+         RegEdit.WriteString('CSRTid'  ,'');
+         RegEdit.WriteString('email'   ,RECParametros.SHE_EMAIL );
+         RegEdit.WriteString('fone'    ,RECParametros.SHE_TEL_NU);
+         RegEdit.WriteString('xContato',RECParametros.SHE_RESPONSAVEL);
+       finally
+         RegEdit.CloseKey;
+       end;
+  finally
+    Regedit.Free;
+  end;
+
+  { Em alguns computadores não funciona
+    SendMessage(HWND_BROADCAST      , WM_SETTINGCHANGE, 0,lParam);
+  }
+
+  { Vou usar esse, mas dizem q está ocioso }
+  SendNotifyMessage(HWND_BROADCAST, WM_SETTINGCHANGE, 0,lParam);
+
+  { Esse aguardo o tempo estabelecido
+
+   SendMessageTimeout(
+       HWND_BROADCAST,
+       WM_SETTINGCHANGE,
+       0,
+       lParam,
+       SMTO_NORMAL,
+       1000,
+       aresult);
+  }
+end;
+
+{ Exporta Register de Usuários }
+(******************************************)
+procedure oRegister_Export_Usuario; STDCall;
+(******************************************)
+var
+  RegEdit: TRegistry;
+        lParam: Integer;
+        Buf : Array[0..10] of Char;
+        //aResult : cardinal;
+
+begin
+  RegEdit := TRegistry.Create(KEY_WRITE OR KEY_WOW64_64KEY);
+  RegEdit.Access  := KEY_WRITE;
+  RegEdit.RootKey := HKEY_CURRENT_USER;
+
+  Buf    := 'Environment';
+  lParam := Integer(@Buf[0]);
+
+  try
+    { User }
+    if not RegEdit.KeyExists('NFe\FBird\') then
+           oAviso(Application.Handle,'Regitry de Parâmetros para exportação não encontrado !'+#13+
+                                     'Chave: User'+#13+
+                                     'Favor entrar em contato com o administrador do sistema.') else
+           if not RegEdit.OpenKey('NFe\FBird\',False) then
+                  oAviso(Application.Handle,'Falha ao tentar abrir as configurações da NFe !'+#13+
+                                            'Chave: User'+#13+
+                                            'Favor entrar em contato com o administrador do sistema.') else
+           try
+             RegEdit.WriteString('User'   ,RECUsuarios.Login);
+             RegEdit.WriteString('Empresa',RECParametros.ID+' - '+RECParametros.Fantasia);
+           finally
+             RegEdit.CloseKey;
+           end;
+
+    { eMail }
+    if not RegEdit.KeyExists('NFe\eMail\') then
+           oAviso(Application.Handle,'Regitry de Parâmetros para exportação não encontrado !'+#13+
+                                     'Chave: eMail'+#13+
+                                     'Favor entrar em contato com o administrador do sistema.') else
+           if not RegEdit.OpenKey('NFe\eMail\',False) then
+                  oAviso(Application.Handle,'Falha ao tentar abrir as configurações da NFe !'+#13+
+                                            'Chave: eMail'+#13+
+                                            'Favor entrar em contato com o administrador do sistema.') else
+           try
+             RegEdit.WriteString('eMail'       ,RECUsuarios.EMAIL);
+             RegEdit.WriteString('NomeExibicao',RECUsuarios.EMAIL_NOME);
+             RegEdit.WriteString('Porta'       ,RECUsuarios.EMAIL_PORTA);
+             RegEdit.WriteString('Senha'       ,RECUsuarios.EMAIL_TOKEN);
+             RegEdit.WriteString('ServidorSMTP',RECUsuarios.EMAIL_SMTP);
+             RegEdit.WriteString('SSL'         ,RECUsuarios.EMAIL_SSL);
+           finally
+             RegEdit.CloseKey;
+           end;
+  finally
+    Regedit.Free;
+  end;
+  SendNotifyMessage(HWND_BROADCAST, WM_SETTINGCHANGE, 0,lParam);
+end;
+
+{ Retira Envio Email Automático }
+(*************************************)
+procedure oRegister_DEL_Email; STDCall;
+(*************************************)
+var
+  RegEdit: TRegistry;
+        lParam: Integer;
+        Buf : Array[0..10] of Char;
+        //aResult : cardinal;
+
+begin
+  { Desabilita Envio Automático }
+  RECParametros.NFE_ENV_EMAIL_AUTO := '0';
+
+  { Retira todos os dados de email do Register }
+  RegEdit := TRegistry.Create(KEY_WRITE OR KEY_WOW64_64KEY);
+  RegEdit.Access  := KEY_WRITE;
+  RegEdit.RootKey := HKEY_CURRENT_USER;
+
+  Buf    := 'Environment';
+  lParam := Integer(@Buf[0]);
+
+  try
+    { eMail }
+    if not RegEdit.KeyExists('NFe\eMail\') then
+           oAviso(Application.Handle,'Regitry de Parâmetros para exportação não encontrado !'+#13+
+                                     'Chave: eMail'+#13+
+                                     'Favor entrar em contato com o administrador do sistema.') else
+           if not RegEdit.OpenKey('NFe\eMail\',False) then
+                  oAviso(Application.Handle,'Falha ao tentar abrir as configurações da NFe !'+#13+
+                                            'Chave: eMail'+#13+
+                                            'Favor entrar em contato com o administrador do sistema.') else
+           try
+             RegEdit.WriteString('eMail'       ,EmptyStr);
+             RegEdit.WriteString('NomeExibicao',EmptyStr);
+             RegEdit.WriteString('Porta'       ,EmptyStr);
+             RegEdit.WriteString('Senha'       ,EmptyStr);
+             RegEdit.WriteString('ServidorSMTP',EmptyStr);
+             RegEdit.WriteString('SSL'         ,EmptyStr);
+           finally
+             RegEdit.CloseKey;
+           end;
+  finally
+    Regedit.Free;
+  end;
+  SendNotifyMessage(HWND_BROADCAST, WM_SETTINGCHANGE, 0,lParam);
+end;
+
+{ Altera o tamanho da fonte da NFe }
+(******************************************************)
+procedure oRegister_UPD_SizeFont(ACount: Word); STDCall;
+(******************************************************)
+var
+  RegEdit: TRegistry;
+        lParam: Integer;
+        Buf : Array[0..10] of Char;
+        //aResult : cardinal;
+begin
+  RegEdit := TRegistry.Create(KEY_WRITE OR KEY_WOW64_64KEY);
+  RegEdit.Access  := KEY_WRITE;
+  RegEdit.RootKey := HKEY_CURRENT_USER;
+
+  Buf    := 'Environment';
+  lParam := Integer(@Buf[0]);
+
+  try
+    { NFe }
+    if not RegEdit.KeyExists('NFe\') then
+           oAviso(Application.Handle,'Regitry de Parâmetros para exportação não encontrado !'+#13+
+                                     'Chave: NFe'+#13+
+                                     'Favor entrar em contato com o administrador do sistema.') else
+           if not RegEdit.OpenKey('NFe\',False) then
+                  oAviso(Application.Handle,'Falha ao tentar abrir as configurações da NFe !'+#13+
+                                            'Chave: NFe'+#13+
+                                            'Favor entrar em contato com o administrador do sistema.') else
+           try
+             RegEdit.WriteString('SizeFontObs',IFThen(ACount > 3,'6',RECParametros.NFE_FONT_SIZE_INFADCAD));
+           finally
+             RegEdit.CloseKey;
+           end;
+  finally
+    Regedit.Free;
+  end;
+
+  { Em alguns computadores não funciona
+    SendMessage(HWND_BROADCAST      , WM_SETTINGCHANGE, 0,lParam);
+  }
+
+  { Vou usar esse, mas dizem q está ocioso }
+  SendNotifyMessage(HWND_BROADCAST, WM_SETTINGCHANGE, 0,lParam);
+  //Application.ProcessMessages;
+
+  { Esse aguardo o tempo estabelecido
+
+   SendMessageTimeout(
+       HWND_BROADCAST,
+       WM_SETTINGCHANGE,
+       0,
+       lParam,
+       SMTO_NORMAL,
+       1000,
+       aresult);
+  }
+end;
+
+{ Importa Register }
+(**************************************************************************)
+procedure oRegister_Import_Usuario(var ARECUSuarios: TRECUsuarios); STDCall;
+(**************************************************************************)
+var
+  RegEdit: TRegistry;
+begin
+  RegEdit := TRegistry.Create(KEY_READ OR KEY_WOW64_64KEY);
+  RegEdit.Access  := KEY_READ;
+  RegEdit.RootKey := HKEY_CURRENT_USER;
+
+  try
+    { User }
+    if not RegEdit.KeyExists('NFe\FBird\') then
+           oAviso(Application.Handle,'Regitry de Parâmetros para exportação não encontrado !'+#13+
+                                     'Chave: User'+#13+
+                                     'Favor entrar em contato com o administrador do sistema.') else
+           if not RegEdit.OpenKey('NFe\FBird\',False) then
+                  oAviso(Application.Handle,'Falha ao tentar abrir as configurações da NFe !'+#13+
+                                            'Chave: User'+#13+
+                                            'Favor entrar em contato com o administrador do sistema.') else
+           try
+             ARECUsuarios.DEEP  := RegEdit.ReadString('Empresa');
+             ARECUsuarios.Login := RegEdit.ReadString('User');
+           finally
+             RegEdit.CloseKey;
+           end;
+  finally
+    Regedit.Free;
+  end;
 end;
 
 end.
