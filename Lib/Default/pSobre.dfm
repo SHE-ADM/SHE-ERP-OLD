@@ -2468,9 +2468,9 @@ object FrmSobre: TFrmSobre
     object LANVersao: TLabel
       Left = 100
       Top = 4
-      Width = 116
+      Width = 109
       Height = 17
-      Caption = 'SHE-ERP-OLD-CFOP'
+      Caption = 'SHE-ERP-OLD-ETQ'
       Color = clInfoBk
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -2485,7 +2485,7 @@ object FrmSobre: TFrmSobre
       Top = 20
       Width = 101
       Height = 17
-      Caption = '28/03/2026 10:00'
+      Caption = '31/03/2026 07:46'
       Color = clInfoBk
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -2584,9 +2584,9 @@ object FrmSobre: TFrmSobre
       Font.Name = 'Segoe UI Semibold'
       Font.Style = [fsBold, fsItalic]
       Lines.Strings = (
-        'Natureza de opera'#231#245'es - Permiss'#245'es de usu'#225'rios'
-        'TFRMTAB_NAT '
-        'TFRMTAB_NAT_EDI')
+        
+          'Etiquetas de Estoque - Inclus'#227'o de filtros na emiss'#227'o das etique' +
+          'tas')
       ParentFont = False
       TabOrder = 0
     end

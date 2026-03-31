@@ -70,86 +70,86 @@
 #define TeeConst_TeeMsg_AxisMaxMin 64493
 #define TeeConst_TeeMsg_AxisLogBase 64494
 #define TeeConst_TeeMsg_MaxPointsPerPage 64495
-#define XMLConst_SNotActive 64496
-#define XMLConst_SNodeNotFound 64497
-#define XMLConst_SMissingNode 64498
-#define XMLConst_SNoAttributes 64499
-#define XMLConst_SInvalidNodeType 64500
-#define XMLConst_SMismatchedRegItems 64501
-#define XMLConst_SNotSingleTextNode 64502
-#define XMLConst_SNoDOMParseOptions 64503
-#define XMLConst_SNodeReadOnly 64504
-#define XMLConst_SNoRefresh 64505
-#define XMLConst_SMissingFileName 64506
-#define XMLConst_SLine 64507
+#define IdResourceStrings_RSStackENOTCONN 64496
+#define IdResourceStrings_RSStackESHUTDOWN 64497
+#define IdResourceStrings_RSStackETOOMANYREFS 64498
+#define IdResourceStrings_RSStackETIMEDOUT 64499
+#define IdResourceStrings_RSStackECONNREFUSED 64500
+#define IdResourceStrings_RSStackELOOP 64501
+#define IdResourceStrings_RSStackENAMETOOLONG 64502
+#define IdResourceStrings_RSStackEHOSTDOWN 64503
+#define IdResourceStrings_RSStackEHOSTUNREACH 64504
+#define IdResourceStrings_RSStackENOTEMPTY 64505
+#define IdResourceStrings_RSStackHOST_NOT_FOUND 64506
+#define IdResourceStrings_RSThreadTerminateAndWaitFor 64507
 #define dxStatusBar_cxSTextPanelStyle 64508
 #define dxStatusBar_cxSContainerPanelStyle 64509
 #define dxStatusBar_cxSKeyboardStatePanelStyle 64510
 #define dxStatusBar_cxSStateIndicatorPanelStyle 64511
-#define IdResourceStrings_RSStackETOOMANYREFS 64512
-#define IdResourceStrings_RSStackETIMEDOUT 64513
-#define IdResourceStrings_RSStackECONNREFUSED 64514
-#define IdResourceStrings_RSStackELOOP 64515
-#define IdResourceStrings_RSStackENAMETOOLONG 64516
-#define IdResourceStrings_RSStackEHOSTDOWN 64517
-#define IdResourceStrings_RSStackEHOSTUNREACH 64518
-#define IdResourceStrings_RSStackENOTEMPTY 64519
-#define IdResourceStrings_RSStackHOST_NOT_FOUND 64520
-#define IdResourceStrings_RSThreadTerminateAndWaitFor 64521
-#define XMLConst_SDuplicateRegistration 64522
-#define XMLConst_SNoMatchingDOMVendor 64523
-#define XMLConst_SNoDOMNodeEx 64524
-#define XMLConst_SDOMNotSupported 64525
-#define XMLConst_SNodeExpected 64526
-#define XMLConst_SMSDOMNotInstalled 64527
-#define IdResourceStrings_RSStackEPROTONOSUPPORT 64528
-#define IdResourceStrings_RSStackESOCKTNOSUPPORT 64529
-#define IdResourceStrings_RSStackEOPNOTSUPP 64530
-#define IdResourceStrings_RSStackEPFNOSUPPORT 64531
-#define IdResourceStrings_RSStackEAFNOSUPPORT 64532
-#define IdResourceStrings_RSStackEADDRINUSE 64533
-#define IdResourceStrings_RSStackEADDRNOTAVAIL 64534
-#define IdResourceStrings_RSStackENETDOWN 64535
-#define IdResourceStrings_RSStackENETUNREACH 64536
-#define IdResourceStrings_RSStackENETRESET 64537
-#define IdResourceStrings_RSStackECONNABORTED 64538
-#define IdResourceStrings_RSStackECONNRESET 64539
-#define IdResourceStrings_RSStackENOBUFS 64540
-#define IdResourceStrings_RSStackEISCONN 64541
-#define IdResourceStrings_RSStackENOTCONN 64542
-#define IdResourceStrings_RSStackESHUTDOWN 64543
-#define IdResourceStrings_RSInvalidServiceName 64544
-#define IdResourceStrings_RSStackError 64545
-#define IdResourceStrings_RSStackEINTR 64546
-#define IdResourceStrings_RSStackEBADF 64547
-#define IdResourceStrings_RSStackEACCES 64548
-#define IdResourceStrings_RSStackEFAULT 64549
-#define IdResourceStrings_RSStackEINVAL 64550
-#define IdResourceStrings_RSStackEMFILE 64551
-#define IdResourceStrings_RSStackEWOULDBLOCK 64552
-#define IdResourceStrings_RSStackEINPROGRESS 64553
-#define IdResourceStrings_RSStackEALREADY 64554
-#define IdResourceStrings_RSStackENOTSOCK 64555
-#define IdResourceStrings_RSStackEDESTADDRREQ 64556
-#define IdResourceStrings_RSStackEMSGSIZE 64557
-#define IdResourceStrings_RSStackEPROTOTYPE 64558
-#define IdResourceStrings_RSStackENOPROTOOPT 64559
+#define IdResourceStrings_RSStackEPROTOTYPE 64512
+#define IdResourceStrings_RSStackENOPROTOOPT 64513
+#define IdResourceStrings_RSStackEPROTONOSUPPORT 64514
+#define IdResourceStrings_RSStackESOCKTNOSUPPORT 64515
+#define IdResourceStrings_RSStackEOPNOTSUPP 64516
+#define IdResourceStrings_RSStackEPFNOSUPPORT 64517
+#define IdResourceStrings_RSStackEAFNOSUPPORT 64518
+#define IdResourceStrings_RSStackEADDRINUSE 64519
+#define IdResourceStrings_RSStackEADDRNOTAVAIL 64520
+#define IdResourceStrings_RSStackENETDOWN 64521
+#define IdResourceStrings_RSStackENETUNREACH 64522
+#define IdResourceStrings_RSStackENETRESET 64523
+#define IdResourceStrings_RSStackECONNABORTED 64524
+#define IdResourceStrings_RSStackECONNRESET 64525
+#define IdResourceStrings_RSStackENOBUFS 64526
+#define IdResourceStrings_RSStackEISCONN 64527
+#define IdResourceStrings_RSStatusDisconnected 64528
+#define IdResourceStrings_RSStatusText 64529
+#define IdResourceStrings_RSInvalidServiceName 64530
+#define IdResourceStrings_RSStackError 64531
+#define IdResourceStrings_RSStackEINTR 64532
+#define IdResourceStrings_RSStackEBADF 64533
+#define IdResourceStrings_RSStackEACCES 64534
+#define IdResourceStrings_RSStackEFAULT 64535
+#define IdResourceStrings_RSStackEINVAL 64536
+#define IdResourceStrings_RSStackEMFILE 64537
+#define IdResourceStrings_RSStackEWOULDBLOCK 64538
+#define IdResourceStrings_RSStackEINPROGRESS 64539
+#define IdResourceStrings_RSStackEALREADY 64540
+#define IdResourceStrings_RSStackENOTSOCK 64541
+#define IdResourceStrings_RSStackEDESTADDRREQ 64542
+#define IdResourceStrings_RSStackEMSGSIZE 64543
+#define XMLConst_SInvalidNodeType 64544
+#define XMLConst_SMismatchedRegItems 64545
+#define XMLConst_SNotSingleTextNode 64546
+#define XMLConst_SNoDOMParseOptions 64547
+#define XMLConst_SNodeReadOnly 64548
+#define XMLConst_SNoRefresh 64549
+#define XMLConst_SMissingFileName 64550
+#define XMLConst_SLine 64551
+#define IdResourceStrings_RSWinsockInitializationError 64552
+#define IdResourceStrings_RSSetSizeExceeded 64553
+#define IdResourceStrings_RSWS2CallError 64554
+#define IdResourceStrings_RSWS2LoadError 64555
+#define IdResourceStrings_RSStatusResolving 64556
+#define IdResourceStrings_RSStatusConnecting 64557
+#define IdResourceStrings_RSStatusConnected 64558
+#define IdResourceStrings_RSStatusDisconnecting 64559
 #define dxDockConsts_sdxInvalidDockSiteParent 64560
 #define dxDockConsts_sdxInvalidFloatSiteParent 64561
 #define dxDockConsts_sdxInvalidPanelChild 64562
 #define dxDockConsts_sdxInvalidSiteChild 64563
 #define dxDockConsts_sdxManagerError 64564
 #define dxDockConsts_sdxAncestorError 64565
-#define IdResourceStrings_RSWinsockInitializationError 64566
-#define IdResourceStrings_RSSetSizeExceeded 64567
-#define IdResourceStrings_RSWS2CallError 64568
-#define IdResourceStrings_RSWS2LoadError 64569
-#define IdResourceStrings_RSStatusResolving 64570
-#define IdResourceStrings_RSStatusConnecting 64571
-#define IdResourceStrings_RSStatusConnected 64572
-#define IdResourceStrings_RSStatusDisconnecting 64573
-#define IdResourceStrings_RSStatusDisconnected 64574
-#define IdResourceStrings_RSStatusText 64575
+#define XMLConst_SDuplicateRegistration 64566
+#define XMLConst_SNoMatchingDOMVendor 64567
+#define XMLConst_SNoDOMNodeEx 64568
+#define XMLConst_SDOMNotSupported 64569
+#define XMLConst_SNodeExpected 64570
+#define XMLConst_SMSDOMNotInstalled 64571
+#define XMLConst_SNotActive 64572
+#define XMLConst_SNodeNotFound 64573
+#define XMLConst_SMissingNode 64574
+#define XMLConst_SNoAttributes 64575
 #define dxGrFCmn_dxSFilterOperatorLessEqual 64576
 #define dxGrFCmn_dxSFilterOperatorBlanks 64577
 #define dxGrFCmn_dxSFilterOperatorNonBlanks 64578
@@ -1174,22 +1174,8 @@ BEGIN
 	TeeConst_TeeMsg_AxisMaxMin,	"Axis Maximum Value must be >= Minimum"
 	TeeConst_TeeMsg_AxisLogBase,	"Axis Logarithmic Base should be >= 2"
 	TeeConst_TeeMsg_MaxPointsPerPage,	"MaxPointsPerPage must be >= 0"
-	XMLConst_SNotActive,	"No active document"
-	XMLConst_SNodeNotFound,	"Node \"%s\" not found"
-	XMLConst_SMissingNode,	"IDOMNode required"
-	XMLConst_SNoAttributes,	"Attributes are not supported on this node type"
-	XMLConst_SInvalidNodeType,	"Invalid node type"
-	XMLConst_SMismatchedRegItems,	"Mismatched paramaters to RegisterChildNodes"
-	XMLConst_SNotSingleTextNode,	"Element does not contain a single text node"
-	XMLConst_SNoDOMParseOptions,	"DOM Implementation does not support IDOMParseOptions"
-	XMLConst_SNodeReadOnly,	"Node is readonly"
-	XMLConst_SNoRefresh,	"Refresh is only supported if the FileName or XML properties are set"
-	XMLConst_SMissingFileName,	"FileName cannot be blank"
-	XMLConst_SLine,	"Line"
-	dxStatusBar_cxSTextPanelStyle,	"Text Panel"
-	dxStatusBar_cxSContainerPanelStyle,	"Container Panel"
-	dxStatusBar_cxSKeyboardStatePanelStyle,	"Keyboard State Panel"
-	dxStatusBar_cxSStateIndicatorPanelStyle,	"State Indicator Panel"
+	IdResourceStrings_RSStackENOTCONN,	"Socket is not connected."
+	IdResourceStrings_RSStackESHUTDOWN,	"Cannot send or receive after socket is closed."
 	IdResourceStrings_RSStackETOOMANYREFS,	"Too many references, cannot splice."
 	IdResourceStrings_RSStackETIMEDOUT,	"Connection timed out."
 	IdResourceStrings_RSStackECONNREFUSED,	"Connection refused."
@@ -1200,12 +1186,12 @@ BEGIN
 	IdResourceStrings_RSStackENOTEMPTY,	"Directory not empty"
 	IdResourceStrings_RSStackHOST_NOT_FOUND,	"Host not found."
 	IdResourceStrings_RSThreadTerminateAndWaitFor,	"Cannot call TerminateAndWaitFor on FreeAndTerminate threads"
-	XMLConst_SDuplicateRegistration,	"\"%s\" DOMImplementation already registered"
-	XMLConst_SNoMatchingDOMVendor,	"No matching DOM Vendor: \"%s\""
-	XMLConst_SNoDOMNodeEx,	"Selected DOM Vendor does not support this property or method"
-	XMLConst_SDOMNotSupported,	"Property or Method \"%s\" is not supported by DOM Vendor \"%s\""
-	XMLConst_SNodeExpected,	"Node cannot be null"
-	XMLConst_SMSDOMNotInstalled,	"Microsoft MSXML is not installed"
+	dxStatusBar_cxSTextPanelStyle,	"Text Panel"
+	dxStatusBar_cxSContainerPanelStyle,	"Container Panel"
+	dxStatusBar_cxSKeyboardStatePanelStyle,	"Keyboard State Panel"
+	dxStatusBar_cxSStateIndicatorPanelStyle,	"State Indicator Panel"
+	IdResourceStrings_RSStackEPROTOTYPE,	"Protocol wrong type for socket."
+	IdResourceStrings_RSStackENOPROTOOPT,	"Bad protocol option."
 	IdResourceStrings_RSStackEPROTONOSUPPORT,	"Protocol not supported."
 	IdResourceStrings_RSStackESOCKTNOSUPPORT,	"Socket type not supported."
 	IdResourceStrings_RSStackEOPNOTSUPP,	"Operation not supported on socket."
@@ -1220,8 +1206,8 @@ BEGIN
 	IdResourceStrings_RSStackECONNRESET,	"Connection reset by peer."
 	IdResourceStrings_RSStackENOBUFS,	"No buffer space available."
 	IdResourceStrings_RSStackEISCONN,	"Socket is already connected."
-	IdResourceStrings_RSStackENOTCONN,	"Socket is not connected."
-	IdResourceStrings_RSStackESHUTDOWN,	"Cannot send or receive after socket is closed."
+	IdResourceStrings_RSStatusDisconnected,	"Disconnected."
+	IdResourceStrings_RSStatusText,	"%s"
 	IdResourceStrings_RSInvalidServiceName,	"%s is not a valid service."
 	IdResourceStrings_RSStackError,	"Socket Error # %d\r\n%s"
 	IdResourceStrings_RSStackEINTR,	"Interrupted system call."
@@ -1236,14 +1222,14 @@ BEGIN
 	IdResourceStrings_RSStackENOTSOCK,	"Socket operation on non-socket."
 	IdResourceStrings_RSStackEDESTADDRREQ,	"Destination address required."
 	IdResourceStrings_RSStackEMSGSIZE,	"Message too long."
-	IdResourceStrings_RSStackEPROTOTYPE,	"Protocol wrong type for socket."
-	IdResourceStrings_RSStackENOPROTOOPT,	"Bad protocol option."
-	dxDockConsts_sdxInvalidDockSiteParent,	"The Parent of the TdxDockSite cannot be TdxCustomDockControl."
-	dxDockConsts_sdxInvalidFloatSiteParent,	"The Parent of the TdxFloatDockSite can only be TdxFloatForm."
-	dxDockConsts_sdxInvalidPanelChild,	"You cannot insert a TdxCustomDockControl into TdxDockPanel (%s is being inserted)."
-	dxDockConsts_sdxInvalidSiteChild,	"You can only insert a TdxCustomDockControl into TdxCustomDockSite (%s is being inserted)."
-	dxDockConsts_sdxManagerError,	"You cannot have more than one TdxDockingManager instance on a Form."
-	dxDockConsts_sdxAncestorError,	"Docking and auto hiding operations are not available for controls declared in an ancestor form."
+	XMLConst_SInvalidNodeType,	"Invalid node type"
+	XMLConst_SMismatchedRegItems,	"Mismatched paramaters to RegisterChildNodes"
+	XMLConst_SNotSingleTextNode,	"Element does not contain a single text node"
+	XMLConst_SNoDOMParseOptions,	"DOM Implementation does not support IDOMParseOptions"
+	XMLConst_SNodeReadOnly,	"Node is readonly"
+	XMLConst_SNoRefresh,	"Refresh is only supported if the FileName or XML properties are set"
+	XMLConst_SMissingFileName,	"FileName cannot be blank"
+	XMLConst_SLine,	"Line"
 	IdResourceStrings_RSWinsockInitializationError,	"Winsock Initialization Error."
 	IdResourceStrings_RSSetSizeExceeded,	"Set Size Exceeded."
 	IdResourceStrings_RSWS2CallError,	"Error on call Winsock2 library function %s"
@@ -1252,8 +1238,22 @@ BEGIN
 	IdResourceStrings_RSStatusConnecting,	"Connecting to %s."
 	IdResourceStrings_RSStatusConnected,	"Connected."
 	IdResourceStrings_RSStatusDisconnecting,	"Disconnecting."
-	IdResourceStrings_RSStatusDisconnected,	"Disconnected."
-	IdResourceStrings_RSStatusText,	"%s"
+	dxDockConsts_sdxInvalidDockSiteParent,	"The Parent of the TdxDockSite cannot be TdxCustomDockControl."
+	dxDockConsts_sdxInvalidFloatSiteParent,	"The Parent of the TdxFloatDockSite can only be TdxFloatForm."
+	dxDockConsts_sdxInvalidPanelChild,	"You cannot insert a TdxCustomDockControl into TdxDockPanel (%s is being inserted)."
+	dxDockConsts_sdxInvalidSiteChild,	"You can only insert a TdxCustomDockControl into TdxCustomDockSite (%s is being inserted)."
+	dxDockConsts_sdxManagerError,	"You cannot have more than one TdxDockingManager instance on a Form."
+	dxDockConsts_sdxAncestorError,	"Docking and auto hiding operations are not available for controls declared in an ancestor form."
+	XMLConst_SDuplicateRegistration,	"\"%s\" DOMImplementation already registered"
+	XMLConst_SNoMatchingDOMVendor,	"No matching DOM Vendor: \"%s\""
+	XMLConst_SNoDOMNodeEx,	"Selected DOM Vendor does not support this property or method"
+	XMLConst_SDOMNotSupported,	"Property or Method \"%s\" is not supported by DOM Vendor \"%s\""
+	XMLConst_SNodeExpected,	"Node cannot be null"
+	XMLConst_SMSDOMNotInstalled,	"Microsoft MSXML is not installed"
+	XMLConst_SNotActive,	"No active document"
+	XMLConst_SNodeNotFound,	"Node \"%s\" not found"
+	XMLConst_SMissingNode,	"IDOMNode required"
+	XMLConst_SNoAttributes,	"Attributes are not supported on this node type"
 	dxGrFCmn_dxSFilterOperatorLessEqual,	"is less than or equal to"
 	dxGrFCmn_dxSFilterOperatorBlanks,	"blanks"
 	dxGrFCmn_dxSFilterOperatorNonBlanks,	"non blanks"

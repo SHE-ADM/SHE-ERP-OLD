@@ -295,7 +295,7 @@ begin
 
   frmcad_cli_edi := TFrmcad_cli_edi.Create(self);
   try
-    frmcad_cli_edi.Tag := frmcad_cli.Tag;
+    frmcad_cli_edi.Tag := 0;
     frmcad_cli_edi.ShowModal;
   finally
     if frmcad_cli_edi.editado then

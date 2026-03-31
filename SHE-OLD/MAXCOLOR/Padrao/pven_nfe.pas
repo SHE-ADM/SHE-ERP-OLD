@@ -1003,6 +1003,10 @@ type
     nfe_001NFE_VNFTOT: TIBBCDField;
     nfe_001NFE_ISSQN_VISSQN: TIBBCDField;
     EDNFE_VNFTOT: TdxMaskEdit;
+    tab_natCBENEF: TIBStringField;
+    tab_natCBENEF_RBC: TIBStringField;
+    nfe_001NFE_CBENEF_RBC: TIBStringField;
+    dbgnfeNFE_CBENEF: TdxDBGridMaskColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormDestroy(Sender: TObject);
@@ -3427,6 +3431,7 @@ begin
   nfe_001NFE_REPR.Value    := 'R';
   nfe_001NFE_CDNF.Value    := StrToInt(edcdnf.Text);
   nfe_001NFE_CFOP.Value    := LeftStr(cbcnat.Text,4);
+  nfe_001NFE_CBENEF.Value  := 'SEM CBENEF';
 end;
 
 procedure Tfrmven_nfe.edcfavValidate(Sender: TObject;
@@ -4566,7 +4571,7 @@ begin
       tProd[x,146] := oREPAcentos(nfe_001NFE_CEST.AsString);  //<CEST>
       tProd[x,156] := '';                                     //<indEscala> Indicador de Escala Relevante - S - Produzido em Escala Relevante; N – Produzido em Escala NÃO Relevante. -> Campo Novo Obrigatorio NFE 4.0
       tProd[x,157] := '';                                     //<CNPJFab> CNPJ do Fabricante da Mercadoria, obrigatório para produto em escala NÃO relevante -> Campo Novo NFE 4.0
-      tProd[x,158] := 'SEM CBENEF';                           //<cBenef> Código de Benefício Fiscal utilizado pela UF, aplicado ao item. -> Campo Novo NFE 4.0
+      tProd[x,158] := nfe_001NFE_CBENEF.AsString;             //<cBenef> Código de Benefício Fiscal utilizado pela UF, aplicado ao item. -> Campo Novo NFE 4.0
       tProd[x,004] := nfe_001NFE_EXTIPI.AsString;                                                                      //<EXTIPI>
       tProd[x,005] := nfe_001NFE_CFOP.AsString;                                                                        //<CFOP> Código Fiscal de Operações e Prestações
       tProd[x,006] := nfe_001NFE_UCOM.AsString;                                                                        //<uCom> Uniade Comercial
@@ -5031,7 +5036,7 @@ begin
       //if (EDISUF.Text <> EmptyStr) and (RECRomaneio.ZFM_CMUN) and (NFE_001NFE_MOTDESICMS.AsInteger = 7) then
       //tProd[x,235] := '1'; //indDeduzDeson
 
-      tProd[x,236] := ''; //cBenefRBC
+      tProd[x,236] := nfe_001NFE_CBENEF_RBC.AsString; //cBenefRBC
       tProd[x,238] := oTextToValor(NFE_001NFE_VUNCOM.AsFloat,9,True); //<vItem> Valor total do Item, correspondente à sua participação no total da nota. A soma dos itens deverá corresponder ao total da nota.
 
       //Referenciamento de item de outro Documento Fiscal Eletrônico
@@ -6151,9 +6156,12 @@ begin
             end;
 
             { NRT - NOVA REFORMA TRIBUTÁRIA }
-            { IS
-            NFE_001NFE_CSTIS_UB02.Value        := TAB_NATCSTIS.AsString;
-            NFE_001NFE_CCLASSTRIBIS_UB03.Value := TAB_NATCCLASSTRIBIS.AsString; }
+            { CBENEF }
+            NFE_001NFE_CBENEF.Value := TAB_NATCBENEF.AsString;
+            
+            { IS }
+            //NFE_001NFE_CSTIS_UB02.Value        := TAB_NATCSTIS.AsString;
+            //NFE_001NFE_CCLASSTRIBIS_UB03.Value := TAB_NATCCLASSTRIBIS.AsString;
 
             { IBS CBS }
             NFE_001NFE_IBSCBS_CSTIS.Value        := TAB_NATCSTCBS.AsString;

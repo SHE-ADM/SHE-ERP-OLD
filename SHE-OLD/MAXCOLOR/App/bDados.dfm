@@ -7,7 +7,7 @@ object dmDADOS: TdmDADOS
   Height = 588
   Width = 937
   object ibDB: TIBDatabase
-    DatabaseName = 'C:\Sheild\FBird\Maxcolor.FDB'
+    DatabaseName = 'C:\Sheild\FBird\Girotextil.FDB'
     Params.Strings = (
       'user_name=sysdba'
       'password=ri1903'

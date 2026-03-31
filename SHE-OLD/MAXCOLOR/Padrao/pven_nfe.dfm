@@ -3436,7 +3436,7 @@ object frmven_nfe: Tfrmven_nfe
                   end
                   object dbgnfeNFE_UTRIB: TdxDBGridMaskColumn
                     Visible = False
-                    Width = 55
+                    Width = 54
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_UTRIB'
@@ -3445,7 +3445,7 @@ object frmven_nfe: Tfrmven_nfe
                   object dbgnfeNFE_QTRIB: TdxDBGridCurrencyColumn
                     HeaderAlignment = taRightJustify
                     Visible = False
-                    Width = 65
+                    Width = 63
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_QTRIB'
@@ -3459,7 +3459,7 @@ object frmven_nfe: Tfrmven_nfe
                   object dbgnfeNFE_VUNTRIB: TdxDBGridMaskColumn
                     HeaderAlignment = taRightJustify
                     Visible = False
-                    Width = 65
+                    Width = 63
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_VUNTRIB'
@@ -3584,7 +3584,7 @@ object frmven_nfe: Tfrmven_nfe
                   object dbgnfeNFE_VBCST: TdxDBGridCurrencyColumn
                     HeaderAlignment = taRightJustify
                     Visible = False
-                    Width = 73
+                    Width = 71
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_VBCST'
@@ -3621,14 +3621,20 @@ object frmven_nfe: Tfrmven_nfe
                     FieldName = 'NFE_CEST'
                   end
                   object dbgnfeNFE_CENQ: TdxDBGridMaskColumn
-                    Width = 110
+                    Width = 60
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_CENQ'
                   end
+                  object dbgnfeNFE_CBENEF: TdxDBGridMaskColumn
+                    Width = 84
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'NFE_CBENEF'
+                  end
                   object dbgnfeNFE_PICMSST: TdxDBGridCurrencyColumn
                     Visible = False
-                    Width = 55
+                    Width = 54
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_PICMSST'
@@ -3639,7 +3645,7 @@ object frmven_nfe: Tfrmven_nfe
                   object dbgnfeNFE_VICMSST: TdxDBGridCurrencyColumn
                     HeaderAlignment = taRightJustify
                     Visible = False
-                    Width = 55
+                    Width = 54
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'NFE_VICMSST'
@@ -3769,14 +3775,6 @@ object frmven_nfe: Tfrmven_nfe
                     Nullable = False
                     DisableFilter = True
                   end
-                  object dbgnfeNFE_FLAG: TdxDBGridMaskColumn
-                    Visible = False
-                    Width = 58
-                    BandIndex = 0
-                    RowIndex = 0
-                    FieldName = 'NFE_FLAG'
-                    DisableFilter = True
-                  end
                   object dbgnfeNFE_NFCI: TdxDBGridMaskColumn
                     Width = 150
                     BandIndex = 0
@@ -3786,9 +3784,18 @@ object frmven_nfe: Tfrmven_nfe
                   end
                   object dbgnfeMAO_OBRA: TdxDBGridMaskColumn
                     Visible = False
+                    Width = 72
                     BandIndex = 0
                     RowIndex = 0
                     FieldName = 'MAO_OBRA'
+                  end
+                  object dbgnfeNFE_FLAG: TdxDBGridMaskColumn
+                    Visible = False
+                    Width = 56
+                    BandIndex = 0
+                    RowIndex = 0
+                    FieldName = 'NFE_FLAG'
+                    DisableFilter = True
                   end
                 end
                 object GBInfoComp: TGroupBox
@@ -35037,17 +35044,17 @@ object frmven_nfe: Tfrmven_nfe
         '   CP_IDEP, FLAG, HOST, ID, IDAK, IDEK, IDEV, IP, IS_PDSC, MAO_O' +
         'BRA, NFE_CART, '
       
-        '   NFE_CBENEF, NFE_CBPRODUTO, NFE_CBS_PCBS, NFE_CBS_PDIF, NFE_CB' +
-        'S_VBCCBS, '
+        '   NFE_CBENEF, NFE_CBENEF_RBC, NFE_CBPRODUTO, NFE_CBS_PCBS, NFE_' +
+        'CBS_PDIF, '
       
-        '   NFE_CBS_VCBS, NFE_CBS_VCREDPRES, NFE_CBS_VCREDPRESCONDSUS, NF' +
-        'E_CBS_VDEVTRIB, '
+        '   NFE_CBS_VBCCBS, NFE_CBS_VCBS, NFE_CBS_VCREDPRES, NFE_CBS_VCRE' +
+        'DPRESCONDSUS, '
       
-        '   NFE_CBS_VDIF, NFE_CBUNIDADE, NFE_CCAB, NFE_CDBX, NFE_CDEP, NF' +
-        'E_CDNF, '
+        '   NFE_CBS_VDEVTRIB, NFE_CBS_VDIF, NFE_CBUNIDADE, NFE_CCAB, NFE_' +
+        'CDBX, NFE_CDEP, '
       
-        '   NFE_CDRO, NFE_CEAN, NFE_CENQ, NFE_CEST, NFE_CEXPORTADOR, NFE_' +
-        'CFABRICANTE, '
+        '   NFE_CDNF, NFE_CDRO, NFE_CEAN, NFE_CENQ, NFE_CEST, NFE_CEXPORT' +
+        'ADOR, NFE_CFABRICANTE, '
       
         '   NFE_CFOP, NFE_CHNFE, NFE_CLENQ, NFE_CLISTSERV, NFE_CMUNFGISSQ' +
         'N, NFE_CNPJ, '
@@ -35171,132 +35178,132 @@ object frmven_nfe: Tfrmven_nfe
         '   :COL_DESC, :COL_ID, :CP_IDEP, :FLAG, :HOST, :ID, :IDAK, :IDEK' +
         ', :IDEV, '
       
-        '   :IP, :IS_PDSC, :MAO_OBRA, :NFE_CART, :NFE_CBENEF, :NFE_CBPROD' +
-        'UTO, :NFE_CBS_PCBS, '
+        '   :IP, :IS_PDSC, :MAO_OBRA, :NFE_CART, :NFE_CBENEF, :NFE_CBENEF' +
+        '_RBC, :NFE_CBPRODUTO, '
       
-        '   :NFE_CBS_PDIF, :NFE_CBS_VBCCBS, :NFE_CBS_VCBS, :NFE_CBS_VCRED' +
-        'PRES, :NFE_CBS_VCREDPRESCONDSUS, '
+        '   :NFE_CBS_PCBS, :NFE_CBS_PDIF, :NFE_CBS_VBCCBS, :NFE_CBS_VCBS,' +
+        ' :NFE_CBS_VCREDPRES, '
       
-        '   :NFE_CBS_VDEVTRIB, :NFE_CBS_VDIF, :NFE_CBUNIDADE, :NFE_CCAB, ' +
-        ':NFE_CDBX, '
+        '   :NFE_CBS_VCREDPRESCONDSUS, :NFE_CBS_VDEVTRIB, :NFE_CBS_VDIF, ' +
+        ':NFE_CBUNIDADE, '
       
-        '   :NFE_CDEP, :NFE_CDNF, :NFE_CDRO, :NFE_CEAN, :NFE_CENQ, :NFE_C' +
-        'EST, :NFE_CEXPORTADOR, '
+        '   :NFE_CCAB, :NFE_CDBX, :NFE_CDEP, :NFE_CDNF, :NFE_CDRO, :NFE_C' +
+        'EAN, :NFE_CENQ, '
       
-        '   :NFE_CFABRICANTE, :NFE_CFOP, :NFE_CHNFE, :NFE_CLENQ, :NFE_CLI' +
-        'STSERV, '
+        '   :NFE_CEST, :NFE_CEXPORTADOR, :NFE_CFABRICANTE, :NFE_CFOP, :NF' +
+        'E_CHNFE, '
       
-        '   :NFE_CMUNFGISSQN, :NFE_CNPJ, :NFE_CNPJFAB, :NFE_CNPJPROD, :NF' +
-        'E_CNPJTERCEIRO, '
+        '   :NFE_CLENQ, :NFE_CLISTSERV, :NFE_CMUNFGISSQN, :NFE_CNPJ, :NFE' +
+        '_CNPJFAB, '
       
-        '   :NFE_COMP, :NFE_CPROD, :NFE_CST, :NFE_CSTA, :NFE_CSTCOFINS, :' +
-        'NFE_CSTIPI, '
+        '   :NFE_CNPJPROD, :NFE_CNPJTERCEIRO, :NFE_COMP, :NFE_CPROD, :NFE' +
+        '_CST, :NFE_CSTA, '
       
-        '   :NFE_CSTPIS, :NFE_CSTS, :NFE_DCOR, :NFE_DDESEMB, :NFE_DDI, :N' +
-        'FE_DERO, '
+        '   :NFE_CSTCOFINS, :NFE_CSTIPI, :NFE_CSTPIS, :NFE_CSTS, :NFE_DCO' +
+        'R, :NFE_DDESEMB, '
       
-        '   :NFE_ESP, :NFE_EXTIPI, :NFE_FLAG, :NFE_FRET, :NFE_GRAM, :NFE_' +
-        'IBSCBS_CCLASSTRIBIS, '
+        '   :NFE_DDI, :NFE_DERO, :NFE_ESP, :NFE_EXTIPI, :NFE_FLAG, :NFE_F' +
+        'RET, :NFE_GRAM, '
       
-        '   :NFE_IBSCBS_CSTIS, :NFE_IBSCBS_INDDOACAO, :NFE_IBSCBS_VBCIBSC' +
-        'BS, :NFE_IBSCBS_VIBSCBS, '
+        '   :NFE_IBSCBS_CCLASSTRIBIS, :NFE_IBSCBS_CSTIS, :NFE_IBSCBS_INDD' +
+        'OACAO, '
       
-        '   :NFE_IBSMUN_PDIF, :NFE_IBSMUN_PIBSMUN, :NFE_IBSMUN_VBCIBSMUN,' +
-        ' :NFE_IBSMUN_VCREDPRES, '
+        '   :NFE_IBSCBS_VBCIBSCBS, :NFE_IBSCBS_VIBSCBS, :NFE_IBSMUN_PDIF,' +
+        ' :NFE_IBSMUN_PIBSMUN, '
       
-        '   :NFE_IBSMUN_VCREDPRESCONDSUS, :NFE_IBSMUN_VDEVTRIB, :NFE_IBSM' +
-        'UN_VDIF, '
+        '   :NFE_IBSMUN_VBCIBSMUN, :NFE_IBSMUN_VCREDPRES, :NFE_IBSMUN_VCR' +
+        'EDPRESCONDSUS, '
       
-        '   :NFE_IBSMUN_VIBSMUN, :NFE_IBSUF_PDIF, :NFE_IBSUF_PIBSUF, :NFE' +
-        '_IBSUF_VBCIBSUF, '
+        '   :NFE_IBSMUN_VDEVTRIB, :NFE_IBSMUN_VDIF, :NFE_IBSMUN_VIBSMUN, ' +
+        ':NFE_IBSUF_PDIF, '
       
-        '   :NFE_IBSUF_VDEVTRIB, :NFE_IBSUF_VDIF, :NFE_IBSUF_VIBSUF, :NFE' +
-        '_INDESCALA, '
+        '   :NFE_IBSUF_PIBSUF, :NFE_IBSUF_VBCIBSUF, :NFE_IBSUF_VDEVTRIB, ' +
+        ':NFE_IBSUF_VDIF, '
       
-        '   :NFE_INDTOT, :NFE_INFADPROD, :NFE_INFADTRIB, :NFE_IPRO, :NFE_' +
-        'IS_CCLASSTRIBIS, '
+        '   :NFE_IBSUF_VIBSUF, :NFE_INDESCALA, :NFE_INDTOT, :NFE_INFADPRO' +
+        'D, :NFE_INFADTRIB, '
       
-        '   :NFE_IS_CSTIS, :NFE_IS_PIS, :NFE_IS_PISESPEC, :NFE_IS_QTRIB, ' +
-        ':NFE_IS_UTRIB, '
+        '   :NFE_IPRO, :NFE_IS_CCLASSTRIBIS, :NFE_IS_CSTIS, :NFE_IS_PIS, ' +
+        ':NFE_IS_PISESPEC, '
       
-        '   :NFE_IS_VBCIS, :NFE_IS_VIS, :NFE_ISSQN_VISSQN, :NFE_ITEMPED, ' +
-        ':NFE_LARG, '
+        '   :NFE_IS_QTRIB, :NFE_IS_UTRIB, :NFE_IS_VBCIS, :NFE_IS_VIS, :NF' +
+        'E_ISSQN_VISSQN, '
       
-        '   :NFE_METR, :NFE_MODBC, :NFE_MODBCST, :NFE_MOTDESICMS, :NFE_MV' +
-        'A, :NFE_MVAST, '
+        '   :NFE_ITEMPED, :NFE_LARG, :NFE_METR, :NFE_MODBC, :NFE_MODBCST,' +
+        ' :NFE_MOTDESICMS, '
       
-        '   :NFE_NADICAO, :NFE_NCM, :NFE_NDI, :NFE_NDRAW, :NFE_NFCI, :NFE' +
-        '_NRE, :NFE_NRECOPI, '
+        '   :NFE_MVA, :NFE_MVAST, :NFE_NADICAO, :NFE_NCM, :NFE_NDI, :NFE_' +
+        'NDRAW, '
       
-        '   :NFE_NSEQADIC, :NFE_NVE, :NFE_ORIG, :NFE_PCOFINS, :NFE_PCOFIN' +
-        'SST, :NFE_PCREDSN, '
+        '   :NFE_NFCI, :NFE_NRE, :NFE_NRECOPI, :NFE_NSEQADIC, :NFE_NVE, :' +
+        'NFE_ORIG, '
       
-        '   :NFE_PDIF, :NFE_PESO, :NFE_PFCP, :NFE_PFCPST, :NFE_PFCPSTRET,' +
-        ' :NFE_PFCPUFDEST, '
+        '   :NFE_PCOFINS, :NFE_PCOFINSST, :NFE_PCREDSN, :NFE_PDIF, :NFE_P' +
+        'ESO, :NFE_PFCP, '
       
-        '   :NFE_PICMS, :NFE_PICMSINTER, :NFE_PICMSINTERPART, :NFE_PICMSS' +
-        'T, :NFE_PICMSUFDEST, '
+        '   :NFE_PFCPST, :NFE_PFCPSTRET, :NFE_PFCPUFDEST, :NFE_PICMS, :NF' +
+        'E_PICMSINTER, '
       
-        '   :NFE_PIMP, :NFE_PIPI, :NFE_PPIS, :NFE_PPISST, :NFE_PREC, :NFE' +
-        '_PREDBC, '
+        '   :NFE_PICMSINTERPART, :NFE_PICMSST, :NFE_PICMSUFDEST, :NFE_PIM' +
+        'P, :NFE_PIPI, '
       
-        '   :NFE_PREDBCST, :NFE_PSBR, :NFE_PSCN, :NFE_PSLQ, :NFE_PSMR, :N' +
-        'FE_PST, '
+        '   :NFE_PPIS, :NFE_PPISST, :NFE_PREC, :NFE_PREDBC, :NFE_PREDBCST' +
+        ', :NFE_PSBR, '
       
-        '   :NFE_QCOM, :NFE_QEXPORT, :NFE_QTRIB, :NFE_QTUN, :NFE_QVOL, :N' +
-        'FE_RCOM, '
+        '   :NFE_PSCN, :NFE_PSLQ, :NFE_PSMR, :NFE_PST, :NFE_QCOM, :NFE_QE' +
+        'XPORT, '
       
-        '   :NFE_REND, :NFE_REPR, :NFE_STAV, :NFE_TIPI, :NFE_TIPO, :NFE_T' +
-        'PINTERMEDIO, '
+        '   :NFE_QTRIB, :NFE_QTUN, :NFE_QVOL, :NFE_RCOM, :NFE_REND, :NFE_' +
+        'REPR, :NFE_STAV, '
       
-        '   :NFE_TPVIATRANSP, :NFE_TRIBESTADUAL, :NFE_TRIBFEDIMPORTADO, :' +
-        'NFE_TRIBFEDNACIONAL, '
+        '   :NFE_TIPI, :NFE_TIPO, :NFE_TPINTERMEDIO, :NFE_TPVIATRANSP, :N' +
+        'FE_TRIBESTADUAL, '
       
-        '   :NFE_TRIBIPI, :NFE_TRIBMUNICIPAL, :NFE_UCOM, :NFE_UEXP, :NFE_' +
-        'UFDESEMB, '
+        '   :NFE_TRIBFEDIMPORTADO, :NFE_TRIBFEDNACIONAL, :NFE_TRIBIPI, :N' +
+        'FE_TRIBMUNICIPAL, '
       
-        '   :NFE_UFEMBARQ, :NFE_UFSAIDAPAIS, :NFE_UFTERCEIRO, :NFE_UTRIB,' +
-        ' :NFE_VAFRMM, '
+        '   :NFE_UCOM, :NFE_UEXP, :NFE_UFDESEMB, :NFE_UFEMBARQ, :NFE_UFSA' +
+        'IDAPAIS, '
       
-        '   :NFE_VALIQISSQN, :NFE_VALIQPROD, :NFE_VBC, :NFE_VBCCREDICMSSN' +
-        ', :NFE_VBCFCP, '
+        '   :NFE_UFTERCEIRO, :NFE_UTRIB, :NFE_VAFRMM, :NFE_VALIQISSQN, :N' +
+        'FE_VALIQPROD, '
       
-        '   :NFE_VBCFCPST, :NFE_VBCFCPSTRET, :NFE_VBCFCPUFDEST, :NFE_VBCI' +
-        'MP, :NFE_VBCIPI, '
+        '   :NFE_VBC, :NFE_VBCCREDICMSSN, :NFE_VBCFCP, :NFE_VBCFCPST, :NF' +
+        'E_VBCFCPSTRET, '
       
-        '   :NFE_VBCISSQN, :NFE_VBCOFINS, :NFE_VBCOFINSST, :NFE_VBCPIS, :' +
-        'NFE_VBCPISST, '
+        '   :NFE_VBCFCPUFDEST, :NFE_VBCIMP, :NFE_VBCIPI, :NFE_VBCISSQN, :' +
+        'NFE_VBCOFINS, '
       
-        '   :NFE_VBCST, :NFE_VBCSTDEST, :NFE_VBCSTRET, :NFE_VBCUFDEST, :N' +
-        'FE_VCOFINS, '
+        '   :NFE_VBCOFINSST, :NFE_VBCPIS, :NFE_VBCPISST, :NFE_VBCST, :NFE' +
+        '_VBCSTDEST, '
       
-        '   :NFE_VCOFINSST, :NFE_VCREDICMSSN, :NFE_VDESC, :NFE_VDESCDI, :' +
-        'NFE_VDESPADU, '
+        '   :NFE_VBCSTRET, :NFE_VBCUFDEST, :NFE_VCOFINS, :NFE_VCOFINSST, ' +
+        ':NFE_VCREDICMSSN, '
       
-        '   :NFE_VFCP, :NFE_VFCPST, :NFE_VFCPSTRET, :NFE_VFCPUFDEST, :NFE' +
-        '_VFRETE, '
+        '   :NFE_VDESC, :NFE_VDESCDI, :NFE_VDESPADU, :NFE_VFCP, :NFE_VFCP' +
+        'ST, :NFE_VFCPSTRET, '
       
-        '   :NFE_VI04, :NFE_VI07, :NFE_VI12, :NFE_VI18, :NFE_VICMS, :NFE_' +
-        'VICMSDESON, '
+        '   :NFE_VFCPUFDEST, :NFE_VFRETE, :NFE_VI04, :NFE_VI07, :NFE_VI12' +
+        ', :NFE_VI18, '
       
-        '   :NFE_VICMSDIF, :NFE_VICMSMONO, :NFE_VICMSOP, :NFE_VICMSST, :N' +
-        'FE_VICMSSTDEST, '
+        '   :NFE_VICMS, :NFE_VICMSDESON, :NFE_VICMSDIF, :NFE_VICMSMONO, :' +
+        'NFE_VICMSOP, '
       
-        '   :NFE_VICMSSTRET, :NFE_VICMSUFDEST, :NFE_VICMSUFREMET, :NFE_VI' +
-        'I, :NFE_VIIIMP, '
+        '   :NFE_VICMSST, :NFE_VICMSSTDEST, :NFE_VICMSSTRET, :NFE_VICMSUF' +
+        'DEST, :NFE_VICMSUFREMET, '
       
-        '   :NFE_VIOFIMP, :NFE_VIPI, :NFE_VISSQN, :NFE_VMULTA, :NFE_VNF, ' +
-        ':NFE_VNFTOT, '
+        '   :NFE_VII, :NFE_VIIIMP, :NFE_VIOFIMP, :NFE_VIPI, :NFE_VISSQN, ' +
+        ':NFE_VMULTA, '
       
-        '   :NFE_VOUTRO, :NFE_VPIS, :NFE_VPISST, :NFE_VPROD, :NFE_VSEG, :' +
-        'NFE_VSERV, '
+        '   :NFE_VNF, :NFE_VNFTOT, :NFE_VOUTRO, :NFE_VPIS, :NFE_VPISST, :' +
+        'NFE_VPROD, '
       
-        '   :NFE_VTOTTRIB, :NFE_VUNCOM, :NFE_VUNTRIB, :NFE_XLOCDESEMB, :N' +
-        'FE_XLOCDESPACHO, '
+        '   :NFE_VSEG, :NFE_VSERV, :NFE_VTOTTRIB, :NFE_VUNCOM, :NFE_VUNTR' +
+        'IB, :NFE_XLOCDESEMB, '
       
-        '   :NFE_XLOCEMBARQ, :NFE_XPED, :NFE_XPROD, :NFE_XPROX, :UCDBE, :' +
-        'UPRC_PAD, '
-      '   :UPSBR, :UPSLQ, :UQTMD, :UQTRL)')
+        '   :NFE_XLOCDESPACHO, :NFE_XLOCEMBARQ, :NFE_XPED, :NFE_XPROD, :N' +
+        'FE_XPROX, '
+      '   :UCDBE, :UPRC_PAD, :UPSBR, :UPSLQ, :UQTMD, :UQTRL)')
     RefreshSQL.Strings = (
       'Select '
       '  ID,'
@@ -35554,7 +35561,8 @@ object frmven_nfe: Tfrmven_nfe
       '  NFE_VII,'
       '  NFE_VICMSMONO,'
       '  NFE_VNFTOT,'
-      '  NFE_ISSQN_VISSQN'
+      '  NFE_ISSQN_VISSQN,'
+      '  NFE_CBENEF_RBC'
       'from NFE_ITE '
       'where'
       '  ID = :ID')
@@ -35598,6 +35606,7 @@ object frmven_nfe: Tfrmven_nfe
       '  MAO_OBRA = :MAO_OBRA,'
       '  NFE_CART = :NFE_CART,'
       '  NFE_CBENEF = :NFE_CBENEF,'
+      '  NFE_CBENEF_RBC = :NFE_CBENEF_RBC,'
       '  NFE_CBPRODUTO = :NFE_CBPRODUTO,'
       '  NFE_CBS_PCBS = :NFE_CBS_PCBS,'
       '  NFE_CBS_PDIF = :NFE_CBS_PDIF,'
@@ -36607,6 +36616,7 @@ object frmven_nfe: Tfrmven_nfe
       Size = 3
     end
     object nfe_001NFE_CBENEF: TIBStringField
+      DisplayLabel = 'C'#243'd. Benef'
       FieldName = 'NFE_CBENEF'
       Origin = '"NFE_ITE"."NFE_CBENEF"'
       Size = 10
@@ -37320,6 +37330,11 @@ object frmven_nfe: Tfrmven_nfe
       Precision = 18
       Size = 2
     end
+    object nfe_001NFE_CBENEF_RBC: TIBStringField
+      FieldName = 'NFE_CBENEF_RBC'
+      Origin = '"NFE_ITE"."NFE_CBENEF_RBC"'
+      Size = 10
+    end
   end
   object dtsnfe_001: TDataSource
     DataSet = nfe_001
@@ -37649,6 +37664,16 @@ object frmven_nfe: Tfrmven_nfe
       Origin = '"TAB_NAT"."INDDOACAO"'
       FixedChar = True
       Size = 1
+    end
+    object tab_natCBENEF: TIBStringField
+      FieldName = 'CBENEF'
+      Origin = '"TAB_NAT"."CBENEF"'
+      Size = 10
+    end
+    object tab_natCBENEF_RBC: TIBStringField
+      FieldName = 'CBENEF_RBC'
+      Origin = '"TAB_NAT"."CBENEF_RBC"'
+      Size = 10
     end
   end
   object consulta_S: TIBQuery

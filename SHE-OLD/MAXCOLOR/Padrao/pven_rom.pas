@@ -480,7 +480,7 @@ var
 
 implementation
 
-uses uPrincipal, pcad_pro_con, pcad_cli, uFrmLogin, pven_nfe, pctr_ped,
+uses uPrincipal, pLogin, pcad_pro_con, pcad_cli, pven_nfe, pctr_ped,
   pimporta_geral;
 
 {$R *.dfm}

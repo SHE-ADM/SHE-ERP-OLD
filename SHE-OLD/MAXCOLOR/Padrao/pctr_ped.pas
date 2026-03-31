@@ -280,7 +280,7 @@ var
 implementation
 
 uses uPrincipal, prelatorio_geral, pven_ped, ppesquisa, 
-     pven_rom, pctr_ped_bai, bDados, uFrmLogin, pcad_pro_img, pcad_cli_inf;
+     pven_rom, pctr_ped_bai, bDados, pLogin, pcad_pro_img, pcad_cli_inf;
 
 {$R *.dfm}
 
