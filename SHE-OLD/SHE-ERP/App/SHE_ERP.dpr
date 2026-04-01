@@ -149,7 +149,10 @@ uses
   qGER_EST_PRO in '..\..\..\Lib\Relatórios\Gerenciais\Estoque\QGER_EST_PRO.pas' {QRPGER_EST_PRO: TQuickRep},
   QGER_EST_INV in '..\..\..\Lib\Relatórios\Gerenciais\Estoque\QGER_EST_INV.pas' {QRPGER_EST_INV: TQuickRep},
   pPesquisa_OLD in '..\..\Padrao\Consultas\pPesquisa_OLD.pas' {FrmPesquisa_OLD},
-  QGER_FIS_PESO in '..\..\..\Lib\Relatórios\Gerenciais\Fiscal\QGER_FIS_PESO.pas' {QRPGER_FIS_PESO: TQuickRep};
+  QGER_FIS_PESO in '..\..\..\Lib\Relatórios\Gerenciais\Fiscal\QGER_FIS_PESO.pas' {QRPGER_FIS_PESO: TQuickRep},
+  QFOR_CAD_PRO in '..\..\..\Lib\Relatórios\Fornecedores\QFOR_CAD_PRO.pas' {QRPFOR_CAD_PRO: TQuickRep},
+  qGFornecedoresProdutosCadastrados in '..\..\Padrao\Relatorios\qGFornecedoresProdutosCadastrados.pas' {qrpGFornecedoresProdutosCadastrados: TQuickRep},
+  qCadastros_Ranking in '..\..\Padrao\Relatorios\qCadastros_Ranking.pas' {qrpCadastros_Ranking: TQuickRep};
 
 {$R *.res}
 

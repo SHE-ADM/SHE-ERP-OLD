@@ -795,6 +795,7 @@ Type TREC_SHE_REL = record
      FB_PSQ_FD_VD_FK: String[120]; { Valor  }
 
      { DATAS }
+     FB_PSQ_DT_QUERY: ShortString; { Query Label }
      FB_PSQ_DT_LB_FK: String[60]; { Field Label }
      FB_PSQ_DT_NO_FK: String[30]; { Field Name  }
      FB_PSQ_DT_VD_FK: TDateTime;  { Field Value }
@@ -848,21 +849,25 @@ Type TREC_SHE_REL = record
      FB_PSQ_IE4_NO: String[30];  { Field Name  }
      FB_PSQ_IE4_VD: String[120]; { Field Value }
 
+     FB_PSQ_IE1_QUERY: ShortString; { Query Label }
      FB_PSQ_IE1_WHERE: String[60];  { Field Label }
-     FB_PSQ_IE1_LKPK : String[30];  { Field Name  }
-     FB_PSQ_IE1_LKFK : String[120]; { Field Value }
+     FB_PSQ_IE1_LKPK : String[01];  { Field Name  }
+     FB_PSQ_IE1_LKFK : String[01];  { Field Value }
 
+     FB_PSQ_IE2_QUERY: ShortString; { Query Label }
      FB_PSQ_IE2_WHERE: String[60];  { Field Label }
-     FB_PSQ_IE2_LKPK : String[30];  { Field Name  }
-     FB_PSQ_IE2_LKFK : String[120]; { Field Value }
+     FB_PSQ_IE2_LKPK : String[01];  { Field Name  }
+     FB_PSQ_IE2_LKFK : String[01];  { Field Value }
 
+     FB_PSQ_IE3_QUERY: ShortString; { Query Label }
      FB_PSQ_IE3_WHERE: String[60];  { Field Label }
-     FB_PSQ_IE3_LKPK : String[30];  { Field Name  }
-     FB_PSQ_IE3_LKFK : String[120]; { Field Value }
+     FB_PSQ_IE3_LKPK : String[01];  { Field Name  }
+     FB_PSQ_IE3_LKFK : String[01];  { Field Value }
 
+     FB_PSQ_IE4_QUERY: ShortString; { Query Label }
      FB_PSQ_IE4_WHERE: String[60];  { Field Label }
-     FB_PSQ_IE4_LKPK : String[30];  { Field Name  }
-     FB_PSQ_IE4_LKFK : String[120]; { Field Value }
+     FB_PSQ_IE4_LKPK : String[01];  { Field Name  }
+     FB_PSQ_IE4_LKFK : String[01];  { Field Value }
 
      { RELATÓRIO }
      { Tags }

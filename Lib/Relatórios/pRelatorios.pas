@@ -119,6 +119,7 @@ Type
     ACTREL_GER_FIS_CFOP: TAction;
     ACTREL_GER_EST_INV: TAction;
     ACTREL_GER_FIS_PESO: TAction;
+    ACTREL_FOR_PRO_CAD: TAction;
 
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -159,6 +160,7 @@ Type
     procedure PEC1ConsultaChange(Sender: TObject);
     procedure ACTREL_GER_EST_INVExecute(Sender: TObject);
     procedure ACTREL_GER_FIS_PESOExecute(Sender: TObject);
+    procedure ACTREL_FOR_PRO_CADExecute(Sender: TObject);
   private
     AExeRelatorio: TAction;
     REC_SHE_REL  : TREC_SHE_REL;
@@ -768,6 +770,13 @@ begin
   {$IFEND}
 end;
 
+procedure TFrmRelatorios.ACTREL_FOR_PRO_CADExecute(Sender: TObject);
+begin
+  {$IF DEFINED(DEF_ERP) OR DEFINED(DEF_PDV)}
+
+  {$IFEND}
+end;
+
 procedure TFrmRelatorios._Hints(AComponente: Word);
 var
   PEConsulta: TdxPickEdit;
@@ -1087,6 +1096,14 @@ begin
 
     { PRODUTOS }   
     1: begin
+       end;
+
+    { CLIENTES }
+    2: begin
+       end;
+
+    { FORNECEDORES }
+    3: begin
        end;
   end;
 

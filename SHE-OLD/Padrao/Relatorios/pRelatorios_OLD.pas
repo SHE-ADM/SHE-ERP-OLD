@@ -181,6 +181,8 @@ Type
     procedure PEC2CodigoChange(Sender: TObject);
     procedure ACTPedidosExecute(Sender: TObject);
     procedure MCData2Click(Sender: TObject);
+    procedure ACTGFornecedoresProdutosCadastradosExecute(Sender: TObject);
+    procedure ACTCadastros_RankingExecute(Sender: TObject);
   private
     { Private declarations }
     FMSGCaption: Variant;
@@ -227,7 +229,9 @@ uses uPrincipal, bPrincipal
        qProduto_Custo_Importado,
        qFicha_Tecnica,
        qProduto_Estoque, qProduto_Estoque_Etiqueta,
-       qEST_ENT_ROM, qEST_ETQ_PAD, qEST_ETQ_PEQ
+       qEST_ENT_ROM, qEST_ETQ_PAD, qEST_ETQ_PEQ,
+       qGFornecedoresProdutosCadastrados,
+       QCadastros_Ranking 
 
   {$ELSEIF DEFINED(DEF_PDV)}
        ,qFicha_Tecnica,
@@ -765,6 +769,35 @@ begin
   {$IFEND}
 end;
 
+procedure TFrmRelatorios_OLD.ACTGFornecedoresProdutosCadastradosExecute(
+  Sender: TObject);
+begin
+  {$IF DEFINED(DEF_ERP) OR DEFINED(DEF_PDV)}
+
+  if not Assigned(qrpGFornecedoresProdutosCadastrados) then
+  begin
+    _Visualizar_Todos;
+
+    qrpGFornecedoresProdutosCadastrados := TqrpGFornecedoresProdutosCadastrados.Create(Self,RECRelatorios);
+    qrpGFornecedoresProdutosCadastrados.WinControlFormCreate(qrpGFornecedoresProdutosCadastrados);
+  end;
+
+  {$IFEND}
+end;
+
+procedure TFrmRelatorios_OLD.ACTCadastros_RankingExecute(Sender: TObject);
+begin
+  {$IF DEFINED(DEF_ERP) OR DEFINED(DEF_PDV)}
+
+  if not Assigned(qrpCadastros_Ranking) then
+  begin
+    qrpCadastros_Ranking := TqrpCadastros_Ranking.Create(Self,RECRelatorios);
+    qrpCadastros_Ranking.WinControlFormCreate(qrpCadastros_Ranking);
+  end;
+
+  {$IFEND}
+end;
+
 procedure TFrmRelatorios_OLD.ACTProduto_Estoque_EtiquetaExecute(
   Sender: TObject);
 begin
@@ -1216,7 +1249,16 @@ begin
          {}
        end;
     3: begin
-         { Produtos: Kardex }
+         { Fornecedores }
+         IEEmpresa.Text := RECParametros.EP_NO;
+         IENome.Descriptions.Add(RECRelatorios.Nome);
+         if RECRelatorios.Nome = 'Listagem de produtos cadastrados' then
+         begin
+           IENome.Values.Add('ACTGFornecedoresProdutosCadastrados');
+           IENome.Text :=    'ACTGFornecedoresProdutosCadastrados';
+
+           _FillParams('TODOS','estoque','fornecedor',['fornecedor','','','']);
+         end;
        end;
     4: begin
          { Clientes }
@@ -1299,51 +1341,9 @@ begin
            IENome.Text := 'ACTCadastros_Ranking';
 
            _FillParams('pedido_venda','pedido_venda','pedido_venda',['','artigo_produto_descrição','fornecedor','categorias']);
-         end else
-         if RECRelatorios.Nome = 'Vendas de Produtos por Representantes' then
-         begin
-           IEEmpresa.Enabled := ((Pos(RECUsuarios.Grupo,'DEVDIR') > 0) or (RECUSuarios.Comprador));
-
-           IEModelo.Descriptions.Clear;
-           IEModelo.Descriptions.Add('Produto_X_Quantidade');
-           IEModelo.Descriptions.Add('Artigo_X_Quantidade');
-           IEModelo.Values.Clear;
-           IEModelo.Values.Add('Produto');
-           IEModelo.Values.Add('Artigo');
-           IEModelo.Text := 'Produto';
-
-           IENome.Values.Add('ACTGCadastros_Venda_Produto');
-           IENome.Text := 'ACTGCadastros_Venda_Produto';
-
-           _FillParams('pedido_venda','pedido_venda','pedido_venda',['representante','cep_região_metropolitana','cep_região_nacional','cep_UF']);
-         end else
-         if RECRelatorios.Nome = 'Listagem de Representantes' then
-         begin
-           IEEmpresa.Enabled := ((Pos(RECUsuarios.Grupo,'DEVDIR') > 0) or (RECUSuarios.Comprador));
-           IEEmpresa.Text    := RECParametros.EP_NO;
-
-           IENome.Descriptions.Add(RECRelatorios.Nome);
-           IENome.Values.Add('ACTCadastros_Listagem');
-           IENome.Text := 'ACTCadastros_Listagem';
-
-           _FillParams('cadastro_listagem','TODOS','cadastro_listagem',['vendedor_representante','cep_região_metropolitana','cep_região_nacional','cep_UF']);
-
-           IEData.Text       := EmptyStr;
-           IEC1Consulta.Text := 'CAD_USU.USU_DUSU';
-           PEC1Consulta.Text := IFThen(RECUsuarios.Grupo = 'VEN',RECUsuarios.Login,'TODOS');
          end;
        end;
     6: begin
-         { Fornecedores }
-         IEEmpresa.Text := RECParametros.EP_NO;
-         IENome.Descriptions.Add(RECRelatorios.Nome);
-         if RECRelatorios.Nome = 'Listagem de Produtos Cadastrados por Fornecedor' then
-         begin
-           IENome.Values.Add('ACTGFornecedoresProdutosCadastrados');
-           IENome.Text :=    'ACTGFornecedoresProdutosCadastrados';
-
-           _FillParams('TODOS','estoque','fornecedor',['fornecedor','','','']);
-         end;
        end;
     7: begin
          { Fornecedores: Financeiro }

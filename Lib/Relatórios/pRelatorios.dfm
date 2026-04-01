@@ -691,7 +691,7 @@ object FrmRelatorios: TFrmRelatorios
               CalColors.TitleTextColor = clBlack
               CalColors.MonthBackColor = 16644596
               CalColors.TrailingTextColor = clBlack
-              Date = 27838.322339583330000000
+              Date = 27838.271322766200000000
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Height = -15
@@ -735,7 +735,7 @@ object FrmRelatorios: TFrmRelatorios
               CalColors.TitleTextColor = clBlack
               CalColors.MonthBackColor = 16644596
               CalColors.TrailingTextColor = clBlack
-              Date = 27838.322339583330000000
+              Date = 27838.271322766200000000
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Height = -15
@@ -1657,6 +1657,12 @@ object FrmRelatorios: TFrmRelatorios
       Category = 'Relat'#243'rios Gerenciais'
       Caption = 'ACTREL_GER_FIS_PESO'
       OnExecute = ACTREL_GER_FIS_PESOExecute
+    end
+    object ACTREL_FOR_PRO_CAD: TAction
+      Category = 'Relat'#243'rios Fornecedores'
+      Caption = 'Produtos Cadastrados'
+      Hint = 'Listagem de produtos cadastrados'
+      OnExecute = ACTREL_FOR_PRO_CADExecute
     end
   end
   object ILMenu: TImageList

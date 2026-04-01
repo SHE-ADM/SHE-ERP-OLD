@@ -8953,6 +8953,22 @@ object FrmPrincipal: TFrmPrincipal
       Hint = 'Listagem de Compras de Produtos'
       OnExecute = ACTRelatoriosExecute
     end
+    object ACTREL_FOR_PRO_CAD: TAction
+      Tag = 3
+      Category = 'Relat'#243'rios Fornecedores'
+      Caption = 'Produtos Cadastrados'
+      HelpContext = 1
+      Hint = 'Listagem de produtos cadastrados'
+      OnExecute = ACTRelatoriosExecute
+    end
+    object ACTREL_REP_PDV_RKG: TAction
+      Tag = 5
+      Category = 'Relat'#243'rios Representantes'
+      Caption = 'Ranking de Vendas'
+      HelpContext = 1
+      Hint = 'Ranking de Representantes'
+      OnExecute = ACTRelatoriosExecute
+    end
   end
   object ILPrincipal: TImageList
     AllocBy = 8
@@ -9875,17 +9891,17 @@ object FrmPrincipal: TFrmPrincipal
         Action = ACTCAD_PRO_ADM
         Caption = 'Cadastro'
       end
-      object MICAD_PRO_GRD: TMenuItem
-        Caption = 'Grade'
-        object MICAD_PRO_GRD_COR: TMenuItem
-          Action = ACTCAD_PRO_GRD_COR
-        end
-        object MICAD_PRO_GRD_EST: TMenuItem
-          Action = ACTCAD_PRO_GRD_EST
-        end
-        object MICAD_PRO_GRD_TAM: TMenuItem
-          Action = ACTCAD_PRO_GRD_TAM
-        end
+      object N2: TMenuItem
+        Caption = '-'
+      end
+      object MICAD_PRO_GRD_COR: TMenuItem
+        Action = ACTCAD_PRO_GRD_COR
+      end
+      object MICAD_PRO_GRD_EST: TMenuItem
+        Action = ACTCAD_PRO_GRD_EST
+      end
+      object MICAD_PRO_GRD_TAM: TMenuItem
+        Action = ACTCAD_PRO_GRD_TAM
       end
       object N3: TMenuItem
         Caption = '-'
@@ -10100,6 +10116,10 @@ object FrmPrincipal: TFrmPrincipal
       end
       object MIREL_FORNECEDOR: TMenuItem
         Caption = 'Fornecedores'
+        object MIREL_FOR_PRO_CAD: TMenuItem
+          Tag = 3
+          Action = ACTREL_FOR_PRO_CAD
+        end
       end
       object MIREL_N2: TMenuItem
         Caption = '-'
@@ -10112,6 +10132,10 @@ object FrmPrincipal: TFrmPrincipal
       end
       object MIREL_REPRESENTANTE: TMenuItem
         Caption = 'Representantes'
+        object MIREL_REP_PDV_RKG: TMenuItem
+          Tag = 5
+          Action = ACTREL_REP_PDV_RKG
+        end
       end
       object MIREL_N4: TMenuItem
         Caption = '-'

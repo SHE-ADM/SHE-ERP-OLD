@@ -4,7 +4,7 @@ object FBird: TFBird
   OnDestroy = DataModuleDestroy
   Left = 365
   Top = 191
-  Height = 578
+  Height = 571
   Width = 1117
   object DBERP: TIBDatabase
     DatabaseName = 'C:\Sheild\FBird\Otimotex.FDB'

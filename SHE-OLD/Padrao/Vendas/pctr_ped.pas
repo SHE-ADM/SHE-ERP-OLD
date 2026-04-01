@@ -942,7 +942,7 @@ begin
   DBGConsultaPDSC.Visible := True;
 
   DBGConsulta.ApplyBestFit(DBGConsultaDEPK);
-  DBGConsulta.ApplyBestFit(DBGConsultaQTRL); DBGConsultaQTRL.Width := DBGConsultaQTRL.Width + 05;
+  DBGConsulta.ApplyBestFit(DBGConsultaQTRL); DBGConsultaQTRL.Width := DBGConsultaQTRL.Width + 08;
   DBGConsulta.ApplyBestFit(DBGConsultaRLSP); DBGConsultaRLSP.Width := DBGConsultaQTRL.Width;
 
   DBGConsulta.ApplyBestFit(DBGConsultaVDSC); DBGConsultaVDSC.Width := DBGConsultaVDSC.Width + 05;

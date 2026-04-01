@@ -693,7 +693,7 @@ object FrmRelatorios_OLD: TFrmRelatorios_OLD
               CalColors.TitleTextColor = clBlack
               CalColors.MonthBackColor = 16644596
               CalColors.TrailingTextColor = clBlack
-              Date = 27838.322348055550000000
+              Date = 27838.312896724540000000
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Height = -15
@@ -737,7 +737,7 @@ object FrmRelatorios_OLD: TFrmRelatorios_OLD
               CalColors.TitleTextColor = clBlack
               CalColors.MonthBackColor = 16644596
               CalColors.TrailingTextColor = clBlack
-              Date = 27838.322348055550000000
+              Date = 27838.312896724540000000
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Height = -15
@@ -1687,6 +1687,7 @@ object FrmRelatorios_OLD: TFrmRelatorios_OLD
     object ACTCadastros_Ranking: TAction
       Category = 'Cadastros'
       Caption = 'ACTCadastros_Ranking'
+      OnExecute = ACTCadastros_RankingExecute
     end
     object ACTGCadastros_Venda_Produto: TAction
       Category = 'Cadastros'
@@ -1753,6 +1754,7 @@ object FrmRelatorios_OLD: TFrmRelatorios_OLD
       Category = 'Fornecedores'
       Caption = 'Produtos Cadastrados'
       Hint = 'Listagem de Produtos Cadastrados por Fornecedor'
+      OnExecute = ACTGFornecedoresProdutosCadastradosExecute
     end
     object ACTCliente_Produto_Nao_Atendido: TAction
       Category = 'Clientes'

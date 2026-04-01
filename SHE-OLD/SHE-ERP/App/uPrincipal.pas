@@ -298,7 +298,6 @@ type
     N5: TMenuItem;
     ACTCAD_PRO_GRD_TAM: TAction;
     MICAD_PRO_GRD_TAM: TMenuItem;
-    MICAD_PRO_GRD: TMenuItem;
     PNLSBRodape: TPanel;
     PNLSyncEvent: TPanel;
     PNLSyncAnimate: TPanel;
@@ -332,6 +331,11 @@ type
     RSBPCP_CAD_PRO_EST_ADM: TRxSpeedButton;
     RSBPCP_PED_PDV_ADM: TRxSpeedButton;
     RSBPCP_PED_RDV_ADM: TRxSpeedButton;
+    N2: TMenuItem;
+    ACTREL_FOR_PRO_CAD: TAction;
+    MIREL_FOR_PRO_CAD: TMenuItem;
+    ACTREL_REP_PDV_RKG: TAction;
+    MIREL_REP_PDV_RKG: TMenuItem;
 
     procedure _DoneEvent(Sender: TObject);
 
@@ -3026,7 +3030,7 @@ begin
     PNLPCP.Visible := False;
   end else
 
-  if RECUsuarios.Grupo = 'PCP' then
+  if Pos(RECUsuarios.Grupo,'LOGEXPPCP') > 0 then
   begin
     PNLPCP.Visible := True;
     PNLADM.Visible := False;
